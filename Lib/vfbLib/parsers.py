@@ -11,10 +11,7 @@ class BaseParser:
 
     @classmethod
     def parse(cls, data):
-        if data:
-            return str(standard_b64encode(data))
-        else:
-            return None
+        return str(b64encode(data))
 
     @classmethod
     def read_uint16(cls, stream=None) -> int:
@@ -48,7 +45,7 @@ class StringParser(BaseParser):
 
     @classmethod
     def parse(cls, data):
-        return data.decode("utf-8")
+        return data.decode("cp1252")
         return data.decode("Windows-1252")
 
 

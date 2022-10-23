@@ -25,7 +25,8 @@ class VFBReader:
         header = VfbHeaderParser.parse(stream)
         self.data.append({"header": header})
         self._append_parsed_entry()
-        # 256 glyph records
+
+        # Glyph records
         glyph_order = []
         entry = self._parse_entry()
         while (
@@ -36,15 +37,17 @@ class VFBReader:
             glyph_order.append({"gid": entry[key][0], "name": entry[key][1]})
             entry = self._parse_entry()
         self.data.append({"glyphOrder": glyph_order})
+        # Append dangling record after glyph order
         self.data.append(entry)
-        more = True
-        while more:
+        while True:
+            pos = self.stream.tell()
             try:
                 entry = self._parse_entry()
-            except:
-                more = False
+                print(entry)
+            except EOFError:
+                break
             self.data.append(entry)
-            if not more:
+            if self.stream.tell() == pos:
                 break
 
     def read(self):
@@ -66,10 +69,9 @@ class VFBReader:
         try:
             parsed = parser_class.parse(data)
         except:
-            print("Parse error for data:", data)
+            print("Parse error for data:", entry_id, data)
             print("Parser class:", parser_class)
-            parsed = "None"
-            raise
+            parsed = f"ParseError ({parser_class})"
         return {entry_id: parsed}
 
     def _read_entry(self) -> Tuple[str, BaseParser, bytes]:

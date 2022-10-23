@@ -1,13 +1,14 @@
 import codecs
 import json
 from pathlib import Path
+from pprint import pprint
 from sys import argv
 from vfbLib import VFBReader
 
 def read_vfb(vfb_path):
     reader = VFBReader(vfb_path)
     reader.read()
-    # print(reader)
+    pprint(reader.data)
     out_path = Path(vfb_path).with_suffix(".json")
     with codecs.open(str(out_path), "wb", "utf-8") as f:
         json.dump(reader.data, f, ensure_ascii=False, indent=4)
