@@ -1,3 +1,4 @@
+from base64 import b64encode, standard_b64encode
 uint8 = 1
 uint16 = 2
 uint32 = 4
@@ -8,7 +9,36 @@ class BaseParser:
     Base class to read data from a vfb file
     """
 
-    pass
+    @classmethod
+    def parse(cls, data):
+        if data:
+            return str(standard_b64encode(data))
+        else:
+            return None
+
+    @classmethod
+    def read_uint16(cls, stream=None) -> int:
+        if stream is None:
+            stream = cls.data
+        return int.from_bytes(
+            stream.read(uint16), byteorder="little", signed=False
+        )
+
+    @classmethod
+    def read_uint32(cls, stream=None) -> int:
+        if stream is None:
+            stream = cls.data
+        return int.from_bytes(
+            stream.read(uint32), byteorder="little", signed=False
+        )
+
+
+class GlyphEncodingParser(BaseParser):
+    @classmethod
+    def parse(cls, data):
+        gid = int.from_bytes(data[:2], byteorder="little")
+        nam = data[2:].decode("ascii")
+        return gid, nam
 
 
 class StringParser(BaseParser):
@@ -16,20 +46,24 @@ class StringParser(BaseParser):
     A parser that reads data as ASCII-encoded strings.
     """
 
-    pass
+    @classmethod
+    def parse(cls, data):
+        return data.decode("utf-8")
+        return data.decode("Windows-1252")
 
 
 class VfbHeaderParser(BaseParser):
     @classmethod
     def parse(cls, data):
+        cls.data = data
         header = []
-        header.append({"filetype": data.read(6).encode("utf-8")})
-        header.append({"header1": data.read(uint16)})
-        header.append({"header2": data.read(uint16)})
-        header.append({"reserved": data.read(34)})
-        header.append({"header3": data.read(uint32)})
-        header.append({"header4": data.read(uint32)})
-        for i in range(1, 8):
-            header.append({f"header{i}": data.read(uint16)})
+        header.append({"filetype": str(data.read(6))})
+        header.append({"header1": cls.read_uint16()})
+        header.append({"header2": cls.read_uint16()})
+        header.append({"reserved": str(data.read(34))})
+        header.append({"header3": cls.read_uint32()})
+        header.append({"header4": cls.read_uint32()})
+        for i in range(5, 12):
+            header.append({f"header{i}": cls.read_uint16()})
 
         return header
