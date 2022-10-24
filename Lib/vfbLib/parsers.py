@@ -1,4 +1,4 @@
-from base64 import b64encode, standard_b64encode
+from fontTools.misc.textTools import hexStr
 uint8 = 1
 uint16 = 2
 uint32 = 4
@@ -11,7 +11,7 @@ class BaseParser:
 
     @classmethod
     def parse(cls, data):
-        return str(b64encode(data))
+        return hexStr(data)
 
     @classmethod
     def read_uint16(cls, stream=None) -> int:
