@@ -65,6 +65,16 @@ class IntParser(BaseParser):
         return int.from_bytes(data, byteorder="little", signed=False)
 
 
+class PanoseParser(BaseParser):
+    """
+    A parser that reads data as an array representing PANOSE values.
+    """
+
+    @classmethod
+    def parse(cls, data):
+        return unpack("<10b", data)
+
+
 class SignedIntParser(BaseParser):
     """
     A parser that reads data as signed Int16.
