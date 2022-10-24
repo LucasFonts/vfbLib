@@ -37,6 +37,25 @@ class GlyphEncodingParser(BaseParser):
         nam = data[2:].decode("ascii")
         return gid, nam
 
+class IntParser(BaseParser):
+    """
+    A parser that reads data as UInt16.
+    """
+
+    @classmethod
+    def parse(cls, data):
+        return int.from_bytes(data, byteorder="little", signed=False)
+
+
+class SignedIntParser(BaseParser):
+    """
+    A parser that reads data as signed Int16.
+    """
+
+    @classmethod
+    def parse(cls, data):
+        return int.from_bytes(data, byteorder="little", signed=True)
+
 
 class StringParser(BaseParser):
     """
