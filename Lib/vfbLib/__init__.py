@@ -65,10 +65,22 @@ class VFBReader:
             entry_id, (str(entry_id), FALLBACK_PARSER)
         )
         key, parser_class = entry_info
-        # if parser_class == FALLBACK_PARSER:
-        #     print(f"Missing specialised parser for entry id {entry_id}.")
-        #     # raise KeyError
-        num_bytes = BaseParser.read_uint16(self.stream)
+
+        if entry_id == 5:
+            # File end marker?
+            BaseParser.read_uint16(self.stream)
+            two = BaseParser.read_uint16(self.stream)
+            if two == 2:
+                BaseParser.read_uint16(self.stream)
+                raise EOFError
+
+        if entry_id < 0x8000:  # Conjecture
+            # Uses uint16 for data length
+            num_bytes = BaseParser.read_uint16(self.stream)
+        else:
+            # Uses uint32 for data length
+            num_bytes = BaseParser.read_uint32(self.stream)
+
         if num_bytes > 0:
             data = self.stream.read(num_bytes)
         else:
