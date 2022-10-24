@@ -1,4 +1,6 @@
 from fontTools.misc.textTools import hexStr
+from struct import unpack
+
 uint8 = 1
 uint16 = 2
 uint32 = 4
