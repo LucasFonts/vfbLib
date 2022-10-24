@@ -16,6 +16,14 @@ class BaseParser:
         return hexStr(data)
 
     @classmethod
+    def read_uint8(cls, stream=None) -> int:
+        if stream is None:
+            stream = cls.data
+        return int.from_bytes(
+            stream.read(uint8), byteorder="little", signed=False
+        )
+
+    @classmethod
     def read_uint16(cls, stream=None) -> int:
         if stream is None:
             stream = cls.data
