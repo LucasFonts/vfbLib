@@ -54,7 +54,8 @@ class VfbHeaderParser(BaseParser):
     def parse(cls, data):
         cls.data = data
         header = []
-        header.append({"filetype": str(data.read(6))})
+        header.append({"header0": cls.read_uint8()})
+        header.append({"filetype": data.read(5).decode("cp1252")})
         header.append({"header1": cls.read_uint16()})
         header.append({"header2": cls.read_uint16()})
         header.append({"reserved": str(data.read(34))})
