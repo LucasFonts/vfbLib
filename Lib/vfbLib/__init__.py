@@ -24,31 +24,12 @@ class VFBReader:
         self.stream = stream
         header = VfbHeaderParser.parse(stream)
         self.data.append({"header": header})
-        self._append_parsed_entry()
-
-        # Glyph records
-        glyph_order = []
-        entry = self._parse_entry()
-        while (
-            "Glyph Encoding 0" in entry.keys()
-            or "Glyph Encoding 1" in entry.keys()
-        ):
-            key = list(entry.keys())[0]
-            glyph_order.append({"gid": entry[key][0], "name": entry[key][1]})
-            entry = self._parse_entry()
-        self.data.append({"glyphOrder": glyph_order})
-        # Append dangling record after glyph order
-        self.data.append(entry)
         while True:
-            pos = self.stream.tell()
             try:
                 entry = self._parse_entry()
-                print(entry)
             except EOFError:
                 break
             self.data.append(entry)
-            if self.stream.tell() == pos:
-                break
 
     def read(self):
         self.data = []
