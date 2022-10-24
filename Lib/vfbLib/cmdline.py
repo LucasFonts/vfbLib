@@ -14,6 +14,6 @@ def read_vfb(vfb_path):
         json.dump(reader.data, f, ensure_ascii=False, indent=4)
 
 
-def vfb3ufo():
+def vfb2json():
     for arg in argv[1:]:
         read_vfb(arg)
