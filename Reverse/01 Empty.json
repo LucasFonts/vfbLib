@@ -1,0 +1,1865 @@
+[
+    {
+        "header": [
+            {
+                "header0": 26
+            },
+            {
+                "filetype": "WLF10"
+            },
+            {
+                "header1": 3
+            },
+            {
+                "header2": 44
+            },
+            {
+                "reserved": "b'\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00'"
+            },
+            {
+                "header3": 1
+            },
+            {
+                "header4": 4
+            },
+            {
+                "header5": 10
+            },
+            {
+                "header6": 11
+            },
+            {
+                "header7": 35841
+            },
+            {
+                "header8": 65282
+            },
+            {
+                "header9": 517
+            },
+            {
+                "header10": 32770
+            },
+            {
+                "header11": 35587
+            }
+        ]
+    },
+    {
+        "1536": "00"
+    },
+    {
+        "Win Encoding": [
+            0,
+            "_0000"
+        ]
+    },
+    {
+        "Win Encoding": [
+            1,
+            "_0001"
+        ]
+    },
+    {
+        "Win Encoding": [
+            2,
+            "_0002"
+        ]
+    },
+    {
+        "Win Encoding": [
+            3,
+            "_0003"
+        ]
+    },
+    {
+        "Win Encoding": [
+            4,
+            "_0004"
+        ]
+    },
+    {
+        "Win Encoding": [
+            5,
+            "breve"
+        ]
+    },
+    {
+        "Win Encoding": [
+            6,
+            "dotaccent"
+        ]
+    },
+    {
+        "Win Encoding": [
+            7,
+            "_0007"
+        ]
+    },
+    {
+        "Win Encoding": [
+            8,
+            "ring"
+        ]
+    },
+    {
+        "Win Encoding": [
+            9,
+            "_0009"
+        ]
+    },
+    {
+        "Win Encoding": [
+            10,
+            "hungarumlaut"
+        ]
+    },
+    {
+        "Win Encoding": [
+            11,
+            "ogonek"
+        ]
+    },
+    {
+        "Win Encoding": [
+            12,
+            "caron"
+        ]
+    },
+    {
+        "Win Encoding": [
+            13,
+            "dotlessi"
+        ]
+    },
+    {
+        "Win Encoding": [
+            14,
+            "_0014"
+        ]
+    },
+    {
+        "Win Encoding": [
+            15,
+            "_0015"
+        ]
+    },
+    {
+        "Win Encoding": [
+            16,
+            "_0016"
+        ]
+    },
+    {
+        "Win Encoding": [
+            17,
+            "_0017"
+        ]
+    },
+    {
+        "Win Encoding": [
+            18,
+            "_0018"
+        ]
+    },
+    {
+        "Win Encoding": [
+            19,
+            "_0019"
+        ]
+    },
+    {
+        "Win Encoding": [
+            20,
+            "_0020"
+        ]
+    },
+    {
+        "Win Encoding": [
+            21,
+            "_0021"
+        ]
+    },
+    {
+        "Win Encoding": [
+            22,
+            "_0022"
+        ]
+    },
+    {
+        "Win Encoding": [
+            23,
+            "_0023"
+        ]
+    },
+    {
+        "Win Encoding": [
+            24,
+            "_0024"
+        ]
+    },
+    {
+        "Win Encoding": [
+            25,
+            "fraction"
+        ]
+    },
+    {
+        "Win Encoding": [
+            26,
+            "fi"
+        ]
+    },
+    {
+        "Win Encoding": [
+            27,
+            "fl"
+        ]
+    },
+    {
+        "Win Encoding": [
+            28,
+            "Lslash"
+        ]
+    },
+    {
+        "Win Encoding": [
+            29,
+            "lslash"
+        ]
+    },
+    {
+        "Win Encoding": [
+            30,
+            "Zcaron"
+        ]
+    },
+    {
+        "Win Encoding": [
+            31,
+            "zcaron"
+        ]
+    },
+    {
+        "Win Encoding": [
+            32,
+            "space"
+        ]
+    },
+    {
+        "Win Encoding": [
+            33,
+            "exclam"
+        ]
+    },
+    {
+        "Win Encoding": [
+            34,
+            "quotedbl"
+        ]
+    },
+    {
+        "Win Encoding": [
+            35,
+            "numbersign"
+        ]
+    },
+    {
+        "Win Encoding": [
+            36,
+            "dollar"
+        ]
+    },
+    {
+        "Win Encoding": [
+            37,
+            "percent"
+        ]
+    },
+    {
+        "Win Encoding": [
+            38,
+            "ampersand"
+        ]
+    },
+    {
+        "Win Encoding": [
+            39,
+            "quotesingle"
+        ]
+    },
+    {
+        "Win Encoding": [
+            40,
+            "parenleft"
+        ]
+    },
+    {
+        "Win Encoding": [
+            41,
+            "parenright"
+        ]
+    },
+    {
+        "Win Encoding": [
+            42,
+            "asterisk"
+        ]
+    },
+    {
+        "Win Encoding": [
+            43,
+            "plus"
+        ]
+    },
+    {
+        "Win Encoding": [
+            44,
+            "comma"
+        ]
+    },
+    {
+        "Win Encoding": [
+            45,
+            "hyphen"
+        ]
+    },
+    {
+        "Win Encoding": [
+            46,
+            "period"
+        ]
+    },
+    {
+        "Win Encoding": [
+            47,
+            "slash"
+        ]
+    },
+    {
+        "Win Encoding": [
+            48,
+            "zero"
+        ]
+    },
+    {
+        "Win Encoding": [
+            49,
+            "one"
+        ]
+    },
+    {
+        "Win Encoding": [
+            50,
+            "two"
+        ]
+    },
+    {
+        "Win Encoding": [
+            51,
+            "three"
+        ]
+    },
+    {
+        "Win Encoding": [
+            52,
+            "four"
+        ]
+    },
+    {
+        "Win Encoding": [
+            53,
+            "five"
+        ]
+    },
+    {
+        "Win Encoding": [
+            54,
+            "six"
+        ]
+    },
+    {
+        "Win Encoding": [
+            55,
+            "seven"
+        ]
+    },
+    {
+        "Win Encoding": [
+            56,
+            "eight"
+        ]
+    },
+    {
+        "Win Encoding": [
+            57,
+            "nine"
+        ]
+    },
+    {
+        "Win Encoding": [
+            58,
+            "colon"
+        ]
+    },
+    {
+        "Win Encoding": [
+            59,
+            "semicolon"
+        ]
+    },
+    {
+        "Win Encoding": [
+            60,
+            "less"
+        ]
+    },
+    {
+        "Win Encoding": [
+            61,
+            "equal"
+        ]
+    },
+    {
+        "Win Encoding": [
+            62,
+            "greater"
+        ]
+    },
+    {
+        "Win Encoding": [
+            63,
+            "question"
+        ]
+    },
+    {
+        "Win Encoding": [
+            64,
+            "at"
+        ]
+    },
+    {
+        "Win Encoding": [
+            65,
+            "A"
+        ]
+    },
+    {
+        "Win Encoding": [
+            66,
+            "B"
+        ]
+    },
+    {
+        "Win Encoding": [
+            67,
+            "C"
+        ]
+    },
+    {
+        "Win Encoding": [
+            68,
+            "D"
+        ]
+    },
+    {
+        "Win Encoding": [
+            69,
+            "E"
+        ]
+    },
+    {
+        "Win Encoding": [
+            70,
+            "F"
+        ]
+    },
+    {
+        "Win Encoding": [
+            71,
+            "G"
+        ]
+    },
+    {
+        "Win Encoding": [
+            72,
+            "H"
+        ]
+    },
+    {
+        "Win Encoding": [
+            73,
+            "I"
+        ]
+    },
+    {
+        "Win Encoding": [
+            74,
+            "J"
+        ]
+    },
+    {
+        "Win Encoding": [
+            75,
+            "K"
+        ]
+    },
+    {
+        "Win Encoding": [
+            76,
+            "L"
+        ]
+    },
+    {
+        "Win Encoding": [
+            77,
+            "M"
+        ]
+    },
+    {
+        "Win Encoding": [
+            78,
+            "N"
+        ]
+    },
+    {
+        "Win Encoding": [
+            79,
+            "O"
+        ]
+    },
+    {
+        "Win Encoding": [
+            80,
+            "P"
+        ]
+    },
+    {
+        "Win Encoding": [
+            81,
+            "Q"
+        ]
+    },
+    {
+        "Win Encoding": [
+            82,
+            "R"
+        ]
+    },
+    {
+        "Win Encoding": [
+            83,
+            "S"
+        ]
+    },
+    {
+        "Win Encoding": [
+            84,
+            "T"
+        ]
+    },
+    {
+        "Win Encoding": [
+            85,
+            "U"
+        ]
+    },
+    {
+        "Win Encoding": [
+            86,
+            "V"
+        ]
+    },
+    {
+        "Win Encoding": [
+            87,
+            "W"
+        ]
+    },
+    {
+        "Win Encoding": [
+            88,
+            "X"
+        ]
+    },
+    {
+        "Win Encoding": [
+            89,
+            "Y"
+        ]
+    },
+    {
+        "Win Encoding": [
+            90,
+            "Z"
+        ]
+    },
+    {
+        "Win Encoding": [
+            91,
+            "bracketleft"
+        ]
+    },
+    {
+        "Win Encoding": [
+            92,
+            "backslash"
+        ]
+    },
+    {
+        "Win Encoding": [
+            93,
+            "bracketright"
+        ]
+    },
+    {
+        "Win Encoding": [
+            94,
+            "asciicircum"
+        ]
+    },
+    {
+        "Win Encoding": [
+            95,
+            "underscore"
+        ]
+    },
+    {
+        "Win Encoding": [
+            96,
+            "grave"
+        ]
+    },
+    {
+        "Win Encoding": [
+            97,
+            "a"
+        ]
+    },
+    {
+        "Win Encoding": [
+            98,
+            "b"
+        ]
+    },
+    {
+        "Win Encoding": [
+            99,
+            "c"
+        ]
+    },
+    {
+        "Win Encoding": [
+            100,
+            "d"
+        ]
+    },
+    {
+        "Win Encoding": [
+            101,
+            "e"
+        ]
+    },
+    {
+        "Win Encoding": [
+            102,
+            "f"
+        ]
+    },
+    {
+        "Win Encoding": [
+            103,
+            "g"
+        ]
+    },
+    {
+        "Win Encoding": [
+            104,
+            "h"
+        ]
+    },
+    {
+        "Win Encoding": [
+            105,
+            "i"
+        ]
+    },
+    {
+        "Win Encoding": [
+            106,
+            "j"
+        ]
+    },
+    {
+        "Win Encoding": [
+            107,
+            "k"
+        ]
+    },
+    {
+        "Win Encoding": [
+            108,
+            "l"
+        ]
+    },
+    {
+        "Win Encoding": [
+            109,
+            "m"
+        ]
+    },
+    {
+        "Win Encoding": [
+            110,
+            "n"
+        ]
+    },
+    {
+        "Win Encoding": [
+            111,
+            "o"
+        ]
+    },
+    {
+        "Win Encoding": [
+            112,
+            "p"
+        ]
+    },
+    {
+        "Win Encoding": [
+            113,
+            "q"
+        ]
+    },
+    {
+        "Win Encoding": [
+            114,
+            "r"
+        ]
+    },
+    {
+        "Win Encoding": [
+            115,
+            "s"
+        ]
+    },
+    {
+        "Win Encoding": [
+            116,
+            "t"
+        ]
+    },
+    {
+        "Win Encoding": [
+            117,
+            "u"
+        ]
+    },
+    {
+        "Win Encoding": [
+            118,
+            "v"
+        ]
+    },
+    {
+        "Win Encoding": [
+            119,
+            "w"
+        ]
+    },
+    {
+        "Win Encoding": [
+            120,
+            "x"
+        ]
+    },
+    {
+        "Win Encoding": [
+            121,
+            "y"
+        ]
+    },
+    {
+        "Win Encoding": [
+            122,
+            "z"
+        ]
+    },
+    {
+        "Win Encoding": [
+            123,
+            "braceleft"
+        ]
+    },
+    {
+        "Win Encoding": [
+            124,
+            "bar"
+        ]
+    },
+    {
+        "Win Encoding": [
+            125,
+            "braceright"
+        ]
+    },
+    {
+        "Win Encoding": [
+            126,
+            "asciitilde"
+        ]
+    },
+    {
+        "Win Encoding": [
+            127,
+            "_0127"
+        ]
+    },
+    {
+        "Win Encoding": [
+            128,
+            "Euro"
+        ]
+    },
+    {
+        "Win Encoding": [
+            129,
+            "_0129"
+        ]
+    },
+    {
+        "Win Encoding": [
+            130,
+            "quotesinglbase"
+        ]
+    },
+    {
+        "Win Encoding": [
+            131,
+            "florin"
+        ]
+    },
+    {
+        "Win Encoding": [
+            132,
+            "quotedblbase"
+        ]
+    },
+    {
+        "Win Encoding": [
+            133,
+            "ellipsis"
+        ]
+    },
+    {
+        "Win Encoding": [
+            134,
+            "dagger"
+        ]
+    },
+    {
+        "Win Encoding": [
+            135,
+            "daggerdbl"
+        ]
+    },
+    {
+        "Win Encoding": [
+            136,
+            "circumflex"
+        ]
+    },
+    {
+        "Win Encoding": [
+            137,
+            "perthousand"
+        ]
+    },
+    {
+        "Win Encoding": [
+            138,
+            "Scaron"
+        ]
+    },
+    {
+        "Win Encoding": [
+            139,
+            "guilsinglleft"
+        ]
+    },
+    {
+        "Win Encoding": [
+            140,
+            "OE"
+        ]
+    },
+    {
+        "Win Encoding": [
+            141,
+            "_0141"
+        ]
+    },
+    {
+        "Win Encoding": [
+            142,
+            "_0142"
+        ]
+    },
+    {
+        "Win Encoding": [
+            143,
+            "_0143"
+        ]
+    },
+    {
+        "Win Encoding": [
+            144,
+            "_0144"
+        ]
+    },
+    {
+        "Win Encoding": [
+            145,
+            "quoteleft"
+        ]
+    },
+    {
+        "Win Encoding": [
+            146,
+            "quoteright"
+        ]
+    },
+    {
+        "Win Encoding": [
+            147,
+            "quotedblleft"
+        ]
+    },
+    {
+        "Win Encoding": [
+            148,
+            "quotedblright"
+        ]
+    },
+    {
+        "Win Encoding": [
+            149,
+            "bullet"
+        ]
+    },
+    {
+        "Win Encoding": [
+            150,
+            "endash"
+        ]
+    },
+    {
+        "Win Encoding": [
+            151,
+            "emdash"
+        ]
+    },
+    {
+        "Win Encoding": [
+            152,
+            "tilde"
+        ]
+    },
+    {
+        "Win Encoding": [
+            153,
+            "trademark"
+        ]
+    },
+    {
+        "Win Encoding": [
+            154,
+            "scaron"
+        ]
+    },
+    {
+        "Win Encoding": [
+            155,
+            "guilsinglright"
+        ]
+    },
+    {
+        "Win Encoding": [
+            156,
+            "oe"
+        ]
+    },
+    {
+        "Win Encoding": [
+            157,
+            "_0157"
+        ]
+    },
+    {
+        "Win Encoding": [
+            158,
+            "_0158"
+        ]
+    },
+    {
+        "Win Encoding": [
+            159,
+            "Ydieresis"
+        ]
+    },
+    {
+        "Win Encoding": [
+            160,
+            "uni00A0"
+        ]
+    },
+    {
+        "Win Encoding": [
+            161,
+            "exclamdown"
+        ]
+    },
+    {
+        "Win Encoding": [
+            162,
+            "cent"
+        ]
+    },
+    {
+        "Win Encoding": [
+            163,
+            "sterling"
+        ]
+    },
+    {
+        "Win Encoding": [
+            164,
+            "currency"
+        ]
+    },
+    {
+        "Win Encoding": [
+            165,
+            "yen"
+        ]
+    },
+    {
+        "Win Encoding": [
+            166,
+            "brokenbar"
+        ]
+    },
+    {
+        "Win Encoding": [
+            167,
+            "section"
+        ]
+    },
+    {
+        "Win Encoding": [
+            168,
+            "dieresis"
+        ]
+    },
+    {
+        "Win Encoding": [
+            169,
+            "copyright"
+        ]
+    },
+    {
+        "Win Encoding": [
+            170,
+            "ordfeminine"
+        ]
+    },
+    {
+        "Win Encoding": [
+            171,
+            "guillemotleft"
+        ]
+    },
+    {
+        "Win Encoding": [
+            172,
+            "logicalnot"
+        ]
+    },
+    {
+        "Win Encoding": [
+            173,
+            "minus"
+        ]
+    },
+    {
+        "Win Encoding": [
+            174,
+            "registered"
+        ]
+    },
+    {
+        "Win Encoding": [
+            175,
+            "macron"
+        ]
+    },
+    {
+        "Win Encoding": [
+            176,
+            "degree"
+        ]
+    },
+    {
+        "Win Encoding": [
+            177,
+            "plusminus"
+        ]
+    },
+    {
+        "Win Encoding": [
+            178,
+            "twosuperior"
+        ]
+    },
+    {
+        "Win Encoding": [
+            179,
+            "threesuperior"
+        ]
+    },
+    {
+        "Win Encoding": [
+            180,
+            "acute"
+        ]
+    },
+    {
+        "Win Encoding": [
+            181,
+            "mu"
+        ]
+    },
+    {
+        "Win Encoding": [
+            182,
+            "paragraph"
+        ]
+    },
+    {
+        "Win Encoding": [
+            183,
+            "periodcentered"
+        ]
+    },
+    {
+        "Win Encoding": [
+            184,
+            "cedilla"
+        ]
+    },
+    {
+        "Win Encoding": [
+            185,
+            "onesuperior"
+        ]
+    },
+    {
+        "Win Encoding": [
+            186,
+            "ordmasculine"
+        ]
+    },
+    {
+        "Win Encoding": [
+            187,
+            "guillemotright"
+        ]
+    },
+    {
+        "Win Encoding": [
+            188,
+            "onequarter"
+        ]
+    },
+    {
+        "Win Encoding": [
+            189,
+            "onehalf"
+        ]
+    },
+    {
+        "Win Encoding": [
+            190,
+            "threequarters"
+        ]
+    },
+    {
+        "Win Encoding": [
+            191,
+            "questiondown"
+        ]
+    },
+    {
+        "Win Encoding": [
+            192,
+            "Agrave"
+        ]
+    },
+    {
+        "Win Encoding": [
+            193,
+            "Aacute"
+        ]
+    },
+    {
+        "Win Encoding": [
+            194,
+            "Acircumflex"
+        ]
+    },
+    {
+        "Win Encoding": [
+            195,
+            "Atilde"
+        ]
+    },
+    {
+        "Win Encoding": [
+            196,
+            "Adieresis"
+        ]
+    },
+    {
+        "Win Encoding": [
+            197,
+            "Aring"
+        ]
+    },
+    {
+        "Win Encoding": [
+            198,
+            "AE"
+        ]
+    },
+    {
+        "Win Encoding": [
+            199,
+            "Ccedilla"
+        ]
+    },
+    {
+        "Win Encoding": [
+            200,
+            "Egrave"
+        ]
+    },
+    {
+        "Win Encoding": [
+            201,
+            "Eacute"
+        ]
+    },
+    {
+        "Win Encoding": [
+            202,
+            "Ecircumflex"
+        ]
+    },
+    {
+        "Win Encoding": [
+            203,
+            "Edieresis"
+        ]
+    },
+    {
+        "Win Encoding": [
+            204,
+            "Igrave"
+        ]
+    },
+    {
+        "Win Encoding": [
+            205,
+            "Iacute"
+        ]
+    },
+    {
+        "Win Encoding": [
+            206,
+            "Icircumflex"
+        ]
+    },
+    {
+        "Win Encoding": [
+            207,
+            "Idieresis"
+        ]
+    },
+    {
+        "Win Encoding": [
+            208,
+            "Eth"
+        ]
+    },
+    {
+        "Win Encoding": [
+            209,
+            "Ntilde"
+        ]
+    },
+    {
+        "Win Encoding": [
+            210,
+            "Ograve"
+        ]
+    },
+    {
+        "Win Encoding": [
+            211,
+            "Oacute"
+        ]
+    },
+    {
+        "Win Encoding": [
+            212,
+            "Ocircumflex"
+        ]
+    },
+    {
+        "Win Encoding": [
+            213,
+            "Otilde"
+        ]
+    },
+    {
+        "Win Encoding": [
+            214,
+            "Odieresis"
+        ]
+    },
+    {
+        "Win Encoding": [
+            215,
+            "multiply"
+        ]
+    },
+    {
+        "Win Encoding": [
+            216,
+            "Oslash"
+        ]
+    },
+    {
+        "Win Encoding": [
+            217,
+            "Ugrave"
+        ]
+    },
+    {
+        "Win Encoding": [
+            218,
+            "Uacute"
+        ]
+    },
+    {
+        "Win Encoding": [
+            219,
+            "Ucircumflex"
+        ]
+    },
+    {
+        "Win Encoding": [
+            220,
+            "Udieresis"
+        ]
+    },
+    {
+        "Win Encoding": [
+            221,
+            "Yacute"
+        ]
+    },
+    {
+        "Win Encoding": [
+            222,
+            "Thorn"
+        ]
+    },
+    {
+        "Win Encoding": [
+            223,
+            "germandbls"
+        ]
+    },
+    {
+        "Win Encoding": [
+            224,
+            "agrave"
+        ]
+    },
+    {
+        "Win Encoding": [
+            225,
+            "aacute"
+        ]
+    },
+    {
+        "Win Encoding": [
+            226,
+            "acircumflex"
+        ]
+    },
+    {
+        "Win Encoding": [
+            227,
+            "atilde"
+        ]
+    },
+    {
+        "Win Encoding": [
+            228,
+            "adieresis"
+        ]
+    },
+    {
+        "Win Encoding": [
+            229,
+            "aring"
+        ]
+    },
+    {
+        "Win Encoding": [
+            230,
+            "ae"
+        ]
+    },
+    {
+        "Win Encoding": [
+            231,
+            "ccedilla"
+        ]
+    },
+    {
+        "Win Encoding": [
+            232,
+            "egrave"
+        ]
+    },
+    {
+        "Win Encoding": [
+            233,
+            "eacute"
+        ]
+    },
+    {
+        "Win Encoding": [
+            234,
+            "ecircumflex"
+        ]
+    },
+    {
+        "Win Encoding": [
+            235,
+            "edieresis"
+        ]
+    },
+    {
+        "Win Encoding": [
+            236,
+            "igrave"
+        ]
+    },
+    {
+        "Win Encoding": [
+            237,
+            "iacute"
+        ]
+    },
+    {
+        "Win Encoding": [
+            238,
+            "icircumflex"
+        ]
+    },
+    {
+        "Win Encoding": [
+            239,
+            "idieresis"
+        ]
+    },
+    {
+        "Win Encoding": [
+            240,
+            "eth"
+        ]
+    },
+    {
+        "Win Encoding": [
+            241,
+            "ntilde"
+        ]
+    },
+    {
+        "Win Encoding": [
+            242,
+            "ograve"
+        ]
+    },
+    {
+        "Win Encoding": [
+            243,
+            "oacute"
+        ]
+    },
+    {
+        "Win Encoding": [
+            244,
+            "ocircumflex"
+        ]
+    },
+    {
+        "Win Encoding": [
+            245,
+            "otilde"
+        ]
+    },
+    {
+        "Win Encoding": [
+            246,
+            "odieresis"
+        ]
+    },
+    {
+        "Win Encoding": [
+            247,
+            "divide"
+        ]
+    },
+    {
+        "Win Encoding": [
+            248,
+            "oslash"
+        ]
+    },
+    {
+        "Win Encoding": [
+            249,
+            "ugrave"
+        ]
+    },
+    {
+        "Win Encoding": [
+            250,
+            "uacute"
+        ]
+    },
+    {
+        "Win Encoding": [
+            251,
+            "ucircumflex"
+        ]
+    },
+    {
+        "Win Encoding": [
+            252,
+            "udieresis"
+        ]
+    },
+    {
+        "Win Encoding": [
+            253,
+            "yacute"
+        ]
+    },
+    {
+        "Win Encoding": [
+            254,
+            "thorn"
+        ]
+    },
+    {
+        "Win Encoding": [
+            255,
+            "ydieresis"
+        ]
+    },
+    {
+        "1502": "0100"
+    },
+    {
+        "518": ""
+    },
+    {
+        "257": ""
+    },
+    {
+        "PostScript Font Name": ""
+    },
+    {
+        "1503": "0100"
+    },
+    {
+        "1517": "000000000000f03f"
+    },
+    {
+        "1044": "ffffffff"
+    },
+    {
+        "Complete Version Record": ""
+    },
+    {
+        "Description": ""
+    },
+    {
+        "Full Name": ""
+    },
+    {
+        "OT Family Name?": ""
+    },
+    {
+        "Family Name": ""
+    },
+    {
+        "1056": ""
+    },
+    {
+        "1092": ""
+    },
+    {
+        "Weight?": ""
+    },
+    {
+        "Width": "Normal"
+    },
+    {
+        "1069": ""
+    },
+    {
+        "1070": ""
+    },
+    {
+        "Copyright": ""
+    },
+    {
+        "Trademark": ""
+    },
+    {
+        "Designer": ""
+    },
+    {
+        "Designer URL": ""
+    },
+    {
+        "Vendor URL": ""
+    },
+    {
+        "Created By": ""
+    },
+    {
+        "1034": "0000"
+    },
+    {
+        "Weight Class": -1
+    },
+    {
+        "1029": "0000000000000000"
+    },
+    {
+        "1047": "0000000000000000"
+    },
+    {
+        "1030": "9cff"
+    },
+    {
+        "Underline Thickness?": 50
+    },
+    {
+        "1054": "0000"
+    },
+    {
+        "Panose": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+        ]
+    },
+    {
+        "TrueType Version Record": ""
+    },
+    {
+        "TrueType Unique ID Record": ""
+    },
+    {
+        "Style Name": ""
+    },
+    {
+        "OT Style Name?": ""
+    },
+    {
+        "Mac Name?": ""
+    },
+    {
+        "1140": ""
+    },
+    {
+        "Vendor ID": "pyrs"
+    },
+    {
+        "1133": "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+        "1134": "0000"
+    },
+    {
+        "Year": 0
+    },
+    {
+        "Version Major": 1
+    },
+    {
+        "Version Minor": 0
+    },
+    {
+        "Units Per Em": 1000
+    },
+    {
+        "1090": 128
+    },
+    {
+        "1093": "0000"
+    },
+    {
+        "1068": "8b"
+    },
+    {
+        "1530": 0
+    },
+    {
+        "1531": 0
+    },
+    {
+        "1532": 0
+    },
+    {
+        "1533": 0
+    },
+    {
+        "1535": 0
+    },
+    {
+        "1535": "0000"
+    },
+    {
+        "1267": 64
+    },
+    {
+        "1060": 0
+    },
+    {
+        "1059": "203955"
+    },
+    {
+        "1264": "338b348b358b368b378b388b39ff000200003afa7c3b8b3c9456ffdf7c1092578b3d8d3ef8243f90408f41f95042f91e438b44f72045f95046f91e478b48f87149bd4af78e4b8b4c000000000000000000004df9824efb8e4f8b508b518b528b5c8b53a2090a0b0c0d0f10111315181b1d2021252a2e32363a434b58a2090a0b0c0d0f10111315181b1d2021252a2e32363a434b548b8b32"
+    },
+    {
+        "1271": "8b"
+    },
+    {
+        "hhea Line Gap": 9
+    },
+    {
+        "hhea Ascender": 750
+    },
+    {
+        "hhea Descender": -250
+    },
+    {
+        "1268": "8b8b"
+    },
+    {
+        "TrueType Stems": "8b8b"
+    },
+    {
+        "1524": ""
+    },
+    {
+        "TrueType Zones": "8b8b"
+    },
+    {
+        "2021": "00000000000000000000000000000000"
+    },
+    {
+        "Pixel Snap": 68
+    },
+    {
+        "Zone Stop PPEM": 48
+    },
+    {
+        "Code Stop PPEM": 0
+    },
+    {
+        "1604": 255
+    },
+    {
+        "2032": 300
+    },
+    {
+        "1273": "8b"
+    },
+    {
+        "1138": "8b"
+    },
+    {
+        "1141": "8b"
+    },
+    {
+        "1136": "8b8b8b8b8b8b8b000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+        "2022": "0000"
+    },
+    {
+        "2030": "00000000"
+    },
+    {
+        "513": ""
+    },
+    {
+        "271": ""
+    },
+    {
+        "1513": "0000"
+    },
+    {
+        "1523": ""
+    },
+    {
+        "1515": "00000000000000000000000000000000"
+    },
+    {
+        "1516": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+        "Master Name": "Untitled"
+    },
+    {
+        "1505": "010000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+        "1536": "fca9f1d24d62503f00000000000000000000000000000000fca9f1d24d62503f00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000007d3f355eba49a43f07000000010000006400000032000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ff7fff7f018001800000000000000000f4010000ee02000006fffffff4010000bc020000"
+    },
+    {
+        "527": ""
+    },
+    {
+        "1742": "018b02f72c03cb048c00"
+    }
+]
