@@ -30,6 +30,24 @@ class BaseParser:
         )
 
 
+class GaspParser(BaseParser):
+    """
+    A parser that reads data as an array representing Gasp table values.
+    """
+
+    @classmethod
+    def parse(cls, data):
+        gasp = unpack(f"<{len(data) // 2}H", data)
+        it = iter(gasp)
+        return [
+            {
+                "maxPpem": a,
+                "flags": b,
+            }
+            for a, b in zip(it, it)
+        ]
+
+
 class GlyphEncodingParser(BaseParser):
     @classmethod
     def parse(cls, data):
