@@ -1,5 +1,7 @@
 from fontTools.misc.textTools import hexStr
+from io import BytesIO
 from struct import unpack
+from typing import List
 
 uint8 = 1
 uint16 = 2
@@ -64,6 +66,40 @@ class GlyphEncodingParser(BaseParser):
         gid = int.from_bytes(data[:2], byteorder="little")
         nam = data[2:].decode("ascii")
         return gid, nam
+
+
+class GlyphParser(BaseParser):
+    @classmethod
+    def parse(cls, data):
+        s = BytesIO(data)
+        start = unpack("<5B", s.read(5))
+        glyph_name_length = int.from_bytes(s.read(1), byteorder="little") - 0x8B
+        glyph_name = s.read(glyph_name_length)
+        # whatever: List[int | List[int]] = [int.from_bytes(s.read(1), byteorder="little")]  # 0x08
+        # arr = []
+        # print("Begin")
+        # while True:
+        #     val = int.from_bytes(s.read(1), byteorder="little")
+        #     print("   ", hex(val))
+        #     print("   ", whatever)
+        #     if val == 0x0F:
+        #         break
+        #     # num_values = val - 0x8B
+        #     # if num_values == 0:
+        #     #     arr.append(0)
+        #     #     whatever.append(arr)
+        #     #     continue
+
+        #     # for i in range(num_values):
+        #     #     print(f"        Read value {i}")
+        #     #     val_inner = int.from_bytes(s.read(1), byteorder="little")
+        #     #     print("       ", hex(val_inner))
+        #     #     arr.append(val_inner- 0x8b)
+        #     # whatever.append(arr)
+        #     # whatever.append([])
+        #     # arr = []
+        whatever = hexStr(s.read())
+        return [start, glyph_name.decode("cp1252"), whatever]
 
 class IntParser(BaseParser):
     """
