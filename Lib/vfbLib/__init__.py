@@ -53,6 +53,8 @@ class VFBReader:
             print("Parse error for data:", entry_id, data)
             print("Parser class:", parser_class)
             parsed = f"ParseError ({parser_class})"
+            raise
+
         return {entry_id: parsed}
 
     def _read_entry(self) -> Tuple[str, BaseParser, bytes]:
