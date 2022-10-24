@@ -46,7 +46,6 @@ class StringParser(BaseParser):
     @classmethod
     def parse(cls, data):
         return data.decode("cp1252")
-        return data.decode("Windows-1252")
 
 
 class VfbHeaderParser(BaseParser):
