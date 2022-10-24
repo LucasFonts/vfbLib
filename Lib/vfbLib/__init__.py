@@ -64,7 +64,7 @@ class VFBReader:
         """
         entry_id = BaseParser.read_uint16(self.stream)
         entry_info: Tuple[str, BaseParser] = parser_classes.get(
-            entry_id, (str(entry_id), FALLBACK_PARSER)
+            entry_id & ~0x8000, (str(entry_id), FALLBACK_PARSER)
         )
         key, parser_class = entry_info
 
@@ -76,12 +76,12 @@ class VFBReader:
                 BaseParser.read_uint16(self.stream)
                 raise EOFError
 
-        if entry_id < 0x8000:  # Conjecture
-            # Uses uint16 for data length
-            num_bytes = BaseParser.read_uint16(self.stream)
-        else:
+        if entry_id & 0x8000:
             # Uses uint32 for data length
             num_bytes = BaseParser.read_uint32(self.stream)
+        else:
+            # Uses uint16 for data length
+            num_bytes = BaseParser.read_uint16(self.stream)
 
         if num_bytes > 0:
             data = self.stream.read(num_bytes)

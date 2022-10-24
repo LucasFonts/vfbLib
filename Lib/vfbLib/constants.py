@@ -83,5 +83,4 @@ parser_classes = {
     2018: ("Anchors", BaseParser),
     2025: ("Font Note", StringParser),
     2026: ("OpenType Class Flags", BaseParser),
-    34044: ("OpenType Feature Code", StringParser),
 }
