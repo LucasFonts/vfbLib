@@ -1869,14 +1869,31 @@
                 1
             ],
             "A",
-            "088c8b8b02f98a8b0f"
+            [
+                8,
+                1,
+                0,
+                {
+                    "num_nodes": 0
+                },
+                [],
+                {
+                    "metrics": {
+                        "width": 758,
+                        "vwidth": 0
+                    }
+                }
+            ],
+            ""
         ]
     },
     {
         "Background": "fb3afb64f9d5f9aba3a3ebfe0000fffe0000fffe0000fffe003cff003800ff003800ff003800ff006c00ff006c00ff006c00ff006c00ff00c600ff00c600ff00fe00ff01ff00ff018300ff018300ff030180ff030180fffe0000fffe0000fffe0000fffe0000fffe0000ff"
     },
     {
-        "2023": "8b"
+        "2023": [
+            0
+        ]
     },
     {
         "2010": "040000c0"
@@ -1888,10 +1905,17 @@
         "Glyph Unicode": 65
     },
     {
-        "Glyph GDEF Data": "8c8b8b8b"
+        "Glyph GDEF Data": [
+            1,
+            0,
+            0,
+            0
+        ]
     },
     {
-        "2020": "8b"
+        "2020": [
+            0
+        ]
     },
     {
         "1742": "018b02f72c03cb048c00"

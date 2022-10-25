@@ -1,5 +1,6 @@
 from vfbLib.parsers import (
     BaseParser,
+    EncodedValueParser,
     GaspParser,
     GlyphEncodingParser,
     GlyphParser,
@@ -86,10 +87,14 @@ parser_classes = {
     1604: ("1604", IntParser),
     2001: ("Glyph", GlyphParser),
     2007: ("Background", BaseParser),
+    2008: ("Links", EncodedValueParser),
     2009: ("Mask?", BaseParser),
     2016: ("Font User Data", StringParser),
-    2018: ("Glyph GDEF Data", BaseParser),
+    2018: ("Glyph GDEF Data", EncodedValueParser),
+    2020: ("2020", EncodedValueParser),
+    2023: ("2023", EncodedValueParser),  # Glyph
     2025: ("Font Note", StringParser),
     2026: ("OpenType Class Flags", BaseParser),
+    2031: ("2020", EncodedValueParser),  # Glyph
     2032: ("2032", IntParser),
 }
