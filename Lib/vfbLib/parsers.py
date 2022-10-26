@@ -317,6 +317,29 @@ class GlyphParser(BaseParser):
 
     @classmethod
     def parse(cls, data: bytes) -> List:
+        """
+        01090701
+        01  92[7]2e 6e 6f 74 64 65 66 # Glyph name
+        08  8c bb[48] 93[8]
+            00 ab 8b    [  32,    0] move
+            01 8b f9a0  [   0,  780] line 32,780
+            01 f7fc 8b  [ 360,    0] line 392,780
+            01 8b fda0  [   0, -780] line 392, 0
+            00 fbcc bb  [-312,   48] move  80, 48
+            01 f79c 8b  [ 264,    0] line
+            01 8b f940  [   0,  684] line
+            01 fb9c 8b  [-264,    0] line
+        02  f83c 8b  [ 424,    0] -> 80, 732
+        03  8b 8b 8b
+        04  8b 8b
+        0a  a1[22] 8f[4] # TT hinting
+            02 8b 8b
+            04 8b 8c 89 8a
+            04 8b 8f 89 8a
+            04 8c 92 89 8a
+            8b 8b 8b
+        0f
+        """
         s = BytesIO(data)
         glyphdata = []
         start = unpack("<4B", s.read(4))
