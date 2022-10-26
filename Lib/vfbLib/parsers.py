@@ -236,7 +236,7 @@ class GlyphParser(BaseParser):
             # End point
             x += read_encoded_value(stream)
             y += read_encoded_value(stream)
-            points.append(dict(x=x, y=y))
+            points.append(dict(index=i, x=x, y=y))
 
             if cmd == 3:  # Curve?
                 # Control 1, Control 2
