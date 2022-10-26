@@ -1,15 +1,18 @@
 from fontTools.misc.textTools import deHexStr, hexStr
 from vfbLib.parsers import EncodedValueParser, GlyphParser
+from sys import argv
 
-def decode_data():
-    result = EncodedValueParser.parse(deHexStr("98 a4 8a 8a"))
+def decode_data(data):
+    result = EncodedValueParser.parse(data)
     print(result)
 
 def decode_glyph():
-    data = b'\x01\t\x07\x01\x01\x91dagger\x08\x8c\xf70\xa5\x00\xf7}\xa5\x01\x8b\xf7t\x01\xa5\xf7W\x01\xac\x8b\x01\xa5\xfbW\x01\x8b\xfbt\x01q\xfbv\x01j\x8b\x00\xfbg\xf9h\x01\xe2\x8b\x01\xf1o\x01\x8bo\x01%o\x014\x8b\x00\xf7M\xf7q\x01\x8b\xe2\x01\xe0\x8b\x01\x8b4\x01q\xfb"\x01j\x8b\x00\xc2X\x01\x8b\xa7\x01\xf1\xa7\x01\xe2\x8b\x01\x8b7\x014\x8b\x02\xf8\xbb\x8b\x03\x8e\xf9\x80w\xfbGv\xf8L\xdf\x8c\xf7}\xe0\x8b\x04\x8b\x8b\n\xa3\x90\x01\x9a\x8e\x02\x92\x8c\x06\x93\x98\x8a\x04\x93\xa1\x8a\x8a\x04\x98\xa4\x8a\x8a\x8b\x8b\x8b\x0f'
-    print(hexStr(data))
+    data = deHexStr("01090701019670657274686f7573616e64088cf934f70400f776f7f604d68b01aaf70e048f9b0495b00493ae0490ab018b97048bac046fa801748b04408b016cfb0e04877b04816604836804866b018b7f048b6a04a76e00f80efbda04d68b01aaf70e048f9b0495b00493ae0490ab018b97048bac046fa801748b04408b016cfb0e04877b04816604836804866b018b7f048b6a04a76e00f8138b04d68b01aaf70e048f9b0495b00493ae0490ab018b97048bac046fa801748b04408b016cfb0e04877b04816604836804866b018b7f048b6a04a76e00fd4df7b204588b044ac4018bcd048baf04a2ea04bddf04dac501c38b04be8b04cc52018b49048b6704742c045937043c5100f7bffbda04588b044ac4018bcd048baf04a2ea04bddf04dac501c38b04be8b04cc52018b49048b6704742c045937043c5100f7c48b04588b044ac4018bcd048baf04a2ea04bddf04dac501c38b04be8b04cc52018b49048b6704742c045937043c5100fba4f95a01c78b01fcfafd4e014f8b02ff000004b48b03917fb3f7ceb3f932b3f7ecb3f94e77a07691f4d1f7fbd1f860d1f95ed1f9c8d1fac6d1bc018c028c018d028b018b028e028d028f0290ffa8018e028d018b0290028f018d028b028c028effc7018c028b018d028c018b028d028e028f0290ffde018e028e018b028f0290018f028b028c028dfff7020190018f018c028b028c028d028e028f0290048b8b0acf9901cf8d01f7008d02d78b02e78b02f7038b0ec7cff7038b04c78b908a04cf95908a04d79f908a0edff701d78b04dfa9908a04e7b3908a04dfef8a8a04efbd908a8b8b8b0f")
+    print(data)
     result = GlyphParser.parse(data)
     # print(result)
 
-decode_data()
+
+data = "".join(argv[1:])
+decode_data(deHexStr(data))
 # decode_glyph()
