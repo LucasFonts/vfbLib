@@ -314,6 +314,18 @@ class IntParser(BaseParser):
         return int.from_bytes(data, byteorder="little", signed=False)
 
 
+class MaskParser(GlyphParser):
+    @classmethod
+    def parse(cls, data: bytes) -> List:
+        s = BytesIO(data)
+        glyphdata = []
+        glyphdata.append(read_encoded_value(s))
+        glyphdata.append(read_encoded_value(s))
+        glyphdata.append(read_encoded_value(s))
+        glyphdata.append(read_encoded_value(s))
+        cls.parse_outlines(s, glyphdata)
+        return glyphdata
+
 class PanoseParser(BaseParser):
     """
     A parser that reads data as an array representing PANOSE values.
