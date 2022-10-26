@@ -345,20 +345,43 @@ class MetricsParser(BaseParser):
         for _ in range(num):
             k = cls.read_uint8(stream)
             v = read_encoded_value(stream)
-            target.append({str(k): v})
+            target.append({key_names.get(k, str(k)): v})
 
     @classmethod
     def parse(cls, data):
+        metrics_names = {
+            64: "embedding",
+            65: "openTypeOS2SubscriptXSize",
+            66: "openTypeOS2SubscriptYSize",
+            67: "openTypeOS2SubscriptXOffset",
+            68: "openTypeOS2SubscriptYOffset",
+            69: "openTypeOS2SuperscriptXSize",
+            70: "openTypeOS2SuperscriptYSize",
+            71: "openTypeOS2SuperscriptXOffset",
+            72: "openTypeOS2SuperscriptYOffset",
+            73: "openTypeOS2StrikeoutSize",
+            74: "openTypeOS2StrikeoutPosition",
+            77: "openTypeOS2TypoAscender",
+            78: "openTypeOS2TypoDescender",
+            79: "openTypeOS2TypoLineGap",
+            81: "openTypeOS2WinAscent",
+            82: "openTypeOS2WinDescent",
+            92: "averageWidth",
+        }
         s = BytesIO(data)
         metrics = []
-        cls.read_key_value_pairs_encoded(s, num=9, target=metrics)
+        cls.read_key_value_pairs_encoded(
+            s, num=9, target=metrics, key_names=metrics_names
+        )
 
         k = cls.read_uint8(s)
         # num_values = read_encoded_value(s)
         v = [read_encoded_value(s) for _ in range(5)]
         metrics.append({str(k): v})
 
-        cls.read_key_value_pairs_encoded(s, num=15, target=metrics)
+        cls.read_key_value_pairs_encoded(
+            s, num=15, target=metrics, key_names=metrics_names
+        )
 
         # PANOSE (partial)
         k = cls.read_uint8(s)
@@ -366,7 +389,9 @@ class MetricsParser(BaseParser):
         metrics.append({str(k): v})
 
         # Vertical Metrics
-        cls.read_key_value_pairs_encoded(s, num=7, target=metrics)
+        cls.read_key_value_pairs_encoded(
+            s, num=7, target=metrics, key_names=metrics_names
+        )
 
         # Codepages/Unicode ranges?
         k = cls.read_uint8(s)
