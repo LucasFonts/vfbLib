@@ -183,22 +183,50 @@ class GlyphEncodingParser(BaseParser):
 
 class GlyphParser(BaseParser):
     @classmethod
+    def parse_anchors(cls, stream: BytesIO, glyphdata: List) -> None:
+        anchors = []
+        num = read_encoded_value(stream)
+        num_anchors = read_encoded_value(stream)
+        for i in range(num_anchors):
+            x = read_encoded_value(stream)
+            y = read_encoded_value(stream)
+            anchors.append({"x": x, "y": y})
+
+        if anchors:
+            glyphdata.append(dict(anchors=anchors))
+
+    @classmethod
+    def parse_components(cls, stream: BytesIO, glyphdata: List) -> None:
+        components = []
+        num = read_encoded_value(stream)
+        print(f"{num} components")
+        for i in range(num):
+            gid = read_encoded_value(stream)
+            x = read_encoded_value(stream)
+            y = read_encoded_value(stream)
+            transform = [cls.read_uint32(stream) for _ in range(4)]
+            c = dict(gid=gid, offsetX=x, offsetY=y, transform=transform)
+            print(c)
+            components.append(c)
+        glyphdata.append(dict(components=components))
+
+    @classmethod
     def parse_hints(cls, stream: BytesIO, glyphdata: List) -> None:
         hints = dict(x=[], y=[])
         for i in range(2):
             num_hints = read_encoded_value(stream)
+            print(f"{'YX'[i]} hints: {num_hints}")
             for j in range(num_hints):
                 pos = read_encoded_value(stream)
                 width = read_encoded_value(stream)
                 hints["yx"[i]].append({"pos": pos, "width": width})
-
         num_replacements = read_encoded_value(stream)
         if num_replacements > 0:
-            # print(f"Parsing {num_replacements} records..." )
+            print(f"Parsing {num_replacements} records..." )
             replacements = []
             for j in range(num_replacements):
                 k = cls.read_uint8(stream)
-                val = cls.read_uint8(stream)
+                val = read_encoded_value(stream)
                 replacements.append(dict(key=k, value=val))
             if replacements:
                 hints["replacements"] = replacements
@@ -227,7 +255,7 @@ class GlyphParser(BaseParser):
         for _ in range(3):
             read_encoded_value(stream)
 
-        print(f"Commands: {commands}")
+        # print(f"Commands: {commands}")
         if commands:
             glyphdata.append(dict(commands=commands))
 
@@ -238,34 +266,6 @@ class GlyphParser(BaseParser):
             "vwidth": read_encoded_value(stream),
         }
         glyphdata.append(dict(metrics=metrics))
-
-    @classmethod
-    def parse_anchors(cls, stream: BytesIO, glyphdata: List) -> None:
-        anchors = []
-        num = read_encoded_value(stream)
-        num_anchors = read_encoded_value(stream)
-        for i in range(num_anchors):
-            x = read_encoded_value(stream)
-            y = read_encoded_value(stream)
-            anchors.append({"x": x, "y": y})
-
-        if anchors:
-            glyphdata.append(dict(anchors=anchors))
-
-    @classmethod
-    def parse_components(cls, stream: BytesIO, glyphdata: List) -> None:
-        components = []
-        num = read_encoded_value(stream)
-        print(f"{num} components")
-        for i in range(num):
-            gid = read_encoded_value(stream)
-            x = read_encoded_value(stream)
-            y = read_encoded_value(stream)
-            transform = [cls.read_uint32(stream) for _ in range(4)]
-            c = dict(gid=gid, offsetX=x, offsetY=y, transform=transform)
-            print(c)
-            components.append(c)
-        glyphdata.append(dict(components=components))
 
     @classmethod
     def parse_outlines(cls, stream: BytesIO, glyphdata: List) -> None:
@@ -302,18 +302,19 @@ class GlyphParser(BaseParser):
         print(segments)
         glyphdata.append(segments)
 
-    @classmethod
-    def parse_values(cls, stream: BytesIO, glyphdata: List) -> None:
-        # print("parse_values")
-        while True:
-            val = stream.read(1)
-            if len(val) == 1:
-                stream.seek(-1, 1)
-            if int.from_bytes(val, byteorder="little") < 0x20:
-                return
+    # @classmethod
+    # def parse_values(cls, stream: BytesIO, glyphdata: List) -> None:
+    #     print("parse_values")
+    #     raise
+    #     while True:
+    #         val = stream.read(1)
+    #         if len(val) == 1:
+    #             stream.seek(-1, 1)
+    #         if int.from_bytes(val, byteorder="little") < 0x20:
+    #             return
 
-            val = read_encoded_value(stream)
-            glyphdata.append(val)
+    #         val = read_encoded_value(stream)
+    #         glyphdata.append(val)
 
     @classmethod
     def parse(cls, data: bytes) -> List:
@@ -359,10 +360,16 @@ class GlyphParser(BaseParser):
             elif v == 0x02:
                 # Metrics
                 cls.parse_metrics(s, glyphdata)
+                # print(glyphdata)
+                # print(hexStr(s.read()))
+                # raise
 
             elif v == 0x03:
                 # PS Hints
                 cls.parse_hints(s, glyphdata)
+                # print(glyphdata)
+                # print(hexStr(s.read()))
+                # raise
 
             elif v == 0x04:
                 # Anchors
@@ -386,6 +393,7 @@ class GlyphParser(BaseParser):
 
             else:
                 print(f"Unhandled info field: {hex(v)}")
+                print(hexStr(s.read()))
                 raise ValueError
 
         return glyphdata
@@ -406,10 +414,10 @@ class MaskParser(GlyphParser):
     def parse(cls, data: bytes) -> List:
         s = BytesIO(data)
         glyphdata = []
-        glyphdata.append(read_encoded_value(s))
-        glyphdata.append(read_encoded_value(s))
-        glyphdata.append(read_encoded_value(s))
-        glyphdata.append(read_encoded_value(s))
+        glyphdata.append(read_encoded_value(s))  # 8c
+        glyphdata.append(cls.read_uint32(s))  # ff05f5e1
+        glyphdata.append(cls.read_uint8(s))  # 00
+        print(glyphdata)
         cls.parse_outlines(s, glyphdata)
         return glyphdata
 
