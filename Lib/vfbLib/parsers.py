@@ -106,6 +106,36 @@ class BaseParser:
         )
 
 
+class EncodedKeyValueParser(BaseParser):
+    """
+    A parser that reads data as key with Yuri's optimized encoded value.
+    """
+
+    __size__ = 0
+
+    @classmethod
+    def parse(cls, data: bytes) -> List[int]:
+        print("EncodedKeyValueParser", cls.__size__)
+        stream = BytesIO(data)
+        values = []
+        for _ in range(cls.__size__):
+            key = cls.read_uint8(stream)
+            val = read_encoded_value(stream)
+            values.append({key: val})
+
+        # Final?
+        values.append({cls.read_uint8(stream): None})
+        return values
+
+
+class EncodedKeyValueParser1742(EncodedKeyValueParser):
+    __size__ = 4
+
+
+class EncodedKeyValueParser1743(EncodedKeyValueParser):
+    __size__ = 54
+
+
 class EncodedValueParser(BaseParser):
     """
     A parser that reads data as Yuri's optimized encoded values.

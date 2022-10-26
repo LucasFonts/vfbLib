@@ -1,6 +1,8 @@
 from vfbLib.parsers import (
     BaseParser,
     EncodedValueParser,
+    EncodedKeyValueParser1742,
+    EncodedKeyValueParser1743,
     GaspParser,
     GlyphEncodingParser,
     GlyphParser,
@@ -94,6 +96,8 @@ parser_classes = {
     1535: ("1535", IntParser),
     1536: ("1536", BaseParser),
     1604: ("1604", IntParser),
+    1742: ("1742", EncodedKeyValueParser1742),
+    1743: ("1743", EncodedKeyValueParser1743),
     2001: ("Glyph", GlyphParser),
     2007: ("Background", BaseParser),
     2008: ("Links", EncodedValueParser),
