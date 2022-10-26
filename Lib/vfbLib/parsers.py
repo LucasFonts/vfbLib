@@ -391,6 +391,7 @@ class MetricsParser(BaseParser):
             72: "openTypeOS2SuperscriptYOffset",
             73: "openTypeOS2StrikeoutSize",
             74: "openTypeOS2StrikeoutPosition",
+            76: "openTypeOS2Panose",
             77: "openTypeOS2TypoAscender",
             78: "openTypeOS2TypoDescender",
             79: "openTypeOS2TypoLineGap",
