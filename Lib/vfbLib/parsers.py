@@ -143,7 +143,7 @@ class EncodedValueParser(BaseParser):
 
     @classmethod
     def parse(cls, data) -> List[int]:
-        print("EncodedValueParser.parse", data)
+        # print("EncodedValueParser.parse", data)
         stream = BytesIO(data)
         values = []
         while True:
@@ -151,7 +151,7 @@ class EncodedValueParser(BaseParser):
                 val = read_encoded_value(stream)
                 values.append(val)
             except EOFError:
-                print("EOF")
+                # print("EOF")
                 return values
 
 
@@ -281,7 +281,7 @@ class GlyphParser(BaseParser):
 
     @classmethod
     def parse_values(cls, stream: BytesIO, glyphdata: List) -> None:
-        print("parse_values")
+        # print("parse_values")
         while True:
             val = stream.read(1)
             if len(val) == 1:
@@ -298,7 +298,7 @@ class GlyphParser(BaseParser):
         start = unpack("<5B", s.read(5))
         glyph_name_length = read_encoded_value(s)
         glyph_name = s.read(glyph_name_length)
-        print("**** Glyph:", glyph_name)
+        # print("**** Glyph:", glyph_name)
         glyphdata = [int.from_bytes(s.read(1), byteorder="little")]  # 0x08
         glyphdata.append(read_encoded_value(s))
         glyphdata.append(read_encoded_value(s))
