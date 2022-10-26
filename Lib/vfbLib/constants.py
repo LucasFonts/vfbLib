@@ -68,6 +68,7 @@ parser_classes = {
     1269: ("TrueType Stems", BaseParser),
     1270: ("hhea Line Gap", IntParser),
     1272: ("Pixel Snap", IntParser),
+    1273: ("1273", EncodedValueParser),
     1274: ("Zone Stop PPEM", IntParser),
     1275: ("Code Stop PPEM", IntParser),
     1276: ("OpenType Features", StringParser),
