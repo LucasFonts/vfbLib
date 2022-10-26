@@ -326,6 +326,66 @@ class MaskParser(GlyphParser):
         cls.parse_outlines(s, glyphdata)
         return glyphdata
 
+
+class MetricsParser(BaseParser):
+    """
+    A parser that reads data as "Metrics and Dimension" values.
+    """
+
+    @classmethod
+    def read_key_value_pairs_encoded(
+        cls,
+        stream: BytesIO,
+        num: int,
+        target: List,
+        key_names: Dict[int, str] | None = None,
+    ):
+        if key_names is None:
+            key_names = {}
+        for _ in range(num):
+            k = cls.read_uint8(stream)
+            v = read_encoded_value(stream)
+            target.append({str(k): v})
+
+    @classmethod
+    def parse(cls, data):
+        s = BytesIO(data)
+        metrics = []
+        cls.read_key_value_pairs_encoded(s, num=9, target=metrics)
+
+        k = cls.read_uint8(s)
+        # num_values = read_encoded_value(s)
+        v = [read_encoded_value(s) for _ in range(5)]
+        metrics.append({str(k): v})
+
+        cls.read_key_value_pairs_encoded(s, num=15, target=metrics)
+
+        # PANOSE (partial)
+        k = cls.read_uint8(s)
+        v = [cls.read_uint8(s) for _ in range(10)]
+        metrics.append({str(k): v})
+
+        # Vertical Metrics
+        cls.read_key_value_pairs_encoded(s, num=7, target=metrics)
+
+        # Codepages/Unicode ranges?
+        k = cls.read_uint8(s)
+        num_values = read_encoded_value(s)
+        v = [cls.read_uint8(s) for _ in range(num_values)]
+        metrics.append({str(k): v})
+
+        k = cls.read_uint8(s)
+        num_values = read_encoded_value(s)
+        v = [cls.read_uint8(s) for _ in range(num_values)]
+        metrics.append({str(k): v})
+
+        k = cls.read_uint8(s)
+        v = [read_encoded_value(s) for _ in range(3)]
+        metrics.append({str(k): v})
+
+        return metrics
+
+
 class PanoseParser(BaseParser):
     """
     A parser that reads data as an array representing PANOSE values.
