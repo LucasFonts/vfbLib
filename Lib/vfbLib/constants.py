@@ -82,7 +82,7 @@ parser_classes = {
     1532: ("1532", IntParser),
     1533: ("1533", IntParser),
     1534: ("1534", IntParser),
-    1534: ("1535", IntParser),
+    1535: ("1535", IntParser),
     1536: ("1536", BaseParser),
     1604: ("1604", IntParser),
     2001: ("Glyph", GlyphParser),
