@@ -402,16 +402,16 @@ class MetricsParser(BaseParser):
         s = BytesIO(data)
         metrics = []
         cls.read_key_value_pairs_encoded(
-            s, num=9, target=metrics, key_names=metrics_names
+            s, num=10, target=metrics, key_names=metrics_names
         )
 
         k = cls.read_uint8(s)
         # num_values = read_encoded_value(s)
-        v = [read_encoded_value(s) for _ in range(5)]
+        v = [cls.read_uint8(s) for _ in range(5)]
         metrics.append({metrics_names.get(k, str(k)): v})
 
         cls.read_key_value_pairs_encoded(
-            s, num=15, target=metrics, key_names=metrics_names
+            s, num=16, target=metrics, key_names=metrics_names
         )
 
         # PANOSE (partial, first 5 values are set only)
@@ -436,9 +436,15 @@ class MetricsParser(BaseParser):
         metrics.append({metrics_names.get(k, str(k)): v})
 
         k = cls.read_uint8(s)
-        v = [read_encoded_value(s) for _ in range(3)]
+        v = [cls.read_uint8(s) for _ in range(4)]
         metrics.append({metrics_names.get(k, str(k)): v})
 
+        cls.read_key_value_pairs_encoded(
+            s, num=1, target=metrics, key_names=metrics_names
+        )
+
+        k = cls.read_uint8(s)
+        metrics.append({metrics_names.get(k, str(k)): []})
         return metrics
 
 
