@@ -1,3 +1,4 @@
+from fontTools.misc.textTools import hexStr
 from io import BufferedReader
 from pathlib import Path
 from typing import Any, Dict, List, Tuple
@@ -50,7 +51,7 @@ class VFBReader:
         try:
             parsed = parser_class.parse(data)
         except:
-            print("Parse error for data:", entry_id, data)
+            print("Parse error for data:", entry_id, hexStr(data))
             print("Parser class:", parser_class)
             parsed = f"ParseError ({parser_class})"
             raise
