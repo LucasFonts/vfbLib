@@ -408,16 +408,16 @@ class MetricsParser(BaseParser):
         k = cls.read_uint8(s)
         # num_values = read_encoded_value(s)
         v = [read_encoded_value(s) for _ in range(5)]
-        metrics.append({str(k): v})
+        metrics.append({metrics_names.get(k, str(k)): v})
 
         cls.read_key_value_pairs_encoded(
             s, num=15, target=metrics, key_names=metrics_names
         )
 
-        # PANOSE (partial)
+        # PANOSE (partial, first 5 values are set only)
         k = cls.read_uint8(s)
         v = [cls.read_uint8(s) for _ in range(10)]
-        metrics.append({str(k): v})
+        metrics.append({metrics_names.get(k, str(k)): v})
 
         # Vertical Metrics
         cls.read_key_value_pairs_encoded(
@@ -428,16 +428,16 @@ class MetricsParser(BaseParser):
         k = cls.read_uint8(s)
         num_values = read_encoded_value(s)
         v = [cls.read_uint8(s) for _ in range(num_values)]
-        metrics.append({str(k): v})
+        metrics.append({metrics_names.get(k, str(k)): v})
 
         k = cls.read_uint8(s)
         num_values = read_encoded_value(s)
         v = [cls.read_uint8(s) for _ in range(num_values)]
-        metrics.append({str(k): v})
+        metrics.append({metrics_names.get(k, str(k)): v})
 
         k = cls.read_uint8(s)
         v = [read_encoded_value(s) for _ in range(3)]
-        metrics.append({str(k): v})
+        metrics.append({metrics_names.get(k, str(k)): v})
 
         return metrics
 
