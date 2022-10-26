@@ -223,7 +223,11 @@ class GlyphParser(BaseParser):
                     params=dict(zip(TT_COMMANDS[cmd]["params"], params)),
                 )
             )
+        # Instructions are ended by 3 * 0!?
+        for _ in range(3):
+            read_encoded_value(stream)
 
+        print(f"Commands: {commands}")
         if commands:
             glyphdata.append(dict(commands=commands))
 
@@ -249,15 +253,33 @@ class GlyphParser(BaseParser):
             glyphdata.append(dict(anchors=anchors))
 
     @classmethod
+    def parse_components(cls, stream: BytesIO, glyphdata: List) -> None:
+        components = []
+        num = read_encoded_value(stream)
+        print(f"{num} components")
+        for i in range(num):
+            gid = read_encoded_value(stream)
+            x = read_encoded_value(stream)
+            y = read_encoded_value(stream)
+            transform = [cls.read_uint32(stream) for _ in range(4)]
+            c = dict(gid=gid, offsetX=x, offsetY=y, transform=transform)
+            print(c)
+            components.append(c)
+        glyphdata.append(dict(components=components))
+
+    @classmethod
     def parse_outlines(cls, stream: BytesIO, glyphdata: List) -> None:
         # Nodes
+        read_encoded_value(stream)
+        read_encoded_value(stream)
         num_nodes = read_encoded_value(stream, debug=False)
+        print(f"Nodes: {num_nodes}")
         glyphdata.append(dict(num_nodes=num_nodes))
         segments: List[Dict[str, str | int | List[Dict[str, int]]]] = []
         x = 0
         y = 0
         for i in range(num_nodes):
-            byte = int.from_bytes(stream.read(1), byteorder="little")
+            byte = cls.read_uint8(stream)
             flags = byte >> 4
             cmd = byte & 0x0F
             segment = dict(type=cmd_name[cmd], flags=flags, points=[])
@@ -277,6 +299,7 @@ class GlyphParser(BaseParser):
 
             segment["points"] = points
             segments.append(segment)
+        print(segments)
         glyphdata.append(segments)
 
     @classmethod
@@ -295,43 +318,54 @@ class GlyphParser(BaseParser):
     @classmethod
     def parse(cls, data: bytes) -> List:
         s = BytesIO(data)
-        start = unpack("<5B", s.read(5))
-        glyph_name_length = read_encoded_value(s)
-        glyph_name = s.read(glyph_name_length)
-        # print("**** Glyph:", glyph_name)
-        glyphdata = [int.from_bytes(s.read(1), byteorder="little")]  # 0x08
-        glyphdata.append(read_encoded_value(s))
-        glyphdata.append(read_encoded_value(s))
-
-        cls.parse_outlines(s, glyphdata)
-
+        glyphdata = []
+        start = unpack("<4B", s.read(4))
+        glyphdata.append(start)
         while True:
-            v = int.from_bytes(s.read(1), byteorder="little")
-            if v == 0x0F:
+            # Read a value to decide what kind of information follows
+            v = cls.read_uint8(s)
+            print(f"Coming up: {hex(v)}")
+
+            if v == 0x01:
+                # Glyph name
+                glyph_name_length = read_encoded_value(s)
+                glyph_name = s.read(glyph_name_length)
+                print(f"Glyph: {glyph_name}")
+                glyphdata.append({"name": glyph_name.decode("cp1252")})
+
+            elif v == 0x02:
+                # Metrics
+                cls.parse_metrics(s, glyphdata)
+
+            elif v == 0x03:
+                # PS Hints
+                cls.parse_hints(s, glyphdata)
+
+            elif v == 0x04:
+                # Anchors
+                cls.parse_anchors(s, glyphdata)
+
+            elif v == 0x05:
+                # Components
+                cls.parse_components(s, glyphdata)
+
+            elif v == 0x08:
+                # Outlines
+                cls.parse_outlines(s, glyphdata)
+
+            elif v == 0x0A:
+                # TrueType instructions
+                cls.parse_instructions(s, glyphdata)
+
+            elif v == 0x0F:
+                print("Glyph done.")
                 break
 
-            if v == 0x02:
-                cls.parse_metrics(s, glyphdata)
-            # elif v == 0x01:
-            #     values = []
-            #     cls.parse_values(s, values)
-            #     glyphdata.append({"01": values})
-            elif v == 0x03:
-                cls.parse_hints(s, glyphdata)
-            elif v == 0x04:
-                # FIXME: Are those anchors?
-                cls.parse_anchors(s, glyphdata)
-            elif v == 0x0A:
-                cls.parse_instructions(s, glyphdata)
             else:
-                pass
+                print(f"Unhandled info field: {hex(v)}")
+                raise ValueError
 
-        return [
-            start,
-            glyph_name.decode("cp1252"),
-            glyphdata,
-            hexStr(s.read()),
-        ]
+        return glyphdata
 
 
 class IntParser(BaseParser):
