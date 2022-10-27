@@ -7,7 +7,12 @@ from typing import Literal
 def normalize_ufo(
     filepath: Path, structure: Literal["package", "zip"] = "package"
 ) -> None:
-    f = Font(filepath)
+    try:
+        f = Font(filepath)
+    except:
+        print(f"Skipping UFO with errors: {filepath}")
+        raise
+
     with NamedTemporaryFile(suffix="ufoz") as tf:
         f.save(path=tf.name, formatVersion=3, structure="zip")
         f = Font(tf.name)
