@@ -330,7 +330,7 @@ class GlyphParser(BaseParser):
             01 f79c 8b  [ 264,    0] line
             01 8b f940  [   0,  684] line
             01 fb9c 8b  [-264,    0] line
-        02  f83c 8b  [ 424,    0] -> 80, 732
+        02  f83c 8b  [ 424,    0]
         03  8b 8b 8b
         04  8b 8b
         0a  a1[22] 8f[4] # TT hinting
