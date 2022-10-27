@@ -9,10 +9,11 @@ from typing import Literal
 def fix_vfb2ufo_feature_encoding(ufo_path: Path) -> None:
     # Read vfb2ufo's Windows-1252-encoded feature file and convert to UTF-8
     fea_path = ufo_path / "features.fea"
-    with codecs.open(str(fea_path), "rb", "windows-1252") as f:
-        fea = f.read()
-    with codecs.open(str(fea_path), "wb", "utf-8") as f:
-        f.write(fea)
+    if fea_path.exists():
+        with codecs.open(str(fea_path), "rb", "windows-1252") as f:
+            fea = f.read()
+        with codecs.open(str(fea_path), "wb", "utf-8") as f:
+            f.write(fea)
 
 
 def normalize_ufo(
