@@ -1,12 +1,35 @@
+import codecs
+
 from defcon import Font
 from pathlib import Path
 from tempfile import NamedTemporaryFile
 from typing import Literal
 
 
+def fix_vfb2ufo_feature_encoding(ufo_path: Path) -> None:
+    # Read vfb2ufo's Windows-1252-encoded feature file and convert to UTF-8
+    fea_path = ufo_path / "features.fea"
+    with codecs.open(str(fea_path), "rb", "windows-1252") as f:
+        fea = f.read()
+    with codecs.open(str(fea_path), "wb", "utf-8") as f:
+        f.write(fea)
+
+
 def normalize_ufo(
     filepath: Path, structure: Literal["package", "zip"] = "package"
 ) -> None:
+    print(f"Processing {filepath.name}...")
+
+    normalized_file = filepath / ".normalized"
+
+    if structure == "package":
+
+        if normalized_file.exists():
+            print(f"    Skipping already normalized UFO: {filepath.name}")
+            return
+
+        fix_vfb2ufo_feature_encoding(filepath)  # FIXME: Support ufoz
+
     try:
         f = Font(filepath)
     except:
@@ -37,6 +60,8 @@ def normalize_ufo(
             if filepath.suffix == ".ufoz":
                 filepath = filepath.with_suffix(".ufo")
         f.save(path=filepath, formatVersion=3, structure=structure)
+        if structure == "package":
+            normalized_file.touch()
 
 
 def normalize_ufoz(filepath):
