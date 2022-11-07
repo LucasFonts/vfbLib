@@ -57,6 +57,27 @@ class TrueTypeStemPpemsParser(BaseParser):
         return result
 
 
+class TrueTypeZoneDeltasParser(BaseParser):
+    @classmethod
+    def parse(cls, data: bytes):
+        stream = BytesIO(data)
+        num_deltas = read_encoded_value(stream)
+        print(num_deltas, "Zone deltas follow")
+        result = {}
+        for _ in range(num_deltas):
+            # Index into Bottom + Top Zones
+            index = read_encoded_value(stream)
+            ppm = read_encoded_value(stream)
+            shift = read_encoded_value(stream)
+            if index in result:
+                result[index][ppm] = shift
+            else:
+                result[index] = {ppm: shift}
+
+        assert stream.read() == b""
+        return result
+
+
 class TrueTypeZonesParser(BaseParser):
     @classmethod
     def parse(cls, data: bytes):

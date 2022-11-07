@@ -16,6 +16,7 @@ from vfbLib.parsers import (
 from vfbLib.parsers.truetype import (
     TrueTypeStemPpemsParser,
     TrueTypeStemsParser,
+    TrueTypeZoneDeltasParser,
     TrueTypeZonesParser,
 )
 
@@ -80,7 +81,7 @@ parser_classes = {
     1270: ("hhea_line_gap", IntParser),
     1271: ("1271", EncodedValueParser),
     1272: ("Pixel Snap", IntParser),
-    1273: ("1273", EncodedValueParser),
+    1273: ("TrueType Zone Deltas", TrueTypeZoneDeltasParser),
     1274: ("Zone Stop PPEM", IntParser),
     1275: ("Code Stop PPEM", IntParser),
     1276: ("openTypeFeatures", StringParser),
