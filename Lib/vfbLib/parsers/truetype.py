@@ -26,6 +26,7 @@ class TrueTypeStemsParser(BaseParser):
                 )
             result[names[i]] = direction
 
+        assert stream.read() == b""
         return result
 
 
@@ -51,4 +52,34 @@ class TrueTypeStemPpemsParser(BaseParser):
                     }
                 )
             result[names[i]] = direction
+
+        assert stream.read() == b""
+        return result
+
+
+class TrueTypeZonesParser(BaseParser):
+    @classmethod
+    def parse(cls, data: bytes):
+        stream = BytesIO(data)
+        names = ("ttZonesT", "ttZonesB")
+        result = {}
+        for i in range(2):
+            side = []
+            num_zones = read_encoded_value(stream)
+            print(num_zones)
+            for _ in range(num_zones):
+                position = read_encoded_value(stream)
+                width = read_encoded_value(stream)
+                print(position, width)
+                name_length = read_encoded_value(stream)
+                print("Name of length", name_length, "follows")
+                zone_name = stream.read(name_length).decode("cp1252")
+                side.append({
+                    "position": position,
+                    "value": width,
+                    "name": zone_name,
+                })
+            result[names[i]] = side
+
+        assert stream.read() == b""
         return result

@@ -16,6 +16,7 @@ from vfbLib.parsers import (
 from vfbLib.parsers.truetype import (
     TrueTypeStemPpemsParser,
     TrueTypeStemsParser,
+    TrueTypeZonesParser,
 )
 
 
@@ -70,7 +71,7 @@ parser_classes = {
     1141: ("1141", EncodedValueParser),
     1250: ("Glyph Unicode", IntParser),
     1254: ("Primary Instances", BaseParser),
-    1255: ("TrueType Zones", BaseParser),
+    1255: ("TrueType Zones", TrueTypeZonesParser),
     1264: ("Metrics", MetricsParser),
     1265: ("Gasp Ranges", GaspParser),
     1267: ("1267", IntParser),
