@@ -13,6 +13,7 @@ from vfbLib.parsers import (
     SignedIntParser,
     StringParser,
 )
+from vfbLib.parsers.text import NameRecordsParser
 from vfbLib.parsers.truetype import (
     TrueTypeStemPpemsParser,
     TrueTypeStemsParser,
@@ -66,7 +67,7 @@ parser_classes = {
     1135: ("upm", IntParser),
     1136: ("1136", EncodedValueParser),
     1137: ("tsn", StringParser),
-    1138: ("1138", EncodedValueParser),
+    1138: ("Name Records", NameRecordsParser),
     1139: ("Mac Name?", StringParser),
     1140: ("1140", BaseParser),
     1141: ("1141", EncodedValueParser),
