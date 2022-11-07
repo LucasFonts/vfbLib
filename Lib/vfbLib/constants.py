@@ -13,7 +13,10 @@ from vfbLib.parsers import (
     SignedIntParser,
     StringParser,
 )
-from vfbLib.parsers.truetype import TrueTypeStemsParser
+from vfbLib.parsers.truetype import (
+    TrueTypeStemPpemsParser,
+    TrueTypeStemsParser,
+)
 
 
 parser_classes = {
@@ -71,7 +74,7 @@ parser_classes = {
     1264: ("Metrics", MetricsParser),
     1265: ("Gasp Ranges", GaspParser),
     1267: ("1267", IntParser),
-    1268: ("1268", EncodedValueParser),
+    1268: ("TrueType Stem PPEMs", TrueTypeStemPpemsParser),
     1269: ("TrueType Stems", TrueTypeStemsParser),
     1270: ("hhea_line_gap", IntParser),
     1271: ("1271", EncodedValueParser),

@@ -27,3 +27,28 @@ class TrueTypeStemsParser(BaseParser):
             result[names[i]] = direction
 
         return result
+
+
+class TrueTypeStemPpemsParser(BaseParser):
+    @classmethod
+    def parse(cls, data: bytes):
+        stream = BytesIO(data)
+        names = ("ttStemsV", "ttStemsH")
+        result = {}
+        for i in range(2):
+            direction = []
+            num_stems = read_encoded_value(stream)
+            d = {}
+            for j in range(num_stems):
+                for k in range(2, 6):
+                    ppm = read_encoded_value(stream)
+                    d[str(k)] = ppm
+
+                direction.append(
+                    {
+                        "stem": j,
+                        "round": d.copy(),
+                    }
+                )
+            result[names[i]] = direction
+        return result
