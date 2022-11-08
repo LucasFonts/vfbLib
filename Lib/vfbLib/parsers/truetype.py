@@ -62,7 +62,7 @@ class TrueTypeZoneDeltasParser(BaseParser):
     def parse(cls, data: bytes):
         stream = BytesIO(data)
         num_deltas = read_encoded_value(stream)
-        print(num_deltas, "Zone deltas follow")
+        # print(num_deltas, "Zone deltas follow")
         result = {}
         for _ in range(num_deltas):
             # Index into Bottom + Top Zones

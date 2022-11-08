@@ -20,26 +20,20 @@ class GlyphParser(BaseParser):
         anchors = []
         num = read_encoded_value(stream)
         for i in range(num):
-            print("Anchgor", i)
             master_anchors = []
             for m in range(num_masters):
-                print("Master", m)
                 x = read_encoded_value(stream)
                 y = read_encoded_value(stream)
-                print(x, y)
                 master_anchors.append({"x": x, "y": y})
             anchors.append(master_anchors)
 
         # Again?
         num = read_encoded_value(stream)
         for i in range(num):
-            print("Anchgor", i)
             master_anchors = []
             for m in range(num_masters):
-                print("Master", m)
                 x = read_encoded_value(stream)
                 y = read_encoded_value(stream)
-                print(x, y)
                 master_anchors.append({"x": x, "y": y})
             anchors.append(master_anchors)
 
@@ -50,7 +44,6 @@ class GlyphParser(BaseParser):
     def parse_components(cls, stream: BytesIO, glyphdata: List, num_masters=1) -> None:
         components = []
         num = read_encoded_value(stream)
-        print(f"{num} components")
         for i in range(num):
             gid = read_encoded_value(stream)
             c = dict(gid=gid, offsetX=[], offsetY=[], transform=[])
@@ -61,7 +54,6 @@ class GlyphParser(BaseParser):
                 c["offsetX"].append(x)
                 c["offsetY"].append(x)
                 c["transform"].append(transform)
-            print(c)
             components.append(c)
         glyphdata.append(dict(components=components))
 
@@ -70,7 +62,6 @@ class GlyphParser(BaseParser):
         hints = dict(x=[], y=[])
         for i in range(2):
             num_hints = read_encoded_value(stream)
-            print(f"{'YX'[i]} hints: {num_hints}")
             for j in range(num_hints):
                 master_hints = []
                 for m in range(num_masters):
@@ -82,7 +73,6 @@ class GlyphParser(BaseParser):
         num_replacements = read_encoded_value(stream)
 
         if num_replacements > 0:
-            print(f"Parsing {num_replacements} records...")
             replacements = []
             for j in range(num_replacements):
                 k = cls.read_uint8(stream)
@@ -115,7 +105,6 @@ class GlyphParser(BaseParser):
         for _ in range(3):
             read_encoded_value(stream)
 
-        # print(f"Commands: {commands}")
         if commands:
             glyphdata.append(dict(tth=commands))
 
@@ -214,13 +203,11 @@ class GlyphParser(BaseParser):
         while True:
             # Read a value to decide what kind of information follows
             v = cls.read_uint8(s)
-            print(f"Coming up: {hex(v)}")
 
             if v == 0x01:
                 # Glyph name
                 glyph_name_length = read_encoded_value(s)
                 glyph_name = s.read(glyph_name_length)
-                print(f"Glyph: {glyph_name.decode('cp1252')}")
                 glyphdata.append({"name": glyph_name.decode("cp1252")})
 
             elif v == 0x02:
@@ -252,7 +239,7 @@ class GlyphParser(BaseParser):
                 cls.parse_instructions(s, glyphdata)
 
             elif v == 0x0F:
-                print("Glyph done.")
+                # print("Glyph done.")
                 break
 
             else:
