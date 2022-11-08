@@ -85,10 +85,10 @@ class GlyphGDEFParser(BaseParser):
         if carets:
             gdef["carets"] = carets
 
-        whatev = read_encoded_value(stream)
-        if whatev != 0:
-            print("Got", whatev)
-            raise ValueError
+        num_values = read_encoded_value(stream)
+        values = [read_encoded_value(stream) for _ in range(num_values)]
+        if values:
+            gdef["unknown"] = values
         assert stream.read() == b""
         return gdef
 
