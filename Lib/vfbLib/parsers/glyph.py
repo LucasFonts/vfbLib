@@ -30,6 +30,19 @@ class GlyphAnchorsParser(BaseParser):
         return anchors
 
 
+class GlyphAnchorsSuppParser(BaseParser):
+    @classmethod
+    def parse(cls, data: bytes) -> List:
+        stream = BytesIO(data)
+        anchors = []
+        num_anchors = read_encoded_value(stream)
+        for _ in range(num_anchors):
+            a = read_encoded_value(stream)
+            b = read_encoded_value(stream)
+            anchors.append([a, b])
+        return anchors
+
+
 class GlyphGDEFParser(BaseParser):
     @classmethod
     def parse(cls, data: bytes) -> Dict[str, Any]:
@@ -341,6 +354,17 @@ class GlyphUnicodeParser(BaseParser):
         unicodes = []
         for _ in range(len(data) // 2):
             u = cls.read_uint16(s)
+            unicodes.append(u)
+        return unicodes
+
+
+class GlyphUnicodeSuppParser(BaseParser):
+    @classmethod
+    def parse(cls, data: bytes) -> List:
+        s = BytesIO(data)
+        unicodes = []
+        for _ in range(len(data) // 4):
+            u = cls.read_uint32(s)
             unicodes.append(u)
         return unicodes
 

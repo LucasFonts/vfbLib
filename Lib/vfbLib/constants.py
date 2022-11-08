@@ -13,13 +13,16 @@ from vfbLib.parsers import (
 )
 from vfbLib.parsers.glyph import (
     GlyphAnchorsParser,
+    GlyphAnchorsSuppParser,
     GlyphGDEFParser,
     GlyphOriginParser,
     GlyphParser,
     GlyphUnicodeParser,
+    GlyphUnicodeSuppParser,
     LinkParser,
     MaskParser,
 )
+from vfbLib.parsers.mm import PrimaryInstancesParser
 from vfbLib.parsers.text import NameRecordsParser
 from vfbLib.parsers.truetype import (
     TrueTypeStemPpemsParser,
@@ -79,7 +82,8 @@ parser_classes = {
     1140: ("1140", BaseParser),
     1141: ("1141", EncodedValueParser),
     1250: ("Glyph Unicode", GlyphUnicodeParser),
-    1254: ("Primary Instances", BaseParser),
+    1253: ("Glyph Unicode Non-BMP", GlyphUnicodeSuppParser),
+    1254: ("Primary Instances", PrimaryInstancesParser),
     1255: ("TrueType Zones", TrueTypeZonesParser),
     1264: ("Metrics", MetricsParser),
     1265: ("Gasp Ranges", GaspParser),
@@ -103,6 +107,7 @@ parser_classes = {
     1502: ("1502", BaseParser),
     1504: ("Master Name", StringParser),
     1514: ("Axis Name", StringParser),
+    1516: ("Axis Mapping", BaseParser),
     1517: ("1517", BaseParser),
     1524: ("1524", EncodedValueParser),
     1530: ("1530", IntParser),
@@ -117,7 +122,7 @@ parser_classes = {
     1743: ("1743", EncodedKeyValueParser1743),
     1744: ("1644", BaseParser),
     2001: ("Glyph", GlyphParser),
-    2007: ("Background", BaseParser),
+    2007: ("Background", BaseParser),  # bitmap
     2008: ("Links", LinkParser),
     2009: ("Mask", MaskParser),
     2010: ("2010", BaseParser),
@@ -125,7 +130,7 @@ parser_classes = {
     2016: ("Font User Data", StringParser),
     2017: ("Glyph Note", StringParser),
     2018: ("Glyph GDEF Data", GlyphGDEFParser),
-    2020: ("2020", EncodedValueParser),
+    2020: ("Glyph Anchors Supplemental", GlyphAnchorsSuppParser),
     2023: ("2023", EncodedValueParser),  # Glyph
     2025: ("fontNote", StringParser),
     2026: ("OpenType Class Flags", BaseParser),
