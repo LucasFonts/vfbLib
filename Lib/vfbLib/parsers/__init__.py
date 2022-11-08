@@ -235,16 +235,7 @@ class MetricsParser(BaseParser):
             if k == 0x32:
                 return metrics
 
-            elif k in (0x33, 0x34, 0x35, 0x36, 0x37, 0x38):
-                metrics.append(
-                    {metrics_names.get(k, str(k)): read_encoded_value(s)}
-                )
-
-            elif k == 0x39:
-                v = [cls.read_uint8(s) for _ in range(5)]
-                metrics.append({metrics_names.get(k, str(k)): v})
-
-            elif k in (0x3A, 0x3B):
+            elif k in (0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39, 0x3A, 0x3B):
                 metrics.append(
                     {metrics_names.get(k, str(k)): read_encoded_value(s)}
                 )
