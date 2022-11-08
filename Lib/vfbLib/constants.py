@@ -11,7 +11,12 @@ from vfbLib.parsers import (
     SignedIntParser,
     StringParser,
 )
-from vfbLib.parsers.glyph import GlyphParser, LinkParser, MaskParser
+from vfbLib.parsers.glyph import (
+    GlyphParser,
+    GlyphUnicodeParser,
+    LinkParser,
+    MaskParser,
+)
 from vfbLib.parsers.text import NameRecordsParser
 from vfbLib.parsers.truetype import (
     TrueTypeStemPpemsParser,
@@ -70,7 +75,7 @@ parser_classes = {
     1139: ("Mac Name?", StringParser),
     1140: ("1140", BaseParser),
     1141: ("1141", EncodedValueParser),
-    1250: ("Glyph Unicode", IntParser),
+    1250: ("Glyph Unicode", GlyphUnicodeParser),
     1254: ("Primary Instances", BaseParser),
     1255: ("TrueType Zones", TrueTypeZonesParser),
     1264: ("Metrics", MetricsParser),

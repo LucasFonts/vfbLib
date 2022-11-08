@@ -250,6 +250,17 @@ class GlyphParser(BaseParser):
         return glyphdata
 
 
+class GlyphUnicodeParser(BaseParser):
+    @classmethod
+    def parse(cls, data: bytes) -> List:
+        s = BytesIO(data)
+        unicodes = []
+        for _ in range(len(data) // 2):
+            u = cls.read_uint16(s)
+            unicodes.append(u)
+        return unicodes
+
+
 class LinkParser(BaseParser):
     @classmethod
     def parse(cls, data: bytes) -> List:
