@@ -5,14 +5,13 @@ from vfbLib.parsers import (
     EncodedKeyValueParser1743,
     GaspParser,
     GlyphEncodingParser,
-    GlyphParser,
     IntParser,
-    MaskParser,
     MetricsParser,
     PanoseParser,
     SignedIntParser,
     StringParser,
 )
+from vfbLib.parsers.glyph import GlyphParser, MaskParser
 from vfbLib.parsers.text import NameRecordsParser
 from vfbLib.parsers.truetype import (
     TrueTypeStemPpemsParser,
