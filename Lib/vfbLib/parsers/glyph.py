@@ -14,6 +14,38 @@ cmd_name = {
 }
 
 
+class GlyphGDEFParser(BaseParser):
+    @classmethod
+    def parse(cls, data: bytes) -> Dict[str, Any]:
+        stream = BytesIO(data)
+        gdef = {}
+        class_names = {
+            0: "unassigned",
+            1: "base",
+            2: "ligature",
+            3: "mark",
+            4: "component",
+        }
+        glyph_class = read_encoded_value(stream)
+        gdef["class"] = class_names.get(glyph_class, glyph_class)
+        whatev = read_encoded_value(stream)
+        if whatev != 0:
+            raise ValueError
+        num_carets = read_encoded_value(stream)
+        carets = []
+        for _ in range(num_carets):
+            pos = read_encoded_value(stream)
+            xxx = read_encoded_value(stream)
+            carets.append([pos, xxx])
+        if carets:
+            gdef["carets"] = carets
+        whatev = read_encoded_value(stream)
+        if whatev != 0:
+            raise ValueError
+        assert stream.read() == b""
+        return gdef
+
+
 class GlyphParser(BaseParser):
     @classmethod
     def parse_anchors(
