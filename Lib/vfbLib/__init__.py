@@ -30,7 +30,8 @@ class VFBReader:
                 entry = self._parse_entry()
             except EOFError:
                 break
-            self.data.append(entry)
+            if entry:
+                self.data.append(entry)
 
     def read(self):
         self.data = []
@@ -41,7 +42,9 @@ class VFBReader:
         """
         Read, parse and append an entry from the stream to the data object
         """
-        self.data.append(self._parse_entry())
+        entry = self._parse_entry()
+        if entry:
+            self.data.append(entry)
 
     def _parse_entry(self):
         """
@@ -56,7 +59,10 @@ class VFBReader:
             parsed = f"ParseError ({parser_class})"
             raise
 
-        return {entry_id: parsed}
+        if parsed:
+            return {entry_id: parsed}
+        else:
+            return {}
 
     def _read_entry(self) -> Tuple[str, BaseParser, bytes]:
         """
