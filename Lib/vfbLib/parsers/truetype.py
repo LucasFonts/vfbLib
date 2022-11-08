@@ -87,13 +87,13 @@ class TrueTypeZonesParser(BaseParser):
         for i in range(2):
             side = []
             num_zones = read_encoded_value(stream)
-            print(num_zones)
+            # print(num_zones)
             for _ in range(num_zones):
                 position = read_encoded_value(stream)
                 width = read_encoded_value(stream)
-                print(position, width)
+                # print(position, width)
                 name_length = read_encoded_value(stream)
-                print("Name of length", name_length, "follows")
+                # print("Name of length", name_length, "follows")
                 zone_name = stream.read(name_length).decode("cp1252")
                 side.append({
                     "position": position,
