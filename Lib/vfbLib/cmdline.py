@@ -48,7 +48,7 @@ def vfb2json():
                 ".json"
             )
         else:
-            out_path = Path(args.path[0]).with_suffix(".json")
+            out_path = vfb_path.with_suffix(".json")
         write_json(reader, out_path)
     else:
         parser.print_help()
