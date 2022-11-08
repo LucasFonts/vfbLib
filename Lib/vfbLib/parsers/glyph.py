@@ -16,29 +16,51 @@ cmd_name = {
 
 class GlyphParser(BaseParser):
     @classmethod
-    def parse_anchors(cls, stream: BytesIO, glyphdata: List) -> None:
+    def parse_anchors(cls, stream: BytesIO, glyphdata: List, num_masters=1) -> None:
         anchors = []
         num = read_encoded_value(stream)
-        num_anchors = read_encoded_value(stream)
-        for i in range(num_anchors):
-            x = read_encoded_value(stream)
-            y = read_encoded_value(stream)
-            anchors.append({"x": x, "y": y})
+        for i in range(num):
+            print("Anchgor", i)
+            master_anchors = []
+            for m in range(num_masters):
+                print("Master", m)
+                x = read_encoded_value(stream)
+                y = read_encoded_value(stream)
+                print(x, y)
+                master_anchors.append({"x": x, "y": y})
+            anchors.append(master_anchors)
+
+        # Again?
+        num = read_encoded_value(stream)
+        for i in range(num):
+            print("Anchgor", i)
+            master_anchors = []
+            for m in range(num_masters):
+                print("Master", m)
+                x = read_encoded_value(stream)
+                y = read_encoded_value(stream)
+                print(x, y)
+                master_anchors.append({"x": x, "y": y})
+            anchors.append(master_anchors)
 
         if anchors:
             glyphdata.append(dict(anchors=anchors))
 
     @classmethod
-    def parse_components(cls, stream: BytesIO, glyphdata: List) -> None:
+    def parse_components(cls, stream: BytesIO, glyphdata: List, num_masters=1) -> None:
         components = []
         num = read_encoded_value(stream)
         print(f"{num} components")
         for i in range(num):
             gid = read_encoded_value(stream)
-            x = read_encoded_value(stream)
-            y = read_encoded_value(stream)
-            transform = [cls.read_uint32(stream) for _ in range(4)]
-            c = dict(gid=gid, offsetX=x, offsetY=y, transform=transform)
+            c = dict(gid=gid, offsetX=[], offsetY=[], transform=[])
+            for m in range(num_masters):
+                x = read_encoded_value(stream)
+                y = read_encoded_value(stream)
+                transform = [cls.read_uint32(stream) for _ in range(4)]
+                c["offsetX"].append(x)
+                c["offsetY"].append(x)
+                c["transform"].append(transform)
             print(c)
             components.append(c)
         glyphdata.append(dict(components=components))
