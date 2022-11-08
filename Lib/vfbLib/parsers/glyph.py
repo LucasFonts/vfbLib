@@ -44,18 +44,23 @@ class GlyphParser(BaseParser):
         glyphdata.append(dict(components=components))
 
     @classmethod
-    def parse_hints(cls, stream: BytesIO, glyphdata: List) -> None:
+    def parse_hints(cls, stream: BytesIO, glyphdata: List, num_masters=1) -> None:
         hints = dict(x=[], y=[])
         for i in range(2):
             num_hints = read_encoded_value(stream)
             print(f"{'YX'[i]} hints: {num_hints}")
             for j in range(num_hints):
-                pos = read_encoded_value(stream)
-                width = read_encoded_value(stream)
-                hints["yx"[i]].append({"pos": pos, "width": width})
+                master_hints = []
+                for m in range(num_masters):
+                    pos = read_encoded_value(stream)
+                    width = read_encoded_value(stream)
+                    master_hints.append({"pos": pos, "width": width})
+                hints["yx"[i]].append(master_hints)
+
         num_replacements = read_encoded_value(stream)
+
         if num_replacements > 0:
-            print(f"Parsing {num_replacements} records..." )
+            print(f"Parsing {num_replacements} records...")
             replacements = []
             for j in range(num_replacements):
                 k = cls.read_uint8(stream)
@@ -93,61 +98,66 @@ class GlyphParser(BaseParser):
             glyphdata.append(dict(commands=commands))
 
     @classmethod
-    def parse_metrics(cls, stream: BytesIO, glyphdata: List) -> None:
-        metrics = {
-            "width": read_encoded_value(stream),
-            "vwidth": read_encoded_value(stream),
-        }
+    def parse_metrics(
+        cls, stream: BytesIO, glyphdata: List, num_masters=1
+    ) -> None:
+        metrics = []
+        for _ in range(num_masters):
+            master_metrics = {
+                "x": read_encoded_value(stream),
+                "y": read_encoded_value(stream),
+            }
+            metrics.append(master_metrics)
         glyphdata.append(dict(metrics=metrics))
 
     @classmethod
-    def parse_outlines(cls, stream: BytesIO, glyphdata: List) -> None:
+    def parse_outlines(cls, stream: BytesIO, glyphdata: List) -> int:
         # Nodes
         num_masters = read_encoded_value(stream)
         num_whatever = read_encoded_value(stream)
         num_nodes = read_encoded_value(stream, debug=False)
-        print(f"Nodes: {num_nodes}")
         glyphdata.append(dict(num_masters=num_masters))
         segments: List[Dict[str, str | int | List[Dict[str, int]]]] = []
-        x = 0
-        y = 0
+        x = [0 for _ in range(num_masters)]
+        y = [0 for _ in range(num_masters)]
         for i in range(num_nodes):
             byte = cls.read_uint8(stream)
             flags = byte >> 4
             cmd = byte & 0x0F
             segment = dict(type=cmd_name[cmd], flags=flags, points=[])
-            points: List[Dict[str, int]] = []
+            for m in range(num_masters):
+                master_points: List[Dict[str, int]] = []
 
-            # End point
-            x += read_encoded_value(stream)
-            y += read_encoded_value(stream)
-            points.append(dict(index=i, x=x, y=y))
+                # End point
+                x[m] += read_encoded_value(stream)
+                y[m] += read_encoded_value(stream)
+                master_points.append(dict(x=x[m], y=y[m]))
 
-            if cmd == 3:  # Curve?
-                # Control 1, Control 2
-                for j in range(2):
-                    x += read_encoded_value(stream)
-                    y += read_encoded_value(stream)
-                    points.append(dict(x=x, y=y))
+                if cmd == 3:  # Curve?
+                    # Control 1, Control 2
+                    for j in range(2):
+                        x[m] += read_encoded_value(stream)
+                        y[m] += read_encoded_value(stream)
+                        master_points.append(dict(x=x[m], y=y[m]))
 
-            segment["points"] = points
+                segment["points"].append(master_points)
             segments.append(segment)
-        print(segments)
         glyphdata.append(segments)
+        return num_masters
 
-    # @classmethod
-    # def parse_values(cls, stream: BytesIO, glyphdata: List) -> None:
-    #     print("parse_values")
-    #     raise
-    #     while True:
-    #         val = stream.read(1)
-    #         if len(val) == 1:
-    #             stream.seek(-1, 1)
-    #         if int.from_bytes(val, byteorder="little") < 0x20:
-    #             return
-
-    #         val = read_encoded_value(stream)
-    #         glyphdata.append(val)
+    @classmethod
+    def parse_triplets(cls, stream: BytesIO, glyphdata: List) -> None:
+        num_triplets = read_encoded_value(stream)
+        triplets = []
+        for _ in range(num_triplets):
+            triplets.append(
+                [
+                    read_encoded_value(stream),
+                    read_encoded_value(stream),
+                    read_encoded_value(stream),
+                ]
+            )
+        glyphdata.append(dict(triplets=triplets))
 
     @classmethod
     def parse(cls, data: bytes) -> List:
@@ -178,6 +188,7 @@ class GlyphParser(BaseParser):
         glyphdata = []
         start = unpack("<4B", s.read(4))
         glyphdata.append(start)
+        num_masters = 1
         while True:
             # Read a value to decide what kind of information follows
             v = cls.read_uint8(s)
@@ -187,22 +198,16 @@ class GlyphParser(BaseParser):
                 # Glyph name
                 glyph_name_length = read_encoded_value(s)
                 glyph_name = s.read(glyph_name_length)
-                print(f"Glyph: {glyph_name}")
+                print(f"Glyph: {glyph_name.decode('cp1252')}")
                 glyphdata.append({"name": glyph_name.decode("cp1252")})
 
             elif v == 0x02:
                 # Metrics
-                cls.parse_metrics(s, glyphdata)
-                # print(glyphdata)
-                # print(hexStr(s.read()))
-                # raise
+                cls.parse_metrics(s, glyphdata, num_masters)
 
             elif v == 0x03:
                 # PS Hints
-                cls.parse_hints(s, glyphdata)
-                # print(glyphdata)
-                # print(hexStr(s.read()))
-                # raise
+                cls.parse_hints(s, glyphdata, num_masters)
 
             elif v == 0x04:
                 # Anchors
@@ -212,9 +217,13 @@ class GlyphParser(BaseParser):
                 # Components
                 cls.parse_components(s, glyphdata)
 
+            elif v == 0x06:
+                # ???
+                cls.parse_triplets(s, glyphdata)
+
             elif v == 0x08:
                 # Outlines
-                cls.parse_outlines(s, glyphdata)
+                num_masters = cls.parse_outlines(s, glyphdata)
 
             elif v == 0x0A:
                 # TrueType instructions
@@ -237,9 +246,13 @@ class MaskParser(GlyphParser):
     def parse(cls, data: bytes) -> List:
         s = BytesIO(data)
         glyphdata = []
-        glyphdata.append(read_encoded_value(s))  # 8c
+        num_masters = read_encoded_value(s)
+        glyphdata.append(dict(num_masters=num_masters))  # 8c
         glyphdata.append(cls.read_uint32(s))  # ff05f5e1
         glyphdata.append(cls.read_uint8(s))  # 00
-        print(glyphdata)
+        for _ in range(num_masters - 1):
+            glyphdata.append(read_encoded_value(s))  # 8b
+        # print(glyphdata)
+        # From here, the mask is equal to the outlines
         cls.parse_outlines(s, glyphdata)
         return glyphdata
