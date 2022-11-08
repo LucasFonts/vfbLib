@@ -107,7 +107,7 @@ class GlyphParser(BaseParser):
             ]
             commands.append(
                 dict(
-                    command=TT_COMMANDS[cmd]["name"],
+                    cmd=TT_COMMANDS[cmd]["name"],
                     params=dict(zip(TT_COMMANDS[cmd]["params"], params)),
                 )
             )
@@ -117,7 +117,7 @@ class GlyphParser(BaseParser):
 
         # print(f"Commands: {commands}")
         if commands:
-            glyphdata.append(dict(commands=commands))
+            glyphdata.append(dict(tth=commands))
 
     @classmethod
     def parse_metrics(
@@ -233,11 +233,11 @@ class GlyphParser(BaseParser):
 
             elif v == 0x04:
                 # Anchors
-                cls.parse_anchors(s, glyphdata)
+                cls.parse_anchors(s, glyphdata, num_masters)
 
             elif v == 0x05:
                 # Components
-                cls.parse_components(s, glyphdata)
+                cls.parse_components(s, glyphdata, num_masters)
 
             elif v == 0x06:
                 # ???
