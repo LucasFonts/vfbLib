@@ -379,7 +379,7 @@ class LinkParser(BaseParser):
             for _ in range(num):
                 src = read_encoded_value(s)
                 tgt = read_encoded_value(s)
-                links["xy"[i]].append(dict(src=src, tgt=tgt))
+                links["yx"[i]].append(dict(src=src, tgt=tgt))
         return links
 
 
