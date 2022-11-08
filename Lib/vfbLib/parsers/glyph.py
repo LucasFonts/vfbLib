@@ -1,7 +1,7 @@
 from fontTools.misc.textTools import hexStr
 from io import BytesIO
 from struct import unpack
-from typing import Dict, List
+from typing import Any, Dict, List
 from vfbLib.parsers import BaseParser, read_encoded_value
 from vfbLib.truetype import TT_COMMANDS
 
@@ -16,7 +16,9 @@ cmd_name = {
 
 class GlyphParser(BaseParser):
     @classmethod
-    def parse_anchors(cls, stream: BytesIO, glyphdata: List, num_masters=1) -> None:
+    def parse_anchors(
+        cls, stream: BytesIO, glyphdata: Dict, num_masters=1
+    ) -> None:
         anchors = []
         num = read_encoded_value(stream)
         for i in range(num):
@@ -41,7 +43,9 @@ class GlyphParser(BaseParser):
             glyphdata.append(dict(anchors=anchors))
 
     @classmethod
-    def parse_components(cls, stream: BytesIO, glyphdata: List, num_masters=1) -> None:
+    def parse_components(
+        cls, stream: BytesIO, glyphdata: Dict, num_masters=1
+    ) -> None:
         components = []
         num = read_encoded_value(stream)
         for i in range(num):
@@ -55,10 +59,12 @@ class GlyphParser(BaseParser):
                 c["offsetY"].append(x)
                 c["transform"].append(transform)
             components.append(c)
-        glyphdata.append(dict(components=components))
+        glyphdata["components"] = components
 
     @classmethod
-    def parse_hints(cls, stream: BytesIO, glyphdata: List, num_masters=1) -> None:
+    def parse_hints(
+        cls, stream: BytesIO, glyphdata: Dict, num_masters=1
+    ) -> None:
         hints = dict(x=[], y=[])
         for i in range(2):
             num_hints = read_encoded_value(stream)
@@ -82,10 +88,10 @@ class GlyphParser(BaseParser):
                 hints["replacements"] = replacements
 
         if hints["x"] or hints["y"]:
-            glyphdata.append(dict(hints=hints))
+            glyphdata["hints"] = hints
 
     @classmethod
-    def parse_instructions(cls, stream: BytesIO, glyphdata: List) -> None:
+    def parse_instructions(cls, stream: BytesIO, glyphdata: Dict) -> None:
         len_commands = read_encoded_value(stream)
         num_commands = read_encoded_value(stream)
         commands = []
@@ -106,11 +112,11 @@ class GlyphParser(BaseParser):
             read_encoded_value(stream)
 
         if commands:
-            glyphdata.append(dict(tth=commands))
+            glyphdata["tth"] = commands
 
     @classmethod
     def parse_metrics(
-        cls, stream: BytesIO, glyphdata: List, num_masters=1
+        cls, stream: BytesIO, glyphdata: Dict, num_masters=1
     ) -> None:
         metrics = []
         for _ in range(num_masters):
@@ -119,15 +125,15 @@ class GlyphParser(BaseParser):
                 "y": read_encoded_value(stream),
             }
             metrics.append(master_metrics)
-        glyphdata.append(dict(metrics=metrics))
+        glyphdata["metrics"] = metrics
 
     @classmethod
-    def parse_outlines(cls, stream: BytesIO, glyphdata: List) -> int:
+    def parse_outlines(cls, stream: BytesIO, glyphdata: Dict) -> int:
         # Nodes
         num_masters = read_encoded_value(stream)
         num_whatever = read_encoded_value(stream)
         num_nodes = read_encoded_value(stream, debug=False)
-        glyphdata.append(dict(num_masters=num_masters))
+        glyphdata["num_masters"] = num_masters
         segments: List[Dict[str, str | int | List[Dict[str, int]]]] = []
         x = [0 for _ in range(num_masters)]
         y = [0 for _ in range(num_masters)]
@@ -153,7 +159,7 @@ class GlyphParser(BaseParser):
 
                 segment["points"].append(master_points)
             segments.append(segment)
-        glyphdata.append(segments)
+        glyphdata["nodes"] = segments
         return num_masters
 
     @classmethod
@@ -171,7 +177,7 @@ class GlyphParser(BaseParser):
         glyphdata.append(dict(triplets=triplets))
 
     @classmethod
-    def parse(cls, data: bytes) -> List:
+    def parse(cls, data: bytes) -> Dict[str, Any]:
         """
         01090701
         01  92[7]2e 6e 6f 74 64 65 66 # Glyph name
@@ -196,9 +202,9 @@ class GlyphParser(BaseParser):
         0f
         """
         s = BytesIO(data)
-        glyphdata = []
+        glyphdata = {}
         start = unpack("<4B", s.read(4))
-        glyphdata.append(start)
+        glyphdata["constants"] = start
         num_masters = 1
         while True:
             # Read a value to decide what kind of information follows
@@ -208,7 +214,7 @@ class GlyphParser(BaseParser):
                 # Glyph name
                 glyph_name_length = read_encoded_value(s)
                 glyph_name = s.read(glyph_name_length)
-                glyphdata.append({"name": glyph_name.decode("cp1252")})
+                glyphdata["name"] = glyph_name.decode("cp1252")
 
             elif v == 0x02:
                 # Metrics
@@ -263,7 +269,7 @@ class GlyphUnicodeParser(BaseParser):
 
 class LinkParser(BaseParser):
     @classmethod
-    def parse(cls, data: bytes) -> List:
+    def parse(cls, data: bytes) -> Dict:
         s = BytesIO(data)
         links = dict(x=[], y=[])
         for i in range(2):
@@ -277,15 +283,15 @@ class LinkParser(BaseParser):
 
 class MaskParser(GlyphParser):
     @classmethod
-    def parse(cls, data: bytes) -> List:
+    def parse(cls, data: bytes) -> Dict:
         s = BytesIO(data)
-        glyphdata = []
+        glyphdata = {}
         num_masters = read_encoded_value(s)
-        glyphdata.append(dict(num_masters=num_masters))  # 8c
-        glyphdata.append(cls.read_uint32(s))  # ff05f5e1
-        glyphdata.append(cls.read_uint8(s))  # 00
-        for _ in range(num_masters - 1):
-            glyphdata.append(read_encoded_value(s))  # 8b
+        glyphdata["num_masters"] = num_masters  # 8c
+        glyphdata["reserved1"] = cls.read_uint32(s)  # ff05f5e1
+        glyphdata["reserved2"] = cls.read_uint8(s)  # 00
+        for i in range(num_masters - 1):
+            glyphdata[f"m{i}"] = read_encoded_value(s)  # 8b
         # print(glyphdata)
         # From here, the mask is equal to the outlines
         cls.parse_outlines(s, glyphdata)
