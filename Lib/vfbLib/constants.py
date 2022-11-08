@@ -119,7 +119,7 @@ parser_classes = {
     2009: ("Mask", MaskParser),
     2015: ("Glyph User Data", StringParser),
     2016: ("Font User Data", StringParser),
-    2016: ("Glyph Note", StringParser),
+    2017: ("Glyph Note", StringParser),
     2018: ("Glyph GDEF Data", EncodedValueParser),
     2020: ("2020", EncodedValueParser),
     2023: ("2023", EncodedValueParser),  # Glyph
