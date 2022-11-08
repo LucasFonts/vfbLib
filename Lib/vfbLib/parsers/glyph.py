@@ -40,7 +40,7 @@ class GlyphParser(BaseParser):
             anchors.append(master_anchors)
 
         if anchors:
-            glyphdata.append(dict(anchors=anchors))
+            glyphdata["anchors"] = anchors
 
     @classmethod
     def parse_components(
