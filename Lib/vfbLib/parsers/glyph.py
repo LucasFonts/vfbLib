@@ -50,14 +50,16 @@ class GlyphParser(BaseParser):
         num = read_encoded_value(stream)
         for i in range(num):
             gid = read_encoded_value(stream)
-            c = dict(gid=gid, offsetX=[], offsetY=[], transform=[])
-            for m in range(num_masters):
+            c = dict(gid=gid, offsetX=[], offsetY=[], scaleX=[], scaleY=[])
+            for _ in range(num_masters):
                 x = read_encoded_value(stream)
                 y = read_encoded_value(stream)
-                transform = [cls.read_uint32(stream) for _ in range(4)]
+                scaleX = unpack("d", stream.read(8))
+                scaleY = unpack("d", stream.read(8))
                 c["offsetX"].append(x)
-                c["offsetY"].append(x)
-                c["transform"].append(transform)
+                c["offsetY"].append(y)
+                c["scaleX"].append(scaleX)
+                c["scaleY"].append(scaleY)
             components.append(c)
         glyphdata["components"] = components
 
