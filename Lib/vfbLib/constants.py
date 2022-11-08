@@ -22,7 +22,7 @@ from vfbLib.parsers.glyph import (
     LinkParser,
     MaskParser,
 )
-from vfbLib.parsers.mm import PrimaryInstancesParser
+from vfbLib.parsers.mm import AxisMappingsParser, PrimaryInstancesParser
 from vfbLib.parsers.text import NameRecordsParser
 from vfbLib.parsers.truetype import (
     TrueTypeStemPpemsParser,
@@ -107,7 +107,7 @@ parser_classes = {
     1502: ("1502", BaseParser),
     1504: ("Master Name", StringParser),
     1514: ("Axis Name", StringParser),
-    1516: ("Axis Mapping", BaseParser),
+    1516: ("Axis Mapping", AxisMappingsParser),
     1517: ("1517", BaseParser),
     1524: ("1524", EncodedValueParser),
     1530: ("1530", IntParser),
