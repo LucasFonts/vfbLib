@@ -12,7 +12,9 @@ from vfbLib.parsers import (
     StringParser,
 )
 from vfbLib.parsers.glyph import (
+    GlyphAnchorsParser,
     GlyphGDEFParser,
+    GlyphOriginParser,
     GlyphParser,
     GlyphUnicodeParser,
     LinkParser,
@@ -118,6 +120,7 @@ parser_classes = {
     2007: ("Background", BaseParser),
     2008: ("Links", LinkParser),
     2009: ("Mask", MaskParser),
+    2010: ("2010", BaseParser),
     2015: ("Glyph User Data", StringParser),
     2016: ("Font User Data", StringParser),
     2017: ("Glyph Note", StringParser),
@@ -126,6 +129,8 @@ parser_classes = {
     2023: ("2023", EncodedValueParser),  # Glyph
     2025: ("fontNote", StringParser),
     2026: ("OpenType Class Flags", BaseParser),
+    2027: ("Glyph Origin", GlyphOriginParser),
+    2029: ("Glyph Anchors MM", GlyphAnchorsParser),  # MM-compatible
     2031: ("2031", EncodedValueParser),  # Glyph
     2032: ("2032", IntParser),
 }

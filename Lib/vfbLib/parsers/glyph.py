@@ -14,6 +14,22 @@ cmd_name = {
 }
 
 
+class GlyphAnchorsParser(BaseParser):
+    @classmethod
+    def parse(cls, data: bytes) -> List:
+        stream = BytesIO(data)
+        anchors = []
+        num_anchors = read_encoded_value(stream)
+        num_masters = read_encoded_value(stream)
+        for _ in range(num_anchors):
+            anchor = {"x": [], "y": []}
+            for _ in range(num_masters):
+                anchor["x"].append(read_encoded_value(stream))
+                anchor["y"].append(read_encoded_value(stream))
+            anchors.append(anchor)
+        return anchors
+
+
 class GlyphGDEFParser(BaseParser):
     @classmethod
     def parse(cls, data: bytes) -> Dict[str, Any]:
@@ -28,9 +44,25 @@ class GlyphGDEFParser(BaseParser):
         }
         glyph_class = read_encoded_value(stream)
         gdef["class"] = class_names.get(glyph_class, glyph_class)
-        whatev = read_encoded_value(stream)
-        if whatev != 0:
-            raise ValueError
+
+        num_anchors = read_encoded_value(stream)
+        anchors = []
+        for _ in range(num_anchors):
+            anchor = {}
+            anchor_name_length = read_encoded_value(stream)
+            if anchor_name_length > 0:
+                anchor["name"] = stream.read(anchor_name_length).decode(
+                    "cp1252"
+                )
+
+            anchor["x"] = read_encoded_value(stream)
+            anchor["x1"] = read_encoded_value(stream)
+            anchor["y"] = read_encoded_value(stream)
+            anchor["y1"] = read_encoded_value(stream)
+            anchors.append(anchor)
+        if anchors:
+            gdef["anchors"] = anchors
+
         num_carets = read_encoded_value(stream)
         carets = []
         for _ in range(num_carets):
@@ -39,11 +71,22 @@ class GlyphGDEFParser(BaseParser):
             carets.append([pos, xxx])
         if carets:
             gdef["carets"] = carets
+
         whatev = read_encoded_value(stream)
         if whatev != 0:
+            print("Got", whatev)
             raise ValueError
         assert stream.read() == b""
         return gdef
+
+
+class GlyphOriginParser(BaseParser):
+    @classmethod
+    def parse(cls, data: bytes) -> Dict[str, Any]:
+        stream = BytesIO(data)
+        x = int.from_bytes(stream.read(2), signed=True, byteorder="little")
+        y = int.from_bytes(stream.read(2), signed=True, byteorder="little")
+        return {"x": x, "y": y}
 
 
 class GlyphParser(BaseParser):
