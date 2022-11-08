@@ -106,7 +106,7 @@ class EncodedKeyValueParser(BaseParser):
 
     @classmethod
     def parse(cls, data: bytes) -> List[int]:
-        print("EncodedKeyValueParser", cls.__size__)
+        # print("EncodedKeyValueParser", cls.__size__)
         stream = BytesIO(data)
         values = []
         for _ in range(cls.__size__):
