@@ -1,5 +1,7 @@
 import codecs
 import json
+
+from argparse import ArgumentParser
 from pathlib import Path
 from sys import argv
 from vfbLib import VFBReader
@@ -11,27 +13,53 @@ def read_vfb(vfb_path: Path) -> VFBReader:
     return reader
 
 
-def write_json(reader: VFBReader, vfb_path: Path) -> None:
-    out_path = vfb_path.with_suffix(".json")
-    with codecs.open(str(out_path), "wb", "utf-8") as f:
+def write_json(reader: VFBReader, json_path: Path) -> None:
+    with codecs.open(str(json_path), "wb", "utf-8") as f:
         json.dump(reader.data, f, ensure_ascii=False, indent=4)
 
 
 def vfb2json():
-    for arg in argv[1:]:
-        path = Path(arg)
-        reader = read_vfb(path)
-        write_json(reader, path)
+    parser = ArgumentParser(
+        description=(
+            "VFB2JSON Converter\n"
+            "Copyright (c) 2022 by LucasFonts\n"
+            "Build 2022-11-08"
+        )
+    )
+    parser.add_argument(
+        "-p",
+        "--path",
+        type=str,
+        nargs=1,
+        help="output folder",
+    )
+    parser.add_argument(
+        "inputpath",
+        type=str,
+        nargs=1,
+        help="input file path (.vfb)",
+    )
+    args = parser.parse_args()
+    if args:
+        vfb_path = Path(args.inputpath[0])
+        reader = read_vfb(vfb_path)
+        if args.path:
+            out_path = (Path(args.path[0]) / vfb_path.name).with_suffix(
+                ".json"
+            )
+        else:
+            out_path = Path(args.path[0]).with_suffix(".json")
+        write_json(reader, out_path)
+    else:
+        parser.print_help()
 
 
 def vfb2ufo():
-    from argparse import ArgumentParser
-
     parser = ArgumentParser(
         description=(
             "VFB3UFO Converter\n"
             "Copyright (c) 2022 by LucasFonts\n"
-            "Build 2022-10-27"
+            "Build 2022-11-08"
         )
     )
     parser.add_argument(
