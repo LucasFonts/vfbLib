@@ -163,18 +163,19 @@ class GlyphParser(BaseParser):
         return num_masters
 
     @classmethod
-    def parse_triplets(cls, stream: BytesIO, glyphdata: List) -> None:
-        num_triplets = read_encoded_value(stream)
-        triplets = []
-        for _ in range(num_triplets):
-            triplets.append(
-                [
-                    read_encoded_value(stream),
-                    read_encoded_value(stream),
-                    read_encoded_value(stream),
-                ]
-            )
-        glyphdata.append(dict(triplets=triplets))
+    def parse_kerning(
+        cls, stream: BytesIO, glyphdata: Dict, num_masters=1
+    ) -> None:
+        num = read_encoded_value(stream)
+        kerning = []
+        for _ in range(num):
+            # Right kerning partner
+            gid = read_encoded_value(stream)
+            values = []
+            for _ in range(num_masters):
+                values.append(read_encoded_value(stream))
+            kerning.append(dict(gid=gid, values=values))
+        glyphdata["kerning"] = kerning
 
     @classmethod
     def parse(cls, data: bytes) -> Dict[str, Any]:
@@ -233,8 +234,8 @@ class GlyphParser(BaseParser):
                 cls.parse_components(s, glyphdata, num_masters)
 
             elif v == 0x06:
-                # ???
-                cls.parse_triplets(s, glyphdata)
+                # Kerning
+                cls.parse_kerning(s, glyphdata, num_masters)
 
             elif v == 0x08:
                 # Outlines
