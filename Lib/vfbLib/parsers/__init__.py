@@ -56,7 +56,7 @@ def read_encoded_value(stream: BytesIO, debug=False) -> int:
     elif val == 0xFF:
         # 4-byte signed integer follows
         decoded = int.from_bytes(
-            stream.read(4), byteorder="little", signed=True
+            stream.read(4), byteorder="big", signed=True
         )
         if debug:
             print(f"  Read next 4 bytes: {decoded}")
