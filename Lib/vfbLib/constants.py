@@ -11,7 +11,7 @@ from vfbLib.parsers import (
     SignedIntParser,
     StringParser,
 )
-from vfbLib.parsers.glyph import GlyphParser, MaskParser
+from vfbLib.parsers.glyph import GlyphParser, LinkParser, MaskParser
 from vfbLib.parsers.text import NameRecordsParser
 from vfbLib.parsers.truetype import (
     TrueTypeStemPpemsParser,
@@ -110,7 +110,7 @@ parser_classes = {
     1744: ("1644", BaseParser),
     2001: ("Glyph", GlyphParser),
     2007: ("Background", BaseParser),
-    2008: ("Links", EncodedValueParser),
+    2008: ("Links", LinkParser),
     2009: ("Mask", MaskParser),
     2015: ("Glyph User Data", StringParser),
     2016: ("Font User Data", StringParser),

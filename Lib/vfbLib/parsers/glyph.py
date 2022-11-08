@@ -263,6 +263,20 @@ class GlyphParser(BaseParser):
         return glyphdata
 
 
+class LinkParser(BaseParser):
+    @classmethod
+    def parse(cls, data: bytes) -> List:
+        s = BytesIO(data)
+        links = dict(x=[], y=[])
+        for i in range(2):
+            num = read_encoded_value(s)
+            for _ in range(num):
+                src = read_encoded_value(s)
+                tgt = read_encoded_value(s)
+                links["xy"[i]].append(dict(src=src, tgt=tgt))
+        return links
+
+
 class MaskParser(GlyphParser):
     @classmethod
     def parse(cls, data: bytes) -> List:
