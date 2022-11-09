@@ -1,5 +1,6 @@
 from defcon import Font
 from fontTools.ufoLib import UFOWriter
+from fontTools.ufoLib.glifLib import GlyphSet, Glyph
 from pathlib import Path
 from typing import Any, List
 
@@ -237,6 +238,17 @@ class VfbToUfoWriter:
             writer = UFOWriter(
                 master_path, fileCreator="com.lucasfonts.vfb3ufo"
             )
+            glyphs_path = master_path / "glyphs"
+            glyphs_path.mkdir()
+            gs = GlyphSet(glyphs_path)
+            for name, mmglyph in self.glyph_masters.items():
+                g = Glyph(name, gs)
+                g.lib = mmglyph.lib
+                g.unicodes = mmglyph.unicodes
+                g.width, g.height = mmglyph.mm_metrics[i]
+                
+                gs.writeGlyph(name, g)
+            gs.writeContents()
             writer.writeGroups(self.groups)
             writer.writeInfo(self.info)
             writer.writeKerning(self.kerning)
