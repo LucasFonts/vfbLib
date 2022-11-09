@@ -1,1627 +1,1872 @@
 [
-    {
-        "header": [
-            {
-                "header0": 26
+    [
+        "header",
+        {
+            "header0": 26,
+            "filetype": "WLF10",
+            "header1": 3,
+            "header2": 44,
+            "reserved": "b'\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00'",
+            "header3": 1,
+            "header4": 0,
+            "header5": 4,
+            "header6": 0,
+            "header7": 10,
+            "header8": 11,
+            "header9": {
+                "1": 1
             },
-            {
-                "filetype": "WLF10"
+            "header10": {
+                "2": 84017792
             },
-            {
-                "header1": 3
-            },
-            {
-                "header2": 44
-            },
-            {
-                "reserved": "b'\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00'"
-            },
-            {
-                "header3": 1
-            },
-            {
-                "header4": 4
-            },
-            {
-                "header5": 10
-            },
-            {
-                "header6": 11
-            },
-            {
-                "header7": 35841
-            },
-            {
-                "header8": 65282
-            },
-            {
-                "header9": 517
-            },
-            {
-                "header10": 32770
-            },
-            {
-                "header11": 35587
+            "header11": {
+                "3": 0
             }
-        ]
-    },
-    {
-        "1536": "00"
-    },
-    {
-        "Encoding": [
+        }
+    ],
+    [
+        "Encoding",
+        [
             0,
             "_0000"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             1,
             "_0001"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             2,
             "_0002"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             3,
             "_0003"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             4,
             "_0004"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             5,
             "breve"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             6,
             "dotaccent"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             7,
             "_0007"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             8,
             "ring"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             9,
             "_0009"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             10,
             "hungarumlaut"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             11,
             "ogonek"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             12,
             "caron"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             13,
             "dotlessi"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             14,
             "_0014"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             15,
             "_0015"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             16,
             "_0016"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             17,
             "_0017"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             18,
             "_0018"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             19,
             "_0019"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             20,
             "_0020"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             21,
             "_0021"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             22,
             "_0022"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             23,
             "_0023"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             24,
             "_0024"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             25,
             "fraction"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             26,
             "fi"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             27,
             "fl"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             28,
             "Lslash"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             29,
             "lslash"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             30,
             "Zcaron"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             31,
             "zcaron"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             32,
             "space"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             33,
             "exclam"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             34,
             "quotedbl"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             35,
             "numbersign"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             36,
             "dollar"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             37,
             "percent"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             38,
             "ampersand"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             39,
             "quotesingle"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             40,
             "parenleft"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             41,
             "parenright"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             42,
             "asterisk"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             43,
             "plus"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             44,
             "comma"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             45,
             "hyphen"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             46,
             "period"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             47,
             "slash"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             48,
             "zero"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             49,
             "one"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             50,
             "two"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             51,
             "three"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             52,
             "four"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             53,
             "five"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             54,
             "six"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             55,
             "seven"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             56,
             "eight"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             57,
             "nine"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             58,
             "colon"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             59,
             "semicolon"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             60,
             "less"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             61,
             "equal"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             62,
             "greater"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             63,
             "question"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             64,
             "at"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             65,
             "A"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             66,
             "B"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             67,
             "C"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             68,
             "D"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             69,
             "E"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             70,
             "F"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             71,
             "G"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             72,
             "H"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             73,
             "I"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             74,
             "J"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             75,
             "K"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             76,
             "L"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             77,
             "M"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             78,
             "N"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             79,
             "O"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             80,
             "P"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             81,
             "Q"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             82,
             "R"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             83,
             "S"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             84,
             "T"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             85,
             "U"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             86,
             "V"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             87,
             "W"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             88,
             "X"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             89,
             "Y"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             90,
             "Z"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             91,
             "bracketleft"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             92,
             "backslash"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             93,
             "bracketright"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             94,
             "asciicircum"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             95,
             "underscore"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             96,
             "grave"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             97,
             "a"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             98,
             "b"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             99,
             "c"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             100,
             "d"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             101,
             "e"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             102,
             "f"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             103,
             "g"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             104,
             "h"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             105,
             "i"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             106,
             "j"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             107,
             "k"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             108,
             "l"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             109,
             "m"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             110,
             "n"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             111,
             "o"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             112,
             "p"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             113,
             "q"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             114,
             "r"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             115,
             "s"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             116,
             "t"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             117,
             "u"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             118,
             "v"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             119,
             "w"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             120,
             "x"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             121,
             "y"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             122,
             "z"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             123,
             "braceleft"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             124,
             "bar"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             125,
             "braceright"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             126,
             "asciitilde"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             127,
             "_0127"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             128,
             "Euro"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             129,
             "_0129"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             130,
             "quotesinglbase"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             131,
             "florin"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             132,
             "quotedblbase"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             133,
             "ellipsis"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             134,
             "dagger"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             135,
             "daggerdbl"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             136,
             "circumflex"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             137,
             "perthousand"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             138,
             "Scaron"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             139,
             "guilsinglleft"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             140,
             "OE"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             141,
             "_0141"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             142,
             "_0142"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             143,
             "_0143"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             144,
             "_0144"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             145,
             "quoteleft"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             146,
             "quoteright"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             147,
             "quotedblleft"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             148,
             "quotedblright"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             149,
             "bullet"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             150,
             "endash"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             151,
             "emdash"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             152,
             "tilde"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             153,
             "trademark"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             154,
             "scaron"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             155,
             "guilsinglright"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             156,
             "oe"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             157,
             "_0157"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             158,
             "_0158"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             159,
             "Ydieresis"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             160,
             "uni00A0"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             161,
             "exclamdown"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             162,
             "cent"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             163,
             "sterling"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             164,
             "currency"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             165,
             "yen"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             166,
             "brokenbar"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             167,
             "section"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             168,
             "dieresis"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             169,
             "copyright"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             170,
             "ordfeminine"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             171,
             "guillemotleft"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             172,
             "logicalnot"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             173,
             "minus"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             174,
             "registered"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             175,
             "macron"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             176,
             "degree"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             177,
             "plusminus"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             178,
             "twosuperior"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             179,
             "threesuperior"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             180,
             "acute"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             181,
             "mu"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             182,
             "paragraph"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             183,
             "periodcentered"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             184,
             "cedilla"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             185,
             "onesuperior"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             186,
             "ordmasculine"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             187,
             "guillemotright"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             188,
             "onequarter"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             189,
             "onehalf"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             190,
             "threequarters"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             191,
             "questiondown"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             192,
             "Agrave"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             193,
             "Aacute"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             194,
             "Acircumflex"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             195,
             "Atilde"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             196,
             "Adieresis"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             197,
             "Aring"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             198,
             "AE"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             199,
             "Ccedilla"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             200,
             "Egrave"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             201,
             "Eacute"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             202,
             "Ecircumflex"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             203,
             "Edieresis"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             204,
             "Igrave"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             205,
             "Iacute"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             206,
             "Icircumflex"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             207,
             "Idieresis"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             208,
             "Eth"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             209,
             "Ntilde"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             210,
             "Ograve"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             211,
             "Oacute"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             212,
             "Ocircumflex"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             213,
             "Otilde"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             214,
             "Odieresis"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             215,
             "multiply"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             216,
             "Oslash"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             217,
             "Ugrave"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             218,
             "Uacute"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             219,
             "Ucircumflex"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             220,
             "Udieresis"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             221,
             "Yacute"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             222,
             "Thorn"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             223,
             "germandbls"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             224,
             "agrave"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             225,
             "aacute"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             226,
             "acircumflex"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             227,
             "atilde"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             228,
             "adieresis"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             229,
             "aring"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             230,
             "ae"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             231,
             "ccedilla"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             232,
             "egrave"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             233,
             "eacute"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             234,
             "ecircumflex"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             235,
             "edieresis"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             236,
             "igrave"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             237,
             "iacute"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             238,
             "icircumflex"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             239,
             "idieresis"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             240,
             "eth"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             241,
             "ntilde"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             242,
             "ograve"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             243,
             "oacute"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             244,
             "ocircumflex"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             245,
             "otilde"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             246,
             "odieresis"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             247,
             "divide"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             248,
             "oslash"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             249,
             "ugrave"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             250,
             "uacute"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             251,
             "ucircumflex"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             252,
             "udieresis"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             253,
             "yacute"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             254,
             "thorn"
         ]
-    },
-    {
-        "Encoding": [
+    ],
+    [
+        "Encoding",
+        [
             255,
             "ydieresis"
         ]
-    },
-    {
-        "1502": "0100"
-    },
-    {
-        "1503": "0200"
-    },
-    {
-        "1517": "000000000000f03f0000000000000000"
-    },
-    {
-        "1044": "ffffffff"
-    },
-    {
-        "weight_name": "All"
-    },
-    {
-        "width_name": "Normal"
-    },
-    {
-        "1034": "0000"
-    },
-    {
-        "1029": "0000000000000000"
-    },
-    {
-        "1047": "0000000000000000"
-    },
-    {
-        "underlinePosition": -100
-    },
-    {
-        "underlineThickness": 50
-    },
-    {
-        "1054": "0000"
-    },
-    {
-        "panose": [
+    ],
+    [
+        "1502",
+        "0100"
+    ],
+    [
+        "1503",
+        "0200"
+    ],
+    [
+        "1517",
+        "000000000000f03f0000000000000000"
+    ],
+    [
+        "1044",
+        "ffffffff"
+    ],
+    [
+        "weight_name",
+        "All"
+    ],
+    [
+        "width_name",
+        "Normal"
+    ],
+    [
+        "1034",
+        "0000"
+    ],
+    [
+        "1029",
+        "0000000000000000"
+    ],
+    [
+        "1047",
+        "0000000000000000"
+    ],
+    [
+        "underlinePosition",
+        -100
+    ],
+    [
+        "underlineThickness",
+        50
+    ],
+    [
+        "1054",
+        "0000"
+    ],
+    [
+        "panose",
+        [
             0,
             0,
             0,
@@ -1633,39 +1878,50 @@
             0,
             0
         ]
-    },
-    {
-        "vendorID": "pyrs"
-    },
-    {
-        "1133": "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
-    },
-    {
-        "1134": "0000"
-    },
-    {
-        "versionMajor": 1
-    },
-    {
-        "upm": 1000
-    },
-    {
-        "1090": 128
-    },
-    {
-        "1093": "0000"
-    },
-    {
-        "1068": "8b"
-    },
-    {
-        "1267": 64
-    },
-    {
-        "1059": "203955"
-    },
-    {
-        "Metrics": [
+    ],
+    [
+        "vendorID",
+        "pyrs"
+    ],
+    [
+        "1133",
+        "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    ],
+    [
+        "1134",
+        "0000"
+    ],
+    [
+        "versionMajor",
+        1
+    ],
+    [
+        "upm",
+        1000
+    ],
+    [
+        "1090",
+        128
+    ],
+    [
+        "1093",
+        "0000"
+    ],
+    [
+        "1068",
+        "8b"
+    ],
+    [
+        "1267",
+        64
+    ],
+    [
+        "1059",
+        "203955"
+    ],
+    [
+        "Metrics",
+        [
             {
                 "51": 0
             },
@@ -1685,13 +1941,7 @@
                 "56": 0
             },
             {
-                "57": [
-                    255,
-                    0,
-                    2,
-                    0,
-                    0
-                ]
+                "57": 131072
             },
             {
                 "58": 1000
@@ -1853,61 +2103,75 @@
                 ]
             }
         ]
-    },
-    {
-        "1271": [
+    ],
+    [
+        "1271",
+        [
             0
         ]
-    },
-    {
-        "hhea_line_gap": 9
-    },
-    {
-        "hhea_ascender": 750
-    },
-    {
-        "hhea_descender": -250
-    },
-    {
-        "TrueType Stem PPEMs": {
+    ],
+    [
+        "hhea_line_gap",
+        9
+    ],
+    [
+        "hhea_ascender",
+        750
+    ],
+    [
+        "hhea_descender",
+        -250
+    ],
+    [
+        "TrueType Stem PPEMs",
+        {
             "ttStemsV": [],
             "ttStemsH": []
         }
-    },
-    {
-        "TrueType Stems": {
+    ],
+    [
+        "TrueType Stems",
+        {
             "ttStemsV": [],
             "ttStemsH": []
         }
-    },
-    {
-        "TrueType Zones": {
+    ],
+    [
+        "TrueType Zones",
+        {
             "ttZonesT": [],
             "ttZonesB": []
         }
-    },
-    {
-        "2021": "00000000000000000000000000000000"
-    },
-    {
-        "Pixel Snap": 68
-    },
-    {
-        "Zone Stop PPEM": 48
-    },
-    {
-        "1604": 255
-    },
-    {
-        "2032": 300
-    },
-    {
-        "1141": [
+    ],
+    [
+        "2021",
+        "00000000000000000000000000000000"
+    ],
+    [
+        "Pixel Snap",
+        68
+    ],
+    [
+        "Zone Stop PPEM",
+        48
+    ],
+    [
+        "1604",
+        255
+    ],
+    [
+        "2032",
+        300
+    ],
+    [
+        "1141",
+        [
             0
         ]
-    },
-    {
-        "1136": [
+    ],
+    [
+        "1136",
+        [
             0,
             0,
             0,
@@ -1916,48 +2180,223 @@
             0,
             0
         ]
-    },
-    {
-        "2022": "0000"
-    },
-    {
-        "2030": "00000000"
-    },
-    {
-        "1513": "0100"
-    },
-    {
-        "Axis Name": "Weight"
-    },
-    {
-        "1523": "8d8b8bfa7cfa7c"
-    },
-    {
-        "1515": "02000000000000000000000000000000"
-    },
-    {
-        "Axis Mapping": "000000000080564000000000000000000000000000188c40000000000000f03f0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
-    },
-    {
-        "Master Name": "Wt0 "
-    },
-    {
-        "1505": "010000000000000000000000000000000000000000000000000000000000000000000000"
-    },
-    {
-        "Master Name": "Wt1 "
-    },
-    {
-        "1505": "02000000000000000000f03f000000000000000000000000000000000000000000000000"
-    },
-    {
-        "1536": "fca9f1d24d62503f00000000000000000000000000000000fca9f1d24d62503f00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000007d3f355eba49a43f07000000010000006400000032000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ff7fff7f018001800000000000000000f4010000ee02000006fffffff4010000bc020000"
-    },
-    {
-        "1536": "fca9f1d24d62503f00000000000000000000000000000000fca9f1d24d62503f00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000007d3f355eba49a43f07000000010000006400000032000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ff7fff7f018001800000000000000000f4010000ee02000006fffffff4010000bc020000"
-    },
-    {
-        "Glyph": {
+    ],
+    [
+        "2022",
+        "0000"
+    ],
+    [
+        "2030",
+        "00000000"
+    ],
+    [
+        "1513",
+        "0100"
+    ],
+    [
+        "Axis Name",
+        "Weight"
+    ],
+    [
+        "1523",
+        "8d8b8bfa7cfa7c"
+    ],
+    [
+        "1515",
+        "02000000000000000000000000000000"
+    ],
+    [
+        "Axis Mapping",
+        [
+            [
+                90.0,
+                0.0
+            ],
+            [
+                899.0,
+                1.0
+            ],
+            [
+                0.0,
+                0.0
+            ],
+            [
+                0.0,
+                0.0
+            ],
+            [
+                0.0,
+                0.0
+            ],
+            [
+                0.0,
+                0.0
+            ],
+            [
+                0.0,
+                0.0
+            ],
+            [
+                0.0,
+                0.0
+            ],
+            [
+                0.0,
+                0.0
+            ],
+            [
+                0.0,
+                0.0
+            ],
+            [
+                0.0,
+                0.0
+            ],
+            [
+                0.0,
+                0.0
+            ],
+            [
+                0.0,
+                0.0
+            ],
+            [
+                0.0,
+                0.0
+            ],
+            [
+                0.0,
+                0.0
+            ],
+            [
+                0.0,
+                0.0
+            ],
+            [
+                0.0,
+                0.0
+            ],
+            [
+                0.0,
+                0.0
+            ],
+            [
+                0.0,
+                0.0
+            ],
+            [
+                0.0,
+                0.0
+            ],
+            [
+                0.0,
+                0.0
+            ],
+            [
+                0.0,
+                0.0
+            ],
+            [
+                0.0,
+                0.0
+            ],
+            [
+                0.0,
+                0.0
+            ],
+            [
+                0.0,
+                0.0
+            ],
+            [
+                0.0,
+                0.0
+            ],
+            [
+                0.0,
+                0.0
+            ],
+            [
+                0.0,
+                0.0
+            ],
+            [
+                0.0,
+                0.0
+            ],
+            [
+                0.0,
+                0.0
+            ],
+            [
+                0.0,
+                0.0
+            ],
+            [
+                0.0,
+                0.0
+            ],
+            [
+                0.0,
+                0.0
+            ],
+            [
+                0.0,
+                0.0
+            ],
+            [
+                0.0,
+                0.0
+            ],
+            [
+                0.0,
+                0.0
+            ],
+            [
+                0.0,
+                0.0
+            ],
+            [
+                0.0,
+                0.0
+            ],
+            [
+                0.0,
+                0.0
+            ],
+            [
+                0.0,
+                0.0
+            ]
+        ]
+    ],
+    [
+        "Master Name",
+        "Wt0 "
+    ],
+    [
+        "1505",
+        "010000000000000000000000000000000000000000000000000000000000000000000000"
+    ],
+    [
+        "Master Name",
+        "Wt1 "
+    ],
+    [
+        "1505",
+        "02000000000000000000f03f000000000000000000000000000000000000000000000000"
+    ],
+    [
+        "1536",
+        322199085615202152149663115326087136029565752916128789653385040745643419817609992579911084180279110681154543181180527456216891178405238401642662061178982876234428823615287231394003585629559595684369323012085526137537345757752658275053605061735688584089934757989034927481207132518522598978147797792067552440307498004884534434852582574864883283752244392634598677828537436818168036385498775449792197061561911277412412215998088508310183681687994178465771143819809372708781102617025295152843985569221372750450126594889727428883175164489019656503798106808088111869326625278708312502396594046819457805943278501210631234309305694015512273959262571372037232236709230080242223472727473954545670842878732767163603229538624273138419248974766753895673746093241449556086117010275728590859438783588735552254981861368418367684806940584472426864531142078331155676308009704378376502888201709973477688686388469131890048563533758492633730299634172344700151845123324681645042172
+    ],
+    [
+        "1536",
+        322199085615202152149663115326087136029565752916128789653385040745643419817609992579911084180279110681154543181180527456216891178405238401642662061178982876234428823615287231394003585629559595684369323012085526137537345757752658275053605061735688584089934757989034927481207132518522598978147797792067552440307498004884534434852582574864883283752244392634598677828537436818168036385498775449792197061561911277412412215998088508310183681687994178465771143819809372708781102617025295152843985569221372750450126594889727428883175164489019656503798106808088111869326625278708312502396594046819457805943278501210631234309305694015512273959262571372037232236709230080242223472727473954545670842878732767163603229538624273138419248974766753895673746093241449556086117010275728590859438783588735552254981861368418367684806940584472426864531142078331155676308009704378376502888201709973477688686388469131890048563533758492633730299634172344700151845123324681645042172
+    ],
+    [
+        "Glyph",
+        {
             "constants": [
                 1,
                 9,
@@ -2133,33 +2572,39 @@
                 }
             ]
         }
-    },
-    {
-        "Background": "fb3afb64f9d5f9aba3a3ebfe0000fffe0000fffe0000fffe0000fffe0000fffe0000fffe0000fffe002cff00fc00ff01fe00ff018700ff000300ff003f00ff00ff00ff01c300ff018300ff018f00ff01ff00ff00f300fffe0000fffe0000fffe0000fffe0000fffe0000ff"
-    },
-    {
-        "2023": [
+    ],
+    [
+        "Background",
+        "fb3afb64f9d5f9aba3a3ebfe0000fffe0000fffe0000fffe0000fffe0000fffe0000fffe0000fffe002cff00fc00ff01fe00ff018700ff000300ff003f00ff00ff00ff01c300ff018300ff018f00ff01ff00ff00f300fffe0000fffe0000fffe0000fffe0000fffe0000ff"
+    ],
+    [
+        "2023",
+        [
             0,
             0
         ]
-    },
-    {
-        "2010": "040000c0"
-    },
-    {
-        "Glyph Origin": {
+    ],
+    [
+        "2010",
+        "040000c0"
+    ],
+    [
+        "Glyph Origin",
+        {
             "x": -8,
             "y": -9
         }
-    },
-    {
-        "Glyph Unicode Non-BMP": [
+    ],
+    [
+        "Glyph Unicode Non-BMP",
+        [
             127783,
             127785
         ]
-    },
-    {
-        "Glyph GDEF Data": {
+    ],
+    [
+        "Glyph GDEF Data",
+        {
             "class": "ligature",
             "anchors": [
                 {
@@ -2188,9 +2633,10 @@
                 ]
             ]
         }
-    },
-    {
-        "Glyph Anchors Supplemental": [
+    ],
+    [
+        "Glyph Anchors Supplemental",
+        [
             [
                 1,
                 0
@@ -2200,9 +2646,10 @@
                 0
             ]
         ]
-    },
-    {
-        "Glyph Anchors MM": [
+    ],
+    [
+        "Glyph Anchors MM",
+        [
             {
                 "x": [
                     55,
@@ -2224,9 +2671,10 @@
                 ]
             }
         ]
-    },
-    {
-        "1742": [
+    ],
+    [
+        "1742",
+        [
             {
                 "1": 0
             },
@@ -2243,5 +2691,5 @@
                 "0": null
             }
         ]
-    }
+    ]
 ]

@@ -103,7 +103,7 @@ parser_classes = {
     1294: ("1294", EncodedValueParser),
     1296: ("1296", EncodedValueParser),
     1500: ("Encoding", GlyphEncodingParser),
-    1501: ("Mac Encoding?", GlyphEncodingParser),
+    1501: ("Encoding Mac", GlyphEncodingParser),
     1502: ("1502", BaseParser),
     1504: ("Master Name", StringParser),
     1514: ("Axis Name", StringParser),
