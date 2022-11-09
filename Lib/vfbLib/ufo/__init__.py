@@ -57,7 +57,6 @@ class VfbToUfoWriter:
             "designerURL": "designerURL",
             "manufacturerURL": "manufacturerURL",
             "manufacturer": "manufacturer",
-            "weight": "openTypeOS2WeightClass",
             "underlinePosition": "postscriptUnderlinePosition",
             "underlineThickness": "postscriptUnderlineThickness",
             "panose": "openTypeOS2Panose",
@@ -144,6 +143,8 @@ class VfbToUfoWriter:
 
             if name == "Encoding":
                 pass
+            elif name == "weight":
+                self.info.openTypeOS2WeightClass = max (0, data)
             elif name == "Gasp Ranges":
                 # self.info.openTypeGaspRangeRecords = data
                 pass
