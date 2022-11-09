@@ -1,14 +1,10 @@
 from vfbLib.parsers import (
     BaseParser,
     EncodedValueParser,
-    EncodedKeyValueParser1742,
-    EncodedKeyValueParser1743,
+    EncodedKeyValuesParser,
     GaspParser,
     GlyphEncodingParser,
-    IntParser,
     MetricsParser,
-    PanoseParser,
-    SignedIntParser,
     StringParser,
 )
 from vfbLib.parsers.glyph import (
@@ -23,6 +19,12 @@ from vfbLib.parsers.glyph import (
     MaskParser,
 )
 from vfbLib.parsers.mm import AxisMappingsParser, PrimaryInstancesParser
+from vfbLib.parsers.numeric import (
+    # FloatListParser,
+    IntParser,
+    PanoseParser,
+    SignedIntParser,
+)
 from vfbLib.parsers.text import NameRecordsParser
 from vfbLib.parsers.truetype import (
     TrueTypeStemPpemsParser,
@@ -118,8 +120,8 @@ parser_classes = {
     1535: ("1535", IntParser),
     1536: ("1536", BaseParser),
     1604: ("1604", IntParser),
-    1742: ("1742", EncodedKeyValueParser1742),
-    1743: ("1743", EncodedKeyValueParser1743),
+    1742: ("1742", EncodedKeyValuesParser),
+    1743: ("1743", EncodedKeyValuesParser),
     1744: ("1644", BaseParser),
     2001: ("Glyph", GlyphParser),
     2007: ("Background", BaseParser),  # bitmap

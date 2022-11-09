@@ -1,7 +1,7 @@
 from fontTools.misc.textTools import hexStr
-from io import BufferedReader, BytesIO
+from io import BufferedReader
 from pathlib import Path
-from typing import Any, Dict, List, Tuple
+from typing import Any, List, Tuple
 from vfbLib.constants import parser_classes
 from vfbLib.parsers import BaseParser
 from vfbLib.parsers.header import VfbHeaderParser
@@ -55,7 +55,11 @@ class VFBReader:
         try:
             parsed = parser_class.parse(self.stream, size)
         except:
-            print("Parse error for data:", entry_id, hexStr(self.stream))
+            print(
+                "Parse error for data:",
+                entry_id,
+                hexStr(self.stream.read(size)),
+            )
             print("Parser class:", parser_class)
             parsed = f"ParseError ({parser_class})"
             raise

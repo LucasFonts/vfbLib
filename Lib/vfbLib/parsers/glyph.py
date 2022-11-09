@@ -56,7 +56,9 @@ class GlyphGDEFParser(BaseParser):
             4: "component",
         }
         glyph_class = read_encoded_value(stream)
-        gdef["class"] = class_names.get(glyph_class, glyph_class)
+        glyph_class_name = class_names.get(glyph_class, glyph_class)
+        if glyph_class_name != "unassigned":
+            gdef["class"] = glyph_class_name
 
         num_anchors = read_encoded_value(stream)
         anchors = []
@@ -85,10 +87,14 @@ class GlyphGDEFParser(BaseParser):
         if carets:
             gdef["carets"] = carets
 
-        num_values = read_encoded_value(stream)
-        values = [read_encoded_value(stream) for _ in range(num_values)]
-        if values:
-            gdef["unknown"] = values
+        try:
+            num_values = read_encoded_value(stream)
+            values = [read_encoded_value(stream) for _ in range(num_values)]
+            if values:
+                gdef["unknown"] = values
+        except EOFError:
+            pass
+
         assert stream.read() == b""
         return gdef
 
@@ -306,6 +312,7 @@ class GlyphParser(BaseParser):
                 glyph_name_length = read_encoded_value(s)
                 glyph_name = s.read(glyph_name_length)
                 glyphdata["name"] = glyph_name.decode("cp1252")
+                print("Glyph:", glyphdata["name"])
 
             elif v == 0x02:
                 # Metrics

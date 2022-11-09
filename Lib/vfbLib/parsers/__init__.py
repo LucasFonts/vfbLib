@@ -104,32 +104,21 @@ class BaseParser:
         )
 
 
-class EncodedKeyValueParser(BaseParser):
-    """
-    A parser that reads data as key with Yuri's optimized encoded value.
-    """
-
-    __size__ = 0
+class EncodedKeyValuesParser(BaseParser):
+    __end__ = 0x64
 
     @classmethod
     def _parse(cls) -> List[int]:
         values = []
-        for _ in range(cls.__size__):
+        while True:
             key = cls.read_uint8()
+            if key == cls.__end__:
+                break
+
             val = read_encoded_value(cls.stream)
             values.append({key: val})
 
-        # Final?
-        values.append({cls.read_uint8(): None})
         return values
-
-
-class EncodedKeyValueParser1742(EncodedKeyValueParser):
-    __size__ = 4
-
-
-class EncodedKeyValueParser1743(EncodedKeyValueParser):
-    __size__ = 54
 
 
 class EncodedValueParser(BaseParser):
@@ -175,16 +164,6 @@ class GlyphEncodingParser(BaseParser):
         gid = int.from_bytes(cls.stream.read(2), byteorder="little")
         nam = cls.stream.read().decode("ascii")
         return gid, nam
-
-
-class IntParser(BaseParser):
-    """
-    A parser that reads data as UInt16.
-    """
-
-    @classmethod
-    def _parse(cls):
-        return int.from_bytes(cls.stream.read(), byteorder="little", signed=False)
 
 
 class MetricsParser(BaseParser):
@@ -281,11 +260,6 @@ class MetricsParser(BaseParser):
                     {metrics_names.get(k, str(k)): read_encoded_value(s)}
                 )
 
-            elif k == 0x5C:
-                metrics.append(
-                    {metrics_names.get(k, str(k)): read_encoded_value(s)}
-                )
-
             elif k == 0x53:
                 num_values = read_encoded_value(s)
                 v = [cls.read_uint8(s) for _ in range(num_values)]
@@ -300,6 +274,11 @@ class MetricsParser(BaseParser):
                         ]
                     }
                 )
+            
+            elif k in (0x56, 0x57, 0x5C):
+                metrics.append(
+                    {metrics_names.get(k, str(k)): read_encoded_value(s)}
+                )
 
             elif k == 0x58:
                 num_values = read_encoded_value(s)
@@ -310,26 +289,6 @@ class MetricsParser(BaseParser):
                 print(f"Unknown key in metrics: {hex(k)}")
 
         return metrics
-
-
-class PanoseParser(BaseParser):
-    """
-    A parser that reads data as an array representing PANOSE values.
-    """
-
-    @classmethod
-    def _parse(cls):
-        return unpack("<10b", cls.stream.read())
-
-
-class SignedIntParser(BaseParser):
-    """
-    A parser that reads data as signed Int16.
-    """
-
-    @classmethod
-    def _parse(cls):
-        return int.from_bytes(cls.stream.read(), byteorder="little", signed=True)
 
 
 class StringParser(BaseParser):
