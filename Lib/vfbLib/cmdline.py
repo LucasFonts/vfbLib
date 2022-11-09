@@ -5,6 +5,7 @@ from argparse import ArgumentParser
 from pathlib import Path
 from sys import argv
 from vfbLib import VFBReader
+from vfbLib.ufo import VfbToUfoWriter
 
 
 def read_vfb(vfb_path: Path) -> VFBReader:
@@ -111,6 +112,16 @@ def vfb2ufo():
     )
     args = parser.parse_args()
     if args:
-        reader = read_vfb(Path(args.inputpath))
+        vfb_path = Path(args.inputpath[0])
+        reader = read_vfb(vfb_path)
+        if args.path:
+            out_path = (Path(args.path[0]) / vfb_path.name).with_suffix(
+                ".ufo"
+            )
+        else:
+            out_path = vfb_path.with_suffix(".ufo")
+        writer = VfbToUfoWriter(reader.data)
+        writer.build()
+        writer.write(out_path)
     else:
         parser.print_help()
