@@ -249,6 +249,8 @@ class VfbToUfoWriter:
                 
                 gs.writeGlyph(name, g)
             gs.writeContents()
+            gs.writeLayerInfo(["public.default", "glyphs"])
+            writer.writeLayerContents()
             writer.writeGroups(self.groups)
             writer.writeInfo(self.info)
             writer.writeKerning(self.kerning)
