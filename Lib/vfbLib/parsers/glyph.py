@@ -280,10 +280,10 @@ class GlyphParser(BaseParser):
     ) -> None:
         metrics = []
         for _ in range(num_masters):
-            master_metrics = {
-                "x": read_encoded_value(stream),
-                "y": read_encoded_value(stream),
-            }
+            master_metrics = [
+                read_encoded_value(stream),
+                read_encoded_value(stream),
+            ]
             metrics.append(master_metrics)
         glyphdata["metrics"] = metrics
 
