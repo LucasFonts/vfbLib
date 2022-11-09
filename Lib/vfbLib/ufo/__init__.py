@@ -233,7 +233,7 @@ class VfbToUfoWriter:
     def write(self, out_path: Path) -> None:
         for i in range(len(self.masters)):
             if i > 0:
-                master_path = out_path.with_name(f"{out_path.name}-{i}")
+                master_path = out_path.with_stem(f"{out_path.stem}-{i}")
             else:
                 master_path = out_path
             writer = UFOWriter(
