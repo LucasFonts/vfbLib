@@ -166,12 +166,15 @@ class GlyphParser(BaseParser):
                 num_nodes = read_encoded_value(cls.stream)
                 nodes = []
                 # print(f"Parsing {num_nodes} nodes...")
+                x = 0
+                y = 0
                 for i in range(num_nodes):
-                    node = (
-                        read_encoded_value(cls.stream),
-                        read_encoded_value(cls.stream),
-                        hex(cls.read_uint8()),
-                    )
+                    x += read_encoded_value(cls.stream)
+                    y += read_encoded_value(cls.stream)
+                    byte = cls.read_uint8(stream)
+                    flags = byte >> 4
+                    cmd = byte & 0x0F
+                    node = (hex(cmd), hex(flags), x, y)
                     # print(i, node)
                     nodes.append(node)
                 if nodes:
