@@ -19,7 +19,6 @@ class VfbHeaderParser(BaseParser):
         header["header6"] = cls.read_uint16()
         header["header7"] = cls.read_uint16()
         header["header8"] = cls.read_uint16()
-        print(header)
         for i in range(9, 12):
             key = cls.read_uint8()
             val = read_encoded_value(data)
