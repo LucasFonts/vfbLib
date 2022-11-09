@@ -4,8 +4,8 @@ from vfbLib.parsers import BaseParser, read_encoded_value
 
 class NameRecordsParser(BaseParser):
     @classmethod
-    def parse(cls, data: bytes):
-        stream = BytesIO(data)
+    def _parse(cls):
+        stream = cls.stream
         num = read_encoded_value(stream)
         # print(num, "name records follow ...")
         result = []

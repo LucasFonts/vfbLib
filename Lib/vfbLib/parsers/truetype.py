@@ -4,8 +4,8 @@ from vfbLib.parsers import BaseParser, read_encoded_value
 
 class TrueTypeStemsParser(BaseParser):
     @classmethod
-    def parse(cls, data: bytes):
-        stream = BytesIO(data)
+    def _parse(cls):
+        stream = cls.stream
         names = ("ttStemsV", "ttStemsH")
         result = {}
         for i in range(2):
@@ -32,8 +32,8 @@ class TrueTypeStemsParser(BaseParser):
 
 class TrueTypeStemPpemsParser(BaseParser):
     @classmethod
-    def parse(cls, data: bytes):
-        stream = BytesIO(data)
+    def _parse(cls):
+        stream = cls.stream
         names = ("ttStemsV", "ttStemsH")
         result = {}
         for i in range(2):
@@ -59,8 +59,8 @@ class TrueTypeStemPpemsParser(BaseParser):
 
 class TrueTypeZoneDeltasParser(BaseParser):
     @classmethod
-    def parse(cls, data: bytes):
-        stream = BytesIO(data)
+    def _parse(cls):
+        stream = cls.stream
         num_deltas = read_encoded_value(stream)
         # print(num_deltas, "Zone deltas follow")
         result = {}
@@ -80,8 +80,8 @@ class TrueTypeZoneDeltasParser(BaseParser):
 
 class TrueTypeZonesParser(BaseParser):
     @classmethod
-    def parse(cls, data: bytes):
-        stream = BytesIO(data)
+    def _parse(cls):
+        stream = cls.stream
         names = ("ttZonesT", "ttZonesB")
         result = {}
         for i in range(2):

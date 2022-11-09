@@ -16,8 +16,8 @@ cmd_name = {
 
 class GlyphAnchorsParser(BaseParser):
     @classmethod
-    def parse(cls, data: bytes) -> List:
-        stream = BytesIO(data)
+    def _parse(cls) -> List:
+        stream = cls.stream
         anchors = []
         num_anchors = read_encoded_value(stream)
         num_masters = read_encoded_value(stream)
@@ -32,8 +32,8 @@ class GlyphAnchorsParser(BaseParser):
 
 class GlyphAnchorsSuppParser(BaseParser):
     @classmethod
-    def parse(cls, data: bytes) -> List:
-        stream = BytesIO(data)
+    def _parse(cls) -> List:
+        stream = cls.stream
         anchors = []
         num_anchors = read_encoded_value(stream)
         for _ in range(num_anchors):
@@ -45,8 +45,8 @@ class GlyphAnchorsSuppParser(BaseParser):
 
 class GlyphGDEFParser(BaseParser):
     @classmethod
-    def parse(cls, data: bytes) -> Dict[str, Any]:
-        stream = BytesIO(data)
+    def _parse(cls) -> Dict[str, Any]:
+        stream = cls.stream
         gdef = {}
         class_names = {
             0: "unassigned",
@@ -95,8 +95,8 @@ class GlyphGDEFParser(BaseParser):
 
 class GlyphOriginParser(BaseParser):
     @classmethod
-    def parse(cls, data: bytes) -> Dict[str, Any]:
-        stream = BytesIO(data)
+    def _parse(cls) -> Dict[str, Any]:
+        stream = cls.stream
         x = int.from_bytes(stream.read(2), signed=True, byteorder="little")
         y = int.from_bytes(stream.read(2), signed=True, byteorder="little")
         return {"x": x, "y": y}
@@ -268,7 +268,7 @@ class GlyphParser(BaseParser):
         glyphdata["kerning"] = kerning
 
     @classmethod
-    def parse(cls, data: bytes) -> Dict[str, Any]:
+    def _parse(cls) -> Dict[str, Any]:
         """
         01090701
         01  92[7]2e 6e 6f 74 64 65 66 # Glyph name
@@ -292,7 +292,7 @@ class GlyphParser(BaseParser):
             8b 8b 8b
         0f
         """
-        s = BytesIO(data)
+        s = cls.stream
         glyphdata = {}
         start = unpack("<4B", s.read(4))
         glyphdata["constants"] = start
@@ -349,30 +349,28 @@ class GlyphParser(BaseParser):
 
 class GlyphUnicodeParser(BaseParser):
     @classmethod
-    def parse(cls, data: bytes) -> List:
-        s = BytesIO(data)
+    def _parse(cls) -> List:
         unicodes = []
-        for _ in range(len(data) // 2):
-            u = cls.read_uint16(s)
+        for _ in range(cls.stream.getbuffer().nbytes // 2):
+            u = cls.read_uint16(cls.stream)
             unicodes.append(u)
         return unicodes
 
 
 class GlyphUnicodeSuppParser(BaseParser):
     @classmethod
-    def parse(cls, data: bytes) -> List:
-        s = BytesIO(data)
+    def _parse(cls) -> List:
         unicodes = []
-        for _ in range(len(data) // 4):
-            u = cls.read_uint32(s)
+        for _ in range(cls.stream.getbuffer().nbytes // 4):
+            u = cls.read_uint32(cls.stream)
             unicodes.append(u)
         return unicodes
 
 
 class LinkParser(BaseParser):
     @classmethod
-    def parse(cls, data: bytes) -> Dict:
-        s = BytesIO(data)
+    def _parse(cls) -> Dict:
+        s = cls.stream
         links = dict(x=[], y=[])
         for i in range(2):
             num = read_encoded_value(s)
@@ -385,8 +383,8 @@ class LinkParser(BaseParser):
 
 class MaskParser(GlyphParser):
     @classmethod
-    def parse(cls, data: bytes) -> Dict:
-        s = BytesIO(data)
+    def _parse(cls) -> Dict:
+        s = cls.stream
         glyphdata = {}
         num_masters = read_encoded_value(s)
         glyphdata["num_masters"] = num_masters  # 8c

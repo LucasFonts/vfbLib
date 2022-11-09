@@ -1,4 +1,3 @@
-from io import BytesIO
 from struct import unpack
 from typing import Any, Dict, List
 from vfbLib.parsers import BaseParser, read_encoded_value
@@ -6,12 +5,11 @@ from vfbLib.parsers import BaseParser, read_encoded_value
 
 class AxisMappingsParser(BaseParser):
     @classmethod
-    def parse(cls, data: bytes) -> List[Dict[str, Any]]:
-        stream = BytesIO(data)
+    def _parse(cls) -> List[Dict[str, Any]]:
         mappings = []
-        for _ in range(len(data) // 16):
-            src = unpack("d", stream.read(8))[0]
-            tgt = unpack("d", stream.read(8))[0]
+        for _ in range(cls.stream.getbuffer().nbytes // 16):
+            src = unpack("d", cls.stream.read(8))[0]
+            tgt = unpack("d", cls.stream.read(8))[0]
             mappings.append([src, tgt])
 
         return mappings
@@ -19,8 +17,8 @@ class AxisMappingsParser(BaseParser):
 
 class PrimaryInstancesParser(BaseParser):
     @classmethod
-    def parse(cls, data: bytes) -> List[Dict[str, Any]]:
-        stream = BytesIO(data)
+    def _parse(cls) -> List[Dict[str, Any]]:
+        stream = cls.stream
         instances = []
         num_instances = read_encoded_value(stream)
         for _ in range(num_instances):

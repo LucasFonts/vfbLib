@@ -1,7 +1,7 @@
 from fontTools.misc.textTools import hexStr
-from io import BytesIO
+from io import BufferedReader, BytesIO
 from struct import unpack
-from typing import Dict, List
+from typing import Any, Dict, List
 
 
 uint8 = 1
@@ -9,7 +9,7 @@ uint16 = 2
 uint32 = 4
 
 
-def read_encoded_value(stream: BytesIO, debug=False) -> int:
+def read_encoded_value(stream: BufferedReader | BytesIO, debug=False) -> int:
     val = int.from_bytes(stream.read(1), byteorder="little")
     if val == 0:
         raise EOFError
@@ -71,13 +71,18 @@ class BaseParser:
     """
 
     @classmethod
-    def parse(cls, data):
-        return hexStr(data)
+    def parse(cls, stream: BufferedReader, size: int):
+        cls.stream = BytesIO(stream.read(size))
+        return cls._parse()
+    
+    @classmethod
+    def _parse(cls) -> Any:
+        return hexStr(cls.stream.read())
 
     @classmethod
     def read_uint8(cls, stream=None) -> int:
         if stream is None:
-            stream = cls.data
+            stream = cls.stream
         return int.from_bytes(
             stream.read(uint8), byteorder="little", signed=False
         )
@@ -85,7 +90,7 @@ class BaseParser:
     @classmethod
     def read_uint16(cls, stream=None) -> int:
         if stream is None:
-            stream = cls.data
+            stream = cls.stream
         return int.from_bytes(
             stream.read(uint16), byteorder="little", signed=False
         )
@@ -93,7 +98,7 @@ class BaseParser:
     @classmethod
     def read_uint32(cls, stream=None) -> int:
         if stream is None:
-            stream = cls.data
+            stream = cls.stream
         return int.from_bytes(
             stream.read(uint32), byteorder="little", signed=False
         )
@@ -107,17 +112,15 @@ class EncodedKeyValueParser(BaseParser):
     __size__ = 0
 
     @classmethod
-    def parse(cls, data: bytes) -> List[int]:
-        # print("EncodedKeyValueParser", cls.__size__)
-        stream = BytesIO(data)
+    def _parse(cls) -> List[int]:
         values = []
         for _ in range(cls.__size__):
-            key = cls.read_uint8(stream)
-            val = read_encoded_value(stream)
+            key = cls.read_uint8()
+            val = read_encoded_value(cls.stream)
             values.append({key: val})
 
         # Final?
-        values.append({cls.read_uint8(stream): None})
+        values.append({cls.read_uint8(): None})
         return values
 
 
@@ -135,13 +138,11 @@ class EncodedValueParser(BaseParser):
     """
 
     @classmethod
-    def parse(cls, data) -> List[int]:
-        # print("EncodedValueParser.parse", data)
-        stream = BytesIO(data)
+    def _parse(cls) -> List[int]:
         values = []
         while True:
             try:
-                val = read_encoded_value(stream)
+                val = read_encoded_value(cls.stream)
                 values.append(val)
             except EOFError:
                 # print("EOF")
@@ -154,7 +155,9 @@ class GaspParser(BaseParser):
     """
 
     @classmethod
-    def parse(cls, data):
+    def _parse(cls):
+        data = cls.stream.read()
+        # cls.stream.getbuffer().nbytes
         gasp = unpack(f"<{len(data) // 2}H", data)
         it = iter(gasp)
         return [
@@ -168,9 +171,9 @@ class GaspParser(BaseParser):
 
 class GlyphEncodingParser(BaseParser):
     @classmethod
-    def parse(cls, data):
-        gid = int.from_bytes(data[:2], byteorder="little")
-        nam = data[2:].decode("ascii")
+    def _parse(cls):
+        gid = int.from_bytes(cls.stream.read(2), byteorder="little")
+        nam = cls.stream.read().decode("ascii")
         return gid, nam
 
 
@@ -180,8 +183,8 @@ class IntParser(BaseParser):
     """
 
     @classmethod
-    def parse(cls, data):
-        return int.from_bytes(data, byteorder="little", signed=False)
+    def _parse(cls):
+        return int.from_bytes(cls.stream.read(), byteorder="little", signed=False)
 
 
 class MetricsParser(BaseParser):
@@ -205,7 +208,7 @@ class MetricsParser(BaseParser):
             target.append({key_names.get(k, str(k)): v})
 
     @classmethod
-    def parse(cls, data):
+    def _parse(cls):
         metrics_names = {
             64: "embedding",
             65: "subscript_x_size",
@@ -228,7 +231,7 @@ class MetricsParser(BaseParser):
             88: "Hdmx PPMs 2",
             92: "Average Width",
         }
-        s = BytesIO(data)
+        s = cls.stream
         metrics = []
 
         while True:
@@ -315,8 +318,8 @@ class PanoseParser(BaseParser):
     """
 
     @classmethod
-    def parse(cls, data):
-        return unpack("<10b", data)
+    def _parse(cls):
+        return unpack("<10b", cls.stream.read())
 
 
 class SignedIntParser(BaseParser):
@@ -325,8 +328,8 @@ class SignedIntParser(BaseParser):
     """
 
     @classmethod
-    def parse(cls, data):
-        return int.from_bytes(data, byteorder="little", signed=True)
+    def _parse(cls):
+        return int.from_bytes(cls.stream.read(), byteorder="little", signed=True)
 
 
 class StringParser(BaseParser):
@@ -335,5 +338,5 @@ class StringParser(BaseParser):
     """
 
     @classmethod
-    def parse(cls, data):
-        return data.decode("cp1252")
+    def _parse(cls):
+        return cls.stream.read().decode("cp1252")

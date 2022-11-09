@@ -51,11 +51,11 @@ class VFBReader:
         """
         Read, parse and return an entry from the stream
         """
-        entry_id, parser_class, data = self._read_entry()
+        entry_id, parser_class, size = self._read_entry()
         try:
-            parsed = parser_class.parse(data)
+            parsed = parser_class.parse(self.stream, size)
         except:
-            print("Parse error for data:", entry_id, hexStr(data))
+            print("Parse error for data:", entry_id, hexStr(self.stream))
             print("Parser class:", parser_class)
             parsed = f"ParseError ({parser_class})"
             raise
@@ -65,7 +65,7 @@ class VFBReader:
         else:
             return tuple()
 
-    def _read_entry(self) -> Tuple[str, BaseParser, bytes]:
+    def _read_entry(self) -> Tuple[str, BaseParser, int]:
         """
         Read an entry from the stream and return its key, specialized parser
         class, and data.
@@ -91,8 +91,4 @@ class VFBReader:
             # Uses uint16 for data length
             num_bytes = BaseParser.read_uint16(self.stream)
 
-        if num_bytes > 0:
-            data = self.stream.read(num_bytes)
-        else:
-            data = b""
-        return key, parser_class, data
+        return key, parser_class, num_bytes
