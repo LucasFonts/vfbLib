@@ -223,16 +223,16 @@ class MetricsParser(BaseParser):
 
             elif k in (0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39, 0x3A, 0x3B):
                 metrics.append(
-                    {metrics_names.get(k, str(k)): read_encoded_value(s)}
+                    [metrics_names.get(k, str(k)), read_encoded_value(s)]
                 )
 
             elif k == 0x3C:
                 v = [cls.read_uint8(s) for _ in range(9)]
-                metrics.append({metrics_names.get(k, str(k)): v})
+                metrics.append([metrics_names.get(k, str(k)), v])
 
             elif k in (0x3D, 0x3E, 0x3F):
                 metrics.append(
-                    {metrics_names.get(k, str(k)): read_encoded_value(s)}
+                    [metrics_names.get(k, str(k)), read_encoded_value(s)]
                 )
 
             elif k in (
@@ -250,47 +250,45 @@ class MetricsParser(BaseParser):
                 0x4B,
             ):
                 metrics.append(
-                    {metrics_names.get(k, str(k)): read_encoded_value(s)}
+                    [metrics_names.get(k, str(k)), read_encoded_value(s)]
                 )
 
             elif k == 0x4C:  # PANOSE?
                 v = [cls.read_uint8(s) for _ in range(10)]
-                metrics.append({metrics_names.get(k, str(k)): v})
+                metrics.append([metrics_names.get(k, str(k)), v])
 
             elif k in (0x4D, 0x4E, 0x4F, 0x50, 0x51, 0x52):
                 metrics.append(
-                    {metrics_names.get(k, str(k)): read_encoded_value(s)}
+                    [metrics_names.get(k, str(k)), read_encoded_value(s)]
                 )
 
             elif k == 0x53:
                 num_values = read_encoded_value(s)
                 v = [cls.read_uint8(s) for _ in range(num_values)]
-                metrics.append({metrics_names.get(k, str(k)): v})
+                metrics.append([metrics_names.get(k, str(k)), v])
 
             elif k == 0x54:
                 metrics.append(
-                    {
-                        metrics_names.get(k, str(k)): [
+                    [
+                        metrics_names.get(k, str(k)), [
                             read_encoded_value(s),
                             read_encoded_value(s),
                         ]
-                    }
+                    ]
                 )
 
             elif k in (0x56, 0x57, 0x5C):
                 metrics.append(
-                    {metrics_names.get(k, str(k)): read_encoded_value(s)}
+                    [metrics_names.get(k, str(k)), read_encoded_value(s)]
                 )
 
             elif k == 0x58:
                 num_values = read_encoded_value(s)
                 v = [cls.read_uint8(s) for _ in range(num_values)]
-                metrics.append({metrics_names.get(k, hex(k)): v})
+                metrics.append([metrics_names.get(k, hex(k)), v])
 
             else:
                 print(f"Unknown key in metrics: {hex(k)}")
-
-        return metrics
 
 
 class StringParser(BaseParser):
@@ -300,4 +298,4 @@ class StringParser(BaseParser):
 
     @classmethod
     def _parse(cls):
-        return cls.stream.read().decode("cp1252")
+        return cls.stream.read().decode("cp1252").strip("\u0000")
