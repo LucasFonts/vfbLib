@@ -30,6 +30,7 @@ class VfbToUfoWriter:
         """
         self.json = json
         self.info = VfbToUfoInfo()
+        self.kerning = {}
         self.lib = {}
         self.masters = []
         self.masters_1505 = []
@@ -228,12 +229,13 @@ class VfbToUfoWriter:
         self.lib["public.glyphOrder"] = self.glyphOrder
 
     def write(self, out_path: Path) -> None:
-        # for mm in self.mmdata:
-        writer = UFOWriter(out_path, fileCreator="com.lucasfonts.vfb3ufo")
-        writer.writeInfo(self.info)
-        writer.writeLib(self.lib)
-        writer.writeFeatures(self.features)
-        writer.close()
-        # For now, normalize like defcon
-        # f = Font(out_path)
-        # f.save(out_path)
+        for i in range(len(self.masters)):
+            writer = UFOWriter(out_path, fileCreator="com.lucasfonts.vfb3ufo")
+            writer.writeInfo(self.info)
+            writer.writeKerning(self.kerning)
+            writer.writeLib(self.lib)
+            writer.writeFeatures(self.features)
+            writer.close()
+            # For now, normalize like defcon
+            # f = Font(out_path)
+            # f.save(out_path)
