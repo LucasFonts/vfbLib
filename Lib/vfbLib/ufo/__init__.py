@@ -210,9 +210,7 @@ class VfbToUfoWriter:
             elif name == "2031":
                 pass
             elif name == "Glyph Unicode":
-                self.current_glyph.unicodes.append(data)
-            elif name == "Glyph Unicode":
-                self.current_glyph.unicodes.append(data)
+                self.current_glyph.unicodes.extend(data)
             elif name == "2012":
                 pass
             elif name == "Glyph User Data":
@@ -220,7 +218,7 @@ class VfbToUfoWriter:
             elif name == "Glyph Note":
                 self.current_glyph.note = data
             elif name == "Glyph Unicode Non-BMP":
-                self.current_glyph.unicodes.append(data)
+                self.current_glyph.unicodes.extend(data)
             elif name == "Glyph GDEF Data":
                 pass
             elif name == "Glyph Anchors Supplemental":
