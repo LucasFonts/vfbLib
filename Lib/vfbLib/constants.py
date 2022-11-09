@@ -53,7 +53,7 @@ parser_classes = {
     1047: ("1047", BaseParser),
     1048: ("weight", SignedIntParser),  # Weight Class
     1054: ("1054", BaseParser),
-    1056: ("sgn 1056", StringParser),
+    1056: ("sgn", StringParser),
     1060: ("1060", IntParser),
     1061: ("trademark", StringParser),
     1062: ("designer", StringParser),
