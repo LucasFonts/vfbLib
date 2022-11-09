@@ -1,4 +1,5 @@
 from fontTools.misc.textTools import hexStr
+from fontTools.ttLib.tables.ttProgram import Program
 from io import BytesIO
 from struct import unpack
 from typing import Any, Dict, List
@@ -135,6 +136,66 @@ class GlyphParser(BaseParser):
 
         if anchors:
             glyphdata["anchors"] = anchors
+
+    @classmethod
+    def parse_binary(cls, stream: BytesIO, glyphdata: Dict) -> None:
+        imported = {}
+        while True:
+            key = cls.read_uint8()
+
+            if key == 0x28:
+                break
+
+            elif key == 0x29:
+                # Metrics
+                imported["width"] = read_encoded_value(cls.stream)
+                imported["lsb"] = read_encoded_value(cls.stream)
+                imported["unknown1"] = read_encoded_value(cls.stream)
+                imported["unknown2"] = read_encoded_value(cls.stream)
+                imported["unknown3"] = read_encoded_value(cls.stream)
+                imported["bbox"] = [
+                    read_encoded_value(cls.stream) for _ in range(4)
+                ]
+
+            elif key == 0x2A:
+                # Outlines
+                num_contours = read_encoded_value(cls.stream)
+                imported["endpoints"] = [
+                    read_encoded_value(cls.stream) for _ in range(num_contours)
+                ]
+                num_nodes = read_encoded_value(cls.stream)
+                nodes = []
+                # print(f"Parsing {num_nodes} nodes...")
+                for i in range(num_nodes):
+                    node = (
+                        read_encoded_value(cls.stream),
+                        read_encoded_value(cls.stream),
+                        hex(cls.read_uint8()),
+                    )
+                    # print(i, node)
+                    nodes.append(node)
+                if nodes:
+                    imported["nodes"] = nodes
+
+            elif key == 0x2B:
+                # Instructions
+                num_instructions = read_encoded_value(cls.stream)
+                instructions = cls.stream.read(num_instructions)
+                p = Program()
+                p.fromBytecode(instructions)
+                imported["instructions"] = p.getAssembly()
+
+            elif key == 0x2C:
+                # Probably HDMX data
+                num = read_encoded_value(cls.stream)
+                imported["hdmx"] = [cls.read_uint8() for _ in range(num)]
+
+            else:
+                print(imported)
+                print("Unknown key in imported binary glyph data:", hex(key))
+                raise ValueError
+
+        glyphdata["imported"] = imported
 
     @classmethod
     def parse_components(
@@ -337,6 +398,10 @@ class GlyphParser(BaseParser):
             elif v == 0x08:
                 # Outlines
                 num_masters = cls.parse_outlines(s, glyphdata)
+
+            elif v == 0x09:
+                # Imported binary TrueType data
+                num_masters = cls.parse_binary(s, glyphdata)
 
             elif v == 0x0A:
                 # TrueType instructions
