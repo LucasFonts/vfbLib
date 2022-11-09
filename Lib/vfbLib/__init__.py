@@ -1,9 +1,10 @@
 from fontTools.misc.textTools import hexStr
-from io import BufferedReader
+from io import BufferedReader, BytesIO
 from pathlib import Path
 from typing import Any, Dict, List, Tuple
 from vfbLib.constants import parser_classes
-from vfbLib.parsers import BaseParser, VfbHeaderParser
+from vfbLib.parsers import BaseParser
+from vfbLib.parsers.header import VfbHeaderParser
 
 
 FALLBACK_PARSER = BaseParser
