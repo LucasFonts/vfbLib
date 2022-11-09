@@ -61,6 +61,8 @@ def read_encoded_value(stream: BytesIO, debug=False) -> int:
         if debug:
             print(f"  Read next 4 bytes: {decoded}")
         return decoded
+    
+    raise ValueError
 
 
 class BaseParser:
