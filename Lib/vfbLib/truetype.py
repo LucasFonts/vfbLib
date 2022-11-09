@@ -39,7 +39,7 @@ TT_COMMANDS = {
         "name": "FinalDeltaH",
         "params": ["pt", "shift", "ppm1", "ppm2"],
     },
-    0x16: {
+    0x17: {
         "name": "FinalDeltaV",
         "params": ["pt", "shift", "ppm1", "ppm2"],
     },
