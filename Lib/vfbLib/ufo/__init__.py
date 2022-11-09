@@ -29,6 +29,7 @@ class VfbToUfoWriter:
         Serialize the JSON structure to UFO(s)
         """
         self.json = json
+        self.groups = {}
         self.info = VfbToUfoInfo()
         self.kerning = {}
         self.lib = {}
@@ -230,11 +231,18 @@ class VfbToUfoWriter:
 
     def write(self, out_path: Path) -> None:
         for i in range(len(self.masters)):
-            writer = UFOWriter(out_path, fileCreator="com.lucasfonts.vfb3ufo")
+            if i > 0:
+                master_path = out_path.with_name(f"{out_path.name}-{i}")
+            else:
+                master_path = out_path
+            writer = UFOWriter(
+                master_path, fileCreator="com.lucasfonts.vfb3ufo"
+            )
+            writer.writeGroups(self.groups)
             writer.writeInfo(self.info)
             writer.writeKerning(self.kerning)
-            writer.writeLib(self.lib)
             writer.writeFeatures(self.features)
+            writer.writeLib(self.lib)
             writer.close()
             # For now, normalize like defcon
             # f = Font(out_path)
