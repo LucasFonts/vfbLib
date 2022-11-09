@@ -312,7 +312,7 @@ class GlyphParser(BaseParser):
                 glyph_name_length = read_encoded_value(s)
                 glyph_name = s.read(glyph_name_length)
                 glyphdata["name"] = glyph_name.decode("cp1252")
-                print("Glyph:", glyphdata["name"])
+                # print("Glyph:", glyphdata["name"])
 
             elif v == 0x02:
                 # Metrics

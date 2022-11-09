@@ -55,13 +55,11 @@ def read_encoded_value(stream: BufferedReader | BytesIO, debug=False) -> int:
 
     elif val == 0xFF:
         # 4-byte signed integer follows
-        decoded = int.from_bytes(
-            stream.read(4), byteorder="big", signed=True
-        )
+        decoded = int.from_bytes(stream.read(4), byteorder="big", signed=True)
         if debug:
             print(f"  Read next 4 bytes: {decoded}")
         return decoded
-    
+
     raise ValueError
 
 
@@ -74,7 +72,7 @@ class BaseParser:
     def parse(cls, stream: BufferedReader, size: int):
         cls.stream = BytesIO(stream.read(size))
         return cls._parse()
-    
+
     @classmethod
     def _parse(cls) -> Any:
         return hexStr(cls.stream.read())
@@ -119,6 +117,10 @@ class EncodedKeyValuesParser(BaseParser):
             values.append({key: val})
 
         return values
+
+
+class EncodedKeyValuesParser1742(BaseParser):
+    __end__ = 0x00
 
 
 class EncodedValueParser(BaseParser):
@@ -274,7 +276,7 @@ class MetricsParser(BaseParser):
                         ]
                     }
                 )
-            
+
             elif k in (0x56, 0x57, 0x5C):
                 metrics.append(
                     {metrics_names.get(k, str(k)): read_encoded_value(s)}
