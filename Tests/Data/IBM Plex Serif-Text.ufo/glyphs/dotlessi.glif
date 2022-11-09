@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="dotlessi" format="1">
+  <advance width="319"/>
+  <unicode hex="0131"/>
+  <outline>
+    <contour>
+      <point x="48" y="50" type="line" name="sv01"/>
+      <point x="119" y="50" type="line"/>
+      <point x="119" y="446" type="line" name="sv02"/>
+      <point x="48" y="459" type="line" name="sv03"/>
+      <point x="48" y="497" type="line" name="iv01"/>
+      <point x="215" y="530" type="line" name="at01"/>
+      <point x="215" y="50" type="line" name="sv04"/>
+      <point x="286" y="50" type="line"/>
+      <point x="286" y="0" type="line"/>
+      <point x="48" y="0" type="line" name="ab01"/>
+    </contour>
+    <contour>
+      <point x="167" y="540" type="move" name="top"/>
+    </contour>
+  </outline>
+  <lib>
+  <dict>
+  <key>com.typemytype.robofont.guides</key>
+  <array>
+    <dict>
+      <key>angle</key>
+      <real>90</real>
+      <key>isGlobal</key>
+      <false/>
+      <key>magnetic</key>
+      <integer>5</integer>
+      <key>x</key>
+      <real>167</real>
+      <key>y</key>
+      <real>0</real>
+    </dict>
+  </array>
+  <key>com.fontlab.ttprogram</key>
+  <data>
+  <ttProgram>
+    <ttc code="alignt" point="at01" zone="xheight"/>
+    <ttc code="alignb" point="ab01" zone="baseline"/>
+    <ttc code="singlev" point1="ab01" point2="sv01" stem="stem_serif"/>
+    <ttc code="singlev" point1="at01" point2="sv02" stem="triangle"/>
+    <ttc code="interpolatev" point="iv01" point1="at01" point2="sv02" align="round"/>
+    <ttc code="singlev" point1="iv01" point2="sv03" stem="stem_serif"/>
+    <ttc code="singlev" point1="sv01" point2="sv04"/>
+  </ttProgram>
+  </data>
+  <key>com.adobe.type.autohint</key>
+  <data>
+  <hintSetList>
+    <hintset pointTag="sv01">
+      <hstem pos="0" width="50" />
+      <hstem pos="446" width="84" />
+      <vstem pos="119" width="96" />
+    </hintset>
+  </hintSetList>
+  </data>
+  </dict>
+  </lib>
+</glyph>

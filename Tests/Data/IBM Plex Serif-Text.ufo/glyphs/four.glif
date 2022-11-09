@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="four" format="1">
+  <advance width="600"/>
+  <unicode hex="0034"/>
+  <outline>
+    <contour>
+      <point x="359" y="161" type="line" name="hr00"/>
+      <point x="39" y="161" type="line" name="sv01"/>
+      <point x="39" y="226" type="line" name="sv02"/>
+      <point x="360" y="698" type="line" name="at01"/>
+      <point x="455" y="698" type="line"/>
+      <point x="455" y="235" type="line" name="sv03"/>
+      <point x="556" y="235" type="line"/>
+      <point x="556" y="161" type="line"/>
+      <point x="455" y="161" type="line" name="sv04"/>
+      <point x="455" y="0" type="line"/>
+      <point x="359" y="0" type="line" name="ab01"/>
+    </contour>
+    <contour>
+      <point x="103" y="235" type="line" name="iv01"/>
+      <point x="359" y="235" type="line"/>
+      <point x="359" y="602" type="line"/>
+      <point x="355" y="602" type="line" name="sv05"/>
+    </contour>
+  </outline>
+  <lib>
+  <dict>
+  <key>com.fontlab.ttprogram</key>
+  <data>
+  <ttProgram>
+    <ttc code="alignt" point="at01" zone="capheight"/>
+    <ttc code="alignb" point="ab01" zone="baseline"/>
+    <ttc code="interpolatev" point="iv01" point1="at01" point2="ab01" align="round"/>
+    <ttc code="mdeltav" point="iv01" delta="8" ppm1="10" ppm2="10"/>
+    <ttc code="singlev" point1="iv01" point2="sv01" round="true"/>
+    <ttc code="singlev" point1="iv01" point2="sv02"/>
+    <ttc code="singlev" point1="iv01" point2="sv03"/>
+    <ttc code="singlev" point1="sv01" point2="sv04"/>
+    <ttc code="singlev" point1="at01" point2="sv05"/>
+  </ttProgram>
+  </data>
+  <key>com.adobe.type.autohint</key>
+  <data>
+  <hintSetList>
+    <hintset pointTag="hr00">
+      <hstem pos="21" width="-21" />
+      <hstem pos="161" width="74" />
+      <hstem pos="602" width="96" />
+      <vstem pos="359" width="96" />
+    </hintset>
+  </hintSetList>
+  </data>
+  </dict>
+  </lib>
+</glyph>

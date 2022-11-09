@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="uni0490" format="1">
+  <advance width="569"/>
+  <unicode hex="0490"/>
+  <outline>
+    <contour>
+      <point x="52" y="50" type="line" name="sv01"/>
+      <point x="126" y="50" type="line"/>
+      <point x="126" y="648" type="line"/>
+      <point x="52" y="648" type="line" name="sv02"/>
+      <point x="52" y="698" type="line" name="at01"/>
+      <point x="447" y="698" type="line"/>
+      <point x="447" y="858" type="line" name="sv03"/>
+      <point x="534" y="858" type="line"/>
+      <point x="534" y="644" type="line"/>
+      <point x="227" y="644" type="line" name="sv04"/>
+      <point x="227" y="50" type="line" name="sv05"/>
+      <point x="321" y="50" type="line"/>
+      <point x="321" y="0" type="line"/>
+      <point x="52" y="0" type="line" name="ab01"/>
+    </contour>
+  </outline>
+  <lib>
+  <dict>
+  <key>com.fontlab.ttprogram</key>
+  <data>
+  <ttProgram>
+    <ttc code="alignt" point="at01" zone="capheight"/>
+    <ttc code="alignb" point="ab01" zone="baseline"/>
+    <ttc code="singlev" point1="ab01" point2="sv01" stem="stem_serif"/>
+    <ttc code="singlev" point1="at01" point2="sv02" stem="stem_serif"/>
+    <ttc code="singlev" point1="at01" point2="sv03" round="true"/>
+    <ttc code="singlev" point1="at01" point2="sv04" stem="uc_stem"/>
+    <ttc code="singlev" point1="sv01" point2="sv05"/>
+  </ttProgram>
+  </data>
+  <key>com.adobe.type.autohint</key>
+  <data>
+  <hintSetList>
+    <hintset pointTag="sv01">
+      <hstem pos="0" width="50" />
+      <hstem pos="648" width="50" />
+      <vstem pos="126" width="101" />
+      <vstem pos="447" width="87" />
+    </hintset>
+  </hintSetList>
+  </data>
+  </dict>
+  </lib>
+</glyph>

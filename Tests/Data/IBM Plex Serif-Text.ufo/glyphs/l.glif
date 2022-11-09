@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="l" format="1">
+  <advance width="306"/>
+  <unicode hex="006C"/>
+  <outline>
+    <contour>
+      <point x="34" y="50" type="line" name="sv01"/>
+      <point x="105" y="50" type="line"/>
+      <point x="105" y="676" type="line" name="sv02"/>
+      <point x="34" y="689" type="line" name="sv03"/>
+      <point x="34" y="727" type="line" name="iv01"/>
+      <point x="201" y="760" type="line" name="at01"/>
+      <point x="201" y="50" type="line" name="sv04"/>
+      <point x="272" y="50" type="line"/>
+      <point x="272" y="0" type="line"/>
+      <point x="34" y="0" type="line" name="ab01"/>
+    </contour>
+    <contour>
+      <point x="153" y="742" type="move" name="top"/>
+    </contour>
+    <contour>
+      <point x="245" y="758" type="move" name="topright"/>
+    </contour>
+    <contour>
+      <point x="154" y="0" type="move" name="bottom"/>
+    </contour>
+  </outline>
+  <lib>
+  <dict>
+  <key>com.typemytype.robofont.guides</key>
+  <array>
+    <dict>
+      <key>angle</key>
+      <real>90</real>
+      <key>isGlobal</key>
+      <false/>
+      <key>magnetic</key>
+      <integer>5</integer>
+      <key>x</key>
+      <real>153</real>
+      <key>y</key>
+      <real>0</real>
+    </dict>
+    <dict>
+      <key>angle</key>
+      <real>90</real>
+      <key>isGlobal</key>
+      <false/>
+      <key>magnetic</key>
+      <integer>5</integer>
+      <key>x</key>
+      <real>245</real>
+      <key>y</key>
+      <real>0</real>
+    </dict>
+    <dict>
+      <key>angle</key>
+      <real>90</real>
+      <key>isGlobal</key>
+      <false/>
+      <key>magnetic</key>
+      <integer>5</integer>
+      <key>x</key>
+      <real>154</real>
+      <key>y</key>
+      <real>0</real>
+    </dict>
+  </array>
+  <key>com.fontlab.ttprogram</key>
+  <data>
+  <ttProgram>
+    <ttc code="alignt" point="at01" zone="ascender"/>
+    <ttc code="alignb" point="ab01" zone="baseline"/>
+    <ttc code="singlev" point1="ab01" point2="sv01" stem="stem_serif"/>
+    <ttc code="singlev" point1="at01" point2="sv02" stem="triangle"/>
+    <ttc code="interpolatev" point="iv01" point1="at01" point2="sv02" align="round"/>
+    <ttc code="singlev" point1="iv01" point2="sv03" stem="stem_serif"/>
+    <ttc code="singlev" point1="sv01" point2="sv04"/>
+  </ttProgram>
+  </data>
+  <key>com.adobe.type.autohint</key>
+  <data>
+  <hintSetList>
+    <hintset pointTag="sv01">
+      <hstem pos="0" width="50" />
+      <hstem pos="676" width="84" />
+      <vstem pos="105" width="96" />
+    </hintset>
+  </hintSetList>
+  </data>
+  </dict>
+  </lib>
+</glyph>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="emdash" format="1">
+  <advance width="783"/>
+  <unicode hex="2014"/>
+  <outline>
+    <contour>
+      <point x="32" y="334" type="line" name="av01"/>
+      <point x="751" y="334" type="line"/>
+      <point x="751" y="272" type="line"/>
+      <point x="32" y="272" type="line" name="sv01"/>
+    </contour>
+  </outline>
+  <lib>
+  <dict>
+  <key>com.fontlab.ttprogram</key>
+  <data>
+  <ttProgram>
+    <ttc code="alignv" point="av01" align="round"/>
+    <ttc code="singlev" point1="av01" point2="sv01" stem="lc_thick"/>
+  </ttProgram>
+  </data>
+  <key>com.adobe.type.autohint</key>
+  <data>
+  <hintSetList>
+    <hintset pointTag="av01">
+      <hstem pos="272" width="62" />
+      <vstem pos="32" width="719" />
+    </hintset>
+  </hintSetList>
+  </data>
+  </dict>
+  </lib>
+</glyph>

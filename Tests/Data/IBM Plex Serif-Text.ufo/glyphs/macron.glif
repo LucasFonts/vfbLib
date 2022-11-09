@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="macron" format="1">
+  <advance width="600"/>
+  <unicode hex="00AF"/>
+  <outline>
+    <contour>
+      <point x="157" y="703" type="line" name="sv01"/>
+      <point x="443" y="703" type="line"/>
+      <point x="443" y="640" type="line"/>
+      <point x="157" y="640" type="line" name="av01"/>
+    </contour>
+    <contour>
+      <point x="300" y="540" type="move" name="_top"/>
+    </contour>
+  </outline>
+  <lib>
+  <dict>
+  <key>com.typemytype.robofont.guides</key>
+  <array>
+    <dict>
+      <key>angle</key>
+      <real>90</real>
+      <key>isGlobal</key>
+      <false/>
+      <key>magnetic</key>
+      <integer>5</integer>
+      <key>x</key>
+      <real>300</real>
+      <key>y</key>
+      <real>0</real>
+    </dict>
+  </array>
+  <key>com.fontlab.ttprogram</key>
+  <data>
+  <ttProgram>
+    <ttc code="alignv" point="av01" align="round"/>
+    <ttc code="mdeltav" point="av01" delta="-8" ppm1="12" ppm2="12"/>
+    <ttc code="mdeltav" point="av01" delta="-8" ppm1="14" ppm2="15"/>
+    <ttc code="singlev" point1="av01" point2="sv01" round="true"/>
+  </ttProgram>
+  </data>
+  <key>com.adobe.type.autohint</key>
+  <data>
+  <hintSetList>
+    <hintset pointTag="sv01">
+      <hstem pos="640" width="63" />
+      <vstem pos="157" width="286" />
+    </hintset>
+  </hintSetList>
+  </data>
+  </dict>
+  </lib>
+</glyph>

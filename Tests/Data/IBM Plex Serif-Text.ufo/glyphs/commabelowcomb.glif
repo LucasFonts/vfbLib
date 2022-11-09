@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="commabelowcomb" format="1">
+  <advance width="0"/>
+  <unicode hex="0326"/>
+  <outline>
+    <contour>
+      <point x="-53" y="-254" type="line" name="hr00"/>
+      <point x="-34" y="-234"/>
+      <point x="-6" y="-184"/>
+      <point x="1" y="-163" type="qcurve" name="sv01"/>
+      <point x="-28" y="-163"/>
+      <point x="-57" y="-132"/>
+      <point x="-57" y="-109" type="qcurve"/>
+      <point x="-57" y="-105" type="line"/>
+      <point x="-57" y="-82"/>
+      <point x="-27" y="-51"/>
+      <point x="0" y="-51" type="qcurve" name="av01"/>
+      <point x="27" y="-51"/>
+      <point x="57" y="-84"/>
+      <point x="57" y="-107" type="qcurve"/>
+      <point x="57" y="-114" type="line"/>
+      <point x="57" y="-149"/>
+      <point x="20" y="-226"/>
+      <point x="-9" y="-254" type="qcurve"/>
+    </contour>
+    <contour>
+      <point x="0" y="0" type="move" name="_bottom"/>
+    </contour>
+  </outline>
+  <lib>
+  <dict>
+  <key>com.typemytype.robofont.guides</key>
+  <array>
+    <dict>
+      <key>angle</key>
+      <real>90</real>
+      <key>isGlobal</key>
+      <false/>
+      <key>magnetic</key>
+      <integer>5</integer>
+      <key>x</key>
+      <real>0</real>
+      <key>y</key>
+      <real>0</real>
+    </dict>
+  </array>
+  <key>com.fontlab.ttprogram</key>
+  <data>
+  <ttProgram>
+    <ttc code="alignv" point="av01" align="round"/>
+    <ttc code="mdeltav" point="av01" delta="-5" ppm1="9" ppm2="9"/>
+    <ttc code="singlev" point1="av01" point2="sv01" round="true"/>
+    <ttc code="mdeltav" point="sv01" delta="8" ppm1="13" ppm2="16"/>
+    <ttc code="singlev" point1="av01" point2="sv02" round="true"/>
+    <ttc code="mdeltav" point="sv02" delta="-8" ppm1="10" ppm2="11"/>
+    <ttc code="mdeltav" point="sv02" delta="-8" ppm1="13" ppm2="13"/>
+  </ttProgram>
+  </data>
+  <key>com.adobe.type.autohint</key>
+  <data>
+  <hintSetList>
+    <hintset pointTag="hr00">
+      <hstem pos="-163" width="112" />
+      <vstem pos="-57" width="114" />
+    </hintset>
+  </hintSetList>
+  </data>
+  </dict>
+  </lib>
+</glyph>

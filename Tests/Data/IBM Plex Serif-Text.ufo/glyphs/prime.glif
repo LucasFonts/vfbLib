@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="prime" format="1">
+  <advance width="247"/>
+  <unicode hex="2032"/>
+  <outline>
+    <contour>
+      <point x="96" y="698" type="line" name="at01"/>
+      <point x="199" y="698" type="line"/>
+      <point x="101" y="372" type="line"/>
+      <point x="63" y="372" type="line" name="sv01"/>
+    </contour>
+  </outline>
+  <lib>
+  <dict>
+  <key>com.fontlab.ttprogram</key>
+  <data>
+  <ttProgram>
+    <ttc code="alignt" point="at01" zone="capheight"/>
+    <ttc code="singlev" point1="at01" point2="sv01" round="true"/>
+  </ttProgram>
+  </data>
+  <key>com.adobe.type.autohint</key>
+  <data>
+  <hintSetList>
+    <hintset pointTag="at01">
+      <hstem pos="698" width="-20" />
+      <vstem pos="63" width="136" />
+    </hintset>
+  </hintSetList>
+  </data>
+  </dict>
+  </lib>
+</glyph>

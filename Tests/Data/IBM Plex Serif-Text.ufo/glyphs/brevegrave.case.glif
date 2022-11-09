@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="brevegrave.case" format="1">
+  <advance width="0"/>
+  <outline>
+    <contour>
+      <point x="0" y="753" type="qcurve" name="av01"/>
+      <point x="-38" y="753"/>
+      <point x="-87" y="779"/>
+      <point x="-120" y="819"/>
+      <point x="-140" y="869"/>
+      <point x="-149" y="893" type="qcurve"/>
+      <point x="-118" y="909" type="line" name="sv01"/>
+      <point x="-97" y="871" type="line"/>
+      <point x="-83" y="845"/>
+      <point x="-42" y="823"/>
+      <point x="0" y="823" type="qcurve" name="sv02"/>
+      <point x="42" y="823"/>
+      <point x="83" y="845"/>
+      <point x="97" y="871" type="qcurve"/>
+      <point x="118" y="909" type="line" name="sv03"/>
+      <point x="149" y="893" type="line"/>
+      <point x="140" y="869"/>
+      <point x="120" y="819"/>
+      <point x="87" y="779"/>
+      <point x="37" y="753"/>
+    </contour>
+    <contour>
+      <point x="-117" y="1034" type="line"/>
+      <point x="-44" y="1072" type="line" name="sv04"/>
+      <point x="34" y="893" type="line"/>
+      <point x="3" y="878" type="line" name="iv01"/>
+    </contour>
+    <contour>
+      <point x="0" y="698" type="move" name="_top"/>
+    </contour>
+  </outline>
+  <lib>
+  <dict>
+  <key>com.typemytype.robofont.guides</key>
+  <array>
+    <dict>
+      <key>angle</key>
+      <real>90</real>
+      <key>isGlobal</key>
+      <false/>
+      <key>magnetic</key>
+      <integer>5</integer>
+      <key>x</key>
+      <real>0</real>
+      <key>y</key>
+      <real>0</real>
+    </dict>
+  </array>
+  <key>com.fontlab.ttprogram</key>
+  <data>
+  <ttProgram>
+    <ttc code="alignv" point="av01" align="round"/>
+    <ttc code="mdeltav" point="av01" delta="8" ppm1="11" ppm2="11"/>
+    <ttc code="singlev" point1="av01" point2="sv01" round="true"/>
+    <ttc code="singlev" point1="av01" point2="sv02" round="true"/>
+    <ttc code="singlev" point1="sv01" point2="sv03"/>
+    <ttc code="interpolatev" point="iv01" point1="sv01" point2="sv02" align="right"/>
+    <ttc code="singlev" point1="iv01" point2="sv04" round="true"/>
+  </ttProgram>
+  </data>
+  <key>com.adobe.type.autohint</key>
+  <data>
+  <hintSetList>
+    <hintset pointTag="av01">
+      <hstem pos="753" width="70" />
+      <vstem pos="-149" width="298" />
+    </hintset>
+  </hintSetList>
+  </data>
+  </dict>
+  </lib>
+</glyph>

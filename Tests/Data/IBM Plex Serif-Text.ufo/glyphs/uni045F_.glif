@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="uni045F" format="1">
+  <advance width="658"/>
+  <unicode hex="045F"/>
+  <outline>
+    <contour>
+      <point x="288" y="0" type="line" name="hr00"/>
+      <point x="48" y="0" type="line" name="ab01"/>
+      <point x="48" y="50" type="line" name="sv01"/>
+      <point x="119" y="50" type="line"/>
+      <point x="119" y="468" type="line"/>
+      <point x="48" y="468" type="line" name="sv02"/>
+      <point x="48" y="518" type="line" name="at01"/>
+      <point x="286" y="518" type="line"/>
+      <point x="286" y="468" type="line"/>
+      <point x="215" y="468" type="line" name="sv03"/>
+      <point x="215" y="53" type="line" name="sv04"/>
+      <point x="443" y="53" type="line"/>
+      <point x="443" y="468" type="line"/>
+      <point x="372" y="468" type="line" name="sv05"/>
+      <point x="372" y="518" type="line" name="at02"/>
+      <point x="610" y="518" type="line"/>
+      <point x="610" y="468" type="line"/>
+      <point x="539" y="468" type="line" name="sv06"/>
+      <point x="539" y="50" type="line" name="sv07"/>
+      <point x="610" y="50" type="line"/>
+      <point x="610" y="0" type="line"/>
+      <point x="370" y="0" type="line" name="sv08"/>
+      <point x="370" y="-150" type="line"/>
+      <point x="288" y="-150" type="line" name="sv09"/>
+    </contour>
+  </outline>
+  <lib>
+  <dict>
+  <key>com.fontlab.ttprogram</key>
+  <data>
+  <ttProgram>
+    <ttc code="alignt" point="at01" zone="xheight"/>
+    <ttc code="alignt" point="at02" zone="xheight"/>
+    <ttc code="alignb" point="ab01" zone="baseline"/>
+    <ttc code="singlev" point1="ab01" point2="sv01" stem="stem_serif"/>
+    <ttc code="singlev" point1="at01" point2="sv02" stem="stem_serif"/>
+    <ttc code="singlev" point1="sv02" point2="sv03"/>
+    <ttc code="singlev" point1="ab01" point2="sv04" stem="lc_cyrl"/>
+    <ttc code="singlev" point1="at02" point2="sv05" stem="stem_serif"/>
+    <ttc code="singlev" point1="sv05" point2="sv06"/>
+    <ttc code="singlev" point1="sv01" point2="sv07"/>
+    <ttc code="singlev" point1="ab01" point2="sv08"/>
+    <ttc code="singlev" point1="ab01" point2="sv09" stem="spur"/>
+  </ttProgram>
+  </data>
+  <key>com.adobe.type.autohint</key>
+  <data>
+  <hintSetList>
+    <hintset pointTag="hr00">
+      <hstem pos="0" width="53" />
+      <hstem pos="468" width="50" />
+      <vstem3 stem3List="119,96,288,82,443,96" />
+    </hintset>
+  </hintSetList>
+  </data>
+  </dict>
+  </lib>
+</glyph>

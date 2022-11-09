@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="A" format="1">
+  <advance width="689"/>
+  <unicode hex="0041"/>
+  <outline>
+    <contour>
+      <point x="16" y="50" type="line" name="sv01"/>
+      <point x="68" y="50" type="line"/>
+      <point x="293" y="698" type="line" name="at01"/>
+      <point x="396" y="698" type="line"/>
+      <point x="621" y="50" type="line" name="sv03"/>
+      <point x="673" y="50" type="line"/>
+      <point x="673" y="0" type="line"/>
+      <point x="427" y="0" type="line" name="ab02"/>
+      <point x="427" y="50" type="line" name="sv02"/>
+      <point x="515" y="50" type="line"/>
+      <point x="455" y="224" type="line"/>
+      <point x="191" y="224" type="line" name="sv04"/>
+      <point x="131" y="50" type="line" name="sv05"/>
+      <point x="219" y="50" type="line"/>
+      <point x="219" y="0" type="line"/>
+      <point x="16" y="0" type="line" name="ab01"/>
+    </contour>
+    <contour>
+      <point x="207" y="276" type="line" name="iv01"/>
+      <point x="441" y="276" type="line"/>
+      <point x="326" y="617" type="line"/>
+      <point x="322" y="617" type="line" name="sv06"/>
+    </contour>
+    <contour>
+      <point x="345" y="698" type="move" name="top"/>
+    </contour>
+    <contour>
+      <point x="673" y="0" type="move" name="bottomright"/>
+    </contour>
+    <contour>
+      <point x="323" y="0" type="move" name="bottom"/>
+    </contour>
+  </outline>
+  <lib>
+  <dict>
+  <key>com.typemytype.robofont.guides</key>
+  <array>
+    <dict>
+      <key>angle</key>
+      <real>90</real>
+      <key>isGlobal</key>
+      <false/>
+      <key>magnetic</key>
+      <integer>5</integer>
+      <key>x</key>
+      <real>345</real>
+      <key>y</key>
+      <real>0</real>
+    </dict>
+    <dict>
+      <key>angle</key>
+      <real>90</real>
+      <key>isGlobal</key>
+      <false/>
+      <key>magnetic</key>
+      <integer>5</integer>
+      <key>x</key>
+      <real>673</real>
+      <key>y</key>
+      <real>0</real>
+    </dict>
+    <dict>
+      <key>angle</key>
+      <real>90</real>
+      <key>isGlobal</key>
+      <false/>
+      <key>magnetic</key>
+      <integer>5</integer>
+      <key>x</key>
+      <real>323</real>
+      <key>y</key>
+      <real>0</real>
+    </dict>
+  </array>
+  <key>com.fontlab.ttprogram</key>
+  <data>
+  <ttProgram>
+    <ttc code="alignt" point="at01" zone="capheight"/>
+    <ttc code="alignb" point="ab01" zone="baseline"/>
+    <ttc code="alignb" point="ab02" zone="baseline"/>
+    <ttc code="singlev" point1="ab01" point2="sv01" stem="stem_serif"/>
+    <ttc code="singlev" point1="ab02" point2="sv02" stem="stem_serif"/>
+    <ttc code="singlev" point1="sv02" point2="sv03"/>
+    <ttc code="interpolatev" point="iv01" point1="at01" point2="ab01" align="round"/>
+    <ttc code="singlev" point1="iv01" point2="sv04" stem="uc_stem"/>
+    <ttc code="singlev" point1="sv01" point2="sv05"/>
+    <ttc code="singlev" point1="at01" point2="sv06"/>
+  </ttProgram>
+  </data>
+  <key>com.adobe.type.autohint</key>
+  <data>
+  <hintSetList>
+    <hintset pointTag="sv01">
+      <hstem pos="0" width="50" />
+      <hstem pos="224" width="52" />
+      <hstem pos="617" width="81" />
+      <vstem pos="16" width="657" />
+    </hintset>
+  </hintSetList>
+  </data>
+  </dict>
+  </lib>
+</glyph>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="E" format="1">
+  <advance width="644"/>
+  <unicode hex="0045"/>
+  <outline>
+    <contour>
+      <point x="52" y="50" type="line" name="sv01"/>
+      <point x="126" y="50" type="line"/>
+      <point x="126" y="648" type="line"/>
+      <point x="52" y="648" type="line" name="sv02"/>
+      <point x="52" y="698" type="line" name="at01"/>
+      <point x="576" y="698" type="line"/>
+      <point x="576" y="527" type="line"/>
+      <point x="496" y="527" type="line" name="sv03"/>
+      <point x="496" y="644" type="line" name="hr01"/>
+      <point x="227" y="644" type="line" name="sv04"/>
+      <point x="227" y="388" type="line" name="sv05"/>
+      <point x="412" y="388" type="line"/>
+      <point x="412" y="464" type="line" name="sv06"/>
+      <point x="475" y="464" type="line"/>
+      <point x="475" y="258" type="line"/>
+      <point x="412" y="258" type="line" name="sv07"/>
+      <point x="412" y="334" type="line"/>
+      <point x="227" y="334" type="line" name="iv01"/>
+      <point x="227" y="54" type="line" name="sv08"/>
+      <point x="505" y="54" type="line" name="hr02"/>
+      <point x="505" y="182" type="line" name="sv09"/>
+      <point x="585" y="182" type="line"/>
+      <point x="585" y="0" type="line" name="hr03"/>
+      <point x="52" y="0" type="line" name="ab01"/>
+    </contour>
+    <contour>
+      <point x="336" y="698" type="move" name="top"/>
+    </contour>
+    <contour>
+      <point x="585" y="0" type="move" name="bottomright"/>
+    </contour>
+    <contour>
+      <point x="336" y="0" type="move" name="bottom"/>
+    </contour>
+  </outline>
+  <lib>
+  <dict>
+  <key>com.typemytype.robofont.guides</key>
+  <array>
+    <dict>
+      <key>angle</key>
+      <real>90</real>
+      <key>isGlobal</key>
+      <false/>
+      <key>magnetic</key>
+      <integer>5</integer>
+      <key>x</key>
+      <real>336</real>
+      <key>y</key>
+      <real>0</real>
+    </dict>
+    <dict>
+      <key>angle</key>
+      <real>90</real>
+      <key>isGlobal</key>
+      <false/>
+      <key>magnetic</key>
+      <integer>5</integer>
+      <key>x</key>
+      <real>585</real>
+      <key>y</key>
+      <real>0</real>
+    </dict>
+  </array>
+  <key>com.fontlab.ttprogram</key>
+  <data>
+  <ttProgram>
+    <ttc code="alignt" point="at01" zone="capheight"/>
+    <ttc code="alignb" point="ab01" zone="baseline"/>
+    <ttc code="singlev" point1="ab01" point2="sv01" stem="stem_serif"/>
+    <ttc code="singlev" point1="at01" point2="sv02" stem="stem_serif"/>
+    <ttc code="singlev" point1="at01" point2="sv03" round="true"/>
+    <ttc code="singlev" point1="at01" point2="sv04" stem="uc_stem"/>
+    <ttc code="interpolatev" point="iv01" point1="sv04" point2="ab01" align="round"/>
+    <ttc code="singlev" point1="iv01" point2="sv05" stem="uc_stem"/>
+    <ttc code="singlev" point1="sv05" point2="sv06" round="true"/>
+    <ttc code="singlev" point1="iv01" point2="sv07" round="true"/>
+    <ttc code="singlev" point1="ab01" point2="sv08" stem="uc_stem"/>
+    <ttc code="singlev" point1="ab01" point2="sv09" round="true"/>
+  </ttProgram>
+  </data>
+  <key>com.adobe.type.autohint</key>
+  <data>
+  <hintSetList>
+    <hintset pointTag="hr01">
+      <hstem pos="0" width="54" />
+      <hstem pos="334" width="54" />
+      <hstem pos="644" width="54" />
+      <vstem pos="126" width="101" />
+      <vstem pos="412" width="63" />
+      <vstem pos="496" width="80" />
+    </hintset>
+    <hintset pointTag="hr02">
+      <hstem pos="0" width="54" />
+      <hstem pos="334" width="54" />
+      <hstem pos="648" width="50" />
+      <vstem pos="126" width="101" />
+      <vstem pos="412" width="63" />
+      <vstem pos="505" width="80" />
+    </hintset>
+    <hintset pointTag="hr03">
+      <hstem pos="0" width="50" />
+      <hstem pos="334" width="54" />
+      <hstem pos="648" width="50" />
+      <vstem pos="126" width="101" />
+      <vstem pos="412" width="63" />
+      <vstem pos="505" width="80" />
+    </hintset>
+  </hintSetList>
+  </data>
+  </dict>
+  </lib>
+</glyph>

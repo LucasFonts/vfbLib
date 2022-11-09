@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="naira" format="1">
+  <advance width="777"/>
+  <unicode hex="20A6"/>
+  <outline>
+    <contour>
+      <point x="53" y="50" type="line" name="sv01"/>
+      <point x="127" y="50" type="line"/>
+      <point x="127" y="241" type="line"/>
+      <point x="52" y="241" type="line" name="sv02"/>
+      <point x="52" y="291" type="line" name="iv01"/>
+      <point x="127" y="291" type="line"/>
+      <point x="127" y="407" type="line"/>
+      <point x="52" y="407" type="line" name="sv03"/>
+      <point x="52" y="457" type="line" name="iv02"/>
+      <point x="127" y="457" type="line"/>
+      <point x="127" y="648" type="line"/>
+      <point x="53" y="648" type="line" name="sv04"/>
+      <point x="53" y="698" type="line" name="at01"/>
+      <point x="241" y="698" type="line"/>
+      <point x="393" y="456" type="line" name="sv05"/>
+      <point x="591" y="456" type="line"/>
+      <point x="591" y="648" type="line"/>
+      <point x="517" y="648" type="line" name="sv06"/>
+      <point x="517" y="698" type="line" name="at02"/>
+      <point x="724" y="698" type="line"/>
+      <point x="724" y="648" type="line"/>
+      <point x="650" y="648" type="line" name="sv07"/>
+      <point x="650" y="457" type="line" name="sv08"/>
+      <point x="725" y="457" type="line"/>
+      <point x="725" y="407" type="line"/>
+      <point x="650" y="407" type="line" name="sv09"/>
+      <point x="650" y="291" type="line" name="sv10"/>
+      <point x="725" y="291" type="line"/>
+      <point x="725" y="241" type="line"/>
+      <point x="650" y="241" type="line" name="sv11"/>
+      <point x="650" y="0" type="line"/>
+      <point x="568" y="0" type="line" name="ab02"/>
+      <point x="416" y="242" type="line"/>
+      <point x="186" y="242" type="line" name="sv12"/>
+      <point x="186" y="50" type="line" name="sv13"/>
+      <point x="260" y="50" type="line"/>
+      <point x="260" y="0" type="line"/>
+      <point x="53" y="0" type="line" name="ab01"/>
+    </contour>
+    <contour>
+      <point x="186" y="290" type="line" name="sv14"/>
+      <point x="386" y="290" type="line"/>
+      <point x="190" y="598" type="line" name="hr01"/>
+      <point x="186" y="598" type="line" name="sv15"/>
+    </contour>
+    <contour>
+      <point x="587" y="149" type="line" name="sv16"/>
+      <point x="591" y="149" type="line"/>
+      <point x="591" y="408" type="line"/>
+      <point x="423" y="408" type="line" name="sv17"/>
+    </contour>
+  </outline>
+  <lib>
+  <dict>
+  <key>com.fontlab.ttprogram</key>
+  <data>
+  <ttProgram>
+    <ttc code="alignt" point="at01" zone="capheight"/>
+    <ttc code="alignt" point="at02" zone="capheight"/>
+    <ttc code="alignb" point="ab01" zone="baseline"/>
+    <ttc code="alignb" point="ab02" zone="baseline"/>
+    <ttc code="singlev" point1="ab01" point2="sv01" stem="stem_serif"/>
+    <ttc code="interpolatev" point="iv01" point1="at01" point2="ab01" align="round"/>
+    <ttc code="mdeltav" point="iv01" delta="-8" ppm1="9" ppm2="9"/>
+    <ttc code="singlev" point1="iv01" point2="sv02" stem="stem_serif"/>
+    <ttc code="interpolatev" point="iv02" point1="at01" point2="ab01" align="round"/>
+    <ttc code="singlev" point1="iv02" point2="sv03" stem="stem_serif"/>
+    <ttc code="singlev" point1="at01" point2="sv04" stem="stem_serif"/>
+    <ttc code="singlev" point1="iv02" point2="sv05"/>
+    <ttc code="singlev" point1="at02" point2="sv06" stem="stem_serif"/>
+    <ttc code="singlev" point1="sv06" point2="sv07"/>
+    <ttc code="singlev" point1="iv02" point2="sv08"/>
+    <ttc code="singlev" point1="sv03" point2="sv09"/>
+    <ttc code="singlev" point1="iv01" point2="sv10"/>
+    <ttc code="singlev" point1="sv02" point2="sv11"/>
+    <ttc code="singlev" point1="sv02" point2="sv12"/>
+    <ttc code="singlev" point1="sv01" point2="sv13"/>
+    <ttc code="singlev" point1="iv01" point2="sv14"/>
+    <ttc code="singlev" point1="at01" point2="sv15"/>
+    <ttc code="singlev" point1="ab02" point2="sv16"/>
+    <ttc code="singlev" point1="sv03" point2="sv17"/>
+  </ttProgram>
+  </data>
+  <key>com.adobe.type.autohint</key>
+  <data>
+  <hintSetList>
+    <hintset pointTag="hr01">
+      <hstem pos="0" width="149" />
+      <hstem pos="241" width="50" />
+      <hstem pos="407" width="50" />
+      <hstem pos="598" width="100" />
+      <vstem pos="127" width="59" />
+      <vstem pos="591" width="59" />
+    </hintset>
+  </hintSetList>
+  </data>
+  </dict>
+  </lib>
+</glyph>

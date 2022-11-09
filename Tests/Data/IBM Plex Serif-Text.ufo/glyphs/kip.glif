@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="kip" format="1">
+  <advance width="705"/>
+  <unicode hex="20AD"/>
+  <outline>
+    <contour>
+      <point x="52" y="50" type="line" name="sv01"/>
+      <point x="126" y="50" type="line"/>
+      <point x="126" y="336" type="line"/>
+      <point x="47" y="336" type="line" name="sv02"/>
+      <point x="47" y="387" type="line" name="iv01"/>
+      <point x="126" y="387" type="line"/>
+      <point x="126" y="648" type="line"/>
+      <point x="52" y="648" type="line" name="sv03"/>
+      <point x="52" y="698" type="line" name="at01"/>
+      <point x="301" y="698" type="line"/>
+      <point x="301" y="648" type="line"/>
+      <point x="227" y="648" type="line" name="sv04"/>
+      <point x="227" y="387" type="line" name="sv05"/>
+      <point x="323" y="387" type="line"/>
+      <point x="525" y="648" type="line"/>
+      <point x="439" y="648" type="line" name="sv06"/>
+      <point x="439" y="698" type="line" name="at02"/>
+      <point x="659" y="698" type="line"/>
+      <point x="659" y="648" type="line"/>
+      <point x="591" y="648" type="line" name="sv07"/>
+      <point x="386" y="387" type="line" name="sv08"/>
+      <point x="601" y="387" type="line"/>
+      <point x="601" y="336" type="line"/>
+      <point x="476" y="336" type="line" name="sv10"/>
+      <point x="405" y="338" type="line"/>
+      <point x="476" y="241" type="line"/>
+      <point x="609" y="50" type="line" name="sv12"/>
+      <point x="679" y="50" type="line"/>
+      <point x="679" y="0" type="line"/>
+      <point x="429" y="0" type="line" name="ab02"/>
+      <point x="429" y="50" type="line" name="sv11"/>
+      <point x="495" y="50" type="line"/>
+      <point x="303" y="336" type="line"/>
+      <point x="227" y="336" type="line" name="sv09"/>
+      <point x="227" y="50" type="line" name="sv13"/>
+      <point x="301" y="50" type="line"/>
+      <point x="301" y="0" type="line"/>
+      <point x="52" y="0" type="line" name="ab01"/>
+    </contour>
+  </outline>
+  <lib>
+  <dict>
+  <key>com.fontlab.ttprogram</key>
+  <data>
+  <ttProgram>
+    <ttc code="alignt" point="at01" zone="capheight"/>
+    <ttc code="alignt" point="at02" zone="capheight"/>
+    <ttc code="alignb" point="ab01" zone="baseline"/>
+    <ttc code="alignb" point="ab02" zone="baseline"/>
+    <ttc code="singlev" point1="ab01" point2="sv01" stem="stem_serif"/>
+    <ttc code="interpolatev" point="iv01" point1="at01" point2="ab01" align="round"/>
+    <ttc code="mdeltav" point="iv01" delta="8" ppm1="9" ppm2="9"/>
+    <ttc code="mdeltav" point="iv01" delta="8" ppm1="11" ppm2="12"/>
+    <ttc code="singlev" point1="iv01" point2="sv02" stem="stem_serif"/>
+    <ttc code="singlev" point1="at01" point2="sv03" stem="stem_serif"/>
+    <ttc code="singlev" point1="sv03" point2="sv04"/>
+    <ttc code="singlev" point1="iv01" point2="sv05"/>
+    <ttc code="singlev" point1="at02" point2="sv06" stem="stem_serif"/>
+    <ttc code="singlev" point1="sv06" point2="sv07"/>
+    <ttc code="singlev" point1="sv05" point2="sv08"/>
+    <ttc code="singlev" point1="sv02" point2="sv09"/>
+    <ttc code="singlev" point1="sv09" point2="sv10"/>
+    <ttc code="singlev" point1="ab02" point2="sv11" stem="stem_serif"/>
+    <ttc code="singlev" point1="sv11" point2="sv12"/>
+    <ttc code="singlev" point1="sv01" point2="sv13"/>
+  </ttProgram>
+  </data>
+  <key>com.adobe.type.autohint</key>
+  <data>
+  <hintSetList>
+    <hintset pointTag="sv01">
+      <hstem pos="0" width="50" />
+      <hstem pos="336" width="51" />
+      <hstem pos="648" width="50" />
+      <vstem pos="126" width="101" />
+    </hintset>
+  </hintSetList>
+  </data>
+  </dict>
+  </lib>
+</glyph>

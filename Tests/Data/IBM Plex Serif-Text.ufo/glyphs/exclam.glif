@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="exclam" format="1">
+  <advance width="282"/>
+  <unicode hex="0021"/>
+  <outline>
+    <contour>
+      <point x="141" y="-12" type="qcurve" name="ab01"/>
+      <point x="109" y="-12"/>
+      <point x="74" y="26"/>
+      <point x="74" y="53" type="qcurve"/>
+      <point x="74" y="59" type="line"/>
+      <point x="74" y="86"/>
+      <point x="109" y="124"/>
+      <point x="141" y="124" type="qcurve" name="sv01"/>
+      <point x="173" y="124"/>
+      <point x="208" y="86"/>
+      <point x="208" y="59" type="qcurve"/>
+      <point x="208" y="53" type="line"/>
+      <point x="208" y="26"/>
+      <point x="173" y="-12"/>
+    </contour>
+    <contour>
+      <point x="92" y="501" type="line"/>
+      <point x="92" y="698" type="line" name="at01"/>
+      <point x="190" y="698" type="line"/>
+      <point x="190" y="501" type="line"/>
+      <point x="161" y="191" type="line"/>
+      <point x="121" y="191" type="line" name="sv02"/>
+    </contour>
+  </outline>
+  <lib>
+  <dict>
+  <key>com.fontlab.ttprogram</key>
+  <data>
+  <ttProgram>
+    <ttc code="alignt" point="at01" zone="capheight"/>
+    <ttc code="alignb" point="ab01" zone="baseline"/>
+    <ttc code="singlev" point1="ab01" point2="sv01" round="true"/>
+    <ttc code="singlev" point1="sv01" point2="sv02" round="true"/>
+  </ttProgram>
+  </data>
+  <key>com.adobe.type.autohint</key>
+  <data>
+  <hintSetList>
+  </hintSetList>
+  </data>
+  </dict>
+  </lib>
+</glyph>
