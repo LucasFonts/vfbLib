@@ -275,7 +275,6 @@ class VfbToUfoWriter:
             if in_path:
                 pen.endPath()
         if hasattr(self.current_mmglyph, "mm_components"):
-            print(f"Adding components to {self.current_mmglyph.name}")
             for c in self.current_mmglyph.mm_components:
                 transform = (
                     c["scaleX"][self.master_index],
@@ -285,7 +284,6 @@ class VfbToUfoWriter:
                     c["offsetX"][self.master_index],
                     c["offsetY"][self.master_index],
                 )
-                print(transform)
                 pen.addComponent(
                     self.glyphOrder[c["gid"]],
                     transformation=transform
