@@ -270,7 +270,7 @@ class VfbToUfoWriter:
                     pen.addPoint(
                         pt=(pt3["x"], pt3["y"]),
                         segmentType=segment_type,
-                        smooth=n["flags"] & 0x01
+                        # smooth=n["flags"] & 0x01 # FIXME
                     )
             if in_path:
                 pen.endPath()
