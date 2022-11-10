@@ -1,8 +1,13 @@
+from __future__ import annotations
+
 from defcon import Font
 from fontTools.ufoLib import UFOWriter
 from fontTools.ufoLib.glifLib import GlyphSet, Glyph
 from pathlib import Path
-from typing import Any, List
+from shutil import rmtree
+from typing import TYPE_CHECKING, Any, Dict, List
+if TYPE_CHECKING:
+    from fontTools.pens.pointPen import AbstractPointPen
 
 
 def binaryToIntList(value, start=0):
@@ -145,7 +150,7 @@ class VfbToUfoWriter:
             if name == "Encoding":
                 pass
             elif name == "weight":
-                self.info.openTypeOS2WeightClass = max (0, data)
+                self.info.openTypeOS2WeightClass = max(0, data)
             elif name == "Gasp Ranges":
                 # self.info.openTypeGaspRangeRecords = data
                 pass
@@ -229,8 +234,31 @@ class VfbToUfoWriter:
                 # print(f"Unhandled key: {name}")
         self.lib["public.glyphOrder"] = self.glyphOrder
 
+    def draw_glyph(self, pen: AbstractPointPen):
+        """
+        Draw the current glyph onto pen. Use self.master_index for which outlines
+        or component transformations to use.
+        """
+        if hasattr(self.current_mmglyph, "mm_components"):
+            print(f"Adding components to {self.current_mmglyph.name}")
+            for c in self.current_mmglyph.mm_components:
+                transform = (
+                    c["scaleX"][self.master_index],
+                    0.0,
+                    0.0,
+                    c["scaleY"][self.master_index],
+                    c["offsetX"][self.master_index],
+                    c["offsetY"][self.master_index],
+                )
+                print(transform)
+                pen.addComponent(
+                    self.glyphOrder[c["gid"]],
+                    transformation=transform
+                )
+
     def write(self, out_path: Path) -> None:
         for i in range(len(self.masters)):
+            self.master_index = i
             if i > 0:
                 master_path = out_path.with_stem(f"{out_path.stem}-{i}")
             else:
@@ -241,15 +269,16 @@ class VfbToUfoWriter:
             glyphs_path = master_path / "glyphs"
             glyphs_path.mkdir()
             gs = GlyphSet(glyphs_path)
-            for name, mmglyph in self.glyph_masters.items():
+            for name, self.current_mmglyph in self.glyph_masters.items():
                 g = Glyph(name, gs)
-                g.lib = mmglyph.lib
-                g.unicodes = mmglyph.unicodes
-                g.width, g.height = mmglyph.mm_metrics[i]
-                
-                gs.writeGlyph(name, g)
+                g.lib = self.current_mmglyph.lib
+                g.unicodes = self.current_mmglyph.unicodes
+                g.width, g.height = self.current_mmglyph.mm_metrics[i]
+                gs.writeGlyph(
+                    name, glyphObject=g, drawPointsFunc=self.draw_glyph
+                )
             gs.writeContents()
-            gs.writeLayerInfo(["public.default", "glyphs"])
+            gs.writeLayerInfo(writer.getGlyphSet())
             writer.writeLayerContents()
             writer.writeGroups(self.groups)
             writer.writeInfo(self.info)
@@ -258,5 +287,6 @@ class VfbToUfoWriter:
             writer.writeLib(self.lib)
             writer.close()
             # For now, normalize like defcon
-            # f = Font(out_path)
-            # f.save(out_path)
+            # f = Font(master_path)
+            # rmtree(master_path)
+            # f.save(master_path)
