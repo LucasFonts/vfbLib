@@ -239,6 +239,41 @@ class VfbToUfoWriter:
         Draw the current glyph onto pen. Use self.master_index for which outlines
         or component transformations to use.
         """
+        if hasattr(self.current_mmglyph, "mm_nodes"):
+            # print(f"Add nodes to {self.current_mmglyph.name}...")
+            in_path = False
+            for n in self.current_mmglyph.mm_nodes:
+                segment_type = n["type"]
+                if segment_type == "move":
+                    segment_type = "line"
+                    if in_path:
+                        pen.endPath()
+                    pen.beginPath()
+                    in_path = True
+                master_nodes = n["points"][self.master_index]
+                if len(master_nodes) == 1:
+                    pt = master_nodes[0]
+                    pen.addPoint(
+                        pt=(pt["x"], pt["y"]),
+                        segmentType=segment_type,
+                        # smooth=n["flags"] & 0x02
+                    )
+                elif len(master_nodes) == 3:
+                    # Cubic curve
+                    pt3, pt1, pt2 = master_nodes
+                    pen.addPoint(
+                        pt=(pt1["x"], pt1["y"]),
+                    )
+                    pen.addPoint(
+                        pt=(pt2["x"], pt2["y"]),
+                    )
+                    pen.addPoint(
+                        pt=(pt3["x"], pt3["y"]),
+                        segmentType=segment_type,
+                        smooth=n["flags"] & 0x01
+                    )
+            if in_path:
+                pen.endPath()
         if hasattr(self.current_mmglyph, "mm_components"):
             print(f"Adding components to {self.current_mmglyph.name}")
             for c in self.current_mmglyph.mm_components:

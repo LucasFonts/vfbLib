@@ -302,22 +302,32 @@ class GlyphParser(BaseParser):
             flags = byte >> 4
             cmd = byte & 0x0F
             segment = dict(type=cmd_name[cmd], flags=flags, points=[])
+            points = [[] for _ in range(num_masters)]
             for m in range(num_masters):
-                master_points: List[Dict[str, int]] = []
-
                 # End point
-                x[m] += read_encoded_value(stream)
-                y[m] += read_encoded_value(stream)
-                master_points.append(dict(x=x[m], y=y[m]))
+                xrel = read_encoded_value(stream)
+                yrel = read_encoded_value(stream)
+                x[m] += xrel
+                y[m] += yrel
+                points[m].append(dict(x=x[m], y=y[m], xr=xrel, yr=yrel))
 
-                if cmd == 3:  # Curve?
-                    # Control 1, Control 2
-                    for j in range(2):
-                        x[m] += read_encoded_value(stream)
-                        y[m] += read_encoded_value(stream)
-                        master_points.append(dict(x=x[m], y=y[m]))
+            if cmd == 3:  # Curve
+                for m in range(num_masters):
+                    # First control point
+                    xrel = read_encoded_value(stream)
+                    yrel = read_encoded_value(stream)
+                    x[m] += xrel
+                    y[m] += yrel
+                    points[m].append(dict(x=x[m], y=y[m], xr=xrel, yr=yrel))
+                for m in range(num_masters):
+                    # Second control point
+                    xrel = read_encoded_value(stream)
+                    yrel = read_encoded_value(stream)
+                    x[m] += xrel
+                    y[m] += yrel
+                    points[m].append(dict(x=x[m], y=y[m], xr=xrel, yr=yrel))
 
-                segment["points"].append(master_points)
+            segment["points"] = points
             segments.append(segment)
         glyphdata["nodes"] = segments
         return num_masters
