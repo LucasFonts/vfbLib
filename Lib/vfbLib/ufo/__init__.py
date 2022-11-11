@@ -5,10 +5,12 @@ from fontTools.ufoLib import UFOWriter
 from fontTools.ufoLib.glifLib import GlyphSet, Glyph
 from pathlib import Path
 from shutil import rmtree
-from typing import TYPE_CHECKING, Any, List
+from typing import TYPE_CHECKING, Any, List, Tuple
 
 if TYPE_CHECKING:
     from fontTools.pens.pointPen import AbstractPointPen
+
+    Point = Tuple[int, int]
 
 
 def binaryToIntList(value, start=0):
@@ -240,41 +242,71 @@ class VfbToUfoWriter:
         Draw the current glyph onto pen. Use self.master_index for which outlines
         or component transformations to use.
         """
+        contours = []
+        last_type = None
         if hasattr(self.current_mmglyph, "mm_nodes"):
             # print(f"Add nodes to {self.current_mmglyph.name}...")
-            in_path = False
+            contours = []
+            contour: List[
+                List[None | str | Point]
+            ] | None = None
+            qcurve = False
             for n in self.current_mmglyph.mm_nodes:
+                # Nodes for the current master
+                nodes = n["points"][self.master_index]
                 segment_type = n["type"]
-                if segment_type == "move":
-                    segment_type = "line"
-                    if in_path:
-                        pen.endPath()
-                    pen.beginPath()
-                    in_path = True
-                master_nodes = n["points"][self.master_index]
-                if len(master_nodes) == 1:
-                    pt = master_nodes[0]
-                    pen.addPoint(
-                        pt=(pt["x"], pt["y"]),
-                        segmentType=segment_type,
-                        # smooth=n["flags"] & 0x02
+
+                # print("****", segment_type, nodes)
+
+                if segment_type == "line":
+                    if qcurve:
+                        effective_type = "qcurve"
+                        qcurve = False
+                    else:
+                        effective_type = "line"
+
+                    contour.append(
+                        [effective_type, (nodes[0]["x"], nodes[0]["y"])]
                     )
-                elif len(master_nodes) == 3:
-                    # Cubic curve
-                    pt3, pt1, pt2 = master_nodes
-                    pen.addPoint(
-                        pt=(pt1["x"], pt1["y"]),
-                    )
-                    pen.addPoint(
-                        pt=(pt2["x"], pt2["y"]),
-                    )
-                    pen.addPoint(
-                        pt=(pt3["x"], pt3["y"]),
-                        segmentType=segment_type,
-                        # smooth=n["flags"] & 0x01 # FIXME
-                    )
-            if in_path:
-                pen.endPath()
+                    last_type = segment_type
+
+                elif segment_type == "move":
+                    if contour is not None:
+                        if last_type == "line":
+                            contour[0][0] = "line"
+                        elif last_type == "curve":
+                            contour[0][0] = "curve"
+                        elif last_type == "qcurve":
+                            contour[0][0] = "qcurve"
+                        contours.append(contour)
+                    contour = [["move", (nodes[0]["x"], nodes[0]["y"])]]
+
+                elif segment_type == "curve":
+                    pt3, pt1, pt2 = nodes
+                    contour.append([None, (pt1["x"], pt1["y"])])
+                    contour.append([None, (pt2["x"], pt2["y"])])
+                    contour.append(["curve", (pt3["x"], pt3["y"])])
+                
+                elif segment_type == "qcurve":
+                    qcurve = True
+                    contour.append([None, (nodes[0]["x"], nodes[0]["y"])])
+                    last_type = segment_type
+            
+            if contour is not None:
+                if last_type == "line":
+                    contour[0][0] = "line"
+                elif last_type == "curve":
+                    contour[0][0] = "curve"
+                elif last_type == "qcurve":
+                    contour[0][0] = "qcurve"
+                contours.append(contour)
+        
+        for contour in contours:
+            pen.beginPath()
+            for segment_type, pt in contour:
+                pen.addPoint(pt, segment_type)
+            pen.endPath()
+
         if hasattr(self.current_mmglyph, "mm_components"):
             for c in self.current_mmglyph.mm_components:
                 transform = (
