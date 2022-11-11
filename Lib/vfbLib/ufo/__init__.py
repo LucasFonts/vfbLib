@@ -377,7 +377,7 @@ class VfbToUfoWriter:
         for gn, tr in components:
             pen.addComponent(glyphName=gn, transformation=tr)
 
-    def write(self, out_path: Path, overwrite=False) -> None:
+    def write(self, out_path: Path, overwrite=False, silent=False) -> None:
         for i in range(len(self.masters)):
             self.master_index = i
 
