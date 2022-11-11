@@ -1,12 +1,29 @@
 use pyo3::prelude::*;
+use std::fs::File;
 use std::io::prelude::*;
 use std::io::BufReader;
-use std::fs::File;
 
+// struct VfbHeader {
+
+// }
+
+struct VfbField<'a> {
+    key: u16,
+    size: u32,
+    data: Vec<&'a [u8]>,
+}
+
+struct VfbObject<'a> {
+    // header: &VfbHeader,
+    fields: Vec<VfbField<'a>>,
+}
 
 // internal functions
 
-fn read_encoded_value<R>(r: &mut BufReader<R>) -> i32 where R: std::io::Read {
+fn read_encoded_value<R>(r: &mut BufReader<R>) -> i32
+where
+    R: std::io::Read,
+{
     let mut value = [0; 1];
     r.read_exact(&mut value[..]).expect("ValueError");
     let val = value[0];
@@ -35,26 +52,34 @@ fn read_encoded_value<R>(r: &mut BufReader<R>) -> i32 where R: std::io::Read {
     }
 }
 
-// struct VfbHeader {
+fn read_entry<R>(r: &mut BufReader<R>) -> VfbField
+where
+    R: std::io::Read,
+{
+    let mut key = [0, 2];
+    r.read_exact(&mut key[..]).expect("ValueError");
 
-// }
+    let mut finalsize: i32 = 0;
+    if key[0] && 0x8000 {
+        let mut size = [0, 2];
+        r.read_exact(&mut size[..]).expect("ValueError");
+        finalsize = size[0];
+    } else {
+        let mut size = [0, 1];
+        r.read_exact(&mut size[..]).expect("ValueError");
+        finalsize = size[0];
+    }
 
-struct VfbField<'a> {
-    key: u16,
-    size: u16,
-    data: Vec<&'a [u8]>,
-}
-
-
-struct VfbObject<'a> {
-    // header: &VfbHeader,
-    fields: Vec<VfbField<'a>>,
+    return VfbField {
+        key: key[0],
+        size: finalsize,
+        // data: Vec<b"blub">,
+    };
 }
 
 // fn read_header(buf_reader: std::io::BufReader<R>) {
 //     // pass
 // }
-
 
 // functions exposed to Python
 
@@ -107,9 +132,7 @@ fn read_vfb(path: &str) -> PyResult<()> {
     r.read_exact(&mut headera[..])?;
 
     // let mut obj = ...
-    let _obj = VfbObject {
-        fields: Vec::new(),
-    };
+    let _obj = VfbObject { fields: Vec::new() };
     Ok(())
 }
 
