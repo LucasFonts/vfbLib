@@ -270,6 +270,9 @@ class VfbToUfoWriter:
             else:
                 pass
                 # print(f"Unhandled key: {name}")
+        if self.current_glyph is not None:
+            self.glyph_masters[self.current_glyph.name] = self.current_glyph
+            self.glyphOrder.append(self.current_glyph.name)
         self.lib["public.glyphOrder"] = self.glyphOrder
 
     def get_master_kerning(self, master_index=0):
