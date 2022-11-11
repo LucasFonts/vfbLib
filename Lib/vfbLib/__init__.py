@@ -38,7 +38,11 @@ class VFBReader:
                 self.data.append(entry)
         end = time()
         if self.timing:
-            print("Deserialized object in", round((end - start) * 1000), "ms.")
+            print(
+                "Source file was successfully imported in",
+                round((end - start) * 1000),
+                "ms.",
+            )
 
     def read(self):
         self.data = []
