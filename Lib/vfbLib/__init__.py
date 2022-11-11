@@ -17,7 +17,7 @@ class VFBReader:
 
     def __init__(self, vfb_path: Path) -> None:
         self.vfb_path = vfb_path
-        self.data: List[Tuple[str, Any]] = []
+        self.data: List[List[Any]] = []
 
     def __repr__(self) -> str:
         return str(self.data)
@@ -25,7 +25,7 @@ class VFBReader:
     def parse(self, stream: BufferedReader):
         self.stream = stream
         header = VfbHeaderParser.parse(stream)
-        self.data.append(("header", header))
+        self.data.append(["header", header])
         while True:
             try:
                 entry = self._parse_entry()
@@ -47,7 +47,7 @@ class VFBReader:
         if entry:
             self.data.append(entry)
 
-    def _parse_entry(self) -> Tuple[str, Any]:
+    def _parse_entry(self) -> List[Any]:
         """
         Read, parse and return an entry from the stream
         """
@@ -65,9 +65,9 @@ class VFBReader:
             raise
 
         if parsed:
-            return tuple([entry_id, parsed])
+            return [entry_id, parsed]
         else:
-            return tuple()
+            return []
 
     def _read_entry(self) -> Tuple[str, BaseParser, int]:
         """

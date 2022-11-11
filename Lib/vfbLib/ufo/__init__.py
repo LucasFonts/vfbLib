@@ -5,7 +5,8 @@ from fontTools.ufoLib import UFOWriter
 from fontTools.ufoLib.glifLib import GlyphSet, Glyph
 from pathlib import Path
 from shutil import rmtree
-from typing import TYPE_CHECKING, Any, Dict, List
+from typing import TYPE_CHECKING, Any, List
+
 if TYPE_CHECKING:
     from fontTools.pens.pointPen import AbstractPointPen
 
@@ -30,7 +31,7 @@ class VfbToUfoGlyph:
 
 
 class VfbToUfoWriter:
-    def __init__(self, json) -> None:
+    def __init__(self, json: List[List[Any]]) -> None:
         """
         Serialize the JSON structure to UFO(s)
         """
