@@ -40,6 +40,7 @@ class VfbToUfoWriter:
         self.json = json
         self.groups = {}
         self.info = VfbToUfoInfo()
+        self.mm_kerning = {}
         self.kerning = {}
         self.lib = {}
         self.masters = []
@@ -49,7 +50,6 @@ class VfbToUfoWriter:
         self.glyph_masters = {}
         self.glyphOrder = []
         self.build_mapping()
-        self.mmdata: List[Any] = []
 
     def build_mapping(self):
         self.info_mapping = {
@@ -158,11 +158,18 @@ class VfbToUfoWriter:
         g.name = data["name"]
         masters = data["num_masters"]
         g.unicodes = []
+
         if "tth" in data:
             g.tth = data["tth"]
-        # MM Stuff, need to extract at write time
+
+        # MM Stuff, need to extract later
+        if "kerning" in data:
+            for Rid, values in data["kerning"].items():
+                self.mm_kerning[g.name, Rid] = values
+
         g.mm_metrics = data["metrics"]  # width and height
         g.mm_nodes = data["nodes"]
+
         if "components" in data:
             g.mm_components = data["components"]
 
@@ -265,7 +272,15 @@ class VfbToUfoWriter:
                 # print(f"Unhandled key: {name}")
         self.lib["public.glyphOrder"] = self.glyphOrder
 
-    def build_master_glyph(self, mmglyph, master_index=0):
+    def get_master_kerning(self, master_index=0):
+        # TODO: Must look up class kerning references
+        kerning = {}
+        for pair, values in self.mm_kerning.items():
+            L, Rid = pair
+            kerning[L, self.glyphOrder[int(Rid)]] = values[master_index]
+        return kerning
+
+    def get_master_glyph(self, mmglyph, master_index=0):
         # Extract a single master glyph from a mm glyph
         contours = []
         last_type = None
@@ -347,7 +362,7 @@ class VfbToUfoWriter:
         or component transformations to use.
         """
 
-        contours, components = self.build_master_glyph(
+        contours, components = self.get_master_glyph(
             self.current_mmglyph, self.master_index
         )
 
@@ -391,10 +406,13 @@ class VfbToUfoWriter:
                 )
             gs.writeContents()
             gs.writeLayerInfo(writer.getGlyphSet())
+
+            master_kerning = self.get_master_kerning(master_index=i)
+
             writer.writeLayerContents()
             writer.writeGroups(self.groups)
             writer.writeInfo(self.info)
-            writer.writeKerning(self.kerning)
+            writer.writeKerning(master_kerning)
             writer.writeFeatures(self.features)
             writer.writeLib(self.lib)
             writer.close()

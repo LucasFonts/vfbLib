@@ -346,14 +346,14 @@ class GlyphParser(BaseParser):
         cls, stream: BytesIO, glyphdata: Dict, num_masters=1
     ) -> None:
         num = read_encoded_value(stream)
-        kerning = []
+        kerning = {}
         for _ in range(num):
             # Right kerning partner
             gid = read_encoded_value(stream)
             values = []
             for _ in range(num_masters):
                 values.append(read_encoded_value(stream))
-            kerning.append(dict(gid=gid, values=values))
+            kerning[gid] = values
         glyphdata["kerning"] = kerning
 
     @classmethod
