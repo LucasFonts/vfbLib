@@ -480,13 +480,11 @@ class MaskParser(GlyphParser):
     def _parse(cls) -> Dict:
         s = cls.stream
         glyphdata = {}
-        num_masters = read_encoded_value(s)
-        glyphdata["num_masters"] = num_masters  # 8c
-        glyphdata["reserved1"] = cls.read_uint32(s)  # ff05f5e1
-        glyphdata["reserved2"] = cls.read_uint8(s)  # 00
-        for i in range(num_masters - 1):
-            glyphdata[f"m{i}"] = read_encoded_value(s)  # 8b
-        # print(glyphdata)
+        num = read_encoded_value(s)
+        glyphdata["num"] = num
+        for i in range(num):
+            glyphdata[f"reserved{i}"] = read_encoded_value(s)
+
         # From here, the mask is equal to the outlines
         cls.parse_outlines(s, glyphdata)
         return glyphdata
