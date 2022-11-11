@@ -1,6 +1,7 @@
 from fontTools.misc.textTools import hexStr
 from io import BufferedReader
 from pathlib import Path
+from time import time
 from typing import Any, List, Tuple
 from vfbLib.constants import parser_classes
 from vfbLib.parsers import BaseParser
@@ -15,14 +16,16 @@ class VFBReader:
     Base class to read data from a vfb file
     """
 
-    def __init__(self, vfb_path: Path) -> None:
+    def __init__(self, vfb_path: Path, timing=True) -> None:
         self.vfb_path = vfb_path
         self.data: List[List[Any]] = []
+        self.timing = timing
 
     def __repr__(self) -> str:
         return str(self.data)
 
     def parse(self, stream: BufferedReader):
+        start = time()
         self.stream = stream
         header = VfbHeaderParser.parse(stream)
         self.data.append(["header", header])
@@ -33,6 +36,9 @@ class VFBReader:
                 break
             if entry:
                 self.data.append(entry)
+        end = time()
+        if self.timing:
+            print("Deserialized object in", round((end - start) * 1000), "ms.")
 
     def read(self):
         self.data = []
