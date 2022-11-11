@@ -83,6 +83,32 @@ class VfbToUfoWriter:
             "Default Glyph": "postscriptDefaultCharacter",
         }
 
+    def add_ot_class(self, data):
+        if ":" not in data:
+            print("Malformed OT class definition, skipping:", data)
+            return
+        
+        name, glyphs = data.split(":", 1)
+        name = name.strip()
+        if name in self.groups:
+            print("Duplicate OT class name, skipping:", name)
+            return
+
+        glyphs_list = glyphs.split()
+
+        if name.startswith("_"):
+            # Kerning class
+            glyphs = [g.strip() for g in glyphs_list if not g.endswith("'")]
+            keyglyphs = [g.strip() for g in glyphs_list if g.endswith("'")]
+            keyglyphs = [k.strip("'") for k in keyglyphs]
+            if len(keyglyphs) != 1:
+                print(f"Unexpected number of key glyphs in group {name}: {keyglyphs}")
+            glyphs.insert(0, *keyglyphs)
+
+        else:
+            glyphs = [g.strip() for g in glyphs_list]
+        self.groups[name] = glyphs
+
     def assignMetrics(self, data):
         for k, v in data:
             if k == "embedding":
@@ -177,6 +203,8 @@ class VfbToUfoWriter:
                 self.lib["com.fontlab.v5.userData"] = data
             elif name == "openTypeFeatures":
                 self.features = data
+            elif name == "OpenType Class":
+                self.add_ot_class(data)
             elif name == "Axis Mapping":
                 pass
             elif name == "Master Name":
