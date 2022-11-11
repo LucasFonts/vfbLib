@@ -318,12 +318,14 @@ class VfbToUfoWriter:
                             contour[0][0] = "qcurve"
                         contours.append(contour)
                     contour = [["move", (nodes[0]["x"], nodes[0]["y"])]]
+                    qcurve = False
 
                 elif segment_type == "curve":
                     pt3, pt1, pt2 = nodes
                     contour.append([None, (pt1["x"], pt1["y"])])
                     contour.append([None, (pt2["x"], pt2["y"])])
                     contour.append(["curve", (pt3["x"], pt3["y"])])
+                    qcurve = False
 
                 elif segment_type == "qcurve":
                     qcurve = True
