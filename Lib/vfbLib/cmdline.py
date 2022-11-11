@@ -92,6 +92,13 @@ def vfb2ufo():
         help="write GLIF lib 'data' section using base64 (recommended)",
     )
     parser.add_argument(
+        "-s",
+        "--silent",
+        action="store_true",
+        default=False,
+        help="no display (silent mode)",
+    )
+    parser.add_argument(
         "-z",
         "--zip",
         action="store_true",
@@ -112,16 +119,18 @@ def vfb2ufo():
     )
     args = parser.parse_args()
     if args:
+        if not args.silent:
+            print(parser.description)
         vfb_path = Path(args.inputpath[0])
         reader = read_vfb(vfb_path)
         if args.path:
-            out_path = (Path(args.path[0]) / vfb_path.name).with_suffix(
-                ".ufo"
-            )
+            out_path = (Path(args.path[0]) / vfb_path.name).with_suffix(".ufo")
         else:
             out_path = vfb_path.with_suffix(".ufo")
         writer = VfbToUfoWriter(reader.data)
         writer.build()
-        writer.write(out_path, overwrite=args.force_overwrite)
+        writer.write(
+            out_path, overwrite=args.force_overwrite, silent=args.silent
+        )
     else:
         parser.print_help()
