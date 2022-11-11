@@ -38,6 +38,8 @@ class VfbToUfoWriter:
         Serialize the JSON structure to UFO(s)
         """
         self.json = json
+        self.features_classes = ""
+        self.features = ""
         self.groups = {}
         self.info = VfbToUfoInfo()
         self.mm_kerning = {}
@@ -90,7 +92,7 @@ class VfbToUfoWriter:
         
         name, glyphs = data.split(":", 1)
         name = name.strip()
-        if name in self.groups:
+        if f"@{name}" in self.groups:
             print("Duplicate OT class name, skipping:", name)
             return
 
@@ -107,7 +109,8 @@ class VfbToUfoWriter:
 
         else:
             glyphs = [g.strip() for g in glyphs_list]
-        self.groups[name] = glyphs
+        self.groups[f"@{name}"] = glyphs
+        self.features_classes += f"@{name} = [{' '.join(glyphs)}];\n"
 
     def assignMetrics(self, data):
         for k, v in data:
@@ -420,7 +423,10 @@ class VfbToUfoWriter:
             writer.writeGroups(self.groups)
             writer.writeInfo(self.info)
             writer.writeKerning(master_kerning)
-            writer.writeFeatures(self.features)
+            if self.features:
+                writer.writeFeatures(
+                    self.features_classes + "\n\n" + self.features
+                )
             writer.writeLib(self.lib)
             writer.close()
             # For now, normalize like defcon
