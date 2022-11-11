@@ -8,8 +8,8 @@ from vfbLib import VFBReader
 from vfbLib.ufo import VfbToUfoWriter
 
 
-def read_vfb(vfb_path: Path) -> VFBReader:
-    reader = VFBReader(vfb_path)
+def read_vfb(vfb_path: Path, minimal=False) -> VFBReader:
+    reader = VFBReader(vfb_path, minimal=minimal)
     reader.read()
     return reader
 
@@ -28,6 +28,13 @@ def vfb2json():
         )
     )
     parser.add_argument(
+        "-m",
+        "--minimal",
+        action="store_true",
+        default=False,
+        help="parse only minimal amount of data",
+    )
+    parser.add_argument(
         "-p",
         "--path",
         type=str,
@@ -43,7 +50,7 @@ def vfb2json():
     args = parser.parse_args()
     if args:
         vfb_path = Path(args.inputpath[0])
-        reader = read_vfb(vfb_path)
+        reader = read_vfb(vfb_path, minimal=args.minimal)
         if args.path:
             out_path = (Path(args.path[0]) / vfb_path.name).with_suffix(
                 ".json"
@@ -117,12 +124,19 @@ def vfb2ufo():
         nargs="?",
         help="output file path (.ufo[z])",
     )
+    parser.add_argument(
+        "-m",
+        "--minimal",
+        action="store_true",
+        default=False,
+        help="parse only minimal amount of data",
+    )
     args = parser.parse_args()
     if args:
         if not args.silent:
             print(parser.description)
         vfb_path = Path(args.inputpath[0])
-        reader = read_vfb(vfb_path)
+        reader = read_vfb(vfb_path, minimal=args.minimal)
         if args.path:
             out_path = (Path(args.path[0]) / vfb_path.name).with_suffix(".ufo")
         else:

@@ -3,7 +3,7 @@ from io import BufferedReader
 from pathlib import Path
 from time import time
 from typing import Any, List, Tuple
-from vfbLib.constants import parser_classes
+from vfbLib.constants import ignore_minimal, parser_classes
 from vfbLib.parsers import BaseParser
 from vfbLib.parsers.header import VfbHeaderParser
 
@@ -16,10 +16,11 @@ class VFBReader:
     Base class to read data from a vfb file
     """
 
-    def __init__(self, vfb_path: Path, timing=True) -> None:
+    def __init__(self, vfb_path: Path, timing=True, minimal=False) -> None:
         self.vfb_path = vfb_path
         self.data: List[List[Any]] = []
         self.timing = timing
+        self.minimal = minimal
 
     def __repr__(self) -> str:
         return str(self.data)
@@ -62,6 +63,11 @@ class VFBReader:
         Read, parse and return an entry from the stream
         """
         entry_id, parser_class, size = self._read_entry()
+
+        if self.minimal and entry_id in ignore_minimal:
+            self.stream.seek(size, 1)
+            return []
+
         try:
             parsed = parser_class.parse(self.stream, size)
         except:

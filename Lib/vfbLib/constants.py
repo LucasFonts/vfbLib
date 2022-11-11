@@ -142,3 +142,7 @@ parser_classes = {
     2031: ("2031", EncodedValueParser),  # Glyph
     2032: ("2032", IntParser),
 }
+
+ignore_minimal = [
+    "Mask",
+]
