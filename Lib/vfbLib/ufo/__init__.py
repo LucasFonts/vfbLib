@@ -286,8 +286,7 @@ class VfbToUfoWriter:
                     c["offsetY"][self.master_index],
                 )
                 pen.addComponent(
-                    self.glyphOrder[c["gid"]],
-                    transformation=transform
+                    self.glyphOrder[c["gid"]], transformation=transform
                 )
 
     def write(self, out_path: Path, overwrite=False) -> None:
