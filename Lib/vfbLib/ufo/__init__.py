@@ -95,7 +95,7 @@ class VfbToUfoWriter:
         if ":" not in data:
             print("Malformed OT class definition, skipping:", data)
             return
-        
+
         name, glyphs = data.split(":", 1)
         name = name.strip()
         if f"@{name}" in self.groups:
@@ -110,7 +110,9 @@ class VfbToUfoWriter:
             keyglyphs = [g.strip() for g in glyphs_list if g.endswith("'")]
             keyglyphs = [k.strip("'") for k in keyglyphs]
             if len(keyglyphs) != 1:
-                print(f"Unexpected number of key glyphs in group {name}: {keyglyphs}")
+                print(
+                    f"Unexpected number of key glyphs in group {name}: {keyglyphs}"
+                )
             glyphs.insert(0, *keyglyphs)
 
         else:
