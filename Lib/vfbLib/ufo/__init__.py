@@ -390,6 +390,8 @@ class VfbToUfoWriter:
                 else:
                     raise FileExistsError
 
+            print(f"Processing font: {self.info.ui_name}")
+
             writer = UFOWriter(
                 master_path, fileCreator="com.lucasfonts.vfb3ufo"
             )
