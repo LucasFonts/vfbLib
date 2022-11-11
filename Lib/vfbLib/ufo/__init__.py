@@ -25,7 +25,13 @@ def binaryToIntList(value, start=0):
 
 
 class VfbToUfoInfo:
-    pass
+    @property
+    def ui_name(self):
+        if hasattr(self, "familyName"):
+            return self.familyName
+        elif hasattr(self, "postscriptFontName"):
+            return self.postscriptFontName
+        return "Unknown master"
 
 
 class VfbToUfoGlyph:
