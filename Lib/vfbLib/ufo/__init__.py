@@ -290,13 +290,21 @@ class VfbToUfoWriter:
                     transformation=transform
                 )
 
-    def write(self, out_path: Path) -> None:
+    def write(self, out_path: Path, overwrite=False) -> None:
         for i in range(len(self.masters)):
             self.master_index = i
+
             if i > 0:
                 master_path = out_path.with_stem(f"{out_path.stem}-{i}")
             else:
                 master_path = out_path
+
+            if master_path.exists():
+                if overwrite:
+                    rmtree(master_path)
+                else:
+                    raise FileExistsError
+
             writer = UFOWriter(
                 master_path, fileCreator="com.lucasfonts.vfb3ufo"
             )

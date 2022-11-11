@@ -122,6 +122,6 @@ def vfb2ufo():
             out_path = vfb_path.with_suffix(".ufo")
         writer = VfbToUfoWriter(reader.data)
         writer.build()
-        writer.write(out_path)
+        writer.write(out_path, overwrite=args.force_overwrite)
     else:
         parser.print_help()
