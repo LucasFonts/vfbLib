@@ -126,7 +126,7 @@ class VfbToUfoWriter:
             elif k == "OpenTypeOS2WinDescent":
                 self.info.openTypeOS2WinDescent = v
 
-    def build_glyph(self, data):
+    def build_mm_glyph(self, data):
         g = self.current_glyph = VfbToUfoGlyph()
         g.lib = {}
         g.name = data["name"]
@@ -203,7 +203,7 @@ class VfbToUfoWriter:
                     else:
                         self.glyph_masters[name] = self.current_glyph
                         self.glyphOrder.append(name)
-                self.build_glyph(data)
+                self.build_mm_glyph(data)
             elif name == "Links":
                 self.current_glyph.links = data
             elif name == "2023":
@@ -237,23 +237,18 @@ class VfbToUfoWriter:
                 # print(f"Unhandled key: {name}")
         self.lib["public.glyphOrder"] = self.glyphOrder
 
-    def draw_glyph(self, pen: AbstractPointPen):
-        """
-        Draw the current glyph onto pen. Use self.master_index for which outlines
-        or component transformations to use.
-        """
+    def build_master_glyph(self, mmglyph, master_index=0):
+        # Extract a single master glyph from a mm glyph
         contours = []
         last_type = None
-        if hasattr(self.current_mmglyph, "mm_nodes"):
-            # print(f"Add nodes to {self.current_mmglyph.name}...")
+        if hasattr(mmglyph, "mm_nodes"):
+            # print(f"Add nodes to {mmglyph.name}...")
             contours = []
-            contour: List[
-                List[None | str | Point]
-            ] | None = None
+            contour: List[List[None | str | Point]] | None = None
             qcurve = False
-            for n in self.current_mmglyph.mm_nodes:
+            for n in mmglyph.mm_nodes:
                 # Nodes for the current master
-                nodes = n["points"][self.master_index]
+                nodes = n["points"][master_index]
                 segment_type = n["type"]
 
                 # print("****", segment_type, nodes)
@@ -286,12 +281,12 @@ class VfbToUfoWriter:
                     contour.append([None, (pt1["x"], pt1["y"])])
                     contour.append([None, (pt2["x"], pt2["y"])])
                     contour.append(["curve", (pt3["x"], pt3["y"])])
-                
+
                 elif segment_type == "qcurve":
                     qcurve = True
                     contour.append([None, (nodes[0]["x"], nodes[0]["y"])])
                     last_type = segment_type
-            
+
             if contour is not None:
                 if last_type == "line":
                     contour[0][0] = "line"
@@ -300,26 +295,42 @@ class VfbToUfoWriter:
                 elif last_type == "qcurve":
                     contour[0][0] = "qcurve"
                 contours.append(contour)
-        
+
+        components: List[
+            Tuple[str, Tuple[float, float, float, float, int, int]]
+        ] = []
+        if hasattr(mmglyph, "mm_components"):
+            for c in mmglyph.mm_components:
+                transform = (
+                    c["scaleX"][master_index],
+                    0.0,
+                    0.0,
+                    c["scaleY"][master_index],
+                    c["offsetX"][master_index],
+                    c["offsetY"][master_index],
+                )
+                components.append((self.glyphOrder[c["gid"]], transform))
+
+        return contours, components
+
+    def draw_glyph(self, pen: AbstractPointPen):
+        """
+        Draw the current glyph onto pen. Use self.master_index for which outlines
+        or component transformations to use.
+        """
+
+        contours, components = self.build_master_glyph(
+            self.current_mmglyph, self.master_index
+        )
+
         for contour in contours:
             pen.beginPath()
             for segment_type, pt in contour:
                 pen.addPoint(pt, segment_type)
             pen.endPath()
 
-        if hasattr(self.current_mmglyph, "mm_components"):
-            for c in self.current_mmglyph.mm_components:
-                transform = (
-                    c["scaleX"][self.master_index],
-                    0.0,
-                    0.0,
-                    c["scaleY"][self.master_index],
-                    c["offsetX"][self.master_index],
-                    c["offsetY"][self.master_index],
-                )
-                pen.addComponent(
-                    self.glyphOrder[c["gid"]], transformation=transform
-                )
+        for gn, tr in components:
+            pen.addComponent(glyphName=gn, transformation=tr)
 
     def write(self, out_path: Path, overwrite=False) -> None:
         for i in range(len(self.masters)):
