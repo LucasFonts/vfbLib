@@ -50,14 +50,6 @@ class VFBReader:
         with open(self.vfb_path, "rb") as vfb:
             self.parse(vfb)
 
-    def _append_parsed_entry(self):
-        """
-        Read, parse and append an entry from the stream to the data object
-        """
-        entry = self._parse_entry()
-        if entry:
-            self.data.append(entry)
-
     def _parse_entry(self) -> List[Any]:
         """
         Read, parse and return an entry from the stream
