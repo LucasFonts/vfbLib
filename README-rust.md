@@ -8,3 +8,8 @@ In case you change your mind, uninstall with `rustup self uninstall`
 pip install maturin
 ```
 
+To build the project:
+
+```
+maturin develop
+```
