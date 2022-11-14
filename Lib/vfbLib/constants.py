@@ -21,8 +21,8 @@ from vfbLib.parsers.glyph import (
 )
 from vfbLib.parsers.mm import AxisMappingsParser, PrimaryInstancesParser
 from vfbLib.parsers.numeric import (
-    # FloatListParser,
     DoubleParser,
+    # FloatListParser,
     IntParser,
     PanoseParser,
     SignedIntParser,

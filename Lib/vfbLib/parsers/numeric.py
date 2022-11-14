@@ -12,21 +12,21 @@ class DoubleParser(BaseParser):
         return unpack("d", cls.stream.read(8))[0]
 
 
-class FloatListParser(BaseParser):
-    """
-    A parser that reads data as a list of floats.
-    """
+# class FloatListParser(BaseParser):
+#     """
+#     A parser that reads data as a list of floats.
+#     """
 
-    __size__ = 4
-    __fmt__ = "f"
+#     __size__ = 4
+#     __fmt__ = "f"
 
-    @classmethod
-    def _parse(cls):
-        values = []
-        for _ in range(cls.stream.getbuffer().nbytes // cls.__size__):
-            values.append(unpack(cls.__fmt__, cls.stream.read(cls.__size__)))
+#     @classmethod
+#     def _parse(cls):
+#         values = []
+#         for _ in range(cls.stream.getbuffer().nbytes // cls.__size__):
+#             values.append(unpack(cls.__fmt__, cls.stream.read(cls.__size__)))
 
-        return values
+#         return values
 
 
 class IntParser(BaseParser):
