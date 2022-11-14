@@ -10,8 +10,8 @@ class PostScriptInfoParser(BaseParser):
     @classmethod
     def _parse(cls):
         values = {}
-        values["matrix"] = cls.read_double(6)
-        values["whatev"] = cls.read_int32()
+        values["font_matrix"] = cls.read_double(6)
+        values["force_bold"] = cls.read_int32()
         values["blue_values"] = [cls.read_int32() for _ in range(14)]
         values["other_blues"] = [cls.read_int32() for _ in range(10)]
         values["family_blues"] = [cls.read_int32() for _ in range(14)]
@@ -24,4 +24,10 @@ class PostScriptInfoParser(BaseParser):
         values["stem_snap_h"] = [cls.read_uint32() for _ in range(12)]
         values["stem_snap_v"] = [cls.read_uint32() for _ in range(12)]
         values["bounding_box"] = [cls.read_int16() for _ in range(4)]
+        values["zzz_whatever"] = [cls.read_int32() for _ in range(3)]  # FIXME
+        values["ascender"] = cls.read_int32()
+        values["descender"] = cls.read_int32()
+        values["x_height"] = cls.read_int32()
+        values["cap_height"] = cls.read_int32()
+        assert cls.stream.read() == b""
         return values
