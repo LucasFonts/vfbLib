@@ -191,6 +191,7 @@ class MetricsParser(BaseParser):
     @classmethod
     def _parse(cls):
         metrics_names = {
+            57: "use_custom_tt_values",  # 0 = false, 65536 = true
             64: "embedding",
             65: "subscript_x_size",
             66: "subscript_y_size",
