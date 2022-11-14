@@ -53,7 +53,7 @@ class VfbToUfoWriter:
         self.lib = {}
         self.masters = []
         self.masters_1505 = []
-        self.masters_1536 = []
+        self.masters_ps_info = []
         self.current_glyph = None
         self.glyph_masters = {}
         self.glyphOrder = []
@@ -61,30 +61,38 @@ class VfbToUfoWriter:
 
     def build_mapping(self):
         self.info_mapping = {
-            "description": "notice",
+            "sgn": "styleMapFamilyName",  # Windows
             "ffn": "familyName",
             "psn": "postscriptFontName",
             "tfn": "openTypeNamePreferredFamilyName",
-            "sgn": "styleMapFamilyName",  # Windows
             "weight_name": "weightName",
-            "width_name": "widthName",
+            "Italic Angle": "italicAngle",
+            "underlinePosition": "postscriptUnderlinePosition",
+            "underlineThickness": "postscriptUnderlineThickness",
+            # "Monospaced": "postscriptIsFixedPitch",  # below
             "copyright": "copyright",
+            "description": "openTypeNameDescription",
+            "manufacturer": "manufacturer",
+            # "Type 1 Unique ID"
+            # weight (class), below
             "trademark": "trademark",
             "designer": "designer",
             "designerURL": "designerURL",
             "manufacturerURL": "manufacturerURL",
-            "manufacturer": "manufacturer",
-            "underlinePosition": "postscriptUnderlinePosition",
-            "underlineThickness": "postscriptUnderlineThickness",
+            "width_name": "widthName",
+            # Default glyph
+            "license": "openTypeNameLicense",
+            "licenseURL": "openTypeNameLicenseURL",
+            # FOND name
             "panose": "openTypeOS2Panose",
-            "UniqueID": "openTypeNameUniqueID",
-            "tsn": "openTypeNamePreferredSubfamilyName",
-            "Style Name": "styleName",
             "vendorID": "openTypeOS2VendorID",
-            "year": "year",
+            "Style Name": "styleName",
+            "UniqueID": "openTypeNameUniqueID",
             "versionMajor": "versionMajor",
             "versionMinor": "versionMinor",
+            "year": "year",
             "upm": "unitsPerEm",
+            "tsn": "openTypeNamePreferredSubfamilyName",
             "hhea_ascender": "openTypeHheaAscender",
             "hhea_descender": "openTypeHheaDescender",
             "fontNote": "note",
@@ -196,6 +204,8 @@ class VfbToUfoWriter:
 
             if name == "Encoding":
                 pass
+            elif name == "Monospaced":
+                self.info.postscriptIsFixedPitch = bool(data)
             elif name == "weight":
                 self.info.openTypeOS2WeightClass = max(0, data)
             elif name == "Gasp Ranges":
@@ -216,7 +226,16 @@ class VfbToUfoWriter:
             elif name == "TrueType Zone Deltas":
                 pass
             elif name == "Name Records":
-                pass
+                self.info.openTypeNameRecords = []
+                for rec in data:
+                    nameID, platformID, encodingID, languageID, s = rec
+                    self.info.openTypeNameRecords.append({
+                        "nameID": nameID,
+                        "platformID": platformID,
+                        "encodingID": encodingID,
+                        "languageID": languageID,
+                        "string": s,
+                    })
             elif name == "Font User Data":
                 self.lib["com.fontlab.v5.userData"] = data
             elif name == "openTypeFeatures":
@@ -229,10 +248,8 @@ class VfbToUfoWriter:
                 self.masters.append(data)
             elif name == "1505":
                 self.masters_1505.append(data)
-            elif name == "1536":
-                if len(data) > 5:
-                    # FIXME: There is something in the header also called 1536
-                    self.masters_1536.append(data)
+            elif name == "PostScript Info":
+                self.masters_ps_info.append(data)
             elif name == "Glyph":
                 if self.current_glyph is not None:
                     name = self.current_glyph.name
@@ -285,6 +302,34 @@ class VfbToUfoWriter:
             self.glyph_masters[self.current_glyph.name] = self.current_glyph
             self.glyphOrder.append(self.current_glyph.name)
         self.lib["public.glyphOrder"] = self.glyphOrder
+
+    def get_master_info(self, master_index=0):
+        # Update the info with master-specific values
+        for k, v in (
+            ("force_bold", "postscriptForceBold"),
+            ("blue_values", "postscriptBlueValues"),
+            ("other_blues", "postscriptOtherBlues"),
+            ("family_blues", "postscriptFamilyBlues"),
+            ("family_other_blues", "postscriptFamilyOtherBlues"),
+            ("blue_scale", "postscriptBlueScale"),
+            ("blue_shift", "postscriptBlueShift"),
+            ("blue_fuzz", "postscriptBlueFuzz"),
+            ("stem_snap_h", "postscriptStemSnapH"),  # FIXME
+            ("stem_snap_v", "postscriptStemSnapV"),  # FIXME: Filter out 0
+            ("ascender", "ascender"),
+            ("descender", "descender"),
+            ("x_height", "xHeight"),
+            ("cap_height", "capHeight"),
+        ):
+            value = self.masters_ps_info[master_index].get(k, None)
+            if value is not None:
+                setattr(self.info, v, value)
+        
+        value = self.masters_ps_info[master_index].get("force_bold", None)
+        if value is not None:
+            self.info.postscriptForceBold = bool(value)
+
+        return self.info
 
     def get_master_kerning(self, master_index=0):
         # TODO: Must look up class kerning references
@@ -426,10 +471,11 @@ class VfbToUfoWriter:
             gs.writeLayerInfo(writer.getGlyphSet())
 
             master_kerning = self.get_master_kerning(master_index=i)
+            master_info = self.get_master_info(master_index=i)
 
             writer.writeLayerContents()
             writer.writeGroups(self.groups)
-            writer.writeInfo(self.info)
+            writer.writeInfo(master_info)
             writer.writeKerning(master_kerning)
             if self.features:
                 writer.writeFeatures(
