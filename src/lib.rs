@@ -77,10 +77,11 @@ where
         r.read_exact(&mut size);
         finalsize = size[0].into();
     }
-    r.seek_relative(finalsize.into());
+    // r.seek_relative(finalsize.into());
     // let mut data: Vec<u8> = Vec::with_capacity(finalsize.try_into().unwrap());
-    // r.read_exact(&mut data);
-    // println!("{:#?}", data);
+    let mut data: Vec<u8> = vec![0, finalsize.try_into().unwrap()];
+    r.read_exact(&mut data);
+    println!("{:#?}", data);
 
     return VfbField {
         key: finalkey,
