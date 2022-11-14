@@ -22,6 +22,7 @@ from vfbLib.parsers.glyph import (
 from vfbLib.parsers.mm import AxisMappingsParser, PrimaryInstancesParser
 from vfbLib.parsers.numeric import (
     # FloatListParser,
+    DoubleParser,
     IntParser,
     PanoseParser,
     SignedIntParser,
@@ -41,7 +42,7 @@ parser_classes = {
     1026: ("psn", StringParser),
     1027: ("tfn", StringParser),
     1028: ("weight_name", StringParser),
-    1029: ("1029", BaseParser),
+    1029: ("Italic Angle", DoubleParser),
     1030: ("underlinePosition", SignedIntParser),
     1031: ("underlineThickness", IntParser),
     1034: ("1034", BaseParser),

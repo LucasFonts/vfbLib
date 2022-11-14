@@ -2,6 +2,16 @@ from vfbLib.parsers import BaseParser
 from struct import unpack
 
 
+class DoubleParser(BaseParser):
+    """
+    A parser that reads data as a double-size float.
+    """
+
+    @classmethod
+    def _parse(cls):
+        return unpack("d", cls.stream.read(8))[0]
+
+
 class FloatListParser(BaseParser):
     """
     A parser that reads data as a list of floats.
