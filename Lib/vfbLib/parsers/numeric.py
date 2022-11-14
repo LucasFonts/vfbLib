@@ -41,6 +41,27 @@ class IntParser(BaseParser):
         )
 
 
+class IntListParser(BaseParser):
+    """
+    A parser that reads data as a list of UInt16.
+    """
+
+    __size__ = 4
+
+    @classmethod
+    def _parse(cls):
+        values = []
+        for _ in range(cls.stream.getbuffer().nbytes // cls.__size__):
+            values.append(
+                int.from_bytes(
+                    cls.stream.read(cls.__size__),
+                    byteorder="little",
+                    signed=False,
+                )
+            )
+        return values
+
+
 class PanoseParser(BaseParser):
     """
     A parser that reads data as an array representing PANOSE values.

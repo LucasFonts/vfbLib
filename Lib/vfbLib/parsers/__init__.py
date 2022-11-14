@@ -219,28 +219,41 @@ class MetricsParser(BaseParser):
     @classmethod
     def _parse(cls):
         metrics_names = {
-            57: "use_custom_tt_values",  # 0 = false, 65536 = true
-            60: "timestamp",
-            64: "embedding",
-            65: "subscript_x_size",
-            66: "subscript_y_size",
-            67: "subscript_x_offset",
-            68: "subscript_y_offset",
-            69: "superscript_x_size",
-            70: "superscript_y_size",
-            71: "superscript_x_offset",
-            72: "superscript_y_offset",
-            73: "strikeout_size",
-            74: "strikeout_position",
-            76: "OpenTypeOS2Panose",
-            77: "OpenTypeOS2TypoAscender",
-            78: "OpenTypeOS2TypoDescender",
-            79: "OpenTypeOS2TypoLineGap",
-            81: "OpenTypeOS2WinAscent",
-            82: "OpenTypeOS2WinDescent",
-            83: "Hdmx PPMs 1",
-            88: "Hdmx PPMs 2",
-            92: "Average Width",
+            0x39: "use_custom_tt_values",  # 0 = false, 65536 = true
+            0x3c: "timestamp",
+            0x40: "embedding",
+            0x41: "subscript_x_size",
+            0x42: "subscript_y_size",
+            0x43: "subscript_x_offset",
+            0x44: "subscript_y_offset",
+            0x45: "superscript_x_size",
+            0x46: "superscript_y_size",
+            0x47: "superscript_x_offset",
+            0x48: "superscript_y_offset",
+            0x49: "strikeout_size",
+            0x4a: "strikeout_position",
+            0x4b: "ibm_classification",  # ibm_classification + subclass
+            0x4c: "OpenTypeOS2Panose",
+            0x4d: "OpenTypeOS2TypoAscender",
+            0x4e: "OpenTypeOS2TypoDescender",
+            0x4f: "OpenTypeOS2TypoLineGap",
+            0x51: "OpenTypeOS2WinAscent",
+            0x52: "OpenTypeOS2WinDescent",
+            0x53: "Hdmx PPMs 1",
+            0x58: "Hdmx PPMs 2",
+            0x5c: "Average Width",
+        }
+        ibm_classification = {
+            0x100: "Oldstyle Serifs",
+            0x200: "Transitional Serifs",
+            0x300: "Modern Serifs",
+            0x400: "Clarendon Serifs",
+            0x500: "Slab Serifs",
+            0x700: "Freeform Serifs",
+            0x800: "Sans Serif",
+            0x900: "Ornamentals",
+            0xa00: "Scripts",
+            0xc00: "Symbolic",
         }
         s = cls.stream
         metrics = []
@@ -257,6 +270,7 @@ class MetricsParser(BaseParser):
                 )
 
             elif k == 0x3C:
+                # Timestamp
                 v = [cls.read_uint8(s) for _ in range(9)]
                 metrics.append([metrics_names.get(k, str(k)), v])
 
