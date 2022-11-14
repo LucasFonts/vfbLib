@@ -23,5 +23,9 @@ class VfbHeaderParser(BaseParser):
             key = cls.read_uint8()
             val = read_encoded_value(stream)
             header[f"header{i}"] = {key: val}
+        
+        header["header12"] = cls.read_uint16()
+        header["header13"] = cls.read_uint16()
+        header["header14"] = cls.read_uint8()
 
         return header
