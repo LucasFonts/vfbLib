@@ -27,6 +27,7 @@ from vfbLib.parsers.numeric import (
     PanoseParser,
     SignedIntParser,
 )
+from vfbLib.parsers.ps import PostScriptInfoParser
 from vfbLib.parsers.text import NameRecordsParser
 from vfbLib.parsers.truetype import (
     TrueTypeStemPpemsParser,
@@ -120,7 +121,7 @@ parser_classes = {
     1533: ("1533", IntParser),
     1534: ("1534", IntParser),
     1535: ("1535", IntParser),
-    1536: ("1536", BaseParser),
+    1536: ("PostScript Info", PostScriptInfoParser),
     1604: ("1604", IntParser),
     1742: ("1742", EncodedKeyValuesParser1742),
     1743: ("1743", EncodedKeyValuesParser),

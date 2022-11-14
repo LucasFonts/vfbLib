@@ -76,6 +76,34 @@ class BaseParser:
     @classmethod
     def _parse(cls) -> Any:
         return hexStr(cls.stream.read())
+    
+    @classmethod
+    def read_double(cls, num, stream=None):
+        if stream is None:
+            stream = cls.stream
+        return unpack(num * "d", cls.stream.read(num * 8))
+    
+    @classmethod
+    def read_float(cls, num, stream=None):
+        if stream is None:
+            stream = cls.stream
+        return unpack(num * "f", cls.stream.read(num * 4))
+    
+    @classmethod
+    def read_int16(cls, stream=None) -> int:
+        if stream is None:
+            stream = cls.stream
+        return int.from_bytes(
+            stream.read(uint16), byteorder="little", signed=True
+        )
+    
+    @classmethod
+    def read_int32(cls, stream=None) -> int:
+        if stream is None:
+            stream = cls.stream
+        return int.from_bytes(
+            stream.read(uint32), byteorder="little", signed=True
+        )
 
     @classmethod
     def read_uint8(cls, stream=None) -> int:
