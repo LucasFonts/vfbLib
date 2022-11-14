@@ -7,8 +7,8 @@ class FloatListParser(BaseParser):
     A parser that reads data as a list of floats.
     """
 
-    __size__ = 4  # 8
-    __fmt__ = "f"  # d
+    __size__ = 4
+    __fmt__ = "f"
 
     @classmethod
     def _parse(cls):
