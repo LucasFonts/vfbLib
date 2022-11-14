@@ -37,7 +37,7 @@ from vfbLib.parsers.truetype import (
 
 
 parser_classes = {
-    1024: ("sgn 1024", StringParser),
+    1024: ("sgn", StringParser),
     1025: ("ffn", StringParser),
     1026: ("psn", StringParser),
     1027: ("tfn", StringParser),
@@ -54,7 +54,7 @@ parser_classes = {
     1047: ("1047", BaseParser),
     1048: ("weight", SignedIntParser),  # Weight Class
     1054: ("1054", BaseParser),
-    1056: ("sgn", StringParser),
+    1056: ("Menu Name", StringParser),
     1060: ("1060", IntParser),
     1061: ("trademark", StringParser),
     1062: ("designer", StringParser),
@@ -63,10 +63,10 @@ parser_classes = {
     1065: ("width_name", StringParser),
     1066: ("Default Glyph", StringParser),
     1068: ("1068", BaseParser),
-    1069: ("1069", BaseParser),
-    1070: ("1070", BaseParser),
+    1069: ("License", StringParser),
+    1070: ("License URL", StringParser),
     1090: ("1090", IntParser),
-    1092: ("1092", StringParser),
+    1092: ("FOND Name", StringParser),
     1093: ("1093", BaseParser),
     1118: ("panose", PanoseParser),
     1121: ("vendorID", StringParser),
@@ -82,7 +82,7 @@ parser_classes = {
     1136: ("1136", EncodedValueParser),
     1137: ("tsn", StringParser),
     1138: ("Name Records", NameRecordsParser),
-    1139: ("Mac Name?", StringParser),
+    1139: ("OT Mac Name", StringParser),
     1140: ("1140", BaseParser),
     1141: ("1141", EncodedValueParser),
     1250: ("Glyph Unicode", GlyphUnicodeParser),
