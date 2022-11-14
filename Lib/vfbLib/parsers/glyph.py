@@ -212,8 +212,7 @@ class GlyphParser(BaseParser):
             for _ in range(num_masters):
                 x = read_encoded_value(stream)
                 y = read_encoded_value(stream)
-                scaleX = unpack("d", stream.read(8))[0]
-                scaleY = unpack("d", stream.read(8))[0]
+                scaleX, scaleY = unpack("dd", stream.read(16))
                 c["offsetX"].append(x)
                 c["offsetY"].append(y)
                 c["scaleX"].append(scaleX)
