@@ -67,11 +67,11 @@ class VfbToUfoWriter:
 
     def build_mapping(self):
         self.info_mapping = {
-            # "sgn": "styleMapFamilyName",  # Windows
+            "sgn": "openTypeNamePreferredFamilyName",
+            # "sgn": "styleMapFamilyName",  # ?
             "ffn": "postscriptFullName",
             "psn": "postscriptFontName",
-            "tfn": "openTypeNamePreferredFamilyName",
-            "sgn": "familyName",
+            "tfn": "familyName",
             "weight_name": "weightName",
             "Italic Angle": "italicAngle",
             "underlinePosition": "postscriptUnderlinePosition",
