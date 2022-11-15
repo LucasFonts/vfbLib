@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="uni04A3" format="2">
+	<unicode hex="04A3"/>
+	<advance width="566"/>
+	<outline>
+		<contour>
+			<point x="316" y="-186" type="qcurve"/>
+			<point x="307" y="-186"/>
+			<point x="295" y="-185"/>
+			<point name="sv01" x="290" y="-184" type="qcurve"/>
+			<point name="sv02" x="290" y="-157" type="line"/>
+			<point x="301" y="-157" type="line"/>
+			<point x="333" y="-157"/>
+			<point x="368" y="-124"/>
+			<point x="389" y="-95" type="qcurve"/>
+			<point x="494" y="44" type="line"/>
+			<point name="sv03" x="489" y="49" type="line"/>
+			<point x="459" y="15"/>
+			<point x="410" y="-12"/>
+			<point name="ab02" x="392" y="-12" type="qcurve"/>
+			<point x="358" y="-12"/>
+			<point x="326" y="26"/>
+			<point x="326" y="51" type="qcurve"/>
+			<point x="326" y="62"/>
+			<point x="331" y="87"/>
+			<point x="333" y="98" type="qcurve"/>
+			<point x="369" y="241" type="line"/>
+			<point name="iv01" x="188" y="241" type="line"/>
+			<point x="128" y="0" type="line"/>
+			<point name="ab01" x="36" y="0" type="line"/>
+			<point x="148" y="450" type="line"/>
+			<point name="sv04" x="60" y="450" type="line"/>
+			<point name="sv05" x="69" y="490" type="line"/>
+			<point name="at01" x="261" y="530" type="line"/>
+			<point name="sv06" x="201" y="290" type="line"/>
+			<point x="381" y="290" type="line"/>
+			<point name="at02" x="439" y="518" type="line"/>
+			<point x="531" y="518" type="line"/>
+			<point name="hr01" x="415" y="57" type="line"/>
+			<point name="sv07" x="433" y="49" type="line"/>
+			<point name="sv08" x="543" y="164" type="line"/>
+			<point x="569" y="145" type="line"/>
+			<point x="542" y="111"/>
+			<point x="518" y="53"/>
+			<point x="508" y="16" type="qcurve"/>
+			<point x="492" y="-44"/>
+			<point x="455" y="-120"/>
+			<point x="437" y="-138" type="qcurve"/>
+			<point x="415" y="-161"/>
+			<point x="354" y="-186"/>
+		</contour>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint</key>
+			<data>
+				ICA8aGludFNldExpc3Q+CiAgICA8aGludHNldCBwb2ludFRhZz0iaHIwMSI+CiAgICAg
+				IDxoc3RlbSBwb3M9Ii0xODYiIHdpZHRoPSIyOSIgLz4KICAgICAgPGhzdGVtIHBvcz0i
+				LTE4NiIgd2lkdGg9IjI5IiAvPgogICAgICA8aHN0ZW0gcG9zPSItMTIiIHdpZHRoPSI2
+				OSIgLz4KICAgICAgPGhzdGVtIHBvcz0iMjEiIHdpZHRoPSItMjEiIC8+CiAgICAgIDxo
+				c3RlbSBwb3M9IjI0MSIgd2lkdGg9IjQ5IiAvPgogICAgICA8aHN0ZW0gcG9zPSIyNDEi
+				IHdpZHRoPSI0OSIgLz4KICAgICAgPGhzdGVtIHBvcz0iNDUwIiB3aWR0aD0iODAiIC8+
+				CiAgICAgIDxoc3RlbSBwb3M9IjUxOCIgd2lkdGg9Ii0yMCIgLz4KICAgICAgPHZzdGVt
+				IHBvcz0iMzI2IiB3aWR0aD0iODkiIC8+CiAgICAgIDx2c3RlbSBwb3M9IjMyNiIgd2lk
+				dGg9Ijg5IiAvPgogICAgPC9oaW50c2V0PgogIDwvaGludFNldExpc3Q+Cg==
+			</data>
+			<key>com.fontlab.ttprogram</key>
+			<data>
+				ICA8dHRQcm9ncmFtPgogICAgPHR0YyBjb2RlPSJhbGlnbnQiIHBvaW50PSJhdDAxIiB6
+				b25lPSJ4aGVpZ2h0Ii8+CiAgICA8dHRjIGNvZGU9ImFsaWdudCIgcG9pbnQ9ImF0MDIi
+				IHpvbmU9InhoZWlnaHQiLz4KICAgIDx0dGMgY29kZT0iYWxpZ25iIiBwb2ludD0iYWIw
+				MSIgem9uZT0iYmFzZWxpbmUiLz4KICAgIDx0dGMgY29kZT0iYWxpZ25iIiBwb2ludD0i
+				YWIwMiIgem9uZT0iYmFzZWxpbmUiLz4KICAgIDx0dGMgY29kZT0ic2luZ2xldiIgcG9p
+				bnQxPSJhYjAyIiBwb2ludDI9InN2MDEiIHJvdW5kPSJ0cnVlIi8+CiAgICA8dHRjIGNv
+				ZGU9InNpbmdsZXYiIHBvaW50MT0ic3YwMSIgcG9pbnQyPSJzdjAyIiBzdGVtPSJsY190
+				aGlucyIvPgogICAgPHR0YyBjb2RlPSJzaW5nbGV2IiBwb2ludDE9ImFiMDIiIHBvaW50
+				Mj0ic3YwMyIvPgogICAgPHR0YyBjb2RlPSJpbnRlcnBvbGF0ZXYiIHBvaW50PSJpdjAx
+				IiBwb2ludDE9ImF0MDEiIHBvaW50Mj0iYWIwMSIgYWxpZ249InJvdW5kIi8+CiAgICA8
+				dHRjIGNvZGU9Im1kZWx0YXYiIHBvaW50PSJpdjAxIiBkZWx0YT0iOCIgcHBtMT0iMjci
+				IHBwbTI9IjI4Ii8+CiAgICA8dHRjIGNvZGU9Im1kZWx0YXYiIHBvaW50PSJpdjAxIiBk
+				ZWx0YT0iOCIgcHBtMT0iMjMiIHBwbTI9IjI0Ii8+CiAgICA8dHRjIGNvZGU9InNpbmds
+				ZXYiIHBvaW50MT0iYXQwMSIgcG9pbnQyPSJzdjA0IiBzdGVtPSJ0cmlhbmdsZSIvPgog
+				ICAgPHR0YyBjb2RlPSJzaW5nbGV2IiBwb2ludDE9InN2MDQiIHBvaW50Mj0ic3YwNSIg
+				c3RlbT0ibGNfc3RlbXNlcmlmIi8+CiAgICA8dHRjIGNvZGU9InNpbmdsZXYiIHBvaW50
+				MT0iaXYwMSIgcG9pbnQyPSJzdjA2IiBzdGVtPSJsY19jeXIiLz4KICAgIDx0dGMgY29k
+				ZT0ic2luZ2xldiIgcG9pbnQxPSJhYjAyIiBwb2ludDI9InN2MDciIHN0ZW09ImJvd2xf
+				dGhpbiIvPgogICAgPHR0YyBjb2RlPSJzaW5nbGV2IiBwb2ludDE9InN2MDciIHBvaW50
+				Mj0ic3YwOCIgc3RlbT0ic3Ryb2tlX3RpcCIvPgogIDwvdHRQcm9ncmFtPgo=
+			</data>
+		</dict>
+	</lib>
+</glyph>

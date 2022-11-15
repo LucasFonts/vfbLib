@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="four" format="2">
+	<unicode hex="0034"/>
+	<advance width="550"/>
+	<outline>
+		<contour>
+			<point name="hr00" x="293" y="144" type="line"/>
+			<point name="sv01" x="6" y="144" type="line"/>
+			<point name="sv02" x="21" y="204" type="line"/>
+			<point name="at01" x="426" y="698" type="line"/>
+			<point x="523" y="698" type="line"/>
+			<point name="sv03" x="400" y="208" type="line"/>
+			<point x="491" y="208" type="line"/>
+			<point x="476" y="144" type="line"/>
+			<point name="sv04" x="385" y="144" type="line"/>
+			<point x="349" y="0" type="line"/>
+			<point name="ab01" x="257" y="0" type="line"/>
+		</contour>
+		<contour>
+			<point name="iv01" x="81" y="208" type="line"/>
+			<point x="308" y="208" type="line"/>
+			<point x="408" y="605" type="line"/>
+			<point name="sv05" x="403" y="605" type="line"/>
+		</contour>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint</key>
+			<data>
+				ICA8aGludFNldExpc3Q+CiAgICA8aGludHNldCBwb2ludFRhZz0iaHIwMCI+CiAgICAg
+				IDxoc3RlbSBwb3M9IjIxIiB3aWR0aD0iLTIxIiAvPgogICAgICA8aHN0ZW0gcG9zPSIx
+				NDQiIHdpZHRoPSI2NCIgLz4KICAgICAgPGhzdGVtIHBvcz0iNjA1IiB3aWR0aD0iOTMi
+				IC8+CiAgICAgIDx2c3RlbSBwb3M9IjYiIHdpZHRoPSI1MTciIC8+CiAgICA8L2hpbnRz
+				ZXQ+CiAgPC9oaW50U2V0TGlzdD4K
+			</data>
+			<key>com.fontlab.ttprogram</key>
+			<data>
+				ICA8dHRQcm9ncmFtPgogICAgPHR0YyBjb2RlPSJhbGlnbnQiIHBvaW50PSJhdDAxIiB6
+				b25lPSJjYXBoZWlnaHQiLz4KICAgIDx0dGMgY29kZT0iYWxpZ25iIiBwb2ludD0iYWIw
+				MSIgem9uZT0iYmFzZWxpbmUiLz4KICAgIDx0dGMgY29kZT0iaW50ZXJwb2xhdGV2IiBw
+				b2ludD0iaXYwMSIgcG9pbnQxPSJhdDAxIiBwb2ludDI9ImFiMDEiIGFsaWduPSJyb3Vu
+				ZCIvPgogICAgPHR0YyBjb2RlPSJtZGVsdGF2IiBwb2ludD0iaXYwMSIgZGVsdGE9Ijgi
+				IHBwbTE9IjEwIiBwcG0yPSIxMiIvPgogICAgPHR0YyBjb2RlPSJzaW5nbGV2IiBwb2lu
+				dDE9Iml2MDEiIHBvaW50Mj0ic3YwMSIgcm91bmQ9InRydWUiLz4KICAgIDx0dGMgY29k
+				ZT0ic2luZ2xldiIgcG9pbnQxPSJpdjAxIiBwb2ludDI9InN2MDIiLz4KICAgIDx0dGMg
+				Y29kZT0ic2luZ2xldiIgcG9pbnQxPSJpdjAxIiBwb2ludDI9InN2MDMiLz4KICAgIDx0
+				dGMgY29kZT0ic2luZ2xldiIgcG9pbnQxPSJzdjAxIiBwb2ludDI9InN2MDQiLz4KICAg
+				IDx0dGMgY29kZT0ic2luZ2xldiIgcG9pbnQxPSJhdDAxIiBwb2ludDI9InN2MDUiLz4K
+				ICA8L3R0UHJvZ3JhbT4K
+			</data>
+		</dict>
+	</lib>
+</glyph>

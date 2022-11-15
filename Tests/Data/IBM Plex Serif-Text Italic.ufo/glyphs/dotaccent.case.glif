@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="dotaccent.case" format="2">
+	<advance width="600"/>
+	<outline>
+		<contour>
+			<point name="av01" x="324" y="786" type="qcurve"/>
+			<point x="301" y="786"/>
+			<point x="277" y="813"/>
+			<point x="277" y="830" type="qcurve"/>
+			<point x="277" y="835"/>
+			<point x="277" y="844"/>
+			<point x="279" y="849" type="qcurve"/>
+			<point x="284" y="869"/>
+			<point x="314" y="895"/>
+			<point name="sv01" x="338" y="895" type="qcurve"/>
+			<point x="361" y="895"/>
+			<point x="385" y="868"/>
+			<point x="385" y="851" type="qcurve"/>
+			<point x="385" y="846"/>
+			<point x="385" y="837"/>
+			<point x="383" y="832" type="qcurve"/>
+			<point x="378" y="812"/>
+			<point x="348" y="786"/>
+		</contour>
+	</outline>
+	<anchor name="_top" x="300" y="698"/>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint</key>
+			<data>
+				ICA8aGludFNldExpc3Q+CiAgICA8aGludHNldCBwb2ludFRhZz0iYXYwMSI+CiAgICAg
+				IDxoc3RlbSBwb3M9Ijc4NiIgd2lkdGg9IjEwOSIgLz4KICAgICAgPHZzdGVtIHBvcz0i
+				Mjc3IiB3aWR0aD0iMTA4IiAvPgogICAgPC9oaW50c2V0PgogIDwvaGludFNldExpc3Q+
+				Cg==
+			</data>
+			<key>com.fontlab.ttprogram</key>
+			<data>
+				ICA8dHRQcm9ncmFtPgogICAgPHR0YyBjb2RlPSJhbGlnbnYiIHBvaW50PSJhdjAxIiBh
+				bGlnbj0icm91bmQiLz4KICAgIDx0dGMgY29kZT0ibWRlbHRhdiIgcG9pbnQ9ImF2MDEi
+				IGRlbHRhPSItOCIgcHBtMT0iMTUiIHBwbTI9IjE2Ii8+CiAgICA8dHRjIGNvZGU9InNp
+				bmdsZXYiIHBvaW50MT0iYXYwMSIgcG9pbnQyPSJzdjAxIiByb3VuZD0idHJ1ZSIvPgog
+				IDwvdHRQcm9ncmFtPgo=
+			</data>
+			<key>com.typemytype.robofont.guides</key>
+			<array>
+				<dict>
+					<key>angle</key>
+					<real>75.96</real>
+					<key>isGlobal</key>
+					<false/>
+					<key>magnetic</key>
+					<integer>5</integer>
+					<key>x</key>
+					<integer>125</integer>
+					<key>y</key>
+					<integer>0</integer>
+				</dict>
+			</array>
+		</dict>
+	</lib>
+</glyph>

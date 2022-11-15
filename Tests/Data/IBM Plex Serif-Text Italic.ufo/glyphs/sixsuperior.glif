@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="sixsuperior" format="2">
+	<unicode hex="2076"/>
+	<advance width="344"/>
+	<outline>
+		<contour>
+			<point name="ab01" x="189" y="324" type="qcurve"/>
+			<point x="135" y="324"/>
+			<point x="85" y="380"/>
+			<point x="85" y="429" type="qcurve"/>
+			<point x="85" y="465"/>
+			<point x="114" y="552"/>
+			<point x="177" y="632"/>
+			<point x="276" y="693"/>
+			<point name="at01" x="347" y="704" type="qcurve"/>
+			<point name="sv01" x="355" y="672" type="line"/>
+			<point x="286" y="655"/>
+			<point x="198" y="575"/>
+			<point name="iv02" x="174" y="511" type="qcurve"/>
+			<point x="180" y="509" type="line"/>
+			<point x="193" y="532"/>
+			<point x="237" y="566"/>
+			<point name="iv01" x="273" y="566" type="qcurve"/>
+			<point x="306" y="566"/>
+			<point x="352" y="526"/>
+			<point x="352" y="481" type="qcurve"/>
+			<point x="352" y="447"/>
+			<point x="328" y="390"/>
+			<point x="284" y="348"/>
+			<point x="225" y="324"/>
+		</contour>
+		<contour>
+			<point name="sv02" x="197" y="363" type="qcurve"/>
+			<point x="227" y="363"/>
+			<point x="262" y="408"/>
+			<point x="270" y="439" type="qcurve"/>
+			<point x="272" y="445"/>
+			<point x="275" y="468"/>
+			<point x="275" y="478" type="qcurve"/>
+			<point x="275" y="504"/>
+			<point x="251" y="525"/>
+			<point name="sv03" x="232" y="525" type="qcurve"/>
+			<point x="202" y="525"/>
+			<point x="167" y="480"/>
+			<point x="159" y="449" type="qcurve"/>
+			<point x="157" y="443"/>
+			<point x="154" y="420"/>
+			<point x="154" y="410" type="qcurve"/>
+			<point x="154" y="384"/>
+			<point x="178" y="363"/>
+		</contour>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint</key>
+			<data>
+				ICA8aGludFNldExpc3Q+CiAgICA8aGludHNldCBwb2ludFRhZz0iYWIwMSI+CiAgICAg
+				IDxoc3RlbSBwb3M9IjMyNCIgd2lkdGg9IjM5IiAvPgogICAgICA8aHN0ZW0gcG9zPSI1
+				MjUiIHdpZHRoPSI0MSIgLz4KICAgICAgPGhzdGVtIHBvcz0iNzA0IiB3aWR0aD0iLTIw
+				IiAvPgogICAgICA8dnN0ZW0gcG9zPSI4NSIgd2lkdGg9IjY5IiAvPgogICAgICA8dnN0
+				ZW0gcG9zPSIyNzUiIHdpZHRoPSI3NyIgLz4KICAgIDwvaGludHNldD4KICA8L2hpbnRT
+				ZXRMaXN0Pgo=
+			</data>
+			<key>com.fontlab.ttprogram</key>
+			<data>
+				ICA8dHRQcm9ncmFtPgogICAgPHR0YyBjb2RlPSJhbGlnbnQiIHBvaW50PSJhdDAxIiB6
+				b25lPSJjYXBoZWlnaHQiLz4KICAgIDx0dGMgY29kZT0iYWxpZ25iIiBwb2ludD0iYWIw
+				MSIgem9uZT0ic3VwX2JvdCIvPgogICAgPHR0YyBjb2RlPSJzaW5nbGV2IiBwb2ludDE9
+				ImF0MDEiIHBvaW50Mj0ic3YwMSIgc3RlbT0ibGNfdGhpbnMiLz4KICAgIDx0dGMgY29k
+				ZT0ic2luZ2xldiIgcG9pbnQxPSJhYjAxIiBwb2ludDI9InN2MDIiIHN0ZW09ImxjX3Ro
+				aW5zIi8+CiAgICA8dHRjIGNvZGU9ImludGVycG9sYXRldiIgcG9pbnQ9Iml2MDEiIHBv
+				aW50MT0iYXQwMSIgcG9pbnQyPSJzdjAyIiBhbGlnbj0ibGVmdCIvPgogICAgPHR0YyBj
+				b2RlPSJzaW5nbGV2IiBwb2ludDE9Iml2MDEiIHBvaW50Mj0ic3YwMyIgc3RlbT0ibGNf
+				dGhpbnMiLz4KICAgIDx0dGMgY29kZT0iaW50ZXJwb2xhdGV2IiBwb2ludD0iaXYwMiIg
+				cG9pbnQxPSJzdjAzIiBwb2ludDI9ImFiMDEiLz4KICA8L3R0UHJvZ3JhbT4K
+			</data>
+		</dict>
+	</lib>
+</glyph>

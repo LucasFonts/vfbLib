@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="lozenge" format="2">
+	<unicode hex="25CA"/>
+	<advance width="550"/>
+	<outline>
+		<contour>
+			<point name="hr00" x="66" y="352" type="line"/>
+			<point name="at01" x="346" y="698" type="line"/>
+			<point x="415" y="698" type="line"/>
+			<point x="526" y="346" type="line"/>
+			<point x="246" y="0" type="line"/>
+			<point name="ab01" x="177" y="0" type="line"/>
+		</contour>
+		<contour>
+			<point name="sv01" x="216" y="56" type="line"/>
+			<point x="227" y="56" type="line"/>
+			<point x="463" y="353" type="line"/>
+			<point x="376" y="642" type="line"/>
+			<point name="sv02" x="365" y="642" type="line"/>
+			<point x="130" y="345" type="line"/>
+		</contour>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint</key>
+			<data>
+				ICA8aGludFNldExpc3Q+CiAgICA8aGludHNldCBwb2ludFRhZz0iaHIwMCI+CiAgICAg
+				IDxoc3RlbSBwb3M9IjAiIHdpZHRoPSI1NiIgLz4KICAgICAgPGhzdGVtIHBvcz0iNjQy
+				IiB3aWR0aD0iNTYiIC8+CiAgICAgIDx2c3RlbSBwb3M9IjY2IiB3aWR0aD0iNDYwIiAv
+				PgogICAgPC9oaW50c2V0PgogIDwvaGludFNldExpc3Q+Cg==
+			</data>
+			<key>com.fontlab.ttprogram</key>
+			<data>
+				ICA8dHRQcm9ncmFtPgogICAgPHR0YyBjb2RlPSJhbGlnbnQiIHBvaW50PSJhdDAxIiB6
+				b25lPSJjYXBoZWlnaHQiLz4KICAgIDx0dGMgY29kZT0iYWxpZ25iIiBwb2ludD0iYWIw
+				MSIgem9uZT0iYmFzZWxpbmUiLz4KICAgIDx0dGMgY29kZT0ic2luZ2xldiIgcG9pbnQx
+				PSJhYjAxIiBwb2ludDI9InN2MDEiLz4KICAgIDx0dGMgY29kZT0ic2luZ2xldiIgcG9p
+				bnQxPSJhdDAxIiBwb2ludDI9InN2MDIiLz4KICA8L3R0UHJvZ3JhbT4K
+			</data>
+		</dict>
+	</lib>
+</glyph>

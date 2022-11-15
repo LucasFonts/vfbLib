@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="caron.case" format="2">
+	<advance width="600"/>
+	<outline>
+		<contour>
+			<point name="hr00" x="204" y="927" type="line"/>
+			<point name="sv01" x="231" y="941" type="line"/>
+			<point name="sv02" x="328" y="845" type="line"/>
+			<point name="sv03" x="476" y="941" type="line"/>
+			<point x="500" y="924" type="line"/>
+			<point x="347" y="768" type="line"/>
+			<point name="av01" x="284" y="768" type="line"/>
+		</contour>
+	</outline>
+	<anchor name="_top" x="300" y="698"/>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint</key>
+			<data>
+				ICA8aGludFNldExpc3Q+CiAgICA8aGludHNldCBwb2ludFRhZz0iaHIwMCI+CiAgICAg
+				IDxoc3RlbSBwb3M9Ijc2OCIgd2lkdGg9IjE3MyIgLz4KICAgICAgPHZzdGVtIHBvcz0i
+				MjA0IiB3aWR0aD0iMjk2IiAvPgogICAgPC9oaW50c2V0PgogIDwvaGludFNldExpc3Q+
+				Cg==
+			</data>
+			<key>com.fontlab.ttprogram</key>
+			<data>
+				ICA8dHRQcm9ncmFtPgogICAgPHR0YyBjb2RlPSJhbGlnbnYiIHBvaW50PSJhdjAxIiBh
+				bGlnbj0icm91bmQiLz4KICAgIDx0dGMgY29kZT0ibWRlbHRhdiIgcG9pbnQ9ImF2MDEi
+				IGRlbHRhPSI4IiBwcG0xPSIxMSIgcHBtMj0iMTEiLz4KICAgIDx0dGMgY29kZT0ibWRl
+				bHRhdiIgcG9pbnQ9ImF2MDEiIGRlbHRhPSItOCIgcHBtMT0iMTUiIHBwbTI9IjE1Ii8+
+				CiAgICA8dHRjIGNvZGU9Im1kZWx0YXYiIHBvaW50PSJhdjAxIiBkZWx0YT0iLTgiIHBw
+				bTE9IjE5IiBwcG0yPSIxOSIvPgogICAgPHR0YyBjb2RlPSJzaW5nbGV2IiBwb2ludDE9
+				ImF2MDEiIHBvaW50Mj0ic3YwMSIgcm91bmQ9InRydWUiLz4KICAgIDx0dGMgY29kZT0i
+				c2luZ2xldiIgcG9pbnQxPSJhdjAxIiBwb2ludDI9InN2MDIiIHJvdW5kPSJ0cnVlIi8+
+				CiAgICA8dHRjIGNvZGU9InNpbmdsZXYiIHBvaW50MT0ic3YwMSIgcG9pbnQyPSJzdjAz
+				Ii8+CiAgPC90dFByb2dyYW0+Cg==
+			</data>
+			<key>com.typemytype.robofont.guides</key>
+			<array>
+				<dict>
+					<key>angle</key>
+					<real>75.96</real>
+					<key>isGlobal</key>
+					<false/>
+					<key>magnetic</key>
+					<integer>5</integer>
+					<key>x</key>
+					<integer>125</integer>
+					<key>y</key>
+					<integer>0</integer>
+				</dict>
+			</array>
+		</dict>
+	</lib>
+</glyph>

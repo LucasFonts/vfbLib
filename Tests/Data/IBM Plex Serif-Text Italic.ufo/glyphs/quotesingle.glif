@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="quotesingle" format="2">
+	<unicode hex="0027"/>
+	<advance width="222"/>
+	<outline>
+		<contour>
+			<point name="hr00" x="172" y="654" type="line"/>
+			<point name="at01" x="196" y="748" type="line"/>
+			<point x="274" y="748" type="line"/>
+			<point x="250" y="654" type="line"/>
+			<point x="177" y="462" type="line"/>
+			<point name="sv01" x="147" y="462" type="line"/>
+		</contour>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint</key>
+			<data>
+				ICA8aGludFNldExpc3Q+CiAgICA8aGludHNldCBwb2ludFRhZz0iaHIwMCI+CiAgICAg
+				IDxoc3RlbSBwb3M9Ijc0OCIgd2lkdGg9Ii0yMCIgLz4KICAgICAgPHZzdGVtIHBvcz0i
+				MTQ3IiB3aWR0aD0iMTI3IiAvPgogICAgPC9oaW50c2V0PgogIDwvaGludFNldExpc3Q+
+				Cg==
+			</data>
+			<key>com.fontlab.ttprogram</key>
+			<data>
+				ICA8dHRQcm9ncmFtPgogICAgPHR0YyBjb2RlPSJhbGlnbnQiIHBvaW50PSJhdDAxIiB6
+				b25lPSJzbGFzaGVzIi8+CiAgICA8dHRjIGNvZGU9InNpbmdsZXYiIHBvaW50MT0iYXQw
+				MSIgcG9pbnQyPSJzdjAxIiByb3VuZD0idHJ1ZSIvPgogIDwvdHRQcm9ncmFtPgo=
+			</data>
+		</dict>
+	</lib>
+</glyph>

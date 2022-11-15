@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="circumflexgrave.case" format="2">
+	<outline>
+		<contour>
+			<point name="hr00" x="-139" y="765" type="line"/>
+			<point name="sv01" x="14" y="920" type="line"/>
+			<point x="77" y="920" type="line"/>
+			<point x="157" y="761" type="line"/>
+			<point name="sv02" x="130" y="747" type="line"/>
+			<point name="sv03" x="33" y="850" type="line"/>
+			<point name="av01" x="-115" y="747" type="line"/>
+		</contour>
+		<contour>
+			<point x="-178" y="1034" type="line"/>
+			<point name="sv04" x="-100" y="1063" type="line"/>
+			<point x="-66" y="886" type="line"/>
+			<point name="iv01" x="-96" y="876" type="line"/>
+		</contour>
+	</outline>
+	<anchor name="_top" x="0" y="698"/>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint</key>
+			<data>
+				ICA8aGludFNldExpc3Q+CiAgICA8aGludHNldCBwb2ludFRhZz0iaHIwMCI+CiAgICAg
+				IDxoc3RlbSBwb3M9Ijc0NyIgd2lkdGg9IjMxNiIgLz4KICAgICAgPHZzdGVtIHBvcz0i
+				LTE3OCIgd2lkdGg9IjMzNSIgLz4KICAgIDwvaGludHNldD4KICA8L2hpbnRTZXRMaXN0
+				Pgo=
+			</data>
+			<key>com.fontlab.ttprogram</key>
+			<data>
+				ICA8dHRQcm9ncmFtPgogICAgPHR0YyBjb2RlPSJhbGlnbnYiIHBvaW50PSJhdjAxIiBh
+				bGlnbj0icm91bmQiLz4KICAgIDx0dGMgY29kZT0ibWRlbHRhdiIgcG9pbnQ9ImF2MDEi
+				IGRlbHRhPSI4IiBwcG0xPSIxMCIgcHBtMj0iMTEiLz4KICAgIDx0dGMgY29kZT0ibWRl
+				bHRhdiIgcG9pbnQ9ImF2MDEiIGRlbHRhPSI4IiBwcG0xPSIxOCIgcHBtMj0iMTgiLz4K
+				ICAgIDx0dGMgY29kZT0ibWRlbHRhdiIgcG9pbnQ9ImF2MDEiIGRlbHRhPSI4IiBwcG0x
+				PSIxNCIgcHBtMj0iMTQiLz4KICAgIDx0dGMgY29kZT0ic2luZ2xldiIgcG9pbnQxPSJh
+				djAxIiBwb2ludDI9InN2MDEiIHJvdW5kPSJ0cnVlIi8+CiAgICA8dHRjIGNvZGU9InNp
+				bmdsZXYiIHBvaW50MT0iYXYwMSIgcG9pbnQyPSJzdjAyIi8+CiAgICA8dHRjIGNvZGU9
+				InNpbmdsZXYiIHBvaW50MT0ic3YwMSIgcG9pbnQyPSJzdjAzIiByb3VuZD0idHJ1ZSIv
+				PgogICAgPHR0YyBjb2RlPSJpbnRlcnBvbGF0ZXYiIHBvaW50PSJpdjAxIiBwb2ludDE9
+				InN2MDEiIHBvaW50Mj0ic3YwMyIgYWxpZ249InJpZ2h0Ii8+CiAgICA8dHRjIGNvZGU9
+				InNpbmdsZXYiIHBvaW50MT0iaXYwMSIgcG9pbnQyPSJzdjA0IiByb3VuZD0idHJ1ZSIv
+				PgogIDwvdHRQcm9ncmFtPgo=
+			</data>
+			<key>com.typemytype.robofont.guides</key>
+			<array>
+				<dict>
+					<key>angle</key>
+					<real>75.96</real>
+					<key>isGlobal</key>
+					<false/>
+					<key>magnetic</key>
+					<integer>5</integer>
+					<key>x</key>
+					<integer>-175</integer>
+					<key>y</key>
+					<integer>0</integer>
+				</dict>
+			</array>
+		</dict>
+	</lib>
+</glyph>

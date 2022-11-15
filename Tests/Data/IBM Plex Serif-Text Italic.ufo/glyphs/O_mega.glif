@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="Omega" format="2">
+	<unicode hex="2126"/>
+	<advance width="675"/>
+	<outline>
+		<contour>
+			<point name="sv01" x="22" y="139" type="line"/>
+			<point x="93" y="139" type="line"/>
+			<point name="sv02" x="70" y="48" type="line"/>
+			<point x="189" y="48" type="line"/>
+			<point name="sv03" x="204" y="106" type="line"/>
+			<point x="148" y="133"/>
+			<point x="80" y="236"/>
+			<point x="80" y="313" type="qcurve"/>
+			<point x="80" y="377"/>
+			<point x="125" y="517"/>
+			<point x="215" y="634"/>
+			<point x="349" y="710"/>
+			<point name="at01" x="438" y="710" type="qcurve"/>
+			<point x="495" y="710"/>
+			<point x="580" y="671"/>
+			<point x="636" y="607"/>
+			<point x="664" y="526"/>
+			<point x="664" y="484" type="qcurve"/>
+			<point x="664" y="415"/>
+			<point x="625" y="295"/>
+			<point x="555" y="198"/>
+			<point x="456" y="124"/>
+			<point name="sv05" x="395" y="100" type="qcurve"/>
+			<point name="sv04" x="382" y="48" type="line"/>
+			<point x="510" y="48" type="line"/>
+			<point name="sv06" x="533" y="139" type="line"/>
+			<point x="604" y="139" type="line"/>
+			<point x="570" y="0" type="line"/>
+			<point name="ab02" x="322" y="0" type="line"/>
+			<point name="sv07" x="355" y="130" type="line"/>
+			<point x="384" y="142"/>
+			<point x="442" y="183"/>
+			<point x="492" y="238"/>
+			<point x="531" y="305"/>
+			<point x="541" y="344" type="qcurve"/>
+			<point x="550" y="378"/>
+			<point x="562" y="429"/>
+			<point x="570" y="468"/>
+			<point x="574" y="501"/>
+			<point x="574" y="518" type="qcurve"/>
+			<point x="574" y="546"/>
+			<point x="557" y="597"/>
+			<point x="523" y="635"/>
+			<point x="469" y="658"/>
+			<point name="sv08" x="433" y="658" type="qcurve"/>
+			<point x="387" y="658"/>
+			<point x="310" y="621"/>
+			<point x="252" y="561"/>
+			<point x="212" y="484"/>
+			<point x="202" y="443" type="qcurve"/>
+			<point x="183" y="367" type="line"/>
+			<point x="175" y="338"/>
+			<point x="169" y="303"/>
+			<point x="169" y="285" type="qcurve"/>
+			<point x="169" y="230"/>
+			<point x="219" y="150"/>
+			<point name="sv09" x="257" y="130" type="qcurve"/>
+			<point x="225" y="0" type="line"/>
+			<point name="ab01" x="-13" y="0" type="line"/>
+		</contour>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint</key>
+			<data>
+				ICA8aGludFNldExpc3Q+CiAgICA8aGludHNldCBwb2ludFRhZz0ic3YwMSI+CiAgICAg
+				IDxoc3RlbSBwb3M9IjAiIHdpZHRoPSI0OCIgLz4KICAgICAgPGhzdGVtIHBvcz0iNjU4
+				IiB3aWR0aD0iNTIiIC8+CiAgICAgIDx2c3RlbSBwb3M9IjgwIiB3aWR0aD0iODkiIC8+
+				CiAgICAgIDx2c3RlbSBwb3M9IjU3NCIgd2lkdGg9IjkwIiAvPgogICAgPC9oaW50c2V0
+				PgogIDwvaGludFNldExpc3Q+Cg==
+			</data>
+			<key>com.fontlab.ttprogram</key>
+			<data>
+				ICA8dHRQcm9ncmFtPgogICAgPHR0YyBjb2RlPSJhbGlnbnQiIHBvaW50PSJhdDAxIiB6
+				b25lPSJjYXBoZWlnaHQiLz4KICAgIDx0dGMgY29kZT0iYWxpZ25iIiBwb2ludD0iYWIw
+				MSIgem9uZT0iYmFzZWxpbmUiLz4KICAgIDx0dGMgY29kZT0iYWxpZ25iIiBwb2ludD0i
+				YWIwMiIgem9uZT0iYmFzZWxpbmUiLz4KICAgIDx0dGMgY29kZT0ic2luZ2xldiIgcG9p
+				bnQxPSJhYjAxIiBwb2ludDI9InN2MDEiIHJvdW5kPSJ0cnVlIi8+CiAgICA8dHRjIGNv
+				ZGU9Im1kZWx0YXYiIHBvaW50PSJzdjAxIiBkZWx0YT0iLTgiIHBwbTE9IjE5IiBwcG0y
+				PSIyOSIvPgogICAgPHR0YyBjb2RlPSJzaW5nbGV2IiBwb2ludDE9ImFiMDEiIHBvaW50
+				Mj0ic3YwMiIgc3RlbT0ibGNfc3RlbXNlcmlmIi8+CiAgICA8dHRjIGNvZGU9InNpbmds
+				ZXYiIHBvaW50MT0ic3YwMiIgcG9pbnQyPSJzdjAzIiByb3VuZD0idHJ1ZSIvPgogICAg
+				PHR0YyBjb2RlPSJzaW5nbGV2IiBwb2ludDE9ImFiMDIiIHBvaW50Mj0ic3YwNCIgc3Rl
+				bT0ibGNfc3RlbXNlcmlmIi8+CiAgICA8dHRjIGNvZGU9InNpbmdsZXYiIHBvaW50MT0i
+				c3YwNCIgcG9pbnQyPSJzdjA1IiByb3VuZD0idHJ1ZSIvPgogICAgPHR0YyBjb2RlPSJz
+				aW5nbGV2IiBwb2ludDE9InN2MDEiIHBvaW50Mj0ic3YwNiIvPgogICAgPHR0YyBjb2Rl
+				PSJzaW5nbGV2IiBwb2ludDE9InN2MDUiIHBvaW50Mj0ic3YwNyIgcm91bmQ9InRydWUi
+				Lz4KICAgIDx0dGMgY29kZT0ic2luZ2xldiIgcG9pbnQxPSJhdDAxIiBwb2ludDI9InN2
+				MDgiIHN0ZW09ImxjX3N0ZW1zZXJpZiIvPgogICAgPHR0YyBjb2RlPSJzaW5nbGV2IiBw
+				b2ludDE9InN2MDMiIHBvaW50Mj0ic3YwOSIgcm91bmQ9InRydWUiLz4KICA8L3R0UHJv
+				Z3JhbT4K
+			</data>
+		</dict>
+	</lib>
+</glyph>

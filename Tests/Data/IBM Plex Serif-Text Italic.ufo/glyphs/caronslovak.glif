@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="caronslovak" format="2">
+	<unicode hex="02BC"/>
+	<advance width="600"/>
+	<outline>
+		<contour>
+			<point name="at01" x="355" y="748" type="line"/>
+			<point x="447" y="748" type="line"/>
+			<point x="332" y="558" type="line"/>
+			<point name="sv01" x="300" y="558" type="line"/>
+		</contour>
+	</outline>
+	<anchor name="_topright" x="300" y="758"/>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint</key>
+			<data>
+				ICA8aGludFNldExpc3Q+CiAgICA8aGludHNldCBwb2ludFRhZz0iYXQwMSI+CiAgICAg
+				IDxoc3RlbSBwb3M9IjU1OCIgd2lkdGg9IjE5MCIgLz4KICAgICAgPHZzdGVtIHBvcz0i
+				MzAwIiB3aWR0aD0iMTQ3IiAvPgogICAgPC9oaW50c2V0PgogIDwvaGludFNldExpc3Q+
+				Cg==
+			</data>
+			<key>com.fontlab.ttprogram</key>
+			<data>
+				ICA8dHRQcm9ncmFtPgogICAgPHR0YyBjb2RlPSJhbGlnbnQiIHBvaW50PSJhdDAxIiB6
+				b25lPSJhc2NlbmRlciIvPgogICAgPHR0YyBjb2RlPSJzaW5nbGV2IiBwb2ludDE9ImF0
+				MDEiIHBvaW50Mj0ic3YwMSIgcm91bmQ9InRydWUiLz4KICA8L3R0UHJvZ3JhbT4K
+			</data>
+			<key>com.typemytype.robofont.guides</key>
+			<array>
+				<dict>
+					<key>angle</key>
+					<real>75.96</real>
+					<key>isGlobal</key>
+					<false/>
+					<key>magnetic</key>
+					<integer>5</integer>
+					<key>x</key>
+					<integer>110</integer>
+					<key>y</key>
+					<integer>0</integer>
+				</dict>
+			</array>
+		</dict>
+	</lib>
+</glyph>

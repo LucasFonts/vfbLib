@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="arrowhookleft" format="2">
+	<unicode hex="21A9"/>
+	<advance width="860"/>
+	<outline>
+		<contour>
+			<point name="hr00" x="73" y="289" type="line"/>
+			<point x="284" y="500" type="line"/>
+			<point x="315" y="475" type="line"/>
+			<point x="199" y="309" type="line"/>
+			<point name="av01" x="578" y="329" type="line"/>
+			<point x="600" y="329"/>
+			<point x="642" y="340"/>
+			<point x="675" y="363"/>
+			<point x="694" y="399"/>
+			<point x="694" y="424" type="qcurve"/>
+			<point x="694" y="448"/>
+			<point x="675" y="484"/>
+			<point x="643" y="507"/>
+			<point x="601" y="518"/>
+			<point name="sv01" x="578" y="518" type="qcurve"/>
+			<point name="av02" x="578" y="598" type="line"/>
+			<point x="623" y="598"/>
+			<point x="700" y="575"/>
+			<point x="755" y="530"/>
+			<point x="786" y="466"/>
+			<point x="786" y="424" type="qcurve"/>
+			<point x="786" y="384"/>
+			<point x="756" y="319"/>
+			<point x="702" y="274"/>
+			<point x="625" y="249"/>
+			<point name="sv02" x="578" y="249" type="qcurve"/>
+			<point x="199" y="269" type="line"/>
+			<point x="315" y="103" type="line"/>
+			<point x="284" y="78" type="line"/>
+		</contour>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint</key>
+			<data>
+				ICA8aGludFNldExpc3Q+CiAgICA8aGludHNldCBwb2ludFRhZz0iaHIwMCI+CiAgICAg
+				IDxoc3RlbSBwb3M9IjI0OSIgd2lkdGg9IjgwIiAvPgogICAgICA8aHN0ZW0gcG9zPSI1
+				MTgiIHdpZHRoPSI4MCIgLz4KICAgICAgPHZzdGVtIHBvcz0iNjk0IiB3aWR0aD0iOTIi
+				IC8+CiAgICA8L2hpbnRzZXQ+CiAgPC9oaW50U2V0TGlzdD4K
+			</data>
+			<key>com.fontlab.ttprogram</key>
+			<data>
+				ICA8dHRQcm9ncmFtPgogICAgPHR0YyBjb2RlPSJhbGlnbnYiIHBvaW50PSJhdjAxIiBh
+				bGlnbj0icm91bmQiLz4KICAgIDx0dGMgY29kZT0iYWxpZ252IiBwb2ludD0iYXYwMiIg
+				YWxpZ249InJvdW5kIi8+CiAgICA8dHRjIGNvZGU9InNpbmdsZXYiIHBvaW50MT0iYXYw
+				MiIgcG9pbnQyPSJzdjAxIiBzdGVtPSJsb2dvX2NlIi8+CiAgICA8dHRjIGNvZGU9InNp
+				bmdsZXYiIHBvaW50MT0iYXYwMSIgcG9pbnQyPSJzdjAyIiBzdGVtPSJsb2dvX2NlIi8+
+				CiAgPC90dFByb2dyYW0+Cg==
+			</data>
+		</dict>
+	</lib>
+</glyph>

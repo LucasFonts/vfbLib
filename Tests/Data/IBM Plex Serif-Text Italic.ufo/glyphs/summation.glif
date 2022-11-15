@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="summation" format="2">
+	<unicode hex="2211"/>
+	<advance width="534"/>
+	<outline>
+		<contour>
+			<point name="sv02" x="-81" y="-136" type="line"/>
+			<point x="249" y="235" type="line"/>
+			<point x="250" y="239" type="line"/>
+			<point name="sv04" x="110" y="630" type="line"/>
+			<point name="at01" x="127" y="698" type="line"/>
+			<point x="595" y="698" type="line"/>
+			<point x="553" y="527" type="line"/>
+			<point name="sv05" x="501" y="527" type="line"/>
+			<point x="532" y="649" type="line"/>
+			<point name="sv03" x="199" y="649" type="line"/>
+			<point x="329" y="288" type="line"/>
+			<point x="312" y="224" type="line"/>
+			<point name="sv01" x="-4" y="-127" type="line"/>
+			<point x="336" y="-127" type="line"/>
+			<point name="sv06" x="370" y="6" type="line"/>
+			<point x="422" y="6" type="line"/>
+			<point x="370" y="-200" type="line"/>
+			<point name="ab01" x="-96" y="-200" type="line"/>
+		</contour>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint</key>
+			<data>
+				ICA8aGludFNldExpc3Q+CiAgICA8aGludHNldCBwb2ludFRhZz0ic3YwMiI+CiAgICAg
+				IDxoc3RlbSBwb3M9Ii0yMDAiIHdpZHRoPSI3MyIgLz4KICAgICAgPGhzdGVtIHBvcz0i
+				NjQ5IiB3aWR0aD0iNDkiIC8+CiAgICAgIDx2c3RlbSBwb3M9Ii05NiIgd2lkdGg9IjY5
+				MSIgLz4KICAgIDwvaGludHNldD4KICA8L2hpbnRTZXRMaXN0Pgo=
+			</data>
+			<key>com.fontlab.ttprogram</key>
+			<data>
+				ICA8dHRQcm9ncmFtPgogICAgPHR0YyBjb2RlPSJhbGlnbnQiIHBvaW50PSJhdDAxIiB6
+				b25lPSJjYXBoZWlnaHQiLz4KICAgIDx0dGMgY29kZT0iYWxpZ25iIiBwb2ludD0iYWIw
+				MSIgem9uZT0iZGVzY2VuZGVyIi8+CiAgICA8dHRjIGNvZGU9InNpbmdsZXYiIHBvaW50
+				MT0iYWIwMSIgcG9pbnQyPSJzdjAxIiBzdGVtPSJ1Y190aGljayIvPgogICAgPHR0YyBj
+				b2RlPSJzaW5nbGV2IiBwb2ludDE9InN2MDEiIHBvaW50Mj0ic3YwMiIvPgogICAgPHR0
+				YyBjb2RlPSJzaW5nbGV2IiBwb2ludDE9ImF0MDEiIHBvaW50Mj0ic3YwMyIgc3RlbT0i
+				dWNfc3RlbSIvPgogICAgPHR0YyBjb2RlPSJzaW5nbGV2IiBwb2ludDE9InN2MDMiIHBv
+				aW50Mj0ic3YwNCIvPgogICAgPHR0YyBjb2RlPSJzaW5nbGV2IiBwb2ludDE9ImF0MDEi
+				IHBvaW50Mj0ic3YwNSIgcm91bmQ9InRydWUiLz4KICAgIDx0dGMgY29kZT0ic2luZ2xl
+				diIgcG9pbnQxPSJhYjAxIiBwb2ludDI9InN2MDYiIHJvdW5kPSJ0cnVlIi8+CiAgPC90
+				dFByb2dyYW0+Cg==
+			</data>
+		</dict>
+	</lib>
+</glyph>

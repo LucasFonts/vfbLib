@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name=".notdef" format="2">
+	<advance width="424"/>
+	<outline>
+		<contour>
+			<point name="ab01" x="32" y="0" type="line"/>
+			<point name="sv01" x="32" y="780" type="line"/>
+			<point x="392" y="780" type="line"/>
+			<point x="392" y="0" type="line"/>
+		</contour>
+		<contour>
+			<point name="sv02" x="80" y="48" type="line"/>
+			<point x="344" y="48" type="line"/>
+			<point x="344" y="732" type="line"/>
+			<point name="sv03" x="80" y="732" type="line"/>
+		</contour>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.fontlab.ttprogram</key>
+			<data>
+				ICA8dHRQcm9ncmFtPgogICAgPHR0YyBjb2RlPSJhbGlnbmIiIHBvaW50PSJhYjAxIiB6
+				b25lPSJiYXNlbGluZSIvPgogICAgPHR0YyBjb2RlPSJzaW5nbGV2IiBwb2ludDE9ImFi
+				MDEiIHBvaW50Mj0ic3YwMSIgcm91bmQ9InRydWUiLz4KICAgIDx0dGMgY29kZT0ic2lu
+				Z2xldiIgcG9pbnQxPSJhYjAxIiBwb2ludDI9InN2MDIiIHJvdW5kPSJ0cnVlIi8+CiAg
+				ICA8dHRjIGNvZGU9InNpbmdsZXYiIHBvaW50MT0ic3YwMSIgcG9pbnQyPSJzdjAzIiBy
+				b3VuZD0idHJ1ZSIvPgogIDwvdHRQcm9ncmFtPgo=
+			</data>
+		</dict>
+	</lib>
+</glyph>

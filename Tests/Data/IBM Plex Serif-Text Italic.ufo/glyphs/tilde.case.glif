@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="tilde.case" format="2">
+	<advance width="600"/>
+	<outline>
+		<contour>
+			<point name="av01" x="399" y="784" type="qcurve"/>
+			<point x="376" y="784"/>
+			<point x="339" y="799"/>
+			<point x="317" y="810" type="qcurve"/>
+			<point x="293" y="821"/>
+			<point x="259" y="838"/>
+			<point name="sv01" x="244" y="838" type="qcurve"/>
+			<point x="231" y="838"/>
+			<point x="207" y="824"/>
+			<point name="iv01" x="190" y="807" type="qcurve"/>
+			<point x="168" y="827" type="line"/>
+			<point x="190" y="854"/>
+			<point x="233" y="897"/>
+			<point name="sv02" x="263" y="897" type="qcurve"/>
+			<point x="286" y="897"/>
+			<point x="323" y="882"/>
+			<point x="345" y="871" type="qcurve"/>
+			<point x="369" y="860"/>
+			<point x="403" y="843"/>
+			<point name="sv03" x="418" y="843" type="qcurve"/>
+			<point x="441" y="843"/>
+			<point name="iv02" x="472" y="874" type="qcurve"/>
+			<point x="494" y="854" type="line"/>
+			<point x="472" y="827"/>
+			<point x="429" y="784"/>
+		</contour>
+	</outline>
+	<anchor name="_top" x="300" y="698"/>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint</key>
+			<data>
+				ICA8aGludFNldExpc3Q+CiAgICA8aGludHNldCBwb2ludFRhZz0ic3YwMiI+CiAgICAg
+				IDxoc3RlbSBwb3M9Ijc4NCIgd2lkdGg9IjU5IiAvPgogICAgICA8aHN0ZW0gcG9zPSI4
+				MzgiIHdpZHRoPSI1OSIgLz4KICAgICAgPHZzdGVtIHBvcz0iMTY4IiB3aWR0aD0iMzI2
+				IiAvPgogICAgICA8dnN0ZW0gcG9zPSIxNjgiIHdpZHRoPSIzMjYiIC8+CiAgICA8L2hp
+				bnRzZXQ+CiAgPC9oaW50U2V0TGlzdD4K
+			</data>
+			<key>com.fontlab.ttprogram</key>
+			<data>
+				ICA8dHRQcm9ncmFtPgogICAgPHR0YyBjb2RlPSJhbGlnbnYiIHBvaW50PSJhdjAxIiBh
+				bGlnbj0icm91bmQiLz4KICAgIDx0dGMgY29kZT0ibWRlbHRhdiIgcG9pbnQ9ImF2MDEi
+				IGRlbHRhPSItOCIgcHBtMT0iMTUiIHBwbTI9IjE2Ii8+CiAgICA8dHRjIGNvZGU9InNp
+				bmdsZXYiIHBvaW50MT0iYXYwMSIgcG9pbnQyPSJzdjAxIiByb3VuZD0idHJ1ZSIvPgog
+				ICAgPHR0YyBjb2RlPSJpbnRlcnBvbGF0ZXYiIHBvaW50PSJpdjAxIiBwb2ludDE9InN2
+				MDEiIHBvaW50Mj0iYXYwMSIvPgogICAgPHR0YyBjb2RlPSJzaW5nbGV2IiBwb2ludDE9
+				InN2MDEiIHBvaW50Mj0ic3YwMiIgcm91bmQ9InRydWUiLz4KICAgIDx0dGMgY29kZT0i
+				bWRlbHRhdiIgcG9pbnQ9InN2MDIiIGRlbHRhPSI4IiBwcG0xPSIyNSIgcHBtMj0iMjUi
+				Lz4KICAgIDx0dGMgY29kZT0ic2luZ2xldiIgcG9pbnQxPSJhdjAxIiBwb2ludDI9InN2
+				MDMiIHJvdW5kPSJ0cnVlIi8+CiAgICA8dHRjIGNvZGU9Im1kZWx0YXYiIHBvaW50PSJz
+				djAzIiBkZWx0YT0iOCIgcHBtMT0iMjUiIHBwbTI9IjI1Ii8+CiAgICA8dHRjIGNvZGU9
+				ImludGVycG9sYXRldiIgcG9pbnQ9Iml2MDIiIHBvaW50MT0ic3YwMiIgcG9pbnQyPSJz
+				djAzIi8+CiAgPC90dFByb2dyYW0+Cg==
+			</data>
+			<key>com.typemytype.robofont.guides</key>
+			<array>
+				<dict>
+					<key>angle</key>
+					<real>75.96</real>
+					<key>isGlobal</key>
+					<false/>
+					<key>magnetic</key>
+					<integer>5</integer>
+					<key>x</key>
+					<integer>125</integer>
+					<key>y</key>
+					<integer>0</integer>
+				</dict>
+			</array>
+		</dict>
+	</lib>
+</glyph>

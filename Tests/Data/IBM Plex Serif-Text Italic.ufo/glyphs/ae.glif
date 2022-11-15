@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="ae" format="2">
+	<unicode hex="00E6"/>
+	<advance width="700"/>
+	<outline>
+		<contour>
+			<point name="ab02" x="114" y="-12" type="qcurve"/>
+			<point x="69" y="-12"/>
+			<point x="14" y="46"/>
+			<point x="14" y="90" type="qcurve"/>
+			<point x="14" y="128"/>
+			<point x="45" y="196"/>
+			<point x="115" y="248"/>
+			<point x="231" y="282"/>
+			<point name="iv01" x="315" y="287" type="qcurve"/>
+			<point x="317" y="296"/>
+			<point x="325" y="327"/>
+			<point x="332" y="361"/>
+			<point x="337" y="393"/>
+			<point x="337" y="405" type="qcurve"/>
+			<point x="337" y="448"/>
+			<point x="294" y="488"/>
+			<point name="sv01" x="259" y="488" type="qcurve"/>
+			<point x="227" y="488"/>
+			<point x="193" y="472" type="qcurve"/>
+			<point x="190" y="465" type="line"/>
+			<point x="198" y="459"/>
+			<point x="211" y="437"/>
+			<point x="211" y="422" type="qcurve"/>
+			<point x="211" y="393"/>
+			<point x="178" y="355"/>
+			<point name="iv02" x="149" y="355" type="qcurve"/>
+			<point x="127" y="355"/>
+			<point x="99" y="382"/>
+			<point x="99" y="408" type="qcurve"/>
+			<point x="99" y="430"/>
+			<point x="128" y="474"/>
+			<point x="179" y="509"/>
+			<point x="246" y="530"/>
+			<point name="at01" x="285" y="530" type="qcurve"/>
+			<point x="333" y="530"/>
+			<point x="392" y="486"/>
+			<point name="iv03" x="400" y="450" type="qcurve"/>
+			<point x="408" y="450" type="line"/>
+			<point x="432" y="486"/>
+			<point x="511" y="530"/>
+			<point name="at02" x="558" y="530" type="qcurve"/>
+			<point x="581" y="530"/>
+			<point x="627" y="520"/>
+			<point x="664" y="497"/>
+			<point x="687" y="458"/>
+			<point x="687" y="429" type="qcurve"/>
+			<point x="687" y="401"/>
+			<point x="661" y="345"/>
+			<point x="596" y="298"/>
+			<point x="485" y="265"/>
+			<point name="sv04" x="400" y="260" type="qcurve"/>
+			<point x="394" y="230"/>
+			<point x="383" y="163"/>
+			<point x="383" y="136" type="qcurve"/>
+			<point x="383" y="94"/>
+			<point x="415" y="49"/>
+			<point name="sv05" x="450" y="49" type="qcurve"/>
+			<point x="495" y="49"/>
+			<point x="578" y="125"/>
+			<point name="iv04" x="615" y="193" type="qcurve"/>
+			<point x="647" y="178" type="line"/>
+			<point x="599" y="82"/>
+			<point x="496" y="-12"/>
+			<point name="ab01" x="421" y="-12" type="qcurve"/>
+			<point x="382" y="-12"/>
+			<point x="335" y="13"/>
+			<point x="309" y="53"/>
+			<point x="300" y="101"/>
+			<point name="hr01" x="300" y="124" type="qcurve"/>
+			<point name="iv05" x="292" y="124" type="line"/>
+			<point x="277" y="89"/>
+			<point x="237" y="38"/>
+			<point x="190" y="5"/>
+			<point x="139" y="-12"/>
+		</contour>
+		<contour>
+			<point name="sv02" x="152" y="47" type="qcurve"/>
+			<point x="172" y="47"/>
+			<point x="217" y="76"/>
+			<point x="258" y="123"/>
+			<point x="290" y="182"/>
+			<point x="297" y="212" type="qcurve"/>
+			<point name="sv03" x="308" y="256" type="line"/>
+			<point x="215" y="245"/>
+			<point x="122" y="185"/>
+			<point x="109" y="139" type="qcurve"/>
+			<point x="103" y="121"/>
+			<point x="103" y="102" type="qcurve"/>
+			<point x="103" y="76"/>
+			<point x="126" y="47"/>
+		</contour>
+		<contour>
+			<point name="sv06" x="408" y="293" type="qcurve"/>
+			<point x="511" y="305"/>
+			<point x="602" y="370"/>
+			<point x="602" y="425" type="qcurve"/>
+			<point x="602" y="451"/>
+			<point x="578" y="486"/>
+			<point name="sv07" x="546" y="486" type="qcurve"/>
+			<point x="524" y="486"/>
+			<point x="486" y="467"/>
+			<point x="453" y="422"/>
+			<point x="422" y="348"/>
+		</contour>
+	</outline>
+	<anchor name="top" x="424" y="540"/>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint</key>
+			<data>
+				ICA8aGludFNldExpc3Q+CiAgICA8aGludHNldCBwb2ludFRhZz0iaHIwMSI+CiAgICAg
+				IDxoc3RlbSBwb3M9Ii0xMiIgd2lkdGg9IjU5IiAvPgogICAgICA8aHN0ZW0gcG9zPSIt
+				MTIiIHdpZHRoPSI1OSIgLz4KICAgICAgPGhzdGVtIHBvcz0iMjU2IiB3aWR0aD0iMzEi
+				IC8+CiAgICAgIDxoc3RlbSBwb3M9IjI1NiIgd2lkdGg9IjMxIiAvPgogICAgICA8aHN0
+				ZW0gcG9zPSI0ODYiIHdpZHRoPSI0NCIgLz4KICAgICAgPGhzdGVtIHBvcz0iNDg2IiB3
+				aWR0aD0iNDQiIC8+CiAgICAgIDx2c3RlbSBwb3M9IjE0IiB3aWR0aD0iODkiIC8+CiAg
+				ICAgIDx2c3RlbSBwb3M9Ijk5IiB3aWR0aD0iMTEyIiAvPgogICAgICA8dnN0ZW0gcG9z
+				PSI2MDIiIHdpZHRoPSI4NSIgLz4KICAgICAgPHZzdGVtIHBvcz0iNjAyIiB3aWR0aD0i
+				ODUiIC8+CiAgICA8L2hpbnRzZXQ+CiAgPC9oaW50U2V0TGlzdD4K
+			</data>
+			<key>com.fontlab.ttprogram</key>
+			<data>
+				ICA8dHRQcm9ncmFtPgogICAgPHR0YyBjb2RlPSJhbGlnbnQiIHBvaW50PSJhdDAxIiB6
+				b25lPSJ4aGVpZ2h0Ii8+CiAgICA8dHRjIGNvZGU9ImFsaWdudCIgcG9pbnQ9ImF0MDIi
+				IHpvbmU9InhoZWlnaHQiLz4KICAgIDx0dGMgY29kZT0iYWxpZ25iIiBwb2ludD0iYWIw
+				MSIgem9uZT0iYmFzZWxpbmUiLz4KICAgIDx0dGMgY29kZT0iYWxpZ25iIiBwb2ludD0i
+				YWIwMiIgem9uZT0iYmFzZWxpbmUiLz4KICAgIDx0dGMgY29kZT0ic2luZ2xldiIgcG9p
+				bnQxPSJhdDAxIiBwb2ludDI9InN2MDEiIHN0ZW09ImxjX21lZGl1bXMiLz4KICAgIDx0
+				dGMgY29kZT0ic2luZ2xldiIgcG9pbnQxPSJhYjAyIiBwb2ludDI9InN2MDIiIHN0ZW09
+				ImJvd2xfdGhpbiIvPgogICAgPHR0YyBjb2RlPSJpbnRlcnBvbGF0ZXYiIHBvaW50PSJp
+				djAxIiBwb2ludDE9InN2MDEiIHBvaW50Mj0ic3YwMiIgYWxpZ249InJvdW5kIi8+CiAg
+				ICA8dHRjIGNvZGU9ImludGVycG9sYXRldiIgcG9pbnQ9Iml2MDIiIHBvaW50MT0ic3Yw
+				MSIgcG9pbnQyPSJpdjAxIiBhbGlnbj0icm91bmQiLz4KICAgIDx0dGMgY29kZT0iaW50
+				ZXJwb2xhdGV2IiBwb2ludD0iaXYwMyIgcG9pbnQxPSJzdjAxIiBwb2ludDI9ImFiMDIi
+				Lz4KICAgIDx0dGMgY29kZT0ic2luZ2xldiIgcG9pbnQxPSJpdjAxIiBwb2ludDI9InN2
+				MDMiIHN0ZW09ImxjX3RoaW5zIi8+CiAgICA8dHRjIGNvZGU9InNpbmdsZXYiIHBvaW50
+				MT0ic3YwMyIgcG9pbnQyPSJzdjA0Ii8+CiAgICA8dHRjIGNvZGU9InNpbmdsZXYiIHBv
+				aW50MT0iYWIwMSIgcG9pbnQyPSJzdjA1IiBzdGVtPSJib3dsX3RoaW4iLz4KICAgIDx0
+				dGMgY29kZT0iaW50ZXJwb2xhdGV2IiBwb2ludD0iaXYwNCIgcG9pbnQxPSJzdjA0IiBw
+				b2ludDI9InN2MDUiLz4KICAgIDx0dGMgY29kZT0iaW50ZXJwb2xhdGV2IiBwb2ludD0i
+				aXYwNSIgcG9pbnQxPSJzdjAyIiBwb2ludDI9ImF0MDEiLz4KICAgIDx0dGMgY29kZT0i
+				c2luZ2xldiIgcG9pbnQxPSJpdjAxIiBwb2ludDI9InN2MDYiLz4KICAgIDx0dGMgY29k
+				ZT0ic2luZ2xldiIgcG9pbnQxPSJhdDAyIiBwb2ludDI9InN2MDciIHN0ZW09ImxjX21l
+				ZGl1bXMiLz4KICA8L3R0UHJvZ3JhbT4K
+			</data>
+			<key>com.typemytype.robofont.guides</key>
+			<array>
+				<dict>
+					<key>angle</key>
+					<real>75.96</real>
+					<key>isGlobal</key>
+					<false/>
+					<key>magnetic</key>
+					<integer>5</integer>
+					<key>x</key>
+					<integer>289</integer>
+					<key>y</key>
+					<integer>0</integer>
+				</dict>
+			</array>
+		</dict>
+	</lib>
+</glyph>

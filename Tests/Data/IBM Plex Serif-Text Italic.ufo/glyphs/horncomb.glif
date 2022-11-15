@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="horncomb" format="2">
+	<unicode hex="031B"/>
+	<outline>
+		<contour>
+			<point name="at01" x="-26" y="518" type="line"/>
+			<point x="51" y="518" type="line"/>
+			<point name="sv01" x="79" y="628" type="line"/>
+			<point x="160" y="628" type="line"/>
+			<point x="138" y="538" type="line"/>
+			<point x="132" y="514"/>
+			<point x="99" y="481"/>
+			<point x="65" y="481" type="qcurve"/>
+			<point name="sv02" x="-35" y="481" type="line"/>
+		</contour>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint</key>
+			<data>
+				ICA8aGludFNldExpc3Q+CiAgICA8aGludHNldCBwb2ludFRhZz0iYXQwMSI+CiAgICAg
+				IDxoc3RlbSBwb3M9IjQ4MSIgd2lkdGg9IjM3IiAvPgogICAgICA8dnN0ZW0gcG9zPSIt
+				MzUiIHdpZHRoPSIxOTUiIC8+CiAgICA8L2hpbnRzZXQ+CiAgPC9oaW50U2V0TGlzdD4K
+			</data>
+			<key>com.fontlab.ttprogram</key>
+			<data>
+				ICA8dHRQcm9ncmFtPgogICAgPHR0YyBjb2RlPSJhbGlnbnQiIHBvaW50PSJhdDAxIiB6
+				b25lPSJ4aGVpZ2h0Ii8+CiAgICA8dHRjIGNvZGU9InNpbmdsZXYiIHBvaW50MT0iYXQw
+				MSIgcG9pbnQyPSJzdjAxIiByb3VuZD0idHJ1ZSIvPgogICAgPHR0YyBjb2RlPSJzaW5n
+				bGV2IiBwb2ludDE9ImF0MDEiIHBvaW50Mj0ic3YwMiIgc3RlbT0ibGNfbWVkaXVtcyIv
+				PgogIDwvdHRQcm9ncmFtPgo=
+			</data>
+		</dict>
+	</lib>
+</glyph>

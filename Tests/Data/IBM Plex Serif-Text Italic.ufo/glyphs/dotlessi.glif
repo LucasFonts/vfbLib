@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="dotlessi" format="2">
+	<unicode hex="0131"/>
+	<advance width="307"/>
+	<outline>
+		<contour>
+			<point name="ab01" x="119" y="-12" type="qcurve"/>
+			<point x="85" y="-12"/>
+			<point x="53" y="26"/>
+			<point x="53" y="51" type="qcurve"/>
+			<point x="53" y="62"/>
+			<point x="57" y="87"/>
+			<point x="60" y="98" type="qcurve"/>
+			<point x="148" y="450" type="line"/>
+			<point name="sv01" x="60" y="450" type="line"/>
+			<point name="sv02" x="70" y="490" type="line"/>
+			<point name="at01" x="261" y="530" type="line"/>
+			<point x="142" y="57" type="line"/>
+			<point name="sv03" x="160" y="49" type="line"/>
+			<point name="sv04" x="270" y="164" type="line"/>
+			<point x="296" y="145" type="line"/>
+			<point x="228" y="61" type="line"/>
+			<point x="193" y="17"/>
+			<point x="142" y="-12"/>
+		</contour>
+	</outline>
+	<anchor name="top" x="198" y="540"/>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint</key>
+			<data>
+				ICA8aGludFNldExpc3Q+CiAgICA8aGludHNldCBwb2ludFRhZz0iYWIwMSI+CiAgICAg
+				IDxoc3RlbSBwb3M9Ii0xMiIgd2lkdGg9IjYxIiAvPgogICAgICA8aHN0ZW0gcG9zPSI0
+				NTAiIHdpZHRoPSI4MCIgLz4KICAgICAgPHZzdGVtIHBvcz0iNTMiIHdpZHRoPSI4OSIg
+				Lz4KICAgIDwvaGludHNldD4KICA8L2hpbnRTZXRMaXN0Pgo=
+			</data>
+			<key>com.fontlab.ttprogram</key>
+			<data>
+				ICA8dHRQcm9ncmFtPgogICAgPHR0YyBjb2RlPSJhbGlnbnQiIHBvaW50PSJhdDAxIiB6
+				b25lPSJ4aGVpZ2h0Ii8+CiAgICA8dHRjIGNvZGU9ImFsaWduYiIgcG9pbnQ9ImFiMDEi
+				IHpvbmU9ImJhc2VsaW5lIi8+CiAgICA8dHRjIGNvZGU9InNpbmdsZXYiIHBvaW50MT0i
+				YXQwMSIgcG9pbnQyPSJzdjAxIiBzdGVtPSJ0cmlhbmdsZSIvPgogICAgPHR0YyBjb2Rl
+				PSJzaW5nbGV2IiBwb2ludDE9InN2MDEiIHBvaW50Mj0ic3YwMiIgc3RlbT0ibGNfc3Rl
+				bXNlcmlmIi8+CiAgICA8dHRjIGNvZGU9InNpbmdsZXYiIHBvaW50MT0iYWIwMSIgcG9p
+				bnQyPSJzdjAzIiBzdGVtPSJib3dsX3RoaW4iLz4KICAgIDx0dGMgY29kZT0ic2luZ2xl
+				diIgcG9pbnQxPSJzdjAzIiBwb2ludDI9InN2MDQiIHN0ZW09InN0cm9rZV90aXAiLz4K
+				ICA8L3R0UHJvZ3JhbT4K
+			</data>
+			<key>com.typemytype.robofont.guides</key>
+			<array>
+				<dict>
+					<key>angle</key>
+					<real>75.96</real>
+					<key>isGlobal</key>
+					<false/>
+					<key>magnetic</key>
+					<integer>5</integer>
+					<key>x</key>
+					<integer>63</integer>
+					<key>y</key>
+					<integer>0</integer>
+				</dict>
+			</array>
+		</dict>
+	</lib>
+</glyph>
