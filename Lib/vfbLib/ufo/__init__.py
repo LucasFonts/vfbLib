@@ -235,7 +235,6 @@ class VfbToUfoWriter:
         return d
 
     def set_tt_stem_ppms(self, data):
-        self.assure_tt_lib()
         for d in ("ttStemsH", "ttStemsV"):
             direction_stems = data[d]
             for ds in direction_stems:
@@ -247,7 +246,6 @@ class VfbToUfoWriter:
                 self.stem_ppms[d].append(stem)
 
     def set_tt_stems(self, data):
-        self.assure_tt_lib()
         for d in ("ttStemsH", "ttStemsV"):
             direction_stems = data[d]
             for i, ds in enumerate(direction_stems):
