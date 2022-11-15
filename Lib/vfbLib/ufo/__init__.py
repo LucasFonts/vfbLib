@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from colorsys import hls_to_rgb
 from fontTools.ufoLib import UFOWriter
 from fontTools.ufoLib.glifLib import GlyphSet, Glyph
 from pathlib import Path
@@ -35,7 +36,10 @@ class VfbToUfoInfo:
 
 
 class VfbToUfoGlyph:
-    pass
+    def set_mark(self, hue):
+        self.lib["public.markColor"] = "%f,%f,%f,1" % hls_to_rgb(
+            h=hue / 255, l=0.8, s=0.76
+        )
 
 
 class VfbToUfoWriter:
@@ -298,6 +302,8 @@ class VfbToUfoWriter:
                 pass
             elif name == "2011":
                 pass
+            elif name == "Mark Color":
+                self.current_glyph.set_mark(data)
             elif name == "Glyph Origin":
                 pass
             elif name == "2031":

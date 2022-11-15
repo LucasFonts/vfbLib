@@ -133,6 +133,7 @@ parser_classes = {
     2008: ("Links", LinkParser),
     2009: ("Mask", MaskParser),
     2010: ("2010", BaseParser),
+    2012: ("Mark Color", IntParser),
     2015: ("Glyph User Data", StringParser),
     2016: ("Font User Data", StringParser),
     2017: ("Glyph Note", StringParser),
