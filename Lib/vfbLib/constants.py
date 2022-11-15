@@ -55,7 +55,7 @@ parser_classes = {
     1046: ("version full", StringParser),
     1047: ("1047", BaseParser),
     1048: ("weight", SignedIntParser),  # Weight Class
-    1054: ("1054", BaseParser),
+    1054: ("MS Character Set", IntParser),
     1056: ("Menu Name", StringParser),
     1057: ("PCL ID", IntParser),
     1058: ("VP ID", IntParser),
