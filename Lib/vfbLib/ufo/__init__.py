@@ -184,6 +184,10 @@ class VfbToUfoWriter:
                 self.info.openTypeOS2WinAscent = v
             elif k == "OpenTypeOS2WinDescent":
                 self.info.openTypeOS2WinDescent = v
+            elif k == "Codepages":
+                print("Codepages UFO")
+                self.info.openTypeOS2CodePageRanges = binaryToIntList(data[0])
+                print(self.info.openTypeOS2CodePageRanges)
 
     def build_mm_glyph(self, data):
         g = self.current_glyph = VfbToUfoGlyph()

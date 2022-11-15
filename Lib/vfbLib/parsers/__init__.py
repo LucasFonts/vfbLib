@@ -253,6 +253,7 @@ class MetricsParser(BaseParser):
             0x51: "OpenTypeOS2WinAscent",
             0x52: "OpenTypeOS2WinDescent",
             0x53: "Hdmx PPMs 1",
+            0x54: "Codepages",
             0x58: "Hdmx PPMs 2",
             0x5c: "Average Width",
         }
@@ -325,6 +326,7 @@ class MetricsParser(BaseParser):
                 metrics.append([metrics_names.get(k, str(k)), v])
 
             elif k == 0x54:
+                # Codepages
                 metrics.append(
                     [
                         metrics_names.get(k, str(k)), [
