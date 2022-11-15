@@ -1,6 +1,7 @@
 from vfbLib.parsers import (
     BaseParser,
     EncodedValueParser,
+    EncodedValueListParser,
     EncodedKeyValuesParser,
     EncodedKeyValuesParser1742,
     GaspParser,
@@ -65,7 +66,7 @@ parser_classes = {
     1064: ("manufacturerURL", StringParser),
     1065: ("width_name", StringParser),
     1066: ("Default Glyph", StringParser),
-    1068: ("1068", BaseParser),
+    1068: ("1068", EncodedValueParser),
     1069: ("License", StringParser),
     1070: ("License URL", StringParser),
     1090: ("FOND Family ID", IntParser),
@@ -82,12 +83,12 @@ parser_classes = {
     1133: ("Type 1 XUIDs", IntListParser),
     1134: ("Type 1 XUIDs Count", IntParser),
     1135: ("upm", IntParser),
-    1136: ("1136", EncodedValueParser),
+    1136: ("1136", EncodedValueListParser),
     1137: ("tsn", StringParser),
     1138: ("Name Records", NameRecordsParser),
     1139: ("OT Mac Name", StringParser),
     1140: ("1140", BaseParser),
-    1141: ("1141", EncodedValueParser),
+    1141: ("1141", EncodedValueListParser),
     1250: ("Glyph Unicode", GlyphUnicodeParser),
     1253: ("Glyph Unicode Non-BMP", GlyphUnicodeSuppParser),
     1254: ("Primary Instances", PrimaryInstancesParser),
@@ -98,7 +99,7 @@ parser_classes = {
     1268: ("TrueType Stem PPEMs", TrueTypeStemPpemsParser),
     1269: ("TrueType Stems", TrueTypeStemsParser),
     1270: ("hhea_line_gap", IntParser),
-    1271: ("1271", EncodedValueParser),
+    1271: ("1271", EncodedValueListParser),
     1272: ("Pixel Snap", IntParser),
     1273: ("TrueType Zone Deltas", TrueTypeZoneDeltasParser),
     1274: ("Zone Stop PPEM", IntParser),
@@ -107,8 +108,8 @@ parser_classes = {
     1277: ("OpenType Class", StringParser),
     1278: ("hhea_ascender", SignedIntParser),
     1279: ("hhea_descender", SignedIntParser),
-    1294: ("1294", EncodedValueParser),
-    1296: ("1296", EncodedValueParser),
+    1294: ("1294", EncodedValueListParser),
+    1296: ("1296", EncodedValueListParser),
     1500: ("Encoding", GlyphEncodingParser),
     1501: ("Encoding Mac", GlyphEncodingParser),
     1502: ("1502", BaseParser),
@@ -116,7 +117,7 @@ parser_classes = {
     1514: ("Axis Name", StringParser),
     1516: ("Axis Mapping", AxisMappingsParser),
     1517: ("1517", BaseParser),
-    1524: ("1524", EncodedValueParser),
+    1524: ("1524", EncodedValueListParser),
     1530: ("Blue Values Count", IntParser),
     1531: ("Other Blues Count", IntParser),
     1532: ("Family Blues Count", IntParser),
@@ -139,12 +140,12 @@ parser_classes = {
     2017: ("Glyph Note", StringParser),
     2018: ("Glyph GDEF Data", GlyphGDEFParser),
     2020: ("Glyph Anchors Supplemental", GlyphAnchorsSuppParser),
-    2023: ("2023", EncodedValueParser),  # Glyph
+    2023: ("2023", EncodedValueListParser),  # Glyph
     2025: ("fontNote", StringParser),
     2026: ("OpenType Class Flags", BaseParser),
     2027: ("Glyph Origin", GlyphOriginParser),
     2029: ("Glyph Anchors MM", GlyphAnchorsParser),  # MM-compatible
-    2031: ("2031", EncodedValueParser),  # Glyph
+    2031: ("2031", EncodedValueListParser),  # Glyph
     2032: ("2032", IntParser),
 }
 

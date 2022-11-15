@@ -153,6 +153,18 @@ class EncodedKeyValuesParser1742(BaseParser):
 
 class EncodedValueParser(BaseParser):
     """
+    A parser that reads data as Yuri's optimized encoded value (1 value).
+    """
+
+    @classmethod
+    def _parse(cls) -> int:
+        value = read_encoded_value(cls.stream)
+        assert cls.stream.read() == b""
+        return value
+
+
+class EncodedValueListParser(BaseParser):
+    """
     A parser that reads data as Yuri's optimized encoded values.
     """
 
@@ -191,6 +203,7 @@ class GaspParser(BaseParser):
 class GlyphEncodingParser(BaseParser):
     @classmethod
     def _parse(cls):
+        return 0
         gid = int.from_bytes(cls.stream.read(2), byteorder="little")
         nam = cls.stream.read().decode("ascii")
         return gid, nam
