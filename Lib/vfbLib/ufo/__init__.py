@@ -242,13 +242,15 @@ class VfbToUfoWriter:
                 self.info.openTypeNameRecords = []
                 for rec in data:
                     nameID, platformID, encodingID, languageID, s = rec
-                    self.info.openTypeNameRecords.append({
-                        "nameID": nameID,
-                        "platformID": platformID,
-                        "encodingID": encodingID,
-                        "languageID": languageID,
-                        "string": s,
-                    })
+                    self.info.openTypeNameRecords.append(
+                        {
+                            "nameID": nameID,
+                            "platformID": platformID,
+                            "encodingID": encodingID,
+                            "languageID": languageID,
+                            "string": s,
+                        }
+                    )
             elif name == "Font User Data":
                 self.lib["com.fontlab.v5.userData"] = data
             elif name == "openTypeFeatures":
@@ -345,7 +347,7 @@ class VfbToUfoWriter:
             value = self.masters_ps_info[master_index].get(k, None)
             if value is not None:
                 setattr(self.info, v, value)
-        
+
         value = self.masters_ps_info[master_index].get("force_bold", None)
         if value is not None:
             self.info.postscriptForceBold = bool(value)
@@ -364,7 +366,7 @@ class VfbToUfoWriter:
 
             value = self.masters_ps_info[master_index].get(k, None)
             if value is not None:
-                setattr(self.info, v, value[:num_values]) 
+                setattr(self.info, v, value[:num_values])
 
         return self.info
 
