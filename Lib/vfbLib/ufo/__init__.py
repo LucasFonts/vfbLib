@@ -48,6 +48,12 @@ class VfbToUfoWriter:
         self.features = ""
         self.groups = {}
         self.info = VfbToUfoInfo()
+        self.num_blue_values = 0
+        self.num_other_blues = 0
+        self.num_family_blues = 0
+        self.num_family_other_blues = 0
+        self.num_stem_snap_h = 0
+        self.num_stem_snap_v = 0
         self.mm_kerning = {}
         self.kerning = {}
         self.lib = {}
@@ -255,6 +261,10 @@ class VfbToUfoWriter:
                 self.num_blue_values = data
             elif name == "Other Blues Count":
                 self.num_other_blues = data
+            elif name == "Family Blues Count":
+                self.num_family_blues = data
+            elif name == "Family_Other Blues Count":
+                self.num_family_other_blues = data
             elif name == "StemSnapH Count":
                 self.num_stem_snap_h = data
             elif name == "StemSnapV Count":
@@ -318,8 +328,6 @@ class VfbToUfoWriter:
         # Update the info with master-specific values
         for k, v in (
             ("force_bold", "postscriptForceBold"),
-            ("family_blues", "postscriptFamilyBlues"),
-            ("family_other_blues", "postscriptFamilyOtherBlues"),
             ("blue_scale", "postscriptBlueScale"),
             ("blue_shift", "postscriptBlueShift"),
             ("blue_fuzz", "postscriptBlueFuzz"),
@@ -339,8 +347,8 @@ class VfbToUfoWriter:
         for k, v in (
             ("blue_values", "postscriptBlueValues"),
             ("other_blues", "postscriptOtherBlues"),
-            # ("family_blues", "postscriptFamilyBlues"),
-            # ("family_other_blues", "postscriptFamilyOtherBlues"),
+            ("family_blues", "postscriptFamilyBlues"),
+            ("family_other_blues", "postscriptFamilyOtherBlues"),
             ("stem_snap_h", "postscriptStemSnapH"),
             ("stem_snap_v", "postscriptStemSnapV"),
         ):
