@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<glyph name="ldot" format="1">
-  <advance width="364"/>
-  <unicode hex="0140"/>
-  <outline>
-    <component base="l"/>
-    <component base="dotaccent" xOffset="41" yOffset="-365"/>
-  </outline>
-  <lib>
-  <dict>
-  <key>com.typemytype.robofont.mark</key>
-  <array>
-    <real>0.6</real>
-    <real>0.986</real>
-    <real>1</real>
-    <real>1</real>
-  </array>
-  </dict>
-  </lib>
+<glyph name="ldot" format="2">
+	<unicode hex="0140"/>
+	<advance width="364"/>
+	<outline>
+		<component base="l"/>
+		<component base="dotaccent" xOffset="41" yOffset="-365"/>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.typemytype.robofont.mark</key>
+			<array>
+				<real>0.6</real>
+				<real>0.986</real>
+				<integer>1</integer>
+				<integer>1</integer>
+			</array>
+		</dict>
+	</lib>
 </glyph>

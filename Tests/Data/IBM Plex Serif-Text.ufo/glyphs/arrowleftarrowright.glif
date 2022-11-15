@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<glyph name="arrowleftarrowright" format="1">
-  <advance width="860"/>
-  <unicode hex="21C6"/>
-  <outline>
-    <component base="arrowright" yOffset="-148"/>
-    <component base="arrowleft" yOffset="148"/>
-  </outline>
-  <lib>
-  <dict>
-  <key>com.typemytype.robofont.mark</key>
-  <array>
-    <real>0.6</real>
-    <real>0.986</real>
-    <real>1</real>
-    <real>1</real>
-  </array>
-  </dict>
-  </lib>
+<glyph name="arrowleftarrowright" format="2">
+	<unicode hex="21C6"/>
+	<advance width="860"/>
+	<outline>
+		<component base="arrowright" yOffset="-148"/>
+		<component base="arrowleft" yOffset="148"/>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.typemytype.robofont.mark</key>
+			<array>
+				<real>0.6</real>
+				<real>0.986</real>
+				<integer>1</integer>
+				<integer>1</integer>
+			</array>
+		</dict>
+	</lib>
 </glyph>

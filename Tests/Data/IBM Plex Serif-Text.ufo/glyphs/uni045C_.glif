@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<glyph name="uni045C" format="1">
-  <advance width="587"/>
-  <unicode hex="045C"/>
-  <outline>
-    <component base="uni043A"/>
-    <component base="acute" xOffset="35"/>
-  </outline>
-  <lib>
-  <dict>
-  <key>com.typemytype.robofont.mark</key>
-  <array>
-    <real>0.6</real>
-    <real>0.986</real>
-    <real>1</real>
-    <real>1</real>
-  </array>
-  </dict>
-  </lib>
+<glyph name="uni045C" format="2">
+	<unicode hex="045C"/>
+	<advance width="587"/>
+	<outline>
+		<component base="uni043A"/>
+		<component base="acute" xOffset="35"/>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.typemytype.robofont.mark</key>
+			<array>
+				<real>0.6</real>
+				<real>0.986</real>
+				<integer>1</integer>
+				<integer>1</integer>
+			</array>
+		</dict>
+	</lib>
 </glyph>

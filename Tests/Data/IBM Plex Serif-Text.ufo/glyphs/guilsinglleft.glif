@@ -1,35 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<glyph name="guilsinglleft" format="1">
-  <advance width="306"/>
-  <unicode hex="2039"/>
-  <outline>
-    <contour>
-      <point x="36" y="259" type="line" name="hr00"/>
-      <point x="36" y="307" type="line"/>
-      <point x="230" y="488" type="line" name="av01"/>
-      <point x="252" y="458" type="line"/>
-      <point x="131" y="283" type="line"/>
-      <point x="252" y="108" type="line"/>
-      <point x="230" y="78" type="line"/>
-    </contour>
-  </outline>
-  <lib>
-  <dict>
-  <key>com.fontlab.ttprogram</key>
-  <data>
-  <ttProgram>
-    <ttc code="alignv" point="av01" align="round"/>
-  </ttProgram>
-  </data>
-  <key>com.adobe.type.autohint</key>
-  <data>
-  <hintSetList>
-    <hintset pointTag="hr00">
-      <hstem pos="78" width="410" />
-      <vstem pos="36" width="216" />
-    </hintset>
-  </hintSetList>
-  </data>
-  </dict>
-  </lib>
+<glyph name="guilsinglleft" format="2">
+	<unicode hex="2039"/>
+	<advance width="306"/>
+	<outline>
+		<contour>
+			<point name="hr00" x="36" y="259" type="line"/>
+			<point x="36" y="307" type="line"/>
+			<point name="av01" x="230" y="488" type="line"/>
+			<point x="252" y="458" type="line"/>
+			<point x="131" y="283" type="line"/>
+			<point x="252" y="108" type="line"/>
+			<point x="230" y="78" type="line"/>
+		</contour>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint</key>
+			<data>
+				ICA8aGludFNldExpc3Q+CiAgICA8aGludHNldCBwb2ludFRhZz0iaHIwMCI+CiAgICAg
+				IDxoc3RlbSBwb3M9Ijc4IiB3aWR0aD0iNDEwIiAvPgogICAgICA8dnN0ZW0gcG9zPSIz
+				NiIgd2lkdGg9IjIxNiIgLz4KICAgIDwvaGludHNldD4KICA8L2hpbnRTZXRMaXN0Pgo=
+			</data>
+			<key>com.fontlab.ttprogram</key>
+			<data>
+				ICA8dHRQcm9ncmFtPgogICAgPHR0YyBjb2RlPSJhbGlnbnYiIHBvaW50PSJhdjAxIiBh
+				bGlnbj0icm91bmQiLz4KICA8L3R0UHJvZ3JhbT4K
+			</data>
+		</dict>
+	</lib>
 </glyph>

@@ -1,33 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<glyph name="backslash" format="1">
-  <advance width="380"/>
-  <unicode hex="005C"/>
-  <outline>
-    <contour>
-      <point x="42" y="748" type="line" name="at01"/>
-      <point x="106" y="748" type="line"/>
-      <point x="372" y="-143" type="line"/>
-      <point x="308" y="-143" type="line" name="av01"/>
-    </contour>
-  </outline>
-  <lib>
-  <dict>
-  <key>com.fontlab.ttprogram</key>
-  <data>
-  <ttProgram>
-    <ttc code="alignv" point="av01" align="round"/>
-    <ttc code="alignt" point="at01" zone="slashes"/>
-  </ttProgram>
-  </data>
-  <key>com.adobe.type.autohint</key>
-  <data>
-  <hintSetList>
-    <hintset pointTag="at01">
-      <hstem pos="748" width="-20" />
-      <vstem pos="42" width="330" />
-    </hintset>
-  </hintSetList>
-  </data>
-  </dict>
-  </lib>
+<glyph name="backslash" format="2">
+	<unicode hex="005C"/>
+	<advance width="380"/>
+	<outline>
+		<contour>
+			<point name="at01" x="42" y="748" type="line"/>
+			<point x="106" y="748" type="line"/>
+			<point x="372" y="-143" type="line"/>
+			<point name="av01" x="308" y="-143" type="line"/>
+		</contour>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint</key>
+			<data>
+				ICA8aGludFNldExpc3Q+CiAgICA8aGludHNldCBwb2ludFRhZz0iYXQwMSI+CiAgICAg
+				IDxoc3RlbSBwb3M9Ijc0OCIgd2lkdGg9Ii0yMCIgLz4KICAgICAgPHZzdGVtIHBvcz0i
+				NDIiIHdpZHRoPSIzMzAiIC8+CiAgICA8L2hpbnRzZXQ+CiAgPC9oaW50U2V0TGlzdD4K
+			</data>
+			<key>com.fontlab.ttprogram</key>
+			<data>
+				ICA8dHRQcm9ncmFtPgogICAgPHR0YyBjb2RlPSJhbGlnbnYiIHBvaW50PSJhdjAxIiBh
+				bGlnbj0icm91bmQiLz4KICAgIDx0dGMgY29kZT0iYWxpZ250IiBwb2ludD0iYXQwMSIg
+				em9uZT0ic2xhc2hlcyIvPgogIDwvdHRQcm9ncmFtPgo=
+			</data>
+		</dict>
+	</lib>
 </glyph>

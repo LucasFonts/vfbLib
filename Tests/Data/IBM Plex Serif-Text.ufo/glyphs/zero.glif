@@ -1,69 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<glyph name="zero" format="1">
-  <advance width="600"/>
-  <unicode hex="0030"/>
-  <outline>
-    <contour>
-      <point x="300" y="41" type="qcurve" name="sv01"/>
-      <point x="340" y="41"/>
-      <point x="395" y="73"/>
-      <point x="429" y="134"/>
-      <point x="443" y="221"/>
-      <point x="443" y="276" type="qcurve"/>
-      <point x="443" y="422" type="line"/>
-      <point x="443" y="477"/>
-      <point x="429" y="564"/>
-      <point x="395" y="625"/>
-      <point x="340" y="657"/>
-      <point x="300" y="657" type="qcurve" name="sv02"/>
-      <point x="259" y="657"/>
-      <point x="205" y="625"/>
-      <point x="171" y="564"/>
-      <point x="157" y="477"/>
-      <point x="157" y="422" type="qcurve"/>
-      <point x="157" y="276" type="line"/>
-      <point x="157" y="221"/>
-      <point x="171" y="134"/>
-      <point x="205" y="73"/>
-      <point x="259" y="41"/>
-    </contour>
-    <contour>
-      <point x="300" y="-12" type="qcurve" name="ab01"/>
-      <point x="177" y="-12"/>
-      <point x="48" y="173"/>
-      <point x="48" y="349" type="qcurve"/>
-      <point x="48" y="525"/>
-      <point x="177" y="710"/>
-      <point x="300" y="710" type="qcurve" name="at01"/>
-      <point x="423" y="710"/>
-      <point x="552" y="525"/>
-      <point x="552" y="349" type="qcurve"/>
-      <point x="552" y="173"/>
-      <point x="423" y="-12"/>
-    </contour>
-  </outline>
-  <lib>
-  <dict>
-  <key>com.fontlab.ttprogram</key>
-  <data>
-  <ttProgram>
-    <ttc code="alignt" point="at01" zone="capheight"/>
-    <ttc code="alignb" point="ab01" zone="baseline"/>
-    <ttc code="singlev" point1="ab01" point2="sv01" stem="uc_stem"/>
-    <ttc code="singlev" point1="at01" point2="sv02" stem="uc_stem"/>
-  </ttProgram>
-  </data>
-  <key>com.adobe.type.autohint</key>
-  <data>
-  <hintSetList>
-    <hintset pointTag="sv01">
-      <hstem pos="-12" width="53" />
-      <hstem pos="657" width="53" />
-      <vstem pos="48" width="109" />
-      <vstem pos="443" width="109" />
-    </hintset>
-  </hintSetList>
-  </data>
-  </dict>
-  </lib>
+<glyph name="zero" format="2">
+	<unicode hex="0030"/>
+	<advance width="600"/>
+	<outline>
+		<contour>
+			<point name="sv01" x="300" y="41" type="qcurve"/>
+			<point x="340" y="41"/>
+			<point x="395" y="73"/>
+			<point x="429" y="134"/>
+			<point x="443" y="221"/>
+			<point x="443" y="276" type="qcurve"/>
+			<point x="443" y="422" type="line"/>
+			<point x="443" y="477"/>
+			<point x="429" y="564"/>
+			<point x="395" y="625"/>
+			<point x="340" y="657"/>
+			<point name="sv02" x="300" y="657" type="qcurve"/>
+			<point x="259" y="657"/>
+			<point x="205" y="625"/>
+			<point x="171" y="564"/>
+			<point x="157" y="477"/>
+			<point x="157" y="422" type="qcurve"/>
+			<point x="157" y="276" type="line"/>
+			<point x="157" y="221"/>
+			<point x="171" y="134"/>
+			<point x="205" y="73"/>
+			<point x="259" y="41"/>
+		</contour>
+		<contour>
+			<point name="ab01" x="300" y="-12" type="qcurve"/>
+			<point x="177" y="-12"/>
+			<point x="48" y="173"/>
+			<point x="48" y="349" type="qcurve"/>
+			<point x="48" y="525"/>
+			<point x="177" y="710"/>
+			<point name="at01" x="300" y="710" type="qcurve"/>
+			<point x="423" y="710"/>
+			<point x="552" y="525"/>
+			<point x="552" y="349" type="qcurve"/>
+			<point x="552" y="173"/>
+			<point x="423" y="-12"/>
+		</contour>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint</key>
+			<data>
+				ICA8aGludFNldExpc3Q+CiAgICA8aGludHNldCBwb2ludFRhZz0ic3YwMSI+CiAgICAg
+				IDxoc3RlbSBwb3M9Ii0xMiIgd2lkdGg9IjUzIiAvPgogICAgICA8aHN0ZW0gcG9zPSI2
+				NTciIHdpZHRoPSI1MyIgLz4KICAgICAgPHZzdGVtIHBvcz0iNDgiIHdpZHRoPSIxMDki
+				IC8+CiAgICAgIDx2c3RlbSBwb3M9IjQ0MyIgd2lkdGg9IjEwOSIgLz4KICAgIDwvaGlu
+				dHNldD4KICA8L2hpbnRTZXRMaXN0Pgo=
+			</data>
+			<key>com.fontlab.ttprogram</key>
+			<data>
+				ICA8dHRQcm9ncmFtPgogICAgPHR0YyBjb2RlPSJhbGlnbnQiIHBvaW50PSJhdDAxIiB6
+				b25lPSJjYXBoZWlnaHQiLz4KICAgIDx0dGMgY29kZT0iYWxpZ25iIiBwb2ludD0iYWIw
+				MSIgem9uZT0iYmFzZWxpbmUiLz4KICAgIDx0dGMgY29kZT0ic2luZ2xldiIgcG9pbnQx
+				PSJhYjAxIiBwb2ludDI9InN2MDEiIHN0ZW09InVjX3N0ZW0iLz4KICAgIDx0dGMgY29k
+				ZT0ic2luZ2xldiIgcG9pbnQxPSJhdDAxIiBwb2ludDI9InN2MDIiIHN0ZW09InVjX3N0
+				ZW0iLz4KICA8L3R0UHJvZ3JhbT4K
+			</data>
+		</dict>
+	</lib>
 </glyph>

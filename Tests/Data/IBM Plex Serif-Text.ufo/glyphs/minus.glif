@@ -1,33 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<glyph name="minus" format="1">
-  <advance width="600"/>
-  <unicode hex="2212"/>
-  <outline>
-    <contour>
-      <point x="66" y="334" type="line" name="av01"/>
-      <point x="534" y="334" type="line"/>
-      <point x="534" y="276" type="line"/>
-      <point x="66" y="276" type="line" name="sv01"/>
-    </contour>
-  </outline>
-  <lib>
-  <dict>
-  <key>com.fontlab.ttprogram</key>
-  <data>
-  <ttProgram>
-    <ttc code="alignv" point="av01" align="round"/>
-    <ttc code="singlev" point1="av01" point2="sv01" stem="uc_stem"/>
-  </ttProgram>
-  </data>
-  <key>com.adobe.type.autohint</key>
-  <data>
-  <hintSetList>
-    <hintset pointTag="av01">
-      <hstem pos="276" width="58" />
-      <vstem pos="66" width="468" />
-    </hintset>
-  </hintSetList>
-  </data>
-  </dict>
-  </lib>
+<glyph name="minus" format="2">
+	<unicode hex="2212"/>
+	<advance width="600"/>
+	<outline>
+		<contour>
+			<point name="av01" x="66" y="334" type="line"/>
+			<point x="534" y="334" type="line"/>
+			<point x="534" y="276" type="line"/>
+			<point name="sv01" x="66" y="276" type="line"/>
+		</contour>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint</key>
+			<data>
+				ICA8aGludFNldExpc3Q+CiAgICA8aGludHNldCBwb2ludFRhZz0iYXYwMSI+CiAgICAg
+				IDxoc3RlbSBwb3M9IjI3NiIgd2lkdGg9IjU4IiAvPgogICAgICA8dnN0ZW0gcG9zPSI2
+				NiIgd2lkdGg9IjQ2OCIgLz4KICAgIDwvaGludHNldD4KICA8L2hpbnRTZXRMaXN0Pgo=
+			</data>
+			<key>com.fontlab.ttprogram</key>
+			<data>
+				ICA8dHRQcm9ncmFtPgogICAgPHR0YyBjb2RlPSJhbGlnbnYiIHBvaW50PSJhdjAxIiBh
+				bGlnbj0icm91bmQiLz4KICAgIDx0dGMgY29kZT0ic2luZ2xldiIgcG9pbnQxPSJhdjAx
+				IiBwb2ludDI9InN2MDEiIHN0ZW09InVjX3N0ZW0iLz4KICA8L3R0UHJvZ3JhbT4K
+			</data>
+		</dict>
+	</lib>
 </glyph>

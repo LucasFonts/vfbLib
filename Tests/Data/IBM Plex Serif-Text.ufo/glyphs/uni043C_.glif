@@ -1,73 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<glyph name="uni043C" format="1">
-  <advance width="752"/>
-  <unicode hex="043C"/>
-  <outline>
-    <contour>
-      <point x="48" y="50" type="line" name="sv01"/>
-      <point x="119" y="50" type="line"/>
-      <point x="119" y="468" type="line"/>
-      <point x="48" y="468" type="line" name="sv02"/>
-      <point x="48" y="518" type="line" name="at01"/>
-      <point x="238" y="518" type="line"/>
-      <point x="377" y="239" type="line" name="sv03"/>
-      <point x="381" y="239" type="line"/>
-      <point x="520" y="518" type="line" name="at02"/>
-      <point x="704" y="518" type="line"/>
-      <point x="704" y="468" type="line"/>
-      <point x="633" y="468" type="line" name="sv04"/>
-      <point x="633" y="50" type="line"/>
-      <point x="704" y="50" type="line" name="sv06"/>
-      <point x="704" y="0" type="line"/>
-      <point x="466" y="0" type="line" name="ab02"/>
-      <point x="466" y="50" type="line" name="sv05"/>
-      <point x="537" y="50" type="line"/>
-      <point x="537" y="431" type="line"/>
-      <point x="533" y="431" type="line" name="sv07"/>
-      <point x="497" y="354" type="line"/>
-      <point x="359" y="78" type="line" name="iv01"/>
-      <point x="221" y="354" type="line"/>
-      <point x="185" y="431" type="line"/>
-      <point x="181" y="431" type="line" name="sv08"/>
-      <point x="181" y="50" type="line"/>
-      <point x="252" y="50" type="line" name="sv09"/>
-      <point x="252" y="0" type="line" name="ab03"/>
-      <point x="48" y="0" type="line" name="ab01"/>
-    </contour>
-  </outline>
-  <lib>
-  <dict>
-  <key>com.fontlab.ttprogram</key>
-  <data>
-  <ttProgram>
-    <ttc code="alignt" point="at01" zone="xheight"/>
-    <ttc code="alignt" point="at02" zone="xheight"/>
-    <ttc code="alignb" point="ab01" zone="baseline"/>
-    <ttc code="alignb" point="ab02" zone="baseline"/>
-    <ttc code="alignb" point="ab03" zone="baseline"/>
-    <ttc code="singlev" point1="ab01" point2="sv01" stem="stem_serif"/>
-    <ttc code="singlev" point1="at01" point2="sv02" stem="stem_serif"/>
-    <ttc code="interpolatev" point="iv01" point1="at01" point2="ab01" align="left"/>
-    <ttc code="singlev" point1="iv01" point2="sv03"/>
-    <ttc code="singlev" point1="at02" point2="sv04" stem="stem_serif"/>
-    <ttc code="singlev" point1="ab02" point2="sv05" stem="stem_serif"/>
-    <ttc code="singlev" point1="sv05" point2="sv06"/>
-    <ttc code="singlev" point1="at02" point2="sv07"/>
-    <ttc code="singlev" point1="at01" point2="sv08"/>
-    <ttc code="singlev" point1="sv01" point2="sv09"/>
-  </ttProgram>
-  </data>
-  <key>com.adobe.type.autohint</key>
-  <data>
-  <hintSetList>
-    <hintset pointTag="sv01">
-      <hstem pos="0" width="50" />
-      <hstem pos="468" width="50" />
-      <vstem pos="119" width="62" />
-      <vstem pos="537" width="96" />
-    </hintset>
-  </hintSetList>
-  </data>
-  </dict>
-  </lib>
+<glyph name="uni043C" format="2">
+	<unicode hex="043C"/>
+	<advance width="752"/>
+	<outline>
+		<contour>
+			<point name="sv01" x="48" y="50" type="line"/>
+			<point x="119" y="50" type="line"/>
+			<point x="119" y="468" type="line"/>
+			<point name="sv02" x="48" y="468" type="line"/>
+			<point name="at01" x="48" y="518" type="line"/>
+			<point x="238" y="518" type="line"/>
+			<point name="sv03" x="377" y="239" type="line"/>
+			<point x="381" y="239" type="line"/>
+			<point name="at02" x="520" y="518" type="line"/>
+			<point x="704" y="518" type="line"/>
+			<point x="704" y="468" type="line"/>
+			<point name="sv04" x="633" y="468" type="line"/>
+			<point x="633" y="50" type="line"/>
+			<point name="sv06" x="704" y="50" type="line"/>
+			<point x="704" y="0" type="line"/>
+			<point name="ab02" x="466" y="0" type="line"/>
+			<point name="sv05" x="466" y="50" type="line"/>
+			<point x="537" y="50" type="line"/>
+			<point x="537" y="431" type="line"/>
+			<point name="sv07" x="533" y="431" type="line"/>
+			<point x="497" y="354" type="line"/>
+			<point name="iv01" x="359" y="78" type="line"/>
+			<point x="221" y="354" type="line"/>
+			<point x="185" y="431" type="line"/>
+			<point name="sv08" x="181" y="431" type="line"/>
+			<point x="181" y="50" type="line"/>
+			<point name="sv09" x="252" y="50" type="line"/>
+			<point name="ab03" x="252" y="0" type="line"/>
+			<point name="ab01" x="48" y="0" type="line"/>
+		</contour>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint</key>
+			<data>
+				ICA8aGludFNldExpc3Q+CiAgICA8aGludHNldCBwb2ludFRhZz0ic3YwMSI+CiAgICAg
+				IDxoc3RlbSBwb3M9IjAiIHdpZHRoPSI1MCIgLz4KICAgICAgPGhzdGVtIHBvcz0iNDY4
+				IiB3aWR0aD0iNTAiIC8+CiAgICAgIDx2c3RlbSBwb3M9IjExOSIgd2lkdGg9IjYyIiAv
+				PgogICAgICA8dnN0ZW0gcG9zPSI1MzciIHdpZHRoPSI5NiIgLz4KICAgIDwvaGludHNl
+				dD4KICA8L2hpbnRTZXRMaXN0Pgo=
+			</data>
+			<key>com.fontlab.ttprogram</key>
+			<data>
+				ICA8dHRQcm9ncmFtPgogICAgPHR0YyBjb2RlPSJhbGlnbnQiIHBvaW50PSJhdDAxIiB6
+				b25lPSJ4aGVpZ2h0Ii8+CiAgICA8dHRjIGNvZGU9ImFsaWdudCIgcG9pbnQ9ImF0MDIi
+				IHpvbmU9InhoZWlnaHQiLz4KICAgIDx0dGMgY29kZT0iYWxpZ25iIiBwb2ludD0iYWIw
+				MSIgem9uZT0iYmFzZWxpbmUiLz4KICAgIDx0dGMgY29kZT0iYWxpZ25iIiBwb2ludD0i
+				YWIwMiIgem9uZT0iYmFzZWxpbmUiLz4KICAgIDx0dGMgY29kZT0iYWxpZ25iIiBwb2lu
+				dD0iYWIwMyIgem9uZT0iYmFzZWxpbmUiLz4KICAgIDx0dGMgY29kZT0ic2luZ2xldiIg
+				cG9pbnQxPSJhYjAxIiBwb2ludDI9InN2MDEiIHN0ZW09InN0ZW1fc2VyaWYiLz4KICAg
+				IDx0dGMgY29kZT0ic2luZ2xldiIgcG9pbnQxPSJhdDAxIiBwb2ludDI9InN2MDIiIHN0
+				ZW09InN0ZW1fc2VyaWYiLz4KICAgIDx0dGMgY29kZT0iaW50ZXJwb2xhdGV2IiBwb2lu
+				dD0iaXYwMSIgcG9pbnQxPSJhdDAxIiBwb2ludDI9ImFiMDEiIGFsaWduPSJsZWZ0Ii8+
+				CiAgICA8dHRjIGNvZGU9InNpbmdsZXYiIHBvaW50MT0iaXYwMSIgcG9pbnQyPSJzdjAz
+				Ii8+CiAgICA8dHRjIGNvZGU9InNpbmdsZXYiIHBvaW50MT0iYXQwMiIgcG9pbnQyPSJz
+				djA0IiBzdGVtPSJzdGVtX3NlcmlmIi8+CiAgICA8dHRjIGNvZGU9InNpbmdsZXYiIHBv
+				aW50MT0iYWIwMiIgcG9pbnQyPSJzdjA1IiBzdGVtPSJzdGVtX3NlcmlmIi8+CiAgICA8
+				dHRjIGNvZGU9InNpbmdsZXYiIHBvaW50MT0ic3YwNSIgcG9pbnQyPSJzdjA2Ii8+CiAg
+				ICA8dHRjIGNvZGU9InNpbmdsZXYiIHBvaW50MT0iYXQwMiIgcG9pbnQyPSJzdjA3Ii8+
+				CiAgICA8dHRjIGNvZGU9InNpbmdsZXYiIHBvaW50MT0iYXQwMSIgcG9pbnQyPSJzdjA4
+				Ii8+CiAgICA8dHRjIGNvZGU9InNpbmdsZXYiIHBvaW50MT0ic3YwMSIgcG9pbnQyPSJz
+				djA5Ii8+CiAgPC90dFByb2dyYW0+Cg==
+			</data>
+		</dict>
+	</lib>
 </glyph>

@@ -1,86 +1,84 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<glyph name="uni0472" format="1">
-  <advance width="724"/>
-  <unicode hex="0472"/>
-  <outline>
-    <contour>
-      <point x="362" y="45" type="qcurve" name="sv01"/>
-      <point x="410" y="45"/>
-      <point x="484" y="79"/>
-      <point x="535" y="141"/>
-      <point x="562" y="228"/>
-      <point x="562" y="281" type="qcurve"/>
-      <point x="562" y="329" type="line"/>
-      <point x="162" y="329" type="line" name="iv01"/>
-      <point x="162" y="281" type="line"/>
-      <point x="162" y="228"/>
-      <point x="189" y="141"/>
-      <point x="240" y="79"/>
-      <point x="314" y="45"/>
-    </contour>
-    <contour>
-      <point x="562" y="383" type="line"/>
-      <point x="562" y="417" type="line"/>
-      <point x="562" y="470"/>
-      <point x="535" y="557"/>
-      <point x="484" y="619"/>
-      <point x="410" y="653"/>
-      <point x="362" y="653" type="qcurve" name="sv02"/>
-      <point x="314" y="653"/>
-      <point x="240" y="619"/>
-      <point x="189" y="557"/>
-      <point x="162" y="470"/>
-      <point x="162" y="417" type="qcurve"/>
-      <point x="162" y="383" type="line" name="sv03"/>
-    </contour>
-    <contour>
-      <point x="362" y="-12" type="qcurve" name="ab01"/>
-      <point x="292" y="-12"/>
-      <point x="177" y="38"/>
-      <point x="95" y="131"/>
-      <point x="50" y="265"/>
-      <point x="50" y="349" type="qcurve"/>
-      <point x="50" y="433"/>
-      <point x="95" y="567"/>
-      <point x="177" y="660"/>
-      <point x="292" y="710"/>
-      <point x="362" y="710" type="qcurve" name="at01"/>
-      <point x="432" y="710"/>
-      <point x="547" y="660"/>
-      <point x="629" y="567"/>
-      <point x="674" y="433"/>
-      <point x="674" y="349" type="qcurve"/>
-      <point x="674" y="265"/>
-      <point x="629" y="131"/>
-      <point x="547" y="38"/>
-      <point x="432" y="-12"/>
-    </contour>
-  </outline>
-  <lib>
-  <dict>
-  <key>com.fontlab.ttprogram</key>
-  <data>
-  <ttProgram>
-    <ttc code="alignt" point="at01" zone="capheight"/>
-    <ttc code="alignb" point="ab01" zone="baseline"/>
-    <ttc code="singlev" point1="ab01" point2="sv01" stem="uc_stem"/>
-    <ttc code="interpolatev" point="iv01" point1="ab01" point2="at01" align="round"/>
-    <ttc code="singlev" point1="at01" point2="sv02" stem="uc_stem"/>
-    <ttc code="singlev" point1="iv01" point2="sv03" stem="uc_stem"/>
-  </ttProgram>
-  </data>
-  <key>com.adobe.type.autohint</key>
-  <data>
-  <hintSetList>
-    <hintset pointTag="sv01">
-      <hstem pos="-12" width="57" />
-      <hstem pos="329" width="54" />
-      <hstem pos="653" width="57" />
-      <vstem pos="50" width="112" />
-      <vstem pos="562" width="112" />
-    </hintset>
-  </hintSetList>
-  </data>
-  </dict>
-  </lib>
+<glyph name="uni0472" format="2">
+	<unicode hex="0472"/>
+	<advance width="724"/>
+	<outline>
+		<contour>
+			<point name="sv01" x="362" y="45" type="qcurve"/>
+			<point x="410" y="45"/>
+			<point x="484" y="79"/>
+			<point x="535" y="141"/>
+			<point x="562" y="228"/>
+			<point x="562" y="281" type="qcurve"/>
+			<point x="562" y="329" type="line"/>
+			<point name="iv01" x="162" y="329" type="line"/>
+			<point x="162" y="281" type="line"/>
+			<point x="162" y="228"/>
+			<point x="189" y="141"/>
+			<point x="240" y="79"/>
+			<point x="314" y="45"/>
+		</contour>
+		<contour>
+			<point x="562" y="383" type="line"/>
+			<point x="562" y="417" type="line"/>
+			<point x="562" y="470"/>
+			<point x="535" y="557"/>
+			<point x="484" y="619"/>
+			<point x="410" y="653"/>
+			<point name="sv02" x="362" y="653" type="qcurve"/>
+			<point x="314" y="653"/>
+			<point x="240" y="619"/>
+			<point x="189" y="557"/>
+			<point x="162" y="470"/>
+			<point x="162" y="417" type="qcurve"/>
+			<point name="sv03" x="162" y="383" type="line"/>
+		</contour>
+		<contour>
+			<point name="ab01" x="362" y="-12" type="qcurve"/>
+			<point x="292" y="-12"/>
+			<point x="177" y="38"/>
+			<point x="95" y="131"/>
+			<point x="50" y="265"/>
+			<point x="50" y="349" type="qcurve"/>
+			<point x="50" y="433"/>
+			<point x="95" y="567"/>
+			<point x="177" y="660"/>
+			<point x="292" y="710"/>
+			<point name="at01" x="362" y="710" type="qcurve"/>
+			<point x="432" y="710"/>
+			<point x="547" y="660"/>
+			<point x="629" y="567"/>
+			<point x="674" y="433"/>
+			<point x="674" y="349" type="qcurve"/>
+			<point x="674" y="265"/>
+			<point x="629" y="131"/>
+			<point x="547" y="38"/>
+			<point x="432" y="-12"/>
+		</contour>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint</key>
+			<data>
+				ICA8aGludFNldExpc3Q+CiAgICA8aGludHNldCBwb2ludFRhZz0ic3YwMSI+CiAgICAg
+				IDxoc3RlbSBwb3M9Ii0xMiIgd2lkdGg9IjU3IiAvPgogICAgICA8aHN0ZW0gcG9zPSIz
+				MjkiIHdpZHRoPSI1NCIgLz4KICAgICAgPGhzdGVtIHBvcz0iNjUzIiB3aWR0aD0iNTci
+				IC8+CiAgICAgIDx2c3RlbSBwb3M9IjUwIiB3aWR0aD0iMTEyIiAvPgogICAgICA8dnN0
+				ZW0gcG9zPSI1NjIiIHdpZHRoPSIxMTIiIC8+CiAgICA8L2hpbnRzZXQ+CiAgPC9oaW50
+				U2V0TGlzdD4K
+			</data>
+			<key>com.fontlab.ttprogram</key>
+			<data>
+				ICA8dHRQcm9ncmFtPgogICAgPHR0YyBjb2RlPSJhbGlnbnQiIHBvaW50PSJhdDAxIiB6
+				b25lPSJjYXBoZWlnaHQiLz4KICAgIDx0dGMgY29kZT0iYWxpZ25iIiBwb2ludD0iYWIw
+				MSIgem9uZT0iYmFzZWxpbmUiLz4KICAgIDx0dGMgY29kZT0ic2luZ2xldiIgcG9pbnQx
+				PSJhYjAxIiBwb2ludDI9InN2MDEiIHN0ZW09InVjX3N0ZW0iLz4KICAgIDx0dGMgY29k
+				ZT0iaW50ZXJwb2xhdGV2IiBwb2ludD0iaXYwMSIgcG9pbnQxPSJhYjAxIiBwb2ludDI9
+				ImF0MDEiIGFsaWduPSJyb3VuZCIvPgogICAgPHR0YyBjb2RlPSJzaW5nbGV2IiBwb2lu
+				dDE9ImF0MDEiIHBvaW50Mj0ic3YwMiIgc3RlbT0idWNfc3RlbSIvPgogICAgPHR0YyBj
+				b2RlPSJzaW5nbGV2IiBwb2ludDE9Iml2MDEiIHBvaW50Mj0ic3YwMyIgc3RlbT0idWNf
+				c3RlbSIvPgogIDwvdHRQcm9ncmFtPgo=
+			</data>
+		</dict>
+	</lib>
 </glyph>

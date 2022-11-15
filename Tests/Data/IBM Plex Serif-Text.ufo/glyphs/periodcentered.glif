@@ -1,43 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<glyph name="periodcentered" format="1">
-  <advance width="324"/>
-  <unicode hex="00B7"/>
-  <outline>
-    <contour>
-      <point x="162" y="236" type="qcurve" name="sv01"/>
-      <point x="130" y="236"/>
-      <point x="95" y="274"/>
-      <point x="95" y="301" type="qcurve"/>
-      <point x="95" y="307" type="line"/>
-      <point x="95" y="334"/>
-      <point x="130" y="372"/>
-      <point x="162" y="372" type="qcurve" name="av01"/>
-      <point x="194" y="372"/>
-      <point x="229" y="334"/>
-      <point x="229" y="307" type="qcurve"/>
-      <point x="229" y="301" type="line"/>
-      <point x="229" y="274"/>
-      <point x="194" y="236"/>
-    </contour>
-  </outline>
-  <lib>
-  <dict>
-  <key>com.fontlab.ttprogram</key>
-  <data>
-  <ttProgram>
-    <ttc code="alignv" point="av01" align="round"/>
-    <ttc code="singlev" point1="av01" point2="sv01" round="true"/>
-  </ttProgram>
-  </data>
-  <key>com.adobe.type.autohint</key>
-  <data>
-  <hintSetList>
-    <hintset pointTag="sv01">
-      <hstem pos="236" width="136" />
-      <vstem pos="95" width="134" />
-    </hintset>
-  </hintSetList>
-  </data>
-  </dict>
-  </lib>
+<glyph name="periodcentered" format="2">
+	<unicode hex="00B7"/>
+	<advance width="324"/>
+	<outline>
+		<contour>
+			<point name="sv01" x="162" y="236" type="qcurve"/>
+			<point x="130" y="236"/>
+			<point x="95" y="274"/>
+			<point x="95" y="301" type="qcurve"/>
+			<point x="95" y="307" type="line"/>
+			<point x="95" y="334"/>
+			<point x="130" y="372"/>
+			<point name="av01" x="162" y="372" type="qcurve"/>
+			<point x="194" y="372"/>
+			<point x="229" y="334"/>
+			<point x="229" y="307" type="qcurve"/>
+			<point x="229" y="301" type="line"/>
+			<point x="229" y="274"/>
+			<point x="194" y="236"/>
+		</contour>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint</key>
+			<data>
+				ICA8aGludFNldExpc3Q+CiAgICA8aGludHNldCBwb2ludFRhZz0ic3YwMSI+CiAgICAg
+				IDxoc3RlbSBwb3M9IjIzNiIgd2lkdGg9IjEzNiIgLz4KICAgICAgPHZzdGVtIHBvcz0i
+				OTUiIHdpZHRoPSIxMzQiIC8+CiAgICA8L2hpbnRzZXQ+CiAgPC9oaW50U2V0TGlzdD4K
+			</data>
+			<key>com.fontlab.ttprogram</key>
+			<data>
+				ICA8dHRQcm9ncmFtPgogICAgPHR0YyBjb2RlPSJhbGlnbnYiIHBvaW50PSJhdjAxIiBh
+				bGlnbj0icm91bmQiLz4KICAgIDx0dGMgY29kZT0ic2luZ2xldiIgcG9pbnQxPSJhdjAx
+				IiBwb2ludDI9InN2MDEiIHJvdW5kPSJ0cnVlIi8+CiAgPC90dFByb2dyYW0+Cg==
+			</data>
+		</dict>
+	</lib>
 </glyph>

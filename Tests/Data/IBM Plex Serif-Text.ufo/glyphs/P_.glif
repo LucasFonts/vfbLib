@@ -1,96 +1,94 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<glyph name="P" format="1">
-  <advance width="636"/>
-  <unicode hex="0050"/>
-  <outline>
-    <contour>
-      <point x="52" y="50" type="line" name="sv01"/>
-      <point x="126" y="50" type="line"/>
-      <point x="126" y="648" type="line"/>
-      <point x="52" y="648" type="line" name="sv02"/>
-      <point x="52" y="698" type="line" name="at01"/>
-      <point x="389" y="698" type="line"/>
-      <point x="487" y="698"/>
-      <point x="590" y="603"/>
-      <point x="590" y="510" type="qcurve"/>
-      <point x="590" y="418"/>
-      <point x="483" y="317"/>
-      <point x="386" y="317" type="qcurve"/>
-      <point x="227" y="317" type="line" name="iv01"/>
-      <point x="227" y="50" type="line" name="sv03"/>
-      <point x="321" y="50" type="line"/>
-      <point x="321" y="0" type="line"/>
-      <point x="52" y="0" type="line" name="ab01"/>
-    </contour>
-    <contour>
-      <point x="227" y="371" type="line" name="sv04"/>
-      <point x="373" y="371" type="line"/>
-      <point x="427" y="371"/>
-      <point x="484" y="435"/>
-      <point x="484" y="484" type="qcurve"/>
-      <point x="484" y="531" type="line"/>
-      <point x="484" y="580"/>
-      <point x="427" y="644"/>
-      <point x="373" y="644" type="qcurve"/>
-      <point x="227" y="644" type="line" name="sv05"/>
-    </contour>
-    <contour>
-      <point x="307" y="698" type="move" name="top"/>
-    </contour>
-    <contour>
-      <point x="176" y="0" type="move" name="bottom"/>
-    </contour>
-  </outline>
-  <lib>
-  <dict>
-  <key>com.typemytype.robofont.guides</key>
-  <array>
-    <dict>
-      <key>angle</key>
-      <real>90</real>
-      <key>isGlobal</key>
-      <false/>
-      <key>magnetic</key>
-      <integer>5</integer>
-      <key>x</key>
-      <real>307</real>
-      <key>y</key>
-      <real>0</real>
-    </dict>
-    <dict>
-      <key>angle</key>
-      <real>90</real>
-      <key>isGlobal</key>
-      <false/>
-      <key>magnetic</key>
-      <integer>5</integer>
-      <key>x</key>
-      <real>176</real>
-      <key>y</key>
-      <real>0</real>
-    </dict>
-  </array>
-  <key>com.fontlab.ttprogram</key>
-  <data>
-  <ttProgram>
-    <ttc code="alignt" point="at01" zone="capheight"/>
-    <ttc code="alignb" point="ab01" zone="baseline"/>
-    <ttc code="singlev" point1="ab01" point2="sv01" stem="stem_serif"/>
-    <ttc code="singlev" point1="at01" point2="sv02" stem="stem_serif"/>
-    <ttc code="interpolatev" point="iv01" point1="at01" point2="ab01" align="round"/>
-    <ttc code="mdeltav" point="iv01" delta="-8" ppm1="9" ppm2="9"/>
-    <ttc code="mdeltav" point="iv01" delta="-8" ppm1="11" ppm2="12"/>
-    <ttc code="mdeltav" point="iv01" delta="-8" ppm1="14" ppm2="15"/>
-    <ttc code="singlev" point1="sv01" point2="sv03"/>
-    <ttc code="singlev" point1="iv01" point2="sv04" stem="uc_stem"/>
-    <ttc code="singlev" point1="at01" point2="sv05" stem="uc_stem"/>
-  </ttProgram>
-  </data>
-  <key>com.adobe.type.autohint</key>
-  <data>
-  <hintSetList>
-  </hintSetList>
-  </data>
-  </dict>
-  </lib>
+<glyph name="P" format="2">
+	<unicode hex="0050"/>
+	<advance width="636"/>
+	<outline>
+		<contour>
+			<point name="sv01" x="52" y="50" type="line"/>
+			<point x="126" y="50" type="line"/>
+			<point x="126" y="648" type="line"/>
+			<point name="sv02" x="52" y="648" type="line"/>
+			<point name="at01" x="52" y="698" type="line"/>
+			<point x="389" y="698" type="line"/>
+			<point x="487" y="698"/>
+			<point x="590" y="603"/>
+			<point x="590" y="510" type="qcurve"/>
+			<point x="590" y="418"/>
+			<point x="483" y="317"/>
+			<point x="386" y="317" type="qcurve"/>
+			<point name="iv01" x="227" y="317" type="line"/>
+			<point name="sv03" x="227" y="50" type="line"/>
+			<point x="321" y="50" type="line"/>
+			<point x="321" y="0" type="line"/>
+			<point name="ab01" x="52" y="0" type="line"/>
+		</contour>
+		<contour>
+			<point name="sv04" x="227" y="371" type="line"/>
+			<point x="373" y="371" type="line"/>
+			<point x="427" y="371"/>
+			<point x="484" y="435"/>
+			<point x="484" y="484" type="qcurve"/>
+			<point x="484" y="531" type="line"/>
+			<point x="484" y="580"/>
+			<point x="427" y="644"/>
+			<point x="373" y="644" type="qcurve"/>
+			<point name="sv05" x="227" y="644" type="line"/>
+		</contour>
+	</outline>
+	<anchor name="top" x="307" y="698"/>
+	<anchor name="bottom" x="176" y="0"/>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint</key>
+			<data>
+				ICA8aGludFNldExpc3Q+CiAgPC9oaW50U2V0TGlzdD4K
+			</data>
+			<key>com.fontlab.ttprogram</key>
+			<data>
+				ICA8dHRQcm9ncmFtPgogICAgPHR0YyBjb2RlPSJhbGlnbnQiIHBvaW50PSJhdDAxIiB6
+				b25lPSJjYXBoZWlnaHQiLz4KICAgIDx0dGMgY29kZT0iYWxpZ25iIiBwb2ludD0iYWIw
+				MSIgem9uZT0iYmFzZWxpbmUiLz4KICAgIDx0dGMgY29kZT0ic2luZ2xldiIgcG9pbnQx
+				PSJhYjAxIiBwb2ludDI9InN2MDEiIHN0ZW09InN0ZW1fc2VyaWYiLz4KICAgIDx0dGMg
+				Y29kZT0ic2luZ2xldiIgcG9pbnQxPSJhdDAxIiBwb2ludDI9InN2MDIiIHN0ZW09InN0
+				ZW1fc2VyaWYiLz4KICAgIDx0dGMgY29kZT0iaW50ZXJwb2xhdGV2IiBwb2ludD0iaXYw
+				MSIgcG9pbnQxPSJhdDAxIiBwb2ludDI9ImFiMDEiIGFsaWduPSJyb3VuZCIvPgogICAg
+				PHR0YyBjb2RlPSJtZGVsdGF2IiBwb2ludD0iaXYwMSIgZGVsdGE9Ii04IiBwcG0xPSI5
+				IiBwcG0yPSI5Ii8+CiAgICA8dHRjIGNvZGU9Im1kZWx0YXYiIHBvaW50PSJpdjAxIiBk
+				ZWx0YT0iLTgiIHBwbTE9IjExIiBwcG0yPSIxMiIvPgogICAgPHR0YyBjb2RlPSJtZGVs
+				dGF2IiBwb2ludD0iaXYwMSIgZGVsdGE9Ii04IiBwcG0xPSIxNCIgcHBtMj0iMTUiLz4K
+				ICAgIDx0dGMgY29kZT0ic2luZ2xldiIgcG9pbnQxPSJzdjAxIiBwb2ludDI9InN2MDMi
+				Lz4KICAgIDx0dGMgY29kZT0ic2luZ2xldiIgcG9pbnQxPSJpdjAxIiBwb2ludDI9InN2
+				MDQiIHN0ZW09InVjX3N0ZW0iLz4KICAgIDx0dGMgY29kZT0ic2luZ2xldiIgcG9pbnQx
+				PSJhdDAxIiBwb2ludDI9InN2MDUiIHN0ZW09InVjX3N0ZW0iLz4KICA8L3R0UHJvZ3Jh
+				bT4K
+			</data>
+			<key>com.typemytype.robofont.guides</key>
+			<array>
+				<dict>
+					<key>angle</key>
+					<integer>90</integer>
+					<key>isGlobal</key>
+					<false/>
+					<key>magnetic</key>
+					<integer>5</integer>
+					<key>x</key>
+					<integer>307</integer>
+					<key>y</key>
+					<integer>0</integer>
+				</dict>
+				<dict>
+					<key>angle</key>
+					<integer>90</integer>
+					<key>isGlobal</key>
+					<false/>
+					<key>magnetic</key>
+					<integer>5</integer>
+					<key>x</key>
+					<integer>176</integer>
+					<key>y</key>
+					<integer>0</integer>
+				</dict>
+			</array>
+		</dict>
+	</lib>
 </glyph>

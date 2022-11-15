@@ -1,44 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<glyph name="one" format="1">
-  <advance width="600"/>
-  <unicode hex="0031"/>
-  <outline>
-    <contour>
-      <point x="99" y="49" type="line" name="sv01"/>
-      <point x="268" y="49" type="line"/>
-      <point x="268" y="620" type="line" name="sv02"/>
-      <point x="91" y="542" type="line"/>
-      <point x="74" y="588" type="line"/>
-      <point x="283" y="698" type="line" name="at01"/>
-      <point x="369" y="698" type="line"/>
-      <point x="369" y="49" type="line" name="sv03"/>
-      <point x="533" y="49" type="line"/>
-      <point x="533" y="0" type="line"/>
-      <point x="99" y="0" type="line" name="ab01"/>
-    </contour>
-  </outline>
-  <lib>
-  <dict>
-  <key>com.fontlab.ttprogram</key>
-  <data>
-  <ttProgram>
-    <ttc code="alignt" point="at01" zone="capheight"/>
-    <ttc code="alignb" point="ab01" zone="baseline"/>
-    <ttc code="singlev" point1="ab01" point2="sv01" stem="stem_serif"/>
-    <ttc code="singlev" point1="at01" point2="sv02"/>
-    <ttc code="singlev" point1="sv01" point2="sv03"/>
-  </ttProgram>
-  </data>
-  <key>com.adobe.type.autohint</key>
-  <data>
-  <hintSetList>
-    <hintset pointTag="sv01">
-      <hstem pos="0" width="49" />
-      <hstem pos="620" width="78" />
-      <vstem pos="268" width="101" />
-    </hintset>
-  </hintSetList>
-  </data>
-  </dict>
-  </lib>
+<glyph name="one" format="2">
+	<unicode hex="0031"/>
+	<advance width="600"/>
+	<outline>
+		<contour>
+			<point name="sv01" x="99" y="49" type="line"/>
+			<point x="268" y="49" type="line"/>
+			<point name="sv02" x="268" y="620" type="line"/>
+			<point x="91" y="542" type="line"/>
+			<point x="74" y="588" type="line"/>
+			<point name="at01" x="283" y="698" type="line"/>
+			<point x="369" y="698" type="line"/>
+			<point name="sv03" x="369" y="49" type="line"/>
+			<point x="533" y="49" type="line"/>
+			<point x="533" y="0" type="line"/>
+			<point name="ab01" x="99" y="0" type="line"/>
+		</contour>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint</key>
+			<data>
+				ICA8aGludFNldExpc3Q+CiAgICA8aGludHNldCBwb2ludFRhZz0ic3YwMSI+CiAgICAg
+				IDxoc3RlbSBwb3M9IjAiIHdpZHRoPSI0OSIgLz4KICAgICAgPGhzdGVtIHBvcz0iNjIw
+				IiB3aWR0aD0iNzgiIC8+CiAgICAgIDx2c3RlbSBwb3M9IjI2OCIgd2lkdGg9IjEwMSIg
+				Lz4KICAgIDwvaGludHNldD4KICA8L2hpbnRTZXRMaXN0Pgo=
+			</data>
+			<key>com.fontlab.ttprogram</key>
+			<data>
+				ICA8dHRQcm9ncmFtPgogICAgPHR0YyBjb2RlPSJhbGlnbnQiIHBvaW50PSJhdDAxIiB6
+				b25lPSJjYXBoZWlnaHQiLz4KICAgIDx0dGMgY29kZT0iYWxpZ25iIiBwb2ludD0iYWIw
+				MSIgem9uZT0iYmFzZWxpbmUiLz4KICAgIDx0dGMgY29kZT0ic2luZ2xldiIgcG9pbnQx
+				PSJhYjAxIiBwb2ludDI9InN2MDEiIHN0ZW09InN0ZW1fc2VyaWYiLz4KICAgIDx0dGMg
+				Y29kZT0ic2luZ2xldiIgcG9pbnQxPSJhdDAxIiBwb2ludDI9InN2MDIiLz4KICAgIDx0
+				dGMgY29kZT0ic2luZ2xldiIgcG9pbnQxPSJzdjAxIiBwb2ludDI9InN2MDMiLz4KICA8
+				L3R0UHJvZ3JhbT4K
+			</data>
+		</dict>
+	</lib>
 </glyph>

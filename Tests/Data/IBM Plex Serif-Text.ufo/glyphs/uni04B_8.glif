@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="uni04B8" format="2">
+	<unicode hex="04B8"/>
+	<advance width="725"/>
+	<outline>
+		<contour>
+			<point name="iv01" x="328" y="264" type="line"/>
+			<point x="268" y="264"/>
+			<point x="184" y="290"/>
+			<point x="132" y="344"/>
+			<point x="108" y="427"/>
+			<point x="108" y="484" type="qcurve"/>
+			<point x="108" y="648" type="line"/>
+			<point name="sv01" x="34" y="648" type="line"/>
+			<point name="at01" x="34" y="698" type="line"/>
+			<point x="283" y="698" type="line"/>
+			<point x="283" y="648" type="line"/>
+			<point name="sv02" x="209" y="648" type="line"/>
+			<point x="209" y="487" type="line"/>
+			<point x="209" y="401"/>
+			<point x="263" y="323"/>
+			<point name="sv03" x="328" y="318" type="qcurve"/>
+			<point name="iv02" x="328" y="485" type="line"/>
+			<point x="384" y="485" type="line"/>
+			<point name="sv04" x="384" y="318" type="line"/>
+			<point x="419" y="321"/>
+			<point x="478" y="340"/>
+			<point x="498" y="354" type="qcurve"/>
+			<point x="498" y="648" type="line"/>
+			<point name="sv05" x="424" y="648" type="line"/>
+			<point name="at02" x="424" y="698" type="line"/>
+			<point x="673" y="698" type="line"/>
+			<point x="673" y="648" type="line"/>
+			<point name="sv06" x="599" y="648" type="line"/>
+			<point name="sv08" x="599" y="50" type="line"/>
+			<point x="673" y="50" type="line"/>
+			<point x="673" y="0" type="line"/>
+			<point name="ab01" x="404" y="0" type="line"/>
+			<point name="sv07" x="404" y="50" type="line"/>
+			<point x="498" y="50" type="line"/>
+			<point x="498" y="301" type="line"/>
+			<point x="494" y="301" type="line"/>
+			<point x="469" y="288"/>
+			<point x="417" y="271"/>
+			<point name="sv09" x="384" y="267" type="qcurve"/>
+			<point x="384" y="121" type="line"/>
+			<point name="iv03" x="328" y="121" type="line"/>
+		</contour>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint</key>
+			<data>
+				ICA8aGludFNldExpc3Q+CiAgICA8aGludHNldCBwb2ludFRhZz0iaXYwMSI+CiAgICAg
+				IDxoc3RlbSBwb3M9IjAiIHdpZHRoPSI1MCIgLz4KICAgICAgPGhzdGVtIHBvcz0iMjY0
+				IiB3aWR0aD0iNTQiIC8+CiAgICAgIDxoc3RlbSBwb3M9IjY0OCIgd2lkdGg9IjUwIiAv
+				PgogICAgICA8dnN0ZW0gcG9zPSIxMDgiIHdpZHRoPSIxMDEiIC8+CiAgICAgIDx2c3Rl
+				bSBwb3M9IjMyOCIgd2lkdGg9IjU2IiAvPgogICAgICA8dnN0ZW0gcG9zPSI0OTgiIHdp
+				ZHRoPSIxMDEiIC8+CiAgICA8L2hpbnRzZXQ+CiAgPC9oaW50U2V0TGlzdD4K
+			</data>
+			<key>com.fontlab.ttprogram</key>
+			<data>
+				ICA8dHRQcm9ncmFtPgogICAgPHR0YyBjb2RlPSJhbGlnbnQiIHBvaW50PSJhdDAxIiB6
+				b25lPSJjYXBoZWlnaHQiLz4KICAgIDx0dGMgY29kZT0iYWxpZ250IiBwb2ludD0iYXQw
+				MiIgem9uZT0iY2FwaGVpZ2h0Ii8+CiAgICA8dHRjIGNvZGU9ImFsaWduYiIgcG9pbnQ9
+				ImFiMDEiIHpvbmU9ImJhc2VsaW5lIi8+CiAgICA8dHRjIGNvZGU9ImludGVycG9sYXRl
+				diIgcG9pbnQ9Iml2MDEiIHBvaW50MT0iYXQwMSIgcG9pbnQyPSJhYjAxIiBhbGlnbj0i
+				cm91bmQiLz4KICAgIDx0dGMgY29kZT0ibWRlbHRhdiIgcG9pbnQ9Iml2MDEiIGRlbHRh
+				PSI4IiBwcG0xPSIxMyIgcHBtMj0iMTMiLz4KICAgIDx0dGMgY29kZT0ic2luZ2xldiIg
+				cG9pbnQxPSJhdDAxIiBwb2ludDI9InN2MDEiIHN0ZW09InN0ZW1fc2VyaWYiLz4KICAg
+				IDx0dGMgY29kZT0ic2luZ2xldiIgcG9pbnQxPSJzdjAxIiBwb2ludDI9InN2MDIiLz4K
+				ICAgIDx0dGMgY29kZT0ic2luZ2xldiIgcG9pbnQxPSJpdjAxIiBwb2ludDI9InN2MDMi
+				IHN0ZW09InN0ZW1fc2VyaWYiLz4KICAgIDx0dGMgY29kZT0iaW50ZXJwb2xhdGV2IiBw
+				b2ludD0iaXYwMiIgcG9pbnQxPSJzdjAxIiBwb2ludDI9InN2MDMiIGFsaWduPSJyb3Vu
+				ZCIvPgogICAgPHR0YyBjb2RlPSJzaW5nbGV2IiBwb2ludDE9InN2MDMiIHBvaW50Mj0i
+				c3YwNCIvPgogICAgPHR0YyBjb2RlPSJzaW5nbGV2IiBwb2ludDE9ImF0MDIiIHBvaW50
+				Mj0ic3YwNSIgc3RlbT0ic3RlbV9zZXJpZiIvPgogICAgPHR0YyBjb2RlPSJzaW5nbGV2
+				IiBwb2ludDE9InN2MDUiIHBvaW50Mj0ic3YwNiIvPgogICAgPHR0YyBjb2RlPSJzaW5n
+				bGV2IiBwb2ludDE9ImFiMDEiIHBvaW50Mj0ic3YwNyIgc3RlbT0ic3RlbV9zZXJpZiIv
+				PgogICAgPHR0YyBjb2RlPSJzaW5nbGV2IiBwb2ludDE9InN2MDciIHBvaW50Mj0ic3Yw
+				OCIvPgogICAgPHR0YyBjb2RlPSJzaW5nbGV2IiBwb2ludDE9Iml2MDEiIHBvaW50Mj0i
+				c3YwOSIvPgogICAgPHR0YyBjb2RlPSJpbnRlcnBvbGF0ZXYiIHBvaW50PSJpdjAzIiBw
+				b2ludDE9Iml2MDEiIHBvaW50Mj0iYWIwMSIgYWxpZ249InJvdW5kIi8+CiAgPC90dFBy
+				b2dyYW0+Cg==
+			</data>
+		</dict>
+	</lib>
+</glyph>

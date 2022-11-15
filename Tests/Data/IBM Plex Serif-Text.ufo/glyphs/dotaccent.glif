@@ -1,64 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<glyph name="dotaccent" format="1">
-  <advance width="600"/>
-  <unicode hex="02D9"/>
-  <outline>
-    <contour>
-      <point x="300" y="613" type="qcurve" name="av01"/>
-      <point x="274" y="613"/>
-      <point x="243" y="645"/>
-      <point x="243" y="669" type="qcurve"/>
-      <point x="243" y="672" type="line"/>
-      <point x="243" y="696"/>
-      <point x="274" y="728"/>
-      <point x="300" y="728" type="qcurve" name="sv01"/>
-      <point x="326" y="728"/>
-      <point x="357" y="696"/>
-      <point x="357" y="672" type="qcurve"/>
-      <point x="357" y="669" type="line"/>
-      <point x="357" y="645"/>
-      <point x="326" y="613"/>
-    </contour>
-    <contour>
-      <point x="300" y="540" type="move" name="_top"/>
-    </contour>
-  </outline>
-  <lib>
-  <dict>
-  <key>com.typemytype.robofont.guides</key>
-  <array>
-    <dict>
-      <key>angle</key>
-      <real>90</real>
-      <key>isGlobal</key>
-      <false/>
-      <key>magnetic</key>
-      <integer>5</integer>
-      <key>x</key>
-      <real>300</real>
-      <key>y</key>
-      <real>0</real>
-    </dict>
-  </array>
-  <key>com.fontlab.ttprogram</key>
-  <data>
-  <ttProgram>
-    <ttc code="alignv" point="av01" align="round"/>
-    <ttc code="mdeltav" point="av01" delta="-8" ppm1="14" ppm2="14"/>
-    <ttc code="mdeltav" point="av01" delta="-8" ppm1="16" ppm2="16"/>
-    <ttc code="singlev" point1="av01" point2="sv01" round="true"/>
-    <ttc code="mdeltav" point="sv01" delta="-8" ppm1="13" ppm2="13"/>
-  </ttProgram>
-  </data>
-  <key>com.adobe.type.autohint</key>
-  <data>
-  <hintSetList>
-    <hintset pointTag="av01">
-      <hstem pos="613" width="115" />
-      <vstem pos="243" width="114" />
-    </hintset>
-  </hintSetList>
-  </data>
-  </dict>
-  </lib>
+<glyph name="dotaccent" format="2">
+	<unicode hex="02D9"/>
+	<advance width="600"/>
+	<outline>
+		<contour>
+			<point name="av01" x="300" y="613" type="qcurve"/>
+			<point x="274" y="613"/>
+			<point x="243" y="645"/>
+			<point x="243" y="669" type="qcurve"/>
+			<point x="243" y="672" type="line"/>
+			<point x="243" y="696"/>
+			<point x="274" y="728"/>
+			<point name="sv01" x="300" y="728" type="qcurve"/>
+			<point x="326" y="728"/>
+			<point x="357" y="696"/>
+			<point x="357" y="672" type="qcurve"/>
+			<point x="357" y="669" type="line"/>
+			<point x="357" y="645"/>
+			<point x="326" y="613"/>
+		</contour>
+	</outline>
+	<anchor name="_top" x="300" y="540"/>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint</key>
+			<data>
+				ICA8aGludFNldExpc3Q+CiAgICA8aGludHNldCBwb2ludFRhZz0iYXYwMSI+CiAgICAg
+				IDxoc3RlbSBwb3M9IjYxMyIgd2lkdGg9IjExNSIgLz4KICAgICAgPHZzdGVtIHBvcz0i
+				MjQzIiB3aWR0aD0iMTE0IiAvPgogICAgPC9oaW50c2V0PgogIDwvaGludFNldExpc3Q+
+				Cg==
+			</data>
+			<key>com.fontlab.ttprogram</key>
+			<data>
+				ICA8dHRQcm9ncmFtPgogICAgPHR0YyBjb2RlPSJhbGlnbnYiIHBvaW50PSJhdjAxIiBh
+				bGlnbj0icm91bmQiLz4KICAgIDx0dGMgY29kZT0ibWRlbHRhdiIgcG9pbnQ9ImF2MDEi
+				IGRlbHRhPSItOCIgcHBtMT0iMTQiIHBwbTI9IjE0Ii8+CiAgICA8dHRjIGNvZGU9Im1k
+				ZWx0YXYiIHBvaW50PSJhdjAxIiBkZWx0YT0iLTgiIHBwbTE9IjE2IiBwcG0yPSIxNiIv
+				PgogICAgPHR0YyBjb2RlPSJzaW5nbGV2IiBwb2ludDE9ImF2MDEiIHBvaW50Mj0ic3Yw
+				MSIgcm91bmQ9InRydWUiLz4KICAgIDx0dGMgY29kZT0ibWRlbHRhdiIgcG9pbnQ9InN2
+				MDEiIGRlbHRhPSItOCIgcHBtMT0iMTMiIHBwbTI9IjEzIi8+CiAgPC90dFByb2dyYW0+
+				Cg==
+			</data>
+			<key>com.typemytype.robofont.guides</key>
+			<array>
+				<dict>
+					<key>angle</key>
+					<integer>90</integer>
+					<key>isGlobal</key>
+					<false/>
+					<key>magnetic</key>
+					<integer>5</integer>
+					<key>x</key>
+					<integer>300</integer>
+					<key>y</key>
+					<integer>0</integer>
+				</dict>
+			</array>
+		</dict>
+	</lib>
 </glyph>

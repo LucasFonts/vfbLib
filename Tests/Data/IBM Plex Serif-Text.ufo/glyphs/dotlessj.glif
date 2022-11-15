@@ -1,81 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<glyph name="dotlessj" format="1">
-  <advance width="307"/>
-  <unicode hex="0237"/>
-  <outline>
-    <contour>
-      <point x="52" y="-212" type="qcurve" name="ab01"/>
-      <point x="1" y="-212"/>
-      <point x="-50" y="-167"/>
-      <point x="-50" y="-132" type="qcurve"/>
-      <point x="-50" y="-109"/>
-      <point x="-21" y="-76"/>
-      <point x="3" y="-76" type="qcurve" name="iv01"/>
-      <point x="27" y="-76"/>
-      <point x="52" y="-104"/>
-      <point x="52" y="-126" type="qcurve"/>
-      <point x="52" y="-141"/>
-      <point x="40" y="-164"/>
-      <point x="30" y="-167" type="qcurve"/>
-      <point x="30" y="-171" type="line"/>
-      <point x="40" y="-174"/>
-      <point x="54" y="-174" type="qcurve" name="sv01"/>
-      <point x="115" y="-174"/>
-      <point x="115" y="-90" type="qcurve"/>
-      <point x="115" y="446" type="line" name="sv02"/>
-      <point x="44" y="459" type="line" name="sv03"/>
-      <point x="44" y="497" type="line" name="iv02"/>
-      <point x="211" y="530" type="line" name="at01"/>
-      <point x="211" y="-41" type="line"/>
-      <point x="211" y="-129"/>
-      <point x="128" y="-212"/>
-    </contour>
-    <contour>
-      <point x="164" y="540" type="move" name="top"/>
-    </contour>
-  </outline>
-  <lib>
-  <dict>
-  <key>com.typemytype.robofont.guides</key>
-  <array>
-    <dict>
-      <key>angle</key>
-      <real>90</real>
-      <key>isGlobal</key>
-      <false/>
-      <key>magnetic</key>
-      <integer>5</integer>
-      <key>x</key>
-      <real>164</real>
-      <key>y</key>
-      <real>0</real>
-    </dict>
-  </array>
-  <key>com.fontlab.ttprogram</key>
-  <data>
-  <ttProgram>
-    <ttc code="alignt" point="at01" zone="xheight"/>
-    <ttc code="alignb" point="ab01" zone="descender"/>
-    <ttc code="singlev" point1="ab01" point2="sv01" stem="lc_thin"/>
-    <ttc code="interpolatev" point="iv01" point1="at01" point2="sv01" align="round"/>
-    <ttc code="mdeltav" point="iv01" delta="-8" ppm1="9" ppm2="12"/>
-    <ttc code="mdeltav" point="iv01" delta="-8" ppm1="17" ppm2="19"/>
-    <ttc code="singlev" point1="at01" point2="sv02" stem="triangle"/>
-    <ttc code="interpolatev" point="iv02" point1="at01" point2="sv02" align="round"/>
-    <ttc code="singlev" point1="iv02" point2="sv03" stem="stem_serif"/>
-  </ttProgram>
-  </data>
-  <key>com.adobe.type.autohint</key>
-  <data>
-  <hintSetList>
-    <hintset pointTag="ab01">
-      <hstem pos="-212" width="38" />
-      <hstem pos="446" width="84" />
-      <vstem pos="-50" width="102" />
-      <vstem pos="115" width="96" />
-    </hintset>
-  </hintSetList>
-  </data>
-  </dict>
-  </lib>
+<glyph name="dotlessj" format="2">
+	<unicode hex="0237"/>
+	<advance width="307"/>
+	<outline>
+		<contour>
+			<point name="ab01" x="52" y="-212" type="qcurve"/>
+			<point x="1" y="-212"/>
+			<point x="-50" y="-167"/>
+			<point x="-50" y="-132" type="qcurve"/>
+			<point x="-50" y="-109"/>
+			<point x="-21" y="-76"/>
+			<point name="iv01" x="3" y="-76" type="qcurve"/>
+			<point x="27" y="-76"/>
+			<point x="52" y="-104"/>
+			<point x="52" y="-126" type="qcurve"/>
+			<point x="52" y="-141"/>
+			<point x="40" y="-164"/>
+			<point x="30" y="-167" type="qcurve"/>
+			<point x="30" y="-171" type="line"/>
+			<point x="40" y="-174"/>
+			<point name="sv01" x="54" y="-174" type="qcurve"/>
+			<point x="115" y="-174"/>
+			<point x="115" y="-90" type="qcurve"/>
+			<point name="sv02" x="115" y="446" type="line"/>
+			<point name="sv03" x="44" y="459" type="line"/>
+			<point name="iv02" x="44" y="497" type="line"/>
+			<point name="at01" x="211" y="530" type="line"/>
+			<point x="211" y="-41" type="line"/>
+			<point x="211" y="-129"/>
+			<point x="128" y="-212"/>
+		</contour>
+	</outline>
+	<anchor name="top" x="164" y="540"/>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint</key>
+			<data>
+				ICA8aGludFNldExpc3Q+CiAgICA8aGludHNldCBwb2ludFRhZz0iYWIwMSI+CiAgICAg
+				IDxoc3RlbSBwb3M9Ii0yMTIiIHdpZHRoPSIzOCIgLz4KICAgICAgPGhzdGVtIHBvcz0i
+				NDQ2IiB3aWR0aD0iODQiIC8+CiAgICAgIDx2c3RlbSBwb3M9Ii01MCIgd2lkdGg9IjEw
+				MiIgLz4KICAgICAgPHZzdGVtIHBvcz0iMTE1IiB3aWR0aD0iOTYiIC8+CiAgICA8L2hp
+				bnRzZXQ+CiAgPC9oaW50U2V0TGlzdD4K
+			</data>
+			<key>com.fontlab.ttprogram</key>
+			<data>
+				ICA8dHRQcm9ncmFtPgogICAgPHR0YyBjb2RlPSJhbGlnbnQiIHBvaW50PSJhdDAxIiB6
+				b25lPSJ4aGVpZ2h0Ii8+CiAgICA8dHRjIGNvZGU9ImFsaWduYiIgcG9pbnQ9ImFiMDEi
+				IHpvbmU9ImRlc2NlbmRlciIvPgogICAgPHR0YyBjb2RlPSJzaW5nbGV2IiBwb2ludDE9
+				ImFiMDEiIHBvaW50Mj0ic3YwMSIgc3RlbT0ibGNfdGhpbiIvPgogICAgPHR0YyBjb2Rl
+				PSJpbnRlcnBvbGF0ZXYiIHBvaW50PSJpdjAxIiBwb2ludDE9ImF0MDEiIHBvaW50Mj0i
+				c3YwMSIgYWxpZ249InJvdW5kIi8+CiAgICA8dHRjIGNvZGU9Im1kZWx0YXYiIHBvaW50
+				PSJpdjAxIiBkZWx0YT0iLTgiIHBwbTE9IjkiIHBwbTI9IjEyIi8+CiAgICA8dHRjIGNv
+				ZGU9Im1kZWx0YXYiIHBvaW50PSJpdjAxIiBkZWx0YT0iLTgiIHBwbTE9IjE3IiBwcG0y
+				PSIxOSIvPgogICAgPHR0YyBjb2RlPSJzaW5nbGV2IiBwb2ludDE9ImF0MDEiIHBvaW50
+				Mj0ic3YwMiIgc3RlbT0idHJpYW5nbGUiLz4KICAgIDx0dGMgY29kZT0iaW50ZXJwb2xh
+				dGV2IiBwb2ludD0iaXYwMiIgcG9pbnQxPSJhdDAxIiBwb2ludDI9InN2MDIiIGFsaWdu
+				PSJyb3VuZCIvPgogICAgPHR0YyBjb2RlPSJzaW5nbGV2IiBwb2ludDE9Iml2MDIiIHBv
+				aW50Mj0ic3YwMyIgc3RlbT0ic3RlbV9zZXJpZiIvPgogIDwvdHRQcm9ncmFtPgo=
+			</data>
+			<key>com.typemytype.robofont.guides</key>
+			<array>
+				<dict>
+					<key>angle</key>
+					<integer>90</integer>
+					<key>isGlobal</key>
+					<false/>
+					<key>magnetic</key>
+					<integer>5</integer>
+					<key>x</key>
+					<integer>164</integer>
+					<key>y</key>
+					<integer>0</integer>
+				</dict>
+			</array>
+		</dict>
+	</lib>
 </glyph>

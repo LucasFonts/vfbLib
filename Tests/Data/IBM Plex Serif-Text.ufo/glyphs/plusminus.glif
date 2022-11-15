@@ -1,54 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<glyph name="plusminus" format="1">
-  <advance width="600"/>
-  <unicode hex="00B1"/>
-  <outline>
-    <contour>
-      <point x="269" y="364" type="line" name="hr00"/>
-      <point x="66" y="364" type="line" name="sv01"/>
-      <point x="66" y="422" type="line" name="sv02"/>
-      <point x="269" y="422" type="line"/>
-      <point x="269" y="615" type="line" name="sv03"/>
-      <point x="331" y="615" type="line"/>
-      <point x="331" y="422" type="line" name="sv04"/>
-      <point x="534" y="422" type="line"/>
-      <point x="534" y="364" type="line"/>
-      <point x="331" y="364" type="line" name="sv05"/>
-      <point x="331" y="171" type="line"/>
-      <point x="269" y="171" type="line" name="av01"/>
-    </contour>
-    <contour>
-      <point x="66" y="58" type="line" name="sv06"/>
-      <point x="534" y="58" type="line"/>
-      <point x="534" y="0" type="line"/>
-      <point x="66" y="0" type="line" name="ab01"/>
-    </contour>
-  </outline>
-  <lib>
-  <dict>
-  <key>com.fontlab.ttprogram</key>
-  <data>
-  <ttProgram>
-    <ttc code="alignv" point="av01" align="round"/>
-    <ttc code="alignb" point="ab01" zone="baseline"/>
-    <ttc code="singlev" point1="av01" point2="sv01" round="true"/>
-    <ttc code="singlev" point1="sv01" point2="sv02" stem="uc_stem"/>
-    <ttc code="singlev" point1="sv02" point2="sv03" round="true"/>
-    <ttc code="singlev" point1="sv02" point2="sv04"/>
-    <ttc code="singlev" point1="sv01" point2="sv05"/>
-    <ttc code="singlev" point1="ab01" point2="sv06" stem="uc_stem"/>
-  </ttProgram>
-  </data>
-  <key>com.adobe.type.autohint</key>
-  <data>
-  <hintSetList>
-    <hintset pointTag="hr00">
-      <hstem pos="0" width="58" />
-      <hstem pos="364" width="58" />
-      <vstem pos="269" width="62" />
-    </hintset>
-  </hintSetList>
-  </data>
-  </dict>
-  </lib>
+<glyph name="plusminus" format="2">
+	<unicode hex="00B1"/>
+	<advance width="600"/>
+	<outline>
+		<contour>
+			<point name="hr00" x="269" y="364" type="line"/>
+			<point name="sv01" x="66" y="364" type="line"/>
+			<point name="sv02" x="66" y="422" type="line"/>
+			<point x="269" y="422" type="line"/>
+			<point name="sv03" x="269" y="615" type="line"/>
+			<point x="331" y="615" type="line"/>
+			<point name="sv04" x="331" y="422" type="line"/>
+			<point x="534" y="422" type="line"/>
+			<point x="534" y="364" type="line"/>
+			<point name="sv05" x="331" y="364" type="line"/>
+			<point x="331" y="171" type="line"/>
+			<point name="av01" x="269" y="171" type="line"/>
+		</contour>
+		<contour>
+			<point name="sv06" x="66" y="58" type="line"/>
+			<point x="534" y="58" type="line"/>
+			<point x="534" y="0" type="line"/>
+			<point name="ab01" x="66" y="0" type="line"/>
+		</contour>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint</key>
+			<data>
+				ICA8aGludFNldExpc3Q+CiAgICA8aGludHNldCBwb2ludFRhZz0iaHIwMCI+CiAgICAg
+				IDxoc3RlbSBwb3M9IjAiIHdpZHRoPSI1OCIgLz4KICAgICAgPGhzdGVtIHBvcz0iMzY0
+				IiB3aWR0aD0iNTgiIC8+CiAgICAgIDx2c3RlbSBwb3M9IjI2OSIgd2lkdGg9IjYyIiAv
+				PgogICAgPC9oaW50c2V0PgogIDwvaGludFNldExpc3Q+Cg==
+			</data>
+			<key>com.fontlab.ttprogram</key>
+			<data>
+				ICA8dHRQcm9ncmFtPgogICAgPHR0YyBjb2RlPSJhbGlnbnYiIHBvaW50PSJhdjAxIiBh
+				bGlnbj0icm91bmQiLz4KICAgIDx0dGMgY29kZT0iYWxpZ25iIiBwb2ludD0iYWIwMSIg
+				em9uZT0iYmFzZWxpbmUiLz4KICAgIDx0dGMgY29kZT0ic2luZ2xldiIgcG9pbnQxPSJh
+				djAxIiBwb2ludDI9InN2MDEiIHJvdW5kPSJ0cnVlIi8+CiAgICA8dHRjIGNvZGU9InNp
+				bmdsZXYiIHBvaW50MT0ic3YwMSIgcG9pbnQyPSJzdjAyIiBzdGVtPSJ1Y19zdGVtIi8+
+				CiAgICA8dHRjIGNvZGU9InNpbmdsZXYiIHBvaW50MT0ic3YwMiIgcG9pbnQyPSJzdjAz
+				IiByb3VuZD0idHJ1ZSIvPgogICAgPHR0YyBjb2RlPSJzaW5nbGV2IiBwb2ludDE9InN2
+				MDIiIHBvaW50Mj0ic3YwNCIvPgogICAgPHR0YyBjb2RlPSJzaW5nbGV2IiBwb2ludDE9
+				InN2MDEiIHBvaW50Mj0ic3YwNSIvPgogICAgPHR0YyBjb2RlPSJzaW5nbGV2IiBwb2lu
+				dDE9ImFiMDEiIHBvaW50Mj0ic3YwNiIgc3RlbT0idWNfc3RlbSIvPgogIDwvdHRQcm9n
+				cmFtPgo=
+			</data>
+		</dict>
+	</lib>
 </glyph>

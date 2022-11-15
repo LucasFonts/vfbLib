@@ -1,72 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<glyph name="z" format="1">
-  <advance width="508"/>
-  <unicode hex="007A"/>
-  <outline>
-    <contour>
-      <point x="46" y="40" type="line" name="sv02"/>
-      <point x="335" y="466" type="line"/>
-      <point x="121" y="466" type="line" name="sv03"/>
-      <point x="121" y="362" type="line"/>
-      <point x="54" y="362" type="line" name="sv04"/>
-      <point x="54" y="518" type="line" name="at01"/>
-      <point x="454" y="518" type="line"/>
-      <point x="454" y="478" type="line" name="sv05"/>
-      <point x="165" y="52" type="line" name="sv01"/>
-      <point x="395" y="52" type="line"/>
-      <point x="395" y="156" type="line" name="sv06"/>
-      <point x="462" y="156" type="line"/>
-      <point x="462" y="0" type="line"/>
-      <point x="46" y="0" type="line" name="ab01"/>
-    </contour>
-    <contour>
-      <point x="256" y="540" type="move" name="top"/>
-    </contour>
-    <contour>
-      <point x="256" y="0" type="move" name="bottom"/>
-    </contour>
-  </outline>
-  <lib>
-  <dict>
-  <key>com.typemytype.robofont.guides</key>
-  <array>
-    <dict>
-      <key>angle</key>
-      <real>90</real>
-      <key>isGlobal</key>
-      <false/>
-      <key>magnetic</key>
-      <integer>5</integer>
-      <key>x</key>
-      <real>256</real>
-      <key>y</key>
-      <real>0</real>
-    </dict>
-  </array>
-  <key>com.fontlab.ttprogram</key>
-  <data>
-  <ttProgram>
-    <ttc code="alignt" point="at01" zone="xheight"/>
-    <ttc code="alignb" point="ab01" zone="baseline"/>
-    <ttc code="singlev" point1="ab01" point2="sv01" stem="stem_serif"/>
-    <ttc code="singlev" point1="sv01" point2="sv02"/>
-    <ttc code="singlev" point1="at01" point2="sv03" stem="stem_serif"/>
-    <ttc code="singlev" point1="at01" point2="sv04" round="true"/>
-    <ttc code="singlev" point1="sv03" point2="sv05"/>
-    <ttc code="singlev" point1="ab01" point2="sv06" round="true"/>
-  </ttProgram>
-  </data>
-  <key>com.adobe.type.autohint</key>
-  <data>
-  <hintSetList>
-    <hintset pointTag="sv02">
-      <hstem pos="0" width="52" />
-      <hstem pos="466" width="52" />
-      <vstem pos="54" width="67" />
-      <vstem pos="395" width="67" />
-    </hintset>
-  </hintSetList>
-  </data>
-  </dict>
-  </lib>
+<glyph name="z" format="2">
+	<unicode hex="007A"/>
+	<advance width="508"/>
+	<outline>
+		<contour>
+			<point name="sv02" x="46" y="40" type="line"/>
+			<point x="335" y="466" type="line"/>
+			<point name="sv03" x="121" y="466" type="line"/>
+			<point x="121" y="362" type="line"/>
+			<point name="sv04" x="54" y="362" type="line"/>
+			<point name="at01" x="54" y="518" type="line"/>
+			<point x="454" y="518" type="line"/>
+			<point name="sv05" x="454" y="478" type="line"/>
+			<point name="sv01" x="165" y="52" type="line"/>
+			<point x="395" y="52" type="line"/>
+			<point name="sv06" x="395" y="156" type="line"/>
+			<point x="462" y="156" type="line"/>
+			<point x="462" y="0" type="line"/>
+			<point name="ab01" x="46" y="0" type="line"/>
+		</contour>
+	</outline>
+	<anchor name="top" x="256" y="540"/>
+	<anchor name="bottom" x="256" y="0"/>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint</key>
+			<data>
+				ICA8aGludFNldExpc3Q+CiAgICA8aGludHNldCBwb2ludFRhZz0ic3YwMiI+CiAgICAg
+				IDxoc3RlbSBwb3M9IjAiIHdpZHRoPSI1MiIgLz4KICAgICAgPGhzdGVtIHBvcz0iNDY2
+				IiB3aWR0aD0iNTIiIC8+CiAgICAgIDx2c3RlbSBwb3M9IjU0IiB3aWR0aD0iNjciIC8+
+				CiAgICAgIDx2c3RlbSBwb3M9IjM5NSIgd2lkdGg9IjY3IiAvPgogICAgPC9oaW50c2V0
+				PgogIDwvaGludFNldExpc3Q+Cg==
+			</data>
+			<key>com.fontlab.ttprogram</key>
+			<data>
+				ICA8dHRQcm9ncmFtPgogICAgPHR0YyBjb2RlPSJhbGlnbnQiIHBvaW50PSJhdDAxIiB6
+				b25lPSJ4aGVpZ2h0Ii8+CiAgICA8dHRjIGNvZGU9ImFsaWduYiIgcG9pbnQ9ImFiMDEi
+				IHpvbmU9ImJhc2VsaW5lIi8+CiAgICA8dHRjIGNvZGU9InNpbmdsZXYiIHBvaW50MT0i
+				YWIwMSIgcG9pbnQyPSJzdjAxIiBzdGVtPSJzdGVtX3NlcmlmIi8+CiAgICA8dHRjIGNv
+				ZGU9InNpbmdsZXYiIHBvaW50MT0ic3YwMSIgcG9pbnQyPSJzdjAyIi8+CiAgICA8dHRj
+				IGNvZGU9InNpbmdsZXYiIHBvaW50MT0iYXQwMSIgcG9pbnQyPSJzdjAzIiBzdGVtPSJz
+				dGVtX3NlcmlmIi8+CiAgICA8dHRjIGNvZGU9InNpbmdsZXYiIHBvaW50MT0iYXQwMSIg
+				cG9pbnQyPSJzdjA0IiByb3VuZD0idHJ1ZSIvPgogICAgPHR0YyBjb2RlPSJzaW5nbGV2
+				IiBwb2ludDE9InN2MDMiIHBvaW50Mj0ic3YwNSIvPgogICAgPHR0YyBjb2RlPSJzaW5n
+				bGV2IiBwb2ludDE9ImFiMDEiIHBvaW50Mj0ic3YwNiIgcm91bmQ9InRydWUiLz4KICA8
+				L3R0UHJvZ3JhbT4K
+			</data>
+			<key>com.typemytype.robofont.guides</key>
+			<array>
+				<dict>
+					<key>angle</key>
+					<integer>90</integer>
+					<key>isGlobal</key>
+					<false/>
+					<key>magnetic</key>
+					<integer>5</integer>
+					<key>x</key>
+					<integer>256</integer>
+					<key>y</key>
+					<integer>0</integer>
+				</dict>
+			</array>
+		</dict>
+	</lib>
 </glyph>

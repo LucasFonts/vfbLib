@@ -1,26 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<glyph name="lacute" format="1">
-  <advance width="306"/>
-  <unicode hex="013A"/>
-  <outline>
-    <component base="l"/>
-    <component base="acute" xOffset="-147" yOffset="202"/>
-  </outline>
-  <lib>
-  <dict>
-  <key>com.typemytype.robofont.mark</key>
-  <array>
-    <real>0.6</real>
-    <real>0.986</real>
-    <real>1</real>
-    <real>1</real>
-  </array>
-  <key>com.fontlab.ttprogram</key>
-  <data>
-  <ttProgram>
-    <ttc code="doublev" point1="" point2=""/>
-  </ttProgram>
-  </data>
-  </dict>
-  </lib>
+<glyph name="lacute" format="2">
+	<unicode hex="013A"/>
+	<advance width="306"/>
+	<outline>
+		<component base="l"/>
+		<component base="acute" xOffset="-147" yOffset="202"/>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.fontlab.ttprogram</key>
+			<data>
+				ICA8dHRQcm9ncmFtPgogICAgPHR0YyBjb2RlPSJkb3VibGV2IiBwb2ludDE9IiIgcG9p
+				bnQyPSIiLz4KICA8L3R0UHJvZ3JhbT4K
+			</data>
+			<key>com.typemytype.robofont.mark</key>
+			<array>
+				<real>0.6</real>
+				<real>0.986</real>
+				<integer>1</integer>
+				<integer>1</integer>
+			</array>
+		</dict>
+	</lib>
 </glyph>
