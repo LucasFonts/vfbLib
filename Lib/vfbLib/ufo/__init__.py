@@ -306,6 +306,8 @@ class VfbToUfoWriter:
                 self.build_mm_glyph(data)
             elif name == "Links":
                 self.current_glyph.links = data
+            elif name == "Unicode Ranges":
+                self.info.openTypeOS2UnicodeRanges = binaryToIntList(data)
             elif name == "2023":
                 pass
             elif name == "2010":

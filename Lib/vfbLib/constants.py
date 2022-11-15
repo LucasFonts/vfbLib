@@ -140,6 +140,7 @@ parser_classes = {
     2017: ("Glyph Note", StringParser),
     2018: ("Glyph GDEF Data", GlyphGDEFParser),
     2020: ("Glyph Anchors Supplemental", GlyphAnchorsSuppParser),
+    2021: ("Unicode Ranges", IntParser),
     2023: ("2023", EncodedValueListParser),  # Glyph
     2025: ("fontNote", StringParser),
     2026: ("OpenType Class Flags", BaseParser),
