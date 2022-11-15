@@ -147,7 +147,7 @@ class EncodedKeyValuesParser(BaseParser):
         return values
 
 
-class EncodedKeyValuesParser1742(BaseParser):
+class EncodedKeyValuesParser1742(EncodedKeyValuesParser):
     __end__ = 0x00
 
 
