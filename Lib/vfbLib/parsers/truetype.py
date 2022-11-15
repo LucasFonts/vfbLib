@@ -126,8 +126,14 @@ class TrueTypeInfoParser(BaseParser):
                         ]
                     ]
                 )
+            
+            elif k == 0x56:
+                # Timestamp, unsigned
+                info.append(
+                    [info_names.get(k, str(k)), read_encoded_value(s, signed=False)]
+                )
 
-            elif k in (0x56, 0x57, 0x5C):
+            elif k in (0x57, 0x5C):
                 info.append(
                     [info_names.get(k, str(k)), read_encoded_value(s)]
                 )

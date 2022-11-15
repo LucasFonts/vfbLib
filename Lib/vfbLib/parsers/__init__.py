@@ -9,7 +9,7 @@ uint16 = 2
 uint32 = 4
 
 
-def read_encoded_value(stream: BufferedReader | BytesIO, debug=False) -> int:
+def read_encoded_value(stream: BufferedReader | BytesIO, debug=False, signed=True) -> int:
     val = int.from_bytes(stream.read(1), byteorder="little")
     if val == 0:
         raise EOFError
@@ -54,8 +54,8 @@ def read_encoded_value(stream: BufferedReader | BytesIO, debug=False) -> int:
         return decoded
 
     elif val == 0xFF:
-        # 4-byte signed integer follows
-        decoded = int.from_bytes(stream.read(4), byteorder="big", signed=True)
+        # 4-byte integer follows
+        decoded = int.from_bytes(stream.read(4), byteorder="big", signed=signed)
         if debug:
             print(f"  Read next 4 bytes: {decoded}")
         return decoded
