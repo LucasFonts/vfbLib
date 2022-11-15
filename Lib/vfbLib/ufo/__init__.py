@@ -227,10 +227,12 @@ class VfbToUfoWriter:
             elif name == "Gasp Ranges":
                 gasp = []
                 for rec in data:
-                    gasp.append({
-                        "rangeMaxPPEM": rec["maxPpem"],
-                        "rangeGaspBehavior": binaryToIntList(rec["flags"]),
-                    })
+                    gasp.append(
+                        {
+                            "rangeMaxPPEM": rec["maxPpem"],
+                            "rangeGaspBehavior": binaryToIntList(rec["flags"]),
+                        }
+                    )
                 self.info.openTypeGaspRangeRecords = gasp
             elif name == "Metrics":
                 self.assignMetrics(data)
