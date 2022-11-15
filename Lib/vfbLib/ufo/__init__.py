@@ -61,10 +61,11 @@ class VfbToUfoWriter:
 
     def build_mapping(self):
         self.info_mapping = {
-            "sgn": "styleMapFamilyName",  # Windows
-            "ffn": "familyName",
+            # "sgn": "styleMapFamilyName",  # Windows
+            "ffn": "postscriptFullName",
             "psn": "postscriptFontName",
             "tfn": "openTypeNamePreferredFamilyName",
+            "sgn": "familyName",
             "weight_name": "weightName",
             "Italic Angle": "italicAngle",
             "underlinePosition": "postscriptUnderlinePosition",
@@ -72,22 +73,24 @@ class VfbToUfoWriter:
             # "Monospaced": "postscriptIsFixedPitch",  # below
             "copyright": "copyright",
             "description": "openTypeNameDescription",
-            "manufacturer": "manufacturer",
-            # "Type 1 Unique ID"
+            "manufacturer": "openTypeNameManufacturer",
+            "Type 1 Unique ID": "postscriptUniqueID",
             # weight (class), below
             "trademark": "trademark",
-            "designer": "designer",
-            "designerURL": "designerURL",
-            "manufacturerURL": "manufacturerURL",
+            "designer": "openTypeNameDesigner",
+            "designerURL": "openTypeNameDesignerURL",
+            "manufacturerURL": "openTypeNameManufacturerURL",
             "width_name": "widthName",
             # Default glyph
-            "license": "openTypeNameLicense",
-            "licenseURL": "openTypeNameLicenseURL",
-            # FOND name
+            "License": "openTypeNameLicense",
+            "License URL": "openTypeNameLicenseURL",
+            "FOND Family ID": "macintoshFONDFamilyID",
+            "FOND Name": "macintoshFONDName",
             "panose": "openTypeOS2Panose",
             "vendorID": "openTypeOS2VendorID",
             "Style Name": "styleName",
             "UniqueID": "openTypeNameUniqueID",
+            "version": "openTypeNameVersion",
             "versionMajor": "versionMajor",
             "versionMinor": "versionMinor",
             "year": "year",
@@ -143,7 +146,7 @@ class VfbToUfoWriter:
             elif k == "subscript_y_offset":
                 self.info.openTypeOS2SubscriptYOffset = v
             elif k == "superscript_x_size":
-                self.info.openTypeOS2SSuperscriptXSize = v
+                self.info.openTypeOS2SuperscriptXSize = v
             elif k == "superscript_y_size":
                 self.info.openTypeOS2SuperscriptYSize = v
             elif k == "superscript_x_offset":
@@ -248,6 +251,14 @@ class VfbToUfoWriter:
                 self.masters.append(data)
             elif name == "1505":
                 self.masters_1505.append(data)
+            elif name == "Blue Values Count":
+                self.num_blue_values = data
+            elif name == "Other Blues Count":
+                self.num_other_blues = data
+            elif name == "StemSnapH Count":
+                self.num_stem_snap_h = data
+            elif name == "StemSnapV Count":
+                self.num_stem_snap_v = data
             elif name == "PostScript Info":
                 self.masters_ps_info.append(data)
             elif name == "Glyph":
@@ -307,15 +318,11 @@ class VfbToUfoWriter:
         # Update the info with master-specific values
         for k, v in (
             ("force_bold", "postscriptForceBold"),
-            ("blue_values", "postscriptBlueValues"),
-            ("other_blues", "postscriptOtherBlues"),
             ("family_blues", "postscriptFamilyBlues"),
             ("family_other_blues", "postscriptFamilyOtherBlues"),
             ("blue_scale", "postscriptBlueScale"),
             ("blue_shift", "postscriptBlueShift"),
             ("blue_fuzz", "postscriptBlueFuzz"),
-            ("stem_snap_h", "postscriptStemSnapH"),  # FIXME
-            ("stem_snap_v", "postscriptStemSnapV"),  # FIXME: Filter out 0
             ("ascender", "ascender"),
             ("descender", "descender"),
             ("x_height", "xHeight"),
@@ -328,6 +335,22 @@ class VfbToUfoWriter:
         value = self.masters_ps_info[master_index].get("force_bold", None)
         if value is not None:
             self.info.postscriptForceBold = bool(value)
+
+        for k, v in (
+            ("blue_values", "postscriptBlueValues"),
+            ("other_blues", "postscriptOtherBlues"),
+            # ("family_blues", "postscriptFamilyBlues"),
+            # ("family_other_blues", "postscriptFamilyOtherBlues"),
+            ("stem_snap_h", "postscriptStemSnapH"),
+            ("stem_snap_v", "postscriptStemSnapV"),
+        ):
+            num_values = getattr(self, f"num_{k}")
+            if num_values == 0:
+                continue
+
+            value = self.masters_ps_info[master_index].get(k, None)
+            if value is not None:
+                setattr(self.info, v, value[:num_values]) 
 
         return self.info
 
