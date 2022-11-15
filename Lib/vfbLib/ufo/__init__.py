@@ -5,13 +5,16 @@ from fontTools.ufoLib import UFOWriter
 from fontTools.ufoLib.glifLib import GlyphSet, Glyph
 from pathlib import Path
 from shutil import rmtree
-from typing import TYPE_CHECKING, Any, List, Tuple
+from typing import TYPE_CHECKING, Any, Dict, List, Tuple
 from ufonormalizer import normalizeUFO
 
 if TYPE_CHECKING:
     from fontTools.pens.pointPen import AbstractPointPen
 
     Point = Tuple[int, int]
+
+
+TT_LIB_KEY = "com.fontlab.v2.tth"
 
 
 def binaryToIntList(value, start=0):
@@ -67,6 +70,9 @@ class VfbToUfoWriter:
         self.current_glyph = None
         self.glyph_masters = {}
         self.glyphOrder = []
+        # TT
+        self.stem_ppms = {"ttStemsH": [], "ttStemsV": []}
+        self.stems = {"ttStemsH": [], "ttStemsV": []}
         self.build_mapping()
         self.build()
 
@@ -191,6 +197,10 @@ class VfbToUfoWriter:
                 s = v & ~(c << 8)
                 self.info.openTypeOS2FamilyClass = [c, s]
 
+    def assure_tt_lib(self):
+        if not TT_LIB_KEY in self.lib:
+            self.lib[TT_LIB_KEY] = {}
+
     def build_mm_glyph(self, data):
         g = self.current_glyph = VfbToUfoGlyph()
         g.lib = {}
@@ -211,6 +221,81 @@ class VfbToUfoWriter:
 
         if "components" in data:
             g.mm_components = data["components"]
+
+    def transform_stem_rounds(self, data, name) -> Dict[str, int]:
+        d = {"0": 1}
+        for k, v in data.items():
+            key = str(v)
+            val = int(k)
+            if key in d:
+                print(
+                    f"Error in stem rounding settings for {name}, duplicate ppm {key}."
+                )
+            d[key] = val
+        return d
+
+    def set_tt_stem_ppms(self, data):
+        self.assure_tt_lib()
+        for d in ("ttStemsH", "ttStemsV"):
+            direction_stems = data[d]
+            for ds in direction_stems:
+                rounds = self.transform_stem_rounds(ds["round"], d)
+                stem = {
+                    "index": ds["stem"],
+                    "round": rounds,
+                }
+                self.stem_ppms[d].append(stem)
+
+    def set_tt_stems(self, data):
+        self.assure_tt_lib()
+        for d in ("ttStemsH", "ttStemsV"):
+            direction_stems = data[d]
+            for i, ds in enumerate(direction_stems):
+                r = ds["round"]
+                rk = list(r.keys())[0]
+                rv = str(r[rk])
+                stem_ppms = self.stem_ppms[d][i]
+                assert i == stem_ppms["index"]
+                stem = {
+                    "horizontal": d == "ttStemsV",
+                    "width": ds["value"],
+                    "name": ds["name"],
+                    "round": stem_ppms["round"],
+                }
+                if rv in stem["round"]:
+                    print(
+                        f"Error in stem rounding settings for {d}, duplicate ppm {rv}."
+                    )
+                stem["round"][rv] = int(rk)
+                self.stems[d].append(stem)
+
+    def set_tt_zones(self, data):
+        self.assure_tt_lib()
+
+    def set_tt_pixel_snap(self, data):
+        self.assure_tt_lib()
+
+    def set_tt_zone_stop(self, data):
+        self.assure_tt_lib()
+        self.lib[TT_LIB_KEY]["zoneppm"] = data
+
+    def set_tt_code_stop(self, data):
+        self.assure_tt_lib()
+        self.lib[TT_LIB_KEY]["codeppm"] = data
+
+    def set_tt_zone_deltas(self, data):
+        self.assure_tt_lib()
+
+    def build_tt_stems_lib(self):
+        lib = self.lib[TT_LIB_KEY]["stems"] = {}
+        for d in ("ttStemsH", "ttStemsV"):
+            direction_stems = self.stems[d]
+            for stem in direction_stems:
+                name = stem["name"]
+                del stem["name"]
+                if name in self.lib[TT_LIB_KEY]["stems"]:
+                    print(f"ERROR: Duplicate stem name {name}, overwriting.")
+                lib[name] = stem
 
     def build(self):
         for e in self.json:
@@ -241,17 +326,19 @@ class VfbToUfoWriter:
             elif name == "Metrics":
                 self.assignMetrics(data)
             elif name == "TrueType Stem PPEMs":
-                pass
+                self.set_tt_stem_ppms(data)
             elif name == "TrueType Stems":
-                pass
+                self.set_tt_stems(data)
             elif name == "TrueType Zones":
-                pass
+                self.set_tt_zones(data)
             elif name == "Pixel Snap":
-                pass
+                self.set_tt_pixel_snap(data)
             elif name == "Zone Stop PPEM":
-                pass
+                self.set_tt_zone_stop(data)
+            elif name == "Code Stop PPEM":
+                self.set_tt_code_stop(data)
             elif name == "TrueType Zone Deltas":
-                pass
+                self.set_tt_zone_deltas(data)
             elif name == "Name Records":
                 self.info.openTypeNameRecords = []
                 for rec in data:
@@ -347,6 +434,8 @@ class VfbToUfoWriter:
             self.glyph_masters[self.current_glyph.name] = self.current_glyph
             self.glyphOrder.append(self.current_glyph.name)
         self.lib["public.glyphOrder"] = self.glyphOrder
+        self.assure_tt_lib()
+        self.build_tt_stems_lib()
 
     def get_master_info(self, master_index=0):
         # Update the info with master-specific values
