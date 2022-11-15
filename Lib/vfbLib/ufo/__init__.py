@@ -522,9 +522,11 @@ class VfbToUfoWriter:
             writer.writeInfo(master_info)
             writer.writeKerning(master_kerning)
             if self.features:
-                writer.writeFeatures(
-                    self.features_classes + "\n\n" + self.features
-                )
+                if self.features_classes:
+                    features = self.features_classes + "\n\n" + self.features
+                else:
+                    features = self.features
+                writer.writeFeatures(features)
             writer.writeLib(self.lib)
             writer.close()
             normalizeUFO(ufoPath=out_path, onlyModified=False)
