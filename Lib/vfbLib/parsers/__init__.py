@@ -232,8 +232,19 @@ class MetricsParser(BaseParser):
     @classmethod
     def _parse(cls):
         metrics_names = {
+            0x33: "0x33",
+            0x34: "0x34",
+            0x35: "0x35",
+            0x36: "0x36",
+            0x37: "0x37",
+            0x38: "0x38",
             0x39: "use_custom_tt_values",  # 0 = false, 65536 = true
-            0x3c: "timestamp",
+            0x3a: "0x3a",
+            0x3b: "0x3b",
+            0x3c: "lowest_rec_ppem",
+            0x3d: "font_direction_hint",
+            0x3e: "0x3e",
+            0x3f: "0x3f",
             0x40: "embedding",
             0x41: "subscript_x_size",
             0x42: "subscript_y_size",
@@ -250,24 +261,15 @@ class MetricsParser(BaseParser):
             0x4d: "OpenTypeOS2TypoAscender",
             0x4e: "OpenTypeOS2TypoDescender",
             0x4f: "OpenTypeOS2TypoLineGap",
+            0x50: "0x50",
             0x51: "OpenTypeOS2WinAscent",
             0x52: "OpenTypeOS2WinDescent",
             0x53: "Hdmx PPMs 1",
             0x54: "Codepages",
+            0x56: "Created",
+            0x57: "Created2",
             0x58: "Hdmx PPMs 2",
             0x5c: "Average Width",
-        }
-        ibm_classification = {
-            0x100: "Oldstyle Serifs",
-            0x200: "Transitional Serifs",
-            0x300: "Modern Serifs",
-            0x400: "Clarendon Serifs",
-            0x500: "Slab Serifs",
-            0x700: "Freeform Serifs",
-            0x800: "Sans Serif",
-            0x900: "Ornamentals",
-            0xa00: "Scripts",
-            0xc00: "Symbolic",
         }
         s = cls.stream
         metrics = []
@@ -278,15 +280,10 @@ class MetricsParser(BaseParser):
             if k == 0x32:
                 return metrics
 
-            elif k in (0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39, 0x3A, 0x3B):
+            elif k in (0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39, 0x3A, 0x3B, 0x3c):
                 metrics.append(
                     [metrics_names.get(k, str(k)), read_encoded_value(s)]
                 )
-
-            elif k == 0x3C:
-                # Timestamp
-                v = [cls.read_uint8(s) for _ in range(9)]
-                metrics.append([metrics_names.get(k, str(k)), v])
 
             elif k in (0x3D, 0x3E, 0x3F):
                 metrics.append(

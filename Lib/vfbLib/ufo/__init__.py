@@ -168,7 +168,12 @@ class VfbToUfoWriter:
 
     def assignMetrics(self, data):
         for k, v in data:
-            if k == "embedding":
+            if k == "lowest_rec_ppem":
+                self.info.openTypeHeadLowestRecPPEM = v
+            elif k == "font_direction_hint":
+                # self.info.openTypeOS2Type = binaryToIntList(v)
+                pass
+            elif k == "embedding":
                 self.info.openTypeOS2Type = binaryToIntList(v)
             elif k == "subscript_x_size":
                 self.info.openTypeOS2SubscriptXSize = v
