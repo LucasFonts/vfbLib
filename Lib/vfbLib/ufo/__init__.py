@@ -1,11 +1,11 @@
 from __future__ import annotations
 
-from defcon import Font
 from fontTools.ufoLib import UFOWriter
 from fontTools.ufoLib.glifLib import GlyphSet, Glyph
 from pathlib import Path
 from shutil import rmtree
 from typing import TYPE_CHECKING, Any, List, Tuple
+from ufonormalizer import normalizeUFO
 
 if TYPE_CHECKING:
     from fontTools.pens.pointPen import AbstractPointPen
@@ -483,7 +483,4 @@ class VfbToUfoWriter:
                 )
             writer.writeLib(self.lib)
             writer.close()
-            # For now, normalize like defcon
-            # f = Font(master_path)
-            # rmtree(master_path)
-            # f.save(master_path)
+            normalizeUFO(ufoPath=out_path, onlyModified=False)

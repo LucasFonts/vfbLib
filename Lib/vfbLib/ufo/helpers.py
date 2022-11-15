@@ -1,6 +1,7 @@
 import codecs
 
 from defcon import Font
+from ufonormalizer import normalizeUFO
 from pathlib import Path
 from tempfile import NamedTemporaryFile
 from typing import Literal
@@ -64,6 +65,7 @@ def normalize_ufo(
             if filepath.suffix == ".ufoz":
                 filepath = filepath.with_suffix(".ufo")
         f.save(path=filepath, formatVersion=3, structure=structure)
+        normalizeUFO(ufoPath=filepath, onlyModified=False)
         if structure == "package":
             normalized_file.touch()
 
