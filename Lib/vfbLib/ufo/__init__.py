@@ -186,6 +186,10 @@ class VfbToUfoWriter:
                 self.info.openTypeOS2WinDescent = v
             elif k == "Codepages":
                 self.info.openTypeOS2CodePageRanges = binaryToIntList(v[0])
+            elif k == "ibm_classification":
+                c = v >> 8
+                s = v & ~(c << 8)
+                self.info.openTypeOS2FamilyClass = [c, s]
 
     def build_mm_glyph(self, data):
         g = self.current_glyph = VfbToUfoGlyph()
