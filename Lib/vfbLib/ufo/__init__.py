@@ -309,11 +309,15 @@ class VfbToUfoWriter:
 
     def set_tt_pixel_snap(self, data):
         self.assure_tt_lib()
-        self.lib[TT_LIB_KEY]["stemsnaplimit"] = data
+        if data != 68:
+            # Omit default value
+            self.lib[TT_LIB_KEY]["stemsnaplimit"] = data
 
     def set_tt_zone_stop(self, data):
         self.assure_tt_lib()
-        self.lib[TT_LIB_KEY]["zoneppm"] = data
+        if data != 48:
+            # Omit default value
+            self.lib[TT_LIB_KEY]["zoneppm"] = data
 
     def set_tt_code_stop(self, data):
         self.assure_tt_lib()
