@@ -166,7 +166,7 @@ class VfbToUfoWriter:
         self.groups[f"@{name}"] = glyphs
         self.features_classes += f"@{name} = [{' '.join(glyphs)}];\n"
 
-    def assignMetrics(self, data):
+    def assign_tt_info(self, data):
         for k, v in data:
             if k == "lowest_rec_ppem":
                 self.info.openTypeHeadLowestRecPPEM = v
@@ -378,8 +378,8 @@ class VfbToUfoWriter:
                         }
                     )
                 self.info.openTypeGaspRangeRecords = gasp
-            elif name == "Metrics":
-                self.assignMetrics(data)
+            elif name == "TrueType Info":
+                self.assign_tt_info(data)
             elif name == "TrueType Stem PPEMs":
                 self.set_tt_stem_ppms(data)
             elif name == "TrueType Stems":

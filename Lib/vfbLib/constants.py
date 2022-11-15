@@ -6,7 +6,6 @@ from vfbLib.parsers import (
     EncodedKeyValuesParser1742,
     GaspParser,
     GlyphEncodingParser,
-    MetricsParser,
     StringParser,
 )
 from vfbLib.parsers.glyph import (
@@ -31,6 +30,7 @@ from vfbLib.parsers.numeric import (
 from vfbLib.parsers.ps import PostScriptInfoParser
 from vfbLib.parsers.text import NameRecordsParser
 from vfbLib.parsers.truetype import (
+    TrueTypeInfoParser,
     TrueTypeStemPpemsParser,
     TrueTypeStemsParser,
     TrueTypeZoneDeltasParser,
@@ -93,7 +93,7 @@ parser_classes = {
     1253: ("Glyph Unicode Non-BMP", GlyphUnicodeSuppParser),
     1254: ("Primary Instances", PrimaryInstancesParser),
     1255: ("TrueType Zones", TrueTypeZonesParser),
-    1264: ("Metrics", MetricsParser),
+    1264: ("TrueType Info", TrueTypeInfoParser),
     1265: ("Gasp Ranges", GaspParser),
     1267: ("Selection", IntParser),
     1268: ("TrueType Stem PPEMs", TrueTypeStemPpemsParser),

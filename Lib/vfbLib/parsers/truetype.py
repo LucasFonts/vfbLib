@@ -1,5 +1,144 @@
 from io import BytesIO
+from typing import Dict, List
 from vfbLib.parsers import BaseParser, read_encoded_value
+
+
+class TrueTypeInfoParser(BaseParser):
+    """
+    A parser that reads data as "TrueType Info" values.
+    """
+
+    @classmethod
+    def read_key_value_pairs_encoded(
+        cls,
+        stream: BytesIO,
+        num: int,
+        target: List,
+        key_names: Dict[int, str] | None = None,
+    ):
+        if key_names is None:
+            key_names = {}
+        for _ in range(num):
+            k = cls.read_uint8(stream)
+            v = read_encoded_value(stream)
+            target.append({key_names.get(k, str(k)): v})
+
+    @classmethod
+    def _parse(cls):
+        info_names = {
+            0x33: "0x33",
+            0x34: "0x34",
+            0x35: "0x35",
+            0x36: "0x36",
+            0x37: "0x37",
+            0x38: "0x38",
+            0x39: "use_custom_tt_values",  # 0 = false, 65536 = true
+            0x3a: "0x3a",
+            0x3b: "0x3b",
+            0x3c: "lowest_rec_ppem",
+            0x3d: "font_direction_hint",
+            0x3e: "0x3e",
+            0x3f: "0x3f",
+            0x40: "embedding",
+            0x41: "subscript_x_size",
+            0x42: "subscript_y_size",
+            0x43: "subscript_x_offset",
+            0x44: "subscript_y_offset",
+            0x45: "superscript_x_size",
+            0x46: "superscript_y_size",
+            0x47: "superscript_x_offset",
+            0x48: "superscript_y_offset",
+            0x49: "strikeout_size",
+            0x4a: "strikeout_position",
+            0x4b: "ibm_classification",  # ibm_classification + subclass
+            0x4c: "OpenTypeOS2Panose",
+            0x4d: "OpenTypeOS2TypoAscender",
+            0x4e: "OpenTypeOS2TypoDescender",
+            0x4f: "OpenTypeOS2TypoLineGap",
+            0x50: "0x50",
+            0x51: "OpenTypeOS2WinAscent",
+            0x52: "OpenTypeOS2WinDescent",
+            0x53: "Hdmx PPMs 1",
+            0x54: "Codepages",
+            0x56: "timestamp",
+            0x57: "0x57",
+            0x58: "Hdmx PPMs 2",
+            0x5c: "Average Width",
+        }
+        s = cls.stream
+        info = []
+
+        while True:
+            k = cls.read_uint8(s)
+
+            if k == 0x32:
+                return info
+
+            elif k in (0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39, 0x3A, 0x3B, 0x3c):
+                info.append(
+                    [info_names.get(k, str(k)), read_encoded_value(s)]
+                )
+
+            elif k in (0x3D, 0x3E, 0x3F):
+                info.append(
+                    [info_names.get(k, str(k)), read_encoded_value(s)]
+                )
+
+            elif k in (
+                0x40,
+                0x41,
+                0x42,
+                0x43,
+                0x44,
+                0x45,
+                0x46,
+                0x47,
+                0x48,
+                0x49,
+                0x4A,
+                0x4B,
+            ):
+                info.append(
+                    [info_names.get(k, str(k)), read_encoded_value(s)]
+                )
+
+            elif k == 0x4C:  # PANOSE?
+                v = [cls.read_uint8(s) for _ in range(10)]
+                info.append([info_names.get(k, str(k)), v])
+
+            elif k in (0x4D, 0x4E, 0x4F, 0x50, 0x51, 0x52):
+                info.append(
+                    [info_names.get(k, str(k)), read_encoded_value(s)]
+                )
+
+            elif k == 0x53:
+                num_values = read_encoded_value(s)
+                v = [cls.read_uint8(s) for _ in range(num_values)]
+                info.append([info_names.get(k, str(k)), v])
+
+            elif k == 0x54:
+                # Codepages
+                info.append(
+                    [
+                        info_names.get(k, str(k)), [
+                            read_encoded_value(s),
+                            read_encoded_value(s),
+                        ]
+                    ]
+                )
+
+            elif k in (0x56, 0x57, 0x5C):
+                info.append(
+                    [info_names.get(k, str(k)), read_encoded_value(s)]
+                )
+
+            elif k == 0x58:
+                num_values = read_encoded_value(s)
+                v = [cls.read_uint8(s) for _ in range(num_values)]
+                info.append([info_names.get(k, hex(k)), v])
+
+            else:
+                print(f"Unknown key in TrueType info: {hex(k)}")
 
 
 class TrueTypeStemsParser(BaseParser):
