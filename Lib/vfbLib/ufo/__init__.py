@@ -294,7 +294,10 @@ class VfbToUfoWriter:
                 name = stem["name"]
                 del stem["name"]
                 if name in self.lib[TT_LIB_KEY]["stems"]:
-                    print(f"ERROR: Duplicate stem name {name}, overwriting.")
+                    print(
+                        f"ERROR: Duplicate stem name {name}, overwriting. "
+                        "Make stem names unique in VFB."
+                    )
                 lib[name] = stem
 
     def build(self):
