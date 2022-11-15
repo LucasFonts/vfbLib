@@ -170,6 +170,8 @@ class VfbToUfoWriter:
         for k, v in data:
             if k == "lowest_rec_ppem":
                 self.info.openTypeHeadLowestRecPPEM = v
+            elif k == "timestamp":
+                self.set_created_timestamp(v)
             elif k == "font_direction_hint":
                 # self.info.openTypeOS2Type = binaryToIntList(v)
                 pass
@@ -257,6 +259,16 @@ class VfbToUfoWriter:
                 )
             d[key] = val
         return d
+
+    def set_created_timestamp(self, value: int):
+        from datetime import datetime  # , timedelta
+        from time import time
+        # from dateutil.relativedelta import relativedelta
+        # FIXME: Timestamp is 66 years in the future
+        # d = datetime.fromtimestamp(value) # - timedelta(days=66*365.25)
+        # Use the current date:
+        d = datetime.fromtimestamp(time())
+        self.info.openTypeHeadCreated = d.strftime("%Y/%m/%d %H:%M:%S")
 
     def set_tt_stem_ppms(self, data):
         for d in ("ttStemsH", "ttStemsV"):
