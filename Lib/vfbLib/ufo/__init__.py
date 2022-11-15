@@ -68,6 +68,7 @@ class VfbToUfoWriter:
         self.glyph_masters = {}
         self.glyphOrder = []
         self.build_mapping()
+        self.build()
 
     def build_mapping(self):
         self.info_mapping = {
