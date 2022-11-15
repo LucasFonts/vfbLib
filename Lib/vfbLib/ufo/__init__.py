@@ -73,6 +73,8 @@ class VfbToUfoWriter:
         # TT
         self.stem_ppms = {"ttStemsH": [], "ttStemsV": []}
         self.stems = {"ttStemsH": [], "ttStemsV": []}
+        self.tt_stem_names = []
+        self.tt_zone_names = []
         self.build_mapping()
         self.build()
 
@@ -221,6 +223,9 @@ class VfbToUfoWriter:
 
         if "components" in data:
             g.mm_components = data["components"]
+        
+        # TrueType stuff
+        self.build_tt_glyph_hints(data)
 
     def transform_stem_rounds(self, data, name) -> Dict[str, int]:
         d = {"0": 1}
@@ -297,6 +302,12 @@ class VfbToUfoWriter:
                         "Make stem names unique in VFB."
                     )
                 lib[name] = stem
+
+    def build_tt_glyph_hints(self, data):
+        # Write TT hints into glyph lib.
+        # Take stem names from self.tt_stem_names.
+        # Take zone names from self.tt_zone_names.
+        pass
 
     def build(self):
         for e in self.json:
