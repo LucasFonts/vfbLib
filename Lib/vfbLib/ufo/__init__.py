@@ -74,6 +74,7 @@ class VfbToUfoWriter:
         self.stem_ppms = {"ttStemsH": [], "ttStemsV": []}
         self.stems = {"ttStemsH": [], "ttStemsV": []}
         self.tt_stem_names = []
+        self.tt_zones = {}
         self.tt_zone_names = []
         self.build_mapping()
         self.build()
@@ -273,7 +274,20 @@ class VfbToUfoWriter:
                 self.stems[d].append(stem)
 
     def set_tt_zones(self, data):
-        self.assure_tt_lib()
+        self.tt_zone_names = []
+        for d in ("ttZonesT", "ttZonesB"):
+            direction_zones = data[d]
+            for dz in direction_zones:
+                zone = {
+                    "position": dz["position"],
+                    "top": d == "ttZonesT",
+                    "width": dz["value"],
+                }
+                name = dz["name"]
+                if name in self.tt_zones:
+                    print(f"Duplicate zone name: {name}, overwriting.")
+                self.tt_zones[name] = zone
+                self.tt_zone_names.append(name)
 
     def set_tt_pixel_snap(self, data):
         self.assure_tt_lib()
@@ -305,6 +319,10 @@ class VfbToUfoWriter:
                         "Make stem names unique in VFB."
                     )
                 lib[name] = stem
+    
+    def build_tt_zones_lib(self):
+        self.assure_tt_lib()
+        self.lib[TT_LIB_KEY]["zones"] = self.tt_zones
 
     def build_tt_glyph_hints(self, data):
         # Write TT hints into glyph lib.
@@ -451,6 +469,7 @@ class VfbToUfoWriter:
         self.lib["public.glyphOrder"] = self.glyphOrder
         self.assure_tt_lib()
         self.build_tt_stems_lib()
+        self.build_tt_zones_lib()
 
     def get_master_info(self, master_index=0):
         # Update the info with master-specific values
