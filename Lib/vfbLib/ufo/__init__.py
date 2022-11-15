@@ -224,7 +224,7 @@ class VfbToUfoWriter:
 
         if "components" in data:
             g.mm_components = data["components"]
-        
+
         # TrueType stuff
         self.build_tt_glyph_hints(data)
 
@@ -323,7 +323,7 @@ class VfbToUfoWriter:
                         "Make stem names unique in VFB."
                     )
                 lib[name] = stem
-    
+
     def build_tt_zones_lib(self):
         self.assure_tt_lib()
         self.lib[TT_LIB_KEY]["zones"] = self.tt_zones
