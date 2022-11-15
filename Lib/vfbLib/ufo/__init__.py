@@ -222,8 +222,13 @@ class VfbToUfoWriter:
             elif name == "weight":
                 self.info.openTypeOS2WeightClass = max(0, data)
             elif name == "Gasp Ranges":
-                # self.info.openTypeGaspRangeRecords = data
-                pass
+                gasp = []
+                for rec in data:
+                    gasp.append({
+                        "rangeMaxPPEM": rec["maxPpem"],
+                        "rangeGaspBehavior": binaryToIntList(rec["flags"]),
+                    })
+                self.info.openTypeGaspRangeRecords = gasp
             elif name == "Metrics":
                 self.assignMetrics(data)
             elif name == "TrueType Stem PPEMs":
