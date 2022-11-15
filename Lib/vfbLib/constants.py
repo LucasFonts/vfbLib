@@ -95,7 +95,7 @@ parser_classes = {
     1255: ("TrueType Zones", TrueTypeZonesParser),
     1264: ("Metrics", MetricsParser),
     1265: ("Gasp Ranges", GaspParser),
-    1267: ("1267", IntParser),
+    1267: ("Selection", IntParser),
     1268: ("TrueType Stem PPEMs", TrueTypeStemPpemsParser),
     1269: ("TrueType Stems", TrueTypeStemsParser),
     1270: ("hhea_line_gap", IntParser),

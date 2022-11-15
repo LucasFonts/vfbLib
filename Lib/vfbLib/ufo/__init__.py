@@ -154,9 +154,7 @@ class VfbToUfoWriter:
     def assignMetrics(self, data):
         for k, v in data:
             if k == "embedding":
-                self.info.openTypeOS2Selection = [
-                    i for i in binaryToIntList(v) if i in (1, 2, 3, 4)
-                ]
+                self.info.openTypeOS2Type = binaryToIntList(v)
             elif k == "subscript_x_size":
                 self.info.openTypeOS2SubscriptXSize = v
             elif k == "subscript_y_size":
@@ -413,6 +411,15 @@ class VfbToUfoWriter:
                 self.num_stem_snap_h = data
             elif name == "StemSnapV Count":
                 self.num_stem_snap_v = data
+            elif name == "Selection":
+                # Bit 0 = Regular
+                # Bit 5 = Bold
+                # Bit 6 = Italic
+                # Those should not be included in the list.
+                # Any others could remain, but FL doesn't set them.
+                self.info.openTypeOS2Selection = [
+                    b for b in binaryToIntList(data) if b not in (0, 5, 6)
+                ]
             elif name == "PostScript Info":
                 self.masters_ps_info.append(data)
             elif name == "Glyph":
