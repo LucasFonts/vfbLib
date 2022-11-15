@@ -29,6 +29,21 @@ def binaryToIntList(value, start=0):
 
 
 class VfbToUfoInfo:
+    def __init__(self):
+        # Chance to set some defaults that should always be written
+        self.guidelines = []
+        self.italicAngle = 0
+        self.openTypeHeadFlags = []
+        self.openTypeHheaLineGap = 0
+        self.openTypeNameDescription = ""
+        self.openTypeNameSampleText = ""
+        self.openTypeOS2Selection = []
+        self.openTypeOS2Type = []
+        self.openTypeOS2WidthClass = 5
+        self.postscriptIsFixedPitch = False
+        self.postscriptFamilyBlues = []
+        self.postscriptFamilyOtherBlues = []
+
     @property
     def ui_name(self):
         if hasattr(self, "familyName"):
