@@ -275,7 +275,7 @@ class VfbToUfoWriter:
 
     def set_tt_zones(self, data):
         self.tt_zone_names = []
-        for d in ("ttZonesT", "ttZonesB"):
+        for d in ("ttZonesB", "ttZonesT"):
             direction_zones = data[d]
             for dz in direction_zones:
                 zone = {
@@ -302,7 +302,11 @@ class VfbToUfoWriter:
         self.lib[TT_LIB_KEY]["codeppm"] = data
 
     def set_tt_zone_deltas(self, data):
-        self.assure_tt_lib()
+        for zone_index, deltas in data.items():
+            zone_name = self.tt_zone_names[int(zone_index)]
+            self.tt_zones[zone_name]["delta"] = {
+                str(k): v for k, v in deltas.items()
+            }
 
     def build_tt_stems_lib(self):
         lib = self.lib[TT_LIB_KEY]["stems"] = {}
