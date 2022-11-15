@@ -291,10 +291,12 @@ class VfbToUfoWriter:
 
     def build_tt_stems_lib(self):
         lib = self.lib[TT_LIB_KEY]["stems"] = {}
+        self.tt_stem_names = []
         for d in ("ttStemsH", "ttStemsV"):
             direction_stems = self.stems[d]
             for stem in direction_stems:
                 name = stem["name"]
+                self.tt_stem_names.append(name)
                 del stem["name"]
                 if name in self.lib[TT_LIB_KEY]["stems"]:
                     print(
