@@ -12,6 +12,7 @@ this situation.
 ## Improvements Over vfb2ufo
 
 - Outputs normalized UFO v3
+- Outputs FontLab user data (font and glyph level)
 - Mark colors are written to the official UFO v3 lib key
 - Supports more UFO font info attributes:
   - `openTypeGaspRangeRecords`
