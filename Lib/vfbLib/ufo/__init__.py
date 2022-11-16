@@ -59,6 +59,7 @@ class VfbToUfoInfo:
 
 class VfbToUfoGlyph:
     def __init__(self) -> None:
+        self.anchors = []
         self.labels: Dict[str, int] = {}
         self.point_labels: Dict[int, str] = {}
 
@@ -607,7 +608,16 @@ class VfbToUfoWriter:
             elif name == "Glyph Unicode Non-BMP":
                 self.current_glyph.unicodes.extend(data)
             elif name == "Glyph GDEF Data":
-                pass
+                if "anchors" in data:
+                    self.current_glyph.anchors = []
+                    for anchor in data["anchors"]:
+                        self.current_glyph.anchors.append(
+                            {
+                                "name": anchor["name"],
+                                "x": anchor["x"],
+                                "y": anchor["y"],
+                            }
+                        )
             elif name == "Glyph Anchors Supplemental":
                 pass
             else:
@@ -792,6 +802,7 @@ class VfbToUfoWriter:
             gs = GlyphSet(glyphs_path)
             for name, self.current_mmglyph in self.glyph_masters.items():
                 g = Glyph(name, gs)
+                g.anchors = self.current_mmglyph.anchors
                 g.lib = self.current_mmglyph.lib
                 g.unicodes = self.current_mmglyph.unicodes
                 g.width, g.height = self.current_mmglyph.mm_metrics[i]
