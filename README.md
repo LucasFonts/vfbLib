@@ -2,13 +2,37 @@
 
 Converter and deserializer for VFB files.
 
+FontLab’s own `vfb2ufo` converter is from 2015, only outputs UFO v2, and
+contains serious bugs that are never going to be fixed. Its support on macOS is
+subject to Apple’s mercy (no native support for Apple Silicon).
 
-## Command Line Scripts
+That’s why a single determined programmer with a hex editor set out to rectify
+this situation.
+
+## Improvements Over vfb2ufo
+
+- Outputs normalized UFO v3
+- Mark colors are written to the official UFO v3 lib key
+- Supports more UFO font info attributes:
+  - `openTypeGaspRangeRecords`
+  - `openTypeHeadLowestRecPPEM`
+  - `openTypeNameRecords`
+  - `openTypeOS2WeightClass` is written correctly
+
+
+## Command Line Script Usage
 
 ### vfb3ufo
 
 Convert a VFB to one UFO per master. Command line options are compatible to
 FontLab’s `vfb2ufo`, but not all of them are implemented yet.
+
+```bash
+$ vfb3ufo MyFile.vfb
+```
+
+will convert the file to `MyFile.ufo` in the same directory. Existing files will
+not be overwritten unless you specify the `-fo` option.
 
 ```
 vfb3ufo -h
@@ -65,3 +89,15 @@ options:
   -m, --minimal         parse only minimal amount of data
   -p PATH, --path PATH  output folder
 ```
+
+
+# Known Issues
+
+## Unimplemented in UFO output
+
+- Glyph anchors
+- PostScript hinting
+
+# Copyright
+
+© 2022 by LucasFonts GmbH, Berlin
