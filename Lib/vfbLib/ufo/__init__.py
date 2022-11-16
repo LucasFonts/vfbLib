@@ -620,6 +620,8 @@ class VfbToUfoWriter:
                         )
             elif name == "Glyph Anchors Supplemental":
                 pass
+            elif name == "Glyph Anchors MM":
+                self.current_glyph.mm_anchors = data
             else:
                 pass
                 # print(f"Unhandled key: {name}")
@@ -803,6 +805,13 @@ class VfbToUfoWriter:
             for name, self.current_mmglyph in self.glyph_masters.items():
                 g = Glyph(name, gs)
                 g.anchors = self.current_mmglyph.anchors
+                # Apply master anchor positions
+                if hasattr(self.current_mmglyph, "mm_anchors"):
+                    for j, anchor in enumerate(
+                        self.current_mmglyph.mm_anchors
+                    ):
+                        g.anchors[j]["x"] = anchor["x"][i]
+                        g.anchors[j]["y"] = anchor["y"][i]
                 g.lib = self.current_mmglyph.lib
                 g.unicodes = self.current_mmglyph.unicodes
                 g.width, g.height = self.current_mmglyph.mm_metrics[i]
