@@ -27,25 +27,24 @@
 	<lib>
 		<dict>
 			<key>com.adobe.type.autohint</key>
-			<data>
-				ICA8aGludFNldExpc3Q+CiAgICA8aGludHNldCBwb2ludFRhZz0iaHIwMCI+CiAgICAg
-				IDxoc3RlbSBwb3M9Ii0xNjMiIHdpZHRoPSIxMTIiIC8+CiAgICAgIDx2c3RlbSBwb3M9
-				Ii01NyIgd2lkdGg9IjExNCIgLz4KICAgIDwvaGludHNldD4KICA8L2hpbnRTZXRMaXN0
-				Pgo=
-			</data>
+			<string>  &lt;hintSetList&gt;
+    &lt;hintset pointTag="hr00"&gt;
+      &lt;hstem pos="-163" width="112" /&gt;
+      &lt;vstem pos="-57" width="114" /&gt;
+    &lt;/hintset&gt;
+  &lt;/hintSetList&gt;
+</string>
 			<key>com.fontlab.ttprogram</key>
-			<data>
-				ICA8dHRQcm9ncmFtPgogICAgPHR0YyBjb2RlPSJhbGlnbnYiIHBvaW50PSJhdjAxIiBh
-				bGlnbj0icm91bmQiLz4KICAgIDx0dGMgY29kZT0ibWRlbHRhdiIgcG9pbnQ9ImF2MDEi
-				IGRlbHRhPSItNSIgcHBtMT0iOSIgcHBtMj0iOSIvPgogICAgPHR0YyBjb2RlPSJzaW5n
-				bGV2IiBwb2ludDE9ImF2MDEiIHBvaW50Mj0ic3YwMSIgcm91bmQ9InRydWUiLz4KICAg
-				IDx0dGMgY29kZT0ibWRlbHRhdiIgcG9pbnQ9InN2MDEiIGRlbHRhPSI4IiBwcG0xPSIx
-				MyIgcHBtMj0iMTYiLz4KICAgIDx0dGMgY29kZT0ic2luZ2xldiIgcG9pbnQxPSJhdjAx
-				IiBwb2ludDI9InN2MDIiIHJvdW5kPSJ0cnVlIi8+CiAgICA8dHRjIGNvZGU9Im1kZWx0
-				YXYiIHBvaW50PSJzdjAyIiBkZWx0YT0iLTgiIHBwbTE9IjEwIiBwcG0yPSIxMSIvPgog
-				ICAgPHR0YyBjb2RlPSJtZGVsdGF2IiBwb2ludD0ic3YwMiIgZGVsdGE9Ii04IiBwcG0x
-				PSIxMyIgcHBtMj0iMTMiLz4KICA8L3R0UHJvZ3JhbT4K
-			</data>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="alignv" point="av01" align="round"/&gt;
+    &lt;ttc code="mdeltav" point="av01" delta="-5" ppm1="9" ppm2="9"/&gt;
+    &lt;ttc code="singlev" point1="av01" point2="sv01" round="true"/&gt;
+    &lt;ttc code="mdeltav" point="sv01" delta="8" ppm1="13" ppm2="16"/&gt;
+    &lt;ttc code="singlev" point1="av01" point2="sv02" round="true"/&gt;
+    &lt;ttc code="mdeltav" point="sv02" delta="-8" ppm1="10" ppm2="11"/&gt;
+    &lt;ttc code="mdeltav" point="sv02" delta="-8" ppm1="13" ppm2="13"/&gt;
+  &lt;/ttProgram&gt;
+</string>
 			<key>com.typemytype.robofont.guides</key>
 			<array>
 				<dict>

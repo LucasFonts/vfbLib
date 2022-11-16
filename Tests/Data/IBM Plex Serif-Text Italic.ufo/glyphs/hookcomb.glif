@@ -21,23 +21,23 @@
 	<lib>
 		<dict>
 			<key>com.adobe.type.autohint</key>
-			<data>
-				ICA8aGludFNldExpc3Q+CiAgICA8aGludHNldCBwb2ludFRhZz0iaHIwMCI+CiAgICAg
-				IDxoc3RlbSBwb3M9IjcwMyIgd2lkdGg9IjYzIiAvPgogICAgICA8dnN0ZW0gcG9zPSI3
-				NSIgd2lkdGg9IjU3IiAvPgogICAgPC9oaW50c2V0PgogIDwvaGludFNldExpc3Q+Cg==
-			</data>
+			<string>  &lt;hintSetList&gt;
+    &lt;hintset pointTag="hr00"&gt;
+      &lt;hstem pos="703" width="63" /&gt;
+      &lt;vstem pos="75" width="57" /&gt;
+    &lt;/hintset&gt;
+  &lt;/hintSetList&gt;
+</string>
 			<key>com.fontlab.ttprogram</key>
-			<data>
-				ICA8dHRQcm9ncmFtPgogICAgPHR0YyBjb2RlPSJhbGlnbnYiIHBvaW50PSJhdjAxIiBh
-				bGlnbj0icm91bmQiLz4KICAgIDx0dGMgY29kZT0ibWRlbHRhdiIgcG9pbnQ9ImF2MDEi
-				IGRlbHRhPSI4IiBwcG0xPSI5IiBwcG0yPSI5Ii8+CiAgICA8dHRjIGNvZGU9Im1kZWx0
-				YXYiIHBvaW50PSJhdjAxIiBkZWx0YT0iOCIgcHBtMT0iMTMiIHBwbTI9IjEzIi8+CiAg
-				ICA8dHRjIGNvZGU9Im1kZWx0YXYiIHBvaW50PSJhdjAxIiBkZWx0YT0iOCIgcHBtMT0i
-				MTEiIHBwbTI9IjExIi8+CiAgICA8dHRjIGNvZGU9InNpbmdsZXYiIHBvaW50MT0iYXYw
-				MSIgcG9pbnQyPSJzdjAxIiByb3VuZD0idHJ1ZSIvPgogICAgPHR0YyBjb2RlPSJzaW5n
-				bGV2IiBwb2ludDE9InN2MDEiIHBvaW50Mj0ic3YwMiIgcm91bmQ9InRydWUiLz4KICA8
-				L3R0UHJvZ3JhbT4K
-			</data>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="alignv" point="av01" align="round"/&gt;
+    &lt;ttc code="mdeltav" point="av01" delta="8" ppm1="9" ppm2="9"/&gt;
+    &lt;ttc code="mdeltav" point="av01" delta="8" ppm1="13" ppm2="13"/&gt;
+    &lt;ttc code="mdeltav" point="av01" delta="8" ppm1="11" ppm2="11"/&gt;
+    &lt;ttc code="singlev" point1="av01" point2="sv01" round="true"/&gt;
+    &lt;ttc code="singlev" point1="sv01" point2="sv02" round="true"/&gt;
+  &lt;/ttProgram&gt;
+</string>
 			<key>com.typemytype.robofont.guides</key>
 			<array>
 				<dict>

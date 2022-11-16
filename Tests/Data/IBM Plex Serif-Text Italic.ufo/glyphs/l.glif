@@ -30,24 +30,24 @@
 	<lib>
 		<dict>
 			<key>com.adobe.type.autohint</key>
-			<data>
-				ICA8aGludFNldExpc3Q+CiAgICA8aGludHNldCBwb2ludFRhZz0iYWIwMSI+CiAgICAg
-				IDxoc3RlbSBwb3M9Ii0xMiIgd2lkdGg9IjYxIiAvPgogICAgICA8aHN0ZW0gcG9zPSI2
-				ODEiIHdpZHRoPSI3OSIgLz4KICAgICAgPHZzdGVtIHBvcz0iNDAiIHdpZHRoPSI4OSIg
-				Lz4KICAgIDwvaGludHNldD4KICA8L2hpbnRTZXRMaXN0Pgo=
-			</data>
+			<string>  &lt;hintSetList&gt;
+    &lt;hintset pointTag="ab01"&gt;
+      &lt;hstem pos="-12" width="61" /&gt;
+      &lt;hstem pos="681" width="79" /&gt;
+      &lt;vstem pos="40" width="89" /&gt;
+    &lt;/hintset&gt;
+  &lt;/hintSetList&gt;
+</string>
 			<key>com.fontlab.ttprogram</key>
-			<data>
-				ICA8dHRQcm9ncmFtPgogICAgPHR0YyBjb2RlPSJhbGlnbnQiIHBvaW50PSJhdDAxIiB6
-				b25lPSJhc2NlbmRlciIvPgogICAgPHR0YyBjb2RlPSJhbGlnbmIiIHBvaW50PSJhYjAx
-				IiB6b25lPSJiYXNlbGluZSIvPgogICAgPHR0YyBjb2RlPSJzaW5nbGV2IiBwb2ludDE9
-				ImF0MDEiIHBvaW50Mj0ic3YwMSIgc3RlbT0idHJpYW5nbGUiLz4KICAgIDx0dGMgY29k
-				ZT0ic2luZ2xldiIgcG9pbnQxPSJzdjAxIiBwb2ludDI9InN2MDIiIHN0ZW09ImxjX3N0
-				ZW1zZXJpZiIvPgogICAgPHR0YyBjb2RlPSJzaW5nbGV2IiBwb2ludDE9ImFiMDEiIHBv
-				aW50Mj0ic3YwMyIgc3RlbT0iYm93bF90aGluIi8+CiAgICA8dHRjIGNvZGU9InNpbmds
-				ZXYiIHBvaW50MT0ic3YwMyIgcG9pbnQyPSJzdjA0IiBzdGVtPSJzdHJva2VfdGlwIi8+
-				CiAgPC90dFByb2dyYW0+Cg==
-			</data>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="alignt" point="at01" zone="ascender"/&gt;
+    &lt;ttc code="alignb" point="ab01" zone="baseline"/&gt;
+    &lt;ttc code="singlev" point1="at01" point2="sv01" stem="triangle"/&gt;
+    &lt;ttc code="singlev" point1="sv01" point2="sv02" stem="lc_stemserif"/&gt;
+    &lt;ttc code="singlev" point1="ab01" point2="sv03" stem="bowl_thin"/&gt;
+    &lt;ttc code="singlev" point1="sv03" point2="sv04" stem="stroke_tip"/&gt;
+  &lt;/ttProgram&gt;
+</string>
 			<key>com.typemytype.robofont.guides</key>
 			<array>
 				<dict>

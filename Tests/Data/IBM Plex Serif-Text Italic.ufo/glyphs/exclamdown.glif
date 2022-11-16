@@ -35,21 +35,21 @@
 	<lib>
 		<dict>
 			<key>com.adobe.type.autohint</key>
-			<data>
-				ICA8aGludFNldExpc3Q+CiAgICA8aGludHNldCBwb2ludFRhZz0ic3YwMSI+CiAgICAg
-				IDxoc3RlbSBwb3M9IjM5NSIgd2lkdGg9IjEzNSIgLz4KICAgICAgPHZzdGVtIHBvcz0i
-				MTEzIiB3aWR0aD0iMTM3IiAvPgogICAgPC9oaW50c2V0PgogIDwvaGludFNldExpc3Q+
-				Cg==
-			</data>
+			<string>  &lt;hintSetList&gt;
+    &lt;hintset pointTag="sv01"&gt;
+      &lt;hstem pos="395" width="135" /&gt;
+      &lt;vstem pos="113" width="137" /&gt;
+    &lt;/hintset&gt;
+  &lt;/hintSetList&gt;
+</string>
 			<key>com.fontlab.ttprogram</key>
-			<data>
-				ICA8dHRQcm9ncmFtPgogICAgPHR0YyBjb2RlPSJhbGlnbnYiIHBvaW50PSJhdjAxIiBh
-				bGlnbj0icm91bmQiLz4KICAgIDx0dGMgY29kZT0iYWxpZ250IiBwb2ludD0iYXQwMSIg
-				em9uZT0ieGhlaWdodCIvPgogICAgPHR0YyBjb2RlPSJzaW5nbGV2IiBwb2ludDE9ImF0
-				MDEiIHBvaW50Mj0ic3YwMSIgcm91bmQ9InRydWUiLz4KICAgIDx0dGMgY29kZT0ic2lu
-				Z2xldiIgcG9pbnQxPSJzdjAxIiBwb2ludDI9InN2MDIiIHJvdW5kPSJ0cnVlIi8+CiAg
-				PC90dFByb2dyYW0+Cg==
-			</data>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="alignv" point="av01" align="round"/&gt;
+    &lt;ttc code="alignt" point="at01" zone="xheight"/&gt;
+    &lt;ttc code="singlev" point1="at01" point2="sv01" round="true"/&gt;
+    &lt;ttc code="singlev" point1="sv01" point2="sv02" round="true"/&gt;
+  &lt;/ttProgram&gt;
+</string>
 		</dict>
 	</lib>
 </glyph>

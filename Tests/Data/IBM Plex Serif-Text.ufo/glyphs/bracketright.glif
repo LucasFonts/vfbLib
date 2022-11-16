@@ -17,21 +17,22 @@
 	<lib>
 		<dict>
 			<key>com.adobe.type.autohint</key>
-			<data>
-				ICA8aGludFNldExpc3Q+CiAgICA8aGludHNldCBwb2ludFRhZz0ic3YwMSI+CiAgICAg
-				IDxoc3RlbSBwb3M9Ii0xMzgiIHdpZHRoPSI0OSIgLz4KICAgICAgPGhzdGVtIHBvcz0i
-				NzExIiB3aWR0aD0iNDkiIC8+CiAgICAgIDx2c3RlbSBwb3M9IjE0NSIgd2lkdGg9Ijg4
-				IiAvPgogICAgPC9oaW50c2V0PgogIDwvaGludFNldExpc3Q+Cg==
-			</data>
+			<string>  &lt;hintSetList&gt;
+    &lt;hintset pointTag="sv01"&gt;
+      &lt;hstem pos="-138" width="49" /&gt;
+      &lt;hstem pos="711" width="49" /&gt;
+      &lt;vstem pos="145" width="88" /&gt;
+    &lt;/hintset&gt;
+  &lt;/hintSetList&gt;
+</string>
 			<key>com.fontlab.ttprogram</key>
-			<data>
-				ICA8dHRQcm9ncmFtPgogICAgPHR0YyBjb2RlPSJhbGlnbnYiIHBvaW50PSJhdjAxIiBh
-				bGlnbj0icm91bmQiLz4KICAgIDx0dGMgY29kZT0iYWxpZ250IiBwb2ludD0iYXQwMSIg
-				em9uZT0iYXNjZW5kZXIiLz4KICAgIDx0dGMgY29kZT0ic2luZ2xldiIgcG9pbnQxPSJh
-				djAxIiBwb2ludDI9InN2MDEiIHN0ZW09InN0ZW1fc2VyaWYiLz4KICAgIDx0dGMgY29k
-				ZT0ic2luZ2xldiIgcG9pbnQxPSJhdDAxIiBwb2ludDI9InN2MDIiIHN0ZW09InN0ZW1f
-				c2VyaWYiLz4KICA8L3R0UHJvZ3JhbT4K
-			</data>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="alignv" point="av01" align="round"/&gt;
+    &lt;ttc code="alignt" point="at01" zone="ascender"/&gt;
+    &lt;ttc code="singlev" point1="av01" point2="sv01" stem="stem_serif"/&gt;
+    &lt;ttc code="singlev" point1="at01" point2="sv02" stem="stem_serif"/&gt;
+  &lt;/ttProgram&gt;
+</string>
 		</dict>
 	</lib>
 </glyph>

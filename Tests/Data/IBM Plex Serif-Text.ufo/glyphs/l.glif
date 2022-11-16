@@ -22,25 +22,25 @@
 	<lib>
 		<dict>
 			<key>com.adobe.type.autohint</key>
-			<data>
-				ICA8aGludFNldExpc3Q+CiAgICA8aGludHNldCBwb2ludFRhZz0ic3YwMSI+CiAgICAg
-				IDxoc3RlbSBwb3M9IjAiIHdpZHRoPSI1MCIgLz4KICAgICAgPGhzdGVtIHBvcz0iNjc2
-				IiB3aWR0aD0iODQiIC8+CiAgICAgIDx2c3RlbSBwb3M9IjEwNSIgd2lkdGg9Ijk2IiAv
-				PgogICAgPC9oaW50c2V0PgogIDwvaGludFNldExpc3Q+Cg==
-			</data>
+			<string>  &lt;hintSetList&gt;
+    &lt;hintset pointTag="sv01"&gt;
+      &lt;hstem pos="0" width="50" /&gt;
+      &lt;hstem pos="676" width="84" /&gt;
+      &lt;vstem pos="105" width="96" /&gt;
+    &lt;/hintset&gt;
+  &lt;/hintSetList&gt;
+</string>
 			<key>com.fontlab.ttprogram</key>
-			<data>
-				ICA8dHRQcm9ncmFtPgogICAgPHR0YyBjb2RlPSJhbGlnbnQiIHBvaW50PSJhdDAxIiB6
-				b25lPSJhc2NlbmRlciIvPgogICAgPHR0YyBjb2RlPSJhbGlnbmIiIHBvaW50PSJhYjAx
-				IiB6b25lPSJiYXNlbGluZSIvPgogICAgPHR0YyBjb2RlPSJzaW5nbGV2IiBwb2ludDE9
-				ImFiMDEiIHBvaW50Mj0ic3YwMSIgc3RlbT0ic3RlbV9zZXJpZiIvPgogICAgPHR0YyBj
-				b2RlPSJzaW5nbGV2IiBwb2ludDE9ImF0MDEiIHBvaW50Mj0ic3YwMiIgc3RlbT0idHJp
-				YW5nbGUiLz4KICAgIDx0dGMgY29kZT0iaW50ZXJwb2xhdGV2IiBwb2ludD0iaXYwMSIg
-				cG9pbnQxPSJhdDAxIiBwb2ludDI9InN2MDIiIGFsaWduPSJyb3VuZCIvPgogICAgPHR0
-				YyBjb2RlPSJzaW5nbGV2IiBwb2ludDE9Iml2MDEiIHBvaW50Mj0ic3YwMyIgc3RlbT0i
-				c3RlbV9zZXJpZiIvPgogICAgPHR0YyBjb2RlPSJzaW5nbGV2IiBwb2ludDE9InN2MDEi
-				IHBvaW50Mj0ic3YwNCIvPgogIDwvdHRQcm9ncmFtPgo=
-			</data>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="alignt" point="at01" zone="ascender"/&gt;
+    &lt;ttc code="alignb" point="ab01" zone="baseline"/&gt;
+    &lt;ttc code="singlev" point1="ab01" point2="sv01" stem="stem_serif"/&gt;
+    &lt;ttc code="singlev" point1="at01" point2="sv02" stem="triangle"/&gt;
+    &lt;ttc code="interpolatev" point="iv01" point1="at01" point2="sv02" align="round"/&gt;
+    &lt;ttc code="singlev" point1="iv01" point2="sv03" stem="stem_serif"/&gt;
+    &lt;ttc code="singlev" point1="sv01" point2="sv04"/&gt;
+  &lt;/ttProgram&gt;
+</string>
 			<key>com.typemytype.robofont.guides</key>
 			<array>
 				<dict>

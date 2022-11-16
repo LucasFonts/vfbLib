@@ -57,25 +57,25 @@
 	<lib>
 		<dict>
 			<key>com.adobe.type.autohint</key>
-			<data>
-				ICA8aGludFNldExpc3Q+CiAgICA8aGludHNldCBwb2ludFRhZz0iYWIwMSI+CiAgICAg
-				IDxoc3RlbSBwb3M9Ii0xMiIgd2lkdGg9IjcwIiAvPgogICAgICA8aHN0ZW0gcG9zPSI0
-				NzgiIHdpZHRoPSI1MiIgLz4KICAgICAgPHZzdGVtIHBvcz0iNDQiIHdpZHRoPSIxMDQi
-				IC8+CiAgICAgIDx2c3RlbSBwb3M9IjM0MSIgd2lkdGg9IjEyOSIgLz4KICAgIDwvaGlu
-				dHNldD4KICA8L2hpbnRTZXRMaXN0Pgo=
-			</data>
+			<string>  &lt;hintSetList&gt;
+    &lt;hintset pointTag="ab01"&gt;
+      &lt;hstem pos="-12" width="70" /&gt;
+      &lt;hstem pos="478" width="52" /&gt;
+      &lt;vstem pos="44" width="104" /&gt;
+      &lt;vstem pos="341" width="129" /&gt;
+    &lt;/hintset&gt;
+  &lt;/hintSetList&gt;
+</string>
 			<key>com.fontlab.ttprogram</key>
-			<data>
-				ICA8dHRQcm9ncmFtPgogICAgPHR0YyBjb2RlPSJhbGlnbnQiIHBvaW50PSJhdDAxIiB6
-				b25lPSJ4aGVpZ2h0Ii8+CiAgICA8dHRjIGNvZGU9ImFsaWduYiIgcG9pbnQ9ImFiMDEi
-				IHpvbmU9ImJhc2VsaW5lIi8+CiAgICA8dHRjIGNvZGU9InNpbmdsZXYiIHBvaW50MT0i
-				YXQwMSIgcG9pbnQyPSJzdjAxIiBzdGVtPSJzdGVtX3NlcmlmIi8+CiAgICA8dHRjIGNv
-				ZGU9InNpbmdsZXYiIHBvaW50MT0iYWIwMSIgcG9pbnQyPSJzdjAyIiBzdGVtPSJsY190
-				aGljayIvPgogICAgPHR0YyBjb2RlPSJpbnRlcnBvbGF0ZXYiIHBvaW50PSJpdjAxIiBw
-				b2ludDE9InN2MDEiIHBvaW50Mj0ic3YwMiIgYWxpZ249InJpZ2h0Ii8+CiAgICA8dHRj
-				IGNvZGU9Im1kZWx0YXYiIHBvaW50PSJpdjAxIiBkZWx0YT0iLTgiIHBwbTE9IjI4IiBw
-				cG0yPSIzMCIvPgogIDwvdHRQcm9ncmFtPgo=
-			</data>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="alignt" point="at01" zone="xheight"/&gt;
+    &lt;ttc code="alignb" point="ab01" zone="baseline"/&gt;
+    &lt;ttc code="singlev" point1="at01" point2="sv01" stem="stem_serif"/&gt;
+    &lt;ttc code="singlev" point1="ab01" point2="sv02" stem="lc_thick"/&gt;
+    &lt;ttc code="interpolatev" point="iv01" point1="sv01" point2="sv02" align="right"/&gt;
+    &lt;ttc code="mdeltav" point="iv01" delta="-8" ppm1="28" ppm2="30"/&gt;
+  &lt;/ttProgram&gt;
+</string>
 			<key>com.typemytype.robofont.guides</key>
 			<array>
 				<dict>

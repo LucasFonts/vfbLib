@@ -73,24 +73,21 @@
 	<lib>
 		<dict>
 			<key>com.adobe.type.autohint</key>
-			<data>
-				ICA8aGludFNldExpc3Q+CiAgPC9oaW50U2V0TGlzdD4K
-			</data>
+			<string>  &lt;hintSetList&gt;
+  &lt;/hintSetList&gt;
+</string>
 			<key>com.fontlab.ttprogram</key>
-			<data>
-				ICA8dHRQcm9ncmFtPgogICAgPHR0YyBjb2RlPSJhbGlnbnQiIHBvaW50PSJhdDAxIiB6
-				b25lPSJ4aGVpZ2h0Ii8+CiAgICA8dHRjIGNvZGU9ImFsaWduYiIgcG9pbnQ9ImFiMDEi
-				IHpvbmU9ImJhc2VsaW5lIi8+CiAgICA8dHRjIGNvZGU9InNpbmdsZXYiIHBvaW50MT0i
-				YXQwMSIgcG9pbnQyPSJzdjAxIiBzdGVtPSJsY190aGlucyIvPgogICAgPHR0YyBjb2Rl
-				PSJpbnRlcnBvbGF0ZXYiIHBvaW50PSJpdjAxIiBwb2ludDE9InN2MDEiIHBvaW50Mj0i
-				YWIwMSIvPgogICAgPHR0YyBjb2RlPSJzaW5nbGV2IiBwb2ludDE9ImFiMDEiIHBvaW50
-				Mj0ic3YwMiIgc3RlbT0ibGNfdGhpbnMiLz4KICAgIDx0dGMgY29kZT0iaW50ZXJwb2xh
-				dGV2IiBwb2ludD0iaXYwMiIgcG9pbnQxPSJpdjAxIiBwb2ludDI9InN2MDIiIGFsaWdu
-				PSJyb3VuZCIvPgogICAgPHR0YyBjb2RlPSJpbnRlcnBvbGF0ZXYiIHBvaW50PSJpdjAz
-				IiBwb2ludDE9ImF0MDEiIHBvaW50Mj0ic3YwMiIvPgogICAgPHR0YyBjb2RlPSJpbnRl
-				cnBvbGF0ZXYiIHBvaW50PSJpdjA0IiBwb2ludDE9InN2MDEiIHBvaW50Mj0iaXYwMyIg
-				YWxpZ249InJvdW5kIi8+CiAgPC90dFByb2dyYW0+Cg==
-			</data>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="alignt" point="at01" zone="xheight"/&gt;
+    &lt;ttc code="alignb" point="ab01" zone="baseline"/&gt;
+    &lt;ttc code="singlev" point1="at01" point2="sv01" stem="lc_thins"/&gt;
+    &lt;ttc code="interpolatev" point="iv01" point1="sv01" point2="ab01"/&gt;
+    &lt;ttc code="singlev" point1="ab01" point2="sv02" stem="lc_thins"/&gt;
+    &lt;ttc code="interpolatev" point="iv02" point1="iv01" point2="sv02" align="round"/&gt;
+    &lt;ttc code="interpolatev" point="iv03" point1="at01" point2="sv02"/&gt;
+    &lt;ttc code="interpolatev" point="iv04" point1="sv01" point2="iv03" align="round"/&gt;
+  &lt;/ttProgram&gt;
+</string>
 			<key>com.typemytype.robofont.guides</key>
 			<array>
 				<dict>

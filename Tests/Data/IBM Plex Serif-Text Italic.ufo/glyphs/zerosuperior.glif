@@ -49,22 +49,23 @@
 	<lib>
 		<dict>
 			<key>com.adobe.type.autohint</key>
-			<data>
-				ICA8aGludFNldExpc3Q+CiAgICA8aGludHNldCBwb2ludFRhZz0ic3YwMSI+CiAgICAg
-				IDxoc3RlbSBwb3M9IjMyNCIgd2lkdGg9IjQwIiAvPgogICAgICA8aHN0ZW0gcG9zPSI2
-				NjQiIHdpZHRoPSI0MCIgLz4KICAgICAgPHZzdGVtIHBvcz0iOTAiIHdpZHRoPSI2NyIg
-				Lz4KICAgICAgPHZzdGVtIHBvcz0iMzE4IiB3aWR0aD0iNjciIC8+CiAgICA8L2hpbnRz
-				ZXQ+CiAgPC9oaW50U2V0TGlzdD4K
-			</data>
+			<string>  &lt;hintSetList&gt;
+    &lt;hintset pointTag="sv01"&gt;
+      &lt;hstem pos="324" width="40" /&gt;
+      &lt;hstem pos="664" width="40" /&gt;
+      &lt;vstem pos="90" width="67" /&gt;
+      &lt;vstem pos="318" width="67" /&gt;
+    &lt;/hintset&gt;
+  &lt;/hintSetList&gt;
+</string>
 			<key>com.fontlab.ttprogram</key>
-			<data>
-				ICA8dHRQcm9ncmFtPgogICAgPHR0YyBjb2RlPSJhbGlnbnQiIHBvaW50PSJhdDAxIiB6
-				b25lPSJjYXBoZWlnaHQiLz4KICAgIDx0dGMgY29kZT0iYWxpZ25iIiBwb2ludD0iYWIw
-				MSIgem9uZT0ic3VwX2JvdCIvPgogICAgPHR0YyBjb2RlPSJzaW5nbGV2IiBwb2ludDE9
-				ImFiMDEiIHBvaW50Mj0ic3YwMSIgc3RlbT0ibGNfdGhpbnMiLz4KICAgIDx0dGMgY29k
-				ZT0ic2luZ2xldiIgcG9pbnQxPSJhdDAxIiBwb2ludDI9InN2MDIiIHN0ZW09ImxjX3Ro
-				aW5zIi8+CiAgPC90dFByb2dyYW0+Cg==
-			</data>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="alignt" point="at01" zone="capheight"/&gt;
+    &lt;ttc code="alignb" point="ab01" zone="sup_bot"/&gt;
+    &lt;ttc code="singlev" point1="ab01" point2="sv01" stem="lc_thins"/&gt;
+    &lt;ttc code="singlev" point1="at01" point2="sv02" stem="lc_thins"/&gt;
+  &lt;/ttProgram&gt;
+</string>
 		</dict>
 	</lib>
 </glyph>

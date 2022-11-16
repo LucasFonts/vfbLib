@@ -43,25 +43,25 @@
 	<lib>
 		<dict>
 			<key>com.adobe.type.autohint</key>
-			<data>
-				ICA8aGludFNldExpc3Q+CiAgICA8aGludHNldCBwb2ludFRhZz0iaHIwMCI+CiAgICAg
-				IDxoc3RlbTMgc3RlbTNMaXN0PSItMTM4LDQ5LDI4Myw1Niw3MTEsNDkiIC8+CiAgICAg
-				IDx2c3RlbSBwb3M9IjE1IiB3aWR0aD0iNzgiIC8+CiAgICAgIDx2c3RlbSBwb3M9IjEx
-				NiIgd2lkdGg9Ijg4IiAvPgogICAgPC9oaW50c2V0PgogIDwvaGludFNldExpc3Q+Cg==
-			</data>
+			<string>  &lt;hintSetList&gt;
+    &lt;hintset pointTag="hr00"&gt;
+      &lt;hstem3 stem3List="-138,49,283,56,711,49" /&gt;
+      &lt;vstem pos="15" width="78" /&gt;
+      &lt;vstem pos="116" width="88" /&gt;
+    &lt;/hintset&gt;
+  &lt;/hintSetList&gt;
+</string>
 			<key>com.fontlab.ttprogram</key>
-			<data>
-				ICA8dHRQcm9ncmFtPgogICAgPHR0YyBjb2RlPSJhbGlnbnYiIHBvaW50PSJhdjAxIiBh
-				bGlnbj0icm91bmQiLz4KICAgIDx0dGMgY29kZT0iYWxpZ250IiBwb2ludD0iYXQwMSIg
-				em9uZT0iYXNjZW5kZXIiLz4KICAgIDx0dGMgY29kZT0ic2luZ2xldiIgcG9pbnQxPSJh
-				djAxIiBwb2ludDI9InN2MDEiIHN0ZW09InN0ZW1fc2VyaWYiLz4KICAgIDx0dGMgY29k
-				ZT0iaW50ZXJwb2xhdGV2IiBwb2ludD0iaXYwMSIgcG9pbnQxPSJhdDAxIiBwb2ludDI9
-				InN2MDEiIGFsaWduPSJyb3VuZCIvPgogICAgPHR0YyBjb2RlPSJzaW5nbGV2IiBwb2lu
-				dDE9Iml2MDEiIHBvaW50Mj0ic3YwMiIgc3RlbT0ic3RlbV9zZXJpZiIvPgogICAgPHR0
-				YyBjb2RlPSJzaW5nbGV2IiBwb2ludDE9ImF0MDEiIHBvaW50Mj0ic3YwMyIgc3RlbT0i
-				c3RlbV9zZXJpZiIvPgogICAgPHR0YyBjb2RlPSJpbnRlcnBvbGF0ZXYiIHBvaW50PSJp
-				djAyIiBwb2ludDE9Iml2MDEiIHBvaW50Mj0ic3YwMiIvPgogIDwvdHRQcm9ncmFtPgo=
-			</data>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="alignv" point="av01" align="round"/&gt;
+    &lt;ttc code="alignt" point="at01" zone="ascender"/&gt;
+    &lt;ttc code="singlev" point1="av01" point2="sv01" stem="stem_serif"/&gt;
+    &lt;ttc code="interpolatev" point="iv01" point1="at01" point2="sv01" align="round"/&gt;
+    &lt;ttc code="singlev" point1="iv01" point2="sv02" stem="stem_serif"/&gt;
+    &lt;ttc code="singlev" point1="at01" point2="sv03" stem="stem_serif"/&gt;
+    &lt;ttc code="interpolatev" point="iv02" point1="iv01" point2="sv02"/&gt;
+  &lt;/ttProgram&gt;
+</string>
 		</dict>
 	</lib>
 </glyph>

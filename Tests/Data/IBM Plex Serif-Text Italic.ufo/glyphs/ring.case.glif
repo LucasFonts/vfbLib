@@ -49,27 +49,27 @@
 	<lib>
 		<dict>
 			<key>com.adobe.type.autohint</key>
-			<data>
-				ICA8aGludFNldExpc3Q+CiAgICA8aGludHNldCBwb2ludFRhZz0ic3YwMSI+CiAgICAg
-				IDxoc3RlbSBwb3M9Ijc0MyIgd2lkdGg9IjM3IiAvPgogICAgICA8aHN0ZW0gcG9zPSI5
-				NDEiIHdpZHRoPSIzNyIgLz4KICAgICAgPHZzdGVtIHBvcz0iMjIyIiB3aWR0aD0iNTUi
-				IC8+CiAgICAgIDx2c3RlbSBwb3M9IjQwMCIgd2lkdGg9IjU1IiAvPgogICAgPC9oaW50
-				c2V0PgogIDwvaGludFNldExpc3Q+Cg==
-			</data>
+			<string>  &lt;hintSetList&gt;
+    &lt;hintset pointTag="sv01"&gt;
+      &lt;hstem pos="743" width="37" /&gt;
+      &lt;hstem pos="941" width="37" /&gt;
+      &lt;vstem pos="222" width="55" /&gt;
+      &lt;vstem pos="400" width="55" /&gt;
+    &lt;/hintset&gt;
+  &lt;/hintSetList&gt;
+</string>
 			<key>com.fontlab.ttprogram</key>
-			<data>
-				ICA8dHRQcm9ncmFtPgogICAgPHR0YyBjb2RlPSJhbGlnbnYiIHBvaW50PSJhdjAxIiBh
-				bGlnbj0icm91bmQiLz4KICAgIDx0dGMgY29kZT0iYWxpZ252IiBwb2ludD0iYXYwMiIg
-				YWxpZ249InJvdW5kIi8+CiAgICA8dHRjIGNvZGU9Im1kZWx0YXYiIHBvaW50PSJhdjAx
-				IiBkZWx0YT0iOCIgcHBtMT0iMTAiIHBwbTI9IjExIi8+CiAgICA8dHRjIGNvZGU9Im1k
-				ZWx0YXYiIHBvaW50PSJhdjAxIiBkZWx0YT0iOCIgcHBtMT0iMTgiIHBwbTI9IjE4Ii8+
-				CiAgICA8dHRjIGNvZGU9Im1kZWx0YXYiIHBvaW50PSJhdjAxIiBkZWx0YT0iOCIgcHBt
-				MT0iMTQiIHBwbTI9IjE0Ii8+CiAgICA8dHRjIGNvZGU9InNpbmdsZXYiIHBvaW50MT0i
-				YXYwMSIgcG9pbnQyPSJzdjAxIiByb3VuZD0idHJ1ZSIvPgogICAgPHR0YyBjb2RlPSJt
-				ZGVsdGF2IiBwb2ludD0iYXYwMiIgZGVsdGE9IjgiIHBwbTE9IjkiIHBwbTI9IjExIi8+
-				CiAgICA8dHRjIGNvZGU9InNpbmdsZXYiIHBvaW50MT0iYXYwMiIgcG9pbnQyPSJzdjAy
-				IiByb3VuZD0idHJ1ZSIvPgogIDwvdHRQcm9ncmFtPgo=
-			</data>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="alignv" point="av01" align="round"/&gt;
+    &lt;ttc code="alignv" point="av02" align="round"/&gt;
+    &lt;ttc code="mdeltav" point="av01" delta="8" ppm1="10" ppm2="11"/&gt;
+    &lt;ttc code="mdeltav" point="av01" delta="8" ppm1="18" ppm2="18"/&gt;
+    &lt;ttc code="mdeltav" point="av01" delta="8" ppm1="14" ppm2="14"/&gt;
+    &lt;ttc code="singlev" point1="av01" point2="sv01" round="true"/&gt;
+    &lt;ttc code="mdeltav" point="av02" delta="8" ppm1="9" ppm2="11"/&gt;
+    &lt;ttc code="singlev" point1="av02" point2="sv02" round="true"/&gt;
+  &lt;/ttProgram&gt;
+</string>
 			<key>com.typemytype.robofont.guides</key>
 			<array>
 				<dict>

@@ -71,26 +71,22 @@
 	<lib>
 		<dict>
 			<key>com.adobe.type.autohint</key>
-			<data>
-				ICA8aGludFNldExpc3Q+CiAgPC9oaW50U2V0TGlzdD4K
-			</data>
+			<string>  &lt;hintSetList&gt;
+  &lt;/hintSetList&gt;
+</string>
 			<key>com.fontlab.ttprogram</key>
-			<data>
-				ICA8dHRQcm9ncmFtPgogICAgPHR0YyBjb2RlPSJhbGlnbnQiIHBvaW50PSJhdDAxIiB6
-				b25lPSJpbmZfdG9wIi8+CiAgICA8dHRjIGNvZGU9ImFsaWduYiIgcG9pbnQ9ImFiMDEi
-				IHpvbmU9ImJhc2VsaW5lIi8+CiAgICA8dHRjIGNvZGU9InNpbmdsZXYiIHBvaW50MT0i
-				YXQwMSIgcG9pbnQyPSJzdjAxIiBzdGVtPSJsY190aGluIi8+CiAgICA8dHRjIGNvZGU9
-				InNpbmdsZXYiIHBvaW50MT0iYWIwMSIgcG9pbnQyPSJzdjAyIiBzdGVtPSJsY190aGlu
-				Ii8+CiAgICA8dHRjIGNvZGU9ImludGVycG9sYXRldiIgcG9pbnQ9Iml2MDEiIHBvaW50
-				MT0ic3YwMSIgcG9pbnQyPSJzdjAyIiBhbGlnbj0icm91bmQiLz4KICAgIDx0dGMgY29k
-				ZT0ic2luZ2xldiIgcG9pbnQxPSJpdjAxIiBwb2ludDI9InN2MDMiIHN0ZW09ImxjX3Ro
-				aW4iLz4KICAgIDx0dGMgY29kZT0iaW50ZXJwb2xhdGV2IiBwb2ludD0iaXYwMiIgcG9p
-				bnQxPSJzdjAzIiBwb2ludDI9InN2MDIiIGFsaWduPSJyb3VuZCIvPgogICAgPHR0YyBj
-				b2RlPSJpbnRlcnBvbGF0ZXYiIHBvaW50PSJpdjAzIiBwb2ludDE9InN2MDEiIHBvaW50
-				Mj0iaXYwMSIgYWxpZ249InJvdW5kIi8+CiAgICA8dHRjIGNvZGU9ImludGVycG9sYXRl
-				diIgcG9pbnQ9Iml2MDQiIHBvaW50MT0iaXYwMSIgcG9pbnQyPSJzdjAzIi8+CiAgPC90
-				dFByb2dyYW0+Cg==
-			</data>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="alignt" point="at01" zone="inf_top"/&gt;
+    &lt;ttc code="alignb" point="ab01" zone="baseline"/&gt;
+    &lt;ttc code="singlev" point1="at01" point2="sv01" stem="lc_thin"/&gt;
+    &lt;ttc code="singlev" point1="ab01" point2="sv02" stem="lc_thin"/&gt;
+    &lt;ttc code="interpolatev" point="iv01" point1="sv01" point2="sv02" align="round"/&gt;
+    &lt;ttc code="singlev" point1="iv01" point2="sv03" stem="lc_thin"/&gt;
+    &lt;ttc code="interpolatev" point="iv02" point1="sv03" point2="sv02" align="round"/&gt;
+    &lt;ttc code="interpolatev" point="iv03" point1="sv01" point2="iv01" align="round"/&gt;
+    &lt;ttc code="interpolatev" point="iv04" point1="iv01" point2="sv03"/&gt;
+  &lt;/ttProgram&gt;
+</string>
 		</dict>
 	</lib>
 </glyph>

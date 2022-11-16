@@ -91,47 +91,49 @@
 	<lib>
 		<dict>
 			<key>com.adobe.type.autohint</key>
-			<data>
-				ICA8aGludFNldExpc3Q+CiAgICA8aGludHNldCBwb2ludFRhZz0iaHIwMSI+CiAgICAg
-				IDxoc3RlbSBwb3M9Ii0yMDYiIHdpZHRoPSI0NiIgLz4KICAgICAgPGhzdGVtIHBvcz0i
-				LTIwNiIgd2lkdGg9IjQ2IiAvPgogICAgICA8aHN0ZW0gcG9zPSItMjA2IiB3aWR0aD0i
-				NDYiIC8+CiAgICAgIDxoc3RlbSBwb3M9Ii0yMDYiIHdpZHRoPSI0NiIgLz4KICAgICAg
-				PGhzdGVtIHBvcz0iLTEyIiB3aWR0aD0iNjkiIC8+CiAgICAgIDxoc3RlbSBwb3M9Ii0x
-				MiIgd2lkdGg9IjYxIiAvPgogICAgICA8aHN0ZW0gcG9zPSItMTIiIHdpZHRoPSI2OSIg
-				Lz4KICAgICAgPGhzdGVtIHBvcz0iLTEyIiB3aWR0aD0iNjkiIC8+CiAgICAgIDxoc3Rl
-				bSBwb3M9IjQ3NCIgd2lkdGg9IjU2IiAvPgogICAgICA8aHN0ZW0gcG9zPSI0NzQiIHdp
-				ZHRoPSI1NiIgLz4KICAgICAgPGhzdGVtIHBvcz0iNDc0IiB3aWR0aD0iNTYiIC8+CiAg
-				ICAgIDxoc3RlbSBwb3M9IjUxOCIgd2lkdGg9Ii0yMCIgLz4KICAgICAgPHZzdGVtIHBv
-				cz0iMzgiIHdpZHRoPSI5NiIgLz4KICAgICAgPHZzdGVtIHBvcz0iMzgiIHdpZHRoPSI5
-				NiIgLz4KICAgICAgPHZzdGVtIHBvcz0iMzgiIHdpZHRoPSI5NiIgLz4KICAgICAgPHZz
-				dGVtIHBvcz0iMzgiIHdpZHRoPSI5NiIgLz4KICAgICAgPHZzdGVtIHBvcz0iMjY3IiB3
-				aWR0aD0iNjgiIC8+CiAgICAgIDx2c3RlbSBwb3M9IjMwOSIgd2lkdGg9IjgyIiAvPgog
-				ICAgICA8dnN0ZW0gcG9zPSIzMDkiIHdpZHRoPSI4MiIgLz4KICAgICAgPHZzdGVtIHBv
-				cz0iMzA5IiB3aWR0aD0iODIiIC8+CiAgICA8L2hpbnRzZXQ+CiAgPC9oaW50U2V0TGlz
-				dD4K
-			</data>
+			<string>  &lt;hintSetList&gt;
+    &lt;hintset pointTag="hr01"&gt;
+      &lt;hstem pos="-206" width="46" /&gt;
+      &lt;hstem pos="-206" width="46" /&gt;
+      &lt;hstem pos="-206" width="46" /&gt;
+      &lt;hstem pos="-206" width="46" /&gt;
+      &lt;hstem pos="-12" width="69" /&gt;
+      &lt;hstem pos="-12" width="61" /&gt;
+      &lt;hstem pos="-12" width="69" /&gt;
+      &lt;hstem pos="-12" width="69" /&gt;
+      &lt;hstem pos="474" width="56" /&gt;
+      &lt;hstem pos="474" width="56" /&gt;
+      &lt;hstem pos="474" width="56" /&gt;
+      &lt;hstem pos="518" width="-20" /&gt;
+      &lt;vstem pos="38" width="96" /&gt;
+      &lt;vstem pos="38" width="96" /&gt;
+      &lt;vstem pos="38" width="96" /&gt;
+      &lt;vstem pos="38" width="96" /&gt;
+      &lt;vstem pos="267" width="68" /&gt;
+      &lt;vstem pos="309" width="82" /&gt;
+      &lt;vstem pos="309" width="82" /&gt;
+      &lt;vstem pos="309" width="82" /&gt;
+    &lt;/hintset&gt;
+  &lt;/hintSetList&gt;
+</string>
 			<key>com.fontlab.ttprogram</key>
-			<data>
-				ICA8dHRQcm9ncmFtPgogICAgPHR0YyBjb2RlPSJhbGlnbnQiIHBvaW50PSJhdDAxIiB6
-				b25lPSJ4aGVpZ2h0Ii8+CiAgICA8dHRjIGNvZGU9ImFsaWdudCIgcG9pbnQ9ImF0MDIi
-				IHpvbmU9InhoZWlnaHQiLz4KICAgIDx0dGMgY29kZT0iYWxpZ25iIiBwb2ludD0iYWIw
-				MSIgem9uZT0iYmFzZWxpbmUiLz4KICAgIDx0dGMgY29kZT0iYWxpZ25iIiBwb2ludD0i
-				YWIwMiIgem9uZT0iYmFzZWxpbmUiLz4KICAgIDx0dGMgY29kZT0iYWxpZ25iIiBwb2lu
-				dD0iYWIwMyIgem9uZT0iZGVzY2VuZGVyIi8+CiAgICA8dHRjIGNvZGU9Im1kZWx0YXYi
-				IHBvaW50PSJhYjAzIiBkZWx0YT0iLTgiIHBwbTE9IjkiIHBwbTI9IjE3Ii8+CiAgICA8
-				dHRjIGNvZGU9InNpbmdsZXYiIHBvaW50MT0iYWIwMSIgcG9pbnQyPSJzdjAxIiBzdGVt
-				PSJib3dsX3RoaWNrIi8+CiAgICA8dHRjIGNvZGU9ImludGVycG9sYXRldiIgcG9pbnQ9
-				Iml2MDEiIHBvaW50MT0ic3YwMSIgcG9pbnQyPSJhdDAxIiBhbGlnbj0icmlnaHQiLz4K
-				ICAgIDx0dGMgY29kZT0ic2luZ2xldiIgcG9pbnQxPSJhdDAxIiBwb2ludDI9InN2MDIi
-				IHN0ZW09ImJvd2xfdGhpbiIvPgogICAgPHR0YyBjb2RlPSJpbnRlcnBvbGF0ZXYiIHBv
-				aW50PSJpdjAyIiBwb2ludDE9InN2MDIiIHBvaW50Mj0iYWIwMSIvPgogICAgPHR0YyBj
-				b2RlPSJzaW5nbGV2IiBwb2ludDE9ImFiMDIiIHBvaW50Mj0ic3YwMyIgc3RlbT0iYm93
-				bF90aGluIi8+CiAgICA8dHRjIGNvZGU9InNpbmdsZXYiIHBvaW50MT0ic3YwMyIgcG9p
-				bnQyPSJzdjA0IiBzdGVtPSJzdHJva2VfdGlwIi8+CiAgICA8dHRjIGNvZGU9InNpbmds
-				ZXYiIHBvaW50MT0iYWIwMyIgcG9pbnQyPSJzdjA1IiByb3VuZD0idHJ1ZSIvPgogICAg
-				PHR0YyBjb2RlPSJzaW5nbGV2IiBwb2ludDE9InN2MDUiIHBvaW50Mj0ic3YwNiIgcm91
-				bmQ9InRydWUiLz4KICA8L3R0UHJvZ3JhbT4K
-			</data>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="alignt" point="at01" zone="xheight"/&gt;
+    &lt;ttc code="alignt" point="at02" zone="xheight"/&gt;
+    &lt;ttc code="alignb" point="ab01" zone="baseline"/&gt;
+    &lt;ttc code="alignb" point="ab02" zone="baseline"/&gt;
+    &lt;ttc code="alignb" point="ab03" zone="descender"/&gt;
+    &lt;ttc code="mdeltav" point="ab03" delta="-8" ppm1="9" ppm2="17"/&gt;
+    &lt;ttc code="singlev" point1="ab01" point2="sv01" stem="bowl_thick"/&gt;
+    &lt;ttc code="interpolatev" point="iv01" point1="sv01" point2="at01" align="right"/&gt;
+    &lt;ttc code="singlev" point1="at01" point2="sv02" stem="bowl_thin"/&gt;
+    &lt;ttc code="interpolatev" point="iv02" point1="sv02" point2="ab01"/&gt;
+    &lt;ttc code="singlev" point1="ab02" point2="sv03" stem="bowl_thin"/&gt;
+    &lt;ttc code="singlev" point1="sv03" point2="sv04" stem="stroke_tip"/&gt;
+    &lt;ttc code="singlev" point1="ab03" point2="sv05" round="true"/&gt;
+    &lt;ttc code="singlev" point1="sv05" point2="sv06" round="true"/&gt;
+  &lt;/ttProgram&gt;
+</string>
 		</dict>
 	</lib>
 </glyph>

@@ -35,33 +35,35 @@
 	<lib>
 		<dict>
 			<key>com.adobe.type.autohint</key>
-			<data>
-				ICA8aGludFNldExpc3Q+CiAgICA8aGludHNldCBwb2ludFRhZz0iaHIwMSI+CiAgICAg
-				IDxoc3RlbSBwb3M9IjAiIHdpZHRoPSIxMDkiIC8+CiAgICAgIDxoc3RlbSBwb3M9IjU2
-				OSIgd2lkdGg9IjEyOSIgLz4KICAgICAgPHZzdGVtIHBvcz0iMjIiIHdpZHRoPSI5MzYi
-				IC8+CiAgICA8L2hpbnRzZXQ+CiAgICA8aGludHNldCBwb2ludFRhZz0iaHIwMiI+CiAg
-				ICAgIDxoc3RlbSBwb3M9IjAiIHdpZHRoPSIxMDkiIC8+CiAgICAgIDxoc3RlbSBwb3M9
-				IjY0OCIgd2lkdGg9IjUwIiAvPgogICAgICA8dnN0ZW0gcG9zPSIyMiIgd2lkdGg9Ijkz
-				NiIgLz4KICAgIDwvaGludHNldD4KICA8L2hpbnRTZXRMaXN0Pgo=
-			</data>
+			<string>  &lt;hintSetList&gt;
+    &lt;hintset pointTag="hr01"&gt;
+      &lt;hstem pos="0" width="109" /&gt;
+      &lt;hstem pos="569" width="129" /&gt;
+      &lt;vstem pos="22" width="936" /&gt;
+    &lt;/hintset&gt;
+    &lt;hintset pointTag="hr02"&gt;
+      &lt;hstem pos="0" width="109" /&gt;
+      &lt;hstem pos="648" width="50" /&gt;
+      &lt;vstem pos="22" width="936" /&gt;
+    &lt;/hintset&gt;
+  &lt;/hintSetList&gt;
+</string>
 			<key>com.fontlab.ttprogram</key>
-			<data>
-				ICA8dHRQcm9ncmFtPgogICAgPHR0YyBjb2RlPSJhbGlnbnQiIHBvaW50PSJhdDAxIiB6
-				b25lPSJjYXBoZWlnaHQiLz4KICAgIDx0dGMgY29kZT0iYWxpZ250IiBwb2ludD0iYXQw
-				MiIgem9uZT0iY2FwaGVpZ2h0Ii8+CiAgICA8dHRjIGNvZGU9ImFsaWdudCIgcG9pbnQ9
-				ImF0MDMiIHpvbmU9ImNhcGhlaWdodCIvPgogICAgPHR0YyBjb2RlPSJhbGlnbmIiIHBv
-				aW50PSJhYjAxIiB6b25lPSJiYXNlbGluZSIvPgogICAgPHR0YyBjb2RlPSJhbGlnbmIi
-				IHBvaW50PSJhYjAyIiB6b25lPSJiYXNlbGluZSIvPgogICAgPHR0YyBjb2RlPSJzaW5n
-				bGV2IiBwb2ludDE9ImF0MDEiIHBvaW50Mj0ic3YwMSIgc3RlbT0ic3RlbV9zZXJpZiIv
-				PgogICAgPHR0YyBjb2RlPSJzaW5nbGV2IiBwb2ludDE9InN2MDEiIHBvaW50Mj0ic3Yw
-				MiIvPgogICAgPHR0YyBjb2RlPSJzaW5nbGV2IiBwb2ludDE9ImFiMDEiIHBvaW50Mj0i
-				c3YwMyIvPgogICAgPHR0YyBjb2RlPSJzaW5nbGV2IiBwb2ludDE9ImFiMDIiIHBvaW50
-				Mj0ic3YwNCIvPgogICAgPHR0YyBjb2RlPSJzaW5nbGV2IiBwb2ludDE9ImF0MDIiIHBv
-				aW50Mj0ic3YwNSIgc3RlbT0ic3RlbV9zZXJpZiIvPgogICAgPHR0YyBjb2RlPSJzaW5n
-				bGV2IiBwb2ludDE9InN2MDUiIHBvaW50Mj0ic3YwNiIvPgogICAgPHR0YyBjb2RlPSJz
-				aW5nbGV2IiBwb2ludDE9ImF0MDMiIHBvaW50Mj0ic3YwNyIvPgogIDwvdHRQcm9ncmFt
-				Pgo=
-			</data>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="alignt" point="at01" zone="capheight"/&gt;
+    &lt;ttc code="alignt" point="at02" zone="capheight"/&gt;
+    &lt;ttc code="alignt" point="at03" zone="capheight"/&gt;
+    &lt;ttc code="alignb" point="ab01" zone="baseline"/&gt;
+    &lt;ttc code="alignb" point="ab02" zone="baseline"/&gt;
+    &lt;ttc code="singlev" point1="at01" point2="sv01" stem="stem_serif"/&gt;
+    &lt;ttc code="singlev" point1="sv01" point2="sv02"/&gt;
+    &lt;ttc code="singlev" point1="ab01" point2="sv03"/&gt;
+    &lt;ttc code="singlev" point1="ab02" point2="sv04"/&gt;
+    &lt;ttc code="singlev" point1="at02" point2="sv05" stem="stem_serif"/&gt;
+    &lt;ttc code="singlev" point1="sv05" point2="sv06"/&gt;
+    &lt;ttc code="singlev" point1="at03" point2="sv07"/&gt;
+  &lt;/ttProgram&gt;
+</string>
 			<key>com.typemytype.robofont.guides</key>
 			<array>
 				<dict>

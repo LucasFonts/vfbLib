@@ -47,32 +47,31 @@
 	<lib>
 		<dict>
 			<key>com.adobe.type.autohint</key>
-			<data>
-				ICA8aGludFNldExpc3Q+CiAgICA8aGludHNldCBwb2ludFRhZz0iYWIwMSI+CiAgICAg
-				IDxoc3RlbSBwb3M9Ii0yMTIiIHdpZHRoPSIzNCIgLz4KICAgICAgPGhzdGVtIHBvcz0i
-				NDczIiB3aWR0aD0iNDUiIC8+CiAgICAgIDx2c3RlbSBwb3M9Ii05NSIgd2lkdGg9IjEx
-				NCIgLz4KICAgIDwvaGludHNldD4KICA8L2hpbnRTZXRMaXN0Pgo=
-			</data>
+			<string>  &lt;hintSetList&gt;
+    &lt;hintset pointTag="ab01"&gt;
+      &lt;hstem pos="-212" width="34" /&gt;
+      &lt;hstem pos="473" width="45" /&gt;
+      &lt;vstem pos="-95" width="114" /&gt;
+    &lt;/hintset&gt;
+  &lt;/hintSetList&gt;
+</string>
 			<key>com.fontlab.ttprogram</key>
-			<data>
-				ICA8dHRQcm9ncmFtPgogICAgPHR0YyBjb2RlPSJhbGlnbnQiIHBvaW50PSJhdDAxIiB6
-				b25lPSJ4aGVpZ2h0Ii8+CiAgICA8dHRjIGNvZGU9ImFsaWdudCIgcG9pbnQ9ImF0MDIi
-				IHpvbmU9InhoZWlnaHQiLz4KICAgIDx0dGMgY29kZT0iYWxpZ25iIiBwb2ludD0iYWIw
-				MSIgem9uZT0iZGVzY2VuZGVyIi8+CiAgICA8dHRjIGNvZGU9InNpbmdsZXYiIHBvaW50
-				MT0iYWIwMSIgcG9pbnQyPSJzdjAxIiBzdGVtPSJsY190aGlucyIvPgogICAgPHR0YyBj
-				b2RlPSJpbnRlcnBvbGF0ZXYiIHBvaW50PSJpdjAxIiBwb2ludDE9InN2MDEiIHBvaW50
-				Mj0iYXQwMSIgYWxpZ249InJvdW5kIi8+CiAgICA8dHRjIGNvZGU9Im1kZWx0YXYiIHBv
-				aW50PSJpdjAxIiBkZWx0YT0iLTgiIHBwbTE9IjkiIHBwbTI9IjEyIi8+CiAgICA8dHRj
-				IGNvZGU9Im1kZWx0YXYiIHBvaW50PSJpdjAxIiBkZWx0YT0iLTgiIHBwbTE9IjE3IiBw
-				cG0yPSIyMSIvPgogICAgPHR0YyBjb2RlPSJpbnRlcnBvbGF0ZXYiIHBvaW50PSJpdjAy
-				IiBwb2ludDE9ImF0MDEiIHBvaW50Mj0iYWIwMSIvPgogICAgPHR0YyBjb2RlPSJzaW5n
-				bGV2IiBwb2ludDE9ImF0MDEiIHBvaW50Mj0ic3YwMiIgc3RlbT0ibGNfc3RlbXNlcmlm
-				Ii8+CiAgICA8dHRjIGNvZGU9InNpbmdsZXYiIHBvaW50MT0ic3YwMiIgcG9pbnQyPSJz
-				djAzIi8+CiAgICA8dHRjIGNvZGU9InNpbmdsZXYiIHBvaW50MT0iaXYwMiIgcG9pbnQy
-				PSJzdjA0Ii8+CiAgICA8dHRjIGNvZGU9InNpbmdsZXYiIHBvaW50MT0iYXQwMiIgcG9p
-				bnQyPSJzdjA1IiBzdGVtPSJsY19zdGVtc2VyaWYiLz4KICAgIDx0dGMgY29kZT0ic2lu
-				Z2xldiIgcG9pbnQxPSJzdjA1IiBwb2ludDI9InN2MDYiLz4KICA8L3R0UHJvZ3JhbT4K
-			</data>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="alignt" point="at01" zone="xheight"/&gt;
+    &lt;ttc code="alignt" point="at02" zone="xheight"/&gt;
+    &lt;ttc code="alignb" point="ab01" zone="descender"/&gt;
+    &lt;ttc code="singlev" point1="ab01" point2="sv01" stem="lc_thins"/&gt;
+    &lt;ttc code="interpolatev" point="iv01" point1="sv01" point2="at01" align="round"/&gt;
+    &lt;ttc code="mdeltav" point="iv01" delta="-8" ppm1="9" ppm2="12"/&gt;
+    &lt;ttc code="mdeltav" point="iv01" delta="-8" ppm1="17" ppm2="21"/&gt;
+    &lt;ttc code="interpolatev" point="iv02" point1="at01" point2="ab01"/&gt;
+    &lt;ttc code="singlev" point1="at01" point2="sv02" stem="lc_stemserif"/&gt;
+    &lt;ttc code="singlev" point1="sv02" point2="sv03"/&gt;
+    &lt;ttc code="singlev" point1="iv02" point2="sv04"/&gt;
+    &lt;ttc code="singlev" point1="at02" point2="sv05" stem="lc_stemserif"/&gt;
+    &lt;ttc code="singlev" point1="sv05" point2="sv06"/&gt;
+  &lt;/ttProgram&gt;
+</string>
 			<key>com.typemytype.robofont.guides</key>
 			<array>
 				<dict>

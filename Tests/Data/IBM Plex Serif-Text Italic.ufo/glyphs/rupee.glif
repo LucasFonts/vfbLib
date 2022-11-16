@@ -99,53 +99,57 @@
 	<lib>
 		<dict>
 			<key>com.adobe.type.autohint</key>
-			<data>
-				ICA8aGludFNldExpc3Q+CiAgICA8aGludHNldCBwb2ludFRhZz0iaHIwMSI+CiAgICAg
-				IDxoc3RlbSBwb3M9IjAiIHdpZHRoPSI0NSIgLz4KICAgICAgPGhzdGVtIHBvcz0iMzIy
-				IiB3aWR0aD0iNDkiIC8+CiAgICAgIDxoc3RlbSBwb3M9IjQ1MiIgd2lkdGg9IjI2IiAv
-				PgogICAgICA8aHN0ZW0gcG9zPSI2NTMiIHdpZHRoPSI0NSIgLz4KICAgICAgPHZzdGVt
-				IHBvcz0iNDYxIiB3aWR0aD0iOTQiIC8+CiAgICAgIDx2c3RlbSBwb3M9IjY1MiIgd2lk
-				dGg9Ijg0IiAvPgogICAgPC9oaW50c2V0PgogICAgPGhpbnRzZXQgcG9pbnRUYWc9Imhy
-				MDIiPgogICAgICA8aHN0ZW0gcG9zPSItMTIiIHdpZHRoPSI0MyIgLz4KICAgICAgPGhz
-				dGVtIHBvcz0iLTEyIiB3aWR0aD0iNDMiIC8+CiAgICAgIDxoc3RlbSBwb3M9IjAiIHdp
-				ZHRoPSI0NSIgLz4KICAgICAgPGhzdGVtIHBvcz0iMzIyIiB3aWR0aD0iNDkiIC8+CiAg
-				ICAgIDxoc3RlbSBwb3M9IjMyMiIgd2lkdGg9IjQ5IiAvPgogICAgICA8aHN0ZW0gcG9z
-				PSIzMjIiIHdpZHRoPSI0OSIgLz4KICAgICAgPGhzdGVtIHBvcz0iNDUyIiB3aWR0aD0i
-				MjYiIC8+CiAgICAgIDxoc3RlbSBwb3M9IjQ1MiIgd2lkdGg9IjI2IiAvPgogICAgICA8
-				aHN0ZW0gcG9zPSI0NTIiIHdpZHRoPSIyNiIgLz4KICAgICAgPGhzdGVtIHBvcz0iNjQ5
-				IiB3aWR0aD0iNDkiIC8+CiAgICAgIDxoc3RlbSBwb3M9IjY1MyIgd2lkdGg9IjQ1IiAv
-				PgogICAgICA8aHN0ZW0gcG9zPSI2NTMiIHdpZHRoPSI0NSIgLz4KICAgICAgPHZzdGVt
-				IHBvcz0iNDYxIiB3aWR0aD0iOTQiIC8+CiAgICAgIDx2c3RlbSBwb3M9IjUzNiIgd2lk
-				dGg9Ijg0IiAvPgogICAgICA8dnN0ZW0gcG9zPSI1MzYiIHdpZHRoPSI4NCIgLz4KICAg
-				ICAgPHZzdGVtIHBvcz0iNjUyIiB3aWR0aD0iODQiIC8+CiAgICAgIDx2c3RlbSBwb3M9
-				IjY1MiIgd2lkdGg9Ijg0IiAvPgogICAgICA8dnN0ZW0gcG9zPSI3MDgiIHdpZHRoPSI5
-				NiIgLz4KICAgIDwvaGludHNldD4KICA8L2hpbnRTZXRMaXN0Pgo=
-			</data>
+			<string>  &lt;hintSetList&gt;
+    &lt;hintset pointTag="hr01"&gt;
+      &lt;hstem pos="0" width="45" /&gt;
+      &lt;hstem pos="322" width="49" /&gt;
+      &lt;hstem pos="452" width="26" /&gt;
+      &lt;hstem pos="653" width="45" /&gt;
+      &lt;vstem pos="461" width="94" /&gt;
+      &lt;vstem pos="652" width="84" /&gt;
+    &lt;/hintset&gt;
+    &lt;hintset pointTag="hr02"&gt;
+      &lt;hstem pos="-12" width="43" /&gt;
+      &lt;hstem pos="-12" width="43" /&gt;
+      &lt;hstem pos="0" width="45" /&gt;
+      &lt;hstem pos="322" width="49" /&gt;
+      &lt;hstem pos="322" width="49" /&gt;
+      &lt;hstem pos="322" width="49" /&gt;
+      &lt;hstem pos="452" width="26" /&gt;
+      &lt;hstem pos="452" width="26" /&gt;
+      &lt;hstem pos="452" width="26" /&gt;
+      &lt;hstem pos="649" width="49" /&gt;
+      &lt;hstem pos="653" width="45" /&gt;
+      &lt;hstem pos="653" width="45" /&gt;
+      &lt;vstem pos="461" width="94" /&gt;
+      &lt;vstem pos="536" width="84" /&gt;
+      &lt;vstem pos="536" width="84" /&gt;
+      &lt;vstem pos="652" width="84" /&gt;
+      &lt;vstem pos="652" width="84" /&gt;
+      &lt;vstem pos="708" width="96" /&gt;
+    &lt;/hintset&gt;
+  &lt;/hintSetList&gt;
+</string>
 			<key>com.fontlab.ttprogram</key>
-			<data>
-				ICA8dHRQcm9ncmFtPgogICAgPHR0YyBjb2RlPSJhbGlnbnYiIHBvaW50PSJhdjAxIiBh
-				bGlnbj0icm91bmQiLz4KICAgIDx0dGMgY29kZT0iYWxpZ250IiBwb2ludD0iYXQwMSIg
-				em9uZT0iY2FwaGVpZ2h0Ii8+CiAgICA8dHRjIGNvZGU9ImFsaWduYiIgcG9pbnQ9ImFi
-				MDEiIHpvbmU9ImJhc2VsaW5lIi8+CiAgICA8dHRjIGNvZGU9ImFsaWduYiIgcG9pbnQ9
-				ImFiMDIiIHpvbmU9ImJhc2VsaW5lIi8+CiAgICA8dHRjIGNvZGU9ImludGVycG9sYXRl
-				diIgcG9pbnQ9Iml2MDEiIHBvaW50MT0iYXQwMSIgcG9pbnQyPSJhYjAxIiBhbGlnbj0i
-				cm91bmQiLz4KICAgIDx0dGMgY29kZT0ic2luZ2xldiIgcG9pbnQxPSJpdjAxIiBwb2lu
-				dDI9InN2MDEiIHN0ZW09InVjX3NlcmlmIi8+CiAgICA8dHRjIGNvZGU9InNpbmdsZXYi
-				IHBvaW50MT0iYWIwMSIgcG9pbnQyPSJzdjAyIiBzdGVtPSJ1Y19zZXJpZiIvPgogICAg
-				PHR0YyBjb2RlPSJzaW5nbGV2IiBwb2ludDE9InN2MDIiIHBvaW50Mj0ic3YwMyIvPgog
-				ICAgPHR0YyBjb2RlPSJzaW5nbGV2IiBwb2ludDE9ImF0MDEiIHBvaW50Mj0ic3YwNCIg
-				c3RlbT0idWNfc2VyaWYiLz4KICAgIDx0dGMgY29kZT0iaW50ZXJwb2xhdGV2IiBwb2lu
-				dD0iaXYwMiIgcG9pbnQxPSJpdjAxIiBwb2ludDI9InN2MDEiLz4KICAgIDx0dGMgY29k
-				ZT0ic2luZ2xldiIgcG9pbnQxPSJhYjAyIiBwb2ludDI9InN2MDUiIHN0ZW09InVjX3Nl
-				cmlmIi8+CiAgICA8dHRjIGNvZGU9InNpbmdsZXYiIHBvaW50MT0iYXYwMSIgcG9pbnQy
-				PSJzdjA2IiBzdGVtPSJsY190aGlucyIvPgogICAgPHR0YyBjb2RlPSJpbnRlcnBvbGF0
-				ZXYiIHBvaW50PSJpdjAzIiBwb2ludDE9InN2MDYiIHBvaW50Mj0iYWIwMiIvPgogICAg
-				PHR0YyBjb2RlPSJpbnRlcnBvbGF0ZXYiIHBvaW50PSJpdjA0IiBwb2ludDE9ImF2MDEi
-				IHBvaW50Mj0ic3YwNSIvPgogICAgPHR0YyBjb2RlPSJpbnRlcnBvbGF0ZXYiIHBvaW50
-				PSJpdjA1IiBwb2ludDE9InN2MDYiIHBvaW50Mj0iaXYwNCIgYWxpZ249InJvdW5kIi8+
-				CiAgICA8dHRjIGNvZGU9InNpbmdsZXYiIHBvaW50MT0iYXQwMSIgcG9pbnQyPSJzdjA3
-				IiBzdGVtPSJ1Y19zZXJpZiIvPgogIDwvdHRQcm9ncmFtPgo=
-			</data>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="alignv" point="av01" align="round"/&gt;
+    &lt;ttc code="alignt" point="at01" zone="capheight"/&gt;
+    &lt;ttc code="alignb" point="ab01" zone="baseline"/&gt;
+    &lt;ttc code="alignb" point="ab02" zone="baseline"/&gt;
+    &lt;ttc code="interpolatev" point="iv01" point1="at01" point2="ab01" align="round"/&gt;
+    &lt;ttc code="singlev" point1="iv01" point2="sv01" stem="uc_serif"/&gt;
+    &lt;ttc code="singlev" point1="ab01" point2="sv02" stem="uc_serif"/&gt;
+    &lt;ttc code="singlev" point1="sv02" point2="sv03"/&gt;
+    &lt;ttc code="singlev" point1="at01" point2="sv04" stem="uc_serif"/&gt;
+    &lt;ttc code="interpolatev" point="iv02" point1="iv01" point2="sv01"/&gt;
+    &lt;ttc code="singlev" point1="ab02" point2="sv05" stem="uc_serif"/&gt;
+    &lt;ttc code="singlev" point1="av01" point2="sv06" stem="lc_thins"/&gt;
+    &lt;ttc code="interpolatev" point="iv03" point1="sv06" point2="ab02"/&gt;
+    &lt;ttc code="interpolatev" point="iv04" point1="av01" point2="sv05"/&gt;
+    &lt;ttc code="interpolatev" point="iv05" point1="sv06" point2="iv04" align="round"/&gt;
+    &lt;ttc code="singlev" point1="at01" point2="sv07" stem="uc_serif"/&gt;
+  &lt;/ttProgram&gt;
+</string>
 		</dict>
 	</lib>
 </glyph>

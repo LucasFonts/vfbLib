@@ -68,34 +68,32 @@
 	<lib>
 		<dict>
 			<key>com.adobe.type.autohint</key>
-			<data>
-				ICA8aGludFNldExpc3Q+CiAgICA8aGludHNldCBwb2ludFRhZz0ic3YwMSI+CiAgICAg
-				IDxoc3RlbSBwb3M9IjAiIHdpZHRoPSI0OCIgLz4KICAgICAgPGhzdGVtIHBvcz0iNjU4
-				IiB3aWR0aD0iNTIiIC8+CiAgICAgIDx2c3RlbSBwb3M9IjgwIiB3aWR0aD0iODkiIC8+
-				CiAgICAgIDx2c3RlbSBwb3M9IjU3NCIgd2lkdGg9IjkwIiAvPgogICAgPC9oaW50c2V0
-				PgogIDwvaGludFNldExpc3Q+Cg==
-			</data>
+			<string>  &lt;hintSetList&gt;
+    &lt;hintset pointTag="sv01"&gt;
+      &lt;hstem pos="0" width="48" /&gt;
+      &lt;hstem pos="658" width="52" /&gt;
+      &lt;vstem pos="80" width="89" /&gt;
+      &lt;vstem pos="574" width="90" /&gt;
+    &lt;/hintset&gt;
+  &lt;/hintSetList&gt;
+</string>
 			<key>com.fontlab.ttprogram</key>
-			<data>
-				ICA8dHRQcm9ncmFtPgogICAgPHR0YyBjb2RlPSJhbGlnbnQiIHBvaW50PSJhdDAxIiB6
-				b25lPSJjYXBoZWlnaHQiLz4KICAgIDx0dGMgY29kZT0iYWxpZ25iIiBwb2ludD0iYWIw
-				MSIgem9uZT0iYmFzZWxpbmUiLz4KICAgIDx0dGMgY29kZT0iYWxpZ25iIiBwb2ludD0i
-				YWIwMiIgem9uZT0iYmFzZWxpbmUiLz4KICAgIDx0dGMgY29kZT0ic2luZ2xldiIgcG9p
-				bnQxPSJhYjAxIiBwb2ludDI9InN2MDEiIHJvdW5kPSJ0cnVlIi8+CiAgICA8dHRjIGNv
-				ZGU9Im1kZWx0YXYiIHBvaW50PSJzdjAxIiBkZWx0YT0iLTgiIHBwbTE9IjE5IiBwcG0y
-				PSIyOSIvPgogICAgPHR0YyBjb2RlPSJzaW5nbGV2IiBwb2ludDE9ImFiMDEiIHBvaW50
-				Mj0ic3YwMiIgc3RlbT0ibGNfc3RlbXNlcmlmIi8+CiAgICA8dHRjIGNvZGU9InNpbmds
-				ZXYiIHBvaW50MT0ic3YwMiIgcG9pbnQyPSJzdjAzIiByb3VuZD0idHJ1ZSIvPgogICAg
-				PHR0YyBjb2RlPSJzaW5nbGV2IiBwb2ludDE9ImFiMDIiIHBvaW50Mj0ic3YwNCIgc3Rl
-				bT0ibGNfc3RlbXNlcmlmIi8+CiAgICA8dHRjIGNvZGU9InNpbmdsZXYiIHBvaW50MT0i
-				c3YwNCIgcG9pbnQyPSJzdjA1IiByb3VuZD0idHJ1ZSIvPgogICAgPHR0YyBjb2RlPSJz
-				aW5nbGV2IiBwb2ludDE9InN2MDEiIHBvaW50Mj0ic3YwNiIvPgogICAgPHR0YyBjb2Rl
-				PSJzaW5nbGV2IiBwb2ludDE9InN2MDUiIHBvaW50Mj0ic3YwNyIgcm91bmQ9InRydWUi
-				Lz4KICAgIDx0dGMgY29kZT0ic2luZ2xldiIgcG9pbnQxPSJhdDAxIiBwb2ludDI9InN2
-				MDgiIHN0ZW09ImxjX3N0ZW1zZXJpZiIvPgogICAgPHR0YyBjb2RlPSJzaW5nbGV2IiBw
-				b2ludDE9InN2MDMiIHBvaW50Mj0ic3YwOSIgcm91bmQ9InRydWUiLz4KICA8L3R0UHJv
-				Z3JhbT4K
-			</data>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="alignt" point="at01" zone="capheight"/&gt;
+    &lt;ttc code="alignb" point="ab01" zone="baseline"/&gt;
+    &lt;ttc code="alignb" point="ab02" zone="baseline"/&gt;
+    &lt;ttc code="singlev" point1="ab01" point2="sv01" round="true"/&gt;
+    &lt;ttc code="mdeltav" point="sv01" delta="-8" ppm1="19" ppm2="29"/&gt;
+    &lt;ttc code="singlev" point1="ab01" point2="sv02" stem="lc_stemserif"/&gt;
+    &lt;ttc code="singlev" point1="sv02" point2="sv03" round="true"/&gt;
+    &lt;ttc code="singlev" point1="ab02" point2="sv04" stem="lc_stemserif"/&gt;
+    &lt;ttc code="singlev" point1="sv04" point2="sv05" round="true"/&gt;
+    &lt;ttc code="singlev" point1="sv01" point2="sv06"/&gt;
+    &lt;ttc code="singlev" point1="sv05" point2="sv07" round="true"/&gt;
+    &lt;ttc code="singlev" point1="at01" point2="sv08" stem="lc_stemserif"/&gt;
+    &lt;ttc code="singlev" point1="sv03" point2="sv09" round="true"/&gt;
+  &lt;/ttProgram&gt;
+</string>
 		</dict>
 	</lib>
 </glyph>

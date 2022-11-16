@@ -74,26 +74,26 @@
 	<lib>
 		<dict>
 			<key>com.adobe.type.autohint</key>
-			<data>
-				ICA8aGludFNldExpc3Q+CiAgICA8aGludHNldCBwb2ludFRhZz0ic3YwMSI+CiAgICAg
-				IDxoc3RlbTMgc3RlbTNMaXN0PSItMTIsNDksMjkzLDExMiw2NjEsNDkiIC8+CiAgICAg
-				IDx2c3RlbSBwb3M9IjQ0IiB3aWR0aD0iODYiIC8+CiAgICAgIDx2c3RlbSBwb3M9IjI0
-				NSIgd2lkdGg9IjEwNCIgLz4KICAgICAgPHZzdGVtIHBvcz0iNDYzIiB3aWR0aD0iODYi
-				IC8+CiAgICA8L2hpbnRzZXQ+CiAgPC9oaW50U2V0TGlzdD4K
-			</data>
+			<string>  &lt;hintSetList&gt;
+    &lt;hintset pointTag="sv01"&gt;
+      &lt;hstem3 stem3List="-12,49,293,112,661,49" /&gt;
+      &lt;vstem pos="44" width="86" /&gt;
+      &lt;vstem pos="245" width="104" /&gt;
+      &lt;vstem pos="463" width="86" /&gt;
+    &lt;/hintset&gt;
+  &lt;/hintSetList&gt;
+</string>
 			<key>com.fontlab.ttprogram</key>
-			<data>
-				ICA8dHRQcm9ncmFtPgogICAgPHR0YyBjb2RlPSJhbGlnbnQiIHBvaW50PSJhdDAxIiB6
-				b25lPSJjYXBoZWlnaHQiLz4KICAgIDx0dGMgY29kZT0iYWxpZ25iIiBwb2ludD0iYWIw
-				MSIgem9uZT0iYmFzZWxpbmUiLz4KICAgIDx0dGMgY29kZT0ic2luZ2xldiIgcG9pbnQx
-				PSJhYjAxIiBwb2ludDI9InN2MDEiIHN0ZW09InVjX3N0ZW0iLz4KICAgIDx0dGMgY29k
-				ZT0ic2luZ2xldiIgcG9pbnQxPSJhdDAxIiBwb2ludDI9InN2MDIiIHN0ZW09InVjX3N0
-				ZW0iLz4KICAgIDx0dGMgY29kZT0iaW50ZXJwb2xhdGV2IiBwb2ludD0iaXYwMSIgcG9p
-				bnQxPSJhdDAxIiBwb2ludDI9InN2MDEiIGFsaWduPSJyb3VuZCIvPgogICAgPHR0YyBj
-				b2RlPSJtZGVsdGF2IiBwb2ludD0iaXYwMSIgZGVsdGE9IjgiIHBwbTE9IjIzIiBwcG0y
-				PSIyMyIvPgogICAgPHR0YyBjb2RlPSJzaW5nbGV2IiBwb2ludDE9Iml2MDEiIHBvaW50
-				Mj0ic3YwMyIgcm91bmQ9InRydWUiLz4KICA8L3R0UHJvZ3JhbT4K
-			</data>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="alignt" point="at01" zone="capheight"/&gt;
+    &lt;ttc code="alignb" point="ab01" zone="baseline"/&gt;
+    &lt;ttc code="singlev" point1="ab01" point2="sv01" stem="uc_stem"/&gt;
+    &lt;ttc code="singlev" point1="at01" point2="sv02" stem="uc_stem"/&gt;
+    &lt;ttc code="interpolatev" point="iv01" point1="at01" point2="sv01" align="round"/&gt;
+    &lt;ttc code="mdeltav" point="iv01" delta="8" ppm1="23" ppm2="23"/&gt;
+    &lt;ttc code="singlev" point1="iv01" point2="sv03" round="true"/&gt;
+  &lt;/ttProgram&gt;
+</string>
 		</dict>
 	</lib>
 </glyph>

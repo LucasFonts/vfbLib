@@ -61,34 +61,32 @@
 	<lib>
 		<dict>
 			<key>com.adobe.type.autohint</key>
-			<data>
-				ICA8aGludFNldExpc3Q+CiAgICA8aGludHNldCBwb2ludFRhZz0ic3YwMSI+CiAgICAg
-				IDxoc3RlbSBwb3M9Ii0yMDAiIHdpZHRoPSI0NCIgLz4KICAgICAgPGhzdGVtIHBvcz0i
-				LTEyIiB3aWR0aD0iNTYiIC8+CiAgICAgIDxoc3RlbSBwb3M9IjQ2MSIgd2lkdGg9IjY5
-				IiAvPgogICAgICA8aHN0ZW0gcG9zPSI2ODEiIHdpZHRoPSI3OSIgLz4KICAgICAgPHZz
-				dGVtIHBvcz0iMzkzIiB3aWR0aD0iOTYiIC8+CiAgICA8L2hpbnRzZXQ+CiAgPC9oaW50
-				U2V0TGlzdD4K
-			</data>
+			<string>  &lt;hintSetList&gt;
+    &lt;hintset pointTag="sv01"&gt;
+      &lt;hstem pos="-200" width="44" /&gt;
+      &lt;hstem pos="-12" width="56" /&gt;
+      &lt;hstem pos="461" width="69" /&gt;
+      &lt;hstem pos="681" width="79" /&gt;
+      &lt;vstem pos="393" width="96" /&gt;
+    &lt;/hintset&gt;
+  &lt;/hintSetList&gt;
+</string>
 			<key>com.fontlab.ttprogram</key>
-			<data>
-				ICA8dHRQcm9ncmFtPgogICAgPHR0YyBjb2RlPSJhbGlnbnQiIHBvaW50PSJhdDAxIiB6
-				b25lPSJhc2NlbmRlciIvPgogICAgPHR0YyBjb2RlPSJhbGlnbnQiIHBvaW50PSJhdDAy
-				IiB6b25lPSJ4aGVpZ2h0Ii8+CiAgICA8dHRjIGNvZGU9ImFsaWduYiIgcG9pbnQ9ImFi
-				MDEiIHpvbmU9ImRlc2NlbmRlciIvPgogICAgPHR0YyBjb2RlPSJhbGlnbmIiIHBvaW50
-				PSJhYjAyIiB6b25lPSJiYXNlbGluZSIvPgogICAgPHR0YyBjb2RlPSJzaW5nbGV2IiBw
-				b2ludDE9ImFiMDEiIHBvaW50Mj0ic3YwMSIgc3RlbT0ibGNfc3RlbXNlcmlmIi8+CiAg
-				ICA8dHRjIGNvZGU9InNpbmdsZXYiIHBvaW50MT0iYXQwMSIgcG9pbnQyPSJzdjAyIiBz
-				dGVtPSJ0cmlhbmdsZSIvPgogICAgPHR0YyBjb2RlPSJzaW5nbGV2IiBwb2ludDE9InN2
-				MDIiIHBvaW50Mj0ic3YwMyIgc3RlbT0ibGNfc3RlbXNlcmlmIi8+CiAgICA8dHRjIGNv
-				ZGU9InNpbmdsZXYiIHBvaW50MT0iYXQwMiIgcG9pbnQyPSJzdjA0IiBzdGVtPSJib3ds
-				X3RoaWNrIi8+CiAgICA8dHRjIGNvZGU9ImludGVycG9sYXRldiIgcG9pbnQ9Iml2MDEi
-				IHBvaW50MT0ic3YwNCIgcG9pbnQyPSJhYjAyIiBhbGlnbj0ibGVmdCIvPgogICAgPHR0
-				YyBjb2RlPSJzaW5nbGV2IiBwb2ludDE9ImFiMDIiIHBvaW50Mj0ic3YwNSIgc3RlbT0i
-				Ym93bF90aGluIi8+CiAgICA8dHRjIGNvZGU9ImludGVycG9sYXRldiIgcG9pbnQ9Iml2
-				MDIiIHBvaW50MT0ic3YwNSIgcG9pbnQyPSJhdDAyIi8+CiAgICA8dHRjIGNvZGU9InNp
-				bmdsZXYiIHBvaW50MT0ic3YwMSIgcG9pbnQyPSJzdjA2Ii8+CiAgPC90dFByb2dyYW0+
-				Cg==
-			</data>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="alignt" point="at01" zone="ascender"/&gt;
+    &lt;ttc code="alignt" point="at02" zone="xheight"/&gt;
+    &lt;ttc code="alignb" point="ab01" zone="descender"/&gt;
+    &lt;ttc code="alignb" point="ab02" zone="baseline"/&gt;
+    &lt;ttc code="singlev" point1="ab01" point2="sv01" stem="lc_stemserif"/&gt;
+    &lt;ttc code="singlev" point1="at01" point2="sv02" stem="triangle"/&gt;
+    &lt;ttc code="singlev" point1="sv02" point2="sv03" stem="lc_stemserif"/&gt;
+    &lt;ttc code="singlev" point1="at02" point2="sv04" stem="bowl_thick"/&gt;
+    &lt;ttc code="interpolatev" point="iv01" point1="sv04" point2="ab02" align="left"/&gt;
+    &lt;ttc code="singlev" point1="ab02" point2="sv05" stem="bowl_thin"/&gt;
+    &lt;ttc code="interpolatev" point="iv02" point1="sv05" point2="at02"/&gt;
+    &lt;ttc code="singlev" point1="sv01" point2="sv06"/&gt;
+  &lt;/ttProgram&gt;
+</string>
 		</dict>
 	</lib>
 </glyph>

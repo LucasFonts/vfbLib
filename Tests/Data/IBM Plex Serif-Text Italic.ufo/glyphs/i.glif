@@ -49,28 +49,28 @@
 	<lib>
 		<dict>
 			<key>com.adobe.type.autohint</key>
-			<data>
-				ICA8aGludFNldExpc3Q+CiAgICA8aGludHNldCBwb2ludFRhZz0iYWIwMSI+CiAgICAg
-				IDxoc3RlbSBwb3M9Ii0xMiIgd2lkdGg9IjYxIiAvPgogICAgICA8aHN0ZW0gcG9zPSI0
-				NTAiIHdpZHRoPSI4MCIgLz4KICAgICAgPGhzdGVtIHBvcz0iNjMyIiB3aWR0aD0iMTE1
-				IiAvPgogICAgICA8dnN0ZW0gcG9zPSI1MyIgd2lkdGg9Ijg5IiAvPgogICAgICA8dnN0
-				ZW0gcG9zPSIxODgiIHdpZHRoPSIxMTkiIC8+CiAgICA8L2hpbnRzZXQ+CiAgPC9oaW50
-				U2V0TGlzdD4K
-			</data>
+			<string>  &lt;hintSetList&gt;
+    &lt;hintset pointTag="ab01"&gt;
+      &lt;hstem pos="-12" width="61" /&gt;
+      &lt;hstem pos="450" width="80" /&gt;
+      &lt;hstem pos="632" width="115" /&gt;
+      &lt;vstem pos="53" width="89" /&gt;
+      &lt;vstem pos="188" width="119" /&gt;
+    &lt;/hintset&gt;
+  &lt;/hintSetList&gt;
+</string>
 			<key>com.fontlab.ttprogram</key>
-			<data>
-				ICA8dHRQcm9ncmFtPgogICAgPHR0YyBjb2RlPSJhbGlnbnQiIHBvaW50PSJhdDAxIiB6
-				b25lPSJ4aGVpZ2h0Ii8+CiAgICA8dHRjIGNvZGU9ImFsaWduYiIgcG9pbnQ9ImFiMDEi
-				IHpvbmU9ImJhc2VsaW5lIi8+CiAgICA8dHRjIGNvZGU9InNpbmdsZXYiIHBvaW50MT0i
-				YXQwMSIgcG9pbnQyPSJzdjAxIiBzdGVtPSJ0cmlhbmdsZSIvPgogICAgPHR0YyBjb2Rl
-				PSJzaW5nbGV2IiBwb2ludDE9InN2MDEiIHBvaW50Mj0ic3YwMiIgc3RlbT0ibGNfc3Rl
-				bXNlcmlmIi8+CiAgICA8dHRjIGNvZGU9InNpbmdsZXYiIHBvaW50MT0iYWIwMSIgcG9p
-				bnQyPSJzdjAzIiBzdGVtPSJib3dsX3RoaW4iLz4KICAgIDx0dGMgY29kZT0ic2luZ2xl
-				diIgcG9pbnQxPSJzdjAzIiBwb2ludDI9InN2MDQiIHN0ZW09InN0cm9rZV90aXAiLz4K
-				ICAgIDx0dGMgY29kZT0ic2luZ2xldiIgcG9pbnQxPSJhdDAxIiBwb2ludDI9InN2MDUi
-				IHJvdW5kPSJ0cnVlIi8+CiAgICA8dHRjIGNvZGU9InNpbmdsZXYiIHBvaW50MT0ic3Yw
-				NSIgcG9pbnQyPSJzdjA2IiByb3VuZD0idHJ1ZSIvPgogIDwvdHRQcm9ncmFtPgo=
-			</data>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="alignt" point="at01" zone="xheight"/&gt;
+    &lt;ttc code="alignb" point="ab01" zone="baseline"/&gt;
+    &lt;ttc code="singlev" point1="at01" point2="sv01" stem="triangle"/&gt;
+    &lt;ttc code="singlev" point1="sv01" point2="sv02" stem="lc_stemserif"/&gt;
+    &lt;ttc code="singlev" point1="ab01" point2="sv03" stem="bowl_thin"/&gt;
+    &lt;ttc code="singlev" point1="sv03" point2="sv04" stem="stroke_tip"/&gt;
+    &lt;ttc code="singlev" point1="at01" point2="sv05" round="true"/&gt;
+    &lt;ttc code="singlev" point1="sv05" point2="sv06" round="true"/&gt;
+  &lt;/ttProgram&gt;
+</string>
 			<key>com.typemytype.robofont.guides</key>
 			<array>
 				<dict>

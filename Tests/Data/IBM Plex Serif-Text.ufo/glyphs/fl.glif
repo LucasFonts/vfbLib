@@ -44,35 +44,34 @@
 	<lib>
 		<dict>
 			<key>com.adobe.type.autohint</key>
-			<data>
-				ICA8aGludFNldExpc3Q+CiAgICA8aGludHNldCBwb2ludFRhZz0ic3YwMSI+CiAgICAg
-				IDxoc3RlbSBwb3M9IjAiIHdpZHRoPSI1MCIgLz4KICAgICAgPGhzdGVtIHBvcz0iNDY1
-				IiB3aWR0aD0iNTMiIC8+CiAgICAgIDxoc3RlbSBwb3M9IjcxMCIgd2lkdGg9IjUwIiAv
-				PgogICAgICA8dnN0ZW0gcG9zPSIxMTUiIHdpZHRoPSI5NiIgLz4KICAgICAgPHZzdGVt
-				IHBvcz0iNDQwIiB3aWR0aD0iOTYiIC8+CiAgICA8L2hpbnRzZXQ+CiAgPC9oaW50U2V0
-				TGlzdD4K
-			</data>
+			<string>  &lt;hintSetList&gt;
+    &lt;hintset pointTag="sv01"&gt;
+      &lt;hstem pos="0" width="50" /&gt;
+      &lt;hstem pos="465" width="53" /&gt;
+      &lt;hstem pos="710" width="50" /&gt;
+      &lt;vstem pos="115" width="96" /&gt;
+      &lt;vstem pos="440" width="96" /&gt;
+    &lt;/hintset&gt;
+  &lt;/hintSetList&gt;
+</string>
 			<key>com.fontlab.ttprogram</key>
-			<data>
-				ICA8dHRQcm9ncmFtPgogICAgPHR0YyBjb2RlPSJhbGlnbnQiIHBvaW50PSJhdDAxIiB6
-				b25lPSJhc2NlbmRlciIvPgogICAgPHR0YyBjb2RlPSJhbGlnbnQiIHBvaW50PSJhdDAy
-				IiB6b25lPSJ4aGVpZ2h0Ii8+CiAgICA8dHRjIGNvZGU9ImFsaWdudCIgcG9pbnQ9ImF0
-				MDMiIHpvbmU9InhoZWlnaHQiLz4KICAgIDx0dGMgY29kZT0iYWxpZ250IiBwb2ludD0i
-				YXQwNCIgem9uZT0iYXNjZW5kZXIiLz4KICAgIDx0dGMgY29kZT0iYWxpZ25iIiBwb2lu
-				dD0iYWIwMSIgem9uZT0iYmFzZWxpbmUiLz4KICAgIDx0dGMgY29kZT0iYWxpZ25iIiBw
-				b2ludD0iYWIwMiIgem9uZT0iYmFzZWxpbmUiLz4KICAgIDx0dGMgY29kZT0ic2luZ2xl
-				diIgcG9pbnQxPSJhYjAxIiBwb2ludDI9InN2MDEiIHN0ZW09InN0ZW1fc2VyaWYiLz4K
-				ICAgIDx0dGMgY29kZT0ic2luZ2xldiIgcG9pbnQxPSJhdDAyIiBwb2ludDI9InN2MDIi
-				IHN0ZW09InN0ZW1fc2VyaWYiLz4KICAgIDx0dGMgY29kZT0ic2luZ2xldiIgcG9pbnQx
-				PSJhdDAxIiBwb2ludDI9InN2MDMiIHN0ZW09ImxjX21pZCIvPgogICAgPHR0YyBjb2Rl
-				PSJpbnRlcnBvbGF0ZXYiIHBvaW50PSJpdjAxIiBwb2ludDE9ImF0MDEiIHBvaW50Mj0i
-				c3YwMyIvPgogICAgPHR0YyBjb2RlPSJzaW5nbGV2IiBwb2ludDE9ImFiMDIiIHBvaW50
-				Mj0ic3YwNCIgc3RlbT0ic3RlbV9zZXJpZiIvPgogICAgPHR0YyBjb2RlPSJzaW5nbGV2
-				IiBwb2ludDE9InN2MDQiIHBvaW50Mj0ic3YwNSIvPgogICAgPHR0YyBjb2RlPSJzaW5n
-				bGV2IiBwb2ludDE9ImF0MDMiIHBvaW50Mj0ic3YwNiIgc3RlbT0ic3RlbV9zZXJpZiIv
-				PgogICAgPHR0YyBjb2RlPSJzaW5nbGV2IiBwb2ludDE9InN2MDEiIHBvaW50Mj0ic3Yw
-				NyIvPgogIDwvdHRQcm9ncmFtPgo=
-			</data>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="alignt" point="at01" zone="ascender"/&gt;
+    &lt;ttc code="alignt" point="at02" zone="xheight"/&gt;
+    &lt;ttc code="alignt" point="at03" zone="xheight"/&gt;
+    &lt;ttc code="alignt" point="at04" zone="ascender"/&gt;
+    &lt;ttc code="alignb" point="ab01" zone="baseline"/&gt;
+    &lt;ttc code="alignb" point="ab02" zone="baseline"/&gt;
+    &lt;ttc code="singlev" point1="ab01" point2="sv01" stem="stem_serif"/&gt;
+    &lt;ttc code="singlev" point1="at02" point2="sv02" stem="stem_serif"/&gt;
+    &lt;ttc code="singlev" point1="at01" point2="sv03" stem="lc_mid"/&gt;
+    &lt;ttc code="interpolatev" point="iv01" point1="at01" point2="sv03"/&gt;
+    &lt;ttc code="singlev" point1="ab02" point2="sv04" stem="stem_serif"/&gt;
+    &lt;ttc code="singlev" point1="sv04" point2="sv05"/&gt;
+    &lt;ttc code="singlev" point1="at03" point2="sv06" stem="stem_serif"/&gt;
+    &lt;ttc code="singlev" point1="sv01" point2="sv07"/&gt;
+  &lt;/ttProgram&gt;
+</string>
 		</dict>
 	</lib>
 </glyph>

@@ -63,33 +63,36 @@
 	<lib>
 		<dict>
 			<key>com.adobe.type.autohint</key>
-			<data>
-				ICA8aGludFNldExpc3Q+CiAgICA8aGludHNldCBwb2ludFRhZz0ic3YwMiI+CiAgICAg
-				IDxoc3RlbSBwb3M9Ii0xMiIgd2lkdGg9IjU3IiAvPgogICAgICA8aHN0ZW0gcG9zPSI2
-				NTMiIHdpZHRoPSI1NyIgLz4KICAgICAgPHZzdGVtIHBvcz0iNTAiIHdpZHRoPSIxMTIi
-				IC8+CiAgICAgIDx2c3RlbSBwb3M9IjU2MiIgd2lkdGg9IjExMiIgLz4KICAgIDwvaGlu
-				dHNldD4KICAgIDxoaW50c2V0IHBvaW50VGFnPSJocjAyIj4KICAgICAgPGhzdGVtIHBv
-				cz0iLTEyIiB3aWR0aD0iNTciIC8+CiAgICAgIDxoc3RlbSBwb3M9Ii0xMiIgd2lkdGg9
-				IjU3IiAvPgogICAgICA8aHN0ZW0gcG9zPSI2NTMiIHdpZHRoPSI1NyIgLz4KICAgICAg
-				PGhzdGVtIHBvcz0iNjYwIiB3aWR0aD0iMzgiIC8+CiAgICAgIDx2c3RlbSBwb3M9IjUw
-				IiB3aWR0aD0iMTEyIiAvPgogICAgICA8dnN0ZW0gcG9zPSI1MCIgd2lkdGg9IjExMiIg
-				Lz4KICAgICAgPHZzdGVtIHBvcz0iNTYyIiB3aWR0aD0iMTEyIiAvPgogICAgICA8dnN0
-				ZW0gcG9zPSI1NzYiIHdpZHRoPSI4NCIgLz4KICAgIDwvaGludHNldD4KICA8L2hpbnRT
-				ZXRMaXN0Pgo=
-			</data>
+			<string>  &lt;hintSetList&gt;
+    &lt;hintset pointTag="sv02"&gt;
+      &lt;hstem pos="-12" width="57" /&gt;
+      &lt;hstem pos="653" width="57" /&gt;
+      &lt;vstem pos="50" width="112" /&gt;
+      &lt;vstem pos="562" width="112" /&gt;
+    &lt;/hintset&gt;
+    &lt;hintset pointTag="hr02"&gt;
+      &lt;hstem pos="-12" width="57" /&gt;
+      &lt;hstem pos="-12" width="57" /&gt;
+      &lt;hstem pos="653" width="57" /&gt;
+      &lt;hstem pos="660" width="38" /&gt;
+      &lt;vstem pos="50" width="112" /&gt;
+      &lt;vstem pos="50" width="112" /&gt;
+      &lt;vstem pos="562" width="112" /&gt;
+      &lt;vstem pos="576" width="84" /&gt;
+    &lt;/hintset&gt;
+  &lt;/hintSetList&gt;
+</string>
 			<key>com.fontlab.ttprogram</key>
-			<data>
-				ICA8dHRQcm9ncmFtPgogICAgPHR0YyBjb2RlPSJhbGlnbnQiIHBvaW50PSJhdDAxIiB6
-				b25lPSJjYXBoZWlnaHQiLz4KICAgIDx0dGMgY29kZT0iYWxpZ250IiBwb2ludD0iYXQw
-				MiIgem9uZT0iY2FwaGVpZ2h0Ii8+CiAgICA8dHRjIGNvZGU9ImFsaWduYiIgcG9pbnQ9
-				ImFiMDEiIHpvbmU9ImJhc2VsaW5lIi8+CiAgICA8dHRjIGNvZGU9InNpbmdsZXYiIHBv
-				aW50MT0iYXQwMiIgcG9pbnQyPSJzdjAxIiByb3VuZD0idHJ1ZSIvPgogICAgPHR0YyBj
-				b2RlPSJzaW5nbGV2IiBwb2ludDE9ImF0MDIiIHBvaW50Mj0ic3YwMiIgc3RlbT0ibGNf
-				bWlkIi8+CiAgICA8dHRjIGNvZGU9InNpbmdsZXYiIHBvaW50MT0iYWIwMSIgcG9pbnQy
-				PSJzdjAzIiBzdGVtPSJ1Y19zdGVtIi8+CiAgICA8dHRjIGNvZGU9InNpbmdsZXYiIHBv
-				aW50MT0iYXQwMSIgcG9pbnQyPSJzdjA0IiBzdGVtPSJ1Y19zdGVtIi8+CiAgPC90dFBy
-				b2dyYW0+Cg==
-			</data>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="alignt" point="at01" zone="capheight"/&gt;
+    &lt;ttc code="alignt" point="at02" zone="capheight"/&gt;
+    &lt;ttc code="alignb" point="ab01" zone="baseline"/&gt;
+    &lt;ttc code="singlev" point1="at02" point2="sv01" round="true"/&gt;
+    &lt;ttc code="singlev" point1="at02" point2="sv02" stem="lc_mid"/&gt;
+    &lt;ttc code="singlev" point1="ab01" point2="sv03" stem="uc_stem"/&gt;
+    &lt;ttc code="singlev" point1="at01" point2="sv04" stem="uc_stem"/&gt;
+  &lt;/ttProgram&gt;
+</string>
 			<key>com.typemytype.robofont.guides</key>
 			<array>
 				<dict>

@@ -61,26 +61,26 @@
 	<lib>
 		<dict>
 			<key>com.adobe.type.autohint</key>
-			<data>
-				ICA8aGludFNldExpc3Q+CiAgICA8aGludHNldCBwb2ludFRhZz0iYWIwMSI+CiAgICAg
-				IDxoc3RlbSBwb3M9Ii0xMiIgd2lkdGg9IjQ0IiAvPgogICAgICA8aHN0ZW0gcG9zPSI0
-				NTciIHdpZHRoPSI0NyIgLz4KICAgICAgPGhzdGVtIHBvcz0iNjk4IiB3aWR0aD0iLTIw
-				IiAvPgogICAgICA8dnN0ZW0gcG9zPSI0MiIgd2lkdGg9Ijg5IiAvPgogICAgICA8dnN0
-				ZW0gcG9zPSIzODUiIHdpZHRoPSIxMDYiIC8+CiAgICA8L2hpbnRzZXQ+CiAgPC9oaW50
-				U2V0TGlzdD4K
-			</data>
+			<string>  &lt;hintSetList&gt;
+    &lt;hintset pointTag="ab01"&gt;
+      &lt;hstem pos="-12" width="44" /&gt;
+      &lt;hstem pos="457" width="47" /&gt;
+      &lt;hstem pos="698" width="-20" /&gt;
+      &lt;vstem pos="42" width="89" /&gt;
+      &lt;vstem pos="385" width="106" /&gt;
+    &lt;/hintset&gt;
+  &lt;/hintSetList&gt;
+</string>
 			<key>com.fontlab.ttprogram</key>
-			<data>
-				ICA8dHRQcm9ncmFtPgogICAgPHR0YyBjb2RlPSJhbGlnbnYiIHBvaW50PSJhdjAxIiBh
-				bGlnbj0ibGVmdCIvPgogICAgPHR0YyBjb2RlPSJhbGlnbnQiIHBvaW50PSJhdDAxIiB6
-				b25lPSJjYXBoZWlnaHQiLz4KICAgIDx0dGMgY29kZT0iYWxpZ25iIiBwb2ludD0iYWIw
-				MSIgem9uZT0iYmFzZWxpbmUiLz4KICAgIDx0dGMgY29kZT0ic2luZ2xldiIgcG9pbnQx
-				PSJhdjAxIiBwb2ludDI9InN2MDEiIHN0ZW09ImxjX3N0ZW1zZXJpZiIvPgogICAgPHR0
-				YyBjb2RlPSJpbnRlcnBvbGF0ZXYiIHBvaW50PSJpdjAxIiBwb2ludDE9InN2MDEiIHBv
-				aW50Mj0iYWIwMSIgYWxpZ249ImxlZnQiLz4KICAgIDx0dGMgY29kZT0ic2luZ2xldiIg
-				cG9pbnQxPSJhYjAxIiBwb2ludDI9InN2MDIiIHN0ZW09ImxjX3N0ZW1zZXJpZiIvPgog
-				IDwvdHRQcm9ncmFtPgo=
-			</data>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="alignv" point="av01" align="left"/&gt;
+    &lt;ttc code="alignt" point="at01" zone="capheight"/&gt;
+    &lt;ttc code="alignb" point="ab01" zone="baseline"/&gt;
+    &lt;ttc code="singlev" point1="av01" point2="sv01" stem="lc_stemserif"/&gt;
+    &lt;ttc code="interpolatev" point="iv01" point1="sv01" point2="ab01" align="left"/&gt;
+    &lt;ttc code="singlev" point1="ab01" point2="sv02" stem="lc_stemserif"/&gt;
+  &lt;/ttProgram&gt;
+</string>
 		</dict>
 	</lib>
 </glyph>

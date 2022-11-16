@@ -57,30 +57,26 @@
 	<lib>
 		<dict>
 			<key>com.adobe.type.autohint</key>
-			<data>
-				ICA8aGludFNldExpc3Q+CiAgPC9oaW50U2V0TGlzdD4K
-			</data>
+			<string>  &lt;hintSetList&gt;
+  &lt;/hintSetList&gt;
+</string>
 			<key>com.fontlab.ttprogram</key>
-			<data>
-				ICA8dHRQcm9ncmFtPgogICAgPHR0YyBjb2RlPSJhbGlnbnQiIHBvaW50PSJhdDAxIiB6
-				b25lPSJ4aGVpZ2h0Ii8+CiAgICA8dHRjIGNvZGU9ImFsaWdudCIgcG9pbnQ9ImF0MDIi
-				IHpvbmU9InhoZWlnaHQiLz4KICAgIDx0dGMgY29kZT0iYWxpZ25iIiBwb2ludD0iYWIw
-				MSIgem9uZT0iZGVzY2VuZGVyIi8+CiAgICA8dHRjIGNvZGU9ImFsaWduYiIgcG9pbnQ9
-				ImFiMDIiIHpvbmU9ImJhc2VsaW5lIi8+CiAgICA8dHRjIGNvZGU9InNpbmdsZXYiIHBv
-				aW50MT0iYWIwMiIgcG9pbnQyPSJzdjAxIiByb3VuZD0idHJ1ZSIvPgogICAgPHR0YyBj
-				b2RlPSJtZGVsdGF2IiBwb2ludD0ic3YwMSIgZGVsdGE9IjgiIHBwbTE9IjIyIiBwcG0y
-				PSIyMiIvPgogICAgPHR0YyBjb2RlPSJtZGVsdGF2IiBwb2ludD0ic3YwMSIgZGVsdGE9
-				IjgiIHBwbTE9IjI1IiBwcG0yPSIyNiIvPgogICAgPHR0YyBjb2RlPSJtZGVsdGF2IiBw
-				b2ludD0ic3YwMSIgZGVsdGE9Ii04IiBwcG0xPSIxOCIgcHBtMj0iMTgiLz4KICAgIDx0
-				dGMgY29kZT0ic2luZ2xldiIgcG9pbnQxPSJhYjAxIiBwb2ludDI9InN2MDIiIHN0ZW09
-				ImxjX3RoaW5zIi8+CiAgICA8dHRjIGNvZGU9InNpbmdsZXYiIHBvaW50MT0iYXQwMSIg
-				cG9pbnQyPSJzdjAzIiBzdGVtPSJib3dsX3RoaWNrIi8+CiAgICA8dHRjIGNvZGU9InNp
-				bmdsZXYiIHBvaW50MT0iYXQwMiIgcG9pbnQyPSJzdjA0IiBzdGVtPSJ0cmlhbmdsZSIv
-				PgogICAgPHR0YyBjb2RlPSJzaW5nbGV2IiBwb2ludDE9InN2MDQiIHBvaW50Mj0ic3Yw
-				NSIgc3RlbT0ibGNfc3RlbXNlcmlmIi8+CiAgICA8dHRjIGNvZGU9ImludGVycG9sYXRl
-				diIgcG9pbnQ9Iml2MDEiIHBvaW50MT0ic3YwMyIgcG9pbnQyPSJhYjAyIiBhbGlnbj0i
-				bGVmdCIvPgogIDwvdHRQcm9ncmFtPgo=
-			</data>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="alignt" point="at01" zone="xheight"/&gt;
+    &lt;ttc code="alignt" point="at02" zone="xheight"/&gt;
+    &lt;ttc code="alignb" point="ab01" zone="descender"/&gt;
+    &lt;ttc code="alignb" point="ab02" zone="baseline"/&gt;
+    &lt;ttc code="singlev" point1="ab02" point2="sv01" round="true"/&gt;
+    &lt;ttc code="mdeltav" point="sv01" delta="8" ppm1="22" ppm2="22"/&gt;
+    &lt;ttc code="mdeltav" point="sv01" delta="8" ppm1="25" ppm2="26"/&gt;
+    &lt;ttc code="mdeltav" point="sv01" delta="-8" ppm1="18" ppm2="18"/&gt;
+    &lt;ttc code="singlev" point1="ab01" point2="sv02" stem="lc_thins"/&gt;
+    &lt;ttc code="singlev" point1="at01" point2="sv03" stem="bowl_thick"/&gt;
+    &lt;ttc code="singlev" point1="at02" point2="sv04" stem="triangle"/&gt;
+    &lt;ttc code="singlev" point1="sv04" point2="sv05" stem="lc_stemserif"/&gt;
+    &lt;ttc code="interpolatev" point="iv01" point1="sv03" point2="ab02" align="left"/&gt;
+  &lt;/ttProgram&gt;
+</string>
 		</dict>
 	</lib>
 </glyph>

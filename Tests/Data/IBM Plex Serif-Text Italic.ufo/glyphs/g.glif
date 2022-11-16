@@ -120,63 +120,69 @@
 	<lib>
 		<dict>
 			<key>com.adobe.type.autohint</key>
-			<data>
-				ICA8aGludFNldExpc3Q+CiAgICA8aGludHNldCBwb2ludFRhZz0iaHIwMSI+CiAgICAg
-				IDxoc3RlbSBwb3M9Ii0yMTIiIHdpZHRoPSIzMyIgLz4KICAgICAgPGhzdGVtIHBvcz0i
-				MTkwIiB3aWR0aD0iMzkiIC8+CiAgICAgIDxoc3RlbSBwb3M9IjQ5MSIgd2lkdGg9IjM5
-				IiAvPgogICAgICA8dnN0ZW0gcG9zPSItNjkiIHdpZHRoPSI4MiIgLz4KICAgICAgPHZz
-				dGVtIHBvcz0iODAiIHdpZHRoPSI4OSIgLz4KICAgICAgPHZzdGVtIHBvcz0iMzUxIiB3
-				aWR0aD0iODkiIC8+CiAgICA8L2hpbnRzZXQ+CiAgICA8aGludHNldCBwb2ludFRhZz0i
-				aHIwMiI+CiAgICAgIDxoc3RlbSBwb3M9Ii0yMTIiIHdpZHRoPSIzMyIgLz4KICAgICAg
-				PGhzdGVtIHBvcz0iLTIxMiIgd2lkdGg9IjMzIiAvPgogICAgICA8aHN0ZW0gcG9zPSIt
-				MjEyIiB3aWR0aD0iMzMiIC8+CiAgICAgIDxoc3RlbSBwb3M9Ii0yMTIiIHdpZHRoPSIz
-				MyIgLz4KICAgICAgPGhzdGVtIHBvcz0iLTIxMiIgd2lkdGg9IjMzIiAvPgogICAgICA8
-				aHN0ZW0gcG9zPSIxOTAiIHdpZHRoPSIzOSIgLz4KICAgICAgPGhzdGVtIHBvcz0iMTkw
-				IiB3aWR0aD0iMzkiIC8+CiAgICAgIDxoc3RlbSBwb3M9IjE5MCIgd2lkdGg9IjM5IiAv
-				PgogICAgICA8aHN0ZW0gcG9zPSIxOTAiIHdpZHRoPSIzOSIgLz4KICAgICAgPGhzdGVt
-				IHBvcz0iMTkwIiB3aWR0aD0iMzkiIC8+CiAgICAgIDxoc3RlbSBwb3M9IjQ5MSIgd2lk
-				dGg9IjM5IiAvPgogICAgICA8aHN0ZW0gcG9zPSI0OTEiIHdpZHRoPSIzOSIgLz4KICAg
-				ICAgPGhzdGVtIHBvcz0iNDkxIiB3aWR0aD0iMzkiIC8+CiAgICAgIDxoc3RlbSBwb3M9
-				IjQ5MSIgd2lkdGg9IjM5IiAvPgogICAgICA8aHN0ZW0gcG9zPSI1MTMiIHdpZHRoPSI5
-				NCIgLz4KICAgICAgPHZzdGVtIHBvcz0iLTY5IiB3aWR0aD0iODIiIC8+CiAgICAgIDx2
-				c3RlbSBwb3M9Ii02OSIgd2lkdGg9IjgyIiAvPgogICAgICA8dnN0ZW0gcG9zPSItNjki
-				IHdpZHRoPSI4MiIgLz4KICAgICAgPHZzdGVtIHBvcz0iLTY5IiB3aWR0aD0iODIiIC8+
-				CiAgICAgIDx2c3RlbSBwb3M9Ii02OSIgd2lkdGg9IjgyIiAvPgogICAgICA8dnN0ZW0g
-				cG9zPSIzMyIgd2lkdGg9Ijc1IiAvPgogICAgICA8dnN0ZW0gcG9zPSIzMyIgd2lkdGg9
-				Ijc1IiAvPgogICAgICA8dnN0ZW0gcG9zPSI4MCIgd2lkdGg9Ijg5IiAvPgogICAgICA8
-				dnN0ZW0gcG9zPSI4MCIgd2lkdGg9Ijg5IiAvPgogICAgICA8dnN0ZW0gcG9zPSI4MCIg
-				d2lkdGg9Ijg5IiAvPgogICAgICA8dnN0ZW0gcG9zPSIzMDMiIHdpZHRoPSI4OSIgLz4K
-				ICAgICAgPHZzdGVtIHBvcz0iMzAzIiB3aWR0aD0iODkiIC8+CiAgICAgIDx2c3RlbSBw
-				b3M9IjM1MSIgd2lkdGg9Ijg5IiAvPgogICAgICA8dnN0ZW0gcG9zPSIzNTEiIHdpZHRo
-				PSI4OSIgLz4KICAgICAgPHZzdGVtIHBvcz0iMzUxIiB3aWR0aD0iODkiIC8+CiAgICA8
-				L2hpbnRzZXQ+CiAgPC9oaW50U2V0TGlzdD4K
-			</data>
+			<string>  &lt;hintSetList&gt;
+    &lt;hintset pointTag="hr01"&gt;
+      &lt;hstem pos="-212" width="33" /&gt;
+      &lt;hstem pos="190" width="39" /&gt;
+      &lt;hstem pos="491" width="39" /&gt;
+      &lt;vstem pos="-69" width="82" /&gt;
+      &lt;vstem pos="80" width="89" /&gt;
+      &lt;vstem pos="351" width="89" /&gt;
+    &lt;/hintset&gt;
+    &lt;hintset pointTag="hr02"&gt;
+      &lt;hstem pos="-212" width="33" /&gt;
+      &lt;hstem pos="-212" width="33" /&gt;
+      &lt;hstem pos="-212" width="33" /&gt;
+      &lt;hstem pos="-212" width="33" /&gt;
+      &lt;hstem pos="-212" width="33" /&gt;
+      &lt;hstem pos="190" width="39" /&gt;
+      &lt;hstem pos="190" width="39" /&gt;
+      &lt;hstem pos="190" width="39" /&gt;
+      &lt;hstem pos="190" width="39" /&gt;
+      &lt;hstem pos="190" width="39" /&gt;
+      &lt;hstem pos="491" width="39" /&gt;
+      &lt;hstem pos="491" width="39" /&gt;
+      &lt;hstem pos="491" width="39" /&gt;
+      &lt;hstem pos="491" width="39" /&gt;
+      &lt;hstem pos="513" width="94" /&gt;
+      &lt;vstem pos="-69" width="82" /&gt;
+      &lt;vstem pos="-69" width="82" /&gt;
+      &lt;vstem pos="-69" width="82" /&gt;
+      &lt;vstem pos="-69" width="82" /&gt;
+      &lt;vstem pos="-69" width="82" /&gt;
+      &lt;vstem pos="33" width="75" /&gt;
+      &lt;vstem pos="33" width="75" /&gt;
+      &lt;vstem pos="80" width="89" /&gt;
+      &lt;vstem pos="80" width="89" /&gt;
+      &lt;vstem pos="80" width="89" /&gt;
+      &lt;vstem pos="303" width="89" /&gt;
+      &lt;vstem pos="303" width="89" /&gt;
+      &lt;vstem pos="351" width="89" /&gt;
+      &lt;vstem pos="351" width="89" /&gt;
+      &lt;vstem pos="351" width="89" /&gt;
+    &lt;/hintset&gt;
+  &lt;/hintSetList&gt;
+</string>
 			<key>com.fontlab.ttprogram</key>
-			<data>
-				ICA8dHRQcm9ncmFtPgogICAgPHR0YyBjb2RlPSJhbGlnbnYiIHBvaW50PSJhdjAxIiBh
-				bGlnbj0icm91bmQiLz4KICAgIDx0dGMgY29kZT0iYWxpZ250IiBwb2ludD0iYXQwMSIg
-				em9uZT0ieGhlaWdodCIvPgogICAgPHR0YyBjb2RlPSJhbGlnbmIiIHBvaW50PSJhYjAx
-				IiB6b25lPSJkZXNjZW5kZXIiLz4KICAgIDx0dGMgY29kZT0ic2luZ2xldiIgcG9pbnQx
-				PSJhdDAxIiBwb2ludDI9InN2MDEiIHN0ZW09ImxjX21lZGl1bXMiLz4KICAgIDx0dGMg
-				Y29kZT0iaW50ZXJwb2xhdGV2IiBwb2ludD0iaXYwMSIgcG9pbnQxPSJzdjAxIiBwb2lu
-				dDI9ImFiMDEiIGFsaWduPSJyb3VuZCIvPgogICAgPHR0YyBjb2RlPSJzaW5nbGV2IiBw
-				b2ludDE9ImFiMDEiIHBvaW50Mj0ic3YwMiIgc3RlbT0ibGNfbWVkaXVtcyIvPgogICAg
-				PHR0YyBjb2RlPSJpbnRlcnBvbGF0ZXYiIHBvaW50PSJpdjAyIiBwb2ludDE9Iml2MDEi
-				IHBvaW50Mj0ic3YwMiIvPgogICAgPHR0YyBjb2RlPSJpbnRlcnBvbGF0ZXYiIHBvaW50
-				PSJpdjAzIiBwb2ludDE9Iml2MDEiIHBvaW50Mj0ic3YwMiIvPgogICAgPHR0YyBjb2Rl
-				PSJpbnRlcnBvbGF0ZXYiIHBvaW50PSJpdjA0IiBwb2ludDE9Iml2MDIiIHBvaW50Mj0i
-				aXYwMyIvPgogICAgPHR0YyBjb2RlPSJzaW5nbGV2IiBwb2ludDE9Iml2MDEiIHBvaW50
-				Mj0ic3YwMyIgc3RlbT0ibGNfbWVkaXVtcyIvPgogICAgPHR0YyBjb2RlPSJpbnRlcnBv
-				bGF0ZXYiIHBvaW50PSJpdjA1IiBwb2ludDE9Iml2MDEiIHBvaW50Mj0ic3YwMyIvPgog
-				ICAgPHR0YyBjb2RlPSJtZGVsdGF2IiBwb2ludD0iYXYwMSIgZGVsdGE9IjgiIHBwbTE9
-				IjE1IiBwcG0yPSIxNSIvPgogICAgPHR0YyBjb2RlPSJtZGVsdGF2IiBwb2ludD0iYXYw
-				MSIgZGVsdGE9IjgiIHBwbTE9IjE3IiBwcG0yPSIxNyIvPgogICAgPHR0YyBjb2RlPSJz
-				aW5nbGV2IiBwb2ludDE9ImF2MDEiIHBvaW50Mj0ic3YwNCIgcm91bmQ9InRydWUiLz4K
-				ICAgIDx0dGMgY29kZT0ibWRlbHRhdiIgcG9pbnQ9InN2MDQiIGRlbHRhPSItOCIgcHBt
-				MT0iMTQiIHBwbTI9IjE1Ii8+CiAgICA8dHRjIGNvZGU9ImludGVycG9sYXRldiIgcG9p
-				bnQ9Iml2MDYiIHBvaW50MT0iYXQwMSIgcG9pbnQyPSJzdjAxIi8+CiAgPC90dFByb2dy
-				YW0+Cg==
-			</data>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="alignv" point="av01" align="round"/&gt;
+    &lt;ttc code="alignt" point="at01" zone="xheight"/&gt;
+    &lt;ttc code="alignb" point="ab01" zone="descender"/&gt;
+    &lt;ttc code="singlev" point1="at01" point2="sv01" stem="lc_mediums"/&gt;
+    &lt;ttc code="interpolatev" point="iv01" point1="sv01" point2="ab01" align="round"/&gt;
+    &lt;ttc code="singlev" point1="ab01" point2="sv02" stem="lc_mediums"/&gt;
+    &lt;ttc code="interpolatev" point="iv02" point1="iv01" point2="sv02"/&gt;
+    &lt;ttc code="interpolatev" point="iv03" point1="iv01" point2="sv02"/&gt;
+    &lt;ttc code="interpolatev" point="iv04" point1="iv02" point2="iv03"/&gt;
+    &lt;ttc code="singlev" point1="iv01" point2="sv03" stem="lc_mediums"/&gt;
+    &lt;ttc code="interpolatev" point="iv05" point1="iv01" point2="sv03"/&gt;
+    &lt;ttc code="mdeltav" point="av01" delta="8" ppm1="15" ppm2="15"/&gt;
+    &lt;ttc code="mdeltav" point="av01" delta="8" ppm1="17" ppm2="17"/&gt;
+    &lt;ttc code="singlev" point1="av01" point2="sv04" round="true"/&gt;
+    &lt;ttc code="mdeltav" point="sv04" delta="-8" ppm1="14" ppm2="15"/&gt;
+    &lt;ttc code="interpolatev" point="iv06" point1="at01" point2="sv01"/&gt;
+  &lt;/ttProgram&gt;
+</string>
 			<key>com.typemytype.robofont.guides</key>
 			<array>
 				<dict>

@@ -9,10 +9,10 @@
 	<lib>
 		<dict>
 			<key>com.fontlab.ttprogram</key>
-			<data>
-				ICA8dHRQcm9ncmFtPgogICAgPHR0YyBjb2RlPSJkb3VibGV2IiBwb2ludDE9IiIgcG9p
-				bnQyPSIiLz4KICA8L3R0UHJvZ3JhbT4K
-			</data>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="doublev" point1="" point2=""/&gt;
+  &lt;/ttProgram&gt;
+</string>
 			<key>com.typemytype.robofont.mark</key>
 			<array>
 				<real>0.6</real>

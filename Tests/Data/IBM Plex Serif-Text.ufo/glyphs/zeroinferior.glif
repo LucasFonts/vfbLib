@@ -37,22 +37,23 @@
 	<lib>
 		<dict>
 			<key>com.adobe.type.autohint</key>
-			<data>
-				ICA8aGludFNldExpc3Q+CiAgICA8aGludHNldCBwb2ludFRhZz0ic3YwMSI+CiAgICAg
-				IDxoc3RlbSBwb3M9Ii02IiB3aWR0aD0iNDMiIC8+CiAgICAgIDxoc3RlbSBwb3M9IjMz
-				MSIgd2lkdGg9IjQzIiAvPgogICAgICA8dnN0ZW0gcG9zPSIzNyIgd2lkdGg9Ijc5IiAv
-				PgogICAgICA8dnN0ZW0gcG9zPSIyNTgiIHdpZHRoPSI3OSIgLz4KICAgIDwvaGludHNl
-				dD4KICA8L2hpbnRTZXRMaXN0Pgo=
-			</data>
+			<string>  &lt;hintSetList&gt;
+    &lt;hintset pointTag="sv01"&gt;
+      &lt;hstem pos="-6" width="43" /&gt;
+      &lt;hstem pos="331" width="43" /&gt;
+      &lt;vstem pos="37" width="79" /&gt;
+      &lt;vstem pos="258" width="79" /&gt;
+    &lt;/hintset&gt;
+  &lt;/hintSetList&gt;
+</string>
 			<key>com.fontlab.ttprogram</key>
-			<data>
-				ICA8dHRQcm9ncmFtPgogICAgPHR0YyBjb2RlPSJhbGlnbnQiIHBvaW50PSJhdDAxIiB6
-				b25lPSJpbmZfdG9wIi8+CiAgICA8dHRjIGNvZGU9ImFsaWduYiIgcG9pbnQ9ImFiMDEi
-				IHpvbmU9ImJhc2VsaW5lIi8+CiAgICA8dHRjIGNvZGU9InNpbmdsZXYiIHBvaW50MT0i
-				YWIwMSIgcG9pbnQyPSJzdjAxIiBzdGVtPSJsY190aGluIi8+CiAgICA8dHRjIGNvZGU9
-				InNpbmdsZXYiIHBvaW50MT0iYXQwMSIgcG9pbnQyPSJzdjAyIiBzdGVtPSJsY190aGlu
-				Ii8+CiAgPC90dFByb2dyYW0+Cg==
-			</data>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="alignt" point="at01" zone="inf_top"/&gt;
+    &lt;ttc code="alignb" point="ab01" zone="baseline"/&gt;
+    &lt;ttc code="singlev" point1="ab01" point2="sv01" stem="lc_thin"/&gt;
+    &lt;ttc code="singlev" point1="at01" point2="sv02" stem="lc_thin"/&gt;
+  &lt;/ttProgram&gt;
+</string>
 		</dict>
 	</lib>
 </glyph>

@@ -19,25 +19,25 @@
 	<lib>
 		<dict>
 			<key>com.adobe.type.autohint</key>
-			<data>
-				ICA8aGludFNldExpc3Q+CiAgICA8aGludHNldCBwb2ludFRhZz0ic3YwMiI+CiAgICAg
-				IDxoc3RlbSBwb3M9IjE3NCIgd2lkdGg9IjU0IiAvPgogICAgICA8aHN0ZW0gcG9zPSIz
-				ODIiIHdpZHRoPSI1NCIgLz4KICAgICAgPHZzdGVtIHBvcz0iMzkiIHdpZHRoPSI0OTQi
-				IC8+CiAgICA8L2hpbnRzZXQ+CiAgPC9oaW50U2V0TGlzdD4K
-			</data>
+			<string>  &lt;hintSetList&gt;
+    &lt;hintset pointTag="sv02"&gt;
+      &lt;hstem pos="174" width="54" /&gt;
+      &lt;hstem pos="382" width="54" /&gt;
+      &lt;vstem pos="39" width="494" /&gt;
+    &lt;/hintset&gt;
+  &lt;/hintSetList&gt;
+</string>
 			<key>com.fontlab.ttprogram</key>
-			<data>
-				ICA8dHRQcm9ncmFtPgogICAgPHR0YyBjb2RlPSJhbGlnbnYiIHBvaW50PSJhdjAxIiBh
-				bGlnbj0icm91bmQiLz4KICAgIDx0dGMgY29kZT0ibWRlbHRhdiIgcG9pbnQ9ImF2MDEi
-				IGRlbHRhPSI4IiBwcG0xPSIxMCIgcHBtMj0iMTAiLz4KICAgIDx0dGMgY29kZT0ibWRl
-				bHRhdiIgcG9pbnQ9ImF2MDEiIGRlbHRhPSI4IiBwcG0xPSIxNyIgcHBtMj0iMTciLz4K
-				ICAgIDx0dGMgY29kZT0ic2luZ2xldiIgcG9pbnQxPSJhdjAxIiBwb2ludDI9InN2MDEi
-				IHN0ZW09InVjX3N0ZW0iLz4KICAgIDx0dGMgY29kZT0ic2luZ2xldiIgcG9pbnQxPSJz
-				djAxIiBwb2ludDI9InN2MDIiIHJvdW5kPSJ0cnVlIi8+CiAgICA8dHRjIGNvZGU9Im1k
-				ZWx0YXYiIHBvaW50PSJzdjAyIiBkZWx0YT0iOCIgcHBtMT0iMTAiIHBwbTI9IjEwIi8+
-				CiAgICA8dHRjIGNvZGU9InNpbmdsZXYiIHBvaW50MT0ic3YwMiIgcG9pbnQyPSJzdjAz
-				IiBzdGVtPSJ1Y19zdGVtIi8+CiAgPC90dFByb2dyYW0+Cg==
-			</data>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="alignv" point="av01" align="round"/&gt;
+    &lt;ttc code="mdeltav" point="av01" delta="8" ppm1="10" ppm2="10"/&gt;
+    &lt;ttc code="mdeltav" point="av01" delta="8" ppm1="17" ppm2="17"/&gt;
+    &lt;ttc code="singlev" point1="av01" point2="sv01" stem="uc_stem"/&gt;
+    &lt;ttc code="singlev" point1="sv01" point2="sv02" round="true"/&gt;
+    &lt;ttc code="mdeltav" point="sv02" delta="8" ppm1="10" ppm2="10"/&gt;
+    &lt;ttc code="singlev" point1="sv02" point2="sv03" stem="uc_stem"/&gt;
+  &lt;/ttProgram&gt;
+</string>
 		</dict>
 	</lib>
 </glyph>

@@ -67,27 +67,27 @@
 	<lib>
 		<dict>
 			<key>com.adobe.type.autohint</key>
-			<data>
-				ICA8aGludFNldExpc3Q+CiAgICA8aGludHNldCBwb2ludFRhZz0iZHYwMSI+CiAgICAg
-				IDxoc3RlbSBwb3M9IjExMSIgd2lkdGg9IjUwIiAvPgogICAgICA8aHN0ZW0gcG9zPSI0
-				NDQiIHdpZHRoPSI1MCIgLz4KICAgICAgPHZzdGVtIHBvcz0iMTkiIHdpZHRoPSI4NiIg
-				Lz4KICAgICAgPHZzdGVtIHBvcz0iNjAxIiB3aWR0aD0iODYiIC8+CiAgICA8L2hpbnRz
-				ZXQ+CiAgPC9oaW50U2V0TGlzdD4K
-			</data>
+			<string>  &lt;hintSetList&gt;
+    &lt;hintset pointTag="dv01"&gt;
+      &lt;hstem pos="111" width="50" /&gt;
+      &lt;hstem pos="444" width="50" /&gt;
+      &lt;vstem pos="19" width="86" /&gt;
+      &lt;vstem pos="601" width="86" /&gt;
+    &lt;/hintset&gt;
+  &lt;/hintSetList&gt;
+</string>
 			<key>com.fontlab.ttprogram</key>
-			<data>
-				ICA8dHRQcm9ncmFtPgogICAgPHR0YyBjb2RlPSJkb3VibGV2IiBwb2ludDE9ImR2MDEi
-				IHBvaW50Mj0iZHYwMiIgc3RlbT0iYm93bF90aGluIi8+CiAgICA8dHRjIGNvZGU9ImRv
-				dWJsZXYiIHBvaW50MT0iZHYwMyIgcG9pbnQyPSJkdjA0IiBzdGVtPSJib3dsX3RoaW4i
-				Lz4KICAgIDx0dGMgY29kZT0iaW50ZXJwb2xhdGV2IiBwb2ludD0iaXYwMSIgcG9pbnQx
-				PSJkdjAzIiBwb2ludDI9ImR2MDEiIGFsaWduPSJyb3VuZCIvPgogICAgPHR0YyBjb2Rl
-				PSJzaW5nbGV2IiBwb2ludDE9ImR2MDMiIHBvaW50Mj0ic3YwMSIvPgogICAgPHR0YyBj
-				b2RlPSJzaW5nbGV2IiBwb2ludDE9ImR2MDEiIHBvaW50Mj0ic3YwMiIvPgogICAgPHR0
-				YyBjb2RlPSJpbnRlcnBvbGF0ZXYiIHBvaW50PSJpdjAyIiBwb2ludDE9ImR2MDEiIHBv
-				aW50Mj0iZHYwMyIgYWxpZ249InJvdW5kIi8+CiAgICA8dHRjIGNvZGU9InNpbmdsZXYi
-				IHBvaW50MT0iZHYwMiIgcG9pbnQyPSJzdjAzIi8+CiAgICA8dHRjIGNvZGU9InNpbmds
-				ZXYiIHBvaW50MT0iZHYwNCIgcG9pbnQyPSJzdjA0Ii8+CiAgPC90dFByb2dyYW0+Cg==
-			</data>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="doublev" point1="dv01" point2="dv02" stem="bowl_thin"/&gt;
+    &lt;ttc code="doublev" point1="dv03" point2="dv04" stem="bowl_thin"/&gt;
+    &lt;ttc code="interpolatev" point="iv01" point1="dv03" point2="dv01" align="round"/&gt;
+    &lt;ttc code="singlev" point1="dv03" point2="sv01"/&gt;
+    &lt;ttc code="singlev" point1="dv01" point2="sv02"/&gt;
+    &lt;ttc code="interpolatev" point="iv02" point1="dv01" point2="dv03" align="round"/&gt;
+    &lt;ttc code="singlev" point1="dv02" point2="sv03"/&gt;
+    &lt;ttc code="singlev" point1="dv04" point2="sv04"/&gt;
+  &lt;/ttProgram&gt;
+</string>
 		</dict>
 	</lib>
 </glyph>

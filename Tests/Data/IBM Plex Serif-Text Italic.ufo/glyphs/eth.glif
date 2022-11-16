@@ -73,34 +73,32 @@
 	<lib>
 		<dict>
 			<key>com.adobe.type.autohint</key>
-			<data>
-				ICA8aGludFNldExpc3Q+CiAgICA8aGludHNldCBwb2ludFRhZz0iYWIwMSI+CiAgICAg
-				IDxoc3RlbSBwb3M9Ii0xMiIgd2lkdGg9IjQ0IiAvPgogICAgICA8aHN0ZW0gcG9zPSI0
-				NTkiIHdpZHRoPSI0NiIgLz4KICAgICAgPGhzdGVtIHBvcz0iNzQ4IiB3aWR0aD0iLTIw
-				IiAvPgogICAgICA8dnN0ZW0gcG9zPSIzOCIgd2lkdGg9Ijg5IiAvPgogICAgICA8dnN0
-				ZW0gcG9zPSIzODQiIHdpZHRoPSIxMDQiIC8+CiAgICA8L2hpbnRzZXQ+CiAgPC9oaW50
-				U2V0TGlzdD4K
-			</data>
+			<string>  &lt;hintSetList&gt;
+    &lt;hintset pointTag="ab01"&gt;
+      &lt;hstem pos="-12" width="44" /&gt;
+      &lt;hstem pos="459" width="46" /&gt;
+      &lt;hstem pos="748" width="-20" /&gt;
+      &lt;vstem pos="38" width="89" /&gt;
+      &lt;vstem pos="384" width="104" /&gt;
+    &lt;/hintset&gt;
+  &lt;/hintSetList&gt;
+</string>
 			<key>com.fontlab.ttprogram</key>
-			<data>
-				ICA8dHRQcm9ncmFtPgogICAgPHR0YyBjb2RlPSJhbGlnbnYiIHBvaW50PSJhdjAxIiBh
-				bGlnbj0icm91bmQiLz4KICAgIDx0dGMgY29kZT0iYWxpZ250IiBwb2ludD0iYXQwMSIg
-				em9uZT0iYXNjZW5kZXIiLz4KICAgIDx0dGMgY29kZT0iYWxpZ250IiBwb2ludD0iYXQw
-				MiIgem9uZT0iYXNjZW5kZXIiLz4KICAgIDx0dGMgY29kZT0iYWxpZ25iIiBwb2ludD0i
-				YWIwMSIgem9uZT0iYmFzZWxpbmUiLz4KICAgIDx0dGMgY29kZT0ic2luZ2xldiIgcG9p
-				bnQxPSJhdjAxIiBwb2ludDI9InN2MDEiIHN0ZW09ImxjX3N0ZW1zZXJpZiIvPgogICAg
-				PHR0YyBjb2RlPSJpbnRlcnBvbGF0ZXYiIHBvaW50PSJpdjAxIiBwb2ludDE9InN2MDEi
-				IHBvaW50Mj0iYWIwMSIvPgogICAgPHR0YyBjb2RlPSJzaW5nbGV2IiBwb2ludDE9ImF2
-				MDEiIHBvaW50Mj0ic3YwMiIgcm91bmQ9InRydWUiLz4KICAgIDx0dGMgY29kZT0iaW50
-				ZXJwb2xhdGV2IiBwb2ludD0iaXYwMiIgcG9pbnQxPSJzdjAyIiBwb2ludDI9ImF0MDIi
-				Lz4KICAgIDx0dGMgY29kZT0iaW50ZXJwb2xhdGV2IiBwb2ludD0iaXYwMyIgcG9pbnQx
-				PSJhdDAyIiBwb2ludDI9InN2MDIiLz4KICAgIDx0dGMgY29kZT0iaW50ZXJwb2xhdGV2
-				IiBwb2ludD0iaXYwNCIgcG9pbnQxPSJpdjAzIiBwb2ludDI9Iml2MDIiLz4KICAgIDx0
-				dGMgY29kZT0iaW50ZXJwb2xhdGV2IiBwb2ludD0iaXYwNSIgcG9pbnQxPSJpdjAyIiBw
-				b2ludDI9Iml2MDMiLz4KICAgIDx0dGMgY29kZT0ic2luZ2xldiIgcG9pbnQxPSJhYjAx
-				IiBwb2ludDI9InN2MDMiIHN0ZW09ImxjX3N0ZW1zZXJpZiIvPgogIDwvdHRQcm9ncmFt
-				Pgo=
-			</data>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="alignv" point="av01" align="round"/&gt;
+    &lt;ttc code="alignt" point="at01" zone="ascender"/&gt;
+    &lt;ttc code="alignt" point="at02" zone="ascender"/&gt;
+    &lt;ttc code="alignb" point="ab01" zone="baseline"/&gt;
+    &lt;ttc code="singlev" point1="av01" point2="sv01" stem="lc_stemserif"/&gt;
+    &lt;ttc code="interpolatev" point="iv01" point1="sv01" point2="ab01"/&gt;
+    &lt;ttc code="singlev" point1="av01" point2="sv02" round="true"/&gt;
+    &lt;ttc code="interpolatev" point="iv02" point1="sv02" point2="at02"/&gt;
+    &lt;ttc code="interpolatev" point="iv03" point1="at02" point2="sv02"/&gt;
+    &lt;ttc code="interpolatev" point="iv04" point1="iv03" point2="iv02"/&gt;
+    &lt;ttc code="interpolatev" point="iv05" point1="iv02" point2="iv03"/&gt;
+    &lt;ttc code="singlev" point1="ab01" point2="sv03" stem="lc_stemserif"/&gt;
+  &lt;/ttProgram&gt;
+</string>
 		</dict>
 	</lib>
 </glyph>

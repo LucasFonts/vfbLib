@@ -73,29 +73,30 @@
 	<lib>
 		<dict>
 			<key>com.adobe.type.autohint</key>
-			<data>
-				ICA8aGludFNldExpc3Q+CiAgICA8aGludHNldCBwb2ludFRhZz0iaHIwMSI+CiAgICAg
-				IDxoc3RlbSBwb3M9Ii0xMiIgd2lkdGg9IjUyIiAvPgogICAgICA8aHN0ZW0gcG9zPSIt
-				MTIiIHdpZHRoPSI1MiIgLz4KICAgICAgPGhzdGVtIHBvcz0iNjU4IiB3aWR0aD0iNTIi
-				IC8+CiAgICAgIDxoc3RlbSBwb3M9IjY2MSIgd2lkdGg9IjM3IiAvPgogICAgICA8dnN0
-				ZW0gcG9zPSI1NyIgd2lkdGg9Ijk3IiAvPgogICAgICA8dnN0ZW0gcG9zPSI1NyIgd2lk
-				dGg9Ijk3IiAvPgogICAgICA8dnN0ZW0gcG9zPSI1NzEiIHdpZHRoPSI5NyIgLz4KICAg
-				ICAgPHZzdGVtIHBvcz0iNTcxIiB3aWR0aD0iOTciIC8+CiAgICA8L2hpbnRzZXQ+CiAg
-				PC9oaW50U2V0TGlzdD4K
-			</data>
+			<string>  &lt;hintSetList&gt;
+    &lt;hintset pointTag="hr01"&gt;
+      &lt;hstem pos="-12" width="52" /&gt;
+      &lt;hstem pos="-12" width="52" /&gt;
+      &lt;hstem pos="658" width="52" /&gt;
+      &lt;hstem pos="661" width="37" /&gt;
+      &lt;vstem pos="57" width="97" /&gt;
+      &lt;vstem pos="57" width="97" /&gt;
+      &lt;vstem pos="571" width="97" /&gt;
+      &lt;vstem pos="571" width="97" /&gt;
+    &lt;/hintset&gt;
+  &lt;/hintSetList&gt;
+</string>
 			<key>com.fontlab.ttprogram</key>
-			<data>
-				ICA8dHRQcm9ncmFtPgogICAgPHR0YyBjb2RlPSJhbGlnbnQiIHBvaW50PSJhdDAxIiB6
-				b25lPSJjYXBoZWlnaHQiLz4KICAgIDx0dGMgY29kZT0iYWxpZ250IiBwb2ludD0iYXQw
-				MiIgem9uZT0iY2FwaGVpZ2h0Ii8+CiAgICA8dHRjIGNvZGU9ImFsaWduYiIgcG9pbnQ9
-				ImFiMDEiIHpvbmU9ImJhc2VsaW5lIi8+CiAgICA8dHRjIGNvZGU9InNpbmdsZXYiIHBv
-				aW50MT0iYXQwMiIgcG9pbnQyPSJzdjAxIiByb3VuZD0idHJ1ZSIvPgogICAgPHR0YyBj
-				b2RlPSJzaW5nbGV2IiBwb2ludDE9ImF0MDIiIHBvaW50Mj0ic3YwMiIgc3RlbT0ibGNf
-				bWVkaXVtcyIvPgogICAgPHR0YyBjb2RlPSJzaW5nbGV2IiBwb2ludDE9ImFiMDEiIHBv
-				aW50Mj0ic3YwMyIgc3RlbT0idWNfc3RlbSIvPgogICAgPHR0YyBjb2RlPSJzaW5nbGV2
-				IiBwb2ludDE9ImF0MDEiIHBvaW50Mj0ic3YwNCIgc3RlbT0idWNfc3RlbSIvPgogIDwv
-				dHRQcm9ncmFtPgo=
-			</data>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="alignt" point="at01" zone="capheight"/&gt;
+    &lt;ttc code="alignt" point="at02" zone="capheight"/&gt;
+    &lt;ttc code="alignb" point="ab01" zone="baseline"/&gt;
+    &lt;ttc code="singlev" point1="at02" point2="sv01" round="true"/&gt;
+    &lt;ttc code="singlev" point1="at02" point2="sv02" stem="lc_mediums"/&gt;
+    &lt;ttc code="singlev" point1="ab01" point2="sv03" stem="uc_stem"/&gt;
+    &lt;ttc code="singlev" point1="at01" point2="sv04" stem="uc_stem"/&gt;
+  &lt;/ttProgram&gt;
+</string>
 			<key>com.typemytype.robofont.guides</key>
 			<array>
 				<dict>
