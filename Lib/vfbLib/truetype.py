@@ -28,19 +28,19 @@ TT_COMMANDS = {
         "params": ["pti", "pt1", "pt2", "align"],
     },
     0x14: {
-        "name": "MiddleDeltaH",
+        "name": "MDeltaH",
         "params": ["pt", "shift", "ppm1", "ppm2"],
     },
     0x15: {
-        "name": "MiddleDeltaV",
+        "name": "MDeltaV",
         "params": ["pt", "shift", "ppm1", "ppm2"],
     },
     0x16: {
-        "name": "FinalDeltaH",
+        "name": "FDeltaH",
         "params": ["pt", "shift", "ppm1", "ppm2"],
     },
     0x17: {
-        "name": "FinalDeltaV",
+        "name": "FDeltaV",
         "params": ["pt", "shift", "ppm1", "ppm2"],
     },
 }
