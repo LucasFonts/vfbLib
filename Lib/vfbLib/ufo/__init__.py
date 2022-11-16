@@ -849,9 +849,11 @@ class VfbToUfoWriter:
 
                 # Apply master hint positions and widths
 
-                master_hints = self.get_master_hints(master_index=i)
-                if master_hints:
-                    self.build_ps_glyph_hints(g, master_hints)
+                # FIXME
+
+                # master_hints = self.get_master_hints(master_index=i)
+                # if master_hints:
+                #     self.build_ps_glyph_hints(g, master_hints)
 
                 g.unicodes = self.current_mmglyph.unicodes
                 g.width, g.height = self.current_mmglyph.mm_metrics[i]
