@@ -7,6 +7,9 @@ from tempfile import NamedTemporaryFile
 from typing import Literal
 
 
+delete_lib_keys = []
+
+
 def fix_vfb2ufo_feature_encoding(ufo_path: Path) -> None:
     # Read vfb2ufo's Windows-1252-encoded feature file and convert to UTF-8
     fea_path = ufo_path / "features.fea"
@@ -44,20 +47,22 @@ def normalize_ufo(
     with NamedTemporaryFile(suffix="ufoz") as tf:
         f.save(path=tf.name, formatVersion=3, structure="zip")
         f = Font(tf.name)
-        # for glyph in f:
-        #     for key in delete_lib_keys:
-        #         try:
-        #             del glyph.lib[key]
-        #         except KeyError:
-        #             pass
-        #     # Make FL glyph programs readable
-        #     if "com.fontlab.ttprogram" in glyph.lib:
-        #         data = glyph.lib["com.fontlab.ttprogram"]
-        #         try:
-        #             data = data.decode()
-        #         except AttributeError:
-        #             pass
-        #         glyph.lib["com.fontlab.ttprogram"] = data
+        for glyph in f:
+            for key in delete_lib_keys:
+                try:
+                    del glyph.lib[key]
+                except KeyError:
+                    pass
+            # Make glyph data readable
+            for k in ("com.fontlab.ttprogram", "com.adobe.type.autohint"):
+                if k in glyph.lib:
+                    data = glyph.lib[k]
+                    try:
+                        data = data.decode()
+                    except AttributeError:
+                        pass
+                    glyph.lib[k] = data
+
         if structure == "zip":
             if not filepath.suffix == ".ufoz":
                 filepath = filepath.with_suffix(".ufoz")
