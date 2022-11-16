@@ -8,6 +8,7 @@ from shutil import rmtree
 from typing import TYPE_CHECKING, Any, Dict, List, Tuple
 from ufonormalizer import normalizeUFO
 from vfbLib.ufo.vfb2ufo import (
+    PS_GLYPH_LIB_KEY,
     TT_GLYPH_LIB_KEY,
     TT_LIB_KEY,
     vfb2ufo_alignment_rev,
@@ -62,6 +63,7 @@ class VfbToUfoGlyph:
         self.anchors = []
         self.labels: Dict[str, int] = {}
         self.point_labels: Dict[int, str] = {}
+        self.mm_hints = {"h": [], "v": []}
 
     def get_point_label(self, index: int, code: str) -> str:
         if index in self.point_labels:
@@ -264,6 +266,9 @@ class VfbToUfoWriter:
             self.build_tt_glyph_hints(g, data["tth"])
 
         # MM Stuff, need to extract later
+        if "hints" in data:
+            g.mm_hints = data["hints"]
+
         if "kerning" in data:
             for Rid, values in data["kerning"].items():
                 self.mm_kerning[g.name, Rid] = values
@@ -472,6 +477,25 @@ class VfbToUfoWriter:
             "  <ttProgram>\n" + "\n".join(tth) + "\n  </ttProgram>\n"
         )
 
+    def build_ps_glyph_hints(self, glyph, data) -> None:
+        # Set the master-specific hints from data to the glyph lib
+        # Use format 2, not what FL does.
+        # https://github.com/adobe-type-tools/psautohint/blob/master/python/psautohint/ufoFont.py
+        hint_sets = []
+        hint_set = {
+            "pointTag": "hr01",
+            "stems": [],
+        }
+        for h in data:
+            cmd, pos, width = h
+            hint_set["stems"].append(f"{cmd} {pos} {width}")
+        if hint_set["stems"]:
+            glyph.lib[PS_GLYPH_LIB_KEY] = {
+                # "id": "FIXME",
+                "hintSetList": [hint_set],
+                "flexList": [],
+            }
+
     def build(self):
         for e in self.json:
             name, data = e
@@ -632,6 +656,15 @@ class VfbToUfoWriter:
         self.assure_tt_lib()
         self.build_tt_stems_lib()
         self.build_tt_zones_lib()
+
+    def get_master_hints(self, master_index=0) -> List:
+        hints = []
+        for d in "hv":
+            dh = self.current_mmglyph.mm_hints[d]
+            for mm_hints in dh:
+                hint = mm_hints[master_index]
+                hints.append((f"{d}stem", hint["pos"], hint["width"]))
+        return hints
 
     def get_master_info(self, master_index=0):
         # Update the info with master-specific values
@@ -813,6 +846,13 @@ class VfbToUfoWriter:
                         g.anchors[j]["x"] = anchor["x"][i]
                         g.anchors[j]["y"] = anchor["y"][i]
                 g.lib = self.current_mmglyph.lib
+
+                # Apply master hint positions and widths
+
+                master_hints = self.get_master_hints(master_index=i)
+                if master_hints:
+                    self.build_ps_glyph_hints(g, master_hints)
+
                 g.unicodes = self.current_mmglyph.unicodes
                 g.width, g.height = self.current_mmglyph.mm_metrics[i]
                 gs.writeGlyph(
