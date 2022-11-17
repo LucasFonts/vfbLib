@@ -37,7 +37,7 @@ class GlobalGuidePropertiesParser(BaseParser):
 
                 color = read_encoded_value(stream)
                 if color > -1:
-                    g["color"] = "#" + hex(color & ~0xff00000000)[2:]
+                    g["color"] = "#" + hex(color & ~0xFF00000000)[2:]
 
                 name_length = read_encoded_value(stream)
                 if name_length > 0:
