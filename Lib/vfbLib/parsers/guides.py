@@ -9,7 +9,7 @@ class GlobalGuidesParser(BaseParser):
         guides = []
         num_h = read_encoded_value(stream)
         print(num_h, "horizontal")
-        for _ in range(num_h):
+        for _ in range(num_h):  # FIXME: * num_masters
             x = 0
             y = read_encoded_value(stream)
             angle = read_encoded_value(stream, signed=True)
