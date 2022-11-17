@@ -6,24 +6,17 @@ class GlobalGuidesParser(BaseParser):
     @classmethod
     def _parse(cls) -> List:
         stream = cls.stream
-        guides = []
-        num_h = read_encoded_value(stream)
-        print(num_h, "horizontal")
-        for _ in range(num_h):  # FIXME: * num_masters
-            x = 0
-            y = read_encoded_value(stream)
-            angle = read_encoded_value(stream, signed=True)
-
-            guides.append(dict(x=x, y=y, angle=angle))
-        
-        num_v = read_encoded_value(stream)
-        print(num_v, "vertical")
-        for _ in range(num_v):
-            x = read_encoded_value(stream)
-            y = 0
-            angle = read_encoded_value(stream, signed=True)
-
-            guides.append(dict(x=x, y=y, angle=angle))
+        guides = {
+            "h": [[] for _ in range(cls.master_count)],
+            "v": [[] for _ in range(cls.master_count)],
+        }
+        for d in "hv":
+            num_guides = read_encoded_value(stream)
+            for i in range(num_guides):
+                for m in range(cls.master_count):
+                    pos = read_encoded_value(stream)
+                    angle = read_encoded_value(stream)
+                    guides[d][m].append(dict(pos=pos, angle=angle))
 
         assert stream.read() == b""
         return guides
