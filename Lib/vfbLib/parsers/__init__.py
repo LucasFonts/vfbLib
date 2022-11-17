@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from fontTools.misc.textTools import hexStr
 from io import BufferedReader, BytesIO
 from struct import unpack
@@ -69,8 +71,9 @@ class BaseParser:
     """
 
     @classmethod
-    def parse(cls, stream: BufferedReader, size: int):
+    def parse(cls, stream: BufferedReader, size: int, master_count: int | None = None):
         cls.stream = BytesIO(stream.read(size))
+        cls.master_count = master_count
         return cls._parse()
 
     @classmethod

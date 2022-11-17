@@ -21,6 +21,7 @@ class VFBReader:
         self.data: List[List[Any]] = []
         self.timing = timing
         self.minimal = minimal
+        self.master_count = None
 
     def __repr__(self) -> str:
         return str(self.data)
@@ -35,8 +36,18 @@ class VFBReader:
                 entry = self._parse_entry()
             except EOFError:
                 break
+
             if entry:
                 self.data.append(entry)
+
+                # Save information that is needed by parsers
+
+                if entry[0] == "Master Count":
+                    if self.master_count is None:
+                        self.master_count = entry[1]
+                    else:
+                        print("WARNING: Redefined master count")
+
         end = time()
         if self.timing:
             print(
@@ -61,7 +72,7 @@ class VFBReader:
             return []
 
         try:
-            parsed = parser_class.parse(self.stream, size)
+            parsed = parser_class.parse(self.stream, size, self.master_count)
         except:
             print(
                 "Parse error for data:",
