@@ -19,6 +19,10 @@ from vfbLib.parsers.glyph import (
     LinkParser,
     MaskParser,
 )
+from vfbLib.parsers.guides import (
+    GlobalGuidePropertiesParser,
+    GlobalGuidesParser,
+)
 from vfbLib.parsers.mm import AxisMappingsParser, PrimaryInstancesParser
 from vfbLib.parsers.numeric import (
     DoubleParser,
@@ -108,8 +112,8 @@ parser_classes = {
     1277: ("OpenType Class", StringParser),
     1278: ("hhea_ascender", SignedIntParser),
     1279: ("hhea_descender", SignedIntParser),
-    1294: ("1294", EncodedValueListParser),
-    1296: ("1296", EncodedValueListParser),
+    1294: ("Global Guides", GlobalGuidesParser),
+    1296: ("Global Guide Properties", GlobalGuidePropertiesParser),
     1500: ("Encoding", GlyphEncodingParser),
     1501: ("Encoding Mac", GlyphEncodingParser),
     1502: ("1502", BaseParser),
