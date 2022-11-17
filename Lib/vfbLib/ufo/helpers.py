@@ -5,6 +5,11 @@ from ufonormalizer import normalizeUFO
 from pathlib import Path
 from tempfile import NamedTemporaryFile
 from typing import Literal
+from vfbLib.ufo.pshints import update_adobe_hinting
+from vfbLib.ufo.vfb2ufo import PS_GLYPH_LIB_KEY, TT_GLYPH_LIB_KEY
+
+
+RF_GUIDES_KEY = "com.typemytype.robofont.guides"
 
 
 delete_lib_keys = []
@@ -53,15 +58,36 @@ def normalize_ufo(
                     del glyph.lib[key]
                 except KeyError:
                     pass
-            # Make glyph data readable
-            for k in ("com.fontlab.ttprogram", "com.adobe.type.autohint"):
-                if k in glyph.lib:
-                    data = glyph.lib[k]
-                    try:
-                        data = data.decode()
-                    except AttributeError:
-                        pass
-                    glyph.lib[k] = data
+
+            # Make TT glyph program readable
+            if TT_GLYPH_LIB_KEY in glyph.lib:
+                data = glyph.lib[TT_GLYPH_LIB_KEY]
+                try:
+                    data = data.decode()
+                except AttributeError:
+                    pass
+                glyph.lib[TT_GLYPH_LIB_KEY] = data
+
+            # Update PS Hinting to V2
+            if PS_GLYPH_LIB_KEY in glyph.lib:
+                v2 = update_adobe_hinting(glyph.lib[PS_GLYPH_LIB_KEY])
+                if v2:
+                    glyph.lib[PS_GLYPH_LIB_KEY] = v2
+                else:
+                    del glyph.lib[PS_GLYPH_LIB_KEY]
+
+            # Update Guides to UFO standard
+            if RF_GUIDES_KEY in glyph.lib:
+                guides = []
+                for guide in glyph.lib[RF_GUIDES_KEY]:
+                    isGlobal = guide["isGlobal"]
+                    del guide["isGlobal"]
+                    del guide["magnetic"]
+                    assert not isGlobal
+                    guides.append(guide)
+                if guides:
+                    glyph.guidelines = guides
+                del glyph.lib[RF_GUIDES_KEY]
 
         if structure == "zip":
             if not filepath.suffix == ".ufoz":
