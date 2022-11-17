@@ -4,23 +4,9 @@
 	<outline>
 		<component base="dotaccent" xOffset="-300"/>
 	</outline>
+	<guideline x="-135" y="0" angle="75.96"/>
 	<lib>
 		<dict>
-			<key>com.typemytype.robofont.guides</key>
-			<array>
-				<dict>
-					<key>angle</key>
-					<real>75.96</real>
-					<key>isGlobal</key>
-					<false/>
-					<key>magnetic</key>
-					<integer>5</integer>
-					<key>x</key>
-					<integer>-135</integer>
-					<key>y</key>
-					<integer>0</integer>
-				</dict>
-			</array>
 			<key>com.typemytype.robofont.mark</key>
 			<array>
 				<real>0.6</real>

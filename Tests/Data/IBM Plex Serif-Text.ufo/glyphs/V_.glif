@@ -26,6 +26,8 @@
 	</outline>
 	<anchor name="top" x="356" y="698"/>
 	<anchor name="bottom" x="339" y="0"/>
+	<guideline x="356" y="0" angle="90"/>
+	<guideline x="339" y="0" angle="90"/>
 	<lib>
 		<dict>
 			<key>com.adobe.type.autohint</key>
@@ -56,33 +58,6 @@
     &lt;ttc code="singlev" point1="sv04" point2="sv05"/&gt;
   &lt;/ttProgram&gt;
 </string>
-			<key>com.typemytype.robofont.guides</key>
-			<array>
-				<dict>
-					<key>angle</key>
-					<integer>90</integer>
-					<key>isGlobal</key>
-					<false/>
-					<key>magnetic</key>
-					<integer>5</integer>
-					<key>x</key>
-					<integer>356</integer>
-					<key>y</key>
-					<integer>0</integer>
-				</dict>
-				<dict>
-					<key>angle</key>
-					<integer>90</integer>
-					<key>isGlobal</key>
-					<false/>
-					<key>magnetic</key>
-					<integer>5</integer>
-					<key>x</key>
-					<integer>339</integer>
-					<key>y</key>
-					<integer>0</integer>
-				</dict>
-			</array>
 		</dict>
 	</lib>
 </glyph>

@@ -71,6 +71,9 @@
 	<anchor name="top" x="263" y="540"/>
 	<anchor name="bottomright" x="499" y="0"/>
 	<anchor name="bottom" x="243" y="0"/>
+	<guideline x="263" y="0" angle="90"/>
+	<guideline x="499" y="0" angle="90"/>
+	<guideline x="243" y="0" angle="90"/>
 	<lib>
 		<dict>
 			<key>com.adobe.type.autohint</key>
@@ -111,45 +114,6 @@
     &lt;ttc code="singlev" point1="iv01" point2="sv05" stem="lc_mid"/&gt;
   &lt;/ttProgram&gt;
 </string>
-			<key>com.typemytype.robofont.guides</key>
-			<array>
-				<dict>
-					<key>angle</key>
-					<integer>90</integer>
-					<key>isGlobal</key>
-					<false/>
-					<key>magnetic</key>
-					<integer>5</integer>
-					<key>x</key>
-					<integer>263</integer>
-					<key>y</key>
-					<integer>0</integer>
-				</dict>
-				<dict>
-					<key>angle</key>
-					<integer>90</integer>
-					<key>isGlobal</key>
-					<false/>
-					<key>magnetic</key>
-					<integer>5</integer>
-					<key>x</key>
-					<integer>499</integer>
-					<key>y</key>
-					<integer>0</integer>
-				</dict>
-				<dict>
-					<key>angle</key>
-					<integer>90</integer>
-					<key>isGlobal</key>
-					<false/>
-					<key>magnetic</key>
-					<integer>5</integer>
-					<key>x</key>
-					<integer>243</integer>
-					<key>y</key>
-					<integer>0</integer>
-				</dict>
-			</array>
 		</dict>
 	</lib>
 </glyph>

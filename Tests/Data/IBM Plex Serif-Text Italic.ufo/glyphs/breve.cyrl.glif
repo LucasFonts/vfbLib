@@ -31,6 +31,7 @@
 		</contour>
 	</outline>
 	<anchor name="_top" x="300" y="540"/>
+	<guideline x="165" y="0" angle="75.96"/>
 	<lib>
 		<dict>
 			<key>com.adobe.type.autohint</key>
@@ -58,21 +59,6 @@
     &lt;ttc code="singlev" point1="sv02" point2="sv03"/&gt;
   &lt;/ttProgram&gt;
 </string>
-			<key>com.typemytype.robofont.guides</key>
-			<array>
-				<dict>
-					<key>angle</key>
-					<real>75.96</real>
-					<key>isGlobal</key>
-					<false/>
-					<key>magnetic</key>
-					<integer>5</integer>
-					<key>x</key>
-					<integer>165</integer>
-					<key>y</key>
-					<integer>0</integer>
-				</dict>
-			</array>
 		</dict>
 	</lib>
 </glyph>

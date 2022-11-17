@@ -32,6 +32,8 @@
 	</outline>
 	<anchor name="topright" x="250" y="766"/>
 	<anchor name="bottom" x="214" y="0"/>
+	<guideline x="250" y="0" angle="90"/>
+	<guideline x="214" y="0" angle="90"/>
 	<lib>
 		<dict>
 			<key>com.adobe.type.autohint</key>
@@ -62,33 +64,6 @@
     &lt;ttc code="interpolatev" point="iv01" point1="sv05" point2="ab01" align="round"/&gt;
   &lt;/ttProgram&gt;
 </string>
-			<key>com.typemytype.robofont.guides</key>
-			<array>
-				<dict>
-					<key>angle</key>
-					<integer>90</integer>
-					<key>isGlobal</key>
-					<false/>
-					<key>magnetic</key>
-					<integer>5</integer>
-					<key>x</key>
-					<integer>250</integer>
-					<key>y</key>
-					<integer>0</integer>
-				</dict>
-				<dict>
-					<key>angle</key>
-					<integer>90</integer>
-					<key>isGlobal</key>
-					<false/>
-					<key>magnetic</key>
-					<integer>5</integer>
-					<key>x</key>
-					<integer>214</integer>
-					<key>y</key>
-					<integer>0</integer>
-				</dict>
-			</array>
 		</dict>
 	</lib>
 </glyph>

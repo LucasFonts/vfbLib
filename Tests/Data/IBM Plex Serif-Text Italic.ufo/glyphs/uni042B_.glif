@@ -54,6 +54,7 @@
 		</contour>
 	</outline>
 	<anchor name="top" x="541" y="698"/>
+	<guideline x="366" y="0" angle="75.96"/>
 	<lib>
 		<dict>
 			<key>com.fontlab.ttprogram</key>
@@ -75,21 +76,6 @@
     &lt;ttc code="singlev" point1="ab02" point2="sv09" stem="uc_stem"/&gt;
   &lt;/ttProgram&gt;
 </string>
-			<key>com.typemytype.robofont.guides</key>
-			<array>
-				<dict>
-					<key>angle</key>
-					<real>75.96</real>
-					<key>isGlobal</key>
-					<false/>
-					<key>magnetic</key>
-					<integer>5</integer>
-					<key>x</key>
-					<integer>366</integer>
-					<key>y</key>
-					<integer>0</integer>
-				</dict>
-			</array>
 		</dict>
 	</lib>
 </glyph>

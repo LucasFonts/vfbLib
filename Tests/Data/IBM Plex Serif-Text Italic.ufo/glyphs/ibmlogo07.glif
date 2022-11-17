@@ -268,6 +268,7 @@
 			<point x="136" y="-220" type="line"/>
 		</contour>
 	</outline>
+	<guideline x="302" y="0" angle="90"/>
 	<lib>
 		<dict>
 			<key>com.adobe.type.autohint</key>
@@ -285,21 +286,6 @@
 					</dict>
 				</array>
 			</dict>
-			<key>com.typemytype.robofont.guides</key>
-			<array>
-				<dict>
-					<key>angle</key>
-					<integer>90</integer>
-					<key>isGlobal</key>
-					<false/>
-					<key>magnetic</key>
-					<integer>5</integer>
-					<key>x</key>
-					<integer>302</integer>
-					<key>y</key>
-					<integer>0</integer>
-				</dict>
-			</array>
 		</dict>
 	</lib>
 </glyph>

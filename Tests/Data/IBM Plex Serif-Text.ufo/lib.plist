@@ -488,9 +488,9 @@
 		</dict>
 		<key>org.unifiedfontobject.normalizer.modTimes</key>
 		<string>version: 0.6.1
-1668680846.7 fontinfo.plist
-1668680846.7 layercontents.plist
-1668680846.7 metainfo.plist</string>
+1668680967.1 fontinfo.plist
+1668680967.1 layercontents.plist
+1668680967.1 metainfo.plist</string>
 		<key>public.glyphOrder</key>
 		<array>
 			<string>.notdef</string>

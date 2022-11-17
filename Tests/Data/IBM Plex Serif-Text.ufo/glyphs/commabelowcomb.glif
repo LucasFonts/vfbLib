@@ -24,6 +24,7 @@
 		</contour>
 	</outline>
 	<anchor name="_bottom" x="0" y="0"/>
+	<guideline x="0" y="0" angle="90"/>
 	<lib>
 		<dict>
 			<key>com.adobe.type.autohint</key>
@@ -52,21 +53,6 @@
     &lt;ttc code="mdeltav" point="sv02" delta="-8" ppm1="13" ppm2="13"/&gt;
   &lt;/ttProgram&gt;
 </string>
-			<key>com.typemytype.robofont.guides</key>
-			<array>
-				<dict>
-					<key>angle</key>
-					<integer>90</integer>
-					<key>isGlobal</key>
-					<false/>
-					<key>magnetic</key>
-					<integer>5</integer>
-					<key>x</key>
-					<integer>0</integer>
-					<key>y</key>
-					<integer>0</integer>
-				</dict>
-			</array>
 		</dict>
 	</lib>
 </glyph>
