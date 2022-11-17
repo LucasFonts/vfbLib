@@ -557,12 +557,22 @@ class VfbToUfoWriter:
                 self.features = data
             elif name == "OpenType Class":
                 self.add_ot_class(data)
-            elif name == "Axis Mapping":
-                pass
+            elif name == "Global Guides":
+                self.mm_guides = data
+            elif name == "Global Guide Properties":
+                self.guide_properties = data
+            elif name == "Master Count":
+                self.master_count = data
             elif name == "Master Name":
                 self.masters.append(data)
             elif name == "1505":
                 self.masters_1505.append(data)
+            elif name == "Axis Count":
+                self.axis_count = data
+            elif name == "Axis Name":
+                pass
+            elif name == "Axis Mapping":
+                pass
             elif name == "Blue Values Count":
                 self.num_blue_values = data
             elif name == "Other Blues Count":
