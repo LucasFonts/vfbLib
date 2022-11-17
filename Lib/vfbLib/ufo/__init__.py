@@ -711,6 +711,10 @@ class VfbToUfoWriter:
             value = self.masters_ps_info[master_index].get(k, None)
             if value is not None:
                 setattr(self.info, v, value[:num_values])
+        
+        # TODO: Guides
+        print(self.mm_guides)
+        print(self.guide_properties)
 
         return self.info
 
