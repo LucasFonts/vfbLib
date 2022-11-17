@@ -119,6 +119,7 @@ parser_classes = {
     1502: ("1502", BaseParser),
     1503: ("Master Count", IntParser),
     1504: ("Master Name", StringParser),
+    1505: ("1505", BaseParser),
     1513: ("Axis Count", IntParser),
     1514: ("Axis Name", StringParser),
     1516: ("Axis Mapping", AxisMappingsParser),
