@@ -74,23 +74,30 @@
 	<lib>
 		<dict>
 			<key>com.adobe.type.autohint</key>
-			<string>  &lt;hintSetList&gt;
-    &lt;hintset pointTag="hr01"&gt;
-      &lt;hstem pos="0" width="82" /&gt;
-      &lt;hstem pos="0" width="82" /&gt;
-      &lt;hstem pos="248" width="50" /&gt;
-      &lt;hstem pos="248" width="50" /&gt;
-      &lt;hstem pos="398" width="50" /&gt;
-      &lt;hstem pos="398" width="50" /&gt;
-      &lt;hstem pos="655" width="55" /&gt;
-      &lt;hstem pos="655" width="55" /&gt;
-      &lt;vstem pos="93" width="98" /&gt;
-      &lt;vstem pos="155" width="86" /&gt;
-      &lt;vstem pos="387" width="132" /&gt;
-      &lt;vstem pos="472" width="54" /&gt;
-    &lt;/hintset&gt;
-  &lt;/hintSetList&gt;
-</string>
+			<dict>
+				<key>hintSetList</key>
+				<array>
+					<dict>
+						<key>pointTag</key>
+						<string>hr01</string>
+						<key>stems</key>
+						<array>
+							<string>hstem 0 82</string>
+							<string>hstem 0 82</string>
+							<string>hstem 248 50</string>
+							<string>hstem 248 50</string>
+							<string>hstem 398 50</string>
+							<string>hstem 398 50</string>
+							<string>hstem 655 55</string>
+							<string>hstem 655 55</string>
+							<string>vstem 93 98</string>
+							<string>vstem 155 86</string>
+							<string>vstem 387 132</string>
+							<string>vstem 472 54</string>
+						</array>
+					</dict>
+				</array>
+			</dict>
 			<key>com.fontlab.ttprogram</key>
 			<string>  &lt;ttProgram&gt;
     &lt;ttc code="alignt" point="at01" zone="capheight"/&gt;

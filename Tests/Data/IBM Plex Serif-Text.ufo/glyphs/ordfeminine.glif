@@ -68,21 +68,28 @@
 	<lib>
 		<dict>
 			<key>com.adobe.type.autohint</key>
-			<string>  &lt;hintSetList&gt;
-    &lt;hintset pointTag="sv02"&gt;
-      &lt;hstem pos="342" width="43" /&gt;
-      &lt;hstem pos="342" width="43" /&gt;
-      &lt;hstem pos="508" width="32" /&gt;
-      &lt;hstem pos="508" width="32" /&gt;
-      &lt;hstem pos="669" width="35" /&gt;
-      &lt;hstem pos="669" width="35" /&gt;
-      &lt;vstem pos="41" width="72" /&gt;
-      &lt;vstem pos="57" width="85" /&gt;
-      &lt;vstem pos="248" width="71" /&gt;
-      &lt;vstem pos="248" width="71" /&gt;
-    &lt;/hintset&gt;
-  &lt;/hintSetList&gt;
-</string>
+			<dict>
+				<key>hintSetList</key>
+				<array>
+					<dict>
+						<key>pointTag</key>
+						<string>sv02</string>
+						<key>stems</key>
+						<array>
+							<string>hstem 342 43</string>
+							<string>hstem 342 43</string>
+							<string>hstem 508 32</string>
+							<string>hstem 508 32</string>
+							<string>hstem 669 35</string>
+							<string>hstem 669 35</string>
+							<string>vstem 41 72</string>
+							<string>vstem 57 85</string>
+							<string>vstem 248 71</string>
+							<string>vstem 248 71</string>
+						</array>
+					</dict>
+				</array>
+			</dict>
 			<key>com.fontlab.ttprogram</key>
 			<string>  &lt;ttProgram&gt;
     &lt;ttc code="alignt" point="at01" zone="capheight"/&gt;

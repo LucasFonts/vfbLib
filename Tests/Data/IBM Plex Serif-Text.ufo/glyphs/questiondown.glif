@@ -60,10 +60,6 @@
 	</outline>
 	<lib>
 		<dict>
-			<key>com.adobe.type.autohint</key>
-			<string>  &lt;hintSetList&gt;
-  &lt;/hintSetList&gt;
-</string>
 			<key>com.fontlab.ttprogram</key>
 			<string>  &lt;ttProgram&gt;
     &lt;ttc code="alignv" point="av01" align="round"/&gt;

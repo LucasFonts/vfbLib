@@ -95,17 +95,24 @@
 	<lib>
 		<dict>
 			<key>com.adobe.type.autohint</key>
-			<string>  &lt;hintSetList&gt;
-    &lt;hintset pointTag="ab01"&gt;
-      &lt;hstem pos="-12" width="44" /&gt;
-      &lt;hstem pos="-12" width="61" /&gt;
-      &lt;hstem pos="260" width="33" /&gt;
-      &lt;hstem pos="486" width="44" /&gt;
-      &lt;vstem pos="38" width="89" /&gt;
-      &lt;vstem pos="659" width="85" /&gt;
-    &lt;/hintset&gt;
-  &lt;/hintSetList&gt;
-</string>
+			<dict>
+				<key>hintSetList</key>
+				<array>
+					<dict>
+						<key>pointTag</key>
+						<string>ab01</string>
+						<key>stems</key>
+						<array>
+							<string>hstem -12 44</string>
+							<string>hstem -12 61</string>
+							<string>hstem 260 33</string>
+							<string>hstem 486 44</string>
+							<string>vstem 38 89</string>
+							<string>vstem 659 85</string>
+						</array>
+					</dict>
+				</array>
+			</dict>
 			<key>com.fontlab.ttprogram</key>
 			<string>  &lt;ttProgram&gt;
     &lt;ttc code="alignt" point="at01" zone="xheight"/&gt;

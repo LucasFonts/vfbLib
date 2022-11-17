@@ -56,10 +56,6 @@
 	<anchor name="bottom" x="291" y="0"/>
 	<lib>
 		<dict>
-			<key>com.adobe.type.autohint</key>
-			<string>  &lt;hintSetList&gt;
-  &lt;/hintSetList&gt;
-</string>
 			<key>com.fontlab.ttprogram</key>
 			<string>  &lt;ttProgram&gt;
     &lt;ttc code="alignt" point="at01" zone="capheight"/&gt;

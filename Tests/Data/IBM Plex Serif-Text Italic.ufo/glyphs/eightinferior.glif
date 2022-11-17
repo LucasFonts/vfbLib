@@ -83,31 +83,38 @@
 	<lib>
 		<dict>
 			<key>com.adobe.type.autohint</key>
-			<string>  &lt;hintSetList&gt;
-    &lt;hintset pointTag="hr01"&gt;
-      &lt;hstem pos="-6" width="39" /&gt;
-      &lt;hstem pos="-6" width="39" /&gt;
-      &lt;hstem pos="-6" width="39" /&gt;
-      &lt;hstem pos="-6" width="39" /&gt;
-      &lt;hstem pos="175" width="33" /&gt;
-      &lt;hstem pos="175" width="33" /&gt;
-      &lt;hstem pos="175" width="33" /&gt;
-      &lt;hstem pos="175" width="33" /&gt;
-      &lt;hstem pos="335" width="39" /&gt;
-      &lt;hstem pos="335" width="39" /&gt;
-      &lt;hstem pos="335" width="39" /&gt;
-      &lt;hstem pos="335" width="39" /&gt;
-      &lt;vstem pos="2" width="74" /&gt;
-      &lt;vstem pos="58" width="64" /&gt;
-      &lt;vstem pos="58" width="64" /&gt;
-      &lt;vstem pos="58" width="64" /&gt;
-      &lt;vstem pos="199" width="73" /&gt;
-      &lt;vstem pos="199" width="73" /&gt;
-      &lt;vstem pos="236" width="69" /&gt;
-      &lt;vstem pos="236" width="69" /&gt;
-    &lt;/hintset&gt;
-  &lt;/hintSetList&gt;
-</string>
+			<dict>
+				<key>hintSetList</key>
+				<array>
+					<dict>
+						<key>pointTag</key>
+						<string>hr01</string>
+						<key>stems</key>
+						<array>
+							<string>hstem -6 39</string>
+							<string>hstem -6 39</string>
+							<string>hstem -6 39</string>
+							<string>hstem -6 39</string>
+							<string>hstem 175 33</string>
+							<string>hstem 175 33</string>
+							<string>hstem 175 33</string>
+							<string>hstem 175 33</string>
+							<string>hstem 335 39</string>
+							<string>hstem 335 39</string>
+							<string>hstem 335 39</string>
+							<string>hstem 335 39</string>
+							<string>vstem 2 74</string>
+							<string>vstem 58 64</string>
+							<string>vstem 58 64</string>
+							<string>vstem 58 64</string>
+							<string>vstem 199 73</string>
+							<string>vstem 199 73</string>
+							<string>vstem 236 69</string>
+							<string>vstem 236 69</string>
+						</array>
+					</dict>
+				</array>
+			</dict>
 			<key>com.fontlab.ttprogram</key>
 			<string>  &lt;ttProgram&gt;
     &lt;ttc code="alignt" point="at01" zone="inf_top"/&gt;

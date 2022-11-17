@@ -97,65 +97,87 @@
 	<lib>
 		<dict>
 			<key>com.adobe.type.autohint</key>
-			<string>  &lt;hintSetList&gt;
-    &lt;hintset pointTag="iv05"&gt;
-      &lt;hstem pos="-212" width="52" /&gt;
-      &lt;hstem pos="0" width="91" /&gt;
-      &lt;hstem pos="188" width="48" /&gt;
-      &lt;hstem pos="482" width="48" /&gt;
-      &lt;vstem pos="80" width="70" /&gt;
-      &lt;vstem pos="447" width="79" /&gt;
-    &lt;/hintset&gt;
-    &lt;hintset pointTag="sv03"&gt;
-      &lt;hstem pos="-212" width="52" /&gt;
-      &lt;hstem pos="0" width="91" /&gt;
-      &lt;hstem pos="188" width="48" /&gt;
-      &lt;hstem pos="482" width="48" /&gt;
-      &lt;vstem pos="66" width="100" /&gt;
-      &lt;vstem pos="447" width="79" /&gt;
-    &lt;/hintset&gt;
-    &lt;hintset pointTag="hr03"&gt;
-      &lt;hstem pos="-212" width="52" /&gt;
-      &lt;hstem pos="0" width="91" /&gt;
-      &lt;hstem pos="188" width="48" /&gt;
-      &lt;hstem pos="482" width="48" /&gt;
-      &lt;vstem pos="80" width="70" /&gt;
-      &lt;vstem pos="447" width="79" /&gt;
-    &lt;/hintset&gt;
-    &lt;hintset pointTag="hr04"&gt;
-      &lt;hstem pos="-212" width="52" /&gt;
-      &lt;hstem pos="-212" width="52" /&gt;
-      &lt;hstem pos="-212" width="52" /&gt;
-      &lt;hstem pos="-212" width="52" /&gt;
-      &lt;hstem pos="-212" width="52" /&gt;
-      &lt;hstem pos="0" width="91" /&gt;
-      &lt;hstem pos="0" width="91" /&gt;
-      &lt;hstem pos="0" width="91" /&gt;
-      &lt;hstem pos="0" width="91" /&gt;
-      &lt;hstem pos="0" width="91" /&gt;
-      &lt;hstem pos="188" width="48" /&gt;
-      &lt;hstem pos="188" width="48" /&gt;
-      &lt;hstem pos="188" width="48" /&gt;
-      &lt;hstem pos="188" width="48" /&gt;
-      &lt;hstem pos="188" width="48" /&gt;
-      &lt;hstem pos="467" width="51" /&gt;
-      &lt;hstem pos="482" width="48" /&gt;
-      &lt;hstem pos="482" width="48" /&gt;
-      &lt;hstem pos="482" width="48" /&gt;
-      &lt;hstem pos="482" width="48" /&gt;
-      &lt;vstem pos="39" width="83" /&gt;
-      &lt;vstem pos="39" width="83" /&gt;
-      &lt;vstem pos="39" width="83" /&gt;
-      &lt;vstem pos="66" width="100" /&gt;
-      &lt;vstem pos="80" width="70" /&gt;
-      &lt;vstem pos="372" width="100" /&gt;
-      &lt;vstem pos="372" width="100" /&gt;
-      &lt;vstem pos="447" width="79" /&gt;
-      &lt;vstem pos="447" width="79" /&gt;
-      &lt;vstem pos="447" width="79" /&gt;
-    &lt;/hintset&gt;
-  &lt;/hintSetList&gt;
-</string>
+			<dict>
+				<key>hintSetList</key>
+				<array>
+					<dict>
+						<key>pointTag</key>
+						<string>iv05</string>
+						<key>stems</key>
+						<array>
+							<string>hstem -212 52</string>
+							<string>hstem 0 91</string>
+							<string>hstem 188 48</string>
+							<string>hstem 482 48</string>
+							<string>vstem 80 70</string>
+							<string>vstem 447 79</string>
+						</array>
+					</dict>
+					<dict>
+						<key>pointTag</key>
+						<string>sv03</string>
+						<key>stems</key>
+						<array>
+							<string>hstem -212 52</string>
+							<string>hstem 0 91</string>
+							<string>hstem 188 48</string>
+							<string>hstem 482 48</string>
+							<string>vstem 66 100</string>
+							<string>vstem 447 79</string>
+						</array>
+					</dict>
+					<dict>
+						<key>pointTag</key>
+						<string>hr03</string>
+						<key>stems</key>
+						<array>
+							<string>hstem -212 52</string>
+							<string>hstem 0 91</string>
+							<string>hstem 188 48</string>
+							<string>hstem 482 48</string>
+							<string>vstem 80 70</string>
+							<string>vstem 447 79</string>
+						</array>
+					</dict>
+					<dict>
+						<key>pointTag</key>
+						<string>hr04</string>
+						<key>stems</key>
+						<array>
+							<string>hstem -212 52</string>
+							<string>hstem -212 52</string>
+							<string>hstem -212 52</string>
+							<string>hstem -212 52</string>
+							<string>hstem -212 52</string>
+							<string>hstem 0 91</string>
+							<string>hstem 0 91</string>
+							<string>hstem 0 91</string>
+							<string>hstem 0 91</string>
+							<string>hstem 0 91</string>
+							<string>hstem 188 48</string>
+							<string>hstem 188 48</string>
+							<string>hstem 188 48</string>
+							<string>hstem 188 48</string>
+							<string>hstem 188 48</string>
+							<string>hstem 467 51</string>
+							<string>hstem 482 48</string>
+							<string>hstem 482 48</string>
+							<string>hstem 482 48</string>
+							<string>hstem 482 48</string>
+							<string>vstem 39 83</string>
+							<string>vstem 39 83</string>
+							<string>vstem 39 83</string>
+							<string>vstem 66 100</string>
+							<string>vstem 80 70</string>
+							<string>vstem 372 100</string>
+							<string>vstem 372 100</string>
+							<string>vstem 447 79</string>
+							<string>vstem 447 79</string>
+							<string>vstem 447 79</string>
+						</array>
+					</dict>
+				</array>
+			</dict>
 			<key>com.fontlab.ttprogram</key>
 			<string>  &lt;ttProgram&gt;
     &lt;ttc code="alignt" point="at01" zone="xheight"/&gt;

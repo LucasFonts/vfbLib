@@ -79,31 +79,38 @@
 	<lib>
 		<dict>
 			<key>com.adobe.type.autohint</key>
-			<string>  &lt;hintSetList&gt;
-    &lt;hintset pointTag="sv03"&gt;
-      &lt;hstem pos="-206" width="41" /&gt;
-      &lt;hstem pos="-206" width="41" /&gt;
-      &lt;hstem pos="-206" width="41" /&gt;
-      &lt;hstem pos="-206" width="41" /&gt;
-      &lt;hstem pos="-12" width="64" /&gt;
-      &lt;hstem pos="-12" width="64" /&gt;
-      &lt;hstem pos="-12" width="64" /&gt;
-      &lt;hstem pos="-10" width="57" /&gt;
-      &lt;hstem pos="466" width="64" /&gt;
-      &lt;hstem pos="466" width="64" /&gt;
-      &lt;hstem pos="466" width="64" /&gt;
-      &lt;hstem pos="518" width="-20" /&gt;
-      &lt;vstem pos="48" width="103" /&gt;
-      &lt;vstem pos="48" width="103" /&gt;
-      &lt;vstem pos="48" width="103" /&gt;
-      &lt;vstem pos="48" width="103" /&gt;
-      &lt;vstem pos="405" width="74" /&gt;
-      &lt;vstem pos="412" width="96" /&gt;
-      &lt;vstem pos="412" width="96" /&gt;
-      &lt;vstem pos="412" width="96" /&gt;
-    &lt;/hintset&gt;
-  &lt;/hintSetList&gt;
-</string>
+			<dict>
+				<key>hintSetList</key>
+				<array>
+					<dict>
+						<key>pointTag</key>
+						<string>sv03</string>
+						<key>stems</key>
+						<array>
+							<string>hstem -206 41</string>
+							<string>hstem -206 41</string>
+							<string>hstem -206 41</string>
+							<string>hstem -206 41</string>
+							<string>hstem -12 64</string>
+							<string>hstem -12 64</string>
+							<string>hstem -12 64</string>
+							<string>hstem -10 57</string>
+							<string>hstem 466 64</string>
+							<string>hstem 466 64</string>
+							<string>hstem 466 64</string>
+							<string>hstem 518 -20</string>
+							<string>vstem 48 103</string>
+							<string>vstem 48 103</string>
+							<string>vstem 48 103</string>
+							<string>vstem 48 103</string>
+							<string>vstem 405 74</string>
+							<string>vstem 412 96</string>
+							<string>vstem 412 96</string>
+							<string>vstem 412 96</string>
+						</array>
+					</dict>
+				</array>
+			</dict>
 			<key>com.fontlab.ttprogram</key>
 			<string>  &lt;ttProgram&gt;
     &lt;ttc code="alignt" point="at01" zone="xheight"/&gt;

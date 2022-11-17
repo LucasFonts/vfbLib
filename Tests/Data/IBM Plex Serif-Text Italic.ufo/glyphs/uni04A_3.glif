@@ -53,21 +53,28 @@
 	<lib>
 		<dict>
 			<key>com.adobe.type.autohint</key>
-			<string>  &lt;hintSetList&gt;
-    &lt;hintset pointTag="hr01"&gt;
-      &lt;hstem pos="-186" width="29" /&gt;
-      &lt;hstem pos="-186" width="29" /&gt;
-      &lt;hstem pos="-12" width="69" /&gt;
-      &lt;hstem pos="21" width="-21" /&gt;
-      &lt;hstem pos="241" width="49" /&gt;
-      &lt;hstem pos="241" width="49" /&gt;
-      &lt;hstem pos="450" width="80" /&gt;
-      &lt;hstem pos="518" width="-20" /&gt;
-      &lt;vstem pos="326" width="89" /&gt;
-      &lt;vstem pos="326" width="89" /&gt;
-    &lt;/hintset&gt;
-  &lt;/hintSetList&gt;
-</string>
+			<dict>
+				<key>hintSetList</key>
+				<array>
+					<dict>
+						<key>pointTag</key>
+						<string>hr01</string>
+						<key>stems</key>
+						<array>
+							<string>hstem -186 29</string>
+							<string>hstem -186 29</string>
+							<string>hstem -12 69</string>
+							<string>hstem 21 -21</string>
+							<string>hstem 241 49</string>
+							<string>hstem 241 49</string>
+							<string>hstem 450 80</string>
+							<string>hstem 518 -20</string>
+							<string>vstem 326 89</string>
+							<string>vstem 326 89</string>
+						</array>
+					</dict>
+				</array>
+			</dict>
 			<key>com.fontlab.ttprogram</key>
 			<string>  &lt;ttProgram&gt;
     &lt;ttc code="alignt" point="at01" zone="xheight"/&gt;
