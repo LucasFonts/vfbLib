@@ -20,8 +20,8 @@ from vfbLib.parsers.glyph import (
     MaskParser,
 )
 from vfbLib.parsers.guides import (
-    GlobalGuidePropertiesParser,
     GlobalGuidesParser,
+    GuidePropertiesParser,
 )
 from vfbLib.parsers.mm import AxisMappingsParser, PrimaryInstancesParser
 from vfbLib.parsers.numeric import (
@@ -113,7 +113,7 @@ parser_classes = {
     1278: ("hhea_ascender", SignedIntParser),
     1279: ("hhea_descender", SignedIntParser),
     1294: ("Global Guides", GlobalGuidesParser),
-    1296: ("Global Guide Properties", GlobalGuidePropertiesParser),
+    1296: ("Global Guide Properties", GuidePropertiesParser),
     1500: ("Encoding", GlyphEncodingParser),
     1501: ("Encoding Mac", GlyphEncodingParser),
     1502: ("1502", BaseParser),
@@ -153,7 +153,7 @@ parser_classes = {
     2026: ("OpenType Class Flags", BaseParser),
     2027: ("Glyph Origin", GlyphOriginParser),
     2029: ("Glyph Anchors MM", GlyphAnchorsParser),  # MM-compatible
-    2031: ("2031", EncodedValueListParser),  # Glyph
+    2031: ("Glyph Guide Properties ", GuidePropertiesParser),
     2032: ("2032", IntParser),
 }
 

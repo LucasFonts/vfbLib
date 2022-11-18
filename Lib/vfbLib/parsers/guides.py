@@ -27,7 +27,7 @@ class GlobalGuidesParser(BaseParser):
         return guides
 
 
-class GlobalGuidePropertiesParser(BaseParser):
+class GuidePropertiesParser(BaseParser):
     @classmethod
     def _parse(cls) -> List:
         stream = cls.stream
