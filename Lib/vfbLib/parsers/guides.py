@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from typing import List
+from math import atan2, degrees
 from vfbLib.parsers import BaseParser, read_encoded_value
 
 
@@ -12,10 +13,10 @@ def parse_guides(stream, num_masters) -> List:
     }
     for d in "hv":
         num_guides = read_encoded_value(stream)
-        for i in range(num_guides):
+        for _ in range(num_guides):
             for m in range(num_masters):
                 pos = read_encoded_value(stream)
-                angle = read_encoded_value(stream)
+                angle = degrees(atan2(read_encoded_value(stream), 10000))
                 guides[d][m].append(dict(pos=pos, angle=angle))
 
     return guides

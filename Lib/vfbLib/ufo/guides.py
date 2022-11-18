@@ -10,12 +10,21 @@ def get_master_guides(
     guides = []
     for d in "hv":
         for master_guide in mm_guides[d][master_index]:
-            coord = "y" if d == "h" else "x"
-            other = "y" if d == "v" else "x"
-            guide = {coord: master_guide["pos"], other: 0}
+            if d == "h":
+                guide = {
+                    "x": 0,
+                    "y": master_guide["pos"],
+                }
+            else:
+                guide = {
+                    "x": master_guide["pos"],
+                    "y": 0,
+                }
             angle = master_guide["angle"]
-            if angle:
-                guide["angle"] = angle
+            if angle == 0:
+                if d == "v":
+                    angle = 90
+            guide["angle"] = angle
             guides.append(guide)
     return guides
 
