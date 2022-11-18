@@ -71,8 +71,8 @@
 	<anchor name="top" x="263" y="540"/>
 	<anchor name="bottomright" x="499" y="0"/>
 	<anchor name="bottom" x="243" y="0"/>
-	<guideline x="263" y="0" angle="90"/>
-	<guideline x="499" y="0" angle="90"/>
+	<guideline x="-74" y="0" angle="45"/>
+	<guideline name="lol" x="499" y="0" angle="90"/>
 	<guideline x="243" y="0" angle="90"/>
 	<lib>
 		<dict>

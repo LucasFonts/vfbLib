@@ -14,6 +14,24 @@
 		<string>IBM Plex Serif</string>
 		<key>guidelines</key>
 		<array>
+			<dict>
+				<key>angle</key>
+				<integer>0</integer>
+				<key>name</key>
+				<string>hjk</string>
+				<key>x</key>
+				<integer>0</integer>
+				<key>y</key>
+				<integer>295</integer>
+			</dict>
+			<dict>
+				<key>angle</key>
+				<integer>90</integer>
+				<key>x</key>
+				<integer>32</integer>
+				<key>y</key>
+				<integer>0</integer>
+			</dict>
 		</array>
 		<key>italicAngle</key>
 		<integer>0</integer>
