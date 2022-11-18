@@ -290,10 +290,13 @@ class GlyphParser(BaseParser):
                 yrel = read_encoded_value(stream)
                 x[m] += xrel
                 y[m] += yrel
-                points[m].append(dict(
-                    x=x[m], y=y[m],
-                    # xr=xrel, yr=yrel
-                ))
+                points[m].append(
+                    dict(
+                        x=x[m],
+                        y=y[m],
+                        # xr=xrel, yr=yrel
+                    )
+                )
 
             if cmd == 3:  # Curve
                 for m in range(num_masters):
@@ -302,20 +305,26 @@ class GlyphParser(BaseParser):
                     yrel = read_encoded_value(stream)
                     x[m] += xrel
                     y[m] += yrel
-                    points[m].append(dict(
-                        x=x[m], y=y[m],
-                        # xr=xrel, yr=yrel
-                    ))
+                    points[m].append(
+                        dict(
+                            x=x[m],
+                            y=y[m],
+                            # xr=xrel, yr=yrel
+                        )
+                    )
                 for m in range(num_masters):
                     # Second control point
                     xrel = read_encoded_value(stream)
                     yrel = read_encoded_value(stream)
                     x[m] += xrel
                     y[m] += yrel
-                    points[m].append(dict(
-                        x=x[m], y=y[m],
-                        # xr=xrel, yr=yrel
-                    ))
+                    points[m].append(
+                        dict(
+                            x=x[m],
+                            y=y[m],
+                            # xr=xrel, yr=yrel
+                        )
+                    )
 
             segment["points"] = points
             segments.append(segment)
