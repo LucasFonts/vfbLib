@@ -728,9 +728,9 @@ class VfbToUfoWriter:
             guide = guides[prop["index"]]
             if "color" in prop:
                 color = prop["color"]
-                r = int(color[1:3], 16) / 0xff
-                g = int(color[3:5], 16) / 0xff
-                b = int(color[5:7], 16) / 0xff
+                r = int(color[1:3], 16) / 0xFF
+                g = int(color[3:5], 16) / 0xFF
+                b = int(color[5:7], 16) / 0xFF
                 guide["color"] = f"{r:0.4f},{g:0.4f},{b:0.4f},1"
             if "name" in prop:
                 guide["name"] = prop["name"]
