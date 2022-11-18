@@ -1,4 +1,5 @@
-from io import BytesIO
+from __future__ import annotations
+
 from vfbLib.parsers import BaseParser, read_encoded_value
 
 

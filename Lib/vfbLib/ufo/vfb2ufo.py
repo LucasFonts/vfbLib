@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 TT_LIB_KEY = "com.fontlab.v2.tth"
 TT_GLYPH_LIB_KEY = "com.fontlab.ttprogram"
 PS_GLYPH_LIB_KEY = "com.adobe.type.autohint"

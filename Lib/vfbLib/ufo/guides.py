@@ -1,8 +1,11 @@
 from __future__ import annotations
+
 from typing import Dict, List
 
 
-def get_master_guides(mm_guides: Dict[str, List], master_index: int) -> List:
+def get_master_guides(
+    mm_guides: Dict[str, List], master_index: int
+) -> List[Dict[str, int | str]]:
     # Concatenate guidlines for both directions and extract coords for master_index
     guides = []
     for d in "hv":

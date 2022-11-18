@@ -1,5 +1,6 @@
+from __future__ import annotations
+
 from vfbLib.parsers import BaseParser
-from struct import unpack
 
 
 class PostScriptInfoParser(BaseParser):

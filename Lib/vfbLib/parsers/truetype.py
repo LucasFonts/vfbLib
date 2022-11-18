@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from io import BytesIO
 from typing import Dict, List
 from vfbLib.parsers import BaseParser, read_encoded_value

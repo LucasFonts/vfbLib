@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 TT_COMMANDS = {
     0x01: {"name": "AlignTop", "params": ["pt", "zone"]},
     0x02: {"name": "AlignBottom", "params": ["pt", "zone"]},

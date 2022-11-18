@@ -1,3 +1,4 @@
+from __future__ import annotations
 
 from io import BufferedReader
 from vfbLib.parsers import BaseParser, read_encoded_value

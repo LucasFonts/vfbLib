@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from fontTools.misc.textTools import hexStr
 from io import BufferedReader
 from pathlib import Path

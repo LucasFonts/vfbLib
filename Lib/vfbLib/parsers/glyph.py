@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from fontTools.misc.textTools import hexStr
 from fontTools.ttLib.tables.ttProgram import Program
 from io import BytesIO
