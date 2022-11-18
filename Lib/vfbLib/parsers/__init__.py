@@ -65,6 +65,14 @@ def read_encoded_value(stream: BufferedReader | BytesIO, debug=False, signed=Tru
     raise ValueError
 
 
+def read_double(num, stream):
+    return unpack(num * "d", stream.read(num * 8))
+
+
+def read_float(num, stream):
+    return unpack(num * "f", stream.read(num * 4))
+
+
 class BaseParser:
     """
     Base class to read data from a vfb file
@@ -84,13 +92,13 @@ class BaseParser:
     def read_double(cls, num, stream=None):
         if stream is None:
             stream = cls.stream
-        return unpack(num * "d", cls.stream.read(num * 8))
+        return read_double(num, stream)
     
     @classmethod
     def read_float(cls, num, stream=None):
         if stream is None:
             stream = cls.stream
-        return unpack(num * "f", cls.stream.read(num * 4))
+        return read_float(num, stream)
     
     @classmethod
     def read_int16(cls, stream=None) -> int:
