@@ -267,6 +267,9 @@ class VfbToUfoWriter:
             self.build_tt_glyph_hints(g, data["tth"])
 
         # MM Stuff, need to extract later
+        if "guides" in data:
+            g.mm_guides = data["guides"]
+
         if "hints" in data:
             g.mm_hints = data["hints"]
 
@@ -882,6 +885,13 @@ class VfbToUfoWriter:
                 # master_hints = self.get_master_hints(master_index=i)
                 # if master_hints:
                 #     self.build_ps_glyph_hints(g, master_hints)
+
+                if hasattr(self.current_mmglyph, "mm_guides"):
+                    master_guides = get_master_guides(
+                        self.current_mmglyph.mm_guides, i
+                    )
+                    if master_guides:
+                        g.guidelines = master_guides
 
                 g.unicodes = self.current_mmglyph.unicodes
                 g.width, g.height = self.current_mmglyph.mm_metrics[i]
