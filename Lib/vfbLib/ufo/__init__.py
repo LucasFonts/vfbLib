@@ -597,7 +597,7 @@ class VfbToUfoWriter:
                 self.num_other_blues = data
             elif name == "Family Blues Count":
                 self.num_family_blues = data
-            elif name == "Family_Other Blues Count":
+            elif name == "Family Other Blues Count":
                 self.num_family_other_blues = data
             elif name == "StemSnapH Count":
                 self.num_stem_snap_h = data
