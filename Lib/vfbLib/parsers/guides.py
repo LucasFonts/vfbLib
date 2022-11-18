@@ -2,23 +2,28 @@ from typing import List
 from vfbLib.parsers import BaseParser, read_encoded_value
 
 
+def parse_guides(stream, num_masters) -> List:
+    # Common parser for glyph and global guides
+    guides = {
+        "h": [[] for _ in range(num_masters)],
+        "v": [[] for _ in range(num_masters)],
+    }
+    for d in "hv":
+        num_guides = read_encoded_value(stream)
+        for i in range(num_guides):
+            for m in range(num_masters):
+                pos = read_encoded_value(stream)
+                angle = read_encoded_value(stream)
+                guides[d][m].append(dict(pos=pos, angle=angle))
+
+    return guides
+
+
 class GlobalGuidesParser(BaseParser):
     @classmethod
     def _parse(cls) -> List:
-        stream = cls.stream
-        guides = {
-            "h": [[] for _ in range(cls.master_count)],
-            "v": [[] for _ in range(cls.master_count)],
-        }
-        for d in "hv":
-            num_guides = read_encoded_value(stream)
-            for i in range(num_guides):
-                for m in range(cls.master_count):
-                    pos = read_encoded_value(stream)
-                    angle = read_encoded_value(stream)
-                    guides[d][m].append(dict(pos=pos, angle=angle))
-
-        assert stream.read() == b""
+        guides = parse_guides(cls.stream, cls.master_count)
+        assert cls.stream.read() == b""
         return guides
 
 

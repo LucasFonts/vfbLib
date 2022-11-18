@@ -4,6 +4,7 @@ from io import BytesIO
 from struct import unpack
 from typing import Any, Dict, List
 from vfbLib.parsers import BaseParser, read_encoded_value
+from vfbLib.parsers.guides import parse_guides
 from vfbLib.truetype import TT_COMMANDS
 
 
@@ -111,31 +112,12 @@ class GlyphOriginParser(BaseParser):
 
 class GlyphParser(BaseParser):
     @classmethod
-    def parse_anchors(
+    def parse_guides(
         cls, stream: BytesIO, glyphdata: Dict, num_masters=1
     ) -> None:
-        anchors = []
-        num = read_encoded_value(stream)
-        for i in range(num):
-            master_anchors = []
-            for m in range(num_masters):
-                x = read_encoded_value(stream)
-                y = read_encoded_value(stream)
-                master_anchors.append({"x": x, "y": y})
-            anchors.append(master_anchors)
-
-        # Again?
-        num = read_encoded_value(stream)
-        for i in range(num):
-            master_anchors = []
-            for m in range(num_masters):
-                x = read_encoded_value(stream)
-                y = read_encoded_value(stream)
-                master_anchors.append({"x": x, "y": y})
-            anchors.append(master_anchors)
-
-        if anchors:
-            glyphdata["anchors"] = anchors
+        guides = parse_guides(stream, num_masters)
+        if guides:
+            glyphdata["guides"] = guides
 
     @classmethod
     def parse_binary(cls, stream: BytesIO, glyphdata: Dict) -> None:
@@ -405,8 +387,8 @@ class GlyphParser(BaseParser):
                 cls.parse_hints(s, glyphdata, num_masters)
 
             elif v == 0x04:
-                # Anchors
-                cls.parse_anchors(s, glyphdata, num_masters)
+                # Guides
+                cls.parse_guides(s, glyphdata, num_masters)
 
             elif v == 0x05:
                 # Components
