@@ -414,7 +414,7 @@ class VfbToUfoWriter:
             "stem",
             "zone",
             "align",
-            "shift",
+            "delta",
             "ppm1",
             "ppm2",
         ):
@@ -476,6 +476,19 @@ class VfbToUfoWriter:
                     align = params["align"]
                     if align > -1:
                         d["align"] = vfb2ufo_alignment_rev[align]
+            elif code in (
+                "MDeltaH",
+                "MDeltaV",
+                "FDeltaH",
+                "FDeltaV",
+            ):
+                d["point"] = glyph.get_point_label(params["pt"], code)
+                d["delta"] = params["shift"]
+                d["ppm1"] = params["ppm1"]
+                d["ppm2"] = params["ppm2"]
+            else:
+                print(f"Unknown TT command: {code}")
+
             tth.append(self.make_tt_cmd(d))
 
         glyph.lib[TT_GLYPH_LIB_KEY] = (
