@@ -733,11 +733,13 @@ class VfbToUfoWriter:
                 setattr(self.info, v, value[:num_values])
 
         # Guides
-        guides = get_master_guides(self.mm_guides, master_index)
-        apply_guide_properties(guides, self.guide_properties)
+        if hasattr(self, "mm_guides"):
+            guides = get_master_guides(self.mm_guides, master_index)
+            apply_guide_properties(guides, self.guide_properties)
 
-        if guides:
-            self.info.guidelines = guides
+            if guides:
+                self.info.guidelines = guides
+
         return self.info
 
     def get_master_kerning(self, master_index=0):
