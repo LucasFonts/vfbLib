@@ -7,6 +7,7 @@ from pathlib import Path
 from shutil import rmtree
 from typing import TYPE_CHECKING, Any, Dict, List, Tuple
 from ufonormalizer import normalizeUFO
+from vfbLib.ufo.guides import get_master_guides
 from vfbLib.ufo.vfb2ufo import (
     PS_GLYPH_LIB_KEY,
     TT_GLYPH_LIB_KEY,
@@ -713,16 +714,8 @@ class VfbToUfoWriter:
                 setattr(self.info, v, value[:num_values])
 
         # Guides
-        guides = []
-        # Concatenate guidlines for both directions
-        for d in "hv":
-            for master_guide in self.mm_guides[d][master_index]:
-                coord = "y" if d == "h" else "x"
-                guide = {coord: master_guide["pos"]}
-                angle = master_guide["angle"]
-                if angle:
-                    guide["angle"] = angle
-                guides.append(guide)
+        guides = get_master_guides(self.mm_guides, master_index)
+
         # Apply names and colors from guide properties
         for prop in self.guide_properties:
             guide = guides[prop["index"]]
