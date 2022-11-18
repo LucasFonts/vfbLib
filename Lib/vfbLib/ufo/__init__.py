@@ -711,11 +711,32 @@ class VfbToUfoWriter:
             value = self.masters_ps_info[master_index].get(k, None)
             if value is not None:
                 setattr(self.info, v, value[:num_values])
-        
-        # TODO: Guides
-        print(self.mm_guides)
-        print(self.guide_properties)
 
+        # Guides
+        guides = []
+        # Concatenate guidlines for both directions
+        for d in "hv":
+            for master_guide in self.mm_guides[d][master_index]:
+                coord = "y" if d == "h" else "x"
+                guide = {coord: master_guide["pos"]}
+                angle = master_guide["angle"]
+                if angle:
+                    guide["angle"] = angle
+                guides.append(guide)
+        # Apply names and colors from guide properties
+        for prop in self.guide_properties:
+            guide = guides[prop["index"]]
+            if "color" in prop:
+                color = prop["color"]
+                r = int(color[1:3], 16) / 0xff
+                g = int(color[3:5], 16) / 0xff
+                b = int(color[5:7], 16) / 0xff
+                guide["color"] = f"{r:0.4f},{g:0.4f},{b:0.4f},1"
+            if "name" in prop:
+                guide["name"] = prop["name"]
+
+        if guides:
+            self.info.guidelines = guides
         return self.info
 
     def get_master_kerning(self, master_index=0):
