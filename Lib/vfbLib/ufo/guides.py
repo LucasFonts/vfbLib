@@ -21,9 +21,12 @@ def get_master_guides(
                     "y": 0,
                 }
             angle = master_guide["angle"]
-            if angle == 0:
-                if d == "v":
-                    angle = 90
+            if d == "v":
+                angle = 90 - angle
+            if angle < 0:
+                angle +=360
+            if angle > 360:
+                angle -= 360
             guide["angle"] = angle
             guides.append(guide)
     return guides
