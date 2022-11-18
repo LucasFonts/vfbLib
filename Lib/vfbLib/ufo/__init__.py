@@ -82,7 +82,7 @@ class VfbToUfoGlyph:
         return label
 
     def set_mark(self, hue):
-        self.lib["public.markColor"] = "%f,%f,%f,1" % hls_to_rgb(
+        self.lib["public.markColor"] = "%0.4f,%0.4f,%0.4f,1" % hls_to_rgb(
             h=hue / 255, l=0.8, s=0.76
         )
 
