@@ -761,6 +761,7 @@ class VfbToUfoWriter:
                 # Nodes for the current master
                 nodes = n["points"][master_index]
                 segment_type = n["type"]
+                flags = n["flags"]
 
                 # print("****", segment_type, nodes)
 
@@ -772,7 +773,7 @@ class VfbToUfoWriter:
                         effective_type = "line"
 
                     contour.append(
-                        [effective_type, (nodes[0]["x"], nodes[0]["y"])]
+                        [effective_type, flags, (nodes[0]["x"], nodes[0]["y"])]
                     )
                     last_type = segment_type
 
@@ -785,19 +786,19 @@ class VfbToUfoWriter:
                         elif last_type == "qcurve":
                             contour[0][0] = "qcurve"
                         contours.append(contour)
-                    contour = [["move", (nodes[0]["x"], nodes[0]["y"])]]
+                    contour = [["move", flags, (nodes[0]["x"], nodes[0]["y"])]]
                     qcurve = False
 
                 elif segment_type == "curve":
                     pt3, pt1, pt2 = nodes
-                    contour.append([None, (pt1["x"], pt1["y"])])
-                    contour.append([None, (pt2["x"], pt2["y"])])
-                    contour.append(["curve", (pt3["x"], pt3["y"])])
+                    contour.append([None, flags, (pt1["x"], pt1["y"])])
+                    contour.append([None, flags, (pt2["x"], pt2["y"])])
+                    contour.append(["curve", flags, (pt3["x"], pt3["y"])])
                     qcurve = False
 
                 elif segment_type == "qcurve":
                     qcurve = True
-                    contour.append([None, (nodes[0]["x"], nodes[0]["y"])])
+                    contour.append([None, flags, (nodes[0]["x"], nodes[0]["y"])])
                     last_type = segment_type
 
             if contour is not None:
@@ -839,9 +840,13 @@ class VfbToUfoWriter:
         i = 0
         for contour in contours:
             pen.beginPath()
-            for segment_type, pt in contour:
+            for segment_type, flags, pt in contour:
                 label = self.current_mmglyph.point_labels.get(i, None)
-                pen.addPoint(pt, segment_type, name=label)
+                if segment_type in ("move", "curve", "line"):
+                    smooth = bool(flags & 1)
+                else:
+                    smooth = False
+                pen.addPoint(pt, segment_type, name=label, smooth=smooth)
                 i += 1
             pen.endPath()
 
