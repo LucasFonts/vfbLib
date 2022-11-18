@@ -21,7 +21,7 @@ def apply_guide_properties(
 ) -> None:
     # Update the guides with names and colors from properties
     for prop in properties:
-        guide = guides[prop["index"]]
+        guide = guides[prop["index"] - 1]  # index is 1-based
         if "color" in prop:
             color = prop["color"]
             r = int(color[1:3], 16) / 0xFF
