@@ -90,6 +90,19 @@ def normalize_ufo(
                 if guides:
                     glyph.guidelines = guides
                 del glyph.lib[RF_GUIDES_KEY]
+        
+        # Update Global Guides to UFO standard
+        if RF_GUIDES_KEY in f.lib:
+            guides = []
+            for guide in f.lib[RF_GUIDES_KEY]:
+                isGlobal = guide["isGlobal"]
+                del guide["isGlobal"]
+                del guide["magnetic"]
+                assert isGlobal
+                guides.append(guide)
+            if guides:
+                f.guidelines = guides
+            del f.lib[RF_GUIDES_KEY]
 
         if structure == "zip":
             if not filepath.suffix == ".ufoz":
