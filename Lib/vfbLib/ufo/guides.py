@@ -11,7 +11,8 @@ def get_master_guides(
     for d in "hv":
         for master_guide in mm_guides[d][master_index]:
             coord = "y" if d == "h" else "x"
-            guide = {coord: master_guide["pos"]}
+            other = "y" if d == "v" else "x"
+            guide = {coord: master_guide["pos"], other: 0}
             angle = master_guide["angle"]
             if angle:
                 guide["angle"] = angle
