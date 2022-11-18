@@ -153,7 +153,7 @@ parser_classes = {
     2026: ("OpenType Class Flags", BaseParser),
     2027: ("Glyph Origin", GlyphOriginParser),
     2029: ("Glyph Anchors MM", GlyphAnchorsParser),  # MM-compatible
-    2031: ("Glyph Guide Properties ", GuidePropertiesParser),
+    2031: ("Glyph Guide Properties", GuidePropertiesParser),
     2032: ("2032", IntParser),
 }
 

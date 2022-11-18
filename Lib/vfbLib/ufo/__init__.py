@@ -7,7 +7,7 @@ from pathlib import Path
 from shutil import rmtree
 from typing import TYPE_CHECKING, Any, Dict, List, Tuple
 from ufonormalizer import normalizeUFO
-from vfbLib.ufo.guides import get_master_guides
+from vfbLib.ufo.guides import apply_guide_properties, get_master_guides
 from vfbLib.ufo.vfb2ufo import (
     PS_GLYPH_LIB_KEY,
     TT_GLYPH_LIB_KEY,
@@ -65,6 +65,7 @@ class VfbToUfoGlyph:
         self.labels: Dict[str, int] = {}
         self.point_labels: Dict[int, str] = {}
         self.mm_hints = {"h": [], "v": []}
+        self.guide_properties = []
 
     def get_point_label(self, index: int, code: str) -> str:
         if index in self.point_labels:
@@ -660,6 +661,8 @@ class VfbToUfoWriter:
                 pass
             elif name == "Glyph Anchors MM":
                 self.current_glyph.mm_anchors = data
+            elif name == "Glyph Guide Properties":
+                self.current_glyph.guide_properties = data
             else:
                 pass
                 # print(f"Unhandled key: {name}")
@@ -718,18 +721,7 @@ class VfbToUfoWriter:
 
         # Guides
         guides = get_master_guides(self.mm_guides, master_index)
-
-        # Apply names and colors from guide properties
-        for prop in self.guide_properties:
-            guide = guides[prop["index"]]
-            if "color" in prop:
-                color = prop["color"]
-                r = int(color[1:3], 16) / 0xFF
-                g = int(color[3:5], 16) / 0xFF
-                b = int(color[5:7], 16) / 0xFF
-                guide["color"] = f"{r:0.4f},{g:0.4f},{b:0.4f},1"
-            if "name" in prop:
-                guide["name"] = prop["name"]
+        apply_guide_properties(guides, self.guide_properties)
 
         if guides:
             self.info.guidelines = guides
@@ -889,6 +881,9 @@ class VfbToUfoWriter:
                 if hasattr(self.current_mmglyph, "mm_guides"):
                     master_guides = get_master_guides(
                         self.current_mmglyph.mm_guides, i
+                    )
+                    apply_guide_properties(
+                        master_guides, self.current_mmglyph.guide_properties
                     )
                     if master_guides:
                         g.guidelines = master_guides
