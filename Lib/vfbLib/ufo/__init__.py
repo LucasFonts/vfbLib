@@ -8,7 +8,7 @@ from shutil import rmtree
 from typing import TYPE_CHECKING, Any, Dict, List, Tuple
 from ufonormalizer import normalizeUFO
 from vfbLib.ufo.guides import apply_guide_properties, get_master_guides
-from vfbLib.ufo.paths import get_master_glyph
+from vfbLib.ufo.paths import draw_glyph, get_master_glyph
 from vfbLib.ufo.vfb2ufo import (
     PS_GLYPH_LIB_KEY,
     TT_GLYPH_LIB_KEY,
@@ -760,22 +760,7 @@ class VfbToUfoWriter:
         contours, components = get_master_glyph(
             self.current_mmglyph, self.glyphOrder, self.master_index
         )
-
-        i = 0
-        for contour in contours:
-            pen.beginPath()
-            for segment_type, flags, pt in contour:
-                label = self.current_mmglyph.point_labels.get(i, None)
-                if segment_type in ("move", "curve", "line"):
-                    smooth = bool(flags & 1)
-                else:
-                    smooth = False
-                pen.addPoint(pt, segment_type, name=label, smooth=smooth)
-                i += 1
-            pen.endPath()
-
-        for gn, tr in components:
-            pen.addComponent(glyphName=gn, transformation=tr)
+        draw_glyph(self.current_mmglyph, contours, components, pen)
 
     def write(self, out_path: Path, overwrite=False, silent=False) -> None:
         for i in range(len(self.masters)):
