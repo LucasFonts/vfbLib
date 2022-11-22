@@ -23,6 +23,25 @@ CURVE = 3
 QCURVE = 4
 
 
+def read_absolute_point(
+    points: List[List[Any]],
+    stream,
+    num_masters: int,
+    x_masters: List[int],
+    y_masters: List[int],
+):
+    # Read coordinates for all masters from stream, add the points to a list
+    # of points per master. Keep track of the relative coordinates reference
+    # value in x_masters and y_masters.
+    for m in range(num_masters):
+        # End point
+        xrel = read_encoded_value(stream)
+        yrel = read_encoded_value(stream)
+        x_masters[m] += xrel
+        y_masters[m] += yrel
+        points[m].append((x_masters[m], y_masters[m]))
+
+
 class GlyphAnchorsParser(BaseParser):
     @classmethod
     def _parse(cls) -> List:
@@ -294,60 +313,55 @@ class GlyphParser(BaseParser):
             cmd = byte & 0x0F
 
             if cmd == QCURVE:
-                for m in range(num_masters):
-                    # Offcurve point
-                    xrel = read_encoded_value(stream)
-                    yrel = read_encoded_value(stream)
-                    x[m] += xrel
-                    y[m] += yrel
-                    offcurves[m].append((x[m], y[m]))
+                read_absolute_point(offcurves, stream, num_masters, x, y)
 
             else:
                 if any(offcurves):
+
+                    # Flush offcurves to segment
                     points = [[] for _ in range(num_masters)]
                     for m in range(num_masters):
                         for offcurve in offcurves[m]:
                             points[m].append(offcurve)
 
-                        # End point
-                        xrel = read_encoded_value(stream)
-                        yrel = read_encoded_value(stream)
-                        x[m] += xrel
-                        y[m] += yrel
-                        points[m].append((x[m], y[m]))
-                    
-                    segment = dict(type="qcurve", flags=flags, points=points)
+                    if cmd == MOVE:
+                        # If MOVE, the end point of the offcurves segment is
+                        # implicit. Flush and start a new contour.
+                        segment = dict(
+                            type="qcurve", flags=flags, points=points
+                        )
+                        segments.append(segment)
+                        segment_type = cmd_name[cmd]
+                        points = [[] for _ in range(num_masters)]
+
+                    else:
+                        segment_type = "qcurve"
+
+                    # End point or move point
+                    read_absolute_point(points, stream, num_masters, x, y)
+
+                    segment = dict(
+                        type=segment_type, flags=flags, points=points
+                    )
                     offcurves = [[] for _ in range(num_masters)]
 
                 else:
                     points = [[] for _ in range(num_masters)]
-                    for m in range(num_masters):
-                        # End point
-                        xrel = read_encoded_value(stream)
-                        yrel = read_encoded_value(stream)
-                        x[m] += xrel
-                        y[m] += yrel
-                        points[m].append((x[m], y[m]))
+
+                    # End point
+                    read_absolute_point(points, stream, num_masters, x, y)
 
                     if cmd == CURVE:
 
-                        for m in range(num_masters):
-                            # First control point
-                            xrel = read_encoded_value(stream)
-                            yrel = read_encoded_value(stream)
-                            x[m] += xrel
-                            y[m] += yrel
-                            points[m].append((x[m], y[m]))
+                        # First control point
+                        read_absolute_point(points, stream, num_masters, x, y)
 
-                        for m in range(num_masters):
-                            # Second control point
-                            xrel = read_encoded_value(stream)
-                            yrel = read_encoded_value(stream)
-                            x[m] += xrel
-                            y[m] += yrel
-                            points[m].append((x[m], y[m]))
+                        # Second control point
+                        read_absolute_point(points, stream, num_masters, x, y)
 
-                    segment = dict(type=cmd_name[cmd], flags=flags, points=points)
+                    segment = dict(
+                        type=cmd_name[cmd], flags=flags, points=points
+                    )
 
                 segments.append(segment)
         glyphdata["nodes"] = segments
