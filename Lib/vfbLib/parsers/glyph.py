@@ -312,17 +312,19 @@ class GlyphParser(BaseParser):
             flags = byte >> 4
             cmd = byte & 0x0F
 
+            segment_type = cmd_name[cmd]
+
             if cmd == QCURVE:
                 read_absolute_point(offcurves, stream, num_masters, x, y)
 
             else:
+                points = [[] for _ in range(num_masters)]
                 if any(offcurves):
-
                     # Flush offcurves to segment
-                    points = [[] for _ in range(num_masters)]
                     for m in range(num_masters):
                         for offcurve in offcurves[m]:
                             points[m].append(offcurve)
+                    offcurves = [[] for _ in range(num_masters)]
 
                     if cmd == MOVE:
                         # If MOVE, the end point of the offcurves segment is
@@ -331,37 +333,23 @@ class GlyphParser(BaseParser):
                             type="qcurve", flags=flags, points=points
                         )
                         segments.append(segment)
-                        segment_type = cmd_name[cmd]
                         points = [[] for _ in range(num_masters)]
 
                     else:
                         segment_type = "qcurve"
 
-                    # End point or move point
+                # End point
+                read_absolute_point(points, stream, num_masters, x, y)
+
+                if cmd == CURVE:
+                    # First control point
+                    read_absolute_point(points, stream, num_masters, x, y)
+                    # Second control point
                     read_absolute_point(points, stream, num_masters, x, y)
 
-                    segment = dict(
-                        type=segment_type, flags=flags, points=points
-                    )
-                    offcurves = [[] for _ in range(num_masters)]
-
-                else:
-                    points = [[] for _ in range(num_masters)]
-
-                    # End point
-                    read_absolute_point(points, stream, num_masters, x, y)
-
-                    if cmd == CURVE:
-
-                        # First control point
-                        read_absolute_point(points, stream, num_masters, x, y)
-
-                        # Second control point
-                        read_absolute_point(points, stream, num_masters, x, y)
-
-                    segment = dict(
-                        type=cmd_name[cmd], flags=flags, points=points
-                    )
+                segment = dict(
+                    type=segment_type, flags=flags, points=points
+                )
 
                 segments.append(segment)
         glyphdata["nodes"] = segments
