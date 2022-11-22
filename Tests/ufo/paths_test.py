@@ -154,25 +154,41 @@ open_path_tt = [
     {"type": "qcurve", "flags": 0, "points": [[{"x": 259, "y": 288}]]},
 ]
 
+closed_path_line = [
+    {"type": "move", "flags": 0, "points": [[{"x": 172, "y": 163}]]},
+    {"type": "line", "flags": 0, "points": [[{"x": 395, "y": 163}]]},
+    {"type": "line", "flags": 0, "points": [[{"x": 172, "y": 612}]]},
+    {"type": "move", "flags": 0, "points": [[{"x": 505, "y": 152}]]},
+    {"type": "line", "flags": 0, "points": [[{"x": 589, "y": 152}]]},
+    {"type": "line", "flags": 0, "points": [[{"x": 505, "y": 612}]]},
+    {"type": "move", "flags": 0, "points": [[{"x": 645, "y": 113}]]},
+    {"type": "line", "flags": 0, "points": [[{"x": 740, "y": 113}]]},
+    {"type": "line", "flags": 0, "points": [[{"x": 645, "y": 603}]]},
+]
 
-class OpenPathGlyph:
-    def __init__(self):
-        self.mm_nodes = open_path
+open_path_line = [
+    {"type": "move", "flags": 8, "points": [[{"x": 172, "y": 163}]]},
+    {"type": "line", "flags": 0, "points": [[{"x": 395, "y": 163}]]},
+    {"type": "line", "flags": 0, "points": [[{"x": 172, "y": 612}]]},
+    {"type": "line", "flags": 0, "points": [[{"x": 172, "y": 163}]]},
+    {"type": "move", "flags": 8, "points": [[{"x": 505, "y": 152}]]},
+    {"type": "line", "flags": 0, "points": [[{"x": 589, "y": 152}]]},
+    {"type": "line", "flags": 0, "points": [[{"x": 505, "y": 612}]]},
+    {"type": "line", "flags": 0, "points": [[{"x": 505, "y": 152}]]},
+    {"type": "move", "flags": 0, "points": [[{"x": 645, "y": 113}]]},
+    {"type": "line", "flags": 0, "points": [[{"x": 740, "y": 113}]]},
+    {"type": "line", "flags": 0, "points": [[{"x": 645, "y": 603}]]},
+]
 
 
-class OpenTTPathGlyph:
-    def __init__(self):
-        self.mm_nodes = open_path_tt
-
-
-class ClosedPathGlyph:
-    def __init__(self):
-        self.mm_nodes = closed_path
+class MMGlyph:
+    def __init__(self, paths):
+        self.mm_nodes = paths
 
 
 class PathsTest(TestCase):
     def test_closed_path(self):
-        contours, components = get_master_glyph(ClosedPathGlyph(), [], 0)
+        contours, components = get_master_glyph(MMGlyph(closed_path), [], 0)
         assert components == []
         assert contours[0] == [
             ["curve", 3, (92, 365)],
@@ -204,7 +220,7 @@ class PathsTest(TestCase):
         ]
 
     def test_open_path(self):
-        contours, components = get_master_glyph(OpenPathGlyph(), [], 0)
+        contours, components = get_master_glyph(MMGlyph(open_path), [], 0)
         assert components == []
         assert contours[0] == [
             ["move", 11, (92, 365)],
@@ -237,7 +253,7 @@ class PathsTest(TestCase):
         ]
 
     def test_open_tt_path(self):
-        contours, components = get_master_glyph(OpenTTPathGlyph(), [], 0)
+        contours, components = get_master_glyph(MMGlyph(open_path_tt), [], 0)
         assert components == []
         pprint(contours[1])
         assert contours[0] == [
@@ -268,4 +284,48 @@ class PathsTest(TestCase):
             ["qcurve", 0, (396, 205)],
             [None, 0, (339, 205)],
             [None, 0, (259, 288)],
+        ]
+
+    def test_closed_line_path(self):
+        contours, components = get_master_glyph(
+            MMGlyph(closed_path_line), [], 0
+        )
+        assert components == []
+        pprint(contours)
+        assert contours[0] == [
+            ["line", 0, (172, 163)],
+            ["line", 0, (395, 163)],
+            ["line", 0, (172, 612)],
+        ]
+        assert contours[1] == [
+            ["line", 0, (505, 152)],
+            ["line", 0, (589, 152)],
+            ["line", 0, (505, 612)],
+        ]
+        assert contours[2] == [
+            ["line", 0, (645, 113)],
+            ["line", 0, (740, 113)],
+            ["line", 0, (645, 603)],
+        ]
+
+    def test_open_line_path(self):
+        contours, components = get_master_glyph(MMGlyph(open_path_line), [], 0)
+        assert components == []
+        pprint(contours)
+        assert contours[0] == [
+            ["move", 8, (172, 163)],
+            ["line", 0, (395, 163)],
+            ["line", 0, (172, 612)],
+            ["line", 0, (172, 163)],
+        ]
+        assert contours[1] == [
+            ["move", 8, (505, 152)],
+            ["line", 0, (589, 152)],
+            ["line", 0, (505, 612)],
+            ["line", 0, (505, 152)],
+        ]
+        assert contours[2] == [
+            ["line", 0, (645, 113)],
+            ["line", 0, (740, 113)],
+            ["line", 0, (645, 603)],
         ]
