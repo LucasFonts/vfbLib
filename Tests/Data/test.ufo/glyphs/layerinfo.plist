@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+	<dict>
+		<key>lib</key>
+		<dict>
+			<key>org.unifiedfontobject.normalizer.modTimes</key>
+			<string>version: 0.6.1
+1669131039.8 a.glif
+1669131039.8 b.glif
+1669131039.8 c.glif
+1669131039.8 d.glif
+1669131039.8 e.glif
+1669131039.8 f.glif
+1669131039.8 g.glif</string>
+		</dict>
+	</dict>
+</plist>
