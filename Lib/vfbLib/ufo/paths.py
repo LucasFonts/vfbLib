@@ -23,12 +23,8 @@ def draw_glyph(mm_glyph, contours, components, pen):
     i = 0
     for contour in contours:
         pen.beginPath()
-        for segment_type, flags, pt in contour:
+        for segment_type, smooth, pt in contour:
             label = mm_glyph.point_labels.get(i, None)
-            if segment_type in ("move", "curve", "line"):
-                smooth = bool(flags & 1)
-            else:
-                smooth = False
             pen.addPoint(pt, segment_type, name=label, smooth=smooth)
             i += 1
         pen.endPath()
@@ -57,69 +53,42 @@ def get_master_glyph(
     mmglyph, glyph_order: List[str], master_index=0
 ) -> Tuple[ContourList, ComponentList]:
     # Extract a single master glyph from a mm glyph
+
     contours = []
     if hasattr(mmglyph, "mm_nodes"):
-        # print(f"Add nodes to {mmglyph.name}...")
-        contours = []
-        contour: Contour = None
-        open_path = False
-        qcurve = False
-        ccurve = False
+        contour = []
         for n in mmglyph.mm_nodes:
-            # Nodes for the current master
             nodes = n["points"][master_index]
             segment_type = n["type"]
             flags = n["flags"]
+            smooth = bool(flags & 1)
+            open_path = bool(flags & 8)
 
             if segment_type == "move":
-                if contour is not None:
-                    contours.append(
-                        flush_contour(contour, open_path, ccurve, qcurve)
-                    )
-                open_path = bool(flags & 8)
-                (node,) = nodes
-                contour = [["move", flags, (node["x"], node["y"])]]
-                qcurve = False
-                ccurve = False
+                if contour:
+                    contours.append(contour)
+                contour = [["move", smooth, nodes[0]]]
 
             elif segment_type == "line":
-                assert contour is not None
-                (node,) = nodes
-                if qcurve:
-                    effective_type = "qcurve"
-                else:
-                    effective_type = "line"
-                contour.append(
-                    [effective_type, flags, (nodes[0]["x"], nodes[0]["y"])]
-                )
-                qcurve = False
-                ccurve = False
+                contour.append(["line", smooth, nodes[0]])
 
             elif segment_type == "curve":
                 pt3, pt1, pt2 = nodes
-                assert contour is not None
-                contour.append([None, flags, (pt1["x"], pt1["y"])])
-                contour.append([None, flags, (pt2["x"], pt2["y"])])
-                contour.append(["curve", flags, (pt3["x"], pt3["y"])])
-                qcurve = False
-                ccurve = True
+                contour.append([None, False, pt1])
+                contour.append([None, False, pt2])
+                contour.append(["curve", smooth, pt3])
 
             elif segment_type == "qcurve":
-                assert contour is not None
-                (node,) = nodes
-                contour.append([None, flags, (node["x"], node["y"])])
-                qcurve = True
-                ccurve = False
+                for pt in nodes[:-1]:
+                    contour.append([None, False, pt])
+                contour.append(["qcurve", smooth, nodes[-1]])
 
             else:
                 print(f"Unknown segment type: {segment_type}")
                 raise ValueError
 
-        if contour is not None:
-            if contour is not None:
-                contours.append(
-                    flush_contour(contour, open_path, ccurve, qcurve)
-                )
+        if contour:
+            contours.append(contour)
 
     components: ComponentList = []
     if hasattr(mmglyph, "mm_components"):
