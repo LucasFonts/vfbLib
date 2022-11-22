@@ -134,6 +134,11 @@ open_path_tt = [
         "flags": 0,
         "points": [[[534, 288], [453, 205], [396, 205]]],
     },
+    {
+        "type": "qcurve",
+        "flags": 0,
+        "points": [[[339, 205], [259, 288], [259, 347]]],
+    },
 ]
 
 # "d"
@@ -333,22 +338,17 @@ class MMGlyph:
 
 class PathsTest(TestCase):
     # def test_closed_path(self):
-    #     contours, components = get_master_glyph(MMGlyph("b", closed_path), [], 0)
+    #     contours, components = get_master_glyph(
+    #         MMGlyph("b", closed_path), [], 0
+    #     )
     #     assert components == []
     #     pprint(contours)
     #     assert contours[0] == [
-    #         ["curve", 3, [92, 365]],
-    #         [None, 3, [92, 210]],
-    #         [None, 3, [214, 86]],
-    #         ["curve", 3, [364, 86]],
-    #         [None, 3, [514, 86]],
-    #         [None, 3, [636, 210]],
-    #         ["curve", 3, [636, 365]],
-    #         [None, 3, [636, 520]],
-    #         [None, 3, [514, 645]],
-    #         ["curve", 3, [364, 645]],
-    #         [None, 3, [214, 645]],
-    #         [None, 3, [92, 520]],
+    #         ["curve", True, [92, 365]],
+    #         ["curve", True, [[92, 210], [214, 86], [364, 86]]],
+    #         ["curve", True, [[514, 86], [636, 210], [636, 365]]],
+    #         ["curve", True, [[636, 520], [514, 645], [364, 645]]],
+    #         ["curve", True, [[214, 645], [92, 520], [92, 365]]],
     #     ]
     #     assert contours[1] == [
     #         ["curve", 3, [259, 347]],
@@ -368,34 +368,35 @@ class PathsTest(TestCase):
     def test_open_path(self):
         contours, components = get_master_glyph(MMGlyph("a", open_path), [], 0)
         assert components == []
+        pprint(contours)
         assert contours[0] == [
-            ["move", 11, [92, 365]],
-            [None, 3, [92, 210]],
-            [None, 3, [214, 86]],
-            ["curve", 3, [364, 86]],
-            [None, 3, [514, 86]],
-            [None, 3, [636, 210]],
-            ["curve", 3, [636, 365]],
-            [None, 3, [636, 520]],
-            [None, 3, [514, 645]],
-            ["curve", 3, [364, 645]],
-            [None, 3, [214, 645]],
-            [None, 3, [92, 520]],
-            ["curve", 3, [92, 365]],
+            ["move", True, [92, 365]],
+            [None, False, [92, 210]],
+            [None, False, [214, 86]],
+            ["curve", True, [364, 86]],
+            [None, False, [514, 86]],
+            [None, False, [636, 210]],
+            ["curve", True, [636, 365]],
+            [None, False, [636, 520]],
+            [None, False, [514, 645]],
+            ["curve", True, [364, 645]],
+            [None, False, [214, 645]],
+            [None, False, [92, 520]],
+            ["curve", True, [92, 365]],
         ]
         assert contours[1] == [
-            ["curve", 3, [259, 347]],
-            [None, 3, [259, 426]],
-            [None, 3, [320, 490]],
-            ["curve", 3, [396, 490]],
-            [None, 3, [472, 490]],
-            [None, 3, [534, 426]],
-            ["curve", 3, [534, 347]],
-            [None, 3, [534, 268]],
-            [None, 3, [472, 205]],
-            ["curve", 3, [396, 205]],
-            [None, 3, [320, 205]],
-            [None, 3, [259, 268]],
+            ["curve", True, [259, 347]],
+            [None, False, [259, 426]],
+            [None, False, [320, 490]],
+            ["curve", True, [396, 490]],
+            [None, False, [472, 490]],
+            [None, False, [534, 426]],
+            ["curve", True, [534, 347]],
+            [None, False, [534, 268]],
+            [None, False, [472, 205]],
+            ["curve", True, [396, 205]],
+            [None, False, [320, 205]],
+            [None, False, [259, 268]],
         ]
 
     def test_open_tt_path(self):
@@ -405,63 +406,63 @@ class PathsTest(TestCase):
         assert components == []
         pprint(contours)
         assert contours[0] == [
-            ["move", 8, [92, 365]],
-            [None, 0, [92, 249]],
-            [None, 0, [251, 86]],
-            ["qcurve", 0, [364, 86]],
-            [None, 0, [477, 86]],
-            [None, 0, [636, 249]],
-            ["qcurve", 0, [636, 365]],
-            [None, 0, [636, 481]],
-            [None, 0, [477, 645]],
-            ["qcurve", 0, [364, 645]],
-            [None, 0, [251, 645]],
-            [None, 0, [92, 481]],
-            ["qcurve", 0, [92, 365]],
+            ["move", False, [92, 365]],
+            [None, False, [92, 249]],
+            [None, False, [251, 86]],
+            ["qcurve", False, [364, 86]],
+            [None, False, [477, 86]],
+            [None, False, [636, 249]],
+            ["qcurve", False, [636, 365]],
+            [None, False, [636, 481]],
+            [None, False, [477, 645]],
+            ["qcurve", False, [364, 645]],
+            [None, False, [251, 645]],
+            [None, False, [92, 481]],
+            ["qcurve", False, [92, 365]],
         ]
         assert contours[1] == [
-            ["qcurve", 0, [259, 347]],
-            [None, 0, [259, 406]],
-            [None, 0, [339, 490]],
-            ["qcurve", 0, [396, 490]],
-            [None, 0, [453, 490]],
-            [None, 0, [534, 406]],
-            ["qcurve", 0, [534, 347]],
-            [None, 0, [534, 288]],
-            [None, 0, [453, 205]],
-            ["qcurve", 0, [396, 205]],
-            [None, 0, [339, 205]],
-            [None, 0, [259, 288]],
+            ["qcurve", False, [259, 347]],
+            [None, False, [259, 406]],
+            [None, False, [339, 490]],
+            ["qcurve", False, [396, 490]],
+            [None, False, [453, 490]],
+            [None, False, [534, 406]],
+            ["qcurve", False, [534, 347]],
+            [None, False, [534, 288]],
+            [None, False, [453, 205]],
+            ["qcurve", False, [396, 205]],
+            [None, False, [339, 205]],
+            [None, False, [259, 288]],
         ]
 
     # def test_closed_line_path(self):
     #     contours, components = get_master_glyph(
-    #         MMGlyph(closed_path_line), [], 0
+    #         MMGlyph("e", closed_path_line), [], 0
     #     )
     #     assert components == []
     #     pprint(contours)
     #     assert contours[0] == [
-    #         ["line", 0, [172, 163]],
-    #         ["line", 0, [395, 163]],
-    #         [None, 0, [395, 360]],
-    #         [None, 0, [290, 612]],
-    #         ["curve", 0, [172, 612]],
+    #         ["line", False, [172, 163]],
+    #         ["line", False, [395, 163]],
+    #         [None, False, [395, 360]],
+    #         [None, False, [290, 612]],
+    #         ["curve", False, [172, 612]],
     #     ]
     #     assert contours[1] == [
-    #         ["line", 0, [505, 152]],
-    #         ["line", 0, [589, 152]],
-    #         [None, 0, [598, 202]],
-    #         [None, 0, [602, 310]],
-    #         [None, 0, [594, 412]],
-    #         [None, 0, [577, 503]],
-    #         [None, 0, [552, 572]],
-    #         [None, 0, [521, 612]],
-    #         ["qcurve", 0, [505, 612]],
+    #         ["line", False, [505, 152]],
+    #         ["line", False, [589, 152]],
+    #         [None, False, [598, 202]],
+    #         [None, False, [602, 310]],
+    #         [None, False, [594, 412]],
+    #         [None, False, [577, 503]],
+    #         [None, False, [552, 572]],
+    #         [None, False, [521, 612]],
+    #         ["qcurve", False, [505, 612]],
     #     ]
     #     assert contours[2] == [
-    #         ["line", 0, [645, 113]],
-    #         ["line", 0, [740, 113]],
-    #         ["line", 0, [645, 603]],
+    #         ["line", False, [645, 113]],
+    #         ["line", False, [740, 113]],
+    #         ["line", False, [645, 603]],
     #     ]
 
     def test_open_line_path(self):
@@ -471,33 +472,35 @@ class PathsTest(TestCase):
         assert components == []
         pprint(contours)
         assert contours[0] == [
-            ["move", 8, [172, 163]],
-            ["line", 0, [395, 163]],
-            [None, 0, [395, 360]],
-            [None, 0, [290, 612]],
-            ["curve", 0, [172, 612]],
-            ["line", 0, [172, 163]],
+            ["move", False, [172, 163]],
+            ["line", False, [395, 163]],
+            [None, False, [395, 360]],
+            [None, False, [290, 612]],
+            ["curve", False, [172, 612]],
+            ["line", False, [172, 163]],
         ]
         assert contours[1] == [
-            ["move", 8, [505, 152]],
-            ["line", 0, [589, 152]],
-            [None, 0, [598, 202]],
-            [None, 0, [602, 310]],
-            [None, 0, [594, 412]],
-            [None, 0, [577, 503]],
-            [None, 0, [552, 572]],
-            [None, 0, [521, 612]],
-            ["qcurve", 0, [505, 612]],
-            ["line", 0, [505, 152]],
+            ["move", False, [505, 152]],
+            ["line", False, [589, 152]],
+            [None, False, [598, 202]],
+            [None, False, [602, 310]],
+            [None, False, [594, 412]],
+            [None, False, [577, 503]],
+            [None, False, [552, 572]],
+            [None, False, [521, 612]],
+            ["qcurve", False, [505, 612]],
+            ["line", False, [505, 152]],
         ]
         assert contours[2] == [
-            ["line", 0, [645, 113]],
-            ["line", 0, [740, 113]],
-            ["line", 0, [645, 603]],
+            ["line", False, [645, 113]],
+            ["line", False, [740, 113]],
+            ["line", False, [645, 603]],
         ]
 
     # def test_complex_tt(self):
-    #     contours, components = get_master_glyph(MMGlyph(complex_tt), [], 0)
+    #     contours, components = get_master_glyph(
+    #         MMGlyph("a", complex_tt), [], 0
+    #     )
     #     assert components == []
     #     pprint(contours)
     #     assert contours[0] == [
