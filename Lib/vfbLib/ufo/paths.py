@@ -14,9 +14,13 @@ if TYPE_CHECKING:
     ]
 
 
-def Vfb2UfoPen(BasePointToSegmentPen):
+class Vfb2UfoPen(BasePointToSegmentPen):
+    def __init__(self) -> None:
+        super().__init__()
+        self.contours = []
+
     def _flushContour(self, segments):
-        pprint(segments)
+        self.contours.append(segments)
 
 
 def draw_glyph(mm_glyph, contours, components, pen):
@@ -33,19 +37,14 @@ def draw_glyph(mm_glyph, contours, components, pen):
         pen.addComponent(glyphName=gn, transformation=tr)
 
 
-def flush_contour(contour, open_path, ccurve, qcurve) -> List:
+def flush_contour(contour, open_path) -> List:
     if not open_path:
-        last = contour[-1][0]
-        if last in ("line", "qcurve"):
-            contour[0][0] = "line"
-        elif last == "curve":
-            if contour[0][2] == contour[-1][2]:
-                contour[0][0] = contour.pop()
-        elif last is None:
-            if qcurve:
-                contour[0][0] = "qcurve"
-            elif ccurve:
-                contour[0][0] = "curve"
+        if contour[-1][0] == "line":
+            if contour[-1][2] == contour[0][2]:
+                # Equal coords
+                contour.pop(0)
+        elif contour[-1][0] == "curve":
+            contour[0] = contour.pop()
     return contour
 
 
@@ -55,6 +54,7 @@ def get_master_glyph(
     # Extract a single master glyph from a mm glyph
 
     contours = []
+    open_path = False
     if hasattr(mmglyph, "mm_nodes"):
         contour = []
         for n in mmglyph.mm_nodes:
@@ -62,12 +62,12 @@ def get_master_glyph(
             segment_type = n["type"]
             flags = n["flags"]
             smooth = bool(flags & 1)
-            open_path = bool(flags & 8)
 
             if segment_type == "move":
                 if contour:
-                    contours.append(contour)
+                    contours.append(flush_contour(contour, open_path))
                 contour = [["move", smooth, nodes[0]]]
+                open_path = bool(flags & 8)
 
             elif segment_type == "line":
                 contour.append(["line", smooth, nodes[0]])
@@ -88,7 +88,7 @@ def get_master_glyph(
                 raise ValueError
 
         if contour:
-            contours.append(contour)
+            contours.append(flush_contour(contour, open_path))
 
     components: ComponentList = []
     if hasattr(mmglyph, "mm_components"):
