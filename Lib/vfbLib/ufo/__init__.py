@@ -8,6 +8,7 @@ from shutil import rmtree
 from typing import TYPE_CHECKING, Any, Dict, List, Tuple
 from ufonormalizer import normalizeUFO
 from vfbLib.ufo.guides import apply_guide_properties, get_master_guides
+from vfbLib.ufo.paths import get_master_glyph
 from vfbLib.ufo.vfb2ufo import (
     PS_GLYPH_LIB_KEY,
     TT_GLYPH_LIB_KEY,
@@ -750,93 +751,14 @@ class VfbToUfoWriter:
             kerning[L, self.glyphOrder[int(Rid)]] = values[master_index]
         return kerning
 
-    def get_master_glyph(self, mmglyph, master_index=0):
-        # Extract a single master glyph from a mm glyph
-        contours = []
-        last_type = None
-        if hasattr(mmglyph, "mm_nodes"):
-            # print(f"Add nodes to {mmglyph.name}...")
-            contours = []
-            contour: List[List[None | str | Point]] | None = None
-            qcurve = False
-            for n in mmglyph.mm_nodes:
-                # Nodes for the current master
-                nodes = n["points"][master_index]
-                segment_type = n["type"]
-                flags = n["flags"]
-
-                # print("****", segment_type, nodes)
-
-                if segment_type == "line":
-                    if qcurve:
-                        effective_type = "qcurve"
-                        qcurve = False
-                    else:
-                        effective_type = "line"
-
-                    contour.append(
-                        [effective_type, flags, (nodes[0]["x"], nodes[0]["y"])]
-                    )
-                    last_type = segment_type
-
-                elif segment_type == "move":
-                    if contour is not None:
-                        if last_type == "line":
-                            contour[0][0] = "line"
-                        elif last_type == "curve":
-                            contour[0][0] = "curve"
-                        elif last_type == "qcurve":
-                            contour[0][0] = "qcurve"
-                        contours.append(contour)
-                    contour = [["move", flags, (nodes[0]["x"], nodes[0]["y"])]]
-                    qcurve = False
-
-                elif segment_type == "curve":
-                    pt3, pt1, pt2 = nodes
-                    contour.append([None, flags, (pt1["x"], pt1["y"])])
-                    contour.append([None, flags, (pt2["x"], pt2["y"])])
-                    contour.append(["curve", flags, (pt3["x"], pt3["y"])])
-                    qcurve = False
-
-                elif segment_type == "qcurve":
-                    qcurve = True
-                    contour.append([None, flags, (nodes[0]["x"], nodes[0]["y"])])
-                    last_type = segment_type
-
-            if contour is not None:
-                if last_type == "line":
-                    contour[0][0] = "line"
-                elif last_type == "curve":
-                    contour[0][0] = "curve"
-                elif last_type == "qcurve":
-                    contour[0][0] = "qcurve"
-                contours.append(contour)
-
-        components: List[
-            Tuple[str, Tuple[float, float, float, float, int, int]]
-        ] = []
-        if hasattr(mmglyph, "mm_components"):
-            for c in mmglyph.mm_components:
-                transform = (
-                    c["scaleX"][master_index],
-                    0.0,
-                    0.0,
-                    c["scaleY"][master_index],
-                    c["offsetX"][master_index],
-                    c["offsetY"][master_index],
-                )
-                components.append((self.glyphOrder[c["gid"]], transform))
-
-        return contours, components
-
     def draw_glyph(self, pen: AbstractPointPen):
         """
         Draw the current glyph onto pen. Use self.master_index for which outlines
         or component transformations to use.
         """
 
-        contours, components = self.get_master_glyph(
-            self.current_mmglyph, self.master_index
+        contours, components = get_master_glyph(
+            self.current_mmglyph, self.glyphOrder, self.master_index
         )
 
         i = 0
@@ -870,7 +792,7 @@ class VfbToUfoWriter:
                 else:
                     raise FileExistsError
 
-            print(f"Processing font: {self.info.ui_name}")
+            print(f"Processing font: {self.info.ui_name}, master {i}")
 
             writer = UFOWriter(
                 master_path, fileCreator="com.lucasfonts.vfb3ufo"
