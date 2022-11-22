@@ -17,6 +17,11 @@ cmd_name = {
     4: "qcurve",
 }
 
+MOVE = 0
+LINE = 1
+CURVE = 3
+QCURVE = 4
+
 
 class GlyphAnchorsParser(BaseParser):
     @classmethod
@@ -280,56 +285,71 @@ class GlyphParser(BaseParser):
         segments: List[Dict[str, str | int | List[Dict[str, int]]]] = []
         x = [0 for _ in range(num_masters)]
         y = [0 for _ in range(num_masters)]
-        for i in range(num_nodes):
+
+        offcurves = [[] for _ in range(num_masters)]
+
+        for _ in range(num_nodes):
             byte = cls.read_uint8(stream)
             flags = byte >> 4
             cmd = byte & 0x0F
-            segment = dict(type=cmd_name[cmd], flags=flags, points=[])
-            points = [[] for _ in range(num_masters)]
-            for m in range(num_masters):
-                # End point
-                xrel = read_encoded_value(stream)
-                yrel = read_encoded_value(stream)
-                x[m] += xrel
-                y[m] += yrel
-                points[m].append(
-                    dict(
-                        x=x[m],
-                        y=y[m],
-                        # xr=xrel, yr=yrel
-                    )
-                )
 
-            if cmd == 3:  # Curve
+            if cmd == QCURVE:
                 for m in range(num_masters):
-                    # First control point
+                    # Offcurve point
                     xrel = read_encoded_value(stream)
                     yrel = read_encoded_value(stream)
                     x[m] += xrel
                     y[m] += yrel
-                    points[m].append(
-                        dict(
-                            x=x[m],
-                            y=y[m],
-                            # xr=xrel, yr=yrel
-                        )
-                    )
-                for m in range(num_masters):
-                    # Second control point
-                    xrel = read_encoded_value(stream)
-                    yrel = read_encoded_value(stream)
-                    x[m] += xrel
-                    y[m] += yrel
-                    points[m].append(
-                        dict(
-                            x=x[m],
-                            y=y[m],
-                            # xr=xrel, yr=yrel
-                        )
-                    )
+                    offcurves[m].append((x[m], y[m]))
 
-            segment["points"] = points
-            segments.append(segment)
+            else:
+                if any(offcurves):
+                    points = [[] for _ in range(num_masters)]
+                    for m in range(num_masters):
+                        for offcurve in offcurves[m]:
+                            points[m].append(offcurve)
+
+                        # End point
+                        xrel = read_encoded_value(stream)
+                        yrel = read_encoded_value(stream)
+                        x[m] += xrel
+                        y[m] += yrel
+                        points[m].append((x[m], y[m]))
+                    
+                    segment = dict(type="qcurve", flags=flags, points=points)
+                    offcurves = [[] for _ in range(num_masters)]
+
+                else:
+                    points = [[] for _ in range(num_masters)]
+                    for m in range(num_masters):
+                        # End point
+                        xrel = read_encoded_value(stream)
+                        yrel = read_encoded_value(stream)
+                        x[m] += xrel
+                        y[m] += yrel
+                        points[m].append((x[m], y[m]))
+
+                    if cmd == CURVE:
+
+                        for m in range(num_masters):
+                            # First control point
+                            xrel = read_encoded_value(stream)
+                            yrel = read_encoded_value(stream)
+                            x[m] += xrel
+                            y[m] += yrel
+                            points[m].append((x[m], y[m]))
+
+                        for m in range(num_masters):
+                            # Second control point
+                            xrel = read_encoded_value(stream)
+                            yrel = read_encoded_value(stream)
+                            x[m] += xrel
+                            y[m] += yrel
+                            points[m].append((x[m], y[m]))
+
+                    segment = dict(type=cmd_name[cmd], flags=flags, points=points)
+
+                segments.append(segment)
         glyphdata["nodes"] = segments
         return num_masters
 
