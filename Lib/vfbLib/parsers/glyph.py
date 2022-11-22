@@ -305,53 +305,26 @@ class GlyphParser(BaseParser):
         x = [0 for _ in range(num_masters)]
         y = [0 for _ in range(num_masters)]
 
-        offcurves = [[] for _ in range(num_masters)]
-
-        for _ in range(num_nodes):
+        for i in range(num_nodes):
             byte = cls.read_uint8(stream)
             flags = byte >> 4
             cmd = byte & 0x0F
 
             segment_type = cmd_name[cmd]
+            # print("   ", i, segment_type, flags)
 
-            if cmd == QCURVE:
-                read_absolute_point(offcurves, stream, num_masters, x, y)
+            # End point
+            points = [[] for _ in range(num_masters)]
+            read_absolute_point(points, stream, num_masters, x, y)
 
-            else:
-                points = [[] for _ in range(num_masters)]
-                if any(offcurves):
-                    # Flush offcurves to segment
-                    for m in range(num_masters):
-                        for offcurve in offcurves[m]:
-                            points[m].append(offcurve)
-                    offcurves = [[] for _ in range(num_masters)]
-
-                    if cmd == MOVE:
-                        # If MOVE, the end point of the offcurves segment is
-                        # implicit. Flush and start a new contour.
-                        segment = dict(
-                            type="qcurve", flags=flags, points=points
-                        )
-                        segments.append(segment)
-                        points = [[] for _ in range(num_masters)]
-
-                    else:
-                        segment_type = "qcurve"
-
-                # End point
+            if cmd == CURVE:
+                # First control point
+                read_absolute_point(points, stream, num_masters, x, y)
+                # Second control point
                 read_absolute_point(points, stream, num_masters, x, y)
 
-                if cmd == CURVE:
-                    # First control point
-                    read_absolute_point(points, stream, num_masters, x, y)
-                    # Second control point
-                    read_absolute_point(points, stream, num_masters, x, y)
-
-                segment = dict(
-                    type=segment_type, flags=flags, points=points
-                )
-
-                segments.append(segment)
+            segment = dict(type=segment_type, flags=flags, points=points)
+            segments.append(segment)
         glyphdata["nodes"] = segments
         return num_masters
 
