@@ -516,6 +516,7 @@ class VfbToUfoWriter:
             }
 
     def build(self):
+        # Non-MM data
         for e in self.json:
             name, data = e
 

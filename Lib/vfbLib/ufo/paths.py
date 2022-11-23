@@ -51,7 +51,7 @@ def flush_contour(contour, open_path) -> List:
 def get_master_glyph(
     mmglyph, glyph_order: List[str], master_index=0
 ) -> Tuple[ContourList, ComponentList]:
-    # Extract a single master glyph from a mm glyph
+    # Extract a single master glyph from an mm glyph
 
     contours = []
     open_path = False
