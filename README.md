@@ -14,6 +14,8 @@ this situation.
 - Outputs normalized UFO v3
 - Outputs FontLab user data (font and glyph level)
 - Mark colors are written to the official UFO v3 lib key
+- Guideline data is written to the official UFO v3 elements
+- Anchors are preserved in composite glyphs
 - Supports more UFO font info attributes:
   - `openTypeGaspRangeRecords`
   - `openTypeHeadLowestRecPPEM`
@@ -91,13 +93,6 @@ options:
   -p PATH, --path PATH  output folder
 ```
 
-
-# Known Issues
-
-## Unimplemented in UFO output
-
-- Glyph anchors
-- PostScript hinting
 
 # Copyright
 
