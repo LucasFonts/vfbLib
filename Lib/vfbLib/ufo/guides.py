@@ -27,7 +27,7 @@ def get_master_guides(
                 angle +=360
             if angle > 360:
                 angle -= 360
-            guide["angle"] = angle
+            guide["angle"] = round(angle, 2)
             guides.append(guide)
     return guides
 
