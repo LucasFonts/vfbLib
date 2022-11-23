@@ -5,7 +5,6 @@ import json
 
 from argparse import ArgumentParser
 from pathlib import Path
-from sys import argv
 from vfbLib import VFBReader
 from vfbLib.ufo import VfbToUfoWriter
 
