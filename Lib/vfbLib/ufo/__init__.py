@@ -66,12 +66,20 @@ class VfbToUfoGlyph:
         self.labels: Dict[str, int] = {}
         self.point_labels: Dict[int, str] = {}
         self.mm_hints = {"h": [], "v": []}
+        self.mm_nodes = []
         self.guide_properties = []
 
     def get_point_label(self, index: int, code: str) -> str:
         if index in self.point_labels:
             # We already have a label for this point index
             return self.point_labels[index]
+        
+        # Special points
+        num_nodes = len(self.mm_nodes)
+        if index == num_nodes:
+            return "lsb"
+        elif index == num_nodes + 1:
+            return "rsb"
 
         # Make a new label
         label_short = vfb2ufo_label_codes[code]
@@ -262,11 +270,7 @@ class VfbToUfoWriter:
         g = self.current_glyph = VfbToUfoGlyph()
         g.lib = {}
         g.name = data["name"]
-        masters = data["num_masters"]
         g.unicodes = []
-
-        if "tth" in data:
-            self.build_tt_glyph_hints(g, data["tth"])
 
         # MM Stuff, need to extract later
         if "guides" in data:
@@ -284,6 +288,11 @@ class VfbToUfoWriter:
 
         if "components" in data:
             g.mm_components = data["components"]
+
+        # TrueType hinting, needs to come after mm_nodes, because it needs
+        # access to the point indices.
+        if "tth" in data:
+            self.build_tt_glyph_hints(g, data["tth"])
 
     def transform_stem_rounds(self, data, name) -> Dict[str, int]:
         d = {"0": 1}
