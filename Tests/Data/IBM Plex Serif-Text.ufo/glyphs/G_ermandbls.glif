@@ -69,6 +69,18 @@
     &lt;ttc code="interpolatev" point="iv03" point1="sv03" point2="iv01"/&gt;
   &lt;/ttProgram&gt;
 </string>
+			<key>com.fontlab.v5.userData</key>
+			<string>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;
+&lt;plist version="1.0"&gt;
+&lt;dict&gt;
+	&lt;key&gt;com.type-invaders.name.final&lt;/key&gt;
+	&lt;string&gt;uni1E9E&lt;/string&gt;
+	&lt;key&gt;com.type-invaders.name.production&lt;/key&gt;
+	&lt;string&gt;Germandbls&lt;/string&gt;
+&lt;/dict&gt;
+&lt;/plist&gt;
+</string>
 		</dict>
 	</lib>
 </glyph>
