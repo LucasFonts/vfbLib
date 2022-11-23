@@ -24,13 +24,10 @@ class Vfb2UfoPen(BasePointToSegmentPen):
 
 
 def draw_glyph(mm_glyph, contours, components, pen):
-    i = 0
     for contour in contours:
         pen.beginPath()
-        for segment_type, smooth, pt in contour:
-            label = mm_glyph.point_labels.get(i, None)
-            pen.addPoint(pt, segment_type, name=label, smooth=smooth)
-            i += 1
+        for segment_type, smooth, name, pt in contour:
+            pen.addPoint(pt, segment_type, name=name, smooth=smooth)
         pen.endPath()
 
     for gn, tr in components:
@@ -71,7 +68,8 @@ def get_master_glyph(
     in_qcurve = False
     if hasattr(mmglyph, "mm_nodes"):
         contour = []
-        for n in mmglyph.mm_nodes:
+        for i, n in enumerate(mmglyph.mm_nodes):
+            name = mmglyph.point_labels.get(i, None)
             nodes = n["points"][master_index]
             pt = nodes[0]
             segment_type = n["type"]
@@ -81,26 +79,26 @@ def get_master_glyph(
             if segment_type == "move":
                 if contour:
                     contours.append(flush_contour(contour, path_is_open))
-                contour = [["move", smooth, pt]]
+                contour = [["move", smooth, name, pt]]
                 path_is_open = bool(flags & 8)
                 in_qcurve = False
 
             elif segment_type == "line":
                 if in_qcurve:
-                    contour.append(["qcurve", smooth, pt])
+                    contour.append(["qcurve", smooth, name, pt])
                     in_qcurve = False
                 else:
-                    contour.append(["line", smooth, pt])
+                    contour.append(["line", smooth, name, pt])
 
             elif segment_type == "curve":
                 pt, c1, c2 = nodes
-                contour.append([None, False, c1])
-                contour.append([None, False, c2])
-                contour.append(["curve", smooth, pt])
+                contour.append([None, False, None, c1])
+                contour.append([None, False, None, c2])
+                contour.append(["curve", smooth, name, pt])
                 in_qcurve = False
 
             elif segment_type == "qcurve":
-                contour.append([None, False, pt])
+                contour.append([None, False, name, pt])
                 in_qcurve = True
 
             else:
