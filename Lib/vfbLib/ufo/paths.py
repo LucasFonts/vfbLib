@@ -37,8 +37,8 @@ def draw_glyph(mm_glyph, contours, components, pen):
         pen.addComponent(glyphName=gn, transformation=tr)
 
 
-def flush_contour(contour, open_path) -> List:
-    if not open_path:
+def flush_contour(contour, path_is_open) -> List:
+    if not path_is_open:
         if contour[-1][0] == "line":
             if contour[-1][2] == contour[0][2]:
                 # Equal coords
@@ -54,7 +54,7 @@ def get_master_glyph(
     # Extract a single master glyph from an mm glyph
 
     contours = []
-    open_path = False
+    path_is_open = False
     if hasattr(mmglyph, "mm_nodes"):
         contour = []
         for n in mmglyph.mm_nodes:
@@ -65,9 +65,9 @@ def get_master_glyph(
 
             if segment_type == "move":
                 if contour:
-                    contours.append(flush_contour(contour, open_path))
+                    contours.append(flush_contour(contour, path_is_open))
                 contour = [["move", smooth, nodes[0]]]
-                open_path = bool(flags & 8)
+                path_is_open = bool(flags & 8)
 
             elif segment_type == "line":
                 contour.append(["line", smooth, nodes[0]])
@@ -88,7 +88,7 @@ def get_master_glyph(
                 raise ValueError
 
         if contour:
-            contours.append(flush_contour(contour, open_path))
+            contours.append(flush_contour(contour, path_is_open))
 
     components: ComponentList = []
     if hasattr(mmglyph, "mm_components"):
