@@ -39,12 +39,25 @@ def draw_glyph(mm_glyph, contours, components, pen):
 
 def flush_contour(contour, path_is_open) -> List:
     if not path_is_open:
-        if contour[-1][0] == "line":
+        last_type = contour[-1][0]
+        if last_type == "line":
             if contour[-1][2] == contour[0][2]:
-                # Equal coords
-                contour.pop(0)
-        elif contour[-1][0] == "curve":
-            contour[0] = contour.pop()
+                # Equal coords, use closepath to draw the last line
+                # raise ValueError
+                contour[0] = contour.pop()
+            else: contour[0][0] = "line"
+        elif last_type == "curve":
+            if contour[-1][2] == contour[0][2]:
+                contour[0] = contour.pop()
+            else:
+                contour[0][0] = "line"
+        elif last_type == "qcurve":
+            if contour[-1][2] == contour[0][2]:
+                contour[0] = contour.pop()
+            else:
+                contour[0][0] = "line"
+        elif last_type is None:
+            contour[0][0] = "qcurve"
     return contour
 
 
@@ -55,10 +68,12 @@ def get_master_glyph(
 
     contours = []
     path_is_open = False
+    in_qcurve = False
     if hasattr(mmglyph, "mm_nodes"):
         contour = []
         for n in mmglyph.mm_nodes:
             nodes = n["points"][master_index]
+            pt = nodes[0]
             segment_type = n["type"]
             flags = n["flags"]
             smooth = bool(flags & 1)
@@ -66,22 +81,27 @@ def get_master_glyph(
             if segment_type == "move":
                 if contour:
                     contours.append(flush_contour(contour, path_is_open))
-                contour = [["move", smooth, nodes[0]]]
+                contour = [["move", smooth, pt]]
                 path_is_open = bool(flags & 8)
+                in_qcurve = False
 
             elif segment_type == "line":
-                contour.append(["line", smooth, nodes[0]])
+                if in_qcurve:
+                    contour.append(["qcurve", smooth, pt])
+                    in_qcurve = False
+                else:
+                    contour.append(["line", smooth, pt])
 
             elif segment_type == "curve":
-                pt3, pt1, pt2 = nodes
-                contour.append([None, False, pt1])
-                contour.append([None, False, pt2])
-                contour.append(["curve", smooth, pt3])
+                pt, c1, c2 = nodes
+                contour.append([None, False, c1])
+                contour.append([None, False, c2])
+                contour.append(["curve", smooth, pt])
+                in_qcurve = False
 
             elif segment_type == "qcurve":
-                for pt in nodes[:-1]:
-                    contour.append([None, False, pt])
-                contour.append(["qcurve", smooth, nodes[-1]])
+                contour.append([None, False, pt])
+                in_qcurve = True
 
             else:
                 print(f"Unknown segment type: {segment_type}")
