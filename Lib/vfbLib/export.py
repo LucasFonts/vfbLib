@@ -91,9 +91,12 @@ def dump_deltas():
             if glyph_deltas:
                 deltas[v["name"]] = glyph_deltas
 
-        out_path = vfb_path.with_suffix(".tth.yaml")
-        with codecs.open(out_path, "wb", "utf-8") as f:
-            yaml.dump(deltas, f)
+        if deltas:
+            out_path = vfb_path.with_suffix(".tth.yaml")
+            with codecs.open(out_path, "wb", "utf-8") as f:
+                yaml.dump(deltas, f)
+        else:
+            print(f"{vfb_path.name}: No deltas found.")
 
     else:
         parser.print_help()
