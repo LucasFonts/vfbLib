@@ -38,18 +38,18 @@ def flush_contour(contour, path_is_open) -> List:
     if not path_is_open:
         last_type = contour[-1][0]
         if last_type == "line":
-            if contour[-1][2] == contour[0][2]:
+            if contour[-1][3] == contour[0][3]:
                 # Equal coords, use closepath to draw the last line
                 # raise ValueError
                 contour[0] = contour.pop()
             else: contour[0][0] = "line"
         elif last_type == "curve":
-            if contour[-1][2] == contour[0][2]:
+            if contour[-1][3] == contour[0][3]:
                 contour[0] = contour.pop()
             else:
                 contour[0][0] = "line"
         elif last_type == "qcurve":
-            if contour[-1][2] == contour[0][2]:
+            if contour[-1][3] == contour[0][3]:
                 contour[0] = contour.pop()
             else:
                 contour[0][0] = "line"
