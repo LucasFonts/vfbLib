@@ -18,11 +18,21 @@ class VFBReader:
     Base class to read data from a vfb file
     """
 
-    def __init__(self, vfb_path: Path, timing=True, minimal=False) -> None:
+    def __init__(
+        self,
+        vfb_path: Path,
+        timing=True,
+        minimal=False,
+        only_keys: List[str] = None,
+    ) -> None:
         self.vfb_path = vfb_path
         self.data: List[List[Any]] = []
         self.timing = timing
         self.minimal = minimal
+        if only_keys is None:
+            self.only_keys = []
+        else:
+            self.only_keys = only_keys
         self.master_count = None
 
     def __repr__(self) -> str:
@@ -69,7 +79,12 @@ class VFBReader:
         """
         entry_id, parser_class, size = self._read_entry()
 
-        if self.minimal and entry_id in ignore_minimal:
+        if (
+            self.minimal
+            and entry_id in ignore_minimal
+            or self.only_keys
+            and entry_id not in self.only_keys
+        ):
             self.stream.seek(size, 1)
             return []
 
