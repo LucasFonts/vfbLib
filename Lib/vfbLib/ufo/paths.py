@@ -32,19 +32,23 @@ def flush_contour(contour, path_is_open) -> List:
                 # raise ValueError
                 contour[0] = contour.pop()
             else:
-                contour[0][0] = "line"
+                _, smooth, name, pt = contour[0]
+                contour[0] = ("line", smooth, name, pt)
         elif last_type == "curve":
             if contour[-1][3] == contour[0][3]:
                 contour[0] = contour.pop()
             else:
-                contour[0][0] = "line"
+                _, smooth, name, pt = contour[0]
+                contour[0] = ("line", smooth, name, pt)
         elif last_type == "qcurve":
             if contour[-1][3] == contour[0][3]:
                 contour[0] = contour.pop()
             else:
-                contour[0][0] = "line"
+                _, smooth, name, pt = contour[0]
+                contour[0] = ("line", smooth, name, pt)
         elif last_type is None:
-            contour[0][0] = "qcurve"
+            _, smooth, name, pt = contour[0]
+            contour[0] = ("qcurve", smooth, name, pt)
     return contour
 
 

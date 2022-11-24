@@ -71,6 +71,7 @@ class VfbToUfoWriter:
         self.features_classes = ""
         self.features = ""
         self.groups = {}
+        self.guide_properties: GuidePropertyList = []
         self.info = VfbToUfoInfo()
         self.num_blue_values = 0
         self.num_other_blues = 0
