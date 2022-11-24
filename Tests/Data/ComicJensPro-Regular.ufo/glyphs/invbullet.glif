@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="invbullet" format="2">
+	<unicode hex="25D8"/>
+	<advance width="655"/>
+	<outline>
+		<contour>
+			<point name="hr00" x="127" y="376" type="curve" smooth="yes"/>
+			<point x="113" y="347"/>
+			<point x="102" y="211"/>
+			<point x="102" y="151" type="curve" smooth="yes"/>
+			<point x="102" y="71"/>
+			<point x="170" y="52"/>
+			<point x="235" y="52" type="curve"/>
+			<point x="242" y="48"/>
+			<point x="257" y="47"/>
+			<point x="274" y="47" type="curve" smooth="yes"/>
+			<point x="292" y="47"/>
+			<point x="313" y="48"/>
+			<point x="335" y="51" type="curve"/>
+			<point x="353" y="50"/>
+			<point x="373" y="50"/>
+			<point x="395" y="50" type="curve" smooth="yes"/>
+			<point x="451" y="50"/>
+			<point x="513" y="56"/>
+			<point x="533" y="82" type="curve" smooth="yes"/>
+			<point x="549" y="103"/>
+			<point x="553" y="133"/>
+			<point x="553" y="164" type="curve" smooth="yes"/>
+			<point x="553" y="202"/>
+			<point x="549" y="231"/>
+			<point x="549" y="257" type="curve" smooth="yes"/>
+			<point x="549" y="276"/>
+			<point x="550" y="292"/>
+			<point x="550" y="308" type="curve" smooth="yes"/>
+			<point x="550" y="381"/>
+			<point x="539" y="416"/>
+			<point x="425" y="431" type="curve" smooth="yes"/>
+			<point x="335" y="443" type="line" smooth="yes"/>
+			<point x="314" y="446"/>
+			<point x="267" y="453"/>
+			<point x="225" y="453" type="curve" smooth="yes"/>
+			<point x="159" y="453"/>
+			<point x="129" y="430"/>
+			<point x="129" y="392" type="curve" smooth="yes"/>
+			<point x="129" y="388"/>
+			<point x="130" y="384"/>
+			<point x="131" y="380" type="curve"/>
+			<point x="129" y="379"/>
+			<point x="128" y="377"/>
+		</contour>
+		<contour>
+			<point x="293" y="154" type="line" smooth="yes"/>
+			<point x="284" y="154"/>
+			<point x="276" y="154"/>
+			<point x="267" y="153" type="curve"/>
+			<point x="256" y="170"/>
+			<point x="250" y="202"/>
+			<point x="250" y="233" type="curve" smooth="yes"/>
+			<point x="250" y="275"/>
+			<point x="261" y="318"/>
+			<point x="284" y="329" type="curve" smooth="yes"/>
+			<point x="295" y="334"/>
+			<point x="319" y="336"/>
+			<point x="330" y="336" type="curve" smooth="yes"/>
+			<point x="372" y="336"/>
+			<point x="399" y="315"/>
+			<point x="411" y="280" type="curve"/>
+			<point x="413" y="271"/>
+			<point x="414" y="263"/>
+			<point x="414" y="254" type="curve" smooth="yes"/>
+			<point x="414" y="222"/>
+			<point x="402" y="190"/>
+			<point x="389" y="162" type="curve"/>
+			<point x="374" y="159"/>
+			<point x="360" y="156"/>
+			<point x="344" y="154" type="curve"/>
+		</contour>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint</key>
+			<dict>
+				<key>hintSetList</key>
+				<array>
+					<dict>
+						<key>pointTag</key>
+						<string>hr00</string>
+						<key>stems</key>
+						<array>
+							<string>hstem 47 107</string>
+							<string>hstem 443 -107</string>
+							<string>vstem 102 148</string>
+							<string>vstem 553 -139</string>
+						</array>
+					</dict>
+				</array>
+			</dict>
+			<key>com.typemytype.robofont.mark</key>
+			<array>
+				<real>0.656</real>
+				<integer>1</integer>
+				<real>0.6</real>
+				<integer>1</integer>
+			</array>
+		</dict>
+	</lib>
+</glyph>

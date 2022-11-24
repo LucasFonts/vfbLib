@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="ncommaaccent" format="2">
+	<unicode hex="0146"/>
+	<advance width="629"/>
+	<outline>
+		<component base="n"/>
+		<component base="uni0326" xOffset="446" yOffset="-47"/>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.typemytype.robofont.mark</key>
+			<array>
+				<real>0.6</real>
+				<real>0.986</real>
+				<integer>1</integer>
+				<integer>1</integer>
+			</array>
+		</dict>
+	</lib>
+</glyph>

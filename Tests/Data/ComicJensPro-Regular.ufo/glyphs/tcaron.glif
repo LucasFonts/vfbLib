@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="tcaron" format="2">
+	<unicode hex="0165"/>
+	<advance width="429"/>
+	<outline>
+		<contour>
+			<point x="382" y="751" type="curve"/>
+			<point x="380" y="734"/>
+			<point x="369" y="660"/>
+			<point x="354" y="650" type="curve"/>
+			<point x="344" y="637"/>
+			<point x="340" y="624"/>
+			<point x="340" y="612" type="curve" smooth="yes"/>
+			<point x="340" y="586"/>
+			<point x="360" y="565"/>
+			<point x="388" y="565" type="curve" smooth="yes"/>
+			<point x="460" y="565"/>
+			<point x="475" y="687"/>
+			<point x="482" y="743" type="curve"/>
+			<point x="477" y="776"/>
+			<point x="455" y="793"/>
+			<point x="433" y="793" type="curve" smooth="yes"/>
+			<point x="413" y="793"/>
+			<point x="392" y="779"/>
+		</contour>
+		<component base="t"/>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.typemytype.robofont.mark</key>
+			<array>
+				<real>0.6</real>
+				<real>0.986</real>
+				<integer>1</integer>
+				<integer>1</integer>
+			</array>
+		</dict>
+	</lib>
+</glyph>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="x" format="2">
+	<unicode hex="0078"/>
+	<advance width="580"/>
+	<outline>
+		<contour>
+			<point name="hr00" x="39" y="476" type="curve"/>
+			<point x="59" y="415"/>
+			<point x="110" y="323"/>
+			<point x="170" y="234" type="curve"/>
+			<point x="102" y="144"/>
+			<point x="68" y="100"/>
+			<point x="68" y="18" type="curve" smooth="yes"/>
+			<point x="68" y="-24"/>
+			<point x="84" y="-73"/>
+			<point x="133" y="-73" type="curve" smooth="yes"/>
+			<point x="165" y="-73"/>
+			<point x="184" y="-51"/>
+			<point x="184" y="-27" type="curve" smooth="yes"/>
+			<point x="184" y="-15"/>
+			<point x="180" y="-2"/>
+			<point x="169" y="8" type="curve"/>
+			<point x="169" y="63"/>
+			<point x="198" y="107"/>
+			<point x="232" y="150" type="curve"/>
+			<point x="290" y="77"/>
+			<point x="368" y="-12"/>
+			<point x="413" y="-12" type="curve" smooth="yes"/>
+			<point x="444" y="-12"/>
+			<point x="463" y="9"/>
+			<point x="463" y="33" type="curve" smooth="yes"/>
+			<point x="463" y="48"/>
+			<point x="456" y="64"/>
+			<point x="441" y="79" type="curve"/>
+			<point x="402" y="102"/>
+			<point x="348" y="162"/>
+			<point x="296" y="231" type="curve"/>
+			<point x="356" y="307"/>
+			<point x="428" y="389"/>
+			<point x="509" y="421" type="curve" smooth="yes"/>
+			<point x="535" y="431"/>
+			<point x="547" y="453"/>
+			<point x="547" y="471" type="curve" smooth="yes"/>
+			<point x="547" y="496"/>
+			<point x="527" y="518"/>
+			<point x="496" y="518" type="curve" smooth="yes"/>
+			<point x="434" y="518"/>
+			<point x="343" y="444"/>
+			<point x="235" y="317" type="curve"/>
+			<point x="189" y="387"/>
+			<point x="150" y="457"/>
+			<point x="136" y="500" type="curve"/>
+			<point x="123" y="523"/>
+			<point x="104" y="534"/>
+			<point x="86" y="534" type="curve" smooth="yes"/>
+			<point x="62" y="534"/>
+			<point x="39" y="513"/>
+		</contour>
+	</outline>
+	<anchor name="top" x="264" y="498"/>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint</key>
+			<dict>
+				<key>hintSetList</key>
+				<array>
+					<dict>
+						<key>pointTag</key>
+						<string>hr00</string>
+						<key>stems</key>
+						<array>
+							<string>hstem -73 -21</string>
+							<string>hstem 534 -21</string>
+						</array>
+					</dict>
+				</array>
+			</dict>
+		</dict>
+	</lib>
+</glyph>

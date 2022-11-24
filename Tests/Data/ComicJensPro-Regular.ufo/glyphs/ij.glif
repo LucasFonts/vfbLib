@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="ij" format="2">
+	<unicode hex="0133"/>
+	<advance width="532"/>
+	<outline>
+		<contour>
+			<point name="hr00" x="345" y="503" type="curve"/>
+			<point x="344" y="436"/>
+			<point x="340" y="368"/>
+			<point x="340" y="300" type="curve" smooth="yes"/>
+			<point x="340" y="201"/>
+			<point x="357" y="103"/>
+			<point x="357" y="5" type="curve" smooth="yes"/>
+			<point x="357" y="-57"/>
+			<point x="355" y="-176"/>
+			<point x="300" y="-229" type="curve" smooth="yes"/>
+			<point x="291" y="-238"/>
+			<point x="278" y="-249"/>
+			<point x="234" y="-250" type="curve"/>
+			<point x="220" y="-234"/>
+			<point x="202" y="-225"/>
+			<point x="188" y="-225" type="curve" smooth="yes"/>
+			<point x="153" y="-225"/>
+			<point x="133" y="-248"/>
+			<point x="133" y="-272" type="curve" smooth="yes"/>
+			<point x="133" y="-288"/>
+			<point x="142" y="-304"/>
+			<point x="159" y="-314" type="curve"/>
+			<point x="177" y="-341"/>
+			<point x="205" y="-351"/>
+			<point x="235" y="-351" type="curve" smooth="yes"/>
+			<point x="280" y="-351"/>
+			<point x="331" y="-329"/>
+			<point x="363" y="-308" type="curve" smooth="yes"/>
+			<point x="388" y="-291"/>
+			<point x="407" y="-258"/>
+			<point x="417" y="-231" type="curve" smooth="yes"/>
+			<point x="446" y="-153"/>
+			<point x="455" y="-79"/>
+			<point x="455" y="-5" type="curve" smooth="yes"/>
+			<point x="455" y="94"/>
+			<point x="439" y="193"/>
+			<point x="439" y="302" type="curve" smooth="yes"/>
+			<point x="439" y="366"/>
+			<point x="444" y="430"/>
+			<point x="445" y="495" type="curve"/>
+			<point x="440" y="528"/>
+			<point x="418" y="545"/>
+			<point x="396" y="545" type="curve" smooth="yes"/>
+			<point x="376" y="545"/>
+			<point x="355" y="531"/>
+		</contour>
+		<contour>
+			<point x="79" y="483" type="curve"/>
+			<point x="76" y="342"/>
+			<point x="52" y="202"/>
+			<point x="48" y="61" type="curve"/>
+			<point x="48" y="23"/>
+			<point x="72" y="3"/>
+			<point x="97" y="3" type="curve" smooth="yes"/>
+			<point x="120" y="3"/>
+			<point x="143" y="19"/>
+			<point x="148" y="53" type="curve"/>
+			<point x="152" y="194"/>
+			<point x="175" y="334"/>
+			<point x="179" y="475" type="curve"/>
+			<point x="174" y="508"/>
+			<point x="152" y="525"/>
+			<point x="130" y="525" type="curve" smooth="yes"/>
+			<point x="110" y="525"/>
+			<point x="89" y="511"/>
+		</contour>
+		<contour>
+			<point x="434" y="745" type="curve"/>
+			<point x="429" y="746"/>
+			<point x="423" y="747"/>
+			<point x="418" y="747" type="curve" smooth="yes"/>
+			<point x="379" y="747"/>
+			<point x="341" y="710"/>
+			<point x="341" y="673" type="curve" smooth="yes"/>
+			<point x="341" y="645"/>
+			<point x="372" y="616"/>
+			<point x="404" y="616" type="curve" smooth="yes"/>
+			<point x="434" y="616"/>
+			<point x="460" y="641"/>
+			<point x="465" y="672" type="curve"/>
+			<point x="469" y="679"/>
+			<point x="472" y="687"/>
+			<point x="472" y="696" type="curve" smooth="yes"/>
+			<point x="472" y="714"/>
+			<point x="460" y="734"/>
+		</contour>
+		<contour>
+			<point x="176" y="718" type="curve"/>
+			<point x="166" y="725"/>
+			<point x="155" y="726"/>
+			<point x="152" y="726" type="curve" smooth="yes"/>
+			<point x="115" y="726"/>
+			<point x="82" y="691"/>
+			<point x="82" y="656" type="curve" smooth="yes"/>
+			<point x="82" y="626"/>
+			<point x="111" y="598"/>
+			<point x="142" y="598" type="curve" smooth="yes"/>
+			<point x="178" y="598"/>
+			<point x="214" y="631"/>
+			<point x="214" y="670" type="curve"/>
+			<point x="210" y="697"/>
+			<point x="194" y="713"/>
+		</contour>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint</key>
+			<dict>
+				<key>hintSetList</key>
+				<array>
+					<dict>
+						<key>pointTag</key>
+						<string>hr00</string>
+						<key>stems</key>
+						<array>
+							<string>hstem -351 101</string>
+							<string>hstem 3 -21</string>
+							<string>hstem 545 -21</string>
+							<string>hstem 747 -131</string>
+							<string>vstem 48 100</string>
+							<string>vstem 439 -99</string>
+						</array>
+					</dict>
+				</array>
+			</dict>
+			<key>com.typemytype.robofont.mark</key>
+			<array>
+				<real>0.845</real>
+				<integer>1</integer>
+				<real>0.6</real>
+				<integer>1</integer>
+			</array>
+		</dict>
+	</lib>
+</glyph>

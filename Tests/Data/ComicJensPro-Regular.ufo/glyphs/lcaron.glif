@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="lcaron" format="2">
+	<unicode hex="013E"/>
+	<advance width="398"/>
+	<outline>
+		<component base="l"/>
+		<component base="uni0313" xOffset="536" yOffset="7"/>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.typemytype.robofont.mark</key>
+			<array>
+				<real>0.6</real>
+				<real>0.986</real>
+				<integer>1</integer>
+				<integer>1</integer>
+			</array>
+		</dict>
+	</lib>
+</glyph>

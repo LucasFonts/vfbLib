@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="o" format="2">
+	<unicode hex="006F"/>
+	<advance width="572"/>
+	<outline>
+		<contour>
+			<point x="392" y="479" type="curve" smooth="yes"/>
+			<point x="369" y="513"/>
+			<point x="336" y="523"/>
+			<point x="293" y="523" type="curve" smooth="yes"/>
+			<point x="251" y="523"/>
+			<point x="208" y="510"/>
+			<point x="179" y="493" type="curve" smooth="yes"/>
+			<point x="77" y="432"/>
+			<point x="32" y="316"/>
+			<point x="32" y="197" type="curve" smooth="yes"/>
+			<point x="32" y="40"/>
+			<point x="136" y="-45"/>
+			<point x="257" y="-45" type="curve" smooth="yes"/>
+			<point x="416" y="-45"/>
+			<point x="534" y="115"/>
+			<point x="534" y="267" type="curve" smooth="yes"/>
+			<point x="534" y="338"/>
+			<point x="503" y="467"/>
+			<point x="422" y="467" type="curve" smooth="yes"/>
+			<point x="412" y="467"/>
+			<point x="403" y="466"/>
+			<point x="397" y="463" type="curve"/>
+			<point x="397" y="467"/>
+			<point x="396" y="473"/>
+		</contour>
+		<contour>
+			<point x="391" y="378" type="curve" smooth="yes"/>
+			<point x="427" y="353"/>
+			<point x="434" y="299"/>
+			<point x="434" y="258" type="curve" smooth="yes"/>
+			<point x="434" y="168"/>
+			<point x="359" y="55"/>
+			<point x="257" y="55" type="curve" smooth="yes"/>
+			<point x="166" y="55"/>
+			<point x="133" y="118"/>
+			<point x="133" y="200" type="curve" smooth="yes"/>
+			<point x="133" y="270"/>
+			<point x="171" y="368"/>
+			<point x="227" y="405" type="curve" smooth="yes"/>
+			<point x="246" y="417"/>
+			<point x="266" y="422"/>
+			<point x="288" y="422" type="curve" smooth="yes"/>
+			<point x="312" y="422"/>
+			<point x="330" y="407"/>
+			<point x="349" y="407" type="curve" smooth="yes"/>
+			<point x="355" y="407"/>
+			<point x="361" y="409"/>
+			<point x="367" y="411" type="curve"/>
+			<point x="370" y="399"/>
+			<point x="377" y="388"/>
+		</contour>
+	</outline>
+	<anchor name="top" x="293" y="502"/>
+	<anchor name="topRightAttach" x="444" y="431"/>
+	<anchor name="bottomAttach" x="257" y="-21"/>
+	<anchor name="bottom" x="257" y="0"/>
+</glyph>

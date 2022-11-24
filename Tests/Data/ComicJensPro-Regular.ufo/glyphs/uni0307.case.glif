@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="uni0307.case" format="2">
+	<advance width="1"/>
+	<outline>
+		<contour>
+			<point name="hr00" x="-101" y="905" type="curve"/>
+			<point x="-149" y="905"/>
+			<point x="-168" y="869"/>
+			<point x="-168" y="849" type="curve" smooth="yes"/>
+			<point x="-168" y="818"/>
+			<point x="-136" y="789"/>
+			<point x="-104" y="789" type="curve" smooth="yes"/>
+			<point x="-78" y="789"/>
+			<point x="-47" y="812"/>
+			<point x="-47" y="855" type="curve" smooth="yes"/>
+			<point x="-47" y="878"/>
+			<point x="-66" y="905"/>
+		</contour>
+	</outline>
+	<anchor name="_top" x="-101" y="725"/>
+	<anchor name="top" x="-101" y="905"/>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint</key>
+			<dict>
+				<key>hintSetList</key>
+				<array>
+					<dict>
+						<key>pointTag</key>
+						<string>hr00</string>
+						<key>stems</key>
+						<array>
+							<string>hstem 905 -116</string>
+						</array>
+					</dict>
+				</array>
+			</dict>
+			<key>com.typemytype.robofont.mark</key>
+			<array>
+				<integer>1</integer>
+				<real>0.873</real>
+				<real>0.6</real>
+				<integer>1</integer>
+			</array>
+		</dict>
+	</lib>
+</glyph>

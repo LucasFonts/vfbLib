@@ -1,0 +1,421 @@
+@case_source = [
+# <protection state="no"/>
+parenleft parenright hyphen bracketleft bracketright 
+braceleft braceright guillemotleft uni00AD guillemotright 
+gravecomb acutecomb uni0302 tildecomb uni0304 
+uni0306 uni0307 uni0308 uni030A  uni030C   uni031B 
+   uni0326 uni0327 
+uni0328 
+endash emdash guilsinglleft guilsinglright ];
+
+@case_target = [
+# <protection state="no"/>
+parenleft.case parenright.case hyphen.case bracketleft.case bracketright.case 
+braceleft.case braceright.case guillemotleft.case uni00AD.case guillemotright.case 
+gravecomb.case acutecomb.case uni0302.case tildecomb.case uni0304.case 
+uni0306.case uni0307.case uni0308.case uni030A.case uni030C.case uni031B.case 
+uni0326.case uni0327.case 
+uni0328.case
+endash.case emdash.case guilsinglleft.case guilsinglright.case ];
+
+@combMark_source = [
+# <protection state="no"/>
+gravecomb acutecomb uni0302 tildecomb uni0304 
+uni0306 uni0307 uni0308 uni030A 
+ uni030C uni031B 
+ uni0326 uni0327 
+uni0328
+];
+
+@combMark_target = [
+# <protection state="no"/>
+gravecomb.case acutecomb.case uni0302.case tildecomb.case uni0304.case 
+uni0306.case uni0307.case uni0308.case uni030A.case 
+uni030C.case uni031B.case 
+uni0326.case uni0327.case 
+uni0328.case 
+];
+
+@fractionSlashes = [
+# <protection state="no"/>
+slash fraction ];
+
+@hist_source = [
+# <protection state="no"/>
+s ];
+
+@hist_target = [
+# <protection state="no"/>
+longs ];
+
+@letter = [
+# <protection state="no"/>
+A B C D E 
+F G H I J 
+K L M N O 
+P Q R S T 
+U V W X Y 
+Z a b c d 
+e f g h i 
+j k l m n 
+o p q r s 
+t u v w x 
+y z ordfeminine mu ordmasculine 
+Agrave Aacute Acircumflex Atilde Adieresis 
+Aring AE Ccedilla Egrave Eacute 
+Ecircumflex Edieresis Igrave Iacute Icircumflex 
+Idieresis Eth Ntilde Ograve Oacute 
+Ocircumflex Otilde Odieresis Oslash Ugrave 
+Uacute Ucircumflex Udieresis Yacute Thorn 
+germandbls agrave aacute acircumflex atilde 
+adieresis aring ae ccedilla egrave 
+eacute ecircumflex edieresis igrave iacute 
+icircumflex idieresis eth ntilde ograve 
+oacute ocircumflex otilde odieresis oslash 
+ugrave uacute ucircumflex udieresis yacute 
+thorn ydieresis Amacron amacron Abreve 
+abreve Aogonek aogonek Cacute cacute 
+Ccircumflex ccircumflex Cdotaccent cdotaccent Ccaron 
+ccaron Dcaron dcaron Dcroat dcroat 
+Emacron emacron Ebreve ebreve Edotaccent 
+edotaccent Eogonek eogonek Ecaron ecaron 
+Gcircumflex gcircumflex Gbreve gbreve Gdotaccent 
+gdotaccent Gcommaaccent gcommaaccent Hcircumflex hcircumflex 
+Hbar hbar Itilde itilde Imacron 
+imacron Ibreve ibreve Iogonek iogonek 
+Idotaccent dotlessi IJ ij Jcircumflex 
+jcircumflex Kcommaaccent kcommaaccent kgreenlandic Lacute 
+lacute Lcommaaccent lcommaaccent Lcaron lcaron 
+Ldot ldot Lslash lslash Nacute 
+nacute Ncommaaccent ncommaaccent Ncaron ncaron 
+napostrophe Eng eng Omacron omacron 
+Obreve obreve Ohungarumlaut ohungarumlaut OE 
+oe Racute racute Rcommaaccent rcommaaccent 
+Rcaron rcaron Sacute sacute Scircumflex 
+scircumflex Scedilla scedilla Scaron scaron 
+Tcommaaccent tcommaaccent Tcaron tcaron Tbar 
+tbar Utilde utilde Umacron umacron 
+Ubreve ubreve Uring uring Uhungarumlaut 
+uhungarumlaut Uogonek uogonek Wcircumflex wcircumflex 
+Ycircumflex ycircumflex Ydieresis Zacute zacute 
+Zdotaccent zdotaccent Zcaron zcaron longs 
+uni018F florin uni01B5 uni01B6 Aringacute 
+aringacute AEacute aeacute Oslashacute oslashacute 
+Scommaaccent scommaaccent uni021A uni021B dotlessj 
+uni0259 circumflex caron uni0394 uni03A9 
+uni03BC pi Wgrave wgrave Wacute 
+wacute Wdieresis wdieresis uni1E8A uni1E8B 
+Ygrave ygrave Omega uniFB00 fi 
+fl i.latn_TRK t_t.ss01 f.ss01 t.ss01 
+tcommaaccent.ss01 tcaron.ss01 tbar.ss01 uni021B.ss01 uniFB00.ss01 
+fi.ss01 fl.ss01 Z.ss02 z.ss02 a_a 
+c_c d_d e_e g_g l_e 
+l_l longs_i longs_longs m_m n_n 
+o_o p_p r_r s_s t_t 
+w_w_w ];
+
+@ordn_source = [
+# <protection state="no"/>
+a o ];
+
+@ordn_target = [
+# <protection state="no"/>
+ordfeminine ordmasculine ];
+
+@ordnnumbers = [
+# <protection state="no"/>
+zero one two three four 
+five six seven eight nine 
+];
+
+@ornaments = [
+# <protection state="no"/>
+orn001 ];
+
+@preBuildFractions = [
+# <protection state="no"/>
+onequarter onehalf threequarters ];
+
+@ss01_source = [
+# <protection state="no"/>
+t_t f t tcommaaccent tcaron 
+tbar uni021B uniFB00 fi fl 
+];
+
+@ss01_target = [
+# <protection state="no"/>
+t_t.ss01 f.ss01 t.ss01 tcommaaccent.ss01 tcaron.ss01 
+tbar.ss01 uni021B.ss01 uniFB00.ss01 fi.ss01 fl.ss01 
+];
+
+@ss02_source = [
+# <protection state="no"/>
+Z z ];
+
+@ss02_target = [
+# <protection state="no"/>
+Z.ss02 z.ss02 ];
+
+@uppercaseLetters = [
+# <protection state="no"/>
+A B C D E 
+F G H I J 
+K L M N O 
+P Q R S T 
+U V W X Y 
+Z Agrave Aacute Acircumflex Atilde 
+Adieresis Aring AE Ccedilla Egrave 
+Eacute Ecircumflex Edieresis Igrave Iacute 
+Icircumflex Idieresis Eth Ntilde Ograve 
+Oacute Ocircumflex Otilde Odieresis Oslash 
+Ugrave Uacute Ucircumflex Udieresis Yacute 
+Thorn Amacron Abreve Aogonek Cacute 
+Ccircumflex Cdotaccent Ccaron Dcaron Dcroat 
+Emacron Ebreve Edotaccent Eogonek Ecaron 
+Gcircumflex Gbreve Gdotaccent Gcommaaccent Hcircumflex 
+Hbar Itilde Imacron Ibreve Iogonek 
+Idotaccent IJ Jcircumflex Kcommaaccent Lacute 
+Lcommaaccent Lcaron Ldot Lslash Nacute 
+Ncommaaccent Ncaron Eng Omacron Obreve 
+Ohungarumlaut OE Racute Rcommaaccent Rcaron 
+Sacute Scircumflex Scedilla Scaron Tcommaaccent 
+Tcaron Tbar Utilde Umacron Ubreve 
+Uring Uhungarumlaut Uogonek Wcircumflex Ycircumflex 
+Ydieresis Zacute Zdotaccent Zcaron uni018F 
+uni01B5 Aringacute AEacute Oslashacute Scommaaccent 
+uni021A uni0394 uni03A9 Wgrave Wacute 
+Wdieresis uni1E8A Ygrave Omega Z.ss02 
+];
+
+languagesystem latn dflt;
+languagesystem cyrl dflt;
+languagesystem grek dflt;
+languagesystem latn AZE;
+languagesystem latn CRT;
+languagesystem latn DEU;
+languagesystem latn ENG;
+languagesystem latn MOL;
+languagesystem latn ROM;
+languagesystem latn TRK;
+
+
+
+
+
+
+
+
+
+feature aalt {
+#------------------------------
+# All Alternates
+# <version number="2.02"/>
+# <protection state="no"/>
+#------------------------------
+    feature case;
+    feature ordn;
+    feature frac;
+    feature liga;
+    feature hlig;
+    feature ss02;
+    feature calt;
+    feature salt;
+    feature locl;
+    feature hist;
+    feature smcp;
+    feature dlig;
+    feature ss01;
+    feature ornm;
+} aalt;
+
+feature locl {
+#------------------------------
+# Localized Forms
+# <version number="2.02"/>
+# <protection state="no"/>
+#------------------------------
+  script latn;
+  # Latin
+    language AZE;
+    # Azeri
+      sub i by i.latn_TRK;
+    language CRT;
+    # Crimean Tatar
+      sub i by i.latn_TRK;
+    language DEU;
+    # German
+      sub zero_seven by zero_seven.latn_DEU;
+      sub seven by seven.latn_DEU;
+    language ENG;
+    # English
+    	sub one by one.latn_ENG;
+    language MOL;
+    # Moldavian
+      sub [Scedilla scedilla] by [Scommaaccent scommaaccent];
+      sub [Tcommaaccent tcommaaccent] by [uni021A uni021B];
+    language ROM;
+    # Romanian
+      sub [Scedilla scedilla] by [Scommaaccent scommaaccent];
+      sub [Tcommaaccent tcommaaccent] by [uni021A uni021B];
+    language TRK;
+    # Turkish
+      sub i by i.latn_TRK;
+} locl;
+
+feature calt {
+#------------------------------
+# Contextual Alternates
+# <version number="2.02"/>
+# <protection state="yes"/>
+#------------------------------
+    sub @uppercaseLetters @combMark_source' by @combMark_target;
+    sub afii10026 afii10026' by afii10026.calt;
+} calt;
+
+
+feature frac {
+#------------------------------
+# Fractions
+# <version number="2.02"/>
+# <protection state="no"/>
+#------------------------------
+    sub one @fractionSlashes four by onequarter;
+    sub one @fractionSlashes two by onehalf;
+    sub three @fractionSlashes four by threequarters;
+} frac;
+
+feature ordn {
+#------------------------------
+# Ordinals
+# <version number="2.02"/>
+# <protection state="no"/>
+#------------------------------
+    sub [@ordnnumbers @ordn_target] @ordn_source' by @ordn_target;
+} ordn;
+
+feature hist {
+#------------------------------
+# Historical Forms
+# <version number="2.02"/>
+# <protection state="no"/>
+#------------------------------
+    sub @hist_source by @hist_target;
+} hist;
+
+feature case {
+#------------------------------
+# Case-Sensitive Forms
+# <version number="2.02"/>
+# <protection state="no"/>
+#------------------------------
+    sub @case_source by @case_target;
+} case;
+
+feature dlig {
+#------------------------------
+# Discretionary Ligatures
+# <version number="2.02"/>
+# <protection state="no"/>
+#------------------------------
+    sub a a by a_a;
+    sub c c by c_c;
+    sub d d by d_d;
+    sub e e by e_e;
+    sub g g by g_g;
+    sub l e by l_e;
+    sub l l by l_l;
+    sub m m by m_m;
+    sub n n by n_n;
+    sub o o by o_o;
+    sub p p by p_p;
+    sub r r by r_r;
+    sub s s by s_s;
+    sub t t by t_t;
+    sub w w w by w_w_w;
+    sub zero seven by zero_seven;
+    sub zero zero by zero_zero;
+} dlig;
+
+feature liga {
+#------------------------------
+# Standard Ligatures
+# <version number="2.02"/>
+# <protection state="no"/>
+#------------------------------
+    sub f f by uniFB00;
+    sub f i by fi;
+    sub f l by fl;
+} liga;
+
+feature hlig {
+#------------------------------
+# Historical Ligatures
+# <version number="2.02"/>
+# <protection state="no"/>
+#------------------------------
+    sub longs i by longs_i;
+    sub longs longs by longs_longs;
+} hlig;
+
+feature salt {
+#------------------------------
+# Stylistic Alternates
+# <version number="2.02"/>
+# <protection state="no"/>
+#------------------------------
+    sub @ss01_source by @ss01_target;
+} salt;
+
+feature ss01 {
+#------------------------------
+# Stylistic Set 1
+# <version number="2.02"/>
+# <protection state="no"/>
+#------------------------------
+    sub @ss01_source by @ss01_target;
+} ss01;
+
+feature ss02 {
+#------------------------------
+# Stylistic Set 2
+# <version number="2.02"/>
+# <protection state="no"/>
+#------------------------------
+    sub @ss02_source by @ss02_target;
+} ss02;
+
+feature ss03 {
+#------------------------------
+# Stylistic Set 3
+# <version number="2.02"/>
+# <protection state="no"/>
+#------------------------------
+# clone of hist (Historical Forms)
+    sub @hist_source by @hist_target;
+} ss03;
+
+feature ornm {
+#------------------------------
+# Ornaments
+# <version number="2.02"/>
+# <protection state="no"/>
+#------------------------------
+    sub bullet from @ornaments;
+} ornm;
+
+feature cpsp {
+#------------------------------
+# Capital Spacing
+# <version number="2.02"/>
+# <protection state="no"/>
+#------------------------------
+    pos @uppercaseLetters <5 0 10 0>;
+} cpsp;
+
+
+
+
+
+
+
+

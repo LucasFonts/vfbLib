@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="triagdn" format="2">
+	<unicode hex="25BC"/>
+	<advance width="873"/>
+	<outline>
+		<contour>
+			<point x="96" y="444" type="curve" smooth="yes"/>
+			<point x="126" y="380"/>
+			<point x="151" y="315"/>
+			<point x="178" y="250" type="curve" smooth="yes"/>
+			<point x="215" y="160"/>
+			<point x="263" y="88"/>
+			<point x="317" y="6" type="curve" smooth="yes"/>
+			<point x="340" y="-29"/>
+			<point x="365" y="-86"/>
+			<point x="405" y="-86" type="curve" smooth="yes"/>
+			<point x="454" y="-86"/>
+			<point x="473" y="-14"/>
+			<point x="489" y="27" type="curve"/>
+			<point x="536" y="96"/>
+			<point x="589" y="160"/>
+			<point x="633" y="231" type="curve" smooth="yes"/>
+			<point x="673" y="296"/>
+			<point x="705" y="366"/>
+			<point x="744" y="431" type="curve" smooth="yes"/>
+			<point x="761" y="459"/>
+			<point x="803" y="513"/>
+			<point x="803" y="556" type="curve" smooth="yes"/>
+			<point x="803" y="622"/>
+			<point x="676" y="625"/>
+			<point x="545" y="625" type="curve" smooth="yes"/>
+			<point x="379" y="625"/>
+			<point x="249" y="620"/>
+			<point x="95" y="619" type="curve"/>
+			<point x="65" y="611"/>
+			<point x="50" y="590"/>
+			<point x="50" y="569" type="curve" smooth="yes"/>
+			<point x="50" y="564"/>
+			<point x="51" y="560"/>
+			<point x="52" y="556" type="curve" smooth="yes"/>
+			<point x="52" y="552" type="line" smooth="yes"/>
+			<point x="52" y="525"/>
+			<point x="75" y="488"/>
+		</contour>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.typemytype.robofont.mark</key>
+			<array>
+				<real>0.656</real>
+				<integer>1</integer>
+				<real>0.6</real>
+				<integer>1</integer>
+			</array>
+		</dict>
+	</lib>
+</glyph>
