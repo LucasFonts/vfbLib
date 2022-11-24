@@ -8,6 +8,7 @@ from typing import Any, Dict, List
 from vfbLib.parsers import BaseParser, read_encoded_value
 from vfbLib.parsers.guides import parse_guides
 from vfbLib.truetype import TT_COMMANDS
+from vfbLib.ufo.types import MMNode
 
 
 cmd_name = {
@@ -323,7 +324,7 @@ class GlyphParser(BaseParser):
                 # Second control point
                 read_absolute_point(points, stream, num_masters, x, y)
 
-            segment = dict(type=segment_type, flags=flags, points=points)
+            segment = MMNode(type=segment_type, flags=flags, points=points)
             segments.append(segment)
         glyphdata["nodes"] = segments
         return num_masters

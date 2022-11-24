@@ -5,7 +5,6 @@ from typing import List, Tuple, TYPE_CHECKING
 
 
 if TYPE_CHECKING:
-    from vfbLib.ufo.glyph import VfbToUfoGlyph
     from vfbLib.ufo.types import ComponentList, ContourList
 
 

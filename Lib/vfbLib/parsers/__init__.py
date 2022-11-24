@@ -11,10 +11,7 @@ uint16 = 2
 uint32 = 4
 
 
-def read_encoded_value(stream: BufferedReader | BytesIO | None, debug=False, signed=True) -> int:
-    if stream is None:
-        raise ValueError
-
+def read_encoded_value(stream: BufferedReader | BytesIO, debug=False, signed=True) -> int:
     val = int.from_bytes(stream.read(1), byteorder="little")
     if val == 0:
         raise EOFError

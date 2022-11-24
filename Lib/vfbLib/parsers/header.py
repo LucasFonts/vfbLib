@@ -1,14 +1,20 @@
 from __future__ import annotations
 
-from io import BufferedReader
+from io import BufferedReader, BytesIO
+from typing import Any, Dict
 from vfbLib.parsers import BaseParser, read_encoded_value
 
 
 class VfbHeaderParser(BaseParser):
     @classmethod
-    def parse(cls, stream: BufferedReader):
-        cls.stream = stream
-        header = {}
+    def parse(
+        cls,
+        stream: BufferedReader,
+        size: int = 0,
+        master_count: int | None = None,
+    ):
+        cls.stream = BytesIO(stream.read())
+        header: Dict[str, Any] = {}
         header["header0"] = cls.read_uint8()
         header["filetype"] = stream.read(5).decode("cp1252")
         header["header1"] = cls.read_uint16()
@@ -24,7 +30,7 @@ class VfbHeaderParser(BaseParser):
             key = cls.read_uint8()
             val = read_encoded_value(stream)
             header[f"header{i}"] = {key: val}
-        
+
         header["header12"] = cls.read_uint16()
         header["header13"] = cls.read_uint16()
         header["header14"] = cls.read_uint8()

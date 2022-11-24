@@ -1,18 +1,21 @@
 from __future__ import annotations
 
 from colorsys import hls_to_rgb
-from typing import Dict
+from typing import TYPE_CHECKING, Dict, List
 from vfbLib.ufo.vfb2ufo import vfb2ufo_label_codes
+
+if TYPE_CHECKING:
+    from vfbLib.ufo.types import Anchor, GuidePropertyList, MMHintsDict, MMNode
 
 
 class VfbToUfoGlyph:
     def __init__(self) -> None:
-        self.anchors = []
+        self.anchors: List[Anchor] = []
         self.labels: Dict[str, int] = {}
         self.point_labels: Dict[int, str] = {}
-        self.mm_hints = {"h": [], "v": []}
-        self.mm_nodes = []
-        self.guide_properties = []
+        self.mm_hints: MMHintsDict = {"h": [], "v": []}
+        self.mm_nodes: List[MMNode] = []
+        self.guide_properties: GuidePropertyList = []
 
     def get_point_label(self, index: int, code: str) -> str:
         if index in self.point_labels:
