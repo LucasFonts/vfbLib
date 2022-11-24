@@ -77,6 +77,8 @@ class BaseParser:
     """
     Base class to read data from a vfb file
     """
+    master_count: int | None = None
+    stream: BytesIO | None = None
 
     @classmethod
     def parse(cls, stream: BufferedReader, size: int, master_count: int | None = None):
@@ -145,7 +147,7 @@ class EncodedKeyValuesParser(BaseParser):
     __end__ = 0x64
 
     @classmethod
-    def _parse(cls) -> List[int]:
+    def _parse(cls) -> List[Dict[int, int]]:
         values = []
         while True:
             key = cls.read_uint8()
