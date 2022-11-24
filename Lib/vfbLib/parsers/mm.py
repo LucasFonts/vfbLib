@@ -8,6 +8,7 @@ from vfbLib.parsers import BaseParser, read_encoded_value
 class AxisMappingsParser(BaseParser):
     @classmethod
     def _parse(cls) -> List[Dict[str, Any]]:
+        assert cls.stream is not None
         mappings = []
         for _ in range(cls.stream.getbuffer().nbytes // 16):
             src = unpack("d", cls.stream.read(8))[0]
@@ -20,6 +21,7 @@ class AxisMappingsParser(BaseParser):
 class PrimaryInstancesParser(BaseParser):
     @classmethod
     def _parse(cls) -> List[Dict[str, Any]]:
+        assert cls.stream is not None
         stream = cls.stream
         instances = []
         num_instances = read_encoded_value(stream)

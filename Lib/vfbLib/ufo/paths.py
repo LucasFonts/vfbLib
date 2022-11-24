@@ -1,29 +1,19 @@
 from __future__ import annotations
 
-from fontTools.pens.pointPen import BasePointToSegmentPen
-from pprint import pprint
+from fontTools.pens.pointPen import AbstractPointPen
 from typing import List, Tuple, TYPE_CHECKING
 
 
 if TYPE_CHECKING:
-    Point = Tuple[int, int]
-    Contour = List[List[None | str | Point]] | None
-    ContourList = List[Contour]
-    ComponentList = List[
-        Tuple[str, Tuple[float, float, float, float, int, int]]
-    ]
+    from vfbLib.ufo.glyph import VfbToUfoGlyph
+    from vfbLib.ufo.types import ComponentList, ContourList
 
 
-class Vfb2UfoPen(BasePointToSegmentPen):
-    def __init__(self) -> None:
-        super().__init__()
-        self.contours = []
-
-    def _flushContour(self, segments):
-        self.contours.append(segments)
-
-
-def draw_glyph(mm_glyph, contours, components, pen):
+def draw_glyph(
+    contours: ContourList,
+    components: ComponentList,
+    pen: AbstractPointPen,
+):
     for contour in contours:
         pen.beginPath()
         for segment_type, smooth, name, pt in contour:
@@ -42,7 +32,8 @@ def flush_contour(contour, path_is_open) -> List:
                 # Equal coords, use closepath to draw the last line
                 # raise ValueError
                 contour[0] = contour.pop()
-            else: contour[0][0] = "line"
+            else:
+                contour[0][0] = "line"
         elif last_type == "curve":
             if contour[-1][3] == contour[0][3]:
                 contour[0] = contour.pop()

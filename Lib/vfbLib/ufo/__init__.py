@@ -4,7 +4,7 @@ from fontTools.ufoLib import UFOWriter
 from fontTools.ufoLib.glifLib import GlyphSet, Glyph
 from pathlib import Path
 from shutil import rmtree
-from typing import TYPE_CHECKING, Any, Dict, List, Tuple
+from typing import TYPE_CHECKING, Any, Dict, List
 from ufonormalizer import normalizeUFO
 from vfbLib.ufo.glyph import VfbToUfoGlyph
 from vfbLib.ufo.guides import apply_guide_properties, get_master_guides
@@ -19,11 +19,10 @@ from vfbLib.ufo.vfb2ufo import (
 
 if TYPE_CHECKING:
     from fontTools.pens.pointPen import AbstractPointPen
+    from vfbLib.ufo.types import GuideDict, GuidePropertyList
 
-    Point = Tuple[int, int]
 
-
-def binaryToIntList(value, start=0):
+def binaryToIntList(value: int, start: int = 0):
     intList = []
     counter = start
     while value:
@@ -38,7 +37,7 @@ class VfbToUfoInfo:
     def __init__(self):
         # Chance to set some defaults that should always be written
         self.guidelines = []
-        self.italicAngle = 0
+        self.italicAngle: float | int = 0
         self.openTypeHeadFlags = []
         self.openTypeHheaLineGap = 0
         self.openTypeNameDescription = ""
@@ -51,7 +50,7 @@ class VfbToUfoInfo:
         self.postscriptFamilyOtherBlues = []
 
     @property
-    def ui_name(self):
+    def ui_name(self) -> str:
         if hasattr(self, "familyName"):
             return self.familyName
         elif hasattr(self, "postscriptFontName"):
@@ -548,9 +547,9 @@ class VfbToUfoWriter:
             elif name == "OpenType Class":
                 self.add_ot_class(data)
             elif name == "Global Guides":
-                self.mm_guides = data
+                self.mm_guides: GuideDict = data
             elif name == "Global Guide Properties":
-                self.guide_properties = data
+                self.guide_properties: GuidePropertyList = data
             elif name == "Master Count":
                 self.master_count = data
             elif name == "Master Name":
@@ -731,14 +730,17 @@ class VfbToUfoWriter:
         contours, components = get_master_glyph(
             self.current_mmglyph, self.glyphOrder, self.master_index
         )
-        draw_glyph(self.current_mmglyph, contours, components, pen)
+        draw_glyph(contours, components, pen)
 
     def write(self, out_path: Path, overwrite=False, silent=False) -> None:
         for i in range(len(self.masters)):
-            self.master_index = i
+            self.writer_master(i, out_path, overwrite, silent)
 
-            if i > 0:
-                master_path = out_path.with_stem(f"{out_path.stem}-{i}")
+    def writer_master(self, index: int, out_path: Path, overwrite=False, silent=False) -> None:
+            self.master_index = index
+
+            if index > 0:
+                master_path = out_path.with_stem(f"{out_path.stem}-{index}")
             else:
                 master_path = out_path
 
@@ -748,7 +750,8 @@ class VfbToUfoWriter:
                 else:
                     raise FileExistsError
 
-            print(f"Processing font: {self.info.ui_name}, master {i}")
+            if not silent:
+                print(f"Processing font: {self.info.ui_name}, master {index}")
 
             writer = UFOWriter(
                 master_path, fileCreator="com.lucasfonts.vfb3ufo"
@@ -764,21 +767,21 @@ class VfbToUfoWriter:
                     for j, anchor in enumerate(
                         self.current_mmglyph.mm_anchors
                     ):
-                        g.anchors[j]["x"] = anchor["x"][i]
-                        g.anchors[j]["y"] = anchor["y"][i]
+                        g.anchors[j]["x"] = anchor["x"][index]
+                        g.anchors[j]["y"] = anchor["y"][index]
                 g.lib = self.current_mmglyph.lib
 
                 # Apply master hint positions and widths
 
                 # FIXME
 
-                # master_hints = self.get_master_hints(master_index=i)
+                # master_hints = self.get_master_hints(master_index=index)
                 # if master_hints:
                 #     self.build_ps_glyph_hints(g, master_hints)
 
                 if hasattr(self.current_mmglyph, "mm_guides"):
                     master_guides = get_master_guides(
-                        self.current_mmglyph.mm_guides, i
+                        self.current_mmglyph.mm_guides, index
                     )
                     apply_guide_properties(
                         master_guides, self.current_mmglyph.guide_properties
@@ -787,15 +790,15 @@ class VfbToUfoWriter:
                         g.guidelines = master_guides
 
                 g.unicodes = self.current_mmglyph.unicodes
-                g.width, g.height = self.current_mmglyph.mm_metrics[i]
+                g.width, g.height = self.current_mmglyph.mm_metrics[index]
                 gs.writeGlyph(
                     name, glyphObject=g, drawPointsFunc=self.draw_glyph
                 )
             gs.writeContents()
             gs.writeLayerInfo(writer.getGlyphSet())
 
-            master_kerning = self.get_master_kerning(master_index=i)
-            master_info = self.get_master_info(master_index=i)
+            master_kerning = self.get_master_kerning(master_index=index)
+            master_info = self.get_master_info(master_index=index)
 
             writer.writeLayerContents()
             writer.writeGroups(self.groups)
