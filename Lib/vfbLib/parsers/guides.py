@@ -3,10 +3,10 @@ from __future__ import annotations
 from typing import TYPE_CHECKING, List, Literal, Sequence
 from math import atan2, degrees
 from vfbLib.parsers import BaseParser, read_encoded_value
+from vfbLib.types import Guide, GuideDict, GuideProperty
 
 if TYPE_CHECKING:
     from io import BytesIO
-    from vfbLib.types import Guide, GuideDict, GuideProperty
 
 
 DIRECTIONS: Sequence[Literal["h", "v"]] = ("h", "v")

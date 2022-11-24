@@ -6,7 +6,7 @@ from __future__ import annotations
 # except ImportError:
 from typing_extensions import NotRequired, TypedDict
 
-from typing import Dict, List, Literal, Tuple
+from typing import Any, Dict, List, Literal, Tuple
 
 
 Point = Tuple[int, int]
@@ -36,9 +36,12 @@ class GdefDict(TypedDict):
 
 
 class GlyphData(TypedDict):
-    constants: NotRequired[List[int]]
+    components: NotRequired[List[Component]]
+    constants: NotRequired[Tuple[Any, ...]]
     guides: NotRequired[GuideDict]
     hints: NotRequired[HintDict]
+    imported: NotRequired[Any]  # FIXME
+    kerning: NotRequired[Dict[int, List[int]]]
     metrics: NotRequired[List[Point]]
     name: NotRequired[str]
     nodes: NotRequired[List[MMNode]]
@@ -82,6 +85,16 @@ class HintDict(TypedDict):
 class Instruction(TypedDict):
     cmd: str
     params: Dict[str, int]
+
+
+class LinkDict(TypedDict):
+    x: List[Tuple[int, int]]
+    y: List[Tuple[int, int]]
+
+
+class MaskData(GlyphData):
+    num: int
+    reserved0: NotRequired[int]
 
 
 class MMAnchor(TypedDict):

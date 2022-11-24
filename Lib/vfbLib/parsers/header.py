@@ -13,7 +13,7 @@ class VfbHeaderParser(BaseParser):
         size: int = 0,
         master_count: int | None = None,
     ):
-        cls.stream = BytesIO(stream.read())
+        cls.stream = stream
         header: Dict[str, Any] = {}
         header["header0"] = cls.read_uint8()
         header["filetype"] = stream.read(5).decode("cp1252")

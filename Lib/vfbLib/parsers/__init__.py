@@ -11,7 +11,9 @@ uint16 = 2
 uint32 = 4
 
 
-def read_encoded_value(stream: BufferedReader | BytesIO, debug=False, signed=True) -> int:
+def read_encoded_value(
+    stream: BufferedReader | BytesIO, debug=False, signed=True
+) -> int:
     val = int.from_bytes(stream.read(1), byteorder="little")
     if val == 0:
         raise EOFError
@@ -57,7 +59,9 @@ def read_encoded_value(stream: BufferedReader | BytesIO, debug=False, signed=Tru
 
     elif val == 0xFF:
         # 4-byte integer follows
-        decoded = int.from_bytes(stream.read(4), byteorder="big", signed=signed)
+        decoded = int.from_bytes(
+            stream.read(4), byteorder="big", signed=signed
+        )
         if debug:
             print(f"  Read next 4 bytes: {decoded}")
         return decoded
@@ -77,11 +81,17 @@ class BaseParser:
     """
     Base class to read data from a vfb file
     """
+
     master_count: int | None = None
     stream: BytesIO = BytesIO()
 
     @classmethod
-    def parse(cls, stream: BufferedReader, size: int, master_count: int | None = None):
+    def parse(
+        cls,
+        stream: BufferedReader,
+        size: int,
+        master_count: int | None = None,
+    ):
         cls.stream = BytesIO(stream.read(size))
         cls.master_count = master_count
         return cls._parse()
@@ -89,19 +99,19 @@ class BaseParser:
     @classmethod
     def _parse(cls) -> Any:
         return hexStr(cls.stream.read())
-    
+
     @classmethod
     def read_double(cls, num, stream=None):
         if stream is None:
             stream = cls.stream
         return read_double(num, stream)
-    
+
     @classmethod
     def read_float(cls, num, stream=None):
         if stream is None:
             stream = cls.stream
         return read_float(num, stream)
-    
+
     @classmethod
     def read_int16(cls, stream=None) -> int:
         if stream is None:
@@ -109,7 +119,7 @@ class BaseParser:
         return int.from_bytes(
             stream.read(uint16), byteorder="little", signed=True
         )
-    
+
     @classmethod
     def read_int32(cls, stream=None) -> int:
         if stream is None:
