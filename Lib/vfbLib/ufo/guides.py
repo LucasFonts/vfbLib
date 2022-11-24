@@ -1,25 +1,27 @@
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, List
 
 if TYPE_CHECKING:
-    from vfbLib.ufo.types import (
-        GuideList,
+    from vfbLib.types import (
         GuideDict,
-        GuideAllProperty,
-        GuideAllPropertyList,
         GuidePropertyList,
+    )
+    from vfbLib.ufo.types import (
+        UfoGuide,
     )
 
 
 def get_master_guides(
     mm_guides: GuideDict, master_index: int
-) -> GuideAllPropertyList:
-    # Concatenate guidlines for both directions and extract coords for master_index
+) -> List[UfoGuide]:
+    # Concatenate guidlines for both directions and extract coords for
+    # master_index
     guides = []
     for d in "hv":
-        for master_guide in mm_guides[d][master_index]:
-            guide: GuideAllProperty = {"x": 0, "y": 0}
+        direction_mm_guides = mm_guides[d]
+        for master_guide in direction_mm_guides[master_index]:
+            guide = UfoGuide(angle=0, x=0, y=0)
             if d == "h":
                 guide["y"] = master_guide["pos"]
             else:
@@ -37,7 +39,7 @@ def get_master_guides(
 
 
 def apply_guide_properties(
-    guides: GuideAllPropertyList, properties: GuidePropertyList
+    guides: List[UfoGuide], properties: GuidePropertyList
 ) -> None:
     # Update the guides with names and colors from properties
     for prop in properties:

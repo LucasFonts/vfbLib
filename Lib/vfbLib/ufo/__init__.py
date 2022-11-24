@@ -19,7 +19,8 @@ from vfbLib.ufo.vfb2ufo import (
 
 if TYPE_CHECKING:
     from fontTools.pens.pointPen import AbstractPointPen
-    from vfbLib.ufo.types import GuideDict, GuidePropertyList
+    from vfbLib.types import GuideDict, GuidePropertyList
+    from vfbLib.ufo.types import UfoGuide
 
 
 def binaryToIntList(value: int, start: int = 0):
@@ -36,18 +37,21 @@ def binaryToIntList(value: int, start: int = 0):
 class VfbToUfoInfo:
     def __init__(self):
         # Chance to set some defaults that should always be written
-        self.guidelines = []
+        self.familyName = ""
+        self.guidelines: List[UfoGuide] = []
         self.italicAngle: float | int = 0
-        self.openTypeHeadFlags = []
+        self.openTypeHeadFlags: List[int] = []
         self.openTypeHheaLineGap = 0
         self.openTypeNameDescription = ""
         self.openTypeNameSampleText = ""
-        self.openTypeOS2Selection = []
-        self.openTypeOS2Type = []
+        self.openTypeOS2Selection: List[int] = []
+        self.openTypeOS2Type: List[int] = []
         self.openTypeOS2WidthClass = 5
         self.postscriptIsFixedPitch = False
-        self.postscriptFamilyBlues = []
-        self.postscriptFamilyOtherBlues = []
+        self.postscriptFamilyBlues: List[int] = []
+        self.postscriptFamilyOtherBlues: List[int] = []
+        self.postscriptFontName = ""
+
 
     @property
     def ui_name(self) -> str:

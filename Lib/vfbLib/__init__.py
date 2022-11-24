@@ -4,7 +4,7 @@ from fontTools.misc.textTools import hexStr
 from io import BufferedReader
 from pathlib import Path
 from time import time
-from typing import Any, List, Tuple
+from typing import Any, List, Tuple, Type
 from vfbLib.constants import ignore_minimal, parser_classes
 from vfbLib.parsers import BaseParser
 from vfbLib.parsers.header import VfbHeaderParser
@@ -105,13 +105,13 @@ class VFBReader:
         else:
             return []
 
-    def _read_entry(self) -> Tuple[str, BaseParser, int]:
+    def _read_entry(self) -> Tuple[str, Type[BaseParser], int]:
         """
         Read an entry from the stream and return its key, specialized parser
         class, and data.
         """
         entry_id = BaseParser.read_uint16(self.stream)
-        entry_info: Tuple[str, BaseParser] = parser_classes.get(
+        entry_info = parser_classes.get(
             entry_id & ~0x8000, (str(entry_id), FALLBACK_PARSER)
         )
         key, parser_class = entry_info

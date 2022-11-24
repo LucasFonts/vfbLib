@@ -78,18 +78,16 @@ class BaseParser:
     Base class to read data from a vfb file
     """
     master_count: int | None = None
-    stream: BytesIO | None = None
+    stream: BytesIO = BytesIO()
 
     @classmethod
     def parse(cls, stream: BufferedReader, size: int, master_count: int | None = None):
         cls.stream = BytesIO(stream.read(size))
         cls.master_count = master_count
-        assert cls.stream is not None
         return cls._parse()
 
     @classmethod
     def _parse(cls) -> Any:
-        assert cls.stream is not None
         return hexStr(cls.stream.read())
     
     @classmethod
@@ -150,7 +148,6 @@ class EncodedKeyValuesParser(BaseParser):
 
     @classmethod
     def _parse(cls) -> List[Dict[int, int]]:
-        assert cls.stream is not None
         values = []
         while True:
             key = cls.read_uint8()
@@ -174,7 +171,6 @@ class EncodedValueParser(BaseParser):
 
     @classmethod
     def _parse(cls) -> int:
-        assert cls.stream is not None
         value = read_encoded_value(cls.stream)
         assert cls.stream.read() == b""
         return value
@@ -187,7 +183,6 @@ class EncodedValueListParser(BaseParser):
 
     @classmethod
     def _parse(cls) -> List[int]:
-        assert cls.stream is not None
         values = []
         while True:
             try:

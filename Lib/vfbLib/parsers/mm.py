@@ -1,19 +1,19 @@
 from __future__ import annotations
 
 from struct import unpack
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Tuple
 from vfbLib.parsers import BaseParser, read_encoded_value
 
 
 class AxisMappingsParser(BaseParser):
     @classmethod
-    def _parse(cls) -> List[Dict[str, Any]]:
+    def _parse(cls) -> List[Tuple[float, float]]:
         assert cls.stream is not None
         mappings = []
         for _ in range(cls.stream.getbuffer().nbytes // 16):
             src = unpack("d", cls.stream.read(8))[0]
             tgt = unpack("d", cls.stream.read(8))[0]
-            mappings.append([src, tgt])
+            mappings.append((src, tgt))
 
         return mappings
 

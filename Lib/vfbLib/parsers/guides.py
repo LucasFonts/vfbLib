@@ -1,30 +1,38 @@
 from __future__ import annotations
 
-from typing import List
+from typing import TYPE_CHECKING, List, Literal, Sequence
 from math import atan2, degrees
 from vfbLib.parsers import BaseParser, read_encoded_value
 
+if TYPE_CHECKING:
+    from io import BytesIO
+    from vfbLib.types import Guide, GuideDict, GuideProperty
 
-def parse_guides(stream, num_masters) -> List:
+
+DIRECTIONS: Sequence[Literal["h", "v"]] = ("h", "v")
+
+
+def parse_guides(stream: BytesIO, num_masters: int) -> GuideDict:
     # Common parser for glyph and global guides
-    guides = {
+    guides: GuideDict = {
         "h": [[] for _ in range(num_masters)],
         "v": [[] for _ in range(num_masters)],
     }
-    for d in "hv":
+    for d in DIRECTIONS:
         num_guides = read_encoded_value(stream)
         for _ in range(num_guides):
             for m in range(num_masters):
                 pos = read_encoded_value(stream)
                 angle = degrees(atan2(read_encoded_value(stream), 10000))
-                guides[d][m].append(dict(pos=pos, angle=angle))
+                guides[d][m].append(Guide(pos=pos, angle=angle))
 
     return guides
 
 
 class GlobalGuidesParser(BaseParser):
     @classmethod
-    def _parse(cls) -> List:
+    def _parse(cls) -> GuideDict:
+        assert cls.master_count is not None
         guides = parse_guides(cls.stream, cls.master_count)
         assert cls.stream.read() == b""
         return guides
@@ -41,7 +49,7 @@ class GuidePropertiesParser(BaseParser):
                 if index == 0:
                     break
 
-                g = dict(index=index)
+                g = GuideProperty(index=index)
 
                 color = read_encoded_value(stream)
                 if color > -1:

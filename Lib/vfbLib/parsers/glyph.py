@@ -8,7 +8,7 @@ from typing import Any, Dict, List
 from vfbLib.parsers import BaseParser, read_encoded_value
 from vfbLib.parsers.guides import parse_guides
 from vfbLib.truetype import TT_COMMANDS
-from vfbLib.ufo.types import MMNode
+from vfbLib.types import Anchor, MMAnchor, MMNode
 
 
 cmd_name = {
@@ -45,13 +45,13 @@ def read_absolute_point(
 
 class GlyphAnchorsParser(BaseParser):
     @classmethod
-    def _parse(cls) -> List:
+    def _parse(cls) -> List[MMAnchor]:
         stream = cls.stream
         anchors = []
         num_anchors = read_encoded_value(stream)
         num_masters = read_encoded_value(stream)
         for _ in range(num_anchors):
-            anchor = {"x": [], "y": []}
+            anchor = MMAnchor(x=[], y=[])
             for _ in range(num_masters):
                 anchor["x"].append(read_encoded_value(stream))
                 anchor["y"].append(read_encoded_value(stream))
@@ -92,17 +92,17 @@ class GlyphGDEFParser(BaseParser):
         num_anchors = read_encoded_value(stream)
         anchors = []
         for _ in range(num_anchors):
-            anchor = {}
             anchor_name_length = read_encoded_value(stream)
             if anchor_name_length > 0:
-                anchor["name"] = stream.read(anchor_name_length).decode(
-                    "cp1252"
-                )
+                name = stream.read(anchor_name_length).decode("cp1252")
 
-            anchor["x"] = read_encoded_value(stream)
-            anchor["x1"] = read_encoded_value(stream)
-            anchor["y"] = read_encoded_value(stream)
-            anchor["y1"] = read_encoded_value(stream)
+            x = read_encoded_value(stream)
+            x1 = read_encoded_value(stream)
+            y = read_encoded_value(stream)
+            y1 = read_encoded_value(stream)
+            anchor = Anchor(x=x, x1=x1, y=y, y1=y1)
+            if name:
+                anchor["name"] = name
             anchors.append(anchor)
         if anchors:
             gdef["anchors"] = anchors

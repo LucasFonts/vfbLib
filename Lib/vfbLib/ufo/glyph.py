@@ -5,7 +5,7 @@ from typing import TYPE_CHECKING, Dict, List
 from vfbLib.ufo.vfb2ufo import vfb2ufo_label_codes
 
 if TYPE_CHECKING:
-    from vfbLib.ufo.types import Anchor, GuidePropertyList, MMHintsDict, MMNode
+    from vfbLib.types import Anchor, GuidePropertyList, MMHintsDict, MMNode
 
 
 class VfbToUfoGlyph:

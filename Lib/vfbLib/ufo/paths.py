@@ -5,12 +5,12 @@ from typing import List, Tuple, TYPE_CHECKING
 
 
 if TYPE_CHECKING:
-    from vfbLib.ufo.types import ComponentList, ContourList
+    from vfbLib.ufo.types import UfoComponent, UfoContour
 
 
 def draw_glyph(
-    contours: ContourList,
-    components: ComponentList,
+    contours: List[UfoContour],
+    components: List[UfoComponent],
     pen: AbstractPointPen,
 ):
     for contour in contours:
@@ -50,16 +50,16 @@ def flush_contour(contour, path_is_open) -> List:
 
 def get_master_glyph(
     mmglyph, glyph_order: List[str], master_index=0
-) -> Tuple[ContourList, ComponentList]:
+) -> Tuple[List[UfoContour], List[UfoComponent]]:
     # Extract a single master glyph from an mm glyph
 
     contours = []
     path_is_open = False
     in_qcurve = False
     if hasattr(mmglyph, "mm_nodes"):
-        contour = []
+        contour: UfoContour = []
         for i, n in enumerate(mmglyph.mm_nodes):
-            name = mmglyph.point_labels.get(i, None)
+            name: str | None = mmglyph.point_labels.get(i, None)
             nodes = n["points"][master_index]
             pt = nodes[0]
             segment_type = n["type"]
@@ -69,26 +69,26 @@ def get_master_glyph(
             if segment_type == "move":
                 if contour:
                     contours.append(flush_contour(contour, path_is_open))
-                contour = [["move", smooth, name, pt]]
+                contour = [("move", smooth, name, pt)]
                 path_is_open = bool(flags & 8)
                 in_qcurve = False
 
             elif segment_type == "line":
                 if in_qcurve:
-                    contour.append(["qcurve", smooth, name, pt])
+                    contour.append(("qcurve", smooth, name, pt))
                     in_qcurve = False
                 else:
-                    contour.append(["line", smooth, name, pt])
+                    contour.append(("line", smooth, name, pt))
 
             elif segment_type == "curve":
                 pt, c1, c2 = nodes
-                contour.append([None, False, None, c1])
-                contour.append([None, False, None, c2])
-                contour.append(["curve", smooth, name, pt])
+                contour.append((None, False, None, c1))
+                contour.append((None, False, None, c2))
+                contour.append(("curve", smooth, name, pt))
                 in_qcurve = False
 
             elif segment_type == "qcurve":
-                contour.append([None, False, name, pt])
+                contour.append((None, False, name, pt))
                 in_qcurve = True
 
             else:
@@ -98,7 +98,7 @@ def get_master_glyph(
         if contour:
             contours.append(flush_contour(contour, path_is_open))
 
-    components: ComponentList = []
+    components: List[UfoComponent] = []
     if hasattr(mmglyph, "mm_components"):
         for c in mmglyph.mm_components:
             transform = (
