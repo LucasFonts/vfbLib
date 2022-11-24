@@ -1,12 +1,12 @@
 from __future__ import annotations
 
-from colorsys import hls_to_rgb
 from fontTools.ufoLib import UFOWriter
 from fontTools.ufoLib.glifLib import GlyphSet, Glyph
 from pathlib import Path
 from shutil import rmtree
 from typing import TYPE_CHECKING, Any, Dict, List, Tuple
 from ufonormalizer import normalizeUFO
+from vfbLib.ufo.glyph import VfbToUfoGlyph
 from vfbLib.ufo.guides import apply_guide_properties, get_master_guides
 from vfbLib.ufo.paths import draw_glyph, get_master_glyph
 from vfbLib.ufo.vfb2ufo import (
@@ -15,7 +15,6 @@ from vfbLib.ufo.vfb2ufo import (
     TT_LIB_KEY,
     vfb2ufo_alignment_rev,
     vfb2ufo_command_codes,
-    vfb2ufo_label_codes,
 )
 
 if TYPE_CHECKING:
@@ -58,44 +57,6 @@ class VfbToUfoInfo:
         elif hasattr(self, "postscriptFontName"):
             return self.postscriptFontName
         return "Unknown master"
-
-
-class VfbToUfoGlyph:
-    def __init__(self) -> None:
-        self.anchors = []
-        self.labels: Dict[str, int] = {}
-        self.point_labels: Dict[int, str] = {}
-        self.mm_hints = {"h": [], "v": []}
-        self.mm_nodes = []
-        self.guide_properties = []
-
-    def get_point_label(self, index: int, code: str) -> str:
-        if index in self.point_labels:
-            # We already have a label for this point index
-            return self.point_labels[index]
-        
-        # Special points
-        num_nodes = len(self.mm_nodes)
-        if index == num_nodes:
-            return "lsb"
-        elif index == num_nodes + 1:
-            return "rsb"
-
-        # Make a new label
-        label_short = vfb2ufo_label_codes[code]
-        i = 1
-        label = "%s%02d" % (label_short, i)
-        while label in self.labels:
-            i += 1
-            label = "%s%02d" % (label_short, i)
-        self.labels[label] = index
-        self.point_labels[index] = label
-        return label
-
-    def set_mark(self, hue):
-        self.lib["public.markColor"] = "%0.4f,%0.4f,%0.4f,1" % hls_to_rgb(
-            h=hue / 255, l=0.8, s=0.76
-        )
 
 
 class VfbToUfoWriter:
