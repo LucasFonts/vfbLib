@@ -53,7 +53,6 @@ class VfbToUfoInfo:
         self.postscriptFamilyOtherBlues: List[int] = []
         self.postscriptFontName = ""
 
-
     @property
     def ui_name(self) -> str:
         if hasattr(self, "familyName"):
@@ -741,80 +740,76 @@ class VfbToUfoWriter:
         for i in range(len(self.masters)):
             self.writer_master(i, out_path, overwrite, silent)
 
-    def writer_master(self, index: int, out_path: Path, overwrite=False, silent=False) -> None:
-            self.master_index = index
+    def writer_master(
+        self, index: int, out_path: Path, overwrite=False, silent=False
+    ) -> None:
+        self.master_index = index
 
-            if index > 0:
-                master_path = out_path.with_stem(f"{out_path.stem}-{index}")
+        if index > 0:
+            master_path = out_path.with_stem(f"{out_path.stem}-{index}")
+        else:
+            master_path = out_path
+
+        if master_path.exists():
+            if overwrite:
+                rmtree(master_path)
             else:
-                master_path = out_path
+                raise FileExistsError
 
-            if master_path.exists():
-                if overwrite:
-                    rmtree(master_path)
-                else:
-                    raise FileExistsError
+        if not silent:
+            print(f"Processing font: {self.info.ui_name}, master {index}")
 
-            if not silent:
-                print(f"Processing font: {self.info.ui_name}, master {index}")
+        writer = UFOWriter(master_path, fileCreator="com.lucasfonts.vfb3ufo")
+        glyphs_path = master_path / "glyphs"
+        glyphs_path.mkdir()
+        gs = GlyphSet(glyphs_path)
+        for name, self.current_mmglyph in self.glyph_masters.items():
+            g = Glyph(name, gs)
+            g.anchors = self.current_mmglyph.anchors
+            # Apply master anchor positions
+            if hasattr(self.current_mmglyph, "mm_anchors"):
+                for j, anchor in enumerate(self.current_mmglyph.mm_anchors):
+                    g.anchors[j]["x"] = anchor["x"][index]
+                    g.anchors[j]["y"] = anchor["y"][index]
+            g.lib = self.current_mmglyph.lib
 
-            writer = UFOWriter(
-                master_path, fileCreator="com.lucasfonts.vfb3ufo"
-            )
-            glyphs_path = master_path / "glyphs"
-            glyphs_path.mkdir()
-            gs = GlyphSet(glyphs_path)
-            for name, self.current_mmglyph in self.glyph_masters.items():
-                g = Glyph(name, gs)
-                g.anchors = self.current_mmglyph.anchors
-                # Apply master anchor positions
-                if hasattr(self.current_mmglyph, "mm_anchors"):
-                    for j, anchor in enumerate(
-                        self.current_mmglyph.mm_anchors
-                    ):
-                        g.anchors[j]["x"] = anchor["x"][index]
-                        g.anchors[j]["y"] = anchor["y"][index]
-                g.lib = self.current_mmglyph.lib
+            # Apply master hint positions and widths
 
-                # Apply master hint positions and widths
+            # FIXME
 
-                # FIXME
+            # master_hints = self.get_master_hints(master_index=index)
+            # if master_hints:
+            #     self.build_ps_glyph_hints(g, master_hints)
 
-                # master_hints = self.get_master_hints(master_index=index)
-                # if master_hints:
-                #     self.build_ps_glyph_hints(g, master_hints)
-
-                if hasattr(self.current_mmglyph, "mm_guides"):
-                    master_guides = get_master_guides(
-                        self.current_mmglyph.mm_guides, index
-                    )
-                    apply_guide_properties(
-                        master_guides, self.current_mmglyph.guide_properties
-                    )
-                    if master_guides:
-                        g.guidelines = master_guides
-
-                g.unicodes = self.current_mmglyph.unicodes
-                g.width, g.height = self.current_mmglyph.mm_metrics[index]
-                gs.writeGlyph(
-                    name, glyphObject=g, drawPointsFunc=self.draw_glyph
+            if hasattr(self.current_mmglyph, "mm_guides"):
+                master_guides = get_master_guides(
+                    self.current_mmglyph.mm_guides, index
                 )
-            gs.writeContents()
-            gs.writeLayerInfo(writer.getGlyphSet())
+                apply_guide_properties(
+                    master_guides, self.current_mmglyph.guide_properties
+                )
+                if master_guides:
+                    g.guidelines = master_guides
 
-            master_kerning = self.get_master_kerning(master_index=index)
-            master_info = self.get_master_info(master_index=index)
+            g.unicodes = self.current_mmglyph.unicodes
+            g.width, g.height = self.current_mmglyph.mm_metrics[index]
+            gs.writeGlyph(name, glyphObject=g, drawPointsFunc=self.draw_glyph)
+        gs.writeContents()
+        gs.writeLayerInfo(writer.getGlyphSet())
 
-            writer.writeLayerContents()
-            writer.writeGroups(self.groups)
-            writer.writeInfo(master_info)
-            writer.writeKerning(master_kerning)
-            if self.features:
-                if self.features_classes:
-                    features = self.features_classes + "\n\n" + self.features
-                else:
-                    features = self.features
-                writer.writeFeatures(features)
-            writer.writeLib(self.lib)
-            writer.close()
-            normalizeUFO(ufoPath=master_path, onlyModified=False)
+        master_kerning = self.get_master_kerning(master_index=index)
+        master_info = self.get_master_info(master_index=index)
+
+        writer.writeLayerContents()
+        writer.writeGroups(self.groups)
+        writer.writeInfo(master_info)
+        writer.writeKerning(master_kerning)
+        if self.features:
+            if self.features_classes:
+                features = self.features_classes + "\n\n" + self.features
+            else:
+                features = self.features
+            writer.writeFeatures(features)
+        writer.writeLib(self.lib)
+        writer.close()
+        normalizeUFO(ufoPath=master_path, onlyModified=False)
