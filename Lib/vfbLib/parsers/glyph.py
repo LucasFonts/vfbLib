@@ -4,11 +4,21 @@ from fontTools.misc.textTools import hexStr
 from fontTools.ttLib.tables.ttProgram import Program
 from io import BytesIO
 from struct import unpack
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Literal
 from vfbLib.parsers import BaseParser, read_encoded_value
 from vfbLib.parsers.guides import parse_guides
 from vfbLib.truetype import TT_COMMANDS
-from vfbLib.types import Anchor, MMAnchor, MMNode
+from vfbLib.types import (
+    Anchor,
+    Component,
+    GdefDict,
+    GlyphData,
+    Hint,
+    HintDict,
+    MMAnchor,
+    MMNode,
+    Point,
+)
 
 
 cmd_name = {
@@ -74,9 +84,9 @@ class GlyphAnchorsSuppParser(BaseParser):
 
 class GlyphGDEFParser(BaseParser):
     @classmethod
-    def _parse(cls) -> Dict[str, Any]:
+    def _parse(cls) -> GdefDict:
         stream = cls.stream
-        gdef = {}
+        gdef: GdefDict = {}
         class_names = {
             0: "unassigned",
             1: "base",
@@ -85,9 +95,9 @@ class GlyphGDEFParser(BaseParser):
             4: "component",
         }
         glyph_class = read_encoded_value(stream)
-        glyph_class_name = class_names.get(glyph_class, glyph_class)
+        glyph_class_name = class_names.get(glyph_class, "unassigned")
         if glyph_class_name != "unassigned":
-            gdef["class"] = glyph_class_name
+            gdef["glyph_class"] = glyph_class_name
 
         num_anchors = read_encoded_value(stream)
         anchors = []
@@ -112,7 +122,7 @@ class GlyphGDEFParser(BaseParser):
         for _ in range(num_carets):
             pos = read_encoded_value(stream)
             xxx = read_encoded_value(stream)
-            carets.append([pos, xxx])
+            carets.append((pos, xxx))
         if carets:
             gdef["carets"] = carets
 
@@ -148,7 +158,7 @@ class GlyphParser(BaseParser):
 
     @classmethod
     def parse_binary(cls, stream: BytesIO, glyphdata: Dict) -> None:
-        imported = {}
+        imported: Dict[str, Any] = {}
         while True:
             key = cls.read_uint8()
 
@@ -217,7 +227,9 @@ class GlyphParser(BaseParser):
         num = read_encoded_value(stream)
         for i in range(num):
             gid = read_encoded_value(stream)
-            c = dict(gid=gid, offsetX=[], offsetY=[], scaleX=[], scaleY=[])
+            c = Component(
+                gid=gid, offsetX=[], offsetY=[], scaleX=[], scaleY=[]
+            )
             for _ in range(num_masters):
                 x = read_encoded_value(stream)
                 y = read_encoded_value(stream)
@@ -233,22 +245,22 @@ class GlyphParser(BaseParser):
     def parse_hints(
         cls, stream: BytesIO, glyphdata: Dict, num_masters=1
     ) -> None:
-        hints = dict(v=[], h=[])
+        hints = HintDict(v=[], h=[])
         for i in range(2):
             num_hints = read_encoded_value(stream)
-            for j in range(num_hints):
+            for _ in range(num_hints):
                 master_hints = []
-                for m in range(num_masters):
+                for _ in range(num_masters):
                     pos = read_encoded_value(stream)
                     width = read_encoded_value(stream)
-                    master_hints.append({"pos": pos, "width": width})
+                    master_hints.append(Hint(pos=pos, width=width))
                 hints["hv"[i]].append(master_hints)
 
         num_replacements = read_encoded_value(stream)
 
         if num_replacements > 0:
-            replacements = []
-            for j in range(num_replacements):
+            replacements: List[Dict[str, int]] = []
+            for _ in range(num_replacements):
                 k = cls.read_uint8(stream)
                 val = read_encoded_value(stream)
                 replacements.append(dict(key=k, value=val))
@@ -302,7 +314,7 @@ class GlyphParser(BaseParser):
         num_whatever = read_encoded_value(stream)
         num_nodes = read_encoded_value(stream, debug=False)
         glyphdata["num_masters"] = num_masters
-        segments: List[Dict[str, str | int | List[Dict[str, int]]]] = []
+        segments: List[MMNode] = []
         x = [0 for _ in range(num_masters)]
         y = [0 for _ in range(num_masters)]
 
@@ -315,7 +327,7 @@ class GlyphParser(BaseParser):
             # print("   ", i, segment_type, flags)
 
             # End point
-            points = [[] for _ in range(num_masters)]
+            points: List[List[Point]] = [[] for _ in range(num_masters)]
             read_absolute_point(points, stream, num_masters, x, y)
 
             if cmd == CURVE:
@@ -324,7 +336,8 @@ class GlyphParser(BaseParser):
                 # Second control point
                 read_absolute_point(points, stream, num_masters, x, y)
 
-            segment = MMNode(type=segment_type, flags=flags, points=points)
+            t: Literal["move", "curve", "line", "qcurve"] = segment_type
+            segment = MMNode(type=t, flags=flags, points=points)
             segments.append(segment)
         glyphdata["nodes"] = segments
         return num_masters
@@ -370,7 +383,7 @@ class GlyphParser(BaseParser):
         0f
         """
         s = cls.stream
-        glyphdata = {}
+        glyphdata = GlyphData()
         start = unpack("<4B", s.read(4))
         glyphdata["constants"] = start
         num_masters = 1

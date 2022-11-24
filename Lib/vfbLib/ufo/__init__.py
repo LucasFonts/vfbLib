@@ -40,6 +40,7 @@ class VfbToUfoInfo:
         self.familyName = ""
         self.guidelines: List[UfoGuide] = []
         self.italicAngle: float | int = 0
+        self.openTypeHeadCreated = 0
         self.openTypeHeadFlags: List[int] = []
         self.openTypeHheaLineGap = 0
         self.openTypeNameDescription = ""
