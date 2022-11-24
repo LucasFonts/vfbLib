@@ -8,6 +8,57 @@ from pathlib import Path
 from vfbLib import VFBReader
 
 
+def delta_yaml_to_human(data):
+    glyphs = list(data.keys())
+    r = "/" + "/".join(glyphs) + "\n\n"
+    for g in glyphs:
+        r += f"{g}:\n"
+        deltas = []
+        for d in data[g]:
+            cmd = d["cmd"]
+            params = d["params"]
+            if cmd.startswith("F"):
+                t = "F"
+            else:
+                t = ""
+            ppms = range(params["ppm1"], params["ppm2"] + 1)
+            for ppm in ppms:
+                deltas.append(f"{t}{ppm}")
+        r += " ".join(sorted(list(set(deltas)))) + "\n\n"
+    return r
+
+
+def convert_delta_yaml():
+    parser = ArgumentParser(
+        description=(
+            "VFB2DELTA Converter\n"
+            "Copyright (c) 2022 by LucasFonts\n"
+            "Build 2022-11-23"
+        )
+    )
+    parser.add_argument(
+        "inputpath",
+        type=str,
+        nargs="+",
+        help="input file path[s] (.tth.yaml)",
+    )
+    args = parser.parse_args()
+    if args:
+        for inputpath in args.inputpath:
+            yaml_path = Path(inputpath)
+            with codecs.open(yaml_path, "rb", "utf-8") as f:
+                data = yaml.load(f, yaml.SafeLoader)
+            if data:
+                result = delta_yaml_to_human(data)
+                out_path = yaml_path.with_suffix(".txt")
+                with codecs.open(out_path, "wb", "utf-8") as f:
+                    f.write(result)
+            else:
+                print(f"File {yaml_path.name} contained no data.")
+    else:
+        parser.print_help()
+
+
 def dump_deltas():
     parser = ArgumentParser(
         description=(
