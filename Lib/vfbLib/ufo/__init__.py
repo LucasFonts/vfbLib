@@ -8,6 +8,7 @@ from typing import TYPE_CHECKING, Any, Dict, List
 from ufonormalizer import normalizeUFO
 from vfbLib.ufo.glyph import VfbToUfoGlyph
 from vfbLib.ufo.guides import apply_guide_properties, get_master_guides
+from vfbLib.ufo.kerning import UfoKerning
 from vfbLib.ufo.paths import draw_glyph, get_master_glyph
 from vfbLib.ufo.vfb2ufo import (
     PS_GLYPH_LIB_KEY,
@@ -20,7 +21,7 @@ from vfbLib.ufo.vfb2ufo import (
 if TYPE_CHECKING:
     from fontTools.pens.pointPen import AbstractPointPen
     from vfbLib.types import GuideDict, GuidePropertyList
-    from vfbLib.ufo.types import UfoGuide
+    from vfbLib.ufo.types import UfoGroups, UfoGuide, UfoMMKerning
 
 
 def binaryToIntList(value: int, start: int = 0):
@@ -70,7 +71,7 @@ class VfbToUfoWriter:
         self.json = json
         self.features_classes = ""
         self.features = ""
-        self.groups = {}
+        self.groups: UfoGroups = {}
         self.guide_properties: GuidePropertyList = []
         self.info = VfbToUfoInfo()
         self.num_blue_values = 0
@@ -79,7 +80,7 @@ class VfbToUfoWriter:
         self.num_family_other_blues = 0
         self.num_stem_snap_h = 0
         self.num_stem_snap_v = 0
-        self.mm_kerning = {}
+        self.mm_kerning: UfoMMKerning = {}
         self.kerning = {}
         self.lib = {}
         self.masters = []
@@ -718,14 +719,6 @@ class VfbToUfoWriter:
 
         return self.info
 
-    def get_master_kerning(self, master_index=0):
-        # TODO: Must look up class kerning references
-        kerning = {}
-        for pair, values in self.mm_kerning.items():
-            L, Rid = pair
-            kerning[L, self.glyphOrder[int(Rid)]] = values[master_index]
-        return kerning
-
     def draw_glyph(self, pen: AbstractPointPen):
         """
         Draw the current glyph onto pen. Use self.master_index for which outlines
@@ -798,11 +791,13 @@ class VfbToUfoWriter:
         gs.writeContents()
         gs.writeLayerInfo(writer.getGlyphSet())
 
-        master_kerning = self.get_master_kerning(master_index=index)
+        uk = UfoKerning(self.glyphOrder, self.groups, self.mm_kerning)
+        uk.extract_master_kerning(master_index=index)
+        master_kerning = uk.master_kerning
         master_info = self.get_master_info(master_index=index)
 
         writer.writeLayerContents()
-        writer.writeGroups(self.groups)
+        writer.writeGroups(self.groups)  # FIXME: Convert kerning class names to UFO3
         writer.writeInfo(master_info)
         writer.writeKerning(master_kerning)
         if self.features:
