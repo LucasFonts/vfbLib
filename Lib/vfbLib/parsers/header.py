@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from io import BufferedReader, BytesIO
+from io import BufferedReader
 from typing import Any, Dict
 from vfbLib.parsers import BaseParser, read_encoded_value
 
