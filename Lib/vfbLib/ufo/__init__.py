@@ -544,39 +544,17 @@ class VfbToUfoWriter:
                 setattr(self.info, attr, data)
                 continue
 
-            if name == "Encoding":
+            if name == "header":
                 pass
-            elif name == "Monospaced":
+            elif name == "Monospaced":  # 1034
                 self.info.postscriptIsFixedPitch = bool(data)
-            elif name == "weight":
+            elif name == "version full":
+                pass
+            elif name == "weight":  # 1048
                 self.info.openTypeOS2WeightClass = max(0, data)
-            elif name == "Gasp Ranges":
-                gasp = []
-                for rec in data:
-                    gasp.append(
-                        {
-                            "rangeMaxPPEM": rec["maxPpem"],
-                            "rangeGaspBehavior": binaryToIntList(rec["flags"]),
-                        }
-                    )
-                self.info.openTypeGaspRangeRecords = gasp
-            elif name == "TrueType Info":
-                self.assign_tt_info(data)
-            elif name == "TrueType Stem PPEMs":
-                self.set_tt_stem_ppms(data)
-            elif name == "TrueType Stems":
-                self.set_tt_stems(data)
-            elif name == "TrueType Zones":
-                self.set_tt_zones(data)
-            elif name == "Pixel Snap":
-                self.set_tt_pixel_snap(data)
-            elif name == "Zone Stop PPEM":
-                self.set_tt_zone_stop(data)
-            elif name == "Code Stop PPEM":
-                self.set_tt_code_stop(data)
-            elif name == "TrueType Zone Deltas":
-                self.set_tt_zone_deltas(data)
-            elif name == "Name Records":
+            elif name == "Type 1 XUIDs":
+                pass
+            elif name == "Name Records":  # 1138
                 self.info.openTypeNameRecords = []
                 for rec in data:
                     nameID, platformID, encodingID, languageID, s = rec
@@ -589,41 +567,25 @@ class VfbToUfoWriter:
                             "string": s,
                         }
                     )
-            elif name == "Font User Data":
-                self.lib["com.fontlab.v5.userData"] = data
-            elif name == "openTypeFeatures":
-                self.features = data
-            elif name == "OpenType Class":
-                self.add_ot_class(data)
-            elif name == "Global Guides":
-                self.mm_guides: GuideDict = data
-            elif name == "Global Guide Properties":
-                self.guide_properties: GuidePropertyList = data
-            elif name == "Master Count":
-                self.master_count = data
-            elif name == "Master Name":
-                self.masters.append(data)
-            elif name == "1505":
-                self.masters_1505.append(data)
-            elif name == "Axis Count":
-                self.axis_count = data
-            elif name == "Axis Name":
-                pass
-            elif name == "Axis Mapping":
-                pass
-            elif name == "Blue Values Count":
-                self.num_blue_values = data
-            elif name == "Other Blues Count":
-                self.num_other_blues = data
-            elif name == "Family Blues Count":
-                self.num_family_blues = data
-            elif name == "Family Other Blues Count":
-                self.num_family_other_blues = data
-            elif name == "StemSnapH Count":
-                self.num_stem_snap_h = data
-            elif name == "StemSnapV Count":
-                self.num_stem_snap_v = data
-            elif name == "Selection":
+            elif name == "Glyph Unicode":  # 1250
+                self.current_glyph.unicodes.extend(data)
+            elif name == "Glyph Unicode Non-BMP":  # 1253
+                self.current_glyph.unicodes.extend(data)
+            elif name == "TrueType Zones":  # 1255
+                self.set_tt_zones(data)
+            elif name == "TrueType Info":  # 1264
+                self.assign_tt_info(data)
+            elif name == "Gasp Ranges":  # 1265
+                gasp = []
+                for rec in data:
+                    gasp.append(
+                        {
+                            "rangeMaxPPEM": rec["maxPpem"],
+                            "rangeGaspBehavior": binaryToIntList(rec["flags"]),
+                        }
+                    )
+                self.info.openTypeGaspRangeRecords = gasp
+            elif name == "Selection":  # 1267
                 # Bit 0 = Regular
                 # Bit 5 = Bold
                 # Bit 6 = Italic
@@ -632,9 +594,55 @@ class VfbToUfoWriter:
                 self.info.openTypeOS2Selection = [
                     b for b in binaryToIntList(data) if b not in (0, 5, 6)
                 ]
-            elif name == "PostScript Info":
+            elif name == "TrueType Stem PPEMs":  # 1268
+                self.set_tt_stem_ppms(data)
+            elif name == "TrueType Stems":  # 1269
+                self.set_tt_stems(data)
+            elif name == "Pixel Snap":  # 1272
+                self.set_tt_pixel_snap(data)
+            elif name == "TrueType Zone Deltas":  # 1273
+                self.set_tt_zone_deltas(data)
+            elif name == "Zone Stop PPEM":  # 1274
+                self.set_tt_zone_stop(data)
+            elif name == "Code Stop PPEM":  # 1275
+                self.set_tt_code_stop(data)
+            elif name == "openTypeFeatures":  # 1276
+                self.features = data
+            elif name == "OpenType Class":  # 1277
+                self.add_ot_class(data)
+            elif name == "Global Guides":  # 1294
+                self.mm_guides: GuideDict = data
+            elif name == "Global Guide Properties":  # 1296
+                self.guide_properties: GuidePropertyList = data
+            elif name == "Encoding":  # 1500
+                pass
+            elif name == "Master Count":  # 1503
+                self.master_count = data
+            elif name == "Master Name":  # 1504
+                self.masters.append(data)
+            elif name == "1505":
+                self.masters_1505.append(data)
+            elif name == "Axis Count":  # 1513
+                self.axis_count = data
+            elif name == "Axis Name":  # 1514
+                pass
+            elif name == "Axis Mapping":  # 1516
+                pass
+            elif name == "Blue Values Count":  # 1530
+                self.num_blue_values = data
+            elif name == "Other Blues Count":  # 1531
+                self.num_other_blues = data
+            elif name == "Family Blues Count":  # 1532
+                self.num_family_blues = data
+            elif name == "Family Other Blues Count":  # 1533
+                self.num_family_other_blues = data
+            elif name == "StemSnapH Count":  # 1534
+                self.num_stem_snap_h = data
+            elif name == "StemSnapV Count":  # 1535
+                self.num_stem_snap_v = data
+            elif name == "PostScript Info":  # 1536
                 self.masters_ps_info.append(data)
-            elif name == "Glyph":
+            elif name == "Glyph":  # 2001
                 if self.current_glyph is not None:
                     name = self.current_glyph.name
                     if name in self.glyph_masters:
@@ -651,35 +659,26 @@ class VfbToUfoWriter:
                         self.glyph_masters[name] = self.current_glyph
                         self.glyphOrder.append(name)
                 self.build_mm_glyph(data)
-            elif name == "Links":
+            elif name == "Background":  # 2007
+                # Bitmap background
+                pass
+            elif name == "Links":  # 2008
                 self.current_glyph.links = data
-            elif name == "Unicode Ranges":
-                self.info.openTypeOS2UnicodeRanges = binaryToIntList(data)
-            elif name == "2023":
+            elif name == "Mask":  # 2009
                 pass
             elif name == "2010":
                 pass
-            elif name == "Mask":
-                pass
             elif name == "2011":
                 pass
-            elif name == "Mark Color":
+            elif name == "Mark Color":  # 2012
                 self.current_glyph.set_mark(data)
-            elif name == "Glyph Origin":
-                pass
-            elif name == "2031":
-                pass
-            elif name == "Glyph Unicode":
-                self.current_glyph.unicodes.extend(data)
-            elif name == "2012":
-                pass
-            elif name == "Glyph User Data":
+            elif name == "Glyph User Data":  # 2015
                 self.current_glyph.lib["com.fontlab.v5.userData"] = data
-            elif name == "Glyph Note":
+            elif name == "Font User Data":  # 2016
+                self.lib["com.fontlab.v5.userData"] = data
+            elif name == "Glyph Note":  # 2017
                 self.current_glyph.note = data
-            elif name == "Glyph Unicode Non-BMP":
-                self.current_glyph.unicodes.extend(data)
-            elif name == "Glyph GDEF Data":
+            elif name == "Glyph GDEF Data":  # 2018
                 if "anchors" in data:
                     self.current_glyph.anchors = []
                     for anchor in data["anchors"]:
@@ -690,19 +689,25 @@ class VfbToUfoWriter:
                                 "y": anchor["y"],
                             }
                         )
-            elif name == "Glyph Anchors Supplemental":
+            elif name == "Glyph Anchors Supplemental":  # 2020
                 pass
-            elif name == "Glyph Anchors MM":
+            elif name == "Unicode Ranges":  # 2021
+                self.info.openTypeOS2UnicodeRanges = binaryToIntList(data)
+            elif name == "2023":
+                pass
             elif name == "OpenType Metrics Class Flags":  # 2024
                 self.lib["com.fontlab.v5.metricsClassFlags"] = data
             elif name == "OpenType Kerning Class Flags":  # 2026
                 self.kerning_class_flags = data
+            elif name == "Glyph Origin":  # 2027
+                pass
+            elif name == "Glyph Anchors MM":  # 2029
                 self.current_glyph.mm_anchors = data
-            elif name == "Glyph Guide Properties":
+            elif name == "Glyph Guide Properties":  # 2031
                 self.current_glyph.guide_properties = data
             else:
-                pass
-                # print(f"Unhandled key: {name}")
+                print(f"Unhandled key: {name}")
+
         if self.current_glyph is not None:
             self.glyph_masters[self.current_glyph.name] = self.current_glyph
             self.glyphOrder.append(self.current_glyph.name)
