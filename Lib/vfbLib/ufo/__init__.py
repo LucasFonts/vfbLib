@@ -10,7 +10,7 @@ from vfbLib.ufo.glyph import VfbToUfoGlyph
 from vfbLib.ufo.guides import apply_guide_properties, get_master_guides
 from vfbLib.ufo.kerning import UfoKerning
 from vfbLib.ufo.paths import draw_glyph, get_master_glyph
-from vfbLib.ufo.pshints import build_ps_glyph_hints
+from vfbLib.ufo.pshints import build_ps_glyph_hints, get_master_hints
 from vfbLib.ufo.vfb2ufo import (
     TT_GLYPH_LIB_KEY,
     TT_LIB_KEY,
@@ -694,15 +694,6 @@ class VfbToUfoWriter:
         self.build_tt_stems_lib()
         self.build_tt_zones_lib()
 
-    def get_master_hints(self, master_index=0) -> List:
-        hints = []
-        for d in "hv":
-            dh = self.current_mmglyph.mm_hints[d]
-            for mm_hints in dh:
-                hint = mm_hints[master_index]
-                hints.append((f"{d}stem", hint["pos"], hint["width"]))
-        return hints
-
     def get_master_info(self, master_index=0):
         # Update the info with master-specific values
         for k, v in (
@@ -803,7 +794,9 @@ class VfbToUfoWriter:
 
             # Apply master hint positions and widths
 
-            master_hints = self.get_master_hints(master_index=index)
+            master_hints = get_master_hints(
+                mmglyph=self.current_mmglyph, glyph=g, master_index=index
+            )
             if master_hints:
                 build_ps_glyph_hints(g, master_hints)
 
