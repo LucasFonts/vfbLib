@@ -137,6 +137,7 @@ class VfbToUfoWriter:
             "tsn": "openTypeNamePreferredSubfamilyName",
             "hhea_ascender": "openTypeHheaAscender",
             "hhea_descender": "openTypeHheaDescender",
+            "hhea_line_gap": "openTypeHheaLineGap",
             "fontNote": "note",
             "Default Glyph": "postscriptDefaultCharacter",
         }
