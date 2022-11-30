@@ -3,7 +3,7 @@ from __future__ import annotations
 from fontTools.misc.textTools import hexStr
 from io import BufferedReader, BytesIO
 from struct import unpack
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Tuple
 
 
 uint8 = 1
@@ -230,6 +230,20 @@ class GlyphEncodingParser(BaseParser):
         gid = int.from_bytes(cls.stream.read(2), byteorder="little")
         nam = cls.stream.read().decode("ascii")
         return gid, nam
+
+
+class OpenTypeClassFlagsParser(BaseParser):
+    @classmethod
+    def _parse(cls) -> Dict[str, Tuple[int, int]]:
+        class_flags: Dict[str, Tuple[int, int]] = {}
+        num_classes = read_encoded_value(cls.stream)
+        for _ in range(num_classes):
+            n = read_encoded_value(cls.stream)
+            name = cls.stream.read(n).decode("cp1252")
+            flag1 = read_encoded_value(cls.stream)
+            flag2 = read_encoded_value(cls.stream)
+            class_flags[name] = (flag1, flag2)
+        return class_flags
 
 
 class StringParser(BaseParser):

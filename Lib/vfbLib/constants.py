@@ -8,6 +8,7 @@ from vfbLib.parsers import (
     EncodedKeyValuesParser1742,
     GaspParser,
     GlyphEncodingParser,
+    OpenTypeClassFlagsParser,
     StringParser,
 )
 from vfbLib.parsers.glyph import (
@@ -151,8 +152,9 @@ parser_classes = {
     2020: ("Glyph Anchors Supplemental", GlyphAnchorsSuppParser),
     2021: ("Unicode Ranges", IntParser),
     2023: ("2023", EncodedValueListParser),  # Glyph
+    2024: ("OpenType Metrics Class Flags", OpenTypeClassFlagsParser),
     2025: ("fontNote", StringParser),
-    2026: ("OpenType Class Flags", BaseParser),
+    2026: ("OpenType Kerning Class Flags", OpenTypeClassFlagsParser),
     2027: ("Glyph Origin", GlyphOriginParser),
     2029: ("Glyph Anchors MM", GlyphAnchorsParser),  # MM-compatible
     2031: ("Glyph Guide Properties", GuidePropertiesParser),
