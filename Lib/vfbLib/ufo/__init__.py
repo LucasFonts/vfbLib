@@ -142,6 +142,42 @@ class VfbToUfoWriter:
             "Default Glyph": "postscriptDefaultCharacter",
         }
 
+    def transform_groups(self):
+        # Rename kerning groups by applying the side flags and using the key
+        # glyph for naming
+        FIRST = 2**10
+        SECOND = 2**11
+        groups: UfoGroups = {}
+        for name, glyphs in self.groups.items():
+            if name.startswith("_"):
+                # Sort group glyphs by glyphOrder
+                key_glyph = glyphs[0]
+                dependent_glyphs = sorted(
+                    glyphs[1:], key=lambda n: self.glyphOrder.index(n)
+                )
+                sorted_glyphs = [key_glyph] + dependent_glyphs
+
+                if name in self.kerning_class_flags:
+                    flags = self.kerning_class_flags[name][0]
+                else:
+                    flags = FIRST + SECOND
+                if flags & FIRST:
+                    ufoname = f"public.kern1.{key_glyph}"
+                    if ufoname in groups:
+                        print(f"Duplicate kern1 group: {ufoname}")
+                    else:
+                        groups[ufoname] = sorted_glyphs
+                if flags & SECOND:
+                    ufoname = f"public.kern2.{key_glyph}"
+                    if ufoname in groups:
+                        print(f"Duplicate kern2 group: {ufoname}")
+                    else:
+                        groups[ufoname] = sorted_glyphs
+            else:
+                # Pass non-kerning groups verbatim
+                groups[name] = glyphs
+        return groups
+
     def add_ot_class(self, data):
         if ":" not in data:
             print("Malformed OT class definition, skipping:", data)
@@ -149,14 +185,17 @@ class VfbToUfoWriter:
 
         name, glyphs = data.split(":", 1)
         name = name.strip()
-        if f"@{name}" in self.groups:
+
+        is_kerning = name.startswith("_")
+
+        if name in self.groups:
             print("Duplicate OT class name, skipping:", name)
             return
 
         glyphs_list = glyphs.split()
 
-        if name.startswith("_"):
-            # Kerning class
+        if is_kerning:
+            # Reorganize glyphs so that the "keyglyph" is first
             glyphs = [g.strip() for g in glyphs_list if not g.endswith("'")]
             keyglyphs = [g.strip() for g in glyphs_list if g.endswith("'")]
             keyglyphs = [k.strip("'") for k in keyglyphs]
@@ -164,12 +203,15 @@ class VfbToUfoWriter:
                 print(
                     f"Unexpected number of key glyphs in group {name}: {keyglyphs}"
                 )
-            glyphs.insert(0, *keyglyphs)
+            else:
+                glyphs.insert(0, *keyglyphs)
 
         else:
             glyphs = [g.strip() for g in glyphs_list]
-        self.groups[f"@{name}"] = glyphs
-        self.features_classes += f"@{name} = [{' '.join(glyphs)}];\n"
+        self.groups[name] = glyphs
+        # Also add non-kerning classes to the feature code
+        if not is_kerning and not name.startswith("."):
+            self.features_classes += f"@{name} = [{' '.join(glyphs)}];\n"
 
     def assign_tt_info(self, data):
         for k, v in data:
@@ -651,6 +693,10 @@ class VfbToUfoWriter:
             elif name == "Glyph Anchors Supplemental":
                 pass
             elif name == "Glyph Anchors MM":
+            elif name == "OpenType Metrics Class Flags":  # 2024
+                self.lib["com.fontlab.v5.metricsClassFlags"] = data
+            elif name == "OpenType Kerning Class Flags":  # 2026
+                self.kerning_class_flags = data
                 self.current_glyph.mm_anchors = data
             elif name == "Glyph Guide Properties":
                 self.current_glyph.guide_properties = data
@@ -732,6 +778,10 @@ class VfbToUfoWriter:
         draw_glyph(contours, components, pen)
 
     def write(self, out_path: Path, overwrite=False, silent=False) -> None:
+        self.ufo_groups = self.transform_groups()
+        self.ufo_kerning = UfoKerning(
+            self.glyphOrder, self.ufo_groups, self.mm_kerning
+        )
         for i in range(len(self.masters)):
             self.writer_master(i, out_path, overwrite, silent)
 
@@ -789,18 +839,19 @@ class VfbToUfoWriter:
             g.unicodes = self.current_mmglyph.unicodes
             g.width, g.height = self.current_mmglyph.mm_metrics[index]
             gs.writeGlyph(name, glyphObject=g, drawPointsFunc=self.draw_glyph)
+
         gs.writeContents()
         gs.writeLayerInfo(writer.getGlyphSet())
 
-        uk = UfoKerning(self.glyphOrder, self.groups, self.mm_kerning)
-        uk.extract_master_kerning(master_index=index)
-        master_kerning = uk.master_kerning
-        master_info = self.get_master_info(master_index=index)
-
         writer.writeLayerContents()
-        writer.writeGroups(self.groups)  # FIXME: Convert kerning class names to UFO3
+        writer.writeGroups(self.ufo_groups)
+
+        master_info = self.get_master_info(master_index=index)
         writer.writeInfo(master_info)
-        writer.writeKerning(master_kerning)
+
+        self.ufo_kerning.extract_master_kerning(master_index=index)
+        writer.writeKerning(self.ufo_kerning.master_kerning)
+
         if self.features:
             if self.features_classes:
                 features = self.features_classes + "\n\n" + self.features
