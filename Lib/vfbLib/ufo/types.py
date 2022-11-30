@@ -24,3 +24,14 @@ class UfoGuide(TypedDict):
     name: NotRequired[str]
     x: int
     y: int
+
+
+class UfoHintingV2(TypedDict):
+    flexList: NotRequired[List]
+    hintSetList: NotRequired[List[UfoHintSet]]
+    id: NotRequired[str]
+
+
+class UfoHintSet(TypedDict):
+    pointTag: str
+    stems: List[str]

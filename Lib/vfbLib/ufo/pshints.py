@@ -2,10 +2,11 @@ from __future__ import annotations
 
 import xml.etree.cElementTree as elementTree
 
-from typing import Dict
+from vfbLib.ufo.types import UfoHintingV2, UfoHintSet
+from typing import Dict, List
 
 
-def update_adobe_hinting(data) -> Dict:
+def update_adobe_hinting(data) -> UfoHintingV2:
     # Convert Adobe hinting data from v1 to v2.
     # https://github.com/adobe-type-tools/psautohint/blob/master/python/psautohint/ufoFont.py
     try:
@@ -15,14 +16,15 @@ def update_adobe_hinting(data) -> Dict:
         pass
     if not isinstance(data, str):
         # V1 data is stored as str, so if it is not a str, we have nothing to do
-        return
+        return data
 
-    v2 = {
+    v2: UfoHintingV2 = {
         # "flexList": [],
         # "id": "",
     }
     root = elementTree.fromstring(data)
-    hintset = {}
+    hintset: UfoHintSet | None = None
+    hintSetList: List[UfoHintSet] = []
     for el in root.iter():
         if el.tag == "hintSetList":
             hintSetList = []
@@ -34,9 +36,10 @@ def update_adobe_hinting(data) -> Dict:
                 "stems": [],
             }
         elif el.tag in ("hstem", "vstem"):
-            hintset["stems"].append(
-                f'{el.tag} {el.attrib["pos"]} {el.attrib["width"]}'
-            )
+            if hintset is not None:
+                hintset["stems"].append(
+                    f'{el.tag} {el.attrib["pos"]} {el.attrib["width"]}'
+                )
     if hintset:
         hintSetList.append(hintset)
     if hintSetList:
