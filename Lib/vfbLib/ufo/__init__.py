@@ -10,8 +10,8 @@ from vfbLib.ufo.glyph import VfbToUfoGlyph
 from vfbLib.ufo.guides import apply_guide_properties, get_master_guides
 from vfbLib.ufo.kerning import UfoKerning
 from vfbLib.ufo.paths import draw_glyph, get_master_glyph
+from vfbLib.ufo.pshints import build_ps_glyph_hints
 from vfbLib.ufo.vfb2ufo import (
-    PS_GLYPH_LIB_KEY,
     TT_GLYPH_LIB_KEY,
     TT_LIB_KEY,
     vfb2ufo_alignment_rev,
@@ -508,25 +508,6 @@ class VfbToUfoWriter:
             "  <ttProgram>\n" + "\n".join(tth) + "\n  </ttProgram>\n"
         )
 
-    def build_ps_glyph_hints(self, glyph, data) -> None:
-        # Set the master-specific hints from data to the glyph lib
-        # Use format 2, not what FL does.
-        # https://github.com/adobe-type-tools/psautohint/blob/master/python/psautohint/ufoFont.py
-        hint_sets = []
-        hint_set = {
-            "pointTag": "hr01",
-            "stems": [],
-        }
-        for h in data:
-            cmd, pos, width = h
-            hint_set["stems"].append(f"{cmd} {pos} {width}")
-        if hint_set["stems"]:
-            glyph.lib[PS_GLYPH_LIB_KEY] = {
-                # "id": "FIXME",
-                "hintSetList": [hint_set],
-                "flexList": [],
-            }
-
     def build(self):
         # Non-MM data
         for e in self.json:
@@ -822,11 +803,9 @@ class VfbToUfoWriter:
 
             # Apply master hint positions and widths
 
-            # FIXME
-
-            # master_hints = self.get_master_hints(master_index=index)
-            # if master_hints:
-            #     self.build_ps_glyph_hints(g, master_hints)
+            master_hints = self.get_master_hints(master_index=index)
+            if master_hints:
+                build_ps_glyph_hints(g, master_hints)
 
             if hasattr(self.current_mmglyph, "mm_guides"):
                 master_guides = get_master_guides(
