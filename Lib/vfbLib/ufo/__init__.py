@@ -162,7 +162,7 @@ class VfbToUfoWriter:
                     if flags & side:
                         ufoname = f"public.kern{sidename}.{key_glyph}"
                         if ufoname in groups:
-                            print(f"Duplicate kern1 group: {ufoname}")
+                            print(f"Duplicate kern{sidename} group: {ufoname}")
                         else:
                             groups[ufoname] = glyphs
             else:
