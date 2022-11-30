@@ -5,13 +5,20 @@ from typing import TYPE_CHECKING, Dict, List
 from vfbLib.ufo.vfb2ufo import vfb2ufo_label_codes
 
 if TYPE_CHECKING:
-    from vfbLib.types import Anchor, GuidePropertyList, MMHintsDict, MMNode
+    from vfbLib.types import (
+        Anchor,
+        GuidePropertyList,
+        LinkDict,
+        MMHintsDict,
+        MMNode,
+    )
 
 
 class VfbToUfoGlyph:
     def __init__(self) -> None:
         self.anchors: List[Anchor] = []
         self.labels: Dict[str, int] = {}
+        self.links: LinkDict = {}
         self.point_labels: Dict[int, str] = {}
         self.mm_hints: MMHintsDict = {"h": [], "v": []}
         self.mm_nodes: List[MMNode] = []
