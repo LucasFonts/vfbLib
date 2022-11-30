@@ -150,29 +150,21 @@ class VfbToUfoWriter:
         groups: UfoGroups = {}
         for name, glyphs in self.groups.items():
             if name.startswith("_"):
+                key_glyph = glyphs[0]  # Keyglyph is used for group name
                 # Sort group glyphs by glyphOrder
-                key_glyph = glyphs[0]
-                dependent_glyphs = sorted(
-                    glyphs[1:], key=lambda n: self.glyphOrder.index(n)
-                )
-                sorted_glyphs = [key_glyph] + dependent_glyphs
+                glyphs.sort(key=lambda n: self.glyphOrder.index(n))
 
                 if name in self.kerning_class_flags:
                     flags = self.kerning_class_flags[name][0]
                 else:
                     flags = FIRST + SECOND
-                if flags & FIRST:
-                    ufoname = f"public.kern1.{key_glyph}"
-                    if ufoname in groups:
-                        print(f"Duplicate kern1 group: {ufoname}")
-                    else:
-                        groups[ufoname] = sorted_glyphs
-                if flags & SECOND:
-                    ufoname = f"public.kern2.{key_glyph}"
-                    if ufoname in groups:
-                        print(f"Duplicate kern2 group: {ufoname}")
-                    else:
-                        groups[ufoname] = sorted_glyphs
+                for side, sidename in ((FIRST, 1), (SECOND, 2)):
+                    if flags & side:
+                        ufoname = f"public.kern{sidename}.{key_glyph}"
+                        if ufoname in groups:
+                            print(f"Duplicate kern1 group: {ufoname}")
+                        else:
+                            groups[ufoname] = glyphs
             else:
                 # Pass non-kerning groups verbatim
                 groups[name] = glyphs
