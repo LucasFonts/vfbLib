@@ -127,7 +127,6 @@ class VfbToUfoWriter:
             "FOND Name": "macintoshFONDName",
             "panose": "openTypeOS2Panose",
             "vendorID": "openTypeOS2VendorID",
-            "Style Name": "styleName",
             "UniqueID": "openTypeNameUniqueID",
             "version": "openTypeNameVersion",
             "versionMajor": "versionMajor",
@@ -544,7 +543,10 @@ class VfbToUfoWriter:
                 pass
             elif name == "weight":  # 1048
                 self.info.openTypeOS2WeightClass = max(0, data)
-            elif name == "Type 1 XUIDs":
+            elif name == "Style Name":
+                self.info.styleName = data
+                self.info.postscriptWeightName = data  # ?
+            elif name == "Type 1 XUIDs":  # 1133
                 pass
             elif name == "Name Records":  # 1138
                 self.info.openTypeNameRecords = []
