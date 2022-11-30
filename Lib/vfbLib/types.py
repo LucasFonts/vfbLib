@@ -88,8 +88,8 @@ class Instruction(TypedDict):
 
 
 class LinkDict(TypedDict):
-    x: List[Tuple[int, int]]
-    y: List[Tuple[int, int]]
+    x: NotRequired[List[Tuple[int, int]]]
+    y: NotRequired[List[Tuple[int, int]]]
 
 
 class MaskData(GlyphData):
