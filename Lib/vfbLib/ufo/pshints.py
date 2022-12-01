@@ -4,10 +4,18 @@ import xml.etree.cElementTree as elementTree
 
 from vfbLib.ufo.types import UfoHintingV2, UfoHintSet
 from vfbLib.ufo.vfb2ufo import PS_GLYPH_LIB_KEY
-from typing import List, Tuple
+from typing import TYPE_CHECKING, List, Tuple
+
+if TYPE_CHECKING:
+    from fontTools.ufoLib.glifLib import Glyph
+    from vfbLib.ufo.glyph import VfbToUfoGlyph
 
 
-def build_ps_glyph_hints(glyph, master_hints) -> None:
+def build_ps_glyph_hints(
+    mmglyph: VfbToUfoGlyph,
+    glyph: Glyph,
+    master_hints: List[Tuple[str, int, int]],
+) -> None:
     # Set the master-specific hints from data to the glyph lib
     # Use format 2, not what FL does.
     # https://github.com/adobe-type-tools/psautohint/blob/master/python/psautohint/ufoFont.py
@@ -27,7 +35,9 @@ def build_ps_glyph_hints(glyph, master_hints) -> None:
         }
 
 
-def get_master_hints(mmglyph, glyph, master_index=0) -> List[Tuple[str, int, int]]:
+def get_master_hints(
+    mmglyph: VfbToUfoGlyph, glyph: Glyph, master_index=0
+) -> List[Tuple[str, int, int]]:
         hints = []
 
         # Hints
