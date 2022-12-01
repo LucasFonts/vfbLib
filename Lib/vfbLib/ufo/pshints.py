@@ -23,7 +23,7 @@ def build_ps_glyph_hints(glyph, master_hints) -> None:
         glyph.lib[PS_GLYPH_LIB_KEY] = {
             # "id": "FIXME",
             "hintSetList": [hint_set],
-            "flexList": [],
+            # "flexList": [],
         }
 
 
