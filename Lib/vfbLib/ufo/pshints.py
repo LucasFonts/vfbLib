@@ -53,8 +53,8 @@ def get_master_hints(
         return hints
 
     # Convert links to hints
-    for i, d in enumerate("xy"):
-        dl = mmglyph.links[d]
+    for i, a in enumerate("xy"):
+        dl = mmglyph.links[a]
         for link in dl:
             isrc, itgt = link  # indices of source and target node
             src = mmglyph.mm_nodes[isrc]
@@ -71,8 +71,8 @@ def get_master_hints(
                 tgt_pos = tgt["points"][master_index][0][i]
                 width = abs(tgt_pos - src_pos)
                 pos = min(src_pos, tgt_pos)
-            stem_dir = "v" if d == "x" else "h"
-            hints.append((f"{stem_dir}stem", pos, width))
+            d = "v" if a == "x" else "h"
+            hints.append((f"{d}stem", pos, width))
 
     return hints
 
