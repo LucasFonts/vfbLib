@@ -71,7 +71,7 @@ def get_master_hints(
                     tgt_pos = tgt["points"][master_index][0][i]
                     width = abs(tgt_pos - src_pos)
                     pos = min(src_pos, tgt_pos)
-                stem_dir = "v" if d == "y" else "h"
+                stem_dir = "v" if d == "x" else "h"
                 hints.append((f"{stem_dir}stem", pos, width))
 
         return hints
