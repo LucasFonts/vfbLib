@@ -58,7 +58,7 @@ def get_master_hints(
             for link in dl:
                 isrc, itgt = link  # indices of source and target node
                 src = mmglyph.mm_nodes[isrc]
-                src_pos = src["points"][master_index][i]
+                src_pos = src["points"][master_index][0][i]
                 pos = src_pos
                 if itgt == -2:
                     # Bottom ghost
@@ -68,7 +68,7 @@ def get_master_hints(
                     width = -20
                 else:
                     tgt = mmglyph.mm_nodes[itgt]
-                    tgt_pos = tgt["points"][master_index][i]
+                    tgt_pos = tgt["points"][master_index][0][i]
                     width = abs(tgt_pos - src_pos)
                     pos = min(src_pos, tgt_pos)
                 stem_dir = "v" if d == "y" else "h"
