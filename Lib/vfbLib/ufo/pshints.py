@@ -69,8 +69,11 @@ def get_master_hints(
             else:
                 tgt = mmglyph.mm_nodes[itgt]
                 tgt_pos = tgt["points"][master_index][0][i]
+                # This would be correct IMHO:
                 width = abs(tgt_pos - src_pos)
                 pos = min(src_pos, tgt_pos)
+                # This is how FontLab does it:
+                # width = tgt_pos - src_pos
             d = "v" if a == "x" else "h"
             hints.append((f"{d}stem", pos, width))
 
