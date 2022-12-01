@@ -60,11 +60,9 @@ def get_master_hints(
             src = mmglyph.mm_nodes[isrc]
             src_pos = src["points"][master_index][0][i]
             pos = src_pos
-            if itgt == -2:
-                # Bottom ghost
+            if itgt == -1:  # Bottom ghost
                 width = -21
-            elif itgt == -1:
-                # Top ghost
+            elif itgt == -2:  # Top ghost
                 width = -20
             else:
                 tgt = mmglyph.mm_nodes[itgt]
