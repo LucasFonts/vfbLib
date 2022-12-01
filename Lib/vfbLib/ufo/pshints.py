@@ -19,7 +19,6 @@ def build_ps_glyph_hints(
     # Set the master-specific hints from data to the glyph lib
     # Use format 2, not what FL does.
     # https://github.com/adobe-type-tools/psautohint/blob/master/python/psautohint/ufoFont.py
-    print("build_ps_glyph_hints")
     hint_set: UfoHintSet = {
         "pointTag": "hr01",
         "stems": [],
