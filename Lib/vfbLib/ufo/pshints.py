@@ -20,7 +20,9 @@ def build_ps_glyph_hints(
     # Use format 2, not what FL does.
     # https://github.com/adobe-type-tools/psautohint/blob/master/python/psautohint/ufoFont.py
     hint_set: UfoHintSet = {
-        "pointTag": "hr01",
+        "pointTag": mmglyph.get_point_label(
+            index=0, code="PSHintReplacement", start_count=0
+        ),
         "stems": [],
     }
     for h in master_hints:
