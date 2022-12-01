@@ -798,7 +798,11 @@ class VfbToUfoWriter:
                 mmglyph=self.current_mmglyph, glyph=g, master_index=index
             )
             if master_hints:
-                build_ps_glyph_hints(g, master_hints)
+                build_ps_glyph_hints(
+                    mmglyph=self.current_mmglyph,
+                    glyph=g,
+                    master_hints=master_hints,
+                )
 
             if hasattr(self.current_mmglyph, "mm_guides"):
                 master_guides = get_master_guides(
