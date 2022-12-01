@@ -66,4 +66,5 @@ vfb2ufo_label_codes = {
     "MDeltaV": "mv",
     "FDeltaH": "fh",
     "FDeltaV": "fv",
+    "PSHintReplacement": "hr",
 }
