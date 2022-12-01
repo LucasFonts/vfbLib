@@ -50,6 +50,7 @@ def get_master_hints(
 
     # Links
     if not mmglyph.links:
+        hints.sort()
         return hints
 
     # Convert links to hints
@@ -75,6 +76,7 @@ def get_master_hints(
             d = "v" if a == "x" else "h"
             hints.append((f"{d}stem", pos, width))
 
+    hints.sort()
     return hints
 
 
