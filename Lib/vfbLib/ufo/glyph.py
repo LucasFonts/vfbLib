@@ -24,7 +24,7 @@ class VfbToUfoGlyph:
         self.mm_nodes: List[MMNode] = []
         self.guide_properties: GuidePropertyList = []
 
-    def get_point_label(self, index: int, code: str) -> str:
+    def get_point_label(self, index: int, code: str, start_count: int = 1) -> str:
         if index in self.point_labels:
             # We already have a label for this point index
             return self.point_labels[index]
@@ -38,7 +38,7 @@ class VfbToUfoGlyph:
 
         # Make a new label
         label_short = vfb2ufo_label_codes[code]
-        i = 1
+        i = start_count
         label = "%s%02d" % (label_short, i)
         while label in self.labels:
             i += 1
