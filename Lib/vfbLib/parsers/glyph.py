@@ -249,7 +249,7 @@ class GlyphParser(BaseParser):
         cls, stream: BytesIO, glyphdata: GlyphData, num_masters=1
     ) -> None:
         hints = HintDict(v=[], h=[])
-        for i in range(2):
+        for d in ("h", "v"):
             num_hints = read_encoded_value(stream)
             for _ in range(num_hints):
                 master_hints = []
@@ -257,7 +257,7 @@ class GlyphParser(BaseParser):
                     pos = read_encoded_value(stream)
                     width = read_encoded_value(stream)
                     master_hints.append(Hint(pos=pos, width=width))
-                hints["hv"[i]].append(master_hints)
+                hints[d].append(master_hints)
 
         num_replacements = read_encoded_value(stream)
 
