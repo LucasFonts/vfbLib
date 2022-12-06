@@ -266,11 +266,27 @@ class GlyphParser(BaseParser):
         
 
         if num_hintmasks > 0:
-            hintmasks: Dict[int, Dict[str, int]] = {}
+            hintmasks: List[Dict[str, int]] = []
             for i in range(num_hintmasks):
                 k = cls.read_uint8(stream)
                 val = read_encoded_value(stream)
-                hintmasks[i] = dict(flags=k, hintmask=val)
+                mask = {}
+                if k == 0x01:
+                    # hintmask for hstem
+                    if "h" in mask:
+                        raise KeyError
+                    mask["h"] = val  # num2binary(val, bits=8)
+                elif k == 0x02:
+                    # hintmask for vstem
+                    if "v" in mask:
+                        raise KeyError
+                    mask["v"] = val  # num2binary(val, bits=8)
+                elif k == 0xff:
+                    # Replacement point
+                    # FIXME: This seems to be the node index of the replacement
+                    # point. But sometimes it is negative, why?
+                    mask["r"] = val
+                hintmasks.append(mask)
             if hintmasks:
                 hints["hintmasks"] = hintmasks
 
