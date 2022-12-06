@@ -281,6 +281,9 @@ class VfbToUfoWriter:
 
         if "hints" in data:
             g.mm_hints = data["hints"]
+            if "hintmasks" in data["hints"]:
+                g.hintmasks = data["hints"]["hintmasks"]
+                del data["hints"]["hintmasks"]
 
         if "kerning" in data:
             for Rid, values in data["kerning"].items():

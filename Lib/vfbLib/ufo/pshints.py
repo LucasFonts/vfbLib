@@ -4,7 +4,7 @@ import xml.etree.cElementTree as elementTree
 
 from vfbLib.ufo.types import UfoHintingV2, UfoHintSet
 from vfbLib.ufo.vfb2ufo import PS_GLYPH_LIB_KEY
-from typing import TYPE_CHECKING, List, Tuple
+from typing import TYPE_CHECKING, Dict, List, Tuple
 
 if TYPE_CHECKING:
     from fontTools.ufoLib.glifLib import Glyph
@@ -14,43 +14,62 @@ if TYPE_CHECKING:
 def build_ps_glyph_hints(
     mmglyph: VfbToUfoGlyph,
     glyph: Glyph,
-    master_hints: List[Tuple[str, int, int]],
+    master_hints: Dict[str, List[Tuple[str, int, int]]],
 ) -> None:
     # Set the master-specific hints from data to the glyph lib
     # Use format 2, not what FL does.
     # https://github.com/adobe-type-tools/psautohint/blob/master/python/psautohint/ufoFont.py
-    hint_set: UfoHintSet = {
-        "pointTag": mmglyph.get_point_label(
-            index=0, code="PSHintReplacement", start_count=0
-        ),
-        "stems": [],
-    }
-    for h in master_hints:
-        cmd, pos, width = h
-        hint_set["stems"].append(f"{cmd} {pos} {width}")
-    if hint_set["stems"]:
+    hint_sets = []
+    stems = []
+    for mask in mmglyph.hintmasks:
+        for d in ("h", "v"):
+            if d in mask:
+                for i, h in enumerate(master_hints[d]):
+                    # If the hint index is in the hintmask, add it to the set
+                    if mask[d] & 2**i:
+                        stems.append(h)
+        if "r" in mask:
+            node_index = mask["r"]
+            # FIXME: What do negative values mean?
+            node_index = abs(node_index)
+            label = mmglyph.get_point_label(
+                index=node_index, code="PSHintReplacement", start_count=1
+            )
+
+            hint_sets.append({
+                "pointTag": label,
+                "stems": [f"{cmd} {pos} {width}" for cmd, pos, width in sorted(stems)],
+            })
+            stems = []
+    
+    if stems:
+        # FIXME
+        print("Leftover stems:", stems)
+
+    if hint_sets:
         glyph.lib[PS_GLYPH_LIB_KEY] = {
             # "id": "FIXME",
-            "hintSetList": [hint_set],
+            "hintSetList": hint_sets,
             # "flexList": [],
         }
 
 
 def get_master_hints(
     mmglyph: VfbToUfoGlyph, glyph: Glyph, master_index=0
-) -> List[Tuple[str, int, int]]:
-    hints = []
+) -> Dict[str, List[Tuple[str, int, int]]]:
+    hints = {"h": [], "v": []}
 
     # Hints
     for d in "hv":
         dh = mmglyph.mm_hints[d]
         for mm_hints in dh:
             hint = mm_hints[master_index]
-            hints.append((f"{d}stem", hint["pos"], hint["width"]))
+            hints[d].append((f"{d}stem", hint["pos"], hint["width"]))
 
     # Links
     if not mmglyph.links:
-        hints.sort()
+        hints["h"].sort()
+        hints["v"].sort()
         return hints
 
     # Convert links to hints
@@ -74,9 +93,10 @@ def get_master_hints(
                 # This is how FontLab does it:
                 # width = tgt_pos - src_pos
             d = "v" if a == "x" else "h"
-            hints.append((f"{d}stem", pos, width))
+            hints[d].append((f"{d}stem", pos, width))
 
-    hints.sort()
+    hints["h"].sort()
+    hints["v"].sort()
     return hints
 
 

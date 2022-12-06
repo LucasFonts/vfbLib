@@ -8,8 +8,8 @@ if TYPE_CHECKING:
     from vfbLib.types import (
         Anchor,
         GuidePropertyList,
+        HintDict,
         LinkDict,
-        MMHintsDict,
         MMNode,
     )
 
@@ -17,10 +17,11 @@ if TYPE_CHECKING:
 class VfbToUfoGlyph:
     def __init__(self) -> None:
         self.anchors: List[Anchor] = []
+        self.hintmasks: List[Dict[str, int]] = []
         self.labels: Dict[str, int] = {}
         self.links: LinkDict = {}
         self.point_labels: Dict[int, str] = {}
-        self.mm_hints: MMHintsDict = {"h": [], "v": []}
+        self.mm_hints: HintDict = {"h": [], "v": []}
         self.mm_nodes: List[MMNode] = []
         self.guide_properties: GuidePropertyList = []
 
