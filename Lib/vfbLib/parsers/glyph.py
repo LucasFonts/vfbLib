@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from fontTools.misc.textTools import hexStr
+from fontTools.misc.textTools import hexStr  # , num2binary
 from fontTools.ttLib.tables.ttProgram import Program
 from io import BytesIO
 from struct import unpack
