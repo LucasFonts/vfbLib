@@ -352,10 +352,11 @@ class GlyphParser(BaseParser):
         num = read_encoded_value(stream)
         kerning = {}
         for _ in range(num):
-            # Right kerning partner
+            # Glyph index of right kerning partner
             gid = read_encoded_value(stream)
             values = []
             for _ in range(num_masters):
+                # List of values, one value per master
                 values.append(read_encoded_value(stream))
             kerning[gid] = values
         glyphdata["kerning"] = kerning
