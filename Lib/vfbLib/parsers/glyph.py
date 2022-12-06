@@ -259,18 +259,22 @@ class GlyphParser(BaseParser):
                     master_hints.append(Hint(pos=pos, width=width))
                 hints[d].append(master_hints)
 
-        num_replacements = read_encoded_value(stream)
+        num_hintmasks = read_encoded_value(stream)
+        # print("Repl:", num_hintmasks)
+        # print(hexStr(stream.read()))
+        # raise ValueError
+        
 
-        if num_replacements > 0:
-            replacements: List[Dict[str, int]] = []
-            for _ in range(num_replacements):
+        if num_hintmasks > 0:
+            hintmasks: Dict[int, Dict[str, int]] = {}
+            for i in range(num_hintmasks):
                 k = cls.read_uint8(stream)
                 val = read_encoded_value(stream)
-                replacements.append(dict(key=k, value=val))
-            if replacements:
-                hints["replacements"] = replacements
+                hintmasks[i] = dict(flags=k, hintmask=val)
+            if hintmasks:
+                hints["hintmasks"] = hintmasks
 
-        if hints["v"] or hints["h"]:
+        if hints["v"] or hints["h"] or "hintmasks" in hints:
             glyphdata["hints"] = hints
 
     @classmethod

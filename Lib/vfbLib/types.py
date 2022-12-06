@@ -79,7 +79,7 @@ class Hint(TypedDict):
 class HintDict(TypedDict):
     h: List[List[Hint]]
     v: List[List[Hint]]
-    replacements: NotRequired[List[Dict[str, int]]]
+    hintmasks: NotRequired[Dict[int, Dict[str, int]]]
 
 
 class Instruction(TypedDict):
