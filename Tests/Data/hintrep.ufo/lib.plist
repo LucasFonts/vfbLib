@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+	<dict>
+		<key>org.unifiedfontobject.normalizer.modTimes</key>
+		<string>version: 0.6.1
+1670350587.2 fontinfo.plist
+1670350587.2 layercontents.plist
+1670350587.2 metainfo.plist</string>
+		<key>public.glyphOrder</key>
+		<array>
+			<string>a</string>
+			<string>b</string>
+		</array>
+	</dict>
+</plist>
