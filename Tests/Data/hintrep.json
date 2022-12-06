@@ -709,17 +709,15 @@
                 0,
                 0
             ],
-            "bounding_box": [
-                32767,
-                32767,
-                -32767,
-                -32767
-            ],
-            "zzz_whatever": [
-                0,
-                0,
-                500
-            ],
+            "bounding_box": {
+                "xMin": 67,
+                "yMin": -24,
+                "xMax": 639,
+                "yMax": 520
+            },
+            "adv_width_min": 829,
+            "adv_width_max": 833,
+            "adv_width_avg": 500,
             "ascender": 750,
             "descender": -250,
             "x_height": 500,
@@ -1069,7 +1067,7 @@
                     "points": [
                         [
                             [
-                                629,
+                                639,
                                 0
                             ]
                         ]
@@ -1081,7 +1079,7 @@
                     "points": [
                         [
                             [
-                                629,
+                                639,
                                 501
                             ]
                         ]
@@ -1286,7 +1284,7 @@
             ],
             "metrics": [
                 [
-                    833,
+                    826,
                     0
                 ]
             ],
