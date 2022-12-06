@@ -106,6 +106,7 @@ class GlyphGDEFParser(BaseParser):
         anchors = []
         for _ in range(num_anchors):
             anchor_name_length = read_encoded_value(stream)
+            name = None
             if anchor_name_length > 0:
                 name = stream.read(anchor_name_length).decode("cp1252")
 
