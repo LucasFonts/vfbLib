@@ -24,7 +24,14 @@ class PostScriptInfoParser(BaseParser):
         values["std_vw"] = cls.read_uint32()
         values["stem_snap_h"] = [cls.read_uint32() for _ in range(12)]
         values["stem_snap_v"] = [cls.read_uint32() for _ in range(12)]
-        values["bounding_box"] = [cls.read_int16() for _ in range(4)]
+        # The bounding box values only get updated during some actions, e.g.
+        # going into PS hinting mode
+        values["bounding_box"] = dict(
+            zip(
+                ["xMin", "yMin", "xMax", "yMax"],
+                [cls.read_int16() for _ in range(4)],
+            )
+        )
         values["adv_width_min"] = cls.read_int32()
         values["adv_width_max"] = cls.read_int32()
         values["adv_width_avg"] = cls.read_int32()
