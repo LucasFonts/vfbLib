@@ -15,14 +15,8 @@ if TYPE_CHECKING:
 def normalize_hint(hint: Tuple[str, int, int]):
     print("Normalize:", hint)
     direction, pos, width = hint
-    if width == -21:
-        # Bottom ghost
-        pos = pos + width
-    elif width == -20:
-        # Top ghost
-        pass
-    else:
-        if width < 0:
+    if width < 0:
+        if width not in (-21, -20):  # Skip ghost hints
             pos = pos + width
             width = abs(width)
     print((direction, pos, width))
