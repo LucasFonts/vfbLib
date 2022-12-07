@@ -10,6 +10,14 @@ from typing import Dict, List, Tuple
 from vfbLib.types import HintTuple
 
 
+class TUfoTTZoneDict(TypedDict):
+    position: int
+    top: bool
+    width: int
+    # Zone index, shift; index must be str to be saved in lib
+    delta: NotRequired[Dict[str, int]]
+
+
 UfoPoint = Tuple[int, int]
 UfoComponent = Tuple[str, Tuple[float, float, float, float, int, int]]
 UfoGroups = Dict[str, List[str]]  # name, glyphs
@@ -17,6 +25,17 @@ UfoMasterKerning = Dict[Tuple[str, str], int]  # Lstr, Rstr, value
 UfoMMKerning = Dict[Tuple[str, int], List[int]]  # Lstr, Rid, master values
 UfoSegment = Tuple[str | None, bool, str | None, UfoPoint]
 UfoContour = List[UfoSegment]
+TUfoTTZonesDict = Dict[str, TUfoTTZoneDict]
+
+
+class TUfoStemsDict(TypedDict):
+    ttStemsH: List
+    ttStemsV: List
+
+
+class TUfoStemPPMsDict(TypedDict):
+    ttStemsH: List
+    ttStemsV: List
 
 
 class UfoGuide(TypedDict):

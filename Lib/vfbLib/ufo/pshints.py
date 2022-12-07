@@ -7,9 +7,8 @@ from vfbLib.ufo.vfb2ufo import PS_GLYPH_LIB_KEY
 from typing import TYPE_CHECKING, Dict, List, Tuple
 
 if TYPE_CHECKING:
-    from vfbLib.types import Hint, HintTuple, MMHintsDict
-    from fontTools.ufoLib.glifLib import Glyph
-    from vfbLib.ufo.glyph import VfbToUfoGlyph
+    from vfbLib.types import Hint, HintTuple
+    from vfbLib.ufo.glyph import VfbToUfoGlyph, UfoGlyph
 
 
 def normalize_hint(hint: Tuple[str, int, int]):
@@ -27,7 +26,7 @@ def normalize_hint_dict(hint: Hint, name: str = "dummy"):
 
 def build_ps_glyph_hints(
     mmglyph: VfbToUfoGlyph,
-    glyph: Glyph,
+    glyph: UfoGlyph,
     master_hints: Dict[str, List[str | HintTuple]],
 ) -> None:
     # Set the master-specific hints from data to the glyph lib
@@ -79,6 +78,8 @@ def build_ps_glyph_hints(
         ]
 
     if hint_sets:
+        if not hasattr(glyph, "lib"):
+            glyph.lib = {}
         glyph.lib[PS_GLYPH_LIB_KEY] = {
             # "id": "FIXME",
             "hintSetList": hint_sets,
@@ -87,9 +88,9 @@ def build_ps_glyph_hints(
 
 
 def get_master_hints(
-    mmglyph: VfbToUfoGlyph, glyph: Glyph, master_index=0
-) -> Dict[str, List[HintTuple]]:
-    hints: Dict[str, List[HintTuple]] = {"h": [], "v": []}
+    mmglyph: VfbToUfoGlyph, master_index=0
+) -> Dict[str, List[str | HintTuple]]:
+    hints: Dict[str, List[str | HintTuple]] = {"h": [], "v": []}
 
     # Hints
     for d in "hv":

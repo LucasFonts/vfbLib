@@ -15,9 +15,9 @@ Point = Tuple[int, int]
 class Anchor(TypedDict):
     name: NotRequired[str]
     x: int
-    x1: int
+    x1: NotRequired[int]
     y: int
-    y1: int
+    y1: NotRequired[int]
 
 
 class Component(TypedDict):

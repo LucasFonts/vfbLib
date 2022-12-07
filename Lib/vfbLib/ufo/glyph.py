@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from colorsys import hls_to_rgb
-from typing import TYPE_CHECKING, Dict, List
+from typing import TYPE_CHECKING, Any, Dict, List, Tuple
 from vfbLib.ufo.vfb2ufo import vfb2ufo_label_codes
 
 if TYPE_CHECKING:
@@ -9,6 +9,7 @@ if TYPE_CHECKING:
     from vfbLib.types import (
         Anchor,
         GuidePropertyList,
+        GuideDict,
         HintDict,
         LinkDict,
         MMNode,
@@ -30,15 +31,25 @@ class UfoGlyph:
 class VfbToUfoGlyph:
     def __init__(self) -> None:
         self.anchors: List[Anchor] = []
+        self.guide_properties: GuidePropertyList = []
         self.hintmasks: List[Dict[str, int]] = []
         self.labels: Dict[str, int] = {}
+        self.lib: Dict[str, Any] = {}
         self.links: LinkDict = {}
-        self.point_labels: Dict[int, str] = {}
+        self.mm_anchors: List[Any] | None = None
+        self.mm_components: List[Any] = []
+        self.mm_guides: GuideDict | None = None
         self.mm_hints: HintDict = {"h": [], "v": []}
+        self.mm_metrics: List[Tuple[int, int]]
         self.mm_nodes: List[MMNode] = []
-        self.guide_properties: GuidePropertyList = []
+        self.name: str | None = None
+        self.note: str | None = None
+        self.point_labels: Dict[int, str] = {}
+        self.unicodes: List[int] = []
 
-    def get_point_label(self, index: int, code: str, start_count: int = 1) -> str:
+    def get_point_label(
+        self, index: int, code: str, start_count: int = 1
+    ) -> str:
         if index in self.point_labels:
             # We already have a label for this point index
             return self.point_labels[index]

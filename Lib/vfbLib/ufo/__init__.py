@@ -1,16 +1,23 @@
 from __future__ import annotations
 
 from fontTools.ufoLib import UFOWriter
-from fontTools.ufoLib.glifLib import GlyphSet, Glyph
+from fontTools.ufoLib.glifLib import GlyphSet
 from pathlib import Path
 from shutil import rmtree
-from typing import TYPE_CHECKING, Any, Dict, List
+from typing import TYPE_CHECKING, Any, Dict, List, Tuple
 from ufonormalizer import normalizeUFO
 from vfbLib.ufo.glyph import VfbToUfoGlyph, UfoGlyph
 from vfbLib.ufo.guides import apply_guide_properties, get_master_guides
+from vfbLib.ufo.info import VfbToUfoInfo
 from vfbLib.ufo.kerning import UfoKerning
 from vfbLib.ufo.paths import draw_glyph, get_master_glyph
 from vfbLib.ufo.pshints import build_ps_glyph_hints, get_master_hints
+from vfbLib.ufo.types import (
+    TUfoStemPPMsDict,
+    TUfoStemsDict,
+    TUfoTTZoneDict,
+    TUfoTTZonesDict,
+)
 from vfbLib.ufo.vfb2ufo import (
     TT_GLYPH_LIB_KEY,
     TT_LIB_KEY,
@@ -21,7 +28,7 @@ from vfbLib.ufo.vfb2ufo import (
 if TYPE_CHECKING:
     from fontTools.ufoLib.glifLib import GLIFPointPen
     from vfbLib.types import GuideDict, GuidePropertyList
-    from vfbLib.ufo.types import UfoGroups, UfoGuide, UfoMMKerning
+    from vfbLib.ufo.types import UfoGroups, UfoMMKerning
 
 
 def binaryToIntList(value: int, start: int = 0):
@@ -53,20 +60,20 @@ class VfbToUfoWriter:
         self.num_stem_snap_h = 0
         self.num_stem_snap_v = 0
         self.mm_kerning: UfoMMKerning = {}
-        self.kerning = {}
-        self.lib = {}
-        self.masters = []
-        self.masters_1505 = []
-        self.masters_ps_info = []
-        self.current_glyph = None
-        self.glyph_masters = {}
-        self.glyphOrder = []
+        self.kerning: Dict[Tuple[str, str], int] = {}
+        self.lib: Dict[str, Any] = {}
+        self.masters: List[str] = []
+        self.masters_1505: List[Any] = []
+        self.masters_ps_info: List[Dict] = []
+        self.current_glyph: VfbToUfoGlyph | None = None
+        self.glyph_masters: Dict[str, VfbToUfoGlyph] = {}
+        self.glyphOrder: List[str] = []
         # TT
-        self.stem_ppms = {"ttStemsH": [], "ttStemsV": []}
-        self.stems = {"ttStemsH": [], "ttStemsV": []}
-        self.tt_stem_names = []
-        self.tt_zones = {}
-        self.tt_zone_names = []
+        self.stem_ppms: TUfoStemPPMsDict = {"ttStemsH": [], "ttStemsV": []}
+        self.stems: TUfoStemsDict = {"ttStemsH": [], "ttStemsV": []}
+        self.tt_stem_names: List[str] = []
+        self.tt_zones: TUfoTTZonesDict = {}
+        self.tt_zone_names: List[str] = []
         self.build_mapping()
         self.build()
 
@@ -113,7 +120,7 @@ class VfbToUfoWriter:
             "Default Glyph": "postscriptDefaultCharacter",
         }
 
-    def transform_groups(self):
+    def transform_groups(self) -> UfoGroups:
         # Rename kerning groups by applying the side flags and using the key
         # glyph for naming
         FIRST = 2**10
@@ -141,12 +148,14 @@ class VfbToUfoWriter:
                 groups[name] = glyphs
         return groups
 
-    def add_ot_class(self, data):
+    def add_ot_class(self, data: str) -> None:
         if ":" not in data:
             print("Malformed OT class definition, skipping:", data)
             return
 
-        name, glyphs = data.split(":", 1)
+        parts = data.split(":", 1)
+        name: str = parts[0]
+        glyphs_str: str = parts[1]
         name = name.strip()
 
         is_kerning = name.startswith("_")
@@ -155,11 +164,13 @@ class VfbToUfoWriter:
             print("Duplicate OT class name, skipping:", name)
             return
 
-        glyphs_list = glyphs.split()
+        glyphs_list = glyphs_str.split()
 
         if is_kerning:
             # Reorganize glyphs so that the "keyglyph" is first
-            glyphs = [g.strip() for g in glyphs_list if not g.endswith("'")]
+            glyphs: List[str] = [
+                g.strip() for g in glyphs_list if not g.endswith("'")
+            ]
             keyglyphs = [g.strip() for g in glyphs_list if g.endswith("'")]
             keyglyphs = [k.strip("'") for k in keyglyphs]
             if len(keyglyphs) != 1:
@@ -176,75 +187,80 @@ class VfbToUfoWriter:
         if not is_kerning and not name.startswith("."):
             self.features_classes += f"@{name} = [{' '.join(glyphs)}];\n"
 
-    def assign_tt_info(self, data):
+    def assign_tt_info(self, data: List[Tuple[str, int | List[int]]]):
         for k, v in data:
-            if k == "lowest_rec_ppem":
-                self.info.openTypeHeadLowestRecPPEM = v
-            elif k == "timestamp":
-                self.set_created_timestamp(v)
-            elif k == "font_direction_hint":
-                # self.info.openTypeOS2Type = binaryToIntList(v)
-                pass
-            elif k == "embedding":
-                self.info.openTypeOS2Type = binaryToIntList(v)
-            elif k == "subscript_x_size":
-                self.info.openTypeOS2SubscriptXSize = v
-            elif k == "subscript_y_size":
-                self.info.openTypeOS2SubscriptYSize = v
-            elif k == "subscript_x_offset":
-                self.info.openTypeOS2SubscriptXOffset = v
-            elif k == "subscript_y_offset":
-                self.info.openTypeOS2SubscriptYOffset = v
-            elif k == "superscript_x_size":
-                self.info.openTypeOS2SuperscriptXSize = v
-            elif k == "superscript_y_size":
-                self.info.openTypeOS2SuperscriptYSize = v
-            elif k == "superscript_x_offset":
-                self.info.openTypeOS2SuperscriptXOffset = v
-            elif k == "superscript_y_offset":
-                self.info.openTypeOS2SuperscriptYOffset = v
-            elif k == "strikeout_size":
-                self.info.openTypeOS2StrikeoutSize = v
-            elif k == "strikeout_position":
-                self.info.openTypeOS2StrikeoutPosition = v
-            elif k == "OpenTypeOS2Panose":
-                # Duplicate?
-                # if v != self.info.openTypeOS2Panose:
-                #     print("Contradictory PANOSE values")
-                #     print(self.info.openTypeOS2Panose, "vs.", v)
-                pass
-            elif k == "OpenTypeOS2TypoAscender":
-                self.info.openTypeOS2TypoAscender = v
-            elif k == "OpenTypeOS2TypoDescender":
-                self.info.openTypeOS2TypoDescender = v
-            elif k == "OpenTypeOS2TypoLineGap":
-                self.info.openTypeOS2TypoLineGap = v
-            elif k == "OpenTypeOS2WinAscent":
-                self.info.openTypeOS2WinAscent = v
-            elif k == "OpenTypeOS2WinDescent":
-                self.info.openTypeOS2WinDescent = v
-            elif k == "Codepages":
-                cp1, cp2 = v
-                ranges = binaryToIntList(cp1)
-                for cp in binaryToIntList(cp2):
-                    ranges.append(cp + 32)
-                if ranges:
-                    self.info.openTypeOS2CodePageRanges = ranges
-            elif k == "ibm_classification":
-                c = v >> 8
-                s = v & ~(c << 8)
-                self.info.openTypeOS2FamilyClass = [c, s]
+            if isinstance(v, int):
+                if k == "lowest_rec_ppem":
+                    self.info.openTypeHeadLowestRecPPEM = v
+                elif k == "timestamp":
+                    self.set_created_timestamp(v)
+                elif k == "font_direction_hint":
+                    # self.info.openTypeOS2Type = binaryToIntList(v)
+                    pass
+                elif k == "embedding":
+                    self.info.openTypeOS2Type = binaryToIntList(v)
+                elif k == "subscript_x_size":
+                    self.info.openTypeOS2SubscriptXSize = v
+                elif k == "subscript_y_size":
+                    self.info.openTypeOS2SubscriptYSize = v
+                elif k == "subscript_x_offset":
+                    self.info.openTypeOS2SubscriptXOffset = v
+                elif k == "subscript_y_offset":
+                    self.info.openTypeOS2SubscriptYOffset = v
+                elif k == "superscript_x_size":
+                    self.info.openTypeOS2SuperscriptXSize = v
+                elif k == "superscript_y_size":
+                    self.info.openTypeOS2SuperscriptYSize = v
+                elif k == "superscript_x_offset":
+                    self.info.openTypeOS2SuperscriptXOffset = v
+                elif k == "superscript_y_offset":
+                    self.info.openTypeOS2SuperscriptYOffset = v
+                elif k == "strikeout_size":
+                    self.info.openTypeOS2StrikeoutSize = v
+                elif k == "strikeout_position":
+                    self.info.openTypeOS2StrikeoutPosition = v
+                elif k == "OpenTypeOS2TypoAscender":
+                    self.info.openTypeOS2TypoAscender = v
+                elif k == "OpenTypeOS2TypoDescender":
+                    self.info.openTypeOS2TypoDescender = v
+                elif k == "OpenTypeOS2TypoLineGap":
+                    self.info.openTypeOS2TypoLineGap = v
+                elif k == "OpenTypeOS2WinAscent":
+                    self.info.openTypeOS2WinAscent = v
+                elif k == "OpenTypeOS2WinDescent":
+                    self.info.openTypeOS2WinDescent = v
+                elif k == "ibm_classification":
+                    c = v >> 8
+                    s = v & ~(c << 8)
+                    self.info.openTypeOS2FamilyClass = [c, s]
+            elif isinstance(v, list):
+                if k == "OpenTypeOS2Panose":
+                    # Duplicate?
+                    # if v != self.info.openTypeOS2Panose:
+                    #     print("Contradictory PANOSE values")
+                    #     print(self.info.openTypeOS2Panose, "vs.", v)
+                    pass
+                elif k == "Codepages":
+                    cp1, cp2 = v
+                    ranges = binaryToIntList(cp1)
+                    for cp in binaryToIntList(cp2):
+                        ranges.append(cp + 32)
+                    if ranges:
+                        self.info.openTypeOS2CodePageRanges = ranges
+            else:
+                raise TypeError
 
-    def assure_tt_lib(self):
+    def assure_tt_lib(self) -> None:
         if not TT_LIB_KEY in self.lib:
             self.lib[TT_LIB_KEY] = {}
 
-    def assure_tt_glyphlib(self):
+    def assure_tt_glyphlib(self) -> None:
         if not TT_GLYPH_LIB_KEY in self.lib:
             self.lib[TT_GLYPH_LIB_KEY] = {}
 
-    def build_mm_glyph(self, data):
+    def build_mm_glyph(self, data: Dict[str, Any]) -> None:
         g = self.current_glyph = VfbToUfoGlyph()
+        g = self.current_glyph
         g.lib = {}
         g.name = data["name"]
         g.unicodes = []
@@ -260,8 +276,9 @@ class VfbToUfoWriter:
                 del data["hints"]["hintmasks"]
 
         if "kerning" in data:
-            for Rid, values in data["kerning"].items():
-                self.mm_kerning[g.name, Rid] = values
+            kerning: Dict[int, List[int]] = data["kerning"]
+            for Rid, values in kerning.items():
+                self.mm_kerning[(g.name, Rid)] = values
 
         g.mm_metrics = data["metrics"]  # width and height
         g.mm_nodes = data["nodes"]
@@ -274,7 +291,9 @@ class VfbToUfoWriter:
         if "tth" in data:
             self.build_tt_glyph_hints(g, data["tth"])
 
-    def transform_stem_rounds(self, data, name) -> Dict[str, int]:
+    def transform_stem_rounds(
+        self, data: Dict[str, int], name: str
+    ) -> Dict[str, int]:
         d = {"0": 1}
         for k, v in data.items():
             key = str(v)
@@ -286,7 +305,7 @@ class VfbToUfoWriter:
             d[key] = val
         return d
 
-    def set_created_timestamp(self, value: int):
+    def set_created_timestamp(self, value: int) -> None:
         from datetime import datetime  # , timedelta
         from time import time
 
@@ -297,7 +316,7 @@ class VfbToUfoWriter:
         d = datetime.fromtimestamp(time())
         self.info.openTypeHeadCreated = d.strftime("%Y/%m/%d %H:%M:%S")
 
-    def set_tt_stem_ppms(self, data):
+    def set_tt_stem_ppms(self, data: Dict[str, List[Dict[str, Any]]]) -> None:
         for d in ("ttStemsH", "ttStemsV"):
             direction_stems = data[d]
             for ds in direction_stems:
@@ -308,7 +327,7 @@ class VfbToUfoWriter:
                 }
                 self.stem_ppms[d].append(stem)
 
-    def set_tt_stems(self, data):
+    def set_tt_stems(self, data) -> None:
         for d in ("ttStemsH", "ttStemsV"):
             direction_stems = data[d]
             for i, ds in enumerate(direction_stems):
@@ -336,16 +355,19 @@ class VfbToUfoWriter:
             for ds in self.stems[d]:
                 self.tt_stem_names.append(ds["name"])
 
-    def set_tt_zones(self, data):
-        self.zone_names = {"ttZonesT": [], "ttZonesB": []}
+    def set_tt_zones(self, data: Dict[str, List]) -> None:
+        self.zone_names: Dict[str, List[str]] = {
+            "ttZonesT": [],
+            "ttZonesB": [],
+        }
         for d in ("ttZonesB", "ttZonesT"):
             direction_zones = data[d]
             for dz in direction_zones:
-                zone = {
-                    "position": dz["position"],
-                    "top": d == "ttZonesT",
-                    "width": dz["value"],
-                }
+                zone = TUfoTTZoneDict(
+                    position=dz["position"],
+                    top=d == "ttZonesT",
+                    width=dz["value"],
+                )
                 name = dz["name"]
                 if name in self.tt_zones:
                     print(f"Duplicate zone name: {name}, overwriting.")
@@ -353,30 +375,30 @@ class VfbToUfoWriter:
                 self.tt_zone_names.append(name)  # for deltas
                 self.zone_names[d].append(name)  # for AlignTop/AlignBottom
 
-    def set_tt_pixel_snap(self, data):
+    def set_tt_pixel_snap(self, data) -> None:
         self.assure_tt_lib()
         if data != 68:
             # Omit default value
             self.lib[TT_LIB_KEY]["stemsnaplimit"] = data
 
-    def set_tt_zone_stop(self, data):
+    def set_tt_zone_stop(self, data) -> None:
         self.assure_tt_lib()
         if data != 48:
             # Omit default value
             self.lib[TT_LIB_KEY]["zoneppm"] = data
 
-    def set_tt_code_stop(self, data):
+    def set_tt_code_stop(self, data) -> None:
         self.assure_tt_lib()
         self.lib[TT_LIB_KEY]["codeppm"] = data
 
-    def set_tt_zone_deltas(self, data):
+    def set_tt_zone_deltas(self, data) -> None:
         for zone_index, deltas in data.items():
             zone_name = self.tt_zone_names[int(zone_index)]
             self.tt_zones[zone_name]["delta"] = {
                 str(k): v for k, v in deltas.items()
             }
 
-    def build_tt_stems_lib(self):
+    def build_tt_stems_lib(self) -> None:
         lib = self.lib[TT_LIB_KEY]["stems"] = {}
         for d in ("ttStemsH", "ttStemsV"):
             i = 0
@@ -396,12 +418,12 @@ class VfbToUfoWriter:
                     raise KeyError
                 lib[name] = stem
 
-    def build_tt_zones_lib(self):
+    def build_tt_zones_lib(self) -> None:
         self.assure_tt_lib()
         if self.tt_zones:
             self.lib[TT_LIB_KEY]["zones"] = self.tt_zones
 
-    def make_tt_cmd(self, tt_dict):
+    def make_tt_cmd(self, tt_dict: Dict[str, Any]) -> str:
         code = tt_dict["code"]
         cmd = f'    <ttc code="{code}"'
         for attr in (
@@ -422,13 +444,15 @@ class VfbToUfoWriter:
         cmd += "/>"
         return cmd
 
-    def build_tt_glyph_hints(self, glyph, data) -> None:
+    def build_tt_glyph_hints(
+        self, glyph: VfbToUfoGlyph, data: List[Dict[str, Any]]
+    ) -> None:
         # Write TT hints into glyph lib.
         tth = []
         for cmd in data:
             code = cmd["cmd"]
             params = cmd["params"]
-            d = {"code": vfb2ufo_command_codes[code]}
+            d: Dict[str, str | bool] = {"code": vfb2ufo_command_codes[code]}
             if code in ("AlignBottom", "AlignTop"):
                 d["point"] = glyph.get_point_label(params["pt"], code)
                 if code == "AlignBottom":
@@ -492,7 +516,7 @@ class VfbToUfoWriter:
             "  <ttProgram>\n" + "\n".join(tth) + "\n  </ttProgram>\n"
         )
 
-    def build(self):
+    def build(self) -> None:
         # Non-MM data
         for e in self.json:
             name, data = e
@@ -530,15 +554,17 @@ class VfbToUfoWriter:
                         }
                     )
             elif name == "Glyph Unicode":  # 1250
+                assert self.current_glyph is not None
                 self.current_glyph.unicodes.extend(data)
             elif name == "Glyph Unicode Non-BMP":  # 1253
+                assert self.current_glyph is not None
                 self.current_glyph.unicodes.extend(data)
             elif name == "TrueType Zones":  # 1255
                 self.set_tt_zones(data)
             elif name == "TrueType Info":  # 1264
                 self.assign_tt_info(data)
             elif name == "Gasp Ranges":  # 1265
-                gasp = []
+                gasp: List[Dict[str, int | List[int]]] = []
                 for rec in data:
                     gasp.append(
                         {
@@ -573,9 +599,9 @@ class VfbToUfoWriter:
             elif name == "OpenType Class":  # 1277
                 self.add_ot_class(data)
             elif name == "Global Guides":  # 1294
-                self.mm_guides: GuideDict = data
+                self.mm_guides = data
             elif name == "Global Guide Properties":  # 1296
-                self.guide_properties: GuidePropertyList = data
+                self.guide_properties = data
             elif name == "Encoding":  # 1500
                 pass
             elif name == "Master Count":  # 1503
@@ -625,6 +651,7 @@ class VfbToUfoWriter:
                 # Bitmap background
                 pass
             elif name == "Links":  # 2008
+                assert self.current_glyph is not None
                 self.current_glyph.links = data
             elif name == "Mask":  # 2009
                 pass
@@ -633,15 +660,19 @@ class VfbToUfoWriter:
             elif name == "2011":
                 pass
             elif name == "Mark Color":  # 2012
+                assert self.current_glyph is not None
                 self.current_glyph.set_mark(data)
             elif name == "Glyph User Data":  # 2015
+                assert self.current_glyph is not None
                 self.current_glyph.lib["com.fontlab.v5.userData"] = data
             elif name == "Font User Data":  # 2016
                 self.lib["com.fontlab.v5.userData"] = data
             elif name == "Glyph Note":  # 2017
+                assert self.current_glyph is not None
                 self.current_glyph.note = data
             elif name == "Glyph GDEF Data":  # 2018
                 if "anchors" in data:
+                    assert self.current_glyph is not None
                     self.current_glyph.anchors = []
                     for anchor in data["anchors"]:
                         self.current_glyph.anchors.append(
@@ -664,14 +695,17 @@ class VfbToUfoWriter:
             elif name == "Glyph Origin":  # 2027
                 pass
             elif name == "Glyph Anchors MM":  # 2029
+                assert self.current_glyph is not None
                 self.current_glyph.mm_anchors = data
             elif name == "Glyph Guide Properties":  # 2031
+                assert self.current_glyph is not None
                 self.current_glyph.guide_properties = data
             else:
                 pass
                 # print(f"Unhandled key: {name}")
 
         if self.current_glyph is not None:
+            assert self.current_glyph.name is not None
             self.glyph_masters[self.current_glyph.name] = self.current_glyph
             self.glyphOrder.append(self.current_glyph.name)
         self.lib["public.glyphOrder"] = self.glyphOrder
@@ -679,7 +713,7 @@ class VfbToUfoWriter:
         self.build_tt_stems_lib()
         self.build_tt_zones_lib()
 
-    def get_master_info(self, master_index=0):
+    def get_master_info(self, master_index: int = 0) -> VfbToUfoInfo:
         # Update the info with master-specific values
         for k, v in (
             ("force_bold", "postscriptForceBold"),
@@ -716,7 +750,7 @@ class VfbToUfoWriter:
                 setattr(self.info, v, value[:num_values])
 
         # Guides
-        if hasattr(self, "mm_guides"):
+        if self.mm_guides is not None:
             guides = get_master_guides(self.mm_guides, master_index)
             apply_guide_properties(guides, self.guide_properties)
 
@@ -725,7 +759,7 @@ class VfbToUfoWriter:
 
         return self.info
 
-    def draw_glyph(self, pen: GLIFPointPen):
+    def draw_glyph(self, pen: GLIFPointPen) -> None:
         """
         Draw the current glyph onto pen. Use self.master_index for which outlines
         or component transformations to use.
@@ -768,10 +802,11 @@ class VfbToUfoWriter:
         glyphs_path.mkdir()
         gs = GlyphSet(glyphs_path)
         for name, self.current_mmglyph in self.glyph_masters.items():
-            g = Glyph(name, gs)
+            print(name, type(name), self.current_mmglyph)
+            g = UfoGlyph(name, gs)
             g.anchors = self.current_mmglyph.anchors
             # Apply master anchor positions
-            if hasattr(self.current_mmglyph, "mm_anchors"):
+            if self.current_mmglyph.mm_anchors is not None:
                 for j, anchor in enumerate(self.current_mmglyph.mm_anchors):
                     g.anchors[j]["x"] = anchor["x"][index]
                     g.anchors[j]["y"] = anchor["y"][index]
@@ -780,7 +815,7 @@ class VfbToUfoWriter:
             # Apply master hint positions and widths
 
             master_hints = get_master_hints(
-                mmglyph=self.current_mmglyph, glyph=g, master_index=index
+                mmglyph=self.current_mmglyph, master_index=index
             )
             if master_hints:
                 build_ps_glyph_hints(
@@ -789,7 +824,7 @@ class VfbToUfoWriter:
                     master_hints=master_hints,
                 )
 
-            if hasattr(self.current_mmglyph, "mm_guides"):
+            if self.current_mmglyph.mm_guides is not None:
                 master_guides = get_master_guides(
                     self.current_mmglyph.mm_guides, index
                 )
