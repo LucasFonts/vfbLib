@@ -13,13 +13,11 @@ if TYPE_CHECKING:
 
 
 def normalize_hint(hint: Tuple[str, int, int]):
-    print("Normalize:", hint)
     direction, pos, width = hint
     if width < 0:
         if width not in (-21, -20):  # Skip ghost hints
             pos = pos + width
             width = abs(width)
-    print((direction, pos, width))
     return (direction, pos, width)
 
 
@@ -36,7 +34,6 @@ def build_ps_glyph_hints(
     # Use the format defined in UFO3, not what FL does.
     # https://github.com/adobe-type-tools/psautohint/blob/master/python/psautohint/ufoFont.py
     # https://unifiedfontobject.org/versions/ufo3/glyphs/glif/#publicpostscripthints
-    print(f"Building glyph hints for {mmglyph.name}")
     hint_sets = []
     label = mmglyph.get_point_label(
         index=0, code="PSHintReplacement", start_count=0
@@ -51,12 +48,10 @@ def build_ps_glyph_hints(
                 if d in mask:
                     hint_index = mask[d]
                     hint = master_hints[d][hint_index]
-                    print("   ", d, mask[d], "->", hint)
                     hint_set["stems"].append(hint)
             if "r" in mask:
                 hint_sets.append(hint_set)
                 node_index = mask["r"]
-                print(f"    Replacement point: {node_index}")
                 # FIXME: What do negative values mean?
                 if node_index < 0:
                     node_index = abs(node_index) - 1
