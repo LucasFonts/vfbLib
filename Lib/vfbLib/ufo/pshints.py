@@ -169,9 +169,10 @@ def update_adobe_hinting(data) -> UfoHintingV2:
             }
         elif el.tag in ("hstem", "vstem"):
             if hintset is not None:
-                hintset["stems"].append(
-                    f'{el.tag} {el.attrib["pos"]} {el.attrib["width"]}'
+                tag, pos, width = normalize_hint(
+                    (el.tag, int(el.attrib["pos"]), int(el.attrib["width"]))
                 )
+                hintset["stems"].append(f"{tag} {pos} {width}")
     if hintset:
         hintSetList.append(hintset)
     if hintSetList:
