@@ -38,7 +38,7 @@ def binaryToIntList(value: int, start: int = 0):
 class VfbToUfoInfo:
     def __init__(self):
         # Chance to set some defaults that should always be written
-        self.familyName = ""
+        self.familyName = "Untitled"
         self.guidelines: List[UfoGuide] = []
         self.italicAngle: float | int = 0
         self.openTypeHeadCreated = 0
@@ -52,7 +52,12 @@ class VfbToUfoInfo:
         self.postscriptIsFixedPitch = False
         self.postscriptFamilyBlues: List[int] = []
         self.postscriptFamilyOtherBlues: List[int] = []
-        self.postscriptFontName = ""
+        self.postscriptFontName = "Untitled-Regular"
+        self.postscriptFullName = "Untitled Regular"
+        self.postscriptWeightName = "Regular"
+        self.styleMapFamilyName = "Untitled"
+        self.styleMapStyleName = "regular"
+        self.styleName = "Regular"
 
     @property
     def ui_name(self) -> str:
