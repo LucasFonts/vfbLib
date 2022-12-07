@@ -39,7 +39,7 @@
 	</outline>
 	<lib>
 		<dict>
-			<key>public.postscript.hints</key>
+			<key>com.adobe.type.autohint.v2</key>
 			<dict>
 				<key>hintSetList</key>
 				<array>
@@ -58,7 +58,7 @@
 						<key>stems</key>
 						<array>
 							<string>hstem -24 110</string>
-							<string>hstem 520 -113</string>
+							<string>hstem 407 113</string>
 						</array>
 					</dict>
 				</array>
