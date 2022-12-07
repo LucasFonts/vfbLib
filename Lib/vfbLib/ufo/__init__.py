@@ -705,7 +705,8 @@ class VfbToUfoWriter:
             elif name == "Glyph Guide Properties":  # 2031
                 self.current_glyph.guide_properties = data
             else:
-                print(f"Unhandled key: {name}")
+                pass
+                # print(f"Unhandled key: {name}")
 
         if self.current_glyph is not None:
             self.glyph_masters[self.current_glyph.name] = self.current_glyph
