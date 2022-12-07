@@ -38,7 +38,13 @@ def build_ps_glyph_hints(
     # https://unifiedfontobject.org/versions/ufo3/glyphs/glif/#publicpostscripthints
     print(f"Building glyph hints for {mmglyph.name}")
     hint_sets = []
-    stems = []
+    label = mmglyph.get_point_label(
+        index=0, code="PSHintReplacement", start_count=0
+    )
+    hint_set = {
+        "pointTag": label,
+        "stems": [],
+    }
     if mmglyph.hintmasks:
         for mask in mmglyph.hintmasks:
             for d in ("h", "v"):
@@ -46,8 +52,9 @@ def build_ps_glyph_hints(
                     hint_index = mask[d]
                     hint = master_hints[d][hint_index]
                     print("   ", d, mask[d], "->", hint)
-                    stems.append(hint)
+                    hint_set["stems"].append(hint)
             if "r" in mask:
+                hint_sets.append(hint_set)
                 node_index = mask["r"]
                 print(f"    Replacement point: {node_index}")
                 # FIXME: What do negative values mean?
@@ -56,37 +63,20 @@ def build_ps_glyph_hints(
                 label = mmglyph.get_point_label(
                     index=node_index, code="PSHintReplacement"
                 )
+                hint_set = {
+                    "pointTag": label,
+                    "stems": [],
+                }
 
-                hint_sets.append(
-                    {
-                        "pointTag": label,
-                        "stems": stems,
-                    }
-                )
-                stems = []
-
-        if stems:
-            # FIXME
-            print("Leftover stems:", stems)
-            print("Adding to all hint sets")
-            for hint_set in hint_sets:
-                hint_set["stems"].extend(stems)
+        if hint_set["stems"]:
+            # Append the last hint set
+            hint_sets.append(hint_set)
     else:
         # Only one hint set, always make a hint set with first point
-        label = mmglyph.get_point_label(
-            index=0, code="PSHintReplacement", start_count=0
-        )
         for d in ("h", "v"):
             for hint in master_hints[d]:
-                stems.append(hint)
-        hint_sets.append(
-            {
-                "pointTag": label,
-                "stems": stems,
-            }
-        )
-
-    # [f"{cmd} {pos} {width}"for cmd, pos, width in sorted(stems)]
+                hint_set["stems"].append(hint)
+        hint_sets = [hint_set]
 
     # Reformat stems from sortable tuples to str required by UFO spec
     for hint_set in hint_sets:
