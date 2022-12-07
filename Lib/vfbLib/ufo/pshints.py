@@ -103,9 +103,8 @@ def get_master_hints(
         dh = mmglyph.mm_hints[d]
         for mm_hints in dh:
             hint = mm_hints[master_index]
-            # hint = normalize_hint_dict(hint, f"{d}stem")
-            # hints[d].append(hint)
-            hints[d].append((f"{d}stem", hint["pos"], hint["width"]))
+            hint = normalize_hint_dict(hint, f"{d}stem")
+            hints[d].append(hint)
 
     # Links
     if not mmglyph.links:
