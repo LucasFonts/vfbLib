@@ -56,11 +56,15 @@ class VfbToUfoInfo:
 
     @property
     def ui_name(self) -> str:
+        name = ""
         if hasattr(self, "familyName"):
-            return self.familyName
+            name = self.familyName
+
         elif hasattr(self, "postscriptFontName"):
-            return self.postscriptFontName
-        return "Unknown master"
+            name = self.postscriptFontName
+        if name:
+            return name
+        return "Unknown"
 
 
 class VfbToUfoWriter:
