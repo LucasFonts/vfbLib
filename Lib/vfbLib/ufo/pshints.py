@@ -120,18 +120,20 @@ def get_master_hints(
             pos = src_pos
             if itgt == -1:  # Bottom ghost
                 width = -21
+                pos = src_pos - width
             elif itgt == -2:  # Top ghost
                 width = -20
             else:
                 tgt = mmglyph.mm_nodes[itgt]
                 tgt_pos = tgt["points"][master_index][0][i]
-                # This would be correct IMHO:
-                # width = abs(tgt_pos - src_pos)
-                # pos = min(src_pos, tgt_pos)
-                # This is how FontLab does it:
                 width = tgt_pos - src_pos
+                # pos = min(src_pos, tgt_pos)
+                
             d = "v" if axis == "x" else "h"
-            hints[d].append((f"{d}stem", pos, width))
+            # Don't normalize those values, the above code already did that
+            hint = (f"{d}stem", pos, width)
+            # hint = normalize_hint((f"{d}stem", pos, width))
+            hints[d].append(hint)
 
     return hints
 
