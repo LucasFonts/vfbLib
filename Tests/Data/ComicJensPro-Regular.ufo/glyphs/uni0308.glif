@@ -45,7 +45,7 @@
 	<anchor name="top" x="-143" y="673"/>
 	<lib>
 		<dict>
-			<key>com.adobe.type.autohint</key>
+			<key>com.adobe.type.autohint.v2</key>
 			<dict>
 				<key>hintSetList</key>
 				<array>
@@ -54,7 +54,7 @@
 						<string>hr00</string>
 						<key>stems</key>
 						<array>
-							<string>hstem 744 -141</string>
+							<string>hstem 603 141</string>
 						</array>
 					</dict>
 				</array>

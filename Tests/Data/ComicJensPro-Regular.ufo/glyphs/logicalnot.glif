@@ -44,7 +44,7 @@
 	</outline>
 	<lib>
 		<dict>
-			<key>com.adobe.type.autohint</key>
+			<key>com.adobe.type.autohint.v2</key>
 			<dict>
 				<key>hintSetList</key>
 				<array>
@@ -54,8 +54,8 @@
 						<key>stems</key>
 						<array>
 							<string>hstem 201 -21</string>
-							<string>hstem 471 -100</string>
-							<string>vstem 543 -100</string>
+							<string>hstem 371 100</string>
+							<string>vstem 443 100</string>
 						</array>
 					</dict>
 				</array>

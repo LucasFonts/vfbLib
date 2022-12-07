@@ -49,7 +49,7 @@
 	<anchor name="_top" x="-318" y="734"/>
 	<lib>
 		<dict>
-			<key>com.adobe.type.autohint</key>
+			<key>com.adobe.type.autohint.v2</key>
 			<dict>
 				<key>hintSetList</key>
 				<array>

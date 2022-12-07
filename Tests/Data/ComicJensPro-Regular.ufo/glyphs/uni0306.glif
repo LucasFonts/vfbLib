@@ -37,7 +37,7 @@
 	<anchor name="top" x="-185" y="720"/>
 	<lib>
 		<dict>
-			<key>com.adobe.type.autohint</key>
+			<key>com.adobe.type.autohint.v2</key>
 			<dict>
 				<key>hintSetList</key>
 				<array>

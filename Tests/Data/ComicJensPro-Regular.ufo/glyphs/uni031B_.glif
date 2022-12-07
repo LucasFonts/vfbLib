@@ -33,7 +33,7 @@
 	<anchor name="_topRightAttach" x="-175" y="500"/>
 	<lib>
 		<dict>
-			<key>com.adobe.type.autohint</key>
+			<key>com.adobe.type.autohint.v2</key>
 			<dict>
 				<key>hintSetList</key>
 				<array>
