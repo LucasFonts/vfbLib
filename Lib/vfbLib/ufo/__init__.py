@@ -434,7 +434,8 @@ class VfbToUfoWriter:
 
     def build_tt_zones_lib(self):
         self.assure_tt_lib()
-        self.lib[TT_LIB_KEY]["zones"] = self.tt_zones
+        if self.tt_zones:
+            self.lib[TT_LIB_KEY]["zones"] = self.tt_zones
 
     def make_tt_cmd(self, tt_dict):
         code = tt_dict["code"]
