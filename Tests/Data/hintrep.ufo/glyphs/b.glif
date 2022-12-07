@@ -48,8 +48,8 @@
 						<string>hr01</string>
 						<key>stems</key>
 						<array>
-							<string>hstem 0 86</string>
-							<string>hstem 407 94</string>
+							<string>hstem 21 -21</string>
+							<string>hstem 501 -20</string>
 							<string>vstem 67 130</string>
 							<string>vstem 508 131</string>
 						</array>
