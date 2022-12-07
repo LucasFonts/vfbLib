@@ -17,8 +17,9 @@ def build_ps_glyph_hints(
     master_hints: Dict[str, List[Tuple[str, int, int]]],
 ) -> None:
     # Set the master-specific hints from data to the glyph lib
-    # Use format 2, not what FL does.
+    # Use the format defined in UFO3, not what FL does.
     # https://github.com/adobe-type-tools/psautohint/blob/master/python/psautohint/ufoFont.py
+    # https://unifiedfontobject.org/versions/ufo3/glyphs/glif/#publicpostscripthints
     hint_sets = []
     stems = []
     for mask in mmglyph.hintmasks:

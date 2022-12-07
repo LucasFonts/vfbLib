@@ -8,7 +8,11 @@ from pathlib import Path
 from tempfile import NamedTemporaryFile
 from typing import Literal
 from vfbLib.ufo.pshints import update_adobe_hinting
-from vfbLib.ufo.vfb2ufo import PS_GLYPH_LIB_KEY, TT_GLYPH_LIB_KEY
+from vfbLib.ufo.vfb2ufo import (
+    PS_GLYPH_LIB_KEY_ADOBE,
+    PS_GLYPH_LIB_KEY,
+    TT_GLYPH_LIB_KEY,
+)
 
 
 RF_GUIDES_KEY = "com.typemytype.robofont.guides"
@@ -71,12 +75,12 @@ def normalize_ufo(
                 glyph.lib[TT_GLYPH_LIB_KEY] = data
 
             # Update PS Hinting to V2
-            if PS_GLYPH_LIB_KEY in glyph.lib:
-                v2 = update_adobe_hinting(glyph.lib[PS_GLYPH_LIB_KEY])
+            if PS_GLYPH_LIB_KEY_ADOBE in glyph.lib:
+                v2 = update_adobe_hinting(glyph.lib[PS_GLYPH_LIB_KEY_ADOBE])
                 if v2:
                     glyph.lib[PS_GLYPH_LIB_KEY] = v2
                 else:
-                    del glyph.lib[PS_GLYPH_LIB_KEY]
+                    del glyph.lib[PS_GLYPH_LIB_KEY_ADOBE]
 
             # Update Guides to UFO standard
             if RF_GUIDES_KEY in glyph.lib:
@@ -90,7 +94,7 @@ def normalize_ufo(
                 if guides:
                     glyph.guidelines = guides
                 del glyph.lib[RF_GUIDES_KEY]
-        
+
         # Update Global Guides to UFO standard
         if RF_GUIDES_KEY in f.lib:
             guides = []
