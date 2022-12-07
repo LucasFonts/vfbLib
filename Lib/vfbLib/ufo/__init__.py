@@ -262,9 +262,11 @@ class VfbToUfoWriter:
                 self.info.openTypeOS2WinDescent = v
             elif k == "Codepages":
                 cp1, cp2 = v
-                self.info.openTypeOS2CodePageRanges = binaryToIntList(cp1)
+                ranges = binaryToIntList(cp1)
                 for cp in binaryToIntList(cp2):
-                    self.info.openTypeOS2CodePageRanges.append(cp + 32)
+                    ranges.append(cp + 32)
+                if ranges:
+                    self.info.openTypeOS2CodePageRanges = ranges
             elif k == "ibm_classification":
                 c = v >> 8
                 s = v & ~(c << 8)
