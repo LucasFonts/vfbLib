@@ -1,17 +1,17 @@
 from __future__ import annotations
 
-from fontTools.pens.pointPen import AbstractPointPen
 from typing import List, Tuple, TYPE_CHECKING
 
 
 if TYPE_CHECKING:
+    from fontTools.ufoLib.glifLib import GLIFPointPen
     from vfbLib.ufo.types import UfoComponent, UfoContour
 
 
 def draw_glyph(
     contours: List[UfoContour],
     components: List[UfoComponent],
-    pen: AbstractPointPen,
+    pen: GLIFPointPen,
 ):
     for contour in contours:
         pen.beginPath()

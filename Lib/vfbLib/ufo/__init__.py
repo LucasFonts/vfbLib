@@ -19,7 +19,7 @@ from vfbLib.ufo.vfb2ufo import (
 )
 
 if TYPE_CHECKING:
-    from fontTools.pens.pointPen import AbstractPointPen
+    from fontTools.ufoLib.glifLib import GLIFPointPen
     from vfbLib.types import GuideDict, GuidePropertyList
     from vfbLib.ufo.types import UfoGroups, UfoGuide, UfoMMKerning
 
@@ -762,7 +762,7 @@ class VfbToUfoWriter:
 
         return self.info
 
-    def draw_glyph(self, pen: AbstractPointPen):
+    def draw_glyph(self, pen: GLIFPointPen):
         """
         Draw the current glyph onto pen. Use self.master_index for which outlines
         or component transformations to use.
