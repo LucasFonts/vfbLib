@@ -6,7 +6,7 @@ from __future__ import annotations
 # except ImportError:
 from typing_extensions import NotRequired, TypedDict
 
-from typing import Any, Dict, List, Literal, Tuple
+from typing import Dict, List, Tuple
 
 
 UfoPoint = Tuple[int, int]
