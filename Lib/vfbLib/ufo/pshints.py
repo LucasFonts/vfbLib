@@ -65,12 +65,14 @@ def get_master_hints(
         dh = mmglyph.mm_hints[d]
         for mm_hints in dh:
             hint = mm_hints[master_index]
+            # hint = normalize_hint_dict(hint, f"{d}stem")
+            # hints[d].append(hint)
             hints[d].append((f"{d}stem", hint["pos"], hint["width"]))
 
     # Links
     if not mmglyph.links:
-        hints["h"].sort()
-        hints["v"].sort()
+        # hints["h"].sort()
+        # hints["v"].sort()
         return hints
 
     # Convert links to hints
@@ -89,15 +91,15 @@ def get_master_hints(
                 tgt = mmglyph.mm_nodes[itgt]
                 tgt_pos = tgt["points"][master_index][0][i]
                 # This would be correct IMHO:
-                width = abs(tgt_pos - src_pos)
-                pos = min(src_pos, tgt_pos)
+                # width = abs(tgt_pos - src_pos)
+                # pos = min(src_pos, tgt_pos)
                 # This is how FontLab does it:
-                # width = tgt_pos - src_pos
+                width = tgt_pos - src_pos
             d = "v" if axis == "x" else "h"
             hints[d].append((f"{d}stem", pos, width))
 
-    hints["h"].sort()
-    hints["v"].sort()
+    # hints["h"].sort()
+    # hints["v"].sort()
     return hints
 
 
