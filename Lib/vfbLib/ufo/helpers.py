@@ -76,11 +76,10 @@ def normalize_ufo(
 
             # Update PS Hinting to V2
             if PS_GLYPH_LIB_KEY_ADOBE in glyph.lib:
-                v2 = update_adobe_hinting(glyph.lib[PS_GLYPH_LIB_KEY_ADOBE])
-                if v2:
-                    glyph.lib[PS_GLYPH_LIB_KEY] = v2
-                else:
-                    del glyph.lib[PS_GLYPH_LIB_KEY_ADOBE]
+                glyph.lib[PS_GLYPH_LIB_KEY] = update_adobe_hinting(
+                    glyph.lib[PS_GLYPH_LIB_KEY_ADOBE]
+                )
+                del glyph.lib[PS_GLYPH_LIB_KEY_ADOBE]
 
             # Update Guides to UFO standard
             if RF_GUIDES_KEY in glyph.lib:
