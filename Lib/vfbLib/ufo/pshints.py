@@ -7,8 +7,30 @@ from vfbLib.ufo.vfb2ufo import PS_GLYPH_LIB_KEY
 from typing import TYPE_CHECKING, Dict, List, Tuple
 
 if TYPE_CHECKING:
+    from vfbLib.types import Hint
     from fontTools.ufoLib.glifLib import Glyph
     from vfbLib.ufo.glyph import VfbToUfoGlyph
+
+
+def normalize_hint(hint: Tuple[str, int, int]):
+    print("Normalize:", hint)
+    direction, pos, width = hint
+    if width == -21:
+        # Bottom ghost
+        pos = pos + width
+    elif width == -20:
+        # Top ghost
+        pass
+    else:
+        if width < 0:
+            pos = pos + width
+            width = abs(width)
+    print((direction, pos, width))
+    return (direction, pos, width)
+
+
+def normalize_hint_dict(hint: Hint, name: str = "dummy"):
+    return normalize_hint((name, hint["pos"], hint["width"]))
 
 
 def build_ps_glyph_hints(
@@ -20,32 +42,64 @@ def build_ps_glyph_hints(
     # Use the format defined in UFO3, not what FL does.
     # https://github.com/adobe-type-tools/psautohint/blob/master/python/psautohint/ufoFont.py
     # https://unifiedfontobject.org/versions/ufo3/glyphs/glif/#publicpostscripthints
+    print(f"Building glyph hints for {mmglyph.name}")
     hint_sets = []
     stems = []
-    for mask in mmglyph.hintmasks:
-        for d in ("h", "v"):
-            if d in mask:
-                for i, h in enumerate(master_hints[d]):
-                    # If the hint index is in the hintmask, add it to the set
-                    if mask[d] & 2**i:
-                        stems.append(h)
-        if "r" in mask:
-            node_index = mask["r"]
-            # FIXME: What do negative values mean?
-            node_index = abs(node_index)
-            label = mmglyph.get_point_label(
-                index=node_index, code="PSHintReplacement", start_count=1
-            )
+    if mmglyph.hintmasks:
+        for mask in mmglyph.hintmasks:
+            for d in ("h", "v"):
+                if d in mask:
+                    hint_index = mask[d]
+                    hint = master_hints[d][hint_index]
+                    print("   ", d, mask[d], "->", hint)
+                    stems.append(hint)
+            if "r" in mask:
+                node_index = mask["r"]
+                print(f"    Replacement point: {node_index}")
+                # FIXME: What do negative values mean?
+                if node_index < 0:
+                    node_index = abs(node_index) - 1
+                label = mmglyph.get_point_label(
+                    index=node_index, code="PSHintReplacement"
+                )
 
-            hint_sets.append({
+                hint_sets.append(
+                    {
+                        "pointTag": label,
+                        "stems": stems,
+                    }
+                )
+                stems = []
+
+        if stems:
+            # FIXME
+            print("Leftover stems:", stems)
+            print("Adding to all hint sets")
+            for hint_set in hint_sets:
+                hint_set["stems"].extend(stems)
+    else:
+        # Only one hint set, always make a hint set with first point
+        label = mmglyph.get_point_label(
+            index=0, code="PSHintReplacement", start_count=0
+        )
+        for d in ("h", "v"):
+            for hint in master_hints[d]:
+                stems.append(hint)
+        hint_sets.append(
+            {
                 "pointTag": label,
-                "stems": [f"{cmd} {pos} {width}" for cmd, pos, width in sorted(stems)],
-            })
-            stems = []
-    
-    if stems:
-        # FIXME
-        print("Leftover stems:", stems)
+                "stems": stems,
+            }
+        )
+
+    # [f"{cmd} {pos} {width}"for cmd, pos, width in sorted(stems)]
+
+    # Reformat stems from sortable tuples to str required by UFO spec
+    for hint_set in hint_sets:
+        hint_set["stems"] = [
+            f"{cmd} {pos} {width}"
+            for cmd, pos, width in sorted(set(hint_set["stems"]))
+        ]
 
     if hint_sets:
         glyph.lib[PS_GLYPH_LIB_KEY] = {
