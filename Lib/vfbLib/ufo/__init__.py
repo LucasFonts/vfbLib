@@ -6,7 +6,7 @@ from pathlib import Path
 from shutil import rmtree
 from typing import TYPE_CHECKING, Any, Dict, List
 from ufonormalizer import normalizeUFO
-from vfbLib.ufo.glyph import VfbToUfoGlyph
+from vfbLib.ufo.glyph import VfbToUfoGlyph, UfoGlyph
 from vfbLib.ufo.guides import apply_guide_properties, get_master_guides
 from vfbLib.ufo.kerning import UfoKerning
 from vfbLib.ufo.paths import draw_glyph, get_master_glyph

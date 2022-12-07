@@ -5,6 +5,7 @@ from typing import TYPE_CHECKING, Dict, List
 from vfbLib.ufo.vfb2ufo import vfb2ufo_label_codes
 
 if TYPE_CHECKING:
+    from fontTools.ufoLib.glifLib import GlyphSet
     from vfbLib.types import (
         Anchor,
         GuidePropertyList,
@@ -12,6 +13,18 @@ if TYPE_CHECKING:
         LinkDict,
         MMNode,
     )
+
+
+class UfoGlyph:
+    def __init__(self, name: str, glyph_set: GlyphSet) -> None:
+        self.name = name
+        self.glyphSet = glyph_set
+        self.lib: Dict[str, Any] = {}
+        self.anchors: List[Anchor] = []
+        self.guidelines: List = []
+        self.unicodes: List[int] = []
+        self.width: int = 0
+        self.height: int = 0
 
 
 class VfbToUfoGlyph:
