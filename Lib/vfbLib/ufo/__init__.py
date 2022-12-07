@@ -405,15 +405,20 @@ class VfbToUfoWriter:
     def build_tt_stems_lib(self):
         lib = self.lib[TT_LIB_KEY]["stems"] = {}
         for d in ("ttStemsH", "ttStemsV"):
+            i = 0
             direction_stems = self.stems[d]
             for stem in direction_stems:
                 name = stem["name"]
                 del stem["name"]
+                if name == "":
+                    name = "%s%02i" % (d[-1].lower(), i)
+                    i += 1
                 if name in self.lib[TT_LIB_KEY]["stems"]:
                     print(
-                        f"ERROR: Duplicate stem name {name}, overwriting. "
+                        f"ERROR: Duplicate TrueType stem name '{name}'. "
                         "Make stem names unique in VFB."
                     )
+                    raise KeyError
                 lib[name] = stem
 
     def build_tt_zones_lib(self):
