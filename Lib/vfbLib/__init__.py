@@ -23,7 +23,7 @@ class VFBReader:
         vfb_path: Path,
         timing=True,
         minimal=False,
-        only_keys: List[str] = None,
+        only_keys: List[str] | None = None,
     ) -> None:
         self.vfb_path = vfb_path
         self.data: List[List[Any]] = []
