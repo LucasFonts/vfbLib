@@ -71,7 +71,8 @@ def build_ps_glyph_hints(
         for d in ("h", "v"):
             for hint in master_hints[d]:
                 hint_set["stems"].append(hint)
-        hint_sets = [hint_set]
+        if hint_set["stems"]:
+            hint_sets = [hint_set]
 
     # Reformat stems from sortable tuples to str required by UFO spec
     for hint_set in hint_sets:
