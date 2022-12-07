@@ -35,43 +35,6 @@ def binaryToIntList(value: int, start: int = 0):
     return intList
 
 
-class VfbToUfoInfo:
-    def __init__(self):
-        # Chance to set some defaults that should always be written
-        self.familyName = "Untitled"
-        self.guidelines: List[UfoGuide] = []
-        self.italicAngle: float | int = 0
-        self.openTypeHeadCreated = 0
-        self.openTypeHeadFlags: List[int] = []
-        self.openTypeHheaLineGap = 0
-        self.openTypeNameDescription = ""
-        self.openTypeNameSampleText = ""
-        self.openTypeOS2Selection: List[int] = []
-        self.openTypeOS2Type: List[int] = []
-        self.openTypeOS2WidthClass = 5
-        self.postscriptIsFixedPitch = False
-        self.postscriptFamilyBlues: List[int] = []
-        self.postscriptFamilyOtherBlues: List[int] = []
-        self.postscriptFontName = "Untitled-Regular"
-        self.postscriptFullName = "Untitled Regular"
-        self.postscriptWeightName = "Regular"
-        self.styleMapFamilyName = "Untitled"
-        self.styleMapStyleName = "regular"
-        self.styleName = "Regular"
-
-    @property
-    def ui_name(self) -> str:
-        name = ""
-        if hasattr(self, "familyName"):
-            name = self.familyName
-
-        elif hasattr(self, "postscriptFontName"):
-            name = self.postscriptFontName
-        if name:
-            return name
-        return "Unknown"
-
-
 class VfbToUfoWriter:
     def __init__(self, json: List[List[Any]]) -> None:
         """
