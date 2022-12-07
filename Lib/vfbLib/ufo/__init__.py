@@ -422,7 +422,8 @@ class VfbToUfoWriter:
                 name = stem["name"]
                 del stem["name"]
                 if name == "":
-                    name = "%s%02i" % (d[-1].lower(), i)
+                    dname = "v" if d == "ttStemsH" else "h"
+                    name = "%s%02i" % (dname, i)
                     i += 1
                 if name in self.lib[TT_LIB_KEY]["stems"]:
                     print(
