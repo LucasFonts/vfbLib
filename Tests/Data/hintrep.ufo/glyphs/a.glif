@@ -39,7 +39,7 @@
 	</outline>
 	<lib>
 		<dict>
-			<key>com.adobe.type.autohint</key>
+			<key>public.postscript.hints</key>
 			<dict>
 				<key>hintSetList</key>
 				<array>
