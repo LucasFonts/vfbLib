@@ -124,6 +124,22 @@
         "0000"
     ],
     [
+        "Blue Values Count",
+        6
+    ],
+    [
+        "Other Blues Count",
+        2
+    ],
+    [
+        "StemSnapH Count",
+        2
+    ],
+    [
+        "StemSnapV Count",
+        1
+    ],
+    [
         "Selection",
         64
     ],
@@ -371,16 +387,59 @@
     [
         "TrueType Stem PPEMs",
         {
-            "ttStemsV": [],
-            "ttStemsH": []
+            "ttStemsV": [
+                {
+                    "stem": 0,
+                    "round": {
+                        "2": 10,
+                        "3": 16,
+                        "4": 22,
+                        "5": 29
+                    }
+                }
+            ],
+            "ttStemsH": [
+                {
+                    "stem": 0,
+                    "round": {
+                        "2": 10,
+                        "3": 16,
+                        "4": 22,
+                        "5": 29
+                    }
+                }
+            ]
         }
     ],
     [
         "TrueType Stems",
         {
-            "ttStemsV": [],
-            "ttStemsH": []
+            "ttStemsV": [
+                {
+                    "value": 160,
+                    "name": "",
+                    "round": {
+                        "6": 35
+                    }
+                }
+            ],
+            "ttStemsH": [
+                {
+                    "value": 160,
+                    "name": "",
+                    "round": {
+                        "6": 35
+                    }
+                }
+            ]
         }
+    ],
+    [
+        "1524",
+        [
+            0,
+            0
+        ]
     ],
     [
         "TrueType Zones",
@@ -621,12 +680,12 @@
             ],
             "force_bold": 0,
             "blue_values": [
+                -40,
                 0,
-                0,
-                0,
-                0,
-                0,
-                0,
+                500,
+                520,
+                700,
+                720,
                 0,
                 0,
                 0,
@@ -637,10 +696,10 @@
                 0
             ],
             "other_blues": [
-                0,
-                0,
-                0,
-                0,
+                -220,
+                -200,
+                700,
+                720,
                 0,
                 0,
                 0,
@@ -682,8 +741,8 @@
             "std_hw": 100,
             "std_vw": 50,
             "stem_snap_h": [
-                0,
-                0,
+                110,
+                130,
                 0,
                 0,
                 0,
@@ -696,7 +755,7 @@
                 0
             ],
             "stem_snap_v": [
-                0,
+                160,
                 0,
                 0,
                 0,
@@ -710,12 +769,12 @@
                 0
             ],
             "bounding_box": {
-                "xMin": 67,
-                "yMin": -24,
-                "xMax": 639,
-                "yMax": 520
+                "xMin": 33,
+                "yMin": -36,
+                "xMax": 758,
+                "yMax": 669
             },
-            "adv_width_min": 829,
+            "adv_width_min": 787,
             "adv_width_max": 833,
             "adv_width_avg": 500,
             "ascender": 750,
