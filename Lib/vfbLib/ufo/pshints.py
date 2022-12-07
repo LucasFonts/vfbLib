@@ -128,7 +128,7 @@ def get_master_hints(
                 tgt_pos = tgt["points"][master_index][0][i]
                 width = tgt_pos - src_pos
                 # pos = min(src_pos, tgt_pos)
-                
+
             d = "v" if axis == "x" else "h"
             # Don't normalize those values, the above code already did that
             hint = (f"{d}stem", pos, width)
