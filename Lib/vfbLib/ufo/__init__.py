@@ -544,7 +544,7 @@ class VfbToUfoWriter:
                 pass
             elif name == "weight":  # 1048
                 self.info.openTypeOS2WeightClass = max(0, data)
-            elif name == "Style Name":
+            elif name == "Style Name":  # 1127
                 self.info.styleName = data
                 self.info.postscriptWeightName = data  # ?
             elif name == "Type 1 XUIDs":  # 1133
