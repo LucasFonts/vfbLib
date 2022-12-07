@@ -74,9 +74,9 @@ def get_master_hints(
         return hints
 
     # Convert links to hints
-    for i, a in enumerate("xy"):
-        dl = mmglyph.links[a]
-        for link in dl:
+    for i, axis in enumerate("xy"):
+        direction_links = mmglyph.links[axis]
+        for link in direction_links:
             isrc, itgt = link  # indices of source and target node
             src = mmglyph.mm_nodes[isrc]
             src_pos = src["points"][master_index][0][i]
@@ -93,7 +93,7 @@ def get_master_hints(
                 pos = min(src_pos, tgt_pos)
                 # This is how FontLab does it:
                 # width = tgt_pos - src_pos
-            d = "v" if a == "x" else "h"
+            d = "v" if axis == "x" else "h"
             hints[d].append((f"{d}stem", pos, width))
 
     hints["h"].sort()
