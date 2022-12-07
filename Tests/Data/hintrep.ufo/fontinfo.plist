@@ -119,8 +119,12 @@
 		<integer>7</integer>
 		<key>postscriptBlueValues</key>
 		<array>
-			<integer>-20</integer>
+			<integer>-40</integer>
 			<integer>0</integer>
+			<integer>500</integer>
+			<integer>520</integer>
+			<integer>700</integer>
+			<integer>720</integer>
 		</array>
 		<key>postscriptFamilyBlues</key>
 		<array>
@@ -138,12 +142,17 @@
 		<false/>
 		<key>postscriptOtherBlues</key>
 		<array>
+			<integer>-220</integer>
+			<integer>-200</integer>
 		</array>
 		<key>postscriptStemSnapH</key>
 		<array>
+			<integer>110</integer>
+			<integer>130</integer>
 		</array>
 		<key>postscriptStemSnapV</key>
 		<array>
+			<integer>160</integer>
 		</array>
 		<key>postscriptUnderlinePosition</key>
 		<integer>-75</integer>
