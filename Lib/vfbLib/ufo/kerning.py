@@ -25,7 +25,7 @@ class UfoKerning:
         Extract the kerning value for master_index. Also solves group kerning
         references.
         """
-        self.master_kerning = kerning = {}
+        self.master_kerning = {}
         for pair, values in self.mm_kerning.items():
             L, Rid = pair
             # Make right GID into glyph name
@@ -47,4 +47,4 @@ class UfoKerning:
             else:
                 right = R
 
-            kerning[left, right] = values[master_index]
+            self.master_kerning[left, right] = values[master_index]
