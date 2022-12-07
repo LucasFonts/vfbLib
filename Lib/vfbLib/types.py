@@ -82,6 +82,9 @@ class HintDict(TypedDict):
     hintmasks: NotRequired[List[Dict[str, int]]]
 
 
+HintTuple = Tuple[str, int, int]
+
+
 class Instruction(TypedDict):
     cmd: str
     params: Dict[str, int]
@@ -111,3 +114,8 @@ class MMNode(TypedDict):
     flags: int
     points: List[List[Point]]
     type: Literal["move", "line", "curve", "qcurve"]
+
+
+class TTCommandDict(TypedDict):
+    name: str
+    params: List[str]

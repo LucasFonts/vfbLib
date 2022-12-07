@@ -6,7 +6,7 @@ from defcon import Font
 from ufonormalizer import normalizeUFO
 from pathlib import Path
 from tempfile import NamedTemporaryFile
-from typing import Literal
+from typing import List, Literal
 from vfbLib.ufo.pshints import update_adobe_hinting
 from vfbLib.ufo.vfb2ufo import (
     PS_GLYPH_LIB_KEY_ADOBE,
@@ -18,7 +18,7 @@ from vfbLib.ufo.vfb2ufo import (
 RF_GUIDES_KEY = "com.typemytype.robofont.guides"
 
 
-delete_lib_keys = []
+delete_lib_keys: List[str] = []
 
 
 def fix_vfb2ufo_feature_encoding(ufo_path: Path) -> None:

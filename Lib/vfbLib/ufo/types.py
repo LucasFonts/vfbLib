@@ -7,6 +7,7 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 from typing import Dict, List, Tuple
+from vfbLib.types import HintTuple
 
 
 UfoPoint = Tuple[int, int]
@@ -34,4 +35,4 @@ class UfoHintingV2(TypedDict):
 
 class UfoHintSet(TypedDict):
     pointTag: str
-    stems: List[str]
+    stems: List[str | HintTuple]

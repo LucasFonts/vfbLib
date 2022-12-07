@@ -7,7 +7,7 @@ from vfbLib.ufo.vfb2ufo import PS_GLYPH_LIB_KEY
 from typing import TYPE_CHECKING, Dict, List, Tuple
 
 if TYPE_CHECKING:
-    from vfbLib.types import Hint
+    from vfbLib.types import Hint, HintTuple, MMHintsDict
     from fontTools.ufoLib.glifLib import Glyph
     from vfbLib.ufo.glyph import VfbToUfoGlyph
 
@@ -28,7 +28,7 @@ def normalize_hint_dict(hint: Hint, name: str = "dummy"):
 def build_ps_glyph_hints(
     mmglyph: VfbToUfoGlyph,
     glyph: Glyph,
-    master_hints: Dict[str, List[Tuple[str, int, int]]],
+    master_hints: Dict[str, List[str | HintTuple]],
 ) -> None:
     # Set the master-specific hints from data to the glyph lib
     # Use the format defined in UFO3, not what FL does.
@@ -38,16 +38,14 @@ def build_ps_glyph_hints(
     label = mmglyph.get_point_label(
         index=0, code="PSHintReplacement", start_count=0
     )
-    hint_set = {
-        "pointTag": label,
-        "stems": [],
-    }
+    stems: List[str | HintTuple] = []
+    hint_set: UfoHintSet = UfoHintSet(pointTag=label, stems=stems)
     if mmglyph.hintmasks:
         for mask in mmglyph.hintmasks:
             for d in ("h", "v"):
                 if d in mask:
                     hint_index = mask[d]
-                    hint = master_hints[d][hint_index]
+                    hint: HintTuple | str = master_hints[d][hint_index]
                     hint_set["stems"].append(hint)
             if "r" in mask:
                 hint_sets.append(hint_set)
@@ -58,10 +56,8 @@ def build_ps_glyph_hints(
                 label = mmglyph.get_point_label(
                     index=node_index, code="PSHintReplacement"
                 )
-                hint_set = {
-                    "pointTag": label,
-                    "stems": [],
-                }
+                stems = []
+                hint_set = UfoHintSet(pointTag=label, stems=stems)
 
         if hint_set["stems"]:
             # Append the last hint set
@@ -77,8 +73,9 @@ def build_ps_glyph_hints(
     # Reformat stems from sortable tuples to str required by UFO spec
     for hint_set in hint_sets:
         hint_set["stems"] = [
-            f"{cmd} {pos} {width}"
-            for cmd, pos, width in sorted(set(hint_set["stems"]))
+            f"{h[0]} {h[1]} {h[2]}"
+            for h in sorted(set(hint_set["stems"]))
+            if isinstance(h, tuple)
         ]
 
     if hint_sets:
@@ -91,8 +88,8 @@ def build_ps_glyph_hints(
 
 def get_master_hints(
     mmglyph: VfbToUfoGlyph, glyph: Glyph, master_index=0
-) -> Dict[str, List[Tuple[str, int, int]]]:
-    hints = {"h": [], "v": []}
+) -> Dict[str, List[HintTuple]]:
+    hints: Dict[str, List[HintTuple]] = {"h": [], "v": []}
 
     # Hints
     for d in "hv":
