@@ -283,7 +283,7 @@ class GlyphParser(BaseParser):
 
     @classmethod
     def parse_instructions(cls, stream: BytesIO, glyphdata: GlyphData) -> None:
-        len_commands = read_encoded_value(stream)
+        _ = read_encoded_value(stream)  # XXX: What's this?
         num_commands = read_encoded_value(stream)
         commands: List[Instruction] = []
         for i in range(num_commands):
@@ -317,7 +317,7 @@ class GlyphParser(BaseParser):
     def parse_outlines(cls, stream: BytesIO, glyphdata: GlyphData) -> int:
         # Nodes
         num_masters = read_encoded_value(stream)
-        num_whatever = read_encoded_value(stream)
+        _ = read_encoded_value(stream)  # XXX: What's this?
         num_nodes = read_encoded_value(stream, debug=False)
         glyphdata["num_masters"] = num_masters
         segments: List[MMNode] = []
