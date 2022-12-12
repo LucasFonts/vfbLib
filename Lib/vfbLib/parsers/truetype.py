@@ -40,12 +40,12 @@ class TrueTypeInfoParser(BaseParser):
             0x37: "0x37",
             0x38: "0x38",
             0x39: "use_custom_tt_values",  # 0 = false, 65536 = true
-            0x3A: "0x3a",
+            0x3A: "units_per_em",  # duplicate
             0x3B: "0x3b",
             0x3C: "lowest_rec_ppem",
             0x3D: "font_direction_hint",
-            0x3E: "0x3e",
-            0x3F: "0x3f",
+            0x3E: "weight_class",  # duplicate
+            0x3F: "width_class",  # duplicate
             0x40: "embedding",
             0x41: "subscript_x_size",
             0x42: "subscript_y_size",

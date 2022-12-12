@@ -125,6 +125,9 @@ class VfbToUfoWriter:
             "Default Glyph": "postscriptDefaultCharacter",
         }
         self.info_mapping_int = {
+            # "units_per_em": "unitsPerEm",  # duplicate
+            # "weight_class": "openTypeOS2WeightClass",  # duplicate
+            "width_class": "openTypeOS2WidthClass",
             "lowest_rec_ppem": "openTypeHeadLowestRecPPEM",
             "subscript_x_size": "openTypeOS2SubscriptXSize",
             "subscript_y_size": "openTypeOS2SubscriptYSize",
