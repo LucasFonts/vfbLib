@@ -7,7 +7,7 @@ from vfbLib.ufo.vfb2ufo import PS_GLYPH_LIB_KEY
 from typing import TYPE_CHECKING, Dict, List, Tuple
 
 if TYPE_CHECKING:
-    from vfbLib.types import Hint, HintTuple
+    from vfbLib.typing import Hint, HintTuple
     from vfbLib.ufo.glyph import VfbToUfoGlyph, UfoGlyph
 
 

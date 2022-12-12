@@ -4,7 +4,7 @@ from typing import TYPE_CHECKING, List
 from vfbLib.ufo.typing import UfoGuide
 
 if TYPE_CHECKING:
-    from vfbLib.types import (
+    from vfbLib.typing import (
         GuideDict,
         GuidePropertyList,
     )

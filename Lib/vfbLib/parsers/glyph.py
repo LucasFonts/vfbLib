@@ -8,7 +8,7 @@ from typing import Any, Dict, List, Literal
 from vfbLib.parsers import BaseParser, read_encoded_value
 from vfbLib.parsers.guides import parse_guides
 from vfbLib.truetype import TT_COMMANDS
-from vfbLib.types import (
+from vfbLib.typing import (
     Anchor,
     Component,
     GdefDict,
