@@ -12,7 +12,7 @@ from vfbLib.ufo.info import VfbToUfoInfo
 from vfbLib.ufo.kerning import UfoKerning
 from vfbLib.ufo.paths import draw_glyph, get_master_glyph
 from vfbLib.ufo.pshints import build_ps_glyph_hints, get_master_hints
-from vfbLib.ufo.types import (
+from vfbLib.ufo.typing import (
     TUfoStemPPMsDict,
     TUfoStemsDict,
     TUfoTTZoneDict,
@@ -27,8 +27,8 @@ from vfbLib.ufo.vfb2ufo import (
 
 if TYPE_CHECKING:
     from fontTools.ufoLib.glifLib import GLIFPointPen
-    from vfbLib.ufo.types import UfoGroups, UfoMMKerning
     from vfbLib.typing import GuidePropertyList
+    from vfbLib.ufo.typing import UfoGroups, UfoMMKerning
 
 
 def binaryToIntList(value: int, start: int = 0):
