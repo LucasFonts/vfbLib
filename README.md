@@ -10,6 +10,17 @@ That’s why a single determined programmer with a hex editor set out to rectify
 this situation.
 
 
+## Installation
+
+This is a development version. Handle with care. To install from source:
+
+```bash
+git clone git@github.com:LucasFonts/vfbLib.git
+cd vfbLib
+pip install .
+```
+
+
 ## Improvements Over vfb2ufo
 
 - Outputs normalized UFO v3
