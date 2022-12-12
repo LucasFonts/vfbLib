@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from typing import TYPE_CHECKING, List
-from vfbLib.ufo.types import UfoGuide
+from vfbLib.ufo.typing import UfoGuide
 
 if TYPE_CHECKING:
     from vfbLib.types import (

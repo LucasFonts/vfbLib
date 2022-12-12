@@ -3,7 +3,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING, List
 
 if TYPE_CHECKING:
-    from vfbLib.ufo.types import UfoGroups, UfoMasterKerning, UfoMMKerning
+    from vfbLib.ufo.typing import UfoGroups, UfoMasterKerning, UfoMMKerning
 
 
 class UfoKerning:

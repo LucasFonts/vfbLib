@@ -5,7 +5,7 @@ from typing import List, Tuple, TYPE_CHECKING
 
 
 if TYPE_CHECKING:
-    from vfbLib.ufo.types import UfoComponent, UfoContour
+    from vfbLib.ufo.typing import UfoComponent, UfoContour
 
 
 def draw_glyph(

@@ -24,3 +24,7 @@ class UfoGuide(TypedDict):
     name: NotRequired[str]
     x: int
     y: int
+
+
+UfoHintDataV2 = Dict[str, Any]
+UfoHintSet = Dict[str, str | List[str]]

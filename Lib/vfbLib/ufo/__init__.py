@@ -21,7 +21,7 @@ from vfbLib.ufo.vfb2ufo import (
 if TYPE_CHECKING:
     from fontTools.pens.pointPen import AbstractPointPen
     from vfbLib.types import GuideDict, GuidePropertyList
-    from vfbLib.ufo.types import UfoGroups, UfoGuide, UfoMMKerning
+    from vfbLib.ufo.typing import UfoGroups, UfoGuide, UfoMMKerning
 
 
 def binaryToIntList(value: int, start: int = 0):

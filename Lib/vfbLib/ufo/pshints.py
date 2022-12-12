@@ -3,6 +3,7 @@ from __future__ import annotations
 import xml.etree.cElementTree as elementTree
 
 from typing import Dict
+from vfbLib.ufo.types import UfoHintDataV2, UfoHintSet
 
 
 def update_adobe_hinting(data) -> Dict:
