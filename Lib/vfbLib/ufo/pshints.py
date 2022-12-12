@@ -2,11 +2,137 @@ from __future__ import annotations
 
 import xml.etree.cElementTree as elementTree
 
-from typing import Dict
-from vfbLib.ufo.types import UfoHintDataV2, UfoHintSet
+from vfbLib.ufo.types import UfoHintingV2, UfoHintSet
+from vfbLib.ufo.vfb2ufo import PS_GLYPH_LIB_KEY
+from typing import TYPE_CHECKING, Dict, List, Tuple
+
+if TYPE_CHECKING:
+    from vfbLib.types import Hint, HintTuple
+    from vfbLib.ufo.glyph import VfbToUfoGlyph, UfoGlyph
 
 
-def update_adobe_hinting(data) -> Dict:
+def normalize_hint(hint: Tuple[str, int, int]):
+    direction, pos, width = hint
+    if width < 0:
+        if width not in (-21, -20):  # Skip ghost hints
+            pos = pos + width
+            width = abs(width)
+    return (direction, pos, width)
+
+
+def normalize_hint_dict(hint: Hint, name: str = "dummy"):
+    return normalize_hint((name, hint["pos"], hint["width"]))
+
+
+def build_ps_glyph_hints(
+    mmglyph: VfbToUfoGlyph,
+    glyph: UfoGlyph,
+    master_hints: Dict[str, List[str | HintTuple]],
+) -> None:
+    # Set the master-specific hints from data to the glyph lib
+    # Use the format defined in UFO3, not what FL does.
+    # https://github.com/adobe-type-tools/psautohint/blob/master/python/psautohint/ufoFont.py
+    # https://unifiedfontobject.org/versions/ufo3/glyphs/glif/#publicpostscripthints
+    hint_sets = []
+    label = mmglyph.get_point_label(
+        index=0, code="PSHintReplacement", start_count=0
+    )
+    stems: List[str | HintTuple] = []
+    hint_set: UfoHintSet = UfoHintSet(pointTag=label, stems=stems)
+    if mmglyph.hintmasks:
+        for mask in mmglyph.hintmasks:
+            for d in ("h", "v"):
+                if d in mask:
+                    hint_index = mask[d]
+                    hint: HintTuple | str = master_hints[d][hint_index]
+                    hint_set["stems"].append(hint)
+            if "r" in mask:
+                hint_sets.append(hint_set)
+                node_index = mask["r"]
+                # FIXME: What do negative values mean?
+                if node_index < 0:
+                    node_index = abs(node_index) - 1
+                label = mmglyph.get_point_label(
+                    index=node_index, code="PSHintReplacement"
+                )
+                stems = []
+                hint_set = UfoHintSet(pointTag=label, stems=stems)
+
+        if hint_set["stems"]:
+            # Append the last hint set
+            hint_sets.append(hint_set)
+    else:
+        # Only one hint set, always make a hint set with first point
+        for d in ("h", "v"):
+            for hint in master_hints[d]:
+                hint_set["stems"].append(hint)
+        if hint_set["stems"]:
+            hint_sets = [hint_set]
+
+    # Reformat stems from sortable tuples to str required by UFO spec
+    for hint_set in hint_sets:
+        hint_set["stems"] = [
+            f"{h[0]} {h[1]} {h[2]}"
+            for h in sorted(set(hint_set["stems"]))
+            if isinstance(h, tuple)
+        ]
+
+    if hint_sets:
+        if not hasattr(glyph, "lib"):
+            glyph.lib = {}
+        glyph.lib[PS_GLYPH_LIB_KEY] = {
+            # "id": "FIXME",
+            "hintSetList": hint_sets,
+            # "flexList": [],
+        }
+
+
+def get_master_hints(
+    mmglyph: VfbToUfoGlyph, master_index=0
+) -> Dict[str, List[str | HintTuple]]:
+    hints: Dict[str, List[str | HintTuple]] = {"h": [], "v": []}
+
+    # Hints
+    for d in "hv":
+        dh = mmglyph.mm_hints[d]
+        for mm_hints in dh:
+            hint = mm_hints[master_index]
+            hint = normalize_hint_dict(hint, f"{d}stem")
+            hints[d].append(hint)
+
+    # Links
+    if not mmglyph.links:
+        return hints
+
+    # Convert links to hints
+    for i, axis in enumerate("xy"):
+        direction_links = mmglyph.links[axis]
+        for link in direction_links:
+            isrc, itgt = link  # indices of source and target node
+            src = mmglyph.mm_nodes[isrc]
+            src_pos = src["points"][master_index][0][i]
+            pos = src_pos
+            if itgt == -1:  # Bottom ghost
+                width = -21
+                pos = src_pos - width
+            elif itgt == -2:  # Top ghost
+                width = -20
+            else:
+                tgt = mmglyph.mm_nodes[itgt]
+                tgt_pos = tgt["points"][master_index][0][i]
+                width = tgt_pos - src_pos
+                # pos = min(src_pos, tgt_pos)
+
+            d = "v" if axis == "x" else "h"
+            # Don't normalize those values, the above code already did that
+            hint = (f"{d}stem", pos, width)
+            # hint = normalize_hint((f"{d}stem", pos, width))
+            hints[d].append(hint)
+
+    return hints
+
+
+def update_adobe_hinting(data) -> UfoHintingV2:
     # Convert Adobe hinting data from v1 to v2.
     # https://github.com/adobe-type-tools/psautohint/blob/master/python/psautohint/ufoFont.py
     try:
@@ -16,14 +142,15 @@ def update_adobe_hinting(data) -> Dict:
         pass
     if not isinstance(data, str):
         # V1 data is stored as str, so if it is not a str, we have nothing to do
-        return
+        return data
 
-    v2 = {
+    v2: UfoHintingV2 = {
         # "flexList": [],
         # "id": "",
     }
     root = elementTree.fromstring(data)
-    hintset = {}
+    hintset: UfoHintSet | None = None
+    hintSetList: List[UfoHintSet] = []
     for el in root.iter():
         if el.tag == "hintSetList":
             hintSetList = []
@@ -35,9 +162,11 @@ def update_adobe_hinting(data) -> Dict:
                 "stems": [],
             }
         elif el.tag in ("hstem", "vstem"):
-            hintset["stems"].append(
-                f'{el.tag} {el.attrib["pos"]} {el.attrib["width"]}'
-            )
+            if hintset is not None:
+                tag, pos, width = normalize_hint(
+                    (el.tag, int(el.attrib["pos"]), int(el.attrib["width"]))
+                )
+                hintset["stems"].append(f"{tag} {pos} {width}")
     if hintset:
         hintSetList.append(hintset)
     if hintSetList:

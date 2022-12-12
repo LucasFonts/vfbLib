@@ -1,23 +1,55 @@
 from __future__ import annotations
 
 from colorsys import hls_to_rgb
-from typing import TYPE_CHECKING, Dict, List
+from typing import TYPE_CHECKING, Any, Dict, List, Tuple
 from vfbLib.ufo.vfb2ufo import vfb2ufo_label_codes
 
 if TYPE_CHECKING:
-    from vfbLib.types import Anchor, GuidePropertyList, MMHintsDict, MMNode
+    from fontTools.ufoLib.glifLib import GlyphSet
+    from vfbLib.types import (
+        Anchor,
+        GuidePropertyList,
+        GuideDict,
+        HintDict,
+        LinkDict,
+        MMNode,
+    )
+
+
+class UfoGlyph:
+    def __init__(self, name: str, glyph_set: GlyphSet) -> None:
+        self.name = name
+        self.glyphSet = glyph_set
+        self.lib: Dict[str, Any] = {}
+        self.anchors: List[Anchor] = []
+        self.guidelines: List = []
+        self.unicodes: List[int] = []
+        self.width: int = 0
+        self.height: int = 0
 
 
 class VfbToUfoGlyph:
     def __init__(self) -> None:
         self.anchors: List[Anchor] = []
-        self.labels: Dict[str, int] = {}
-        self.point_labels: Dict[int, str] = {}
-        self.mm_hints: MMHintsDict = {"h": [], "v": []}
-        self.mm_nodes: List[MMNode] = []
         self.guide_properties: GuidePropertyList = []
+        self.hintmasks: List[Dict[str, int]] = []
+        self.labels: Dict[str, int] = {}
+        self.lib: Dict[str, Any] = {}
+        self.links: LinkDict = {}
+        self.mm_anchors: List[Any] | None = None
+        self.mm_components: List[Any] = []
+        self.mm_guides: GuideDict | None = None
+        self.mm_hints: HintDict = {"h": [], "v": []}
+        self.mm_metrics: List[Tuple[int, int]]
+        self.mm_nodes: List[MMNode] = []
+        self.name: str | None = None
+        self.note: str | None = None
+        self.point_labels: Dict[int, str] = {}
+        self.unicodes: List[int] = []
 
-    def get_point_label(self, index: int, code: str) -> str:
+    def get_point_label(
+        self, index: int, code: str, start_count: int = 1
+    ) -> str:
         if index in self.point_labels:
             # We already have a label for this point index
             return self.point_labels[index]
@@ -31,7 +63,7 @@ class VfbToUfoGlyph:
 
         # Make a new label
         label_short = vfb2ufo_label_codes[code]
-        i = 1
+        i = start_count
         label = "%s%02d" % (label_short, i)
         while label in self.labels:
             i += 1

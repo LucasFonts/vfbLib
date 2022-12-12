@@ -7,6 +7,7 @@ from argparse import ArgumentParser
 from pathlib import Path
 from vfbLib import VFBReader
 from vfbLib.ufo import VfbToUfoWriter
+from vfbLib.version import build_date
 
 
 def read_vfb(vfb_path: Path, minimal=False) -> VFBReader:
@@ -25,7 +26,7 @@ def vfb2json():
         description=(
             "VFB2JSON Converter\n"
             "Copyright (c) 2022 by LucasFonts\n"
-            "Build 2022-11-08"
+            f"Build {build_date}"
         )
     )
     parser.add_argument(
@@ -68,7 +69,7 @@ def vfb2ufo():
         description=(
             "VFB3UFO Converter\n"
             "Copyright (c) 2022 by LucasFonts\n"
-            "Build 2022-11-08"
+            f"Build {build_date}"
         )
     )
     parser.add_argument(

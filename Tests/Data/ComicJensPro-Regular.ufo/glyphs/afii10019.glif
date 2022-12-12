@@ -103,7 +103,7 @@
 	<anchor name="bottom" x="294" y="-10"/>
 	<lib>
 		<dict>
-			<key>com.adobe.type.autohint</key>
+			<key>com.adobe.type.autohint.v2</key>
 			<dict>
 				<key>hintSetList</key>
 				<array>
@@ -113,8 +113,8 @@
 						<key>stems</key>
 						<array>
 							<string>hstem -23 99</string>
-							<string>hstem 718 -102</string>
-							<string>vstem 575 -101</string>
+							<string>hstem 616 102</string>
+							<string>vstem 474 101</string>
 						</array>
 					</dict>
 					<dict>
@@ -123,8 +123,8 @@
 						<key>stems</key>
 						<array>
 							<string>hstem -23 99</string>
-							<string>hstem 718 -102</string>
-							<string>vstem 500 -99</string>
+							<string>hstem 616 102</string>
+							<string>vstem 401 99</string>
 						</array>
 					</dict>
 					<dict>
@@ -133,8 +133,8 @@
 						<key>stems</key>
 						<array>
 							<string>hstem -23 99</string>
-							<string>hstem 718 -102</string>
-							<string>vstem 575 -101</string>
+							<string>hstem 616 102</string>
+							<string>vstem 474 101</string>
 						</array>
 					</dict>
 				</array>

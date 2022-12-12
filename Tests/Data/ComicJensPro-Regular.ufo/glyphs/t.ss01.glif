@@ -70,7 +70,7 @@
 	<anchor name="half_top" x="255" y="498"/>
 	<lib>
 		<dict>
-			<key>com.adobe.type.autohint</key>
+			<key>com.adobe.type.autohint.v2</key>
 			<dict>
 				<key>hintSetList</key>
 				<array>
@@ -80,7 +80,7 @@
 						<key>stems</key>
 						<array>
 							<string>hstem -26 -21</string>
-							<string>hstem 526 -101</string>
+							<string>hstem 425 101</string>
 							<string>hstem 781 -21</string>
 							<string>vstem 198 100</string>
 						</array>

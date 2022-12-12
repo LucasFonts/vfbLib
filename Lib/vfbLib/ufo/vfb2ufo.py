@@ -2,7 +2,10 @@ from __future__ import annotations
 
 TT_LIB_KEY = "com.fontlab.v2.tth"
 TT_GLYPH_LIB_KEY = "com.fontlab.ttprogram"
-PS_GLYPH_LIB_KEY = "com.adobe.type.autohint"
+PS_GLYPH_LIB_KEY_ADOBE = "com.adobe.type.autohint"
+PS_GLYPH_LIB_KEY = "com.adobe.type.autohint.v2"
+# TODO: What tool uses the official UFO key?
+# PS_GLYPH_LIB_KEY = "public.postscript.hints"
 
 
 # alignment
@@ -66,4 +69,5 @@ vfb2ufo_label_codes = {
     "MDeltaV": "mv",
     "FDeltaH": "fh",
     "FDeltaV": "fv",
+    "PSHintReplacement": "hr",
 }

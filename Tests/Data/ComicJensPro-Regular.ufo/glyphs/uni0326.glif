@@ -30,7 +30,7 @@
 	<anchor name="_bottom" x="-176" y="0"/>
 	<lib>
 		<dict>
-			<key>com.adobe.type.autohint</key>
+			<key>com.adobe.type.autohint.v2</key>
 			<dict>
 				<key>hintSetList</key>
 				<array>

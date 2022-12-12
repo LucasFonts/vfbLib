@@ -16,7 +16,7 @@ def get_master_guides(
     # Concatenate guidlines for both directions and extract coords for
     # master_index
     guides = []
-    for d in "hv":
+    for d in ("h", "v"):
         direction_mm_guides = mm_guides[d]
         for master_guide in direction_mm_guides[master_index]:
             guide = UfoGuide(angle=0, x=0, y=0)

@@ -69,7 +69,7 @@
 	</outline>
 	<lib>
 		<dict>
-			<key>com.adobe.type.autohint</key>
+			<key>com.adobe.type.autohint.v2</key>
 			<dict>
 				<key>hintSetList</key>
 				<array>
@@ -79,9 +79,9 @@
 						<key>stems</key>
 						<array>
 							<string>hstem -29 -21</string>
-							<string>hstem 729 -102</string>
+							<string>hstem 627 102</string>
 							<string>vstem 79 105</string>
-							<string>vstem 537 -102</string>
+							<string>vstem 435 102</string>
 						</array>
 					</dict>
 				</array>

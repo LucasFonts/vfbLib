@@ -6,16 +6,36 @@ from __future__ import annotations
 # except ImportError:
 from typing_extensions import NotRequired, TypedDict
 
-from typing import Any, Dict, List, Literal, Tuple
+from typing import Dict, List, Tuple
+from vfbLib.types import HintTuple
+
+
+class TUfoTTZoneDict(TypedDict):
+    position: int
+    top: bool
+    width: int
+    # Zone index, shift; index must be str to be saved in lib
+    delta: NotRequired[Dict[str, int]]
 
 
 UfoPoint = Tuple[int, int]
 UfoComponent = Tuple[str, Tuple[float, float, float, float, int, int]]
-UfoGroups = Dict[str, List[str]]
+UfoGroups = Dict[str, List[str]]  # name, glyphs
 UfoMasterKerning = Dict[Tuple[str, str], int]  # Lstr, Rstr, value
 UfoMMKerning = Dict[Tuple[str, int], List[int]]  # Lstr, Rid, master values
 UfoSegment = Tuple[str | None, bool, str | None, UfoPoint]
 UfoContour = List[UfoSegment]
+TUfoTTZonesDict = Dict[str, TUfoTTZoneDict]
+
+
+class TUfoStemsDict(TypedDict):
+    ttStemsH: List
+    ttStemsV: List
+
+
+class TUfoStemPPMsDict(TypedDict):
+    ttStemsH: List
+    ttStemsV: List
 
 
 class UfoGuide(TypedDict):
@@ -26,5 +46,12 @@ class UfoGuide(TypedDict):
     y: int
 
 
-UfoHintDataV2 = Dict[str, Any]
-UfoHintSet = Dict[str, str | List[str]]
+class UfoHintingV2(TypedDict):
+    flexList: NotRequired[List]
+    hintSetList: NotRequired[List[UfoHintSet]]
+    id: NotRequired[str]
+
+
+class UfoHintSet(TypedDict):
+    pointTag: str
+    stems: List[str | HintTuple]

@@ -171,7 +171,7 @@
 	<anchor name="top" x="316" y="725"/>
 	<lib>
 		<dict>
-			<key>com.adobe.type.autohint</key>
+			<key>com.adobe.type.autohint.v2</key>
 			<dict>
 				<key>hintSetList</key>
 				<array>
@@ -183,11 +183,11 @@
 							<string>hstem -19 -21</string>
 							<string>hstem 285 103</string>
 							<string>hstem 472 -21</string>
-							<string>hstem 745 -101</string>
+							<string>hstem 644 101</string>
 							<string>vstem 55 100</string>
-							<string>vstem 552 -102</string>
+							<string>vstem 450 102</string>
 							<string>vstem 593 101</string>
-							<string>vstem 1095 -99</string>
+							<string>vstem 996 99</string>
 						</array>
 					</dict>
 				</array>

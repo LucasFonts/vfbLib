@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from fontTools.misc.textTools import hexStr
+from fontTools.misc.textTools import hexStr  # , num2binary
 from fontTools.ttLib.tables.ttProgram import Program
 from io import BytesIO
 from struct import unpack
@@ -106,6 +106,7 @@ class GlyphGDEFParser(BaseParser):
         anchors = []
         for _ in range(num_anchors):
             anchor_name_length = read_encoded_value(stream)
+            name = None
             if anchor_name_length > 0:
                 name = stream.read(anchor_name_length).decode("cp1252")
 
@@ -249,7 +250,7 @@ class GlyphParser(BaseParser):
         cls, stream: BytesIO, glyphdata: GlyphData, num_masters=1
     ) -> None:
         hints = HintDict(v=[], h=[])
-        for i in range(2):
+        for d in ("h", "v"):
             num_hints = read_encoded_value(stream)
             for _ in range(num_hints):
                 master_hints = []
@@ -257,20 +258,40 @@ class GlyphParser(BaseParser):
                     pos = read_encoded_value(stream)
                     width = read_encoded_value(stream)
                     master_hints.append(Hint(pos=pos, width=width))
-                hints["hv"[i]].append(master_hints)
+                hints[d].append(master_hints)
 
-        num_replacements = read_encoded_value(stream)
+        num_hintmasks = read_encoded_value(stream)
+        # print("Repl:", num_hintmasks)
+        # print(hexStr(stream.read()))
+        # raise ValueError
+        
 
-        if num_replacements > 0:
-            replacements: List[Dict[str, int]] = []
-            for _ in range(num_replacements):
+        if num_hintmasks > 0:
+            hintmasks: List[Dict[str, int]] = []
+            for i in range(num_hintmasks):
                 k = cls.read_uint8(stream)
                 val = read_encoded_value(stream)
-                replacements.append(dict(key=k, value=val))
-            if replacements:
-                hints["replacements"] = replacements
+                mask = {}
+                if k == 0x01:
+                    # hintmask for hstem
+                    if "h" in mask:
+                        raise KeyError
+                    mask["h"] = val  # num2binary(val, bits=8)
+                elif k == 0x02:
+                    # hintmask for vstem
+                    if "v" in mask:
+                        raise KeyError
+                    mask["v"] = val  # num2binary(val, bits=8)
+                elif k == 0xff:
+                    # Replacement point
+                    # FIXME: This seems to be the node index of the replacement
+                    # point. But sometimes it is negative, why?
+                    mask["r"] = val
+                hintmasks.append(mask)
+            if hintmasks:
+                hints["hintmasks"] = hintmasks
 
-        if hints["v"] or hints["h"]:
+        if hints["v"] or hints["h"] or "hintmasks" in hints:
             glyphdata["hints"] = hints
 
     @classmethod
@@ -352,10 +373,11 @@ class GlyphParser(BaseParser):
         num = read_encoded_value(stream)
         kerning = {}
         for _ in range(num):
-            # Right kerning partner
+            # Glyph index of right kerning partner
             gid = read_encoded_value(stream)
             values = []
             for _ in range(num_masters):
+                # List of values, one value per master
                 values.append(read_encoded_value(stream))
             kerning[gid] = values
         glyphdata["kerning"] = kerning

@@ -15,9 +15,9 @@ Point = Tuple[int, int]
 class Anchor(TypedDict):
     name: NotRequired[str]
     x: int
-    x1: int
+    x1: NotRequired[int]
     y: int
-    y1: int
+    y1: NotRequired[int]
 
 
 class Component(TypedDict):
@@ -79,7 +79,10 @@ class Hint(TypedDict):
 class HintDict(TypedDict):
     h: List[List[Hint]]
     v: List[List[Hint]]
-    replacements: NotRequired[List[Dict[str, int]]]
+    hintmasks: NotRequired[List[Dict[str, int]]]
+
+
+HintTuple = Tuple[str, int, int]
 
 
 class Instruction(TypedDict):
@@ -88,8 +91,8 @@ class Instruction(TypedDict):
 
 
 class LinkDict(TypedDict):
-    x: List[Tuple[int, int]]
-    y: List[Tuple[int, int]]
+    x: NotRequired[List[Tuple[int, int]]]
+    y: NotRequired[List[Tuple[int, int]]]
 
 
 class MaskData(GlyphData):
@@ -111,3 +114,8 @@ class MMNode(TypedDict):
     flags: int
     points: List[List[Point]]
     type: Literal["move", "line", "curve", "qcurve"]
+
+
+class TTCommandDict(TypedDict):
+    name: str
+    params: List[str]

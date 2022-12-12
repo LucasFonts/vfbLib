@@ -1,17 +1,17 @@
 from __future__ import annotations
 
-from fontTools.pens.pointPen import AbstractPointPen
 from typing import List, Tuple, TYPE_CHECKING
 
 
 if TYPE_CHECKING:
-    from vfbLib.ufo.typing import UfoComponent, UfoContour
+    from fontTools.ufoLib.glifLib import GLIFPointPen
+    from vfbLib.ufo.types import UfoComponent, UfoContour
 
 
 def draw_glyph(
     contours: List[UfoContour],
     components: List[UfoComponent],
-    pen: AbstractPointPen,
+    pen: GLIFPointPen,
 ):
     for contour in contours:
         pen.beginPath()
@@ -23,29 +23,33 @@ def draw_glyph(
         pen.addComponent(glyphName=gn, transformation=tr)
 
 
+def apply_closepath(contour):
+    if contour[-1][3] == contour[0][3]:
+        # Equal coords, use closepath to draw the last line
+        name = contour[0][2]
+        contour[0] = contour.pop()
+        if name is not None:
+            # Keep old point name
+            if contour[0][2] is None:
+                t, smooth, _, pt = contour[0]
+                contour[0] = (t, smooth, name, pt)
+            else:
+                print(
+                    f"Point name conflict in {contour[0]} vs. {name} while "
+                    f"applying closepath. Not applying old name ({name})"
+                )
+
+    else:
+        _, smooth, name, pt = contour[0]
+        contour[0] = ("line", smooth, name, pt)
+
+
 def flush_contour(contour, path_is_open) -> List:
     if not path_is_open:
         last_type = contour[-1][0]
-        if last_type == "line":
-            if contour[-1][3] == contour[0][3]:
-                # Equal coords, use closepath to draw the last line
-                # raise ValueError
-                contour[0] = contour.pop()
-            else:
-                _, smooth, name, pt = contour[0]
-                contour[0] = ("line", smooth, name, pt)
-        elif last_type == "curve":
-            if contour[-1][3] == contour[0][3]:
-                contour[0] = contour.pop()
-            else:
-                _, smooth, name, pt = contour[0]
-                contour[0] = ("line", smooth, name, pt)
-        elif last_type == "qcurve":
-            if contour[-1][3] == contour[0][3]:
-                contour[0] = contour.pop()
-            else:
-                _, smooth, name, pt = contour[0]
-                contour[0] = ("line", smooth, name, pt)
+        if last_type in ("line", "curve", "qcurve"):
+            apply_closepath(contour)
+
         elif last_type is None:
             _, smooth, name, pt = contour[0]
             contour[0] = ("qcurve", smooth, name, pt)
