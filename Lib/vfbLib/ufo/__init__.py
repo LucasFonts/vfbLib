@@ -761,7 +761,7 @@ class VfbToUfoWriter:
         glyphs_path.mkdir()
         gs = GlyphSet(glyphs_path)
         for name, self.current_mmglyph in self.glyph_masters.items():
-            print(name, type(name), self.current_mmglyph)
+            # print(name, type(name), self.current_mmglyph)
             g = UfoGlyph(name, gs)
             g.anchors = self.current_mmglyph.anchors
             # Apply master anchor positions
