@@ -1,10 +1,10 @@
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Any, Dict, List, Tuple
+from typing import TYPE_CHECKING, Dict, List
 
 
 if TYPE_CHECKING:
-    from vfbLib.ufo.types import UfoGuide
+    from vfbLib.ufo.typing import UfoGuide
 
 
 class VfbToUfoInfo:

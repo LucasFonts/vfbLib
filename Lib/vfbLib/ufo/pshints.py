@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import xml.etree.cElementTree as elementTree
 
-from vfbLib.ufo.types import UfoHintingV2, UfoHintSet
+from vfbLib.ufo.typing import UfoHintingV2, UfoHintSet
 from vfbLib.ufo.vfb2ufo import PS_GLYPH_LIB_KEY
 from typing import TYPE_CHECKING, Dict, List, Tuple
 
