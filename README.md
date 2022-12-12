@@ -1,6 +1,6 @@
 # vfbLib
 
-Converter and deserializer for VFB files.
+Converter and deserializer for FontLab Studio 5 VFB files.
 
 FontLab’s own `vfb2ufo` converter is from 2015, only outputs UFO v2, and
 contains serious bugs that are never going to be fixed. Its support on macOS is
@@ -9,6 +9,7 @@ subject to Apple’s mercy (no native support for Apple Silicon).
 That’s why a single determined programmer with a hex editor set out to rectify
 this situation.
 
+
 ## Improvements Over vfb2ufo
 
 - Outputs normalized UFO v3
@@ -16,6 +17,7 @@ this situation.
 - Mark colors are written to the official UFO v3 lib key
 - Guideline data is written to the official UFO v3 elements
 - Anchors are preserved in composite glyphs
+- PostScript hinting is written correctly, but to the Adobe lib key
 - Supports more UFO font info attributes:
   - `openTypeGaspRangeRecords`
   - `openTypeHeadLowestRecPPEM`
