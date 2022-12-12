@@ -247,11 +247,11 @@ class VfbToUfoWriter:
                 raise TypeError
 
     def assure_tt_lib(self) -> None:
-        if not TT_LIB_KEY in self.lib:
+        if TT_LIB_KEY not in self.lib:
             self.lib[TT_LIB_KEY] = {}
 
     def assure_tt_glyphlib(self) -> None:
-        if not TT_GLYPH_LIB_KEY in self.lib:
+        if TT_GLYPH_LIB_KEY not in self.lib:
             self.lib[TT_GLYPH_LIB_KEY] = {}
 
     def build_mm_glyph(self, data: Dict[str, Any]) -> None:
