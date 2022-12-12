@@ -79,12 +79,7 @@ class VFBReader:
         """
         entry_id, parser_class, size = self._read_entry()
 
-        if (
-            self.minimal
-            and entry_id in ignore_minimal
-            or self.only_keys
-            and entry_id not in self.only_keys
-        ):
+        if self.minimal and entry_id in ignore_minimal or self.only_keys and entry_id not in self.only_keys:
             self.stream.seek(size, 1)
             return []
 
@@ -111,9 +106,7 @@ class VFBReader:
         class, and data.
         """
         entry_id = BaseParser.read_uint16(self.stream)
-        entry_info = parser_classes.get(
-            entry_id & ~0x8000, (str(entry_id), FALLBACK_PARSER)
-        )
+        entry_info = parser_classes.get(entry_id & ~0x8000, (str(entry_id), FALLBACK_PARSER))
         key, parser_class = entry_info
 
         if entry_id == 5:

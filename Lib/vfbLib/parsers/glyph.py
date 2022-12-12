@@ -153,9 +153,7 @@ class GlyphOriginParser(BaseParser):
 
 class GlyphParser(BaseParser):
     @classmethod
-    def parse_guides(
-        cls, stream: BytesIO, glyphdata: GlyphData, num_masters=1
-    ) -> None:
+    def parse_guides(cls, stream: BytesIO, glyphdata: GlyphData, num_masters=1) -> None:
         guides = parse_guides(stream, num_masters)
         if guides:
             glyphdata["guides"] = guides
@@ -176,16 +174,12 @@ class GlyphParser(BaseParser):
                 imported["unknown1"] = read_encoded_value(cls.stream)
                 imported["unknown2"] = read_encoded_value(cls.stream)
                 imported["unknown3"] = read_encoded_value(cls.stream)
-                imported["bbox"] = [
-                    read_encoded_value(cls.stream) for _ in range(4)
-                ]
+                imported["bbox"] = [read_encoded_value(cls.stream) for _ in range(4)]
 
             elif key == 0x2A:
                 # Outlines
                 num_contours = read_encoded_value(cls.stream)
-                imported["endpoints"] = [
-                    read_encoded_value(cls.stream) for _ in range(num_contours)
-                ]
+                imported["endpoints"] = [read_encoded_value(cls.stream) for _ in range(num_contours)]
                 num_nodes = read_encoded_value(cls.stream)
                 nodes = []
                 # print(f"Parsing {num_nodes} nodes...")
@@ -224,16 +218,12 @@ class GlyphParser(BaseParser):
         glyphdata["imported"] = imported
 
     @classmethod
-    def parse_components(
-        cls, stream: BytesIO, glyphdata: GlyphData, num_masters=1
-    ) -> None:
+    def parse_components(cls, stream: BytesIO, glyphdata: GlyphData, num_masters=1) -> None:
         components = []
         num = read_encoded_value(stream)
         for i in range(num):
             gid = read_encoded_value(stream)
-            c = Component(
-                gid=gid, offsetX=[], offsetY=[], scaleX=[], scaleY=[]
-            )
+            c = Component(gid=gid, offsetX=[], offsetY=[], scaleX=[], scaleY=[])
             for _ in range(num_masters):
                 x = read_encoded_value(stream)
                 y = read_encoded_value(stream)
@@ -246,9 +236,7 @@ class GlyphParser(BaseParser):
         glyphdata["components"] = components
 
     @classmethod
-    def parse_hints(
-        cls, stream: BytesIO, glyphdata: GlyphData, num_masters=1
-    ) -> None:
+    def parse_hints(cls, stream: BytesIO, glyphdata: GlyphData, num_masters=1) -> None:
         hints = HintDict(v=[], h=[])
         for d in ("h", "v"):
             num_hints = read_encoded_value(stream)
@@ -264,7 +252,6 @@ class GlyphParser(BaseParser):
         # print("Repl:", num_hintmasks)
         # print(hexStr(stream.read()))
         # raise ValueError
-        
 
         if num_hintmasks > 0:
             hintmasks: List[Dict[str, int]] = []
@@ -282,7 +269,7 @@ class GlyphParser(BaseParser):
                     if "v" in mask:
                         raise KeyError
                     mask["v"] = val  # num2binary(val, bits=8)
-                elif k == 0xff:
+                elif k == 0xFF:
                     # Replacement point
                     # FIXME: This seems to be the node index of the replacement
                     # point. But sometimes it is negative, why?
@@ -301,10 +288,7 @@ class GlyphParser(BaseParser):
         commands: List[Instruction] = []
         for i in range(num_commands):
             cmd = cls.read_uint8(stream)
-            params = [
-                read_encoded_value(stream)
-                for _ in range(len(TT_COMMANDS[cmd]["params"]))
-            ]
+            params = [read_encoded_value(stream) for _ in range(len(TT_COMMANDS[cmd]["params"]))]
             commands.append(
                 Instruction(
                     cmd=TT_COMMANDS[cmd]["name"],
@@ -319,9 +303,7 @@ class GlyphParser(BaseParser):
             glyphdata["tth"] = commands
 
     @classmethod
-    def parse_metrics(
-        cls, stream: BytesIO, glyphdata: GlyphData, num_masters=1
-    ) -> None:
+    def parse_metrics(cls, stream: BytesIO, glyphdata: GlyphData, num_masters=1) -> None:
         metrics: List[Point] = []
         for _ in range(num_masters):
             master_metrics = (
@@ -367,9 +349,7 @@ class GlyphParser(BaseParser):
         return num_masters
 
     @classmethod
-    def parse_kerning(
-        cls, stream: BytesIO, glyphdata: GlyphData, num_masters=1
-    ) -> None:
+    def parse_kerning(cls, stream: BytesIO, glyphdata: GlyphData, num_masters=1) -> None:
         num = read_encoded_value(stream)
         kerning = {}
         for _ in range(num):

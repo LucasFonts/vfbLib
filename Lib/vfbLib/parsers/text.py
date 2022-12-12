@@ -16,9 +16,7 @@ class NameRecordsParser(BaseParser):
             encID = read_encoded_value(stream)
             langID = read_encoded_value(stream)
             name_length = read_encoded_value(stream)
-            name_codes = [
-                read_encoded_value(stream) for _ in range(name_length)
-            ]
+            name_codes = [read_encoded_value(stream) for _ in range(name_length)]
             name = ""
             for c in name_codes:
                 try:
@@ -29,9 +27,7 @@ class NameRecordsParser(BaseParser):
                 except ValueError:
                     char = "\ufeff"
                 name += char
-            result.append(
-                [nameID, platID, encID, langID, name]
-            )
+            result.append([nameID, platID, encID, langID, name])
 
         assert stream.read() == b""
         return result

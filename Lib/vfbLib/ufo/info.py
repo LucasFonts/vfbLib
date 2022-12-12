@@ -56,7 +56,6 @@ class VfbToUfoInfo:
         self.openTypeOS2WinDescent = 0
         self.openTypeOS2CodePageRanges: List[int] = []
 
-
     @property
     def ui_name(self) -> str:
         name = ""

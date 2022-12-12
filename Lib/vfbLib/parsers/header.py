@@ -37,13 +37,9 @@ class VfbHeaderParser:
     @classmethod
     def read_uint8(cls) -> int:
         assert cls.stream is not None
-        return int.from_bytes(
-            cls.stream.read(uint8), byteorder="little", signed=False
-        )
+        return int.from_bytes(cls.stream.read(uint8), byteorder="little", signed=False)
 
     @classmethod
     def read_uint16(cls) -> int:
         assert cls.stream is not None
-        return int.from_bytes(
-            cls.stream.read(uint16), byteorder="little", signed=False
-        )
+        return int.from_bytes(cls.stream.read(uint16), byteorder="little", signed=False)

@@ -11,9 +11,7 @@ uint16 = 2
 uint32 = 4
 
 
-def read_encoded_value(
-    stream: BufferedReader | BytesIO, debug=False, signed=True
-) -> int:
+def read_encoded_value(stream: BufferedReader | BytesIO, debug=False, signed=True) -> int:
     val = int.from_bytes(stream.read(1), byteorder="little")
     if val == 0:
         raise EOFError
@@ -39,9 +37,7 @@ def read_encoded_value(
             print(f"  Read next: {hex(val2)}")
         decoded = val - 0x8B + (val - 0xF7) * 0xFF + val2
         if debug:
-            print(
-                f"    {hex(val)} - 0x8b + {val - 0xf7} * 0xff + {hex(val2)} = {decoded}"
-            )
+            print(f"    {hex(val)} - 0x8b + {val - 0xf7} * 0xff + {hex(val2)} = {decoded}")
         return decoded
 
     elif val <= 0xFE:
@@ -52,16 +48,12 @@ def read_encoded_value(
         # fb 1f -> 0x8f - 0xfb - 0x1f
         decoded = 0x8F - val - (val - 0xFB) * 0xFF - val2
         if debug:
-            print(
-                f"    0x8f - {hex(val)} - {val - 0xf7} * 0xff - {hex(val2)} = {decoded}"
-            )
+            print(f"    0x8f - {hex(val)} - {val - 0xf7} * 0xff - {hex(val2)} = {decoded}")
         return decoded
 
     elif val == 0xFF:
         # 4-byte integer follows
-        decoded = int.from_bytes(
-            stream.read(4), byteorder="big", signed=signed
-        )
+        decoded = int.from_bytes(stream.read(4), byteorder="big", signed=signed)
         if debug:
             print(f"  Read next 4 bytes: {decoded}")
         return decoded
@@ -116,41 +108,31 @@ class BaseParser:
     def read_int16(cls, stream=None) -> int:
         if stream is None:
             stream = cls.stream
-        return int.from_bytes(
-            stream.read(uint16), byteorder="little", signed=True
-        )
+        return int.from_bytes(stream.read(uint16), byteorder="little", signed=True)
 
     @classmethod
     def read_int32(cls, stream=None) -> int:
         if stream is None:
             stream = cls.stream
-        return int.from_bytes(
-            stream.read(uint32), byteorder="little", signed=True
-        )
+        return int.from_bytes(stream.read(uint32), byteorder="little", signed=True)
 
     @classmethod
     def read_uint8(cls, stream=None) -> int:
         if stream is None:
             stream = cls.stream
-        return int.from_bytes(
-            stream.read(uint8), byteorder="little", signed=False
-        )
+        return int.from_bytes(stream.read(uint8), byteorder="little", signed=False)
 
     @classmethod
     def read_uint16(cls, stream=None) -> int:
         if stream is None:
             stream = cls.stream
-        return int.from_bytes(
-            stream.read(uint16), byteorder="little", signed=False
-        )
+        return int.from_bytes(stream.read(uint16), byteorder="little", signed=False)
 
     @classmethod
     def read_uint32(cls, stream=None) -> int:
         if stream is None:
             stream = cls.stream
-        return int.from_bytes(
-            stream.read(uint32), byteorder="little", signed=False
-        )
+        return int.from_bytes(stream.read(uint32), byteorder="little", signed=False)
 
 
 class EncodedKeyValuesParser(BaseParser):

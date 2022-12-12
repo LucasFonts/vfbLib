@@ -168,15 +168,11 @@ class VfbToUfoWriter:
 
         if is_kerning:
             # Reorganize glyphs so that the "keyglyph" is first
-            glyphs: List[str] = [
-                g.strip() for g in glyphs_list if not g.endswith("'")
-            ]
+            glyphs: List[str] = [g.strip() for g in glyphs_list if not g.endswith("'")]
             keyglyphs = [g.strip() for g in glyphs_list if g.endswith("'")]
             keyglyphs = [k.strip("'") for k in keyglyphs]
             if len(keyglyphs) != 1:
-                print(
-                    f"Unexpected number of key glyphs in group {name}: {keyglyphs}"
-                )
+                print(f"Unexpected number of key glyphs in group {name}: {keyglyphs}")
             else:
                 glyphs.insert(0, *keyglyphs)
 
@@ -291,17 +287,13 @@ class VfbToUfoWriter:
         if "tth" in data:
             self.build_tt_glyph_hints(g, data["tth"])
 
-    def transform_stem_rounds(
-        self, data: Dict[str, int], name: str
-    ) -> Dict[str, int]:
+    def transform_stem_rounds(self, data: Dict[str, int], name: str) -> Dict[str, int]:
         d = {"0": 1}
         for k, v in data.items():
             key = str(v)
             val = int(k)
             if key in d:
-                print(
-                    f"Error in stem rounding settings for {name}, duplicate ppm {key}."
-                )
+                print(f"Error in stem rounding settings for {name}, duplicate ppm {key}.")
             d[key] = val
         return d
 
@@ -343,9 +335,7 @@ class VfbToUfoWriter:
                     "round": stem_ppms["round"],
                 }
                 if rv in stem["round"]:
-                    print(
-                        f"Error in stem rounding settings for {d}, duplicate ppm {rv}."
-                    )
+                    print(f"Error in stem rounding settings for {d}, duplicate ppm {rv}.")
                 stem["round"][rv] = int(rk)
                 self.stems[d].append(stem)
 
@@ -394,9 +384,7 @@ class VfbToUfoWriter:
     def set_tt_zone_deltas(self, data) -> None:
         for zone_index, deltas in data.items():
             zone_name = self.tt_zone_names[int(zone_index)]
-            self.tt_zones[zone_name]["delta"] = {
-                str(k): v for k, v in deltas.items()
-            }
+            self.tt_zones[zone_name]["delta"] = {str(k): v for k, v in deltas.items()}
 
     def build_tt_stems_lib(self) -> None:
         lib = self.lib[TT_LIB_KEY]["stems"] = {}
@@ -411,10 +399,7 @@ class VfbToUfoWriter:
                     name = "%s%02i" % (dname, i)
                     i += 1
                 if name in self.lib[TT_LIB_KEY]["stems"]:
-                    print(
-                        f"ERROR: Duplicate TrueType stem name '{name}'. "
-                        "Make stem names unique in VFB."
-                    )
+                    print(f"ERROR: Duplicate TrueType stem name '{name}'. " "Make stem names unique in VFB.")
                     raise KeyError
                 lib[name] = stem
 
@@ -444,9 +429,7 @@ class VfbToUfoWriter:
         cmd += "/>"
         return cmd
 
-    def build_tt_glyph_hints(
-        self, glyph: VfbToUfoGlyph, data: List[Dict[str, Any]]
-    ) -> None:
+    def build_tt_glyph_hints(self, glyph: VfbToUfoGlyph, data: List[Dict[str, Any]]) -> None:
         # Write TT hints into glyph lib.
         tth = []
         for cmd in data:
@@ -512,9 +495,7 @@ class VfbToUfoWriter:
 
             tth.append(self.make_tt_cmd(d))
 
-        glyph.lib[TT_GLYPH_LIB_KEY] = (
-            "  <ttProgram>\n" + "\n".join(tth) + "\n  </ttProgram>\n"
-        )
+        glyph.lib[TT_GLYPH_LIB_KEY] = "  <ttProgram>\n" + "\n".join(tth) + "\n  </ttProgram>\n"
 
     def build(self) -> None:
         # Non-MM data
@@ -579,9 +560,7 @@ class VfbToUfoWriter:
                 # Bit 6 = Italic
                 # Those should not be included in the list.
                 # Any others could remain, but FL doesn't set them.
-                self.info.openTypeOS2Selection = [
-                    b for b in binaryToIntList(data) if b not in (0, 5, 6)
-                ]
+                self.info.openTypeOS2Selection = [b for b in binaryToIntList(data) if b not in (0, 5, 6)]
             elif name == "TrueType Stem PPEMs":  # 1268
                 self.set_tt_stem_ppms(data)
             elif name == "TrueType Stems":  # 1269
@@ -639,9 +618,7 @@ class VfbToUfoWriter:
                             if n not in self.glyph_masters:
                                 self.glyph_masters[n] = self.current_glyph
                                 self.glyphOrder.append(n)
-                                print(
-                                    f"Duplicate glyph, renamed from {name} to {n}."
-                                )
+                                print(f"Duplicate glyph, renamed from {name} to {n}.")
                                 break
                     else:
                         self.glyph_masters[name] = self.current_glyph
@@ -765,22 +742,16 @@ class VfbToUfoWriter:
         or component transformations to use.
         """
 
-        contours, components = get_master_glyph(
-            self.current_mmglyph, self.glyphOrder, self.master_index
-        )
+        contours, components = get_master_glyph(self.current_mmglyph, self.glyphOrder, self.master_index)
         draw_glyph(contours, components, pen)
 
     def write(self, out_path: Path, overwrite=False, silent=False) -> None:
         self.ufo_groups = self.transform_groups()
-        self.ufo_kerning = UfoKerning(
-            self.glyphOrder, self.ufo_groups, self.mm_kerning
-        )
+        self.ufo_kerning = UfoKerning(self.glyphOrder, self.ufo_groups, self.mm_kerning)
         for i in range(len(self.masters)):
             self.writer_master(i, out_path, overwrite, silent)
 
-    def writer_master(
-        self, index: int, out_path: Path, overwrite=False, silent=False
-    ) -> None:
+    def writer_master(self, index: int, out_path: Path, overwrite=False, silent=False) -> None:
         self.master_index = index
 
         if index > 0:
@@ -814,9 +785,7 @@ class VfbToUfoWriter:
 
             # Apply master hint positions and widths
 
-            master_hints = get_master_hints(
-                mmglyph=self.current_mmglyph, master_index=index
-            )
+            master_hints = get_master_hints(mmglyph=self.current_mmglyph, master_index=index)
             if master_hints:
                 build_ps_glyph_hints(
                     mmglyph=self.current_mmglyph,
@@ -825,12 +794,8 @@ class VfbToUfoWriter:
                 )
 
             if self.current_mmglyph.mm_guides is not None:
-                master_guides = get_master_guides(
-                    self.current_mmglyph.mm_guides, index
-                )
-                apply_guide_properties(
-                    master_guides, self.current_mmglyph.guide_properties
-                )
+                master_guides = get_master_guides(self.current_mmglyph.mm_guides, index)
+                apply_guide_properties(master_guides, self.current_mmglyph.guide_properties)
                 if master_guides:
                     g.guidelines = master_guides
 

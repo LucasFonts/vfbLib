@@ -34,9 +34,7 @@ def fix_vfb2ufo_feature_encoding(ufo_path: Path) -> None:
         f.write(fea)
 
 
-def normalize_ufo(
-    filepath: Path, structure: Literal["package", "zip"] = "package"
-) -> None:
+def normalize_ufo(filepath: Path, structure: Literal["package", "zip"] = "package") -> None:
     print(f"Processing {filepath.name}...")
 
     normalized_file = filepath / ".normalized"

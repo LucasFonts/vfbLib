@@ -22,13 +22,7 @@ def write_json(reader: VFBReader, json_path: Path) -> None:
 
 
 def vfb2json():
-    parser = ArgumentParser(
-        description=(
-            "VFB2JSON Converter\n"
-            "Copyright (c) 2022 by LucasFonts\n"
-            f"Build {build_date}"
-        )
-    )
+    parser = ArgumentParser(description=(f"VFB2JSON Converter\nCopyright (c) 2022 by LucasFonts\nBuild {build_date}"))
     parser.add_argument(
         "-m",
         "--minimal",
@@ -54,9 +48,7 @@ def vfb2json():
         vfb_path = Path(args.inputpath[0])
         reader = read_vfb(vfb_path, minimal=args.minimal)
         if args.path:
-            out_path = (Path(args.path[0]) / vfb_path.name).with_suffix(
-                ".json"
-            )
+            out_path = (Path(args.path[0]) / vfb_path.name).with_suffix(".json")
         else:
             out_path = vfb_path.with_suffix(".json")
         write_json(reader, out_path)
@@ -65,13 +57,7 @@ def vfb2json():
 
 
 def vfb2ufo():
-    parser = ArgumentParser(
-        description=(
-            "VFB3UFO Converter\n"
-            "Copyright (c) 2022 by LucasFonts\n"
-            f"Build {build_date}"
-        )
-    )
+    parser = ArgumentParser(description=(f"VFB3UFO Converter\nCopyright (c) 2022 by LucasFonts\nBuild {build_date}"))
     parser.add_argument(
         "-p",
         "--path",
@@ -144,8 +130,6 @@ def vfb2ufo():
         else:
             out_path = vfb_path.with_suffix(".ufo")
         writer = VfbToUfoWriter(reader.data)
-        writer.write(
-            out_path, overwrite=args.force_overwrite, silent=args.silent
-        )
+        writer.write(out_path, overwrite=args.force_overwrite, silent=args.silent)
     else:
         parser.print_help()

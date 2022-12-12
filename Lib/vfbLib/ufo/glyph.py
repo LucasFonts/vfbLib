@@ -47,9 +47,7 @@ class VfbToUfoGlyph:
         self.point_labels: Dict[int, str] = {}
         self.unicodes: List[int] = []
 
-    def get_point_label(
-        self, index: int, code: str, start_count: int = 1
-    ) -> str:
+    def get_point_label(self, index: int, code: str, start_count: int = 1) -> str:
         if index in self.point_labels:
             # We already have a label for this point index
             return self.point_labels[index]
@@ -73,6 +71,4 @@ class VfbToUfoGlyph:
         return label
 
     def set_mark(self, hue):
-        self.lib["public.markColor"] = "%0.4f,%0.4f,%0.4f,1" % hls_to_rgb(
-            h=hue / 255, l=0.8, s=0.76
-        )
+        self.lib["public.markColor"] = "%0.4f,%0.4f,%0.4f,1" % hls_to_rgb(h=hue / 255, l=0.8, s=0.76)

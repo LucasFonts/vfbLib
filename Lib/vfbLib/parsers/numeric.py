@@ -38,9 +38,7 @@ class IntParser(BaseParser):
 
     @classmethod
     def _parse(cls):
-        return int.from_bytes(
-            cls.stream.read(), byteorder="little", signed=False
-        )
+        return int.from_bytes(cls.stream.read(), byteorder="little", signed=False)
 
 
 class IntListParser(BaseParser):
@@ -81,6 +79,4 @@ class SignedIntParser(BaseParser):
 
     @classmethod
     def _parse(cls):
-        return int.from_bytes(
-            cls.stream.read(), byteorder="little", signed=True
-        )
+        return int.from_bytes(cls.stream.read(), byteorder="little", signed=True)

@@ -30,11 +30,7 @@ def delta_yaml_to_human(data):
 
 def convert_delta_yaml():
     parser = ArgumentParser(
-        description=(
-            "VFB2DELTA Converter\n"
-            "Copyright (c) 2022 by LucasFonts\n"
-            "Build 2022-11-23"
-        )
+        description=("VFB2DELTA Converter\n" "Copyright (c) 2022 by LucasFonts\n" "Build 2022-11-23")
     )
     parser.add_argument(
         "inputpath",
@@ -61,11 +57,7 @@ def convert_delta_yaml():
 
 def dump_deltas():
     parser = ArgumentParser(
-        description=(
-            "VFB2DELTA Converter\n"
-            "Copyright (c) 2022 by LucasFonts\n"
-            "Build 2022-11-23"
-        )
+        description=("VFB2DELTA Converter\n" "Copyright (c) 2022 by LucasFonts\n" "Build 2022-11-23")
     )
     parser.add_argument(
         "-c",
@@ -112,17 +104,13 @@ def dump_deltas():
                                 final_index -= c_nodes
                             if found:
                                 # Resolve the coordinate with offsets
-                                pt = component["nodes"][final_index]["points"][
-                                    master_index
-                                ][0]
+                                pt = component["nodes"][final_index]["points"][master_index][0]
                                 x = pt[0] + c["offsetX"][master_index]
                                 y = pt[1] + c["offsetY"][master_index]
                                 # TODO: Respect scaling
                                 cmd["params"]["coords"] = {"x": x, "y": y}
                             else:
-                                print(
-                                    f"Could not find index {index} in components."
-                                )
+                                print(f"Could not find index {index} in components.")
                                 raise IndexError
 
                         elif index == num_nodes:

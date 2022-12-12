@@ -56,9 +56,7 @@ def flush_contour(contour, path_is_open) -> List:
     return contour
 
 
-def get_master_glyph(
-    mmglyph, glyph_order: List[str], master_index=0
-) -> Tuple[List[UfoContour], List[UfoComponent]]:
+def get_master_glyph(mmglyph, glyph_order: List[str], master_index=0) -> Tuple[List[UfoContour], List[UfoComponent]]:
     # Extract a single master glyph from an mm glyph
 
     contours = []

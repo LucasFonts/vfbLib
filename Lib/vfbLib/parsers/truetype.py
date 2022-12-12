@@ -35,12 +35,12 @@ class TrueTypeInfoParser(BaseParser):
             0x37: "0x37",
             0x38: "0x38",
             0x39: "use_custom_tt_values",  # 0 = false, 65536 = true
-            0x3a: "0x3a",
-            0x3b: "0x3b",
-            0x3c: "lowest_rec_ppem",
-            0x3d: "font_direction_hint",
-            0x3e: "0x3e",
-            0x3f: "0x3f",
+            0x3A: "0x3a",
+            0x3B: "0x3b",
+            0x3C: "lowest_rec_ppem",
+            0x3D: "font_direction_hint",
+            0x3E: "0x3e",
+            0x3F: "0x3f",
             0x40: "embedding",
             0x41: "subscript_x_size",
             0x42: "subscript_y_size",
@@ -51,12 +51,12 @@ class TrueTypeInfoParser(BaseParser):
             0x47: "superscript_x_offset",
             0x48: "superscript_y_offset",
             0x49: "strikeout_size",
-            0x4a: "strikeout_position",
-            0x4b: "ibm_classification",  # ibm_classification + subclass
-            0x4c: "OpenTypeOS2Panose",
-            0x4d: "OpenTypeOS2TypoAscender",
-            0x4e: "OpenTypeOS2TypoDescender",
-            0x4f: "OpenTypeOS2TypoLineGap",
+            0x4A: "strikeout_position",
+            0x4B: "ibm_classification",  # ibm_classification + subclass
+            0x4C: "OpenTypeOS2Panose",
+            0x4D: "OpenTypeOS2TypoAscender",
+            0x4E: "OpenTypeOS2TypoDescender",
+            0x4F: "OpenTypeOS2TypoLineGap",
             0x50: "0x50",
             0x51: "OpenTypeOS2WinAscent",
             0x52: "OpenTypeOS2WinDescent",
@@ -65,7 +65,7 @@ class TrueTypeInfoParser(BaseParser):
             0x56: "timestamp",
             0x57: "0x57",
             0x58: "Hdmx PPMs 2",
-            0x5c: "Average Width",
+            0x5C: "Average Width",
         }
         s = cls.stream
         info = []
@@ -76,15 +76,11 @@ class TrueTypeInfoParser(BaseParser):
             if k == 0x32:
                 return info
 
-            elif k in (0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39, 0x3A, 0x3B, 0x3c):
-                info.append(
-                    [info_names.get(k, str(k)), read_encoded_value(s)]
-                )
+            elif k in (0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39, 0x3A, 0x3B, 0x3C):
+                info.append([info_names.get(k, str(k)), read_encoded_value(s)])
 
             elif k in (0x3D, 0x3E, 0x3F):
-                info.append(
-                    [info_names.get(k, str(k)), read_encoded_value(s)]
-                )
+                info.append([info_names.get(k, str(k)), read_encoded_value(s)])
 
             elif k in (
                 0x40,
@@ -100,18 +96,14 @@ class TrueTypeInfoParser(BaseParser):
                 0x4A,
                 0x4B,
             ):
-                info.append(
-                    [info_names.get(k, str(k)), read_encoded_value(s)]
-                )
+                info.append([info_names.get(k, str(k)), read_encoded_value(s)])
 
             elif k == 0x4C:  # PANOSE?
                 v = [cls.read_uint8(s) for _ in range(10)]
                 info.append([info_names.get(k, str(k)), v])
 
             elif k in (0x4D, 0x4E, 0x4F, 0x50, 0x51, 0x52):
-                info.append(
-                    [info_names.get(k, str(k)), read_encoded_value(s)]
-                )
+                info.append([info_names.get(k, str(k)), read_encoded_value(s)])
 
             elif k == 0x53:
                 num_values = read_encoded_value(s)
@@ -122,23 +114,20 @@ class TrueTypeInfoParser(BaseParser):
                 # Codepages
                 info.append(
                     [
-                        info_names.get(k, str(k)), [
+                        info_names.get(k, str(k)),
+                        [
                             read_encoded_value(s),
                             read_encoded_value(s),
-                        ]
+                        ],
                     ]
                 )
-            
+
             elif k == 0x56:
                 # Timestamp, unsigned
-                info.append(
-                    [info_names.get(k, str(k)), read_encoded_value(s, signed=False)]
-                )
+                info.append([info_names.get(k, str(k)), read_encoded_value(s, signed=False)])
 
             elif k in (0x57, 0x5C):
-                info.append(
-                    [info_names.get(k, str(k)), read_encoded_value(s)]
-                )
+                info.append([info_names.get(k, str(k)), read_encoded_value(s)])
 
             elif k == 0x58:
                 num_values = read_encoded_value(s)
@@ -242,11 +231,13 @@ class TrueTypeZonesParser(BaseParser):
                 name_length = read_encoded_value(stream)
                 # print("Name of length", name_length, "follows")
                 zone_name = stream.read(name_length).decode("cp1252")
-                side.append({
-                    "position": position,
-                    "value": width,
-                    "name": zone_name,
-                })
+                side.append(
+                    {
+                        "position": position,
+                        "value": width,
+                        "name": zone_name,
+                    }
+                )
             result[names[i]] = side
 
         assert stream.read() == b""
