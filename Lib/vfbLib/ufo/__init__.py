@@ -119,6 +119,24 @@ class VfbToUfoWriter:
             "fontNote": "note",
             "Default Glyph": "postscriptDefaultCharacter",
         }
+        self.info_mapping_int = {
+            "lowest_rec_ppem": "openTypeHeadLowestRecPPEM",
+            "subscript_x_size": "openTypeOS2SubscriptXSize",
+            "subscript_y_size": "openTypeOS2SubscriptYSize",
+            "subscript_x_offset": "openTypeOS2SubscriptXOffset",
+            "subscript_y_offset": "openTypeOS2SubscriptYOffset",
+            "superscript_x_size": "openTypeOS2SuperscriptXSize",
+            "superscript_y_size": "openTypeOS2SuperscriptYSize",
+            "superscript_x_offset": "openTypeOS2SuperscriptXOffset",
+            "superscript_y_offset": "openTypeOS2SuperscriptYOffset",
+            "strikeout_size": "openTypeOS2StrikeoutSize",
+            "strikeout_position": "openTypeOS2StrikeoutPosition",
+            "OpenTypeOS2TypoAscender": "openTypeOS2TypoAscender",
+            "OpenTypeOS2TypoDescender": "openTypeOS2TypoDescender",
+            "OpenTypeOS2TypoLineGap": "openTypeOS2TypoLineGap",
+            "OpenTypeOS2WinAscent": "openTypeOS2WinAscent",
+            "OpenTypeOS2WinDescent": "openTypeOS2WinDescent",
+        }
 
     def transform_groups(self) -> UfoGroups:
         # Rename kerning groups by applying the side flags and using the key
@@ -186,8 +204,8 @@ class VfbToUfoWriter:
     def assign_tt_info(self, data: List[Tuple[str, int | List[int]]]):
         for k, v in data:
             if isinstance(v, int):
-                if k == "lowest_rec_ppem":
-                    self.info.openTypeHeadLowestRecPPEM = v
+                if k in self.info_mapping_int:
+                    setattr(self.info, self.info_mapping_int[k], v)
                 elif k == "timestamp":
                     self.set_created_timestamp(v)
                 elif k == "font_direction_hint":
@@ -195,36 +213,6 @@ class VfbToUfoWriter:
                     pass
                 elif k == "embedding":
                     self.info.openTypeOS2Type = binaryToIntList(v)
-                elif k == "subscript_x_size":
-                    self.info.openTypeOS2SubscriptXSize = v
-                elif k == "subscript_y_size":
-                    self.info.openTypeOS2SubscriptYSize = v
-                elif k == "subscript_x_offset":
-                    self.info.openTypeOS2SubscriptXOffset = v
-                elif k == "subscript_y_offset":
-                    self.info.openTypeOS2SubscriptYOffset = v
-                elif k == "superscript_x_size":
-                    self.info.openTypeOS2SuperscriptXSize = v
-                elif k == "superscript_y_size":
-                    self.info.openTypeOS2SuperscriptYSize = v
-                elif k == "superscript_x_offset":
-                    self.info.openTypeOS2SuperscriptXOffset = v
-                elif k == "superscript_y_offset":
-                    self.info.openTypeOS2SuperscriptYOffset = v
-                elif k == "strikeout_size":
-                    self.info.openTypeOS2StrikeoutSize = v
-                elif k == "strikeout_position":
-                    self.info.openTypeOS2StrikeoutPosition = v
-                elif k == "OpenTypeOS2TypoAscender":
-                    self.info.openTypeOS2TypoAscender = v
-                elif k == "OpenTypeOS2TypoDescender":
-                    self.info.openTypeOS2TypoDescender = v
-                elif k == "OpenTypeOS2TypoLineGap":
-                    self.info.openTypeOS2TypoLineGap = v
-                elif k == "OpenTypeOS2WinAscent":
-                    self.info.openTypeOS2WinAscent = v
-                elif k == "OpenTypeOS2WinDescent":
-                    self.info.openTypeOS2WinDescent = v
                 elif k == "ibm_classification":
                     c = v >> 8
                     s = v & ~(c << 8)
