@@ -124,6 +124,7 @@ class VfbToUfoWriter:
             "fontNote": "note",
             "Default Glyph": "postscriptDefaultCharacter",
         }
+        # Integer values from TTInfo
         self.info_mapping_int = {
             # "units_per_em": "unitsPerEm",  # duplicate
             # "weight_class": "openTypeOS2WeightClass",  # duplicate
