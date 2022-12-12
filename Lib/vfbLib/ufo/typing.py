@@ -7,7 +7,7 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 from typing import Dict, List, Tuple
-from vfbLib.types import HintTuple
+from vfbLib.typing import HintTuple
 
 
 class TUfoTTZoneDict(TypedDict):

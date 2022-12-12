@@ -6,7 +6,7 @@ from vfbLib.ufo.vfb2ufo import vfb2ufo_label_codes
 
 if TYPE_CHECKING:
     from fontTools.ufoLib.glifLib import GlyphSet
-    from vfbLib.types import (
+    from vfbLib.typing import (
         Anchor,
         GuidePropertyList,
         GuideDict,
