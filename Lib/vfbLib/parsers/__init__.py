@@ -20,28 +20,23 @@ def read_encoded_value(stream: BufferedReader | BytesIO, debug=False, signed=Tru
     if val == 0:
         raise EOFError
 
-    if debug:
-        print("Read:", hex(val))
+    logger.debug("Read:", hex(val))
 
     if val < 0x20:
-        if debug:
-            print(f"  Illegal value {hex(val)}. Rest of stream:")
-            print(hexStr(stream.read()))
+        logger.debug(f"  Illegal value {hex(val)}. Rest of stream:")
+        logger.debug(hexStr(stream.read()))
         raise ValueError
 
     elif val < 0xF7:
         decoded = val - 0x8B
-        if debug:
-            print(f"  {hex(val)} - 0x8b = {val - 0x8b}")
+        logger.debug(f"  {hex(val)} - 0x8b = {val - 0x8b}")
         return decoded
 
     elif val <= 0xFA:
         val2 = int.from_bytes(stream.read(1), byteorder="little")
-        if debug:
-            print(f"  Read next: {hex(val2)}")
+        logger.debug(f"  Read next: {hex(val2)}")
         decoded = val - 0x8B + (val - 0xF7) * 0xFF + val2
-        if debug:
-            print(f"    {hex(val)} - 0x8b + {val - 0xf7} * 0xff + {hex(val2)} = {decoded}")
+        logger.debug(f"    {hex(val)} - 0x8b + {val - 0xf7} * 0xff + {hex(val2)} = {decoded}")
         return decoded
 
     elif val <= 0xFE:
@@ -51,15 +46,13 @@ def read_encoded_value(stream: BufferedReader | BytesIO, debug=False, signed=Tru
         val2 = int.from_bytes(stream.read(1), byteorder="little")
         # fb 1f -> 0x8f - 0xfb - 0x1f
         decoded = 0x8F - val - (val - 0xFB) * 0xFF - val2
-        if debug:
-            print(f"    0x8f - {hex(val)} - {val - 0xf7} * 0xff - {hex(val2)} = {decoded}")
+        logger.debug(f"    0x8f - {hex(val)} - {val - 0xf7} * 0xff - {hex(val2)} = {decoded}")
         return decoded
 
     elif val == 0xFF:
         # 4-byte integer follows
         decoded = int.from_bytes(stream.read(4), byteorder="big", signed=signed)
-        if debug:
-            print(f"  Read next 4 bytes: {decoded}")
+        logger.debug(f"  Read next 4 bytes: {decoded}")
         return decoded
 
     raise ValueError
@@ -185,7 +178,7 @@ class EncodedValueListParser(BaseParser):
                 val = read_encoded_value(cls.stream)
                 values.append(val)
             except EOFError:
-                # print("EOF")
+                logger.debug("EOF")
                 return values
 
 

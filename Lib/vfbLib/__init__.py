@@ -90,12 +90,12 @@ class VFBReader:
         try:
             parsed = parser_class.parse(self.stream, size, self.master_count)
         except:
-            print(
+            logger.error(
                 "Parse error for data:",
                 entry_id,
                 hexStr(self.stream.read(size)),
             )
-            print("Parser class:", parser_class)
+            logger.error("Parser class:", parser_class)
             parsed = f"ParseError ({parser_class})"
             raise
 

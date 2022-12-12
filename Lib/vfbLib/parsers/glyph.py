@@ -186,7 +186,7 @@ class GlyphParser(BaseParser):
                 imported["endpoints"] = [read_encoded_value(cls.stream) for _ in range(num_contours)]
                 num_nodes = read_encoded_value(cls.stream)
                 nodes = []
-                # print(f"Parsing {num_nodes} nodes...")
+                logger.debug(f"Parsing {num_nodes} nodes...")
                 x = 0
                 y = 0
                 for i in range(num_nodes):
@@ -196,7 +196,7 @@ class GlyphParser(BaseParser):
                     flags = byte >> 4
                     cmd = byte & 0x0F
                     node = (hex(cmd), hex(flags), x, y)
-                    # print(i, node)
+                    logger.debug(i, node)
                     nodes.append(node)
                 if nodes:
                     imported["nodes"] = nodes
@@ -215,8 +215,8 @@ class GlyphParser(BaseParser):
                 imported["hdmx"] = [cls.read_uint8() for _ in range(num)]
 
             else:
-                print(imported)
-                print("Unknown key in imported binary glyph data:", hex(key))
+                logger.error(imported)
+                logger.error("Unknown key in imported binary glyph data:", hex(key))
                 raise ValueError
 
         glyphdata["imported"] = imported
@@ -253,10 +253,6 @@ class GlyphParser(BaseParser):
                 hints[d].append(master_hints)
 
         num_hintmasks = read_encoded_value(stream)
-        # print("Repl:", num_hintmasks)
-        # print(hexStr(stream.read()))
-        # raise ValueError
-
         if num_hintmasks > 0:
             hintmasks: List[Dict[str, int]] = []
             for i in range(num_hintmasks):
@@ -334,7 +330,7 @@ class GlyphParser(BaseParser):
             cmd = byte & 0x0F
 
             segment_type = cmd_name[cmd]
-            # print("   ", i, segment_type, flags)
+            logger.debug("   ", i, segment_type, flags)
 
             # End point
             points: List[List[Point]] = [[] for _ in range(num_masters)]
@@ -405,7 +401,7 @@ class GlyphParser(BaseParser):
                 glyph_name_length = read_encoded_value(s)
                 glyph_name = s.read(glyph_name_length)
                 glyphdata["name"] = glyph_name.decode("cp1252")
-                # print("Glyph:", glyphdata["name"])
+                logger.debug("Glyph:", glyphdata["name"])
 
             elif v == 0x02:
                 # Metrics
@@ -440,12 +436,12 @@ class GlyphParser(BaseParser):
                 cls.parse_instructions(s, glyphdata)
 
             elif v == 0x0F:
-                # print("Glyph done.")
+                logger.debug("Glyph done.")
                 break
 
             else:
-                print(f"Unhandled info field: {hex(v)}")
-                print(hexStr(s.read()))
+                logger.error(f"Unhandled info field: {hex(v)}")
+                logger.error(hexStr(s.read()))
                 raise ValueError
 
         return dict(glyphdata)

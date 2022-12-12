@@ -39,7 +39,7 @@ def apply_closepath(contour):
                 t, smooth, _, pt = contour[0]
                 contour[0] = (t, smooth, name, pt)
             else:
-                print(
+                logger.warning(
                     f"Point name conflict in {contour[0]} vs. {name} while "
                     f"applying closepath. Not applying old name ({name})"
                 )
@@ -103,7 +103,7 @@ def get_master_glyph(mmglyph, glyph_order: List[str], master_index=0) -> Tuple[L
                 in_qcurve = True
 
             else:
-                print(f"Unknown segment type: {segment_type}")
+                logger.error(f"Unknown segment type: {segment_type}")
                 raise ValueError
 
         if contour:

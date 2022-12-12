@@ -67,14 +67,14 @@ def update_glyph_guides(glyph):
 
 
 def normalize_ufo(filepath: Path, structure: Literal["package", "zip"] = "package") -> None:
-    print(f"Processing {filepath.name}...")
+    logger.info(f"Processing {filepath.name}...")
 
     normalized_file = filepath / ".normalized"
 
     if structure == "package":
 
         if normalized_file.exists():
-            print(f"    Skipping already normalized UFO: {filepath.name}")
+            logger.info(f"    Skipping already normalized UFO: {filepath.name}")
             return
 
         fix_vfb2ufo_feature_encoding(filepath)  # FIXME: Support ufoz
@@ -82,7 +82,7 @@ def normalize_ufo(filepath: Path, structure: Literal["package", "zip"] = "packag
     try:
         f = Font(filepath)
     except:
-        print(f"Skipping UFO with errors: {filepath}")
+        logger.error(f"Skipping UFO with errors: {filepath}")
         raise
 
     with NamedTemporaryFile(suffix="ufoz") as tf:

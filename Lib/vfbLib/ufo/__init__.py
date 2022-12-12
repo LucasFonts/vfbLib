@@ -167,7 +167,7 @@ class VfbToUfoWriter:
                     if flags & side:
                         ufoname = f"public.kern{sidename}.{key_glyph}"
                         if ufoname in groups:
-                            print(f"Duplicate kern{sidename} group: {ufoname}")
+                            logger.warning(f"Duplicate kern{sidename} group: {ufoname}")
                         else:
                             groups[ufoname] = glyphs
             else:
@@ -177,7 +177,7 @@ class VfbToUfoWriter:
 
     def add_ot_class(self, data: str) -> None:
         if ":" not in data:
-            print("Malformed OT class definition, skipping:", data)
+            logger.warning("Malformed OT class definition, skipping:", data)
             return
 
         parts = data.split(":", 1)
@@ -188,7 +188,7 @@ class VfbToUfoWriter:
         is_kerning = name.startswith("_")
 
         if name in self.groups:
-            print("Duplicate OT class name, skipping:", name)
+            logger.warning("Duplicate OT class name, skipping:", name)
             return
 
         glyphs_list = glyphs_str.split()
@@ -199,7 +199,7 @@ class VfbToUfoWriter:
             keyglyphs = [g.strip() for g in glyphs_list if g.endswith("'")]
             keyglyphs = [k.strip("'") for k in keyglyphs]
             if len(keyglyphs) != 1:
-                print(f"Unexpected number of key glyphs in group {name}: {keyglyphs}")
+                logger.warning(f"Unexpected number of key glyphs in group {name}: {keyglyphs}")
             else:
                 glyphs.insert(0, *keyglyphs)
 
@@ -226,6 +226,8 @@ class VfbToUfoWriter:
                     c = v >> 8
                     s = v & ~(c << 8)
                     self.info.openTypeOS2FamilyClass = [c, s]
+                else:
+                    logger.info(f"Unhandled integer value in UFO info: {k, v}")
             elif isinstance(v, list):
                 if k == "OpenTypeOS2Panose":
                     # Duplicate?
@@ -240,6 +242,8 @@ class VfbToUfoWriter:
                         ranges.append(cp + 32)
                     if ranges:
                         self.info.openTypeOS2CodePageRanges = ranges
+                else:
+                    logger.info(f"Unhandled list value in UFO info: {k, v}")
             else:
                 raise TypeError
 
@@ -290,7 +294,7 @@ class VfbToUfoWriter:
             key = str(v)
             val = int(k)
             if key in d:
-                print(f"Error in stem rounding settings for {name}, duplicate ppm {key}.")
+                logger.error(f"Error in stem rounding settings for {name}, duplicate ppm {key}.")
             d[key] = val
         return d
 
@@ -332,7 +336,7 @@ class VfbToUfoWriter:
                     "round": stem_ppms["round"],
                 }
                 if rv in stem["round"]:
-                    print(f"Error in stem rounding settings for {d}, duplicate ppm {rv}.")
+                    logger.error(f"Error in stem rounding settings for {d}, duplicate ppm {rv}.")
                 stem["round"][rv] = int(rk)
                 self.stems[d].append(stem)
 
@@ -357,7 +361,7 @@ class VfbToUfoWriter:
                 )
                 name = dz["name"]
                 if name in self.tt_zones:
-                    print(f"Duplicate zone name: {name}, overwriting.")
+                    logger.warning(f"Duplicate zone name: {name}, overwriting.")
                 self.tt_zones[name] = zone
                 self.tt_zone_names.append(name)  # for deltas
                 self.zone_names[d].append(name)  # for AlignTop/AlignBottom
@@ -396,7 +400,7 @@ class VfbToUfoWriter:
                     name = "%s%02i" % (dname, i)
                     i += 1
                 if name in self.lib[TT_LIB_KEY]["stems"]:
-                    print(f"ERROR: Duplicate TrueType stem name '{name}'. " "Make stem names unique in VFB.")
+                    logger.error(f"ERROR: Duplicate TrueType stem name '{name}'. " "Make stem names unique in VFB.")
                     raise KeyError
                 lib[name] = stem
 
@@ -488,7 +492,7 @@ class VfbToUfoWriter:
                 d["ppm1"] = params["ppm1"]
                 d["ppm2"] = params["ppm2"]
             else:
-                print(f"Unknown TT command: {code}")
+                logger.error(f"Unknown TT command: {code}")
 
             tth.append(self.make_tt_cmd(d))
 
@@ -615,7 +619,7 @@ class VfbToUfoWriter:
                             if n not in self.glyph_masters:
                                 self.glyph_masters[n] = self.current_glyph
                                 self.glyphOrder.append(n)
-                                print(f"Duplicate glyph, renamed from {name} to {n}.")
+                                logger.warning(f"Duplicate glyph, renamed from {name} to {n}.")
                                 break
                     else:
                         self.glyph_masters[name] = self.current_glyph
@@ -675,8 +679,7 @@ class VfbToUfoWriter:
                 assert self.current_glyph is not None
                 self.current_glyph.guide_properties = data
             else:
-                pass
-                # print(f"Unhandled key: {name}")
+                logger.info(f"Unhandled key: {name}")
 
         if self.current_glyph is not None:
             assert self.current_glyph.name is not None
@@ -763,14 +766,14 @@ class VfbToUfoWriter:
                 raise FileExistsError
 
         if not silent:
-            print(f"Processing font: {self.info.ui_name}, master {index}")
+            logger.error(f"Processing font: {self.info.ui_name}, master {index}")
 
         writer = UFOWriter(master_path, fileCreator="com.lucasfonts.vfb3ufo")
         glyphs_path = master_path / "glyphs"
         glyphs_path.mkdir()
         gs = GlyphSet(glyphs_path)
         for name, self.current_mmglyph in self.glyph_masters.items():
-            # print(name, type(name), self.current_mmglyph)
+            logger.debug(name, type(name), self.current_mmglyph)
             g = UfoGlyph(name, gs)
             g.anchors = self.current_mmglyph.anchors
             # Apply master anchor positions

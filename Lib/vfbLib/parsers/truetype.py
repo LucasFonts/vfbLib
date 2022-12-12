@@ -140,7 +140,7 @@ class TrueTypeInfoParser(BaseParser):
                 info.append([info_names.get(k, hex(k)), v])
 
             else:
-                print(f"Unknown key in TrueType info: {hex(k)}")
+                logger.info(f"Unknown key in TrueType info: {hex(k)}")
 
 
 class TrueTypeStemsParser(BaseParser):
@@ -203,7 +203,6 @@ class TrueTypeZoneDeltasParser(BaseParser):
     def _parse(cls):
         stream = cls.stream
         num_deltas = read_encoded_value(stream)
-        # print(num_deltas, "Zone deltas follow")
         result = {}
         for _ in range(num_deltas):
             # Index into Bottom + Top Zones
@@ -228,13 +227,13 @@ class TrueTypeZonesParser(BaseParser):
         for i in range(2):
             side = []
             num_zones = read_encoded_value(stream)
-            # print(num_zones)
+            logger.debug(num_zones)
             for _ in range(num_zones):
                 position = read_encoded_value(stream)
                 width = read_encoded_value(stream)
-                # print(position, width)
+                logger.debug(position, width)
                 name_length = read_encoded_value(stream)
-                # print("Name of length", name_length, "follows")
+                logger.debug("Name of length", name_length, "follows")
                 zone_name = stream.read(name_length).decode("cp1252")
                 side.append(
                     {
