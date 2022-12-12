@@ -2,12 +2,16 @@ from __future__ import annotations
 
 import codecs
 import json
+import logging
 
 from argparse import ArgumentParser
 from pathlib import Path
 from vfbLib import VFBReader
 from vfbLib.ufo import VfbToUfoWriter
 from vfbLib.version import build_date
+
+
+logger = logging.getLogger(__name__)
 
 
 def read_vfb(vfb_path: Path, minimal=False) -> VFBReader:

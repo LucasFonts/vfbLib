@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import logging
+
 from fontTools.misc.textTools import hexStr
 from io import BufferedReader
 from pathlib import Path
@@ -9,6 +11,8 @@ from vfbLib.constants import ignore_minimal, parser_classes
 from vfbLib.parsers import BaseParser
 from vfbLib.parsers.header import VfbHeaderParser
 
+
+logger = logging.getLogger(__name__)
 
 FALLBACK_PARSER = BaseParser
 

@@ -1,11 +1,16 @@
 from __future__ import annotations
 
+import logging
+
 from typing import List, Tuple, TYPE_CHECKING
 
 
 if TYPE_CHECKING:
     from fontTools.ufoLib.glifLib import GLIFPointPen
     from vfbLib.ufo.typing import UfoComponent, UfoContour
+
+
+logger = logging.getLogger(__name__)
 
 
 def draw_glyph(

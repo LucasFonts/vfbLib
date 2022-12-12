@@ -1,11 +1,15 @@
 from __future__ import annotations
 
 import codecs
+import logging
 import yaml
 
 from argparse import ArgumentParser
 from pathlib import Path
 from vfbLib import VFBReader
+
+
+logger = logging.getLogger(__name__)
 
 
 def delta_yaml_to_human(data):

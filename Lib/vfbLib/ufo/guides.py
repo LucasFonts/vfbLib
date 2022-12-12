@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import logging
+
 from typing import TYPE_CHECKING, List
 from vfbLib.ufo.typing import UfoGuide
 
@@ -8,6 +10,9 @@ if TYPE_CHECKING:
         GuideDict,
         GuidePropertyList,
     )
+
+
+logger = logging.getLogger(__name__)
 
 
 def get_master_guides(mm_guides: GuideDict, master_index: int) -> List[UfoGuide]:

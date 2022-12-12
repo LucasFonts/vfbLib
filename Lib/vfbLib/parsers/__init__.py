@@ -1,10 +1,14 @@
 from __future__ import annotations
 
+import logging
+
 from fontTools.misc.textTools import hexStr
 from io import BufferedReader, BytesIO
 from struct import unpack
 from typing import Any, Dict, List, Tuple
 
+
+logger = logging.getLogger(__name__)
 
 uint8 = 1
 uint16 = 2

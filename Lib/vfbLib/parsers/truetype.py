@@ -1,8 +1,13 @@
 from __future__ import annotations
 
+import logging
+
 from io import BytesIO
 from typing import Dict, List
 from vfbLib.parsers import BaseParser, read_encoded_value
+
+
+logger = logging.getLogger(__name__)
 
 
 class TrueTypeInfoParser(BaseParser):

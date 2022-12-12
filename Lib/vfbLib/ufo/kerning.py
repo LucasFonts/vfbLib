@@ -1,9 +1,14 @@
 from __future__ import annotations
 
+import logging
+
 from typing import TYPE_CHECKING, List
 
 if TYPE_CHECKING:
     from vfbLib.ufo.typing import UfoGroups, UfoMasterKerning, UfoMMKerning
+
+
+logger = logging.getLogger(__name__)
 
 
 class UfoKerning:

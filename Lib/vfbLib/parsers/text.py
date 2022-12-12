@@ -1,6 +1,11 @@
 from __future__ import annotations
 
+import logging
+
 from vfbLib.parsers import BaseParser, read_encoded_value
+
+
+logger = logging.getLogger(__name__)
 
 
 class NameRecordsParser(BaseParser):

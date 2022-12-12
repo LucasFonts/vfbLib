@@ -1,8 +1,13 @@
 from __future__ import annotations
 
+import logging
+
 from io import BufferedReader
 from typing import Any, Dict
 from vfbLib.parsers import read_encoded_value, uint8, uint16
+
+
+logger = logging.getLogger(__name__)
 
 
 class VfbHeaderParser:

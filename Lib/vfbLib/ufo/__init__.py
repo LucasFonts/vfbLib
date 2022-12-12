@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import logging
+
 from fontTools.ufoLib import UFOWriter
 from fontTools.ufoLib.glifLib import GlyphSet
 from pathlib import Path
@@ -29,6 +31,9 @@ if TYPE_CHECKING:
     from fontTools.ufoLib.glifLib import GLIFPointPen
     from vfbLib.typing import GuidePropertyList
     from vfbLib.ufo.typing import UfoGroups, UfoMMKerning
+
+
+logger = logging.getLogger(__name__)
 
 
 def binaryToIntList(value: int, start: int = 0):

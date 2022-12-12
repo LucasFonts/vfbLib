@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import codecs
+import logging
 
 from defcon import Font
 from ufonormalizer import normalizeUFO
@@ -15,8 +16,9 @@ from vfbLib.ufo.vfb2ufo import (
 )
 
 
-RF_GUIDES_KEY = "com.typemytype.robofont.guides"
+logger = logging.getLogger(__name__)
 
+RF_GUIDES_KEY = "com.typemytype.robofont.guides"
 
 delete_lib_keys: List[str] = []
 

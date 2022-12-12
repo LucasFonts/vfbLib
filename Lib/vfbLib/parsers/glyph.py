@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import logging
+
 from fontTools.misc.textTools import hexStr  # , num2binary
 from fontTools.ttLib.tables.ttProgram import Program
 from io import BytesIO
@@ -23,6 +25,8 @@ from vfbLib.typing import (
     Point,
 )
 
+
+logger = logging.getLogger(__name__)
 
 cmd_name = {
     0: "move",

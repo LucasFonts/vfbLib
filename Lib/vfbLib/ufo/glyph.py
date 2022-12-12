@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import logging
+
 from colorsys import hls_to_rgb
 from typing import TYPE_CHECKING, Any, Dict, List, Tuple
 from vfbLib.ufo.vfb2ufo import vfb2ufo_label_codes
@@ -14,6 +16,9 @@ if TYPE_CHECKING:
         LinkDict,
         MMNode,
     )
+
+
+logger = logging.getLogger(__name__)
 
 
 class UfoGlyph:

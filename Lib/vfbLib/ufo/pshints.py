@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import logging
+
 import xml.etree.cElementTree as elementTree
 
 from vfbLib.ufo.typing import UfoHintingV2, UfoHintSet
@@ -9,6 +11,9 @@ from typing import TYPE_CHECKING, Dict, List, Tuple
 if TYPE_CHECKING:
     from vfbLib.typing import Hint, HintTuple
     from vfbLib.ufo.glyph import VfbToUfoGlyph, UfoGlyph
+
+
+logger = logging.getLogger(__name__)
 
 
 def normalize_hint(hint: Tuple[str, int, int]):

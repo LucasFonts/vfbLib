@@ -1,7 +1,12 @@
 from __future__ import annotations
 
+import logging
+
 from vfbLib.parsers import BaseParser
 from struct import unpack
+
+
+logger = logging.getLogger(__name__)
 
 
 class DoubleParser(BaseParser):
