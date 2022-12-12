@@ -498,7 +498,7 @@ class VfbToUfoWriter:
 
         glyph.lib[TT_GLYPH_LIB_KEY] = "  <ttProgram>\n" + "\n".join(tth) + "\n  </ttProgram>\n"
 
-    def build(self) -> None:
+    def build(self) -> None:  # noqa: C901
         # Non-MM data
         for e in self.json:
             name, data = e

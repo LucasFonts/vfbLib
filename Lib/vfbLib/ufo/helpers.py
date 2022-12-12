@@ -81,7 +81,7 @@ def normalize_ufo(filepath: Path, structure: Literal["package", "zip"] = "packag
 
     try:
         f = Font(filepath)
-    except:
+    except:  # noqa: E722
         logger.error(f"Skipping UFO with errors: {filepath}")
         raise
 
