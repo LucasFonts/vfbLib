@@ -186,7 +186,7 @@ class GlyphParser(BaseParser):
                 imported["endpoints"] = [read_encoded_value(cls.stream) for _ in range(num_contours)]
                 num_nodes = read_encoded_value(cls.stream)
                 nodes = []
-                logger.debug(f"Parsing {num_nodes} nodes...")
+                # logger.debug(f"Parsing {num_nodes} nodes...")
                 x = 0
                 y = 0
                 for i in range(num_nodes):
@@ -196,7 +196,7 @@ class GlyphParser(BaseParser):
                     flags = byte >> 4
                     cmd = byte & 0x0F
                     node = (hex(cmd), hex(flags), x, y)
-                    logger.debug(f"    {i}: {node}")
+                    # logger.debug(f"    {i}: {node}")
                     nodes.append(node)
                 if nodes:
                     imported["nodes"] = nodes
@@ -330,7 +330,7 @@ class GlyphParser(BaseParser):
             cmd = byte & 0x0F
 
             segment_type = cmd_name[cmd]
-            logger.debug(f"    {i}: {segment_type}, flags: {flags}")
+            # logger.debug(f"    {i}: {segment_type}, flags: {flags}")
 
             # End point
             points: List[List[Point]] = [[] for _ in range(num_masters)]
