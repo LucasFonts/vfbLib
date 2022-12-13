@@ -11,6 +11,7 @@ from vfbLib.parsers import (
     OpenTypeClassFlagsParser,
     StringParser,
 )
+from vfbLib.parsers.bitmap import GlyphBitmapParser
 from vfbLib.parsers.glyph import (
     GlyphAnchorsParser,
     GlyphAnchorsSuppParser,
@@ -147,6 +148,7 @@ parser_classes = {
     2010: ("2010", BaseParser),
     2011: ("2011", BaseParser),
     2012: ("Mark Color", IntParser),
+    2013: ("Glyph Bitmaps", GlyphBitmapParser),
     2015: ("Glyph User Data", StringParser),
     2016: ("Font User Data", StringParser),
     2017: ("Glyph Note", StringParser),
