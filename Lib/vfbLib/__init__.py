@@ -91,11 +91,9 @@ class VFBReader:
             parsed = parser_class.parse(self.stream, size, self.master_count)
         except:  # noqa: E722
             logger.error(
-                "Parse error for data:",
-                entry_id,
-                hexStr(self.stream.read(size)),
+                f"Parse error for data: {entry_id}; {hexStr(self.stream.read(size))}"
             )
-            logger.error("Parser class:", parser_class)
+            logger.error(f"Parser class: {parser_class}")
             parsed = f"ParseError ({parser_class})"
             raise
 

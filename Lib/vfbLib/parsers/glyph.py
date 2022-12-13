@@ -196,7 +196,7 @@ class GlyphParser(BaseParser):
                     flags = byte >> 4
                     cmd = byte & 0x0F
                     node = (hex(cmd), hex(flags), x, y)
-                    logger.debug(i, node)
+                    logger.debug(f"    {i}: {node}")
                     nodes.append(node)
                 if nodes:
                     imported["nodes"] = nodes
@@ -216,7 +216,7 @@ class GlyphParser(BaseParser):
 
             else:
                 logger.error(imported)
-                logger.error("Unknown key in imported binary glyph data:", hex(key))
+                logger.error(f"Unknown key in imported binary glyph data: {hex(key)}")
                 raise ValueError
 
         glyphdata["imported"] = imported
@@ -330,7 +330,7 @@ class GlyphParser(BaseParser):
             cmd = byte & 0x0F
 
             segment_type = cmd_name[cmd]
-            logger.debug("   ", i, segment_type, flags)
+            logger.debug(f"    {i}: {segment_type}, flags: {flags}")
 
             # End point
             points: List[List[Point]] = [[] for _ in range(num_masters)]
@@ -401,7 +401,7 @@ class GlyphParser(BaseParser):
                 glyph_name_length = read_encoded_value(s)
                 glyph_name = s.read(glyph_name_length)
                 glyphdata["name"] = glyph_name.decode("cp1252")
-                logger.debug("Glyph:", glyphdata["name"])
+                logger.debug(f"Glyph: {glyphdata['name']}")
 
             elif v == 0x02:
                 # Metrics

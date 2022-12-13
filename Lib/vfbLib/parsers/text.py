@@ -13,7 +13,6 @@ class NameRecordsParser(BaseParser):
     def _parse(cls):
         stream = cls.stream
         num = read_encoded_value(stream)
-        logger.debug(num, "name records follow ...")
         result = []
         for _ in range(num):
             nameID = read_encoded_value(stream)

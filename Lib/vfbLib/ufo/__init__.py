@@ -177,7 +177,7 @@ class VfbToUfoWriter:
 
     def add_ot_class(self, data: str) -> None:
         if ":" not in data:
-            logger.warning("Malformed OT class definition, skipping:", data)
+            logger.warning(f"Malformed OT class definition, skipping: {data}")
             return
 
         parts = data.split(":", 1)
@@ -188,7 +188,7 @@ class VfbToUfoWriter:
         is_kerning = name.startswith("_")
 
         if name in self.groups:
-            logger.warning("Duplicate OT class name, skipping:", name)
+            logger.warning(f"Duplicate OT class name, skipping: {name}")
             return
 
         glyphs_list = glyphs_str.split()
@@ -773,7 +773,7 @@ class VfbToUfoWriter:
         glyphs_path.mkdir()
         gs = GlyphSet(glyphs_path)
         for name, self.current_mmglyph in self.glyph_masters.items():
-            logger.debug(name, type(name), self.current_mmglyph)
+            logger.debug(f"    {name}, {type(name)}, {self.current_mmglyph}")
             g = UfoGlyph(name, gs)
             g.anchors = self.current_mmglyph.anchors
             # Apply master anchor positions

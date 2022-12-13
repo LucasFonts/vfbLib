@@ -227,13 +227,13 @@ class TrueTypeZonesParser(BaseParser):
         for i in range(2):
             side = []
             num_zones = read_encoded_value(stream)
-            logger.debug(num_zones)
+            logger.debug(f"Zones: {num_zones}")
             for _ in range(num_zones):
                 position = read_encoded_value(stream)
                 width = read_encoded_value(stream)
-                logger.debug(position, width)
+                logger.debug(f"    pos: {position}, width: {width}")
                 name_length = read_encoded_value(stream)
-                logger.debug("Name of length", name_length, "follows")
+                logger.debug(f"Name of length {name_length} follows")
                 zone_name = stream.read(name_length).decode("cp1252")
                 side.append(
                     {

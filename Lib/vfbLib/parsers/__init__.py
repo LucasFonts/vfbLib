@@ -20,7 +20,7 @@ def read_encoded_value(stream: BufferedReader | BytesIO, debug=False, signed=Tru
     if val == 0:
         raise EOFError
 
-    logger.debug("Read:", hex(val))
+    logger.debug(f"Read: {hex(val)}")
 
     if val < 0x20:
         logger.debug(f"  Illegal value {hex(val)}. Rest of stream:")
