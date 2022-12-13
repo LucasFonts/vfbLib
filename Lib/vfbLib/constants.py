@@ -167,5 +167,7 @@ parser_classes = {
 }
 
 ignore_minimal = [
+    "Background Bitmap",
+    "Glyph Bitmaps",
     "Mask",
 ]
