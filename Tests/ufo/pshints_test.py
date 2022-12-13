@@ -1,4 +1,5 @@
 from __future__ import annotations
+
 from unittest import TestCase
 
 from vfbLib.ufo.pshints import update_adobe_hinting
