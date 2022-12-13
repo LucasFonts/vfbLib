@@ -142,7 +142,7 @@ parser_classes = {
     1743: ("1743", EncodedKeyValuesParser),
     1744: ("1744", BaseParser),
     2001: ("Glyph", GlyphParser),
-    2007: ("Background", BackgroundBitmapParser),
+    2007: ("Background Bitmap", BackgroundBitmapParser),
     2008: ("Links", LinkParser),
     2009: ("Mask", MaskParser),
     2010: ("2010", BaseParser),
