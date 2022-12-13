@@ -1,7 +1,8 @@
 from fontTools.misc.textTools import deHexStr, hexStr
 from unittest import TestCase
 
-from vfbLib.parsers import EncodedValueParser, GlyphParser
+from vfbLib.parsers import EncodedValueParser
+from vfbLib.parsers.glyph import GlyphParser
 
 
 class EncodedValueParserTest(TestCase):

@@ -274,9 +274,7 @@ class MMGlyph:
 
 class PathsTest(TestCase):
     def test_closed_path(self):
-        contours, components = get_master_glyph(
-            MMGlyph("b", closed_path), [], 0
-        )
+        contours, components = get_master_glyph(MMGlyph("b", closed_path), [], 0)
         assert components == []
         pprint(contours)
         assert contours[0] == [
@@ -343,9 +341,7 @@ class PathsTest(TestCase):
         ]
 
     def test_open_tt_path(self):
-        contours, components = get_master_glyph(
-            MMGlyph("c", open_path_tt), [], 0
-        )
+        contours, components = get_master_glyph(MMGlyph("c", open_path_tt), [], 0)
         assert components == []
         pprint(contours)
         assert contours[0] == [
@@ -379,9 +375,7 @@ class PathsTest(TestCase):
         ]
 
     def test_closed_line_path(self):
-        contours, components = get_master_glyph(
-            MMGlyph("e", closed_path_line), [], 0
-        )
+        contours, components = get_master_glyph(MMGlyph("e", closed_path_line), [], 0)
         assert components == []
         pprint(contours)
         assert contours[0] == [
@@ -409,9 +403,7 @@ class PathsTest(TestCase):
         ]
 
     def test_open_line_path(self):
-        contours, components = get_master_glyph(
-            MMGlyph("f", open_path_line), [], 0
-        )
+        contours, components = get_master_glyph(MMGlyph("f", open_path_line), [], 0)
         assert components == []
         pprint(contours)
         assert contours[0] == [
@@ -441,9 +433,7 @@ class PathsTest(TestCase):
         ]
 
     def test_complex_tt(self):
-        contours, components = get_master_glyph(
-            MMGlyph("a", complex_tt), [], 0
-        )
+        contours, components = get_master_glyph(MMGlyph("a", complex_tt), [], 0)
         assert components == []
         pprint(contours)
         assert contours[0] == [
