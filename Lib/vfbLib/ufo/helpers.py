@@ -66,7 +66,9 @@ def update_glyph_guides(glyph):
         del glyph.lib[RF_GUIDES_KEY]
 
 
-def normalize_ufo(filepath: Path, structure: Literal["package", "zip"] = "package") -> None:
+def normalize_ufo(
+    filepath: Path, structure: Literal["package", "zip"] = "package"
+) -> None:
     logger.info(f"Processing {filepath.name}...")
 
     normalized_file = filepath / ".normalized"

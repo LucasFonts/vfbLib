@@ -36,7 +36,9 @@ def read_encoded_value(stream: BufferedReader | BytesIO, signed=True) -> int:
         val2 = int.from_bytes(stream.read(1), byteorder="little")
         # logger.debug(f"  Read next: {hex(val2)}")
         decoded = val - 0x8B + (val - 0xF7) * 0xFF + val2
-        # logger.debug(f"    {hex(val)} - 0x8b + {val - 0xf7} * 0xff + {hex(val2)} = {decoded}")
+        # logger.debug(
+        #     f"    {hex(val)} - 0x8b + {val - 0xf7} * 0xff + {hex(val2)} = {decoded}"
+        # )
         return decoded
 
     elif val <= 0xFE:
@@ -46,7 +48,9 @@ def read_encoded_value(stream: BufferedReader | BytesIO, signed=True) -> int:
         val2 = int.from_bytes(stream.read(1), byteorder="little")
         # fb 1f -> 0x8f - 0xfb - 0x1f
         decoded = 0x8F - val - (val - 0xFB) * 0xFF - val2
-        # logger.debug(f"    0x8f - {hex(val)} - {val - 0xf7} * 0xff - {hex(val2)} = {decoded}")
+        # logger.debug(
+        #     f"    0x8f - {hex(val)} - {val - 0xf7} * 0xff - {hex(val2)} = {decoded}"
+        # )
         return decoded
 
     elif val == 0xFF:

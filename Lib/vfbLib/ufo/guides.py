@@ -39,7 +39,9 @@ def get_master_guides(mm_guides: GuideDict, master_index: int) -> List[UfoGuide]
     return guides
 
 
-def apply_guide_properties(guides: List[UfoGuide], properties: GuidePropertyList) -> None:
+def apply_guide_properties(
+    guides: List[UfoGuide], properties: GuidePropertyList
+) -> None:
     # Update the guides with names and colors from properties
     for prop in properties:
         guide_index = prop["index"]

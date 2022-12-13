@@ -183,7 +183,9 @@ class GlyphParser(BaseParser):
             elif key == 0x2A:
                 # Outlines
                 num_contours = read_encoded_value(cls.stream)
-                imported["endpoints"] = [read_encoded_value(cls.stream) for _ in range(num_contours)]
+                imported["endpoints"] = [
+                    read_encoded_value(cls.stream) for _ in range(num_contours)
+                ]
                 num_nodes = read_encoded_value(cls.stream)
                 nodes = []
                 # logger.debug(f"Parsing {num_nodes} nodes...")
@@ -222,7 +224,9 @@ class GlyphParser(BaseParser):
         glyphdata["imported"] = imported
 
     @classmethod
-    def parse_components(cls, stream: BytesIO, glyphdata: GlyphData, num_masters=1) -> None:
+    def parse_components(
+        cls, stream: BytesIO, glyphdata: GlyphData, num_masters=1
+    ) -> None:
         components = []
         num = read_encoded_value(stream)
         for i in range(num):
@@ -288,7 +292,10 @@ class GlyphParser(BaseParser):
         commands: List[Instruction] = []
         for i in range(num_commands):
             cmd = cls.read_uint8(stream)
-            params = [read_encoded_value(stream) for _ in range(len(TT_COMMANDS[cmd]["params"]))]
+            params = [
+                read_encoded_value(stream)
+                for _ in range(len(TT_COMMANDS[cmd]["params"]))
+            ]
             commands.append(
                 Instruction(
                     cmd=TT_COMMANDS[cmd]["name"],
@@ -303,7 +310,9 @@ class GlyphParser(BaseParser):
             glyphdata["tth"] = commands
 
     @classmethod
-    def parse_metrics(cls, stream: BytesIO, glyphdata: GlyphData, num_masters=1) -> None:
+    def parse_metrics(
+        cls, stream: BytesIO, glyphdata: GlyphData, num_masters=1
+    ) -> None:
         metrics: List[Point] = []
         for _ in range(num_masters):
             master_metrics = (
@@ -349,7 +358,9 @@ class GlyphParser(BaseParser):
         return num_masters
 
     @classmethod
-    def parse_kerning(cls, stream: BytesIO, glyphdata: GlyphData, num_masters=1) -> None:
+    def parse_kerning(
+        cls, stream: BytesIO, glyphdata: GlyphData, num_masters=1
+    ) -> None:
         num = read_encoded_value(stream)
         kerning = {}
         for _ in range(num):

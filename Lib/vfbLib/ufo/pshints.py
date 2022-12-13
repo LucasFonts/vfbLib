@@ -55,7 +55,9 @@ def build_ps_glyph_hints(
                 # FIXME: What do negative values mean?
                 if node_index < 0:
                     node_index = abs(node_index) - 1
-                label = mmglyph.get_point_label(index=node_index, code="PSHintReplacement")
+                label = mmglyph.get_point_label(
+                    index=node_index, code="PSHintReplacement"
+                )
                 stems = []
                 hint_set = UfoHintSet(pointTag=label, stems=stems)
 
@@ -72,7 +74,11 @@ def build_ps_glyph_hints(
 
     # Reformat stems from sortable tuples to str required by UFO spec
     for hint_set in hint_sets:
-        hint_set["stems"] = [f"{h[0]} {h[1]} {h[2]}" for h in sorted(set(hint_set["stems"])) if isinstance(h, tuple)]
+        hint_set["stems"] = [
+            f"{h[0]} {h[1]} {h[2]}"
+            for h in sorted(set(hint_set["stems"]))
+            if isinstance(h, tuple)
+        ]
 
     if hint_sets:
         if not hasattr(glyph, "lib"):
@@ -84,7 +90,9 @@ def build_ps_glyph_hints(
         }
 
 
-def get_master_hints(mmglyph: VfbToUfoGlyph, master_index=0) -> Dict[str, List[str | HintTuple]]:
+def get_master_hints(
+    mmglyph: VfbToUfoGlyph, master_index=0
+) -> Dict[str, List[str | HintTuple]]:
     hints: Dict[str, List[str | HintTuple]] = {"h": [], "v": []}
 
     # Hints
@@ -158,7 +166,9 @@ def update_adobe_hinting(data) -> UfoHintingV2:
             }
         elif el.tag in ("hstem", "vstem"):
             if hintset is not None:
-                tag, pos, width = normalize_hint((el.tag, int(el.attrib["pos"]), int(el.attrib["width"])))
+                tag, pos, width = normalize_hint(
+                    (el.tag, int(el.attrib["pos"]), int(el.attrib["width"]))
+                )
                 hintset["stems"].append(f"{tag} {pos} {width}")
     if hintset:
         hintSetList.append(hintset)

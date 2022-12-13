@@ -26,7 +26,11 @@ def write_json(reader: VFBReader, json_path: Path) -> None:
 
 
 def vfb2json():
-    parser = ArgumentParser(description=(f"VFB2JSON Converter\nCopyright (c) 2022 by LucasFonts\nBuild {build_date}"))
+    parser = ArgumentParser(
+        description=(
+            f"VFB2JSON Converter\nCopyright (c) 2022 by LucasFonts\nBuild {build_date}"
+        )
+    )
     parser.add_argument(
         "-m",
         "--minimal",
@@ -61,7 +65,11 @@ def vfb2json():
 
 
 def vfb2ufo():
-    parser = ArgumentParser(description=(f"VFB3UFO Converter\nCopyright (c) 2022 by LucasFonts\nBuild {build_date}"))
+    parser = ArgumentParser(
+        description=(
+            f"VFB3UFO Converter\nCopyright (c) 2022 by LucasFonts\nBuild {build_date}"
+        )
+    )
     parser.add_argument(
         "-p",
         "--path",
