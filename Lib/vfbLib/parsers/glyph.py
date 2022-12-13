@@ -318,7 +318,7 @@ class GlyphParser(BaseParser):
         # Nodes
         num_masters = read_encoded_value(stream)
         _ = read_encoded_value(stream)  # XXX: What's this?
-        num_nodes = read_encoded_value(stream, debug=False)
+        num_nodes = read_encoded_value(stream)
         glyphdata["num_masters"] = num_masters
         segments: List[MMNode] = []
         x = [0 for _ in range(num_masters)]
