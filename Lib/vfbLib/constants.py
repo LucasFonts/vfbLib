@@ -11,7 +11,7 @@ from vfbLib.parsers import (
     OpenTypeClassFlagsParser,
     StringParser,
 )
-from vfbLib.parsers.bitmap import GlyphBitmapParser
+from vfbLib.parsers.bitmap import BackgroundBitmapParser, GlyphBitmapParser
 from vfbLib.parsers.glyph import (
     GlyphAnchorsParser,
     GlyphAnchorsSuppParser,
@@ -142,7 +142,7 @@ parser_classes = {
     1743: ("1743", EncodedKeyValuesParser),
     1744: ("1744", BaseParser),
     2001: ("Glyph", GlyphParser),
-    2007: ("Background", BaseParser),  # bitmap
+    2007: ("Background", BackgroundBitmapParser),
     2008: ("Links", LinkParser),
     2009: ("Mask", MaskParser),
     2010: ("2010", BaseParser),
