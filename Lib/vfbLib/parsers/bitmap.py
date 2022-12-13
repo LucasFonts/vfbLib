@@ -11,16 +11,16 @@ logger = logging.getLogger(__name__)
 
 class BaseBitmapParser(BaseParser):
     @classmethod
-    def parse_bitmap_data(cls, datalen) -> List[Any]:
-        data = []
+    def parse_bitmap_data(cls, datalen) -> Dict[str, Any]:
+        bitmap: Dict[str, Any] = {}
         if datalen > 1:
-            mask = cls.read_uint8()
-            data.append(mask)
+            bitmap["mask"] = cls.read_uint8()
+            data = []
             for _ in range(datalen - 1):
                 b = cls.read_uint8()
-                # data.append(num2binary(b, bits=8).replace("0", "| ").replace("1", "|█"))
                 data.append(b)
-        return data
+            bitmap["data"] = data
+        return bitmap
 
 
 class BackgroundBitmapParser(BaseBitmapParser):

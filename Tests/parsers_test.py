@@ -4,10 +4,8 @@ from fontTools.misc.textTools import deHexStr, hexStr
 from io import BytesIO
 from unittest import TestCase
 
-from vfbLib.parsers import (
-    EncodedValueListParser,
-    read_encoded_value,
-)
+from vfbLib.parsers import EncodedValueListParser
+from vfbLib.parsers.value import read_encoded_value
 from vfbLib.parsers.glyph import GlyphParser
 
 
