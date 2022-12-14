@@ -13,13 +13,33 @@ class BaseBitmapParser(BaseParser):
     @classmethod
     def parse_bitmap_data(cls, datalen) -> Dict[str, Any]:
         bitmap: Dict[str, Any] = {}
-        if datalen > 1:
-            bitmap["mask"] = cls.read_uint8()
+        if datalen < 2:
+            logger.error("parse_bitmap_data: Got datalen", datalen)
+            raise ValueError
+
+        if datalen > 2:
+            num_bytes = cls.read_uint8()
+            # bitmap["num_bytes"] = num_bytes
             data = []
-            for _ in range(datalen - 1):
-                b = cls.read_uint8()
-                data.append(b)
-            bitmap["data"] = data
+            for _ in range(num_bytes):
+                data.append(cls.read_uint8())
+            bitmap["bytes"] = data
+
+            extra = []
+            for _ in range(datalen - num_bytes - 1):
+                extra.append(cls.read_uint8())
+
+            if extra:
+                bitmap["extra"] = extra
+
+        else:
+            extra = []
+            for _ in range(2):
+                extra.append(cls.read_uint8())
+
+            if extra:
+                bitmap["extra"] = extra
+
         return bitmap
 
 
@@ -32,7 +52,7 @@ class BackgroundBitmapParser(BaseBitmapParser):
         bitmap["size"] = (read_encoded_value(s), read_encoded_value(s))
         bitmap["pixels"] = (read_encoded_value(s), read_encoded_value(s))
         datalen = read_encoded_value(s)
-        bitmap["len"] = datalen
+        # bitmap["len"] = datalen
         bitmap["data"] = cls.parse_bitmap_data(datalen)
         assert s.read() == b""
         return bitmap
@@ -51,7 +71,7 @@ class GlyphBitmapParser(BaseBitmapParser):
             bitmap["adv"] = (read_encoded_value(s), read_encoded_value(s))
             bitmap["size"] = (read_encoded_value(s), read_encoded_value(s))
             datalen = read_encoded_value(s)
-            bitmap["len"] = datalen
+            # bitmap["len"] = datalen
             bitmap["data"] = cls.parse_bitmap_data(datalen)
             bitmaps.append(bitmap)
         assert s.read() == b""
