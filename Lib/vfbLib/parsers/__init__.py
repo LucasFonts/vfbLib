@@ -5,8 +5,11 @@ import logging
 from fontTools.misc.textTools import hexStr
 from io import BufferedReader, BytesIO
 from struct import unpack
-from typing import Any, Dict, List, Tuple
+from typing import TYPE_CHECKING, Any, Dict, List
 from vfbLib.parsers.value import read_double, read_encoded_value, read_float
+
+if TYPE_CHECKING:
+    from vfbLib.typing import ClassFlagDict
 
 
 logger = logging.getLogger(__name__)
@@ -179,8 +182,8 @@ class GlyphEncodingParser(BaseParser):
 
 class OpenTypeClassFlagsParser(BaseParser):
     @classmethod
-    def _parse(cls) -> Dict[str, Tuple[int, int]]:
-        class_flags: Dict[str, Tuple[int, int]] = {}
+    def _parse(cls) -> ClassFlagDict:
+        class_flags: ClassFlagDict = {}
         num_classes = read_encoded_value(cls.stream)
         for _ in range(num_classes):
             n = read_encoded_value(cls.stream)

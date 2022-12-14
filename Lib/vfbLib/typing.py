@@ -20,6 +20,8 @@ class Anchor(TypedDict):
     y1: NotRequired[int]
 
 
+ClassFlagDict = Dict[str, Tuple[int, int]]
+
 class Component(TypedDict):
     gid: int
     offsetX: List[int]

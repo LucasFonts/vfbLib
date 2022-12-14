@@ -14,22 +14,18 @@ from vfbLib.ufo.info import VfbToUfoInfo
 from vfbLib.ufo.kerning import UfoKerning
 from vfbLib.ufo.paths import draw_glyph, get_master_glyph
 from vfbLib.ufo.pshints import build_ps_glyph_hints, get_master_hints
+from vfbLib.ufo.tth import build_tt_glyph_hints, transform_stem_rounds
 from vfbLib.ufo.typing import (
     TUfoStemPPMsDict,
     TUfoStemsDict,
     TUfoTTZoneDict,
     TUfoTTZonesDict,
 )
-from vfbLib.ufo.vfb2ufo import (
-    TT_GLYPH_LIB_KEY,
-    TT_LIB_KEY,
-    vfb2ufo_alignment_rev,
-    vfb2ufo_command_codes,
-)
+from vfbLib.ufo.vfb2ufo import TT_GLYPH_LIB_KEY, TT_LIB_KEY
 
 if TYPE_CHECKING:
     from fontTools.ufoLib.glifLib import GLIFPointPen
-    from vfbLib.typing import Anchor, GuidePropertyList
+    from vfbLib.typing import Anchor, ClassFlagDict, GuidePropertyList
     from vfbLib.ufo.typing import UfoGroups, UfoMMKerning
 
 
@@ -60,6 +56,7 @@ class VfbToUfoWriter:
         self.groups: UfoGroups = {}
         self.guide_properties: GuidePropertyList = []
         self.info = VfbToUfoInfo()
+        self.kerning_class_flags: ClassFlagDict = {}
         self.num_blue_values = 0
         self.num_other_blues = 0
         self.num_family_blues = 0
@@ -82,6 +79,7 @@ class VfbToUfoWriter:
         self.tt_stem_names: List[str] = []
         self.tt_zones: TUfoTTZonesDict = {}
         self.tt_zone_names: List[str] = []
+        self.zone_names: Dict[str, List[str]] = {}
         self.build_mapping()
         self.build()
 
@@ -322,19 +320,7 @@ class VfbToUfoWriter:
         # TrueType hinting, needs to come after mm_nodes, because it needs
         # access to the point indices.
         if "tth" in data:
-            self.build_tt_glyph_hints(g, data["tth"])
-
-    def transform_stem_rounds(self, data: Dict[str, int], name: str) -> Dict[str, int]:
-        d = {"0": 1}
-        for k, v in data.items():
-            key = str(v)
-            val = int(k)
-            if key in d:
-                logger.error(
-                    f"Error in stem rounding settings for {name}, duplicate ppm {key}."
-                )
-            d[key] = val
-        return d
+            build_tt_glyph_hints(g, data["tth"], self.zone_names, self.tt_stem_names)
 
     def set_created_timestamp(self, value: int) -> None:
         from datetime import datetime  # , timedelta
@@ -351,7 +337,7 @@ class VfbToUfoWriter:
         for d in ("ttStemsH", "ttStemsV"):
             direction_stems = data[d]
             for ds in direction_stems:
-                rounds = self.transform_stem_rounds(ds["round"], d)
+                rounds = transform_stem_rounds(ds["round"], d)
                 stem = {
                     "index": ds["stem"],
                     "round": rounds,
@@ -387,7 +373,7 @@ class VfbToUfoWriter:
                 self.tt_stem_names.append(ds["name"])
 
     def set_tt_zones(self, data: Dict[str, List]) -> None:
-        self.zone_names: Dict[str, List[str]] = {
+        self.zone_names = {
             "ttZonesT": [],
             "ttZonesB": [],
         }
@@ -453,99 +439,6 @@ class VfbToUfoWriter:
         self.assure_tt_lib()
         if self.tt_zones:
             self.lib[TT_LIB_KEY]["zones"] = self.tt_zones
-
-    def make_tt_cmd(self, tt_dict: Dict[str, Any]) -> str:
-        code = tt_dict["code"]
-        cmd = f'    <ttc code="{code}"'
-        for attr in (
-            "point",
-            "point1",
-            "point2",
-            "stem",
-            "zone",
-            "align",
-            "delta",
-            "ppm1",
-            "ppm2",
-        ):
-            if attr in tt_dict:
-                cmd += f' {attr}="{tt_dict[attr]}"'
-        if "round" in tt_dict:
-            cmd += f' round="{str(tt_dict["round"]).lower()}"'
-        cmd += "/>"
-        return cmd
-
-    def build_tt_glyph_hints(
-        self, glyph: VfbToUfoGlyph, data: List[Dict[str, Any]]
-    ) -> None:
-        # Write TT hints into glyph lib.
-        tth = []
-        for cmd in data:
-            code = cmd["cmd"]
-            params = cmd["params"]
-            d: Dict[str, str | bool] = {"code": vfb2ufo_command_codes[code]}
-            if code in ("AlignBottom", "AlignTop"):
-                d["point"] = glyph.get_point_label(params["pt"], code)
-                if code == "AlignBottom":
-                    zd = "ttZonesB"
-                else:
-                    zd = "ttZonesT"
-                d["zone"] = self.zone_names[zd][params["zone"]]
-            elif code in ("AlignH", "AlignV"):
-                d["point"] = glyph.get_point_label(params["pt"], code)
-                if "align" in params:
-                    align = params["align"]
-                    if align > -1:
-                        d["align"] = vfb2ufo_alignment_rev[align]
-            elif code in (
-                "SingleLinkH",
-                "SingleLinkV",
-                "DoubleLinkH",
-                "DoubleLinkV",
-            ):
-                d["point1"] = glyph.get_point_label(params["pt1"], code)
-                d["point2"] = glyph.get_point_label(params["pt2"], code)
-                if "stem" in params:
-                    stem = params["stem"]
-                    if stem == -2:
-                        d["round"] = True
-                    elif stem == -1:
-                        pass
-                    else:
-                        d["stem"] = self.tt_stem_names[stem]
-                if "align" in params:
-                    align = params["align"]
-                    if align > -1:
-                        d["align"] = vfb2ufo_alignment_rev[align]
-            elif code in (
-                "InterpolateH",
-                "InterpolateV",
-            ):
-                d["point"] = glyph.get_point_label(params["pti"], code)
-                d["point1"] = glyph.get_point_label(params["pt1"], code)
-                d["point2"] = glyph.get_point_label(params["pt2"], code)
-                if "align" in params:
-                    align = params["align"]
-                    if align > -1:
-                        d["align"] = vfb2ufo_alignment_rev[align]
-            elif code in (
-                "MDeltaH",
-                "MDeltaV",
-                "FDeltaH",
-                "FDeltaV",
-            ):
-                d["point"] = glyph.get_point_label(params["pt"], code)
-                d["delta"] = params["shift"]
-                d["ppm1"] = params["ppm1"]
-                d["ppm2"] = params["ppm2"]
-            else:
-                logger.error(f"Unknown TT command: {code}")
-
-            tth.append(self.make_tt_cmd(d))
-
-        glyph.lib[TT_GLYPH_LIB_KEY] = (
-            "  <ttProgram>\n" + "\n".join(tth) + "\n  </ttProgram>\n"
-        )
 
     def build(self) -> None:  # noqa: C901
         # Non-MM data
