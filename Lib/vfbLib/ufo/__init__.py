@@ -705,9 +705,9 @@ class VfbToUfoWriter:
             g.lib = self.current_mmglyph.lib
             if self.encode_data_base64:
                 if TT_GLYPH_LIB_KEY in g.lib:
-                    g.lib[TT_GLYPH_LIB_KEY] = b64encode(
-                        g.lib[TT_GLYPH_LIB_KEY].decode("ascii")
-                    )
+                    data = g.lib[TT_GLYPH_LIB_KEY]
+                    if not isinstance(data, bytes):
+                        g.lib[TT_GLYPH_LIB_KEY] = b64encode(data.encode("ascii"))
 
             # Apply master hint positions and widths
 
