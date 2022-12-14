@@ -39,9 +39,8 @@ def build_ps_glyph_hints(
     # https://github.com/adobe-type-tools/psautohint/blob/master/python/psautohint/ufoFont.py
     # https://unifiedfontobject.org/versions/ufo3/glyphs/glif/#publicpostscripthints
     hint_sets = []
-    label = mmglyph.get_point_label(index=0, code="PSHintReplacement", start_count=0)
     stems: List[str | HintTuple] = []
-    hint_set: UfoHintSet = UfoHintSet(pointTag=label, stems=stems)
+    hint_set: UfoHintSet = UfoHintSet(pointTag="0", stems=stems)
     if mmglyph.hintmasks:
         for mask in mmglyph.hintmasks:
             for d in ("h", "v"):
@@ -50,19 +49,26 @@ def build_ps_glyph_hints(
                     hint: HintTuple | str = master_hints[d][hint_index]
                     hint_set["stems"].append(hint)
             if "r" in mask:
+                hint_set["pointTag"] = mmglyph.get_point_label(
+                    index=int(hint_set["pointTag"]),
+                    code="PSHintReplacement",
+                    start_count=0,
+                )
                 hint_sets.append(hint_set)
                 node_index = mask["r"]
                 # FIXME: What do negative values mean?
                 if node_index < 0:
                     node_index = abs(node_index) - 1
-                label = mmglyph.get_point_label(
-                    index=node_index, code="PSHintReplacement"
-                )
                 stems = []
-                hint_set = UfoHintSet(pointTag=label, stems=stems)
+                hint_set = UfoHintSet(pointTag=str(node_index), stems=stems)
 
         if hint_set["stems"]:
             # Append the last hint set
+            hint_set["pointTag"] = mmglyph.get_point_label(
+                index=int(hint_set["pointTag"]),
+                code="PSHintReplacement",
+                start_count=0,
+            )
             hint_sets.append(hint_set)
     else:
         # Only one hint set, always make a hint set with first point
@@ -70,6 +76,11 @@ def build_ps_glyph_hints(
             for hint in master_hints[d]:
                 hint_set["stems"].append(hint)
         if hint_set["stems"]:
+            hint_set["pointTag"] = mmglyph.get_point_label(
+                index=int(hint_set["pointTag"]),
+                code="PSHintReplacement",
+                start_count=0,
+            )
             hint_sets = [hint_set]
 
     # Reformat stems from sortable tuples to str required by UFO spec
