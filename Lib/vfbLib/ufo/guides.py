@@ -43,10 +43,22 @@ def apply_guide_properties(
     guides: List[UfoGuide], properties: GuidePropertyList
 ) -> None:
     # Update the guides with names and colors from properties
+    num_guides = len(guides)
     for prop in properties:
         guide_index = prop["index"]
         assert isinstance(guide_index, int)
-        guide = guides[guide_index - 1]  # index is 1-based
+        target_guide_index = guide_index - 1  # index is 1-based
+        if target_guide_index >= num_guides:
+            pp = {k: v for k, v in prop.items() if k != "index"}
+            logger.warning(
+                "Captain, we lost a guide somewhere. "
+                f"Looked for index {target_guide_index}, but it is outside of "
+                f"guide array of length {num_guides}:\n{guides}\n"
+                f"Properties meant to be applied were:\n{pp}.\nSkipping properties."
+            )
+            continue
+
+        guide = guides[target_guide_index]
         if "color" in prop:
             color = prop["color"]
             assert isinstance(color, str)
