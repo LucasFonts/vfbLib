@@ -133,9 +133,10 @@ def vfb2ufo():
     )
     args = parser.parse_args()
     if args:
+        vfb_path = Path(args.inputpath[0])
         if not args.silent:
             print(parser.description)
-        vfb_path = Path(args.inputpath[0])
+            print(f"Reading file {vfb_path} ...")
         reader = read_vfb(vfb_path, minimal=args.minimal)
         if args.path:
             out_path = (Path(args.path[0]) / vfb_path.name).with_suffix(".ufo")
