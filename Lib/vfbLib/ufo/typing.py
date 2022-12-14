@@ -6,7 +6,7 @@ from __future__ import annotations
 # except ImportError:
 from typing_extensions import NotRequired, TypedDict
 
-from typing import Dict, List, Tuple
+from typing import Dict, List, Optional, Tuple
 from vfbLib.typing import HintTuple
 
 
@@ -23,7 +23,7 @@ UfoComponent = Tuple[str, Tuple[float, float, float, float, int, int]]
 UfoGroups = Dict[str, List[str]]  # name, glyphs
 UfoMasterKerning = Dict[Tuple[str, str], int]  # Lstr, Rstr, value
 UfoMMKerning = Dict[Tuple[str, int], List[int]]  # Lstr, Rid, master values
-UfoSegment = Tuple[str | None, bool, str | None, UfoPoint]
+UfoSegment = Tuple[Optional[str], bool, Optional[str], UfoPoint]
 UfoContour = List[UfoSegment]
 TUfoTTZonesDict = Dict[str, TUfoTTZoneDict]
 
