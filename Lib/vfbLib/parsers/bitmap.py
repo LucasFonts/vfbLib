@@ -87,6 +87,7 @@ class BackgroundBitmapParser(BaseBitmapParser):
         datalen = read_encoded_value(s)
         # bitmap["len"] = datalen
         bitmap["data"] = cls.parse_bitmap_data(datalen)
+        # bitmap["preview"] = pprint_bitmap(bitmap)
         assert s.read() == b""
         return bitmap
 
@@ -106,6 +107,7 @@ class GlyphBitmapParser(BaseBitmapParser):
             datalen = read_encoded_value(s)
             # bitmap["len"] = datalen
             bitmap["data"] = cls.parse_bitmap_data(datalen)
+            # bitmap["preview"] = pprint_bitmap(bitmap, invert=True)
             bitmaps.append(bitmap)
         assert s.read() == b""
         return bitmaps
