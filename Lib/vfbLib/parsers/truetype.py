@@ -121,8 +121,8 @@ class TrueTypeInfoParser(BaseParser):
                     [
                         info_names.get(k, str(k)),
                         [
-                            read_encoded_value(s),
-                            read_encoded_value(s),
+                            read_encoded_value(s, signed=False),
+                            read_encoded_value(s, signed=False),
                         ],
                     ]
                 )
