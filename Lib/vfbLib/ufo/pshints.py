@@ -77,7 +77,7 @@ def build_ps_glyph_hints(
         hint_set["stems"] = [
             f"{h[0]} {h[1]} {h[2]}"
             for h in sorted(set(hint_set["stems"]))
-            if isinstance(h, tuple)
+            # if isinstance(h, tuple)
         ]
 
     if hint_sets:
