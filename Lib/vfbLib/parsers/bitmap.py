@@ -12,34 +12,38 @@ from vfbLib.parsers import BaseParser, read_encoded_value
 logger = logging.getLogger(__name__)
 
 
-def pprint_bitmap(bitmap, datalen) -> List[str]:
-    # print(bitmap)
-    mask = bitmap["mask"]
+def pprint_bitmap(bitmap, invert=False) -> List[str]:
+    print(bitmap)
+    w, h = bitmap["size_pixels"]
     data = bitmap["data"]
-    b: List[str] = []
-    for v in data:
-        b.append(num2binary(v, bits=8).replace("0", "  ").replace("1", "██"))
-    # i += 1
-    # cols = bitmap["size"][0]
-    # col_bytes = cols // 8
-    # print("col_bytes", col_bytes)
-    # rest = cols % 8
-    # if rest > 0:
-    #     col_bytes += 1
-    # print(f"Cols: {cols}, bytes per line: {col_bytes}")
-    # line = ""
-    # for j in range(col_bytes):
-    #     print("byte", j)
-    #     if i < datalen:
-    #         b = cls.read_uint8()
-    #         i += 1
-    #         pixels = num2binary(b, bits=8).replace("0", "  ").replace("1", "██")
-    #         line += pixels
-    #     else:
-    #         print("Hit end of data")
-    # print(f"|{line}|")
-    # data.append(line)
-    return b
+    col_bytes = w // 8
+    rest = w % 8
+    if rest > 0:
+        col_bytes += 1
+    col_bytes = max(col_bytes, 2)
+    # print(f"Cols: {w}, bytes per line: {col_bytes}")
+    if "bytes" not in data:
+        b = []
+    else:
+        b = data["bytes"]
+    gfx = []
+    for y in range(0, h * col_bytes, col_bytes):
+        col = ""
+        for x in range(col_bytes):
+            i = y + x
+            if i < len(b):
+                byte = b[i]
+            else:
+                byte = 0
+
+            # print(f"Index: {i}, value: {byte}")
+            col += num2binary(byte, bits=8).replace("0", "  ").replace("1", "██")
+        gfx.append(col[: w * 2])
+    if invert:
+        gfx.reverse()
+    print("\n".join(gfx))
+    print(gfx)
+    return gfx
 
 
 class BaseBitmapParser(BaseParser):
