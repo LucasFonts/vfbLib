@@ -3,6 +3,7 @@ from __future__ import annotations
 import logging
 
 from fontTools.misc.textTools import hexStr, num2binary
+
 # from math import log2
 # from struct import unpack
 from typing import Any, Dict, List
@@ -53,7 +54,7 @@ class BaseBitmapParser(BaseParser):
         if datalen < 2:
             logger.error("parse_bitmap_data: Got datalen", datalen)
             raise ValueError
-        
+
         rest = 2
 
         if datalen > 2:
