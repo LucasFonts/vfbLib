@@ -510,8 +510,11 @@ class VfbToUfoWriter:
                                 )
                                 break
                     else:
-                        self.glyph_masters[name] = self.current_glyph
-                        self.glyphOrder.append(name)
+                        if name is None:
+                            logger.error(f"Glyph without name.")
+                        else:
+                            self.glyph_masters[name] = self.current_glyph
+                            self.glyphOrder.append(name)
                 self.build_mm_glyph(data)
             elif name == "Background":  # 2007
                 # Bitmap background
