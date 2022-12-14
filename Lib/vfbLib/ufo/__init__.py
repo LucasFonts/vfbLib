@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import logging
 
+from base64 import b64encode
 from fontTools.ufoLib import UFOFileStructure, UFOWriter
 from fontTools.ufoLib.glifLib import GlyphSet
 from pathlib import Path
@@ -46,12 +47,18 @@ def binaryToIntList(value: int, start: int = 0):
 
 
 class VfbToUfoWriter:
-    def __init__(self, json: List[List[Any]], skip_missing_group_glyphs=False) -> None:
+    def __init__(
+        self,
+        json: List[List[Any]],
+        skip_missing_group_glyphs=False,
+        base64=False,
+    ) -> None:
         """
         Serialize the JSON structure to UFO(s)
         """
         self.json = json
         self.skip_missing_group_glyphs = skip_missing_group_glyphs
+        self.encode_data_base64 = base64
 
         self.features_classes = ""
         self.features = ""
@@ -696,6 +703,11 @@ class VfbToUfoWriter:
                     g.anchors[j]["x"] = anchor["x"][index]
                     g.anchors[j]["y"] = anchor["y"][index]
             g.lib = self.current_mmglyph.lib
+            if self.encode_data_base64:
+                if TT_GLYPH_LIB_KEY in g.lib:
+                    g.lib[TT_GLYPH_LIB_KEY] = b64encode(
+                        g.lib[TT_GLYPH_LIB_KEY].encode("ascii")
+                    )
 
             # Apply master hint positions and widths
 

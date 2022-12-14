@@ -145,13 +145,16 @@ def vfb2ufo():
             out_path = (Path(args.path[0]) / vfb_path.name).with_suffix(suffix)
         else:
             out_path = vfb_path.with_suffix(suffix)
-        writer = VfbToUfoWriter(reader.data, skip_missing_group_glyphs=args.minimal)
+        writer = VfbToUfoWriter(
+            reader.data,
+            skip_missing_group_glyphs=args.minimal,
+            base64=args.base64,
+        )
         writer.write(
             out_path,
             overwrite=args.force_overwrite,
             silent=args.silent,
             ufoz=False,  # FIXME
-            b64=args.base64,
         )
     else:
         parser.print_help()
