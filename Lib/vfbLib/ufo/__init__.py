@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import logging
 
-from fontTools.ufoLib import UFOWriter
+from fontTools.ufoLib import UFOFileStructure, UFOWriter
 from fontTools.ufoLib.glifLib import GlyphSet
 from pathlib import Path
 from shutil import rmtree
@@ -646,7 +646,9 @@ class VfbToUfoWriter:
         )
         draw_glyph(contours, components, pen)
 
-    def write(self, out_path: Path, overwrite=False, silent=False) -> None:
+    def write(
+        self, out_path: Path, overwrite=False, silent=False, ufoz=False, b64=False
+    ) -> None:
         self.ufo_groups = transform_groups(
             self.groups,
             self.kerning_class_flags,
@@ -655,10 +657,10 @@ class VfbToUfoWriter:
         )
         self.ufo_kerning = UfoKerning(self.glyphOrder, self.ufo_groups, self.mm_kerning)
         for i in range(len(self.masters)):
-            self.writer_master(i, out_path, overwrite, silent)
+            self.writer_master(i, out_path, overwrite, silent, ufoz)
 
     def writer_master(
-        self, index: int, out_path: Path, overwrite=False, silent=False
+        self, index: int, out_path: Path, overwrite=False, silent=False, ufoz=False
     ) -> None:
         self.master_index = index
 
@@ -676,7 +678,11 @@ class VfbToUfoWriter:
         if not silent:
             print(f"Processing font: {self.info.ui_name.strip()}, master {index}")
 
-        writer = UFOWriter(master_path, fileCreator="com.lucasfonts.vfb3ufo")
+        strct = UFOFileStructure.ZIP if ufoz else None
+        writer = UFOWriter(
+            master_path, fileCreator="com.lucasfonts.vfb3ufo", structure=strct
+        )
+        # FIXME: In ufoz, we can't make a directory
         glyphs_path = master_path / "glyphs"
         glyphs_path.mkdir()
         gs = GlyphSet(glyphs_path)

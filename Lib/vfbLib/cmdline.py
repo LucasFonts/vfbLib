@@ -138,11 +138,20 @@ def vfb2ufo():
             print(parser.description)
             print(f"Reading file {vfb_path} ...")
         reader = read_vfb(vfb_path, minimal=args.minimal)
+        suffix = ".ufo"
+        # if args.zip:
+        #     suffix += "z"
         if args.path:
-            out_path = (Path(args.path[0]) / vfb_path.name).with_suffix(".ufo")
+            out_path = (Path(args.path[0]) / vfb_path.name).with_suffix(suffix)
         else:
-            out_path = vfb_path.with_suffix(".ufo")
+            out_path = vfb_path.with_suffix(suffix)
         writer = VfbToUfoWriter(reader.data, skip_missing_group_glyphs=args.minimal)
-        writer.write(out_path, overwrite=args.force_overwrite, silent=args.silent)
+        writer.write(
+            out_path,
+            overwrite=args.force_overwrite,
+            silent=args.silent,
+            ufoz=False,  # FIXME
+            b64=args.base64,
+        )
     else:
         parser.print_help()
