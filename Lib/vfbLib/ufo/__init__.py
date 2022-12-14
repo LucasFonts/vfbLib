@@ -9,6 +9,7 @@ from shutil import rmtree
 from typing import TYPE_CHECKING, Any, Dict, List, Tuple
 from ufonormalizer import normalizeUFO
 from vfbLib.ufo.glyph import VfbToUfoGlyph, UfoGlyph
+from vfbLib.ufo.groups import transform_groups
 from vfbLib.ufo.guides import apply_guide_properties, get_master_guides
 from vfbLib.ufo.info import VfbToUfoInfo
 from vfbLib.ufo.kerning import UfoKerning
@@ -147,65 +148,6 @@ class VfbToUfoWriter:
             "OpenTypeOS2WinAscent": "openTypeOS2WinAscent",
             "OpenTypeOS2WinDescent": "openTypeOS2WinDescent",
         }
-
-    def transform_groups(self) -> UfoGroups:
-        # Rename kerning groups by applying the side flags and using the key
-        # glyph for naming
-        FIRST = 2**10
-        SECOND = 2**11
-        groups: UfoGroups = {}
-        for name, glyphs in self.groups.items():
-            if name.startswith("_"):
-                # Kerning group
-
-                # Check for missing glyphs
-                missing = [n for n in glyphs if n not in self.glyphOrder]
-                num_missing = len(missing)
-                num_glyphs = len(glyphs)
-                if missing:
-                    if num_missing == num_glyphs:
-                        logger.warning(
-                            f"All glyphs in kerning group '{name}' are missing from "
-                            f"the font: {', '.join(missing)}"
-                        )
-                    else:
-                        logger.warning(
-                            f"{num_missing} of {num_glyphs} glyphs in kerning group "
-                            f"'{name}' are missing from the font: {', '.join(missing)}"
-                        )
-                    if self.skip_missing_group_glyphs:
-                        glyphs = list(set(glyphs) - set(missing))
-                        if not glyphs:
-                            logger.warning("Not adding empty kerning group to the UFO.")
-                            continue
-
-                key_glyph = glyphs[0]  # Keyglyph is used for group name
-                if key_glyph in missing:
-                    if num_missing != num_glyphs:
-                        logger.warning(
-                            f"Key glyph '{key_glyph}' for group '{name}' is missing "
-                            "from the font."
-                        )
-
-                # Sort group glyphs by glyphOrder
-                if not missing:
-                    glyphs.sort(key=lambda n: self.glyphOrder.index(n))
-
-                if name in self.kerning_class_flags:
-                    flags = self.kerning_class_flags[name][0]
-                else:
-                    flags = FIRST + SECOND
-                for side, sidename in ((FIRST, 1), (SECOND, 2)):
-                    if flags & side:
-                        ufoname = f"public.kern{sidename}.{key_glyph}"
-                        if ufoname in groups:
-                            logger.warning(f"Duplicate kern{sidename} group: {ufoname}")
-                        else:
-                            groups[ufoname] = glyphs
-            else:
-                # Pass non-kerning groups verbatim
-                groups[name] = glyphs
-        return groups
 
     def add_ot_class(self, data: str) -> None:
         if ":" not in data:
@@ -696,7 +638,12 @@ class VfbToUfoWriter:
         draw_glyph(contours, components, pen)
 
     def write(self, out_path: Path, overwrite=False, silent=False) -> None:
-        self.ufo_groups = self.transform_groups()
+        self.ufo_groups = transform_groups(
+            self.groups,
+            self.kerning_class_flags,
+            self.glyphOrder,
+            self.skip_missing_group_glyphs,
+        )
         self.ufo_kerning = UfoKerning(self.glyphOrder, self.ufo_groups, self.mm_kerning)
         for i in range(len(self.masters)):
             self.writer_master(i, out_path, overwrite, silent)
