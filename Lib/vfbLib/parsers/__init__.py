@@ -132,6 +132,22 @@ class EncodedValueListParser(BaseParser):
                 return values
 
 
+class EncodedValueListWithCountParser(BaseParser):
+    """
+    A parser that reads data as Yuri's optimized encoded values. The list of values is
+    preceded by a count value that specifies how many values should be read.
+    """
+
+    @classmethod
+    def _parse(cls) -> Dict[str, List[int]]:
+        count = read_encoded_value(cls.stream)
+        values = {"values": []}
+        for _ in range(count):
+            val = read_encoded_value(cls.stream)
+            values["values"].append(val)
+        return values
+
+
 class GaspParser(BaseParser):
     """
     A parser that reads data as an array representing Gasp table values.

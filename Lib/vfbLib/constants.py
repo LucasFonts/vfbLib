@@ -2,8 +2,9 @@ from __future__ import annotations
 
 from vfbLib.parsers import (
     BaseParser,
-    EncodedValueParser,
+    # EncodedValueParser,
     EncodedValueListParser,
+    EncodedValueListWithCountParser,
     EncodedKeyValuesParser,
     EncodedKeyValuesParser1742,
     GaspParser,
@@ -75,7 +76,7 @@ parser_classes = {
     1064: ("manufacturerURL", StringParser),
     1065: ("width_name", StringParser),
     1066: ("Default Glyph", StringParser),
-    1068: ("1068", EncodedValueListParser),
+    1068: ("1068", EncodedValueListWithCountParser),
     1069: ("License", StringParser),
     1070: ("License URL", StringParser),
     1090: ("FOND Family ID", IntParser),
