@@ -6,9 +6,7 @@ from fontTools.misc.textTools import deHexStr, hexStr
 from io import BytesIO
 from unittest import TestCase
 
-from vfbLib.parsers import EncodedValueListParser
 from vfbLib.parsers.value import read_encoded_value
-from vfbLib.parsers.glyph import GlyphParser
 
 
 class ValueDecoderTest(TestCase):
@@ -79,19 +77,3 @@ class ValueDecoderTest(TestCase):
 
     def test_0xffffffefff(self):
         self.expect("ffffffefff", -4097)
-
-
-class EncodedValueListParserTest(TestCase):
-    def expect(self, encoded, decoded):
-        data = deHexStr(encoded)
-        assert EncodedValueListParser.parse(BytesIO(data), len(data)) == decoded
-
-    def test_links_1(self):
-        self.expect("8c8d898b", [1, 2, -2, 0])
-
-
-class GlyphParserTest(TestCase):
-    def test_glyph_1(self):
-        data = b'\x01\t\x07\x01\x01\x91dagger\x08\x8c\xf70\xa5\x00\xf7}\xa5\x01\x8b\xf7t\x01\xa5\xf7W\x01\xac\x8b\x01\xa5\xfbW\x01\x8b\xfbt\x01q\xfbv\x01j\x8b\x00\xfbg\xf9h\x01\xe2\x8b\x01\xf1o\x01\x8bo\x01%o\x014\x8b\x00\xf7M\xf7q\x01\x8b\xe2\x01\xe0\x8b\x01\x8b4\x01q\xfb"\x01j\x8b\x00\xc2X\x01\x8b\xa7\x01\xf1\xa7\x01\xe2\x8b\x01\x8b7\x014\x8b\x02\xf8\xbb\x8b\x03\x8e\xf9\x80w\xfbGv\xf8L\xdf\x8c\xf7}\xe0\x8b\x04\x8b\x8b\n\xa3\x90\x01\x9a\x8e\x02\x92\x8c\x06\x93\x98\x8a\x04\x93\xa1\x8a\x8a\x04\x98\xa4\x8a\x8a\x8b\x8b\x8b\x0f'
-        print(hexStr(data))
-        result = GlyphParser.parse(BytesIO(data), len(data))
