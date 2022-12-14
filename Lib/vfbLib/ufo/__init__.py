@@ -66,6 +66,7 @@ class VfbToUfoWriter:
         self.num_family_other_blues = 0
         self.num_stem_snap_h = 0
         self.num_stem_snap_v = 0
+        self.mm_guides = None
         self.mm_kerning: UfoMMKerning = {}
         self.kerning: Dict[Tuple[str, str], int] = {}
         self.lib: Dict[str, Any] = {}
