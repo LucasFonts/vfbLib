@@ -234,7 +234,6 @@ class VfbToUfoWriter:
 
     def build_mm_glyph(self, data: Dict[str, Any]) -> None:
         g = self.current_glyph = VfbToUfoGlyph()
-        g = self.current_glyph
         g.lib = {}
         g.name = data["name"]
         g.unicodes = []
