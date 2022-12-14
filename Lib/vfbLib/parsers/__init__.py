@@ -201,4 +201,4 @@ class StringParser(BaseParser):
 
     @classmethod
     def _parse(cls):
-        return cls.stream.read().decode("cp1252").strip("\u0000")
+        return cls.stream.read().decode("cp1252").strip("\u0000 ")
