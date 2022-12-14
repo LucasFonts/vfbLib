@@ -821,7 +821,7 @@ class VfbToUfoWriter:
                 raise FileExistsError
 
         if not silent:
-            logger.error(f"Processing font: {self.info.ui_name}, master {index}")
+            print(f"Processing font: {self.info.ui_name.strip()}, master {index}")
 
         writer = UFOWriter(master_path, fileCreator="com.lucasfonts.vfb3ufo")
         glyphs_path = master_path / "glyphs"
