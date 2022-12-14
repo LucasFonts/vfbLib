@@ -17,6 +17,7 @@ from vfbLib.ufo.paths import draw_glyph, get_master_glyph
 from vfbLib.ufo.pshints import build_ps_glyph_hints, get_master_hints
 from vfbLib.ufo.tth import build_tt_glyph_hints, transform_stem_rounds
 from vfbLib.ufo.typing import (
+    TUfoGaspRecDict,
     TUfoStemPPMsDict,
     TUfoStemsDict,
     TUfoTTZoneDict,
@@ -26,7 +27,7 @@ from vfbLib.ufo.vfb2ufo import TT_GLYPH_LIB_KEY, TT_LIB_KEY
 
 if TYPE_CHECKING:
     from fontTools.ufoLib.glifLib import GLIFPointPen
-    from vfbLib.typing import Anchor, ClassFlagDict, GuidePropertyList
+    from vfbLib.typing import Anchor, ClassFlagDict, GaspList, GuidePropertyList
     from vfbLib.ufo.typing import UfoGroups, UfoMMKerning
 
 
@@ -275,6 +276,17 @@ class VfbToUfoWriter:
         d = datetime.fromtimestamp(time())
         self.info.openTypeHeadCreated = d.strftime("%Y/%m/%d %H:%M:%S")
 
+    def set_tt_gasp(self, data: GaspList) -> None:
+        gasp: List[TUfoGaspRecDict] = []
+        for rec in data:
+            gasp.append(
+                TUfoGaspRecDict(
+                    rangeMaxPPEM=rec["maxPpem"],
+                    rangeGaspBehavior=binaryToIntList(rec["flags"]),
+                )
+            )
+        self.info.openTypeGaspRangeRecords = gasp
+
     def set_tt_stem_ppms(self, data: Dict[str, List[Dict[str, Any]]]) -> None:
         for d in ("ttStemsH", "ttStemsV"):
             direction_stems = data[d]
@@ -430,15 +442,7 @@ class VfbToUfoWriter:
             elif name == "TrueType Info":  # 1264
                 self.assign_tt_info(data)
             elif name == "Gasp Ranges":  # 1265
-                gasp: List[Dict[str, int | List[int]]] = []
-                for rec in data:
-                    gasp.append(
-                        {
-                            "rangeMaxPPEM": rec["maxPpem"],
-                            "rangeGaspBehavior": binaryToIntList(rec["flags"]),
-                        }
-                    )
-                self.info.openTypeGaspRangeRecords = gasp
+                self.set_tt_gasp(data)
             elif name == "Selection":  # 1267
                 # Bit 0 = Regular
                 # Bit 5 = Bold

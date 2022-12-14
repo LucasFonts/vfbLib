@@ -2,11 +2,11 @@ from __future__ import annotations
 
 import logging
 
-from typing import TYPE_CHECKING, Dict, List
+from typing import TYPE_CHECKING, List
 
 
 if TYPE_CHECKING:
-    from vfbLib.ufo.typing import UfoGuide
+    from vfbLib.ufo.typing import TUfoGaspRecDict, UfoGuide
 
 
 logger = logging.getLogger(__name__)
@@ -18,7 +18,7 @@ class VfbToUfoInfo:
         self.familyName = "Untitled"
         self.guidelines: List[UfoGuide] = []
         self.italicAngle: float | int = 0
-        self.openTypeGaspRangeRecords: List[Dict[str, int | List[int]]] = []
+        self.openTypeGaspRangeRecords: List[TUfoGaspRecDict] = []
         self.openTypeHeadCreated: str = ""
         self.openTypeHeadFlags: List[int] = []
         self.openTypeHheaLineGap = 0

@@ -22,12 +22,16 @@ class Anchor(TypedDict):
 
 ClassFlagDict = Dict[str, Tuple[int, int]]
 
+
 class Component(TypedDict):
     gid: int
     offsetX: List[int]
     offsetY: List[int]
     scaleX: List[float]
     scaleY: List[float]
+
+
+GaspList = List[Dict[str, int]]
 
 
 class GdefDict(TypedDict):

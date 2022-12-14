@@ -28,6 +28,11 @@ UfoContour = List[UfoSegment]
 TUfoTTZonesDict = Dict[str, TUfoTTZoneDict]
 
 
+class TUfoGaspRecDict(TypedDict):
+    rangeMaxPPEM: int
+    rangeGaspBehavior: List[int]
+
+
 class TUfoStemsDict(TypedDict):
     ttStemsH: List
     ttStemsV: List
