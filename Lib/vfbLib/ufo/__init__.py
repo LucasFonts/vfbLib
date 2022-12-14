@@ -525,7 +525,7 @@ class VfbToUfoWriter:
                                 break
                     else:
                         if name is None:
-                            logger.error(f"Glyph without name.")
+                            logger.error("Glyph without name.")
                         else:
                             self.glyph_masters[name] = self.current_glyph
                             self.glyphOrder.append(name)

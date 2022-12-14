@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import logging
 
-from fontTools.misc.textTools import hexStr, num2binary
+from fontTools.misc.textTools import num2binary
 
 # from math import log2
 # from struct import unpack
