@@ -48,11 +48,13 @@ def binaryToIntList(value: int, start: int = 0):
 
 
 class VfbToUfoWriter:
-    def __init__(self, json: List[List[Any]]) -> None:
+    def __init__(self, json: List[List[Any]], skip_missing_group_glyphs=False) -> None:
         """
         Serialize the JSON structure to UFO(s)
         """
         self.json = json
+        self.skip_missing_group_glyphs = skip_missing_group_glyphs
+
         self.features_classes = ""
         self.features = ""
         self.groups: UfoGroups = {}
@@ -155,9 +157,40 @@ class VfbToUfoWriter:
         groups: UfoGroups = {}
         for name, glyphs in self.groups.items():
             if name.startswith("_"):
+                # Kerning group
+
+                # Check for missing glyphs
+                missing = [n for n in glyphs if n not in self.glyphOrder]
+                num_missing = len(missing)
+                num_glyphs = len(glyphs)
+                if missing:
+                    if num_missing == num_glyphs:
+                        logger.warning(
+                            f"All glyphs in kerning group '{name}' are missing from "
+                            f"the font: {', '.join(missing)}"
+                        )
+                    else:
+                        logger.warning(
+                            f"{num_missing} of {num_glyphs} glyphs in kerning group "
+                            f"'{name}' are missing from the font: {', '.join(missing)}"
+                        )
+                    if self.skip_missing_group_glyphs:
+                        glyphs = list(set(glyphs) - set(missing))
+                        if not glyphs:
+                            logger.warning("Not adding empty kerning group to the UFO.")
+                            continue
+
                 key_glyph = glyphs[0]  # Keyglyph is used for group name
+                if key_glyph in missing:
+                    if num_missing != num_glyphs:
+                        logger.warning(
+                            f"Key glyph '{key_glyph}' for group '{name}' is missing "
+                            "from the font."
+                        )
+
                 # Sort group glyphs by glyphOrder
-                glyphs.sort(key=lambda n: self.glyphOrder.index(n))
+                if not missing:
+                    glyphs.sort(key=lambda n: self.glyphOrder.index(n))
 
                 if name in self.kerning_class_flags:
                     flags = self.kerning_class_flags[name][0]

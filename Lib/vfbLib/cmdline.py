@@ -129,7 +129,7 @@ def vfb2ufo():
         "--minimal",
         action="store_true",
         default=False,
-        help="parse only minimal amount of data",
+        help="parse only minimal amount of data, drop missing glyphs from groups, etc.",
     )
     args = parser.parse_args()
     if args:
@@ -142,7 +142,7 @@ def vfb2ufo():
             out_path = (Path(args.path[0]) / vfb_path.name).with_suffix(".ufo")
         else:
             out_path = vfb_path.with_suffix(".ufo")
-        writer = VfbToUfoWriter(reader.data)
+        writer = VfbToUfoWriter(reader.data, skip_missing_group_glyphs=args.minimal)
         writer.write(out_path, overwrite=args.force_overwrite, silent=args.silent)
     else:
         parser.print_help()
