@@ -275,6 +275,10 @@ class VfbToUfoWriter:
         d = datetime.fromtimestamp(time())
         self.info.openTypeHeadCreated = d.strftime("%Y/%m/%d %H:%M:%S")
 
+    def set_glyph_background(self, data: Dict[str, Any]) -> None:
+        assert self.current_glyph is not None
+        self.current_glyph.lib["com.fontlab.v5.background"] = data
+
     def set_tt_gasp(self, data: GaspList) -> None:
         gasp: List[TUfoGaspRecDict] = []
         for rec in data:
@@ -519,9 +523,8 @@ class VfbToUfoWriter:
                             self.glyph_masters[name] = self.current_glyph
                             self.glyphOrder.append(name)
                 self.build_mm_glyph(data)
-            elif name == "Background":  # 2007
-                # Bitmap background
-                pass
+            elif name == "Background Bitmap":  # 2007
+                self.set_glyph_background(data)
             elif name == "Links":  # 2008
                 assert self.current_glyph is not None
                 self.current_glyph.links = data
