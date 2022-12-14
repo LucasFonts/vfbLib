@@ -428,7 +428,7 @@ class VfbToUfoWriter:
             self.tt_zones[zone_name]["delta"] = {str(k): v for k, v in deltas.items()}
 
     def build_tt_stems_lib(self) -> None:
-        lib = self.lib[TT_LIB_KEY]["stems"] = {}
+        lib = {}
         for d in ("ttStemsH", "ttStemsV"):
             i = 0
             direction_stems = self.stems[d]
@@ -439,13 +439,15 @@ class VfbToUfoWriter:
                     dname = "v" if d == "ttStemsH" else "h"
                     name = "%s%02i" % (dname, i)
                     i += 1
-                if name in self.lib[TT_LIB_KEY]["stems"]:
+                if name in lib:
                     logger.error(
                         f"ERROR: Duplicate TrueType stem name '{name}'. "
                         "Make stem names unique in VFB."
                     )
                     raise KeyError
                 lib[name] = stem
+        if lib:
+            self.lib[TT_LIB_KEY]["stems"] = lib
 
     def build_tt_zones_lib(self) -> None:
         self.assure_tt_lib()
@@ -740,6 +742,8 @@ class VfbToUfoWriter:
         self.assure_tt_lib()
         self.build_tt_stems_lib()
         self.build_tt_zones_lib()
+        if not self.lib[TT_LIB_KEY]:
+            del self.lib[TT_LIB_KEY]
 
     def get_master_info(self, master_index: int = 0) -> VfbToUfoInfo:
         # Update the info with master-specific values
