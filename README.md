@@ -65,6 +65,8 @@ options:
   -p PATH, --path PATH  output folder
   -fo, --force-overwrite
                         force overwrite
+  -64, --base64         write GLIF lib 'data' section using base64 (recommended)
+  -s, --silent          no display (silent mode)
 
 Additional options:
 
@@ -72,8 +74,6 @@ Additional options:
 
 Unimplemented options:
 
-  -64, --base64         write GLIF lib 'data' section using base64 (recommended)
-  -s, --silent          no display (silent mode)
   -ttx, --ttx           convert binary OpenType Layout data using TTX-like format
   -z, --zip             write UFOZ (compressed UFO)
 ```
