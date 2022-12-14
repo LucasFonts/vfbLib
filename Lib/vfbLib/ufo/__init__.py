@@ -29,7 +29,7 @@ from vfbLib.ufo.vfb2ufo import (
 
 if TYPE_CHECKING:
     from fontTools.ufoLib.glifLib import GLIFPointPen
-    from vfbLib.typing import GuidePropertyList
+    from vfbLib.typing import Anchor, GuidePropertyList
     from vfbLib.ufo.typing import UfoGroups, UfoMMKerning
 
 
@@ -704,13 +704,13 @@ class VfbToUfoWriter:
                     assert self.current_glyph is not None
                     self.current_glyph.anchors = []
                     for anchor in data["anchors"]:
-                        self.current_glyph.anchors.append(
-                            {
-                                "name": anchor["name"],
-                                "x": anchor["x"],
-                                "y": anchor["y"],
-                            }
-                        )
+                        a: Anchor = {
+                            "x": anchor["x"],
+                            "y": anchor["y"],
+                        }
+                        if "name" in anchor:
+                            a["name"] = anchor["name"]
+                        self.current_glyph.anchors.append(a)
             elif name == "Glyph Anchors Supplemental":  # 2020
                 pass
             elif name == "Unicode Ranges":  # 2021
