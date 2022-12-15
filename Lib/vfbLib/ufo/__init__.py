@@ -753,4 +753,4 @@ class VfbToUfoWriter:
             writer.writeFeatures(features)
         writer.writeLib(self.lib)
         writer.close()
-        normalizeUFO(ufoPath=master_path, onlyModified=False)
+        normalizeUFO(ufoPath=master_path, onlyModified=False, writeModTimes=False)

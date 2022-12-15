@@ -124,7 +124,7 @@ def normalize_ufo(
             if filepath.suffix == ".ufoz":
                 filepath = filepath.with_suffix(".ufo")
         f.save(path=filepath, formatVersion=3, structure=structure)
-        normalizeUFO(ufoPath=filepath, onlyModified=False)
+        normalizeUFO(ufoPath=filepath, onlyModified=False, writeModTimes=False)
         if structure == "package":
             normalized_file.touch()
 
