@@ -93,7 +93,7 @@ parser_classes = {
     1133: ("Type 1 XUIDs", IntListParser),
     1134: ("Type 1 XUIDs Count", IntParser),
     1135: ("upm", IntParser),
-    1136: ("1136", EncodedValueListParser),
+    1136: ("PCLT Table", EncodedValueListParser),
     1137: ("tsn", StringParser),
     1138: ("Name Records", NameRecordsParser),
     1139: ("OT Mac Name", StringParser),
@@ -156,7 +156,7 @@ parser_classes = {
     2018: ("Glyph GDEF Data", GlyphGDEFParser),
     2020: ("Glyph Anchors Supplemental", GlyphAnchorsSuppParser),
     2021: ("Unicode Ranges", IntParser),
-    2022: ("2022", BaseParser),
+    2022: ("Export PCLT Table", IntParser),
     2023: ("2023", EncodedValueListParser),  # Glyph
     2024: ("OpenType Metrics Class Flags", OpenTypeClassFlagsParser),
     2025: ("fontNote", StringParser),
