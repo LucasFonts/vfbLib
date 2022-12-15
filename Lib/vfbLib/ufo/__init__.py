@@ -96,11 +96,11 @@ class VfbToUfoWriter:
 
     def build_mapping(self):
         self.info_mapping = {
-            "sgn": "openTypeNamePreferredFamilyName",
+            # "sgn": "openTypeNamePreferredFamilyName",  # below
             "Menu Name": "styleMapFamilyName",
             "ffn": "postscriptFullName",
             "psn": "postscriptFontName",
-            "tfn": "familyName",
+            "tfn": "styleMapFamilyName",
             "weight_name": "weightName",
             "Italic Angle": "italicAngle",
             "underlinePosition": "postscriptUnderlinePosition",
@@ -129,7 +129,7 @@ class VfbToUfoWriter:
             "versionMinor": "versionMinor",
             "year": "year",
             "upm": "unitsPerEm",
-            "tsn": "openTypeNamePreferredSubfamilyName",
+            # "tsn": "openTypeNamePreferredSubfamilyName",  # below
             "hhea_ascender": "openTypeHheaAscender",
             "hhea_descender": "openTypeHheaDescender",
             "hhea_line_gap": "openTypeHheaLineGap",
@@ -440,6 +440,9 @@ class VfbToUfoWriter:
 
             if name == "header":
                 pass
+            elif name == "sgn":  # 1024
+                self.info.familyName = data
+                self.info.openTypeNamePreferredFamilyName = data
             elif name == "Monospaced":  # 1034
                 self.info.postscriptIsFixedPitch = bool(data)
             elif name == "version full":
@@ -447,10 +450,12 @@ class VfbToUfoWriter:
             elif name == "weight":  # 1048
                 self.info.openTypeOS2WeightClass = min(max(1, data), 1000)
             elif name == "Style Name":  # 1127
-                self.info.styleName = data
                 self.info.postscriptWeightName = data  # ?
             elif name == "Type 1 XUIDs":  # 1133
                 pass
+            elif name == "tsn":  # 1137
+                self.info.styleName = data
+                self.info.openTypeNamePreferredSubfamilyName = data
             elif name == "Name Records":  # 1138
                 self.info.openTypeNameRecords = []
                 for rec in data:
