@@ -41,9 +41,9 @@ not be overwritten unless you specify the `-fo` option.
 
 ```
 vfb3ufo -h
-usage: vfb3ufo [-h] [-p PATH] [-fo] [-ttx] [-64] [-s] [-z] [-m] inputpath [outputpath]
+usage: vfb3ufo [-h] [-p PATH] [-fo] [-ttx] [-64] [-s] [-nops] [-z] [-m] inputpath [outputpath]
 
-VFB3UFO Converter Copyright (c) 2022 by LucasFonts Build 2022-11-08
+VFB3UFO Converter Copyright (c) 2022 by LucasFonts Build 2022-12-12
 
 positional arguments:
   inputpath             input file path (.vfb)
@@ -59,7 +59,9 @@ options:
 
 Additional options:
 
-  -m, --minimal         parse only minimal amount of data
+  -m, --minimal         parse only minimal amount of data, drop missing glyphs from groups, etc.
+  -nops, --no-postscript-hints
+                        Don't output PostScript hinting
 
 Unimplemented options:
 
