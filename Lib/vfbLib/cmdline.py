@@ -106,6 +106,13 @@ def vfb2ufo():
         help="no display (silent mode)",
     )
     parser.add_argument(
+        "-nops",
+        "--no-postscript-hints",
+        action="store_true",
+        default=False,
+        help="Don't output PostScript hinting",
+    )
+    parser.add_argument(
         "-z",
         "--zip",
         action="store_true",
@@ -149,6 +156,7 @@ def vfb2ufo():
             reader.data,
             minimal=args.minimal,
             base64=args.base64,
+            pshints=not args.no_postscript_hints,
         )
         writer.write(
             out_path,

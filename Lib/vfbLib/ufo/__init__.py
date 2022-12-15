@@ -52,6 +52,7 @@ class VfbToUfoWriter:
         json: List[List[Any]],
         minimal=False,
         base64=False,
+        pshints=True,
     ) -> None:
         """
         Serialize the JSON structure to UFO(s)
@@ -59,6 +60,7 @@ class VfbToUfoWriter:
         self.json = json
         self.minimal = minimal
         self.encode_data_base64 = base64
+        self.include_ps_hints = pshints
 
         self.features_classes = ""
         self.features = ""
@@ -249,7 +251,7 @@ class VfbToUfoWriter:
         if "guides" in data:
             g.mm_guides = data["guides"]
 
-        if "hints" in data:
+        if self.include_ps_hints and "hints" in data:
             g.mm_hints = data["hints"]
             if "hintmasks" in data["hints"]:
                 g.hintmasks = data["hints"]["hintmasks"]
@@ -598,39 +600,50 @@ class VfbToUfoWriter:
 
     def get_master_info(self, master_index: int = 0) -> VfbToUfoInfo:
         # Update the info with master-specific values
-        for k, v in (
-            ("force_bold", "postscriptForceBold"),
-            ("blue_scale", "postscriptBlueScale"),
-            ("blue_shift", "postscriptBlueShift"),
-            ("blue_fuzz", "postscriptBlueFuzz"),
+        properties = [
             ("ascender", "ascender"),
             ("descender", "descender"),
             ("x_height", "xHeight"),
             ("cap_height", "capHeight"),
-        ):
-            value = self.masters_ps_info[master_index].get(k, None)
+        ]
+        if self.include_ps_hints:
+            properties.extend(
+                [
+                    # ("force_bold", "postscriptForceBold"),
+                    ("blue_scale", "postscriptBlueScale"),
+                    ("blue_shift", "postscriptBlueShift"),
+                    ("blue_fuzz", "postscriptBlueFuzz"),
+                ]
+            )
+
+        for key, attr in properties:
+            value = self.masters_ps_info[master_index].get(key, None)
             if value is not None:
-                setattr(self.info, v, value)
+                setattr(self.info, attr, value)
 
-        value = self.masters_ps_info[master_index].get("force_bold", None)
-        if value is not None:
-            self.info.postscriptForceBold = bool(value)
-
-        for k, v in (
-            ("blue_values", "postscriptBlueValues"),
-            ("other_blues", "postscriptOtherBlues"),
-            ("family_blues", "postscriptFamilyBlues"),
-            ("family_other_blues", "postscriptFamilyOtherBlues"),
-            ("stem_snap_h", "postscriptStemSnapH"),
-            ("stem_snap_v", "postscriptStemSnapV"),
-        ):
-            num_values = getattr(self, f"num_{k}")
-            if num_values == 0:
-                continue
-
-            value = self.masters_ps_info[master_index].get(k, None)
+        if self.include_ps_hints:
+            # Set "force bold"
+            value = self.masters_ps_info[master_index].get("force_bold", None)
             if value is not None:
-                setattr(self.info, v, value[:num_values])
+                self.info.postscriptForceBold = bool(value)
+
+            # Set attributes that must be clipped at a certain index
+            for key, attr in (
+                ("blue_values", "postscriptBlueValues"),
+                ("other_blues", "postscriptOtherBlues"),
+                ("family_blues", "postscriptFamilyBlues"),
+                ("family_other_blues", "postscriptFamilyOtherBlues"),
+                ("stem_snap_h", "postscriptStemSnapH"),
+                ("stem_snap_v", "postscriptStemSnapV"),
+            ):
+                # Get the number of values from the corresponding attribute
+                num_values = getattr(self, f"num_{key}")
+                if num_values == 0:
+                    continue
+
+                value = self.masters_ps_info[master_index].get(key, None)
+                if value is not None:
+                    setattr(self.info, attr, value[:num_values])
 
         # Guides
         if self.mm_guides is not None:
@@ -709,17 +722,18 @@ class VfbToUfoWriter:
                     if not isinstance(data, bytes):
                         g.lib[TT_GLYPH_LIB_KEY] = b64encode(data.encode("ascii"))
 
-            # Apply master hint positions and widths
+            if self.include_ps_hints:
+                # Apply master hint positions and widths
 
-            master_hints = get_master_hints(
-                mmglyph=self.current_mmglyph, master_index=index
-            )
-            if master_hints:
-                build_ps_glyph_hints(
-                    mmglyph=self.current_mmglyph,
-                    glyph=g,
-                    master_hints=master_hints,
+                master_hints = get_master_hints(
+                    mmglyph=self.current_mmglyph, master_index=index
                 )
+                if master_hints:
+                    build_ps_glyph_hints(
+                        mmglyph=self.current_mmglyph,
+                        glyph=g,
+                        master_hints=master_hints,
+                    )
 
             if not self.minimal and self.current_mmglyph.mm_guides is not None:
                 master_guides = get_master_guides(self.current_mmglyph.mm_guides, index)
