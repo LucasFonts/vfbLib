@@ -248,7 +248,7 @@ class VfbToUfoWriter:
         g.unicodes = []
 
         # MM Stuff, need to extract later
-        if "guides" in data:
+        if not self.minimal and "guides" in data:
             g.mm_guides = data["guides"]
 
         if self.include_ps_hints and "hints" in data:
@@ -646,7 +646,7 @@ class VfbToUfoWriter:
                     setattr(self.info, attr, value[:num_values])
 
         # Guides
-        if self.mm_guides is not None:
+        if not self.minimal and self.mm_guides is not None:
             guides = get_master_guides(self.mm_guides, master_index)
             apply_guide_properties(guides, self.guide_properties)
 
