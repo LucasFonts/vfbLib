@@ -4,6 +4,7 @@ import logging
 
 from io import BytesIO
 from typing import Dict, List
+from vfbLib.helpers import binaryToIntList
 from vfbLib.parsers import BaseParser, read_encoded_value
 
 
@@ -39,7 +40,7 @@ class TrueTypeInfoParser(BaseParser):
             0x36: "0x36",
             0x37: "0x37",
             0x38: "0x38",
-            0x39: "use_custom_tt_values",  # 0 = false, 65536 = true
+            0x39: "tt_font_info_settings",  # 0 = false, 65536 = true
             0x3A: "units_per_em",  # duplicate
             0x3B: "0x3b",
             0x3C: "lowest_rec_ppem",
@@ -81,11 +82,20 @@ class TrueTypeInfoParser(BaseParser):
             if k == 0x32:
                 return info
 
-            elif k in (0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39, 0x3A, 0x3B, 0x3C):
+            elif k in (0x33, 0x34, 0x35, 0x36, 0x37, 0x38):
                 info.append([info_names.get(k, str(k)), read_encoded_value(s)])
 
-            elif k in (0x3D, 0x3E, 0x3F):
-                info.append([info_names.get(k, str(k)), read_encoded_value(s)])
+            elif k == 0x39:
+                bits = binaryToIntList(read_encoded_value(s))
+                settings = {
+                    16: "use_custom_tt_values",
+                    18: "add_null_cr_space",
+                }
+                options = [settings.get(i, str(i)) for i in bits]
+                info.append([info_names.get(k, str(k)), options])
+
+            elif k in (0x3A, 0x3B, 0x3C, 0x3D, 0x3E, 0x3F):
+                info.append([info_names.get(k, f"bit{k}"), read_encoded_value(s)])
 
             elif k in (
                 0x40,
