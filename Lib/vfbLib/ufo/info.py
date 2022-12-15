@@ -19,7 +19,7 @@ class VfbToUfoInfo:
         self.guidelines: List[UfoGuide] = []
         self.italicAngle: float | int = 0
         self.openTypeGaspRangeRecords: List[TUfoGaspRecDict] = []
-        self.openTypeHeadCreated: str = ""
+        self.openTypeHeadCreated: str | None = None
         self.openTypeHeadFlags: List[int] = []
         self.openTypeHheaLineGap = 0
         self.openTypeHeadLowestRecPPEM = 0

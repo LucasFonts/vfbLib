@@ -279,8 +279,8 @@ class VfbToUfoWriter:
         # FIXME: Timestamp is 66 years in the future
         # d = datetime.fromtimestamp(value) # - timedelta(days=66*365.25)
         # Use the current date:
-        d = datetime.fromtimestamp(time())
-        self.info.openTypeHeadCreated = d.strftime("%Y/%m/%d %H:%M:%S")
+        # d = datetime.fromtimestamp(time())
+        # self.info.openTypeHeadCreated = d.strftime("%Y/%m/%d %H:%M:%S")
 
     def set_glyph_background(self, data: Dict[str, Any]) -> None:
         assert self.current_glyph is not None
