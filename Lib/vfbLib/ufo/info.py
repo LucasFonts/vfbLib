@@ -38,7 +38,7 @@ class VfbToUfoInfo:
         self.openTypeOS2SuperscriptYOffset = 0
         self.openTypeOS2Type: List[int] = []
         self.openTypeOS2UnicodeRanges: List[int] = []
-        self.openTypeOS2WeightClass = 0
+        self.openTypeOS2WeightClass = 400
         self.openTypeOS2WidthClass = 5
         self.postscriptIsFixedPitch = False
         self.postscriptFamilyBlues: List[int] = []
