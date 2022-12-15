@@ -87,7 +87,6 @@ class VfbToUfoWriter:
         # TT
         self.stem_ppms: TUfoStemPPMsDict = {"ttStemsH": [], "ttStemsV": []}
         self.stems: TUfoStemsDict = {"ttStemsH": [], "ttStemsV": []}
-        self.tt_stem_names: List[str] = []
         self.tt_zones: TUfoTTZonesDict = {}
         self.tt_zone_names: List[str] = []
         self.zone_names: Dict[str, List[str]] = {}
@@ -271,7 +270,7 @@ class VfbToUfoWriter:
         # TrueType hinting, needs to come after mm_nodes, because it needs
         # access to the point indices.
         if "tth" in data:
-            build_tt_glyph_hints(g, data["tth"], self.zone_names, self.tt_stem_names)
+            build_tt_glyph_hints(g, data["tth"], self.zone_names, self.stems)
 
     def set_created_timestamp(self, value: int) -> None:
         from datetime import datetime  # , timedelta
@@ -352,12 +351,6 @@ class VfbToUfoWriter:
                     )
                 stem["round"][rv] = int(rk)
                 self.stems[d].append(stem)
-
-        # Stem name indices are v first, then h
-        self.tt_stem_names = []
-        for d in ("ttStemsV", "ttStemsH"):
-            for ds in self.stems[d]:
-                self.tt_stem_names.append(ds["name"])
 
     def set_tt_zones(self, data: Dict[str, List]) -> None:
         self.zone_names = {

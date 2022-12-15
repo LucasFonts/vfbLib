@@ -2,13 +2,16 @@ from __future__ import annotations
 
 import logging
 
-from typing import Any, Dict, List
+from typing import TYPE_CHECKING, Any, Dict, List
 from vfbLib.ufo.glyph import VfbToUfoGlyph
 from vfbLib.ufo.vfb2ufo import (
     TT_GLYPH_LIB_KEY,
     vfb2ufo_alignment_rev,
     vfb2ufo_command_codes,
 )
+
+if TYPE_CHECKING:
+    from vfbLib.ufo.typing import TUfoStemsDict
 
 
 logger = logging.getLogger(__name__)
@@ -43,7 +46,7 @@ def build_tt_glyph_hints(
     glyph: VfbToUfoGlyph,
     data: List[Dict[str, Any]],
     zone_names: Dict[str, List[str]],
-    tt_stem_names: List[str],
+    stems: TUfoStemsDict,
 ) -> None:
     # Write TT hints into glyph lib.
     tth = []
@@ -79,7 +82,8 @@ def build_tt_glyph_hints(
                 elif stem == -1:
                     pass
                 else:
-                    d["stem"] = tt_stem_names[stem]
+                    stem_dir = "ttStemsH" if code.endswith("H") else "ttStemsV"
+                    d["stem"] = stems[stem_dir][stem]["name"]
             if "align" in params:
                 align = params["align"]
                 if align > -1:
