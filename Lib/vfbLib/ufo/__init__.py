@@ -666,9 +666,7 @@ class VfbToUfoWriter:
         )
         draw_glyph(contours, components, pen)
 
-    def write(
-        self, out_path: Path, overwrite=False, silent=False, ufoz=False, b64=False
-    ) -> None:
+    def write(self, out_path: Path, overwrite=False, silent=False, ufoz=False) -> None:
         self.ufo_groups = transform_groups(
             self.groups,
             self.kerning_class_flags,
