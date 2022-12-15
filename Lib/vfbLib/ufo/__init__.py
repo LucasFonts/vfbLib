@@ -422,7 +422,7 @@ class VfbToUfoWriter:
             elif name == "version full":
                 pass
             elif name == "weight":  # 1048
-                self.info.openTypeOS2WeightClass = max(0, data)
+                self.info.openTypeOS2WeightClass = min(max(1, data), 1000)
             elif name == "Style Name":  # 1127
                 self.info.styleName = data
                 self.info.postscriptWeightName = data  # ?
