@@ -9,6 +9,7 @@ from pathlib import Path
 from shutil import rmtree
 from typing import TYPE_CHECKING, Any, Dict, List, Tuple
 from ufonormalizer import normalizeUFO
+from vfbLib.helpers import binaryToIntList
 from vfbLib.ufo.glyph import VfbToUfoGlyph, UfoGlyph
 from vfbLib.ufo.groups import transform_groups
 from vfbLib.ufo.guides import apply_guide_properties, get_master_guides
@@ -33,17 +34,6 @@ if TYPE_CHECKING:
 
 
 logger = logging.getLogger(__name__)
-
-
-def binaryToIntList(value: int, start: int = 0):
-    intList = []
-    counter = start
-    while value:
-        if value & 1:
-            intList.append(counter)
-        value >>= 1
-        counter += 1
-    return intList
 
 
 class VfbToUfoWriter:
