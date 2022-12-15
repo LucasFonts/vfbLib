@@ -288,6 +288,27 @@ class VfbToUfoWriter:
         assert self.current_glyph is not None
         self.current_glyph.lib["com.fontlab.v5.background"] = data
 
+    def set_selection(self, data: int) -> None:
+        # Bit 0 = Italic
+        # Bit 5 = Bold
+        # Bit 6 = Regular
+
+        # Those should not be included in the list.
+        # Any others could remain, but FL doesn't set them.
+        intlist = binaryToIntList(data)
+        self.info.openTypeOS2Selection = [b for b in intlist if b not in (0, 5, 6)]
+
+        # Construct the style map style name
+
+        name_parts = []
+        if 6 in intlist:
+            name_parts.append("regular")
+        elif 5 in intlist:
+            name_parts.append("bold")
+        if 0 in intlist:
+            name_parts.append("italic")
+        self.info.styleMapStyleName = " ".join(name_parts)
+
     def set_tt_gasp(self, data: GaspList) -> None:
         gasp: List[TUfoGaspRecDict] = []
         for rec in data:
@@ -456,14 +477,7 @@ class VfbToUfoWriter:
             elif name == "Gasp Ranges":  # 1265
                 self.set_tt_gasp(data)
             elif name == "Selection":  # 1267
-                # Bit 0 = Regular
-                # Bit 5 = Bold
-                # Bit 6 = Italic
-                # Those should not be included in the list.
-                # Any others could remain, but FL doesn't set them.
-                self.info.openTypeOS2Selection = [
-                    b for b in binaryToIntList(data) if b not in (0, 5, 6)
-                ]
+                self.set_selection(data)
             elif name == "TrueType Stem PPEMs":  # 1268
                 self.set_tt_stem_ppms(data)
             elif name == "TrueType Stems":  # 1269
