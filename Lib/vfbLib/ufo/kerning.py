@@ -52,4 +52,6 @@ class UfoKerning:
             else:
                 right = R
 
-            self.master_kerning[left, right] = values[master_index]
+            value = values[master_index]
+            if value != 0:
+                self.master_kerning[left, right] = value
