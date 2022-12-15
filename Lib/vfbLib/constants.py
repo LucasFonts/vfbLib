@@ -169,6 +169,9 @@ parser_classes = {
 
 ignore_minimal = [
     "Background Bitmap",
+    "fontNote",
     "Glyph Bitmaps",
+    "Glyph Guide Properties",
+    "Mark Color",
     "Mask",
 ]

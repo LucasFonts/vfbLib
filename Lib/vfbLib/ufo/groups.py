@@ -16,7 +16,7 @@ def transform_groups(
     orig_groups: UfoGroups,
     kerning_class_flags: ClassFlagDict,
     glyphOrder: List[str],
-    skip_missing_group_glyphs: bool,
+    skip_missing_group_glyphs: bool = False,
 ) -> UfoGroups:
     # Rename kerning groups by applying the side flags and using the key
     # glyph for naming

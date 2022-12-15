@@ -147,7 +147,7 @@ def vfb2ufo():
             out_path = vfb_path.with_suffix(suffix)
         writer = VfbToUfoWriter(
             reader.data,
-            skip_missing_group_glyphs=args.minimal,
+            minimal=args.minimal,
             base64=args.base64,
         )
         writer.write(

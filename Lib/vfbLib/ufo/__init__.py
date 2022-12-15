@@ -50,14 +50,14 @@ class VfbToUfoWriter:
     def __init__(
         self,
         json: List[List[Any]],
-        skip_missing_group_glyphs=False,
+        minimal=False,
         base64=False,
     ) -> None:
         """
         Serialize the JSON structure to UFO(s)
         """
         self.json = json
-        self.skip_missing_group_glyphs = skip_missing_group_glyphs
+        self.minimal = minimal
         self.encode_data_base64 = base64
 
         self.features_classes = ""
@@ -660,7 +660,7 @@ class VfbToUfoWriter:
             self.groups,
             self.kerning_class_flags,
             self.glyphOrder,
-            self.skip_missing_group_glyphs,
+            self.minimal,
         )
         self.ufo_kerning = UfoKerning(self.glyphOrder, self.ufo_groups, self.mm_kerning)
         for i in range(len(self.masters)):
@@ -721,7 +721,7 @@ class VfbToUfoWriter:
                     master_hints=master_hints,
                 )
 
-            if self.current_mmglyph.mm_guides is not None:
+            if not self.minimal and self.current_mmglyph.mm_guides is not None:
                 master_guides = get_master_guides(self.current_mmglyph.mm_guides, index)
                 apply_guide_properties(
                     master_guides, self.current_mmglyph.guide_properties
