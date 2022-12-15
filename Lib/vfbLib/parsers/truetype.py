@@ -89,6 +89,7 @@ class TrueTypeInfoParser(BaseParser):
                 bits = binaryToIntList(read_encoded_value(s))
                 settings = {
                     16: "use_custom_tt_values",
+                    17: "create_vdmx",
                     18: "add_null_cr_space",
                 }
                 options = [settings.get(i, str(i)) for i in bits]
