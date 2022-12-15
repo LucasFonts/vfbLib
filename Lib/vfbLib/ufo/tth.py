@@ -21,6 +21,7 @@ def make_tt_cmd(tt_dict: Dict[str, Any]) -> str:
         "point",
         "point1",
         "point2",
+        "round",
         "stem",
         "zone",
         "align",
@@ -29,9 +30,11 @@ def make_tt_cmd(tt_dict: Dict[str, Any]) -> str:
         "ppm2",
     ):
         if attr in tt_dict:
-            cmd += f' {attr}="{tt_dict[attr]}"'
-    if "round" in tt_dict:
-        cmd += f' round="{str(tt_dict["round"]).lower()}"'
+            if attr == "round":
+                val = str(tt_dict[attr]).lower()
+            else:
+                val = tt_dict[attr]
+            cmd += f' {attr}="{val}"'
     cmd += "/>"
     return cmd
 
