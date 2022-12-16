@@ -599,6 +599,14 @@ class VfbToUfoWriter:
         self.build_tt_zones_lib()
         if not self.lib[TT_LIB_KEY]:
             del self.lib[TT_LIB_KEY]
+        self.fix_underline_position()
+
+    def fix_underline_position(self):
+        # VFB stores middle of line and thickness, but spec says it must be
+        # stored as top of line and thickness.
+        self.info.postscriptUnderlinePosition += int(
+            round(0.5 * self.info.postscriptUnderlineThickness)
+        )
 
     def get_master_info(self, master_index: int = 0) -> VfbToUfoInfo:
         # Update the info with master-specific values

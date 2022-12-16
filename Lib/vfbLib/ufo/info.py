@@ -52,6 +52,8 @@ class VfbToUfoInfo:
         self.postscriptOtherBlues: List[int] = []
         self.postscriptStemSnapH: List[int] | None = None
         self.postscriptStemSnapV: List[int] | None = None
+        self.postscriptUnderlinePosition = 0
+        self.postscriptUnderlineThickness = 0
         self.postscriptWeightName = "Regular"
         self.styleMapFamilyName = "Untitled"
         self.styleMapStyleName = "regular"
