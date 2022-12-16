@@ -36,6 +36,7 @@ from vfbLib.parsers.numeric import (
     PanoseParser,
     SignedIntParser,
 )
+from vfbLib.parsers.options import ExportOptionsParser
 from vfbLib.parsers.ps import PostScriptInfoParser
 from vfbLib.parsers.text import NameRecordsParser
 from vfbLib.parsers.truetype import (
@@ -140,8 +141,8 @@ parser_classes = {
     1536: ("PostScript Info", PostScriptInfoParser),
     1604: ("1604", IntParser),
     1742: ("1742", EncodedKeyValuesParser1742),
-    1743: ("1743", EncodedKeyValuesParser),
-    1744: ("1744", BaseParser),
+    1743: ("OpenType Export Options", EncodedKeyValuesParser),
+    1744: ("Export Options", ExportOptionsParser),
     2001: ("Glyph", GlyphParser),
     2007: ("Background Bitmap", BackgroundBitmapParser),
     2008: ("Links", LinkParser),
