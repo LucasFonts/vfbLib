@@ -13,6 +13,7 @@ from vfbLib.parsers import (
     StringParser,
 )
 from vfbLib.parsers.bitmap import BackgroundBitmapParser, GlyphBitmapParser
+from vfbLib.parsers.cmap import CustomCmapParser
 from vfbLib.parsers.glyph import (
     GlyphAnchorsParser,
     GlyphAnchorsSuppParser,
@@ -99,7 +100,7 @@ parser_classes = {
     1138: ("Name Records", NameRecordsParser),
     1139: ("OT Mac Name", StringParser),
     1140: ("1140", BaseParser),
-    1141: ("1141", EncodedValueListParser),
+    1141: ("Custom CMAPs", CustomCmapParser),
     1250: ("Glyph Unicode", GlyphUnicodeParser),
     1253: ("Glyph Unicode Non-BMP", GlyphUnicodeSuppParser),
     1254: ("Primary Instances", PrimaryInstancesParser),
