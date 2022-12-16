@@ -38,6 +38,8 @@ class VfbToUfoInfo:
         self.openTypeOS2SuperscriptYSize = 0
         self.openTypeOS2SuperscriptXOffset = 0
         self.openTypeOS2SuperscriptYOffset = 0
+        self.openTypeOS2StrikeoutPosition = 0
+        self.openTypeOS2StrikeoutSize = 0
         self.openTypeOS2Type: List[int] = []
         self.openTypeOS2UnicodeRanges: List[int] = []
         self.openTypeOS2WeightClass = 400
