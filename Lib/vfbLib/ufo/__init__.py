@@ -263,8 +263,9 @@ class VfbToUfoWriter:
             build_tt_glyph_hints(g, data["tth"], self.zone_names, self.stems)
 
     def set_created_timestamp(self, value: int) -> None:
-        from datetime import datetime  # , timedelta
-        from time import time
+        pass
+        # from datetime import datetime  # , timedelta
+        # from time import time
 
         # from dateutil.relativedelta import relativedelta
         # FIXME: Timestamp is 66 years in the future
