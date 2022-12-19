@@ -9,7 +9,6 @@ from pathlib import Path
 from shutil import rmtree
 from typing import TYPE_CHECKING, Any, Dict, List, Tuple
 from ufonormalizer import normalizeUFO
-from vfbLib.helpers import binaryToIntList
 from vfbLib.ufo.glyph import VfbToUfoGlyph, UfoGlyph
 from vfbLib.ufo.groups import transform_groups
 from vfbLib.ufo.guides import apply_guide_properties, get_master_guides
@@ -19,7 +18,6 @@ from vfbLib.ufo.paths import draw_glyph, get_master_glyph
 from vfbLib.ufo.pshints import build_ps_glyph_hints, get_master_hints
 from vfbLib.ufo.tth import build_tt_glyph_hints, transform_stem_rounds
 from vfbLib.ufo.typing import (
-    TUfoGaspRecDict,
     TUfoStemPPMsDict,
     TUfoStemsDict,
     TUfoTTZoneDict,
@@ -29,7 +27,7 @@ from vfbLib.ufo.vfb2ufo import TT_GLYPH_LIB_KEY, TT_LIB_KEY
 
 if TYPE_CHECKING:
     from fontTools.ufoLib.glifLib import GLIFPointPen
-    from vfbLib.typing import Anchor, ClassFlagDict, GaspList, GuidePropertyList
+    from vfbLib.typing import Anchor, ClassFlagDict, GuidePropertyList
     from vfbLib.ufo.typing import UfoGroups, UfoMMKerning
 
 
@@ -80,73 +78,7 @@ class VfbToUfoWriter:
         self.tt_zones: TUfoTTZonesDict = {}
         self.tt_zone_names: List[str] = []
         self.zone_names: Dict[str, List[str]] = {}
-        self.build_mapping()
         self.build()
-
-    def build_mapping(self):
-        self.info_mapping = {
-            # "sgn": "openTypeNamePreferredFamilyName",  # below
-            "Menu Name": "styleMapFamilyName",
-            "ffn": "postscriptFullName",
-            "psn": "postscriptFontName",
-            "tfn": "styleMapFamilyName",
-            "weight_name": "weightName",
-            "Italic Angle": "italicAngle",
-            "underlinePosition": "postscriptUnderlinePosition",
-            "underlineThickness": "postscriptUnderlineThickness",
-            # "Monospaced": "postscriptIsFixedPitch",  # below
-            "copyright": "copyright",
-            "description": "openTypeNameDescription",
-            "manufacturer": "openTypeNameManufacturer",
-            "Type 1 Unique ID": "postscriptUniqueID",
-            # weight (class), below
-            "trademark": "trademark",
-            "designer": "openTypeNameDesigner",
-            "designerURL": "openTypeNameDesignerURL",
-            "manufacturerURL": "openTypeNameManufacturerURL",
-            "width_name": "widthName",
-            # Default glyph
-            "License": "openTypeNameLicense",
-            "License URL": "openTypeNameLicenseURL",
-            "FOND Family ID": "macintoshFONDFamilyID",
-            "FOND Name": "macintoshFONDName",
-            "panose": "openTypeOS2Panose",
-            "vendorID": "openTypeOS2VendorID",
-            "UniqueID": "openTypeNameUniqueID",
-            "version": "openTypeNameVersion",
-            "versionMajor": "versionMajor",
-            "versionMinor": "versionMinor",
-            "year": "year",
-            "upm": "unitsPerEm",
-            # "tsn": "openTypeNamePreferredSubfamilyName",  # below
-            "hhea_ascender": "openTypeHheaAscender",
-            "hhea_descender": "openTypeHheaDescender",
-            "hhea_line_gap": "openTypeHheaLineGap",
-            "fontNote": "note",
-            "Default Glyph": "postscriptDefaultCharacter",
-        }
-        # Integer values from TTInfo
-        self.info_mapping_int = {
-            # "units_per_em": "unitsPerEm",  # duplicate
-            # "weight_class": "openTypeOS2WeightClass",  # duplicate
-            "width_class": "openTypeOS2WidthClass",
-            "lowest_rec_ppem": "openTypeHeadLowestRecPPEM",
-            "subscript_x_size": "openTypeOS2SubscriptXSize",
-            "subscript_y_size": "openTypeOS2SubscriptYSize",
-            "subscript_x_offset": "openTypeOS2SubscriptXOffset",
-            "subscript_y_offset": "openTypeOS2SubscriptYOffset",
-            "superscript_x_size": "openTypeOS2SuperscriptXSize",
-            "superscript_y_size": "openTypeOS2SuperscriptYSize",
-            "superscript_x_offset": "openTypeOS2SuperscriptXOffset",
-            "superscript_y_offset": "openTypeOS2SuperscriptYOffset",
-            "strikeout_size": "openTypeOS2StrikeoutSize",
-            "strikeout_position": "openTypeOS2StrikeoutPosition",
-            "OpenTypeOS2TypoAscender": "openTypeOS2TypoAscender",
-            "OpenTypeOS2TypoDescender": "openTypeOS2TypoDescender",
-            "OpenTypeOS2TypoLineGap": "openTypeOS2TypoLineGap",
-            "OpenTypeOS2WinAscent": "openTypeOS2WinAscent",
-            "OpenTypeOS2WinDescent": "openTypeOS2WinDescent",
-        }
 
     def add_ot_class(self, data: str) -> None:
         if ":" not in data:
@@ -184,43 +116,6 @@ class VfbToUfoWriter:
         # Also add non-kerning classes to the feature code
         if not is_kerning and not name.startswith("."):
             self.features_classes += f"@{name} = [{' '.join(glyphs)}];\n"
-
-    def assign_tt_info(self, data: List[Tuple[str, int | List[int]]]):
-        for k, v in data:
-            if isinstance(v, int):
-                if k in self.info_mapping_int:
-                    setattr(self.info, self.info_mapping_int[k], v)
-                elif k == "timestamp":
-                    self.set_created_timestamp(v)
-                elif k == "font_direction_hint":
-                    # self.info.openTypeOS2Type = binaryToIntList(v)
-                    pass
-                elif k == "embedding":
-                    self.info.openTypeOS2Type = binaryToIntList(v)
-                elif k == "ibm_classification":
-                    c = v >> 8
-                    s = v & ~(c << 8)
-                    self.info.openTypeOS2FamilyClass = [c, s]
-                else:
-                    logger.info(f"Unhandled integer value in UFO info: {k, v}")
-            elif isinstance(v, list):
-                if k == "OpenTypeOS2Panose":
-                    # Duplicate?
-                    # if v != self.info.openTypeOS2Panose:
-                    #     print("Contradictory PANOSE values")
-                    #     print(self.info.openTypeOS2Panose, "vs.", v)
-                    pass
-                elif k == "Codepages":
-                    cp1, cp2 = v
-                    ranges = binaryToIntList(cp1)
-                    for cp in binaryToIntList(cp2):
-                        ranges.append(cp + 32)
-                    if ranges:
-                        self.info.openTypeOS2CodePageRanges = ranges
-                else:
-                    logger.info(f"Unhandled list value in UFO info: {k, v}")
-            else:
-                raise TypeError
 
     def assure_tt_lib(self) -> None:
         if TT_LIB_KEY not in self.lib:
@@ -262,53 +157,9 @@ class VfbToUfoWriter:
         if "tth" in data:
             build_tt_glyph_hints(g, data["tth"], self.zone_names, self.stems)
 
-    def set_created_timestamp(self, value: int) -> None:
-        pass
-        # from datetime import datetime  # , timedelta
-        # from time import time
-
-        # from dateutil.relativedelta import relativedelta
-        # FIXME: Timestamp is 66 years in the future
-        # d = datetime.fromtimestamp(value) # - timedelta(days=66*365.25)
-        # Use the current date:
-        # d = datetime.fromtimestamp(time())
-        # self.info.openTypeHeadCreated = d.strftime("%Y/%m/%d %H:%M:%S")
-
     def set_glyph_background(self, data: Dict[str, Any]) -> None:
         assert self.current_glyph is not None
         self.current_glyph.lib["com.fontlab.v5.background"] = data
-
-    def set_selection(self, data: int) -> None:
-        # Bit 0 = Italic
-        # Bit 5 = Bold
-        # Bit 6 = Regular
-
-        # Those should not be included in the list.
-        # Any others could remain, but FL doesn't set them.
-        intlist = binaryToIntList(data)
-        self.info.openTypeOS2Selection = [b for b in intlist if b not in (0, 5, 6)]
-
-        # Construct the style map style name
-
-        name_parts = []
-        if 6 in intlist:
-            name_parts.append("regular")
-        elif 5 in intlist:
-            name_parts.append("bold")
-        if 0 in intlist:
-            name_parts.append("italic")
-        self.info.styleMapStyleName = " ".join(name_parts)
-
-    def set_tt_gasp(self, data: GaspList) -> None:
-        gasp: List[TUfoGaspRecDict] = []
-        for rec in data:
-            gasp.append(
-                TUfoGaspRecDict(
-                    rangeMaxPPEM=rec["maxPpem"],
-                    rangeGaspBehavior=binaryToIntList(rec["flags"]),
-                )
-            )
-        self.info.openTypeGaspRangeRecords = gasp
 
     def set_tt_stem_ppms(self, data: Dict[str, List[Dict[str, Any]]]) -> None:
         for d in ("ttStemsH", "ttStemsV"):
@@ -417,9 +268,9 @@ class VfbToUfoWriter:
             name, data = e
 
             # Font Info
-            attr = self.info_mapping.get(name, None)
+            attr = self.info.mapping.get(name, None)
             if attr is not None:
-                setattr(self.info, attr, data)
+                self.info.set_attr(attr, data)
                 continue
 
             if name == "header":
@@ -428,31 +279,19 @@ class VfbToUfoWriter:
                 self.info.familyName = data
                 self.info.openTypeNamePreferredFamilyName = data
             elif name == "Monospaced":  # 1034
-                self.info.postscriptIsFixedPitch = bool(data)
+                self.info.set_fixed_pitch(data)
             elif name == "version full":
                 pass
             elif name == "weight":  # 1048
-                self.info.openTypeOS2WeightClass = min(max(1, data), 1000)
+                self.info.set_weight_class(data)
             elif name == "Style Name":  # 1127
-                self.info.postscriptWeightName = data  # ?
+                self.info.postscriptWeightName = data  # FIXME: Does not contain Italic
             elif name == "Type 1 XUIDs":  # 1133
                 pass
             elif name == "tsn":  # 1137
-                self.info.styleName = data
-                self.info.openTypeNamePreferredSubfamilyName = data
+                self.info.set_style_name(data)
             elif name == "Name Records":  # 1138
-                self.info.openTypeNameRecords = []
-                for rec in data:
-                    nameID, platformID, encodingID, languageID, s = rec
-                    self.info.openTypeNameRecords.append(
-                        {
-                            "nameID": nameID,
-                            "platformID": platformID,
-                            "encodingID": encodingID,
-                            "languageID": languageID,
-                            "string": s,
-                        }
-                    )
+                self.info.set_name_records(data)
             elif name == "Glyph Unicode":  # 1250
                 assert self.current_glyph is not None
                 self.current_glyph.unicodes.extend(data)
@@ -462,11 +301,11 @@ class VfbToUfoWriter:
             elif name == "TrueType Zones":  # 1255
                 self.set_tt_zones(data)
             elif name == "TrueType Info":  # 1264
-                self.assign_tt_info(data)
+                self.info.set_tt_info(data)
             elif name == "Gasp Ranges":  # 1265
-                self.set_tt_gasp(data)
+                self.info.set_tt_gasp(data)
             elif name == "Selection":  # 1267
-                self.set_selection(data)
+                self.info.set_selection(data)
             elif name == "TrueType Stem PPEMs":  # 1268
                 self.set_tt_stem_ppms(data)
             elif name == "TrueType Stems":  # 1269
@@ -572,7 +411,7 @@ class VfbToUfoWriter:
             elif name == "Glyph Anchors Supplemental":  # 2020
                 pass
             elif name == "Unicode Ranges":  # 2021
-                self.info.openTypeOS2UnicodeRanges = binaryToIntList(data)
+                self.info.set_unicode_ranges(data)
             elif name == "2023":
                 pass
             elif name == "OpenType Metrics Class Flags":  # 2024
@@ -600,14 +439,7 @@ class VfbToUfoWriter:
         self.build_tt_zones_lib()
         if not self.lib[TT_LIB_KEY]:
             del self.lib[TT_LIB_KEY]
-        self.fix_underline_position()
-
-    def fix_underline_position(self):
-        # VFB stores middle of line and thickness, but spec says it must be
-        # stored as top of line and thickness.
-        self.info.postscriptUnderlinePosition += int(
-            round(0.5 * self.info.postscriptUnderlineThickness)
-        )
+        self.info.fix_underline_position()
 
     def get_master_info(self, master_index: int = 0) -> VfbToUfoInfo:
         # Update the info with master-specific values

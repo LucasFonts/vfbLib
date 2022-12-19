@@ -2,10 +2,12 @@ from __future__ import annotations
 
 import logging
 
-from typing import TYPE_CHECKING, List
+from typing import TYPE_CHECKING, List, Tuple
+from vfbLib.helpers import binaryToIntList
 
 
 if TYPE_CHECKING:
+    from vfbLib.typing import GaspList
     from vfbLib.ufo.typing import TUfoGaspRecDict, UfoGuide
 
 
@@ -71,6 +73,8 @@ class VfbToUfoInfo:
         self.openTypeOS2WinDescent = 0
         self.openTypeOS2CodePageRanges: List[int] = []
 
+        self.build_mapping()
+
     @property
     def ui_name(self) -> str:
         name = ""
@@ -82,3 +86,187 @@ class VfbToUfoInfo:
         if name:
             return name
         return "Untitled Regular"
+
+    def build_mapping(self):
+        self.mapping = {
+            # "sgn": "openTypeNamePreferredFamilyName",  # below
+            "Menu Name": "styleMapFamilyName",
+            "ffn": "postscriptFullName",
+            "psn": "postscriptFontName",
+            "tfn": "styleMapFamilyName",
+            "weight_name": "weightName",
+            "Italic Angle": "italicAngle",
+            "underlinePosition": "postscriptUnderlinePosition",
+            "underlineThickness": "postscriptUnderlineThickness",
+            # "Monospaced": "postscriptIsFixedPitch",  # below
+            "copyright": "copyright",
+            "description": "openTypeNameDescription",
+            "manufacturer": "openTypeNameManufacturer",
+            "Type 1 Unique ID": "postscriptUniqueID",
+            # weight (class), below
+            "trademark": "trademark",
+            "designer": "openTypeNameDesigner",
+            "designerURL": "openTypeNameDesignerURL",
+            "manufacturerURL": "openTypeNameManufacturerURL",
+            "width_name": "widthName",
+            # Default glyph
+            "License": "openTypeNameLicense",
+            "License URL": "openTypeNameLicenseURL",
+            "FOND Family ID": "macintoshFONDFamilyID",
+            "FOND Name": "macintoshFONDName",
+            "panose": "openTypeOS2Panose",
+            "vendorID": "openTypeOS2VendorID",
+            "UniqueID": "openTypeNameUniqueID",
+            "version": "openTypeNameVersion",
+            "versionMajor": "versionMajor",
+            "versionMinor": "versionMinor",
+            "year": "year",
+            "upm": "unitsPerEm",
+            # "tsn": "openTypeNamePreferredSubfamilyName",  # below
+            "hhea_ascender": "openTypeHheaAscender",
+            "hhea_descender": "openTypeHheaDescender",
+            "hhea_line_gap": "openTypeHheaLineGap",
+            "fontNote": "note",
+            "Default Glyph": "postscriptDefaultCharacter",
+        }
+        # Integer values from TTInfo
+        self.mapping_int = {
+            # "units_per_em": "unitsPerEm",  # duplicate
+            # "weight_class": "openTypeOS2WeightClass",  # duplicate
+            "width_class": "openTypeOS2WidthClass",
+            "lowest_rec_ppem": "openTypeHeadLowestRecPPEM",
+            "subscript_x_size": "openTypeOS2SubscriptXSize",
+            "subscript_y_size": "openTypeOS2SubscriptYSize",
+            "subscript_x_offset": "openTypeOS2SubscriptXOffset",
+            "subscript_y_offset": "openTypeOS2SubscriptYOffset",
+            "superscript_x_size": "openTypeOS2SuperscriptXSize",
+            "superscript_y_size": "openTypeOS2SuperscriptYSize",
+            "superscript_x_offset": "openTypeOS2SuperscriptXOffset",
+            "superscript_y_offset": "openTypeOS2SuperscriptYOffset",
+            "strikeout_size": "openTypeOS2StrikeoutSize",
+            "strikeout_position": "openTypeOS2StrikeoutPosition",
+            "OpenTypeOS2TypoAscender": "openTypeOS2TypoAscender",
+            "OpenTypeOS2TypoDescender": "openTypeOS2TypoDescender",
+            "OpenTypeOS2TypoLineGap": "openTypeOS2TypoLineGap",
+            "OpenTypeOS2WinAscent": "openTypeOS2WinAscent",
+            "OpenTypeOS2WinDescent": "openTypeOS2WinDescent",
+        }
+
+    def fix_underline_position(self):
+        # VFB stores middle of line and thickness, but spec says it must be
+        # stored as top of line and thickness.
+        self.postscriptUnderlinePosition += int(
+            round(0.5 * self.postscriptUnderlineThickness)
+        )
+
+    def set_attr(self, attr: str, data):
+        setattr(self, attr, data)
+
+    def set_created_timestamp(self, value: int) -> None:
+        pass
+        # from datetime import datetime  # , timedelta
+        # from time import time
+
+        # from dateutil.relativedelta import relativedelta
+        # FIXME: Timestamp is 66 years in the future
+        # d = datetime.fromtimestamp(value) # - timedelta(days=66*365.25)
+        # Use the current date:
+        # d = datetime.fromtimestamp(time())
+        # self.openTypeHeadCreated = d.strftime("%Y/%m/%d %H:%M:%S")
+
+    def set_fixed_pitch(self, data: int) -> None:
+        self.postscriptIsFixedPitch = bool(data)
+
+    def set_name_records(self, data: List[Tuple[int, int, int, int, str]]) -> None:
+        self.openTypeNameRecords = []
+        for rec in data:
+            nameID, platformID, encodingID, languageID, s = rec
+            self.openTypeNameRecords.append(
+                {
+                    "nameID": nameID,
+                    "platformID": platformID,
+                    "encodingID": encodingID,
+                    "languageID": languageID,
+                    "string": s,
+                }
+            )
+
+    def set_selection(self, data: int) -> None:
+        # Bit 0 = Italic
+        # Bit 5 = Bold
+        # Bit 6 = Regular
+
+        # Those should not be included in the list.
+        # Any others could remain, but FL doesn't set them.
+        intlist = binaryToIntList(data)
+        self.openTypeOS2Selection = [b for b in intlist if b not in (0, 5, 6)]
+
+        # Construct the style map style name
+
+        name_parts = []
+        if 6 in intlist:
+            name_parts.append("regular")
+        elif 5 in intlist:
+            name_parts.append("bold")
+        if 0 in intlist:
+            name_parts.append("italic")
+        self.styleMapStyleName = " ".join(name_parts)
+
+    def set_style_name(self, data: str) -> None:
+        self.styleName = data
+        self.openTypeNamePreferredSubfamilyName = data
+
+    def set_tt_gasp(self, data: GaspList) -> None:
+        # FIXME: Different results when hinting is compiled with flufocompile
+        gasp: List[TUfoGaspRecDict] = []
+        for rec in data:
+            gasp.append(
+                TUfoGaspRecDict(
+                    rangeMaxPPEM=rec["maxPpem"],
+                    rangeGaspBehavior=binaryToIntList(rec["flags"]),
+                )
+            )
+        self.openTypeGaspRangeRecords = gasp
+
+    def set_tt_info(self, data: List[Tuple[str, int | List[int]]]):
+        for k, v in data:
+            if isinstance(v, int):
+                if k in self.mapping_int:
+                    setattr(self, self.mapping_int[k], v)
+                elif k == "timestamp":
+                    self.set_created_timestamp(v)
+                elif k == "font_direction_hint":
+                    # self.info.openTypeOS2Type = binaryToIntList(v)
+                    pass
+                elif k == "embedding":
+                    self.openTypeOS2Type = binaryToIntList(v)
+                elif k == "ibm_classification":
+                    c = v >> 8
+                    s = v & ~(c << 8)
+                    self.openTypeOS2FamilyClass = [c, s]
+                else:
+                    logger.info(f"Unhandled integer value in UFO info: {k, v}")
+            elif isinstance(v, list):
+                if k == "OpenTypeOS2Panose":
+                    # Duplicate?
+                    # if v != self.info.openTypeOS2Panose:
+                    #     print("Contradictory PANOSE values")
+                    #     print(self.info.openTypeOS2Panose, "vs.", v)
+                    pass
+                elif k == "Codepages":
+                    cp1, cp2 = v
+                    ranges = binaryToIntList(cp1)
+                    for cp in binaryToIntList(cp2):
+                        ranges.append(cp + 32)
+                    if ranges:
+                        self.openTypeOS2CodePageRanges = ranges
+                else:
+                    logger.info(f"Unhandled list value in UFO info: {k, v}")
+            else:
+                raise TypeError
+
+    def set_unicode_ranges(self, data: int) -> None:
+        self.openTypeOS2UnicodeRanges = binaryToIntList(data)
+
+    def set_weight_class(self, data: int) -> None:
+        self.openTypeOS2WeightClass = min(max(1, data), 1000)
