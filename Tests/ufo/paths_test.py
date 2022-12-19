@@ -3,7 +3,8 @@ from __future__ import annotations
 from unittest import TestCase
 
 from pprint import pprint
-from vfbLib.ufo.paths import get_master_glyph
+from vfbLib.ufo.paths import UfoMasterGlyph
+
 
 # "a"
 open_path = [
@@ -272,6 +273,19 @@ class MMGlyph:
         self.name = name
         self.mm_nodes = paths
         self.point_labels = {}
+        # For testing those must be there
+        self.anchors = []
+        self.mm_anchors = []
+        self.mm_metrics = [[1000, 0]]
+        self.lib = {}
+        self.tth_commands = []
+        self.unicodes = []
+
+
+def get_master_glyph(mm_glyph: MMGlyph, glyph_order, master_index):
+    m = UfoMasterGlyph(mm_glyph, glyph_order, master_index)
+    m.build(minimal=True, include_ps_hints=False, encode_data_base64=False)
+    return m.contours, m.components
 
 
 class PathsTest(TestCase):
