@@ -14,7 +14,7 @@ from vfbLib.ufo.groups import transform_groups
 from vfbLib.ufo.guides import apply_guide_properties, get_master_guides
 from vfbLib.ufo.info import VfbToUfoInfo
 from vfbLib.ufo.kerning import UfoKerning
-from vfbLib.ufo.paths import draw_glyph, get_master_glyph
+from vfbLib.ufo.paths import UfoMasterGlyph
 from vfbLib.ufo.pshints import build_ps_glyph_hints, get_master_hints
 from vfbLib.ufo.tth import build_tt_glyph_hints, transform_stem_rounds
 from vfbLib.ufo.typing import (
@@ -503,11 +503,11 @@ class VfbToUfoWriter:
         Draw the current glyph onto pen. Use self.master_index for which outlines
         or component transformations to use.
         """
-
-        contours, components = get_master_glyph(
+        master_glyph = UfoMasterGlyph(
             self.current_mmglyph, self.glyphOrder, self.master_index
         )
-        draw_glyph(contours, components, pen)
+        master_glyph.build()
+        master_glyph.draw_glyph(pen)
 
     def write(self, out_path: Path, overwrite=False, silent=False, ufoz=False) -> None:
         self.ufo_groups = transform_groups(
