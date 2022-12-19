@@ -32,7 +32,7 @@ class VfbToUfoGlyph:
         self.mm_components: List[Any] = []
         self.mm_guides: GuideDict | None = None
         self.mm_hints: HintDict = {"h": [], "v": []}
-        self.mm_metrics: List[Tuple[int, int]]
+        self.mm_metrics: List[Tuple[int, int]] = []
         self.mm_nodes: List[MMNode] = []
         self.name: str | None = None
         self.note: str | None = None
