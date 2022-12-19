@@ -4,6 +4,7 @@ import logging
 
 from typing import TYPE_CHECKING, List, Tuple
 from vfbLib.helpers import binaryToIntList
+from vfbLib.ufo.time import convert_timestamp
 
 
 if TYPE_CHECKING:
@@ -162,17 +163,8 @@ class VfbToUfoInfo:
     def set_attr(self, attr: str, data):
         setattr(self, attr, data)
 
-    def set_created_timestamp(self, value: int) -> None:
-        pass
-        # from datetime import datetime  # , timedelta
-        # from time import time
-
-        # from dateutil.relativedelta import relativedelta
-        # FIXME: Timestamp is 66 years in the future
-        # d = datetime.fromtimestamp(value) # - timedelta(days=66*365.25)
-        # Use the current date:
-        # d = datetime.fromtimestamp(time())
-        # self.openTypeHeadCreated = d.strftime("%Y/%m/%d %H:%M:%S")
+    def set_created_timestamp(self, data: int) -> None:
+        self.openTypeHeadCreated = convert_timestamp(data).strftime("%Y/%m/%d %H:%M:%S")
 
     def set_fixed_pitch(self, data: int) -> None:
         self.postscriptIsFixedPitch = bool(data)
