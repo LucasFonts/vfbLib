@@ -7,7 +7,6 @@ from typing import TYPE_CHECKING, Any, Dict, List, Tuple
 from vfbLib.ufo.vfb2ufo import vfb2ufo_label_codes
 
 if TYPE_CHECKING:
-    from fontTools.ufoLib.glifLib import GlyphSet
     from vfbLib.typing import (
         Anchor,
         GuidePropertyList,
@@ -19,18 +18,6 @@ if TYPE_CHECKING:
 
 
 logger = logging.getLogger(__name__)
-
-
-class UfoGlyph:
-    def __init__(self, name: str, glyph_set: GlyphSet) -> None:
-        self.name = name
-        self.glyphSet = glyph_set
-        self.lib: Dict[str, Any] = {}
-        self.anchors: List[Anchor] = []
-        self.guidelines: List = []
-        self.unicodes: List[int] = []
-        self.width: int = 0
-        self.height: int = 0
 
 
 class VfbToUfoGlyph:
@@ -50,6 +37,8 @@ class VfbToUfoGlyph:
         self.name: str | None = None
         self.note: str | None = None
         self.point_labels: Dict[int, str] = {}
+        self.rename_points: Dict[str, str]
+        self.tth_commands: List[Dict[str, str | bool]] = []
         self.unicodes: List[int] = []
 
     def get_point_label(self, index: int, code: str, start_count: int = 1) -> str:

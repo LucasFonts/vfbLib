@@ -2,21 +2,19 @@ from __future__ import annotations
 
 import logging
 
-from base64 import b64encode
 from fontTools.ufoLib import UFOFileStructure, UFOWriter
 from fontTools.ufoLib.glifLib import GlyphSet
 from pathlib import Path
 from shutil import rmtree
 from typing import TYPE_CHECKING, Any, Dict, List, Tuple
 from ufonormalizer import normalizeUFO
-from vfbLib.ufo.glyph import VfbToUfoGlyph, UfoGlyph
+from vfbLib.ufo.glyph import VfbToUfoGlyph
 from vfbLib.ufo.groups import transform_groups
 from vfbLib.ufo.guides import apply_guide_properties, get_master_guides
 from vfbLib.ufo.info import VfbToUfoInfo
 from vfbLib.ufo.kerning import UfoKerning
 from vfbLib.ufo.paths import UfoMasterGlyph
-from vfbLib.ufo.pshints import build_ps_glyph_hints, get_master_hints
-from vfbLib.ufo.tth import build_tt_glyph_hints, transform_stem_rounds
+from vfbLib.ufo.tth import TTGlyphHints, transform_stem_rounds
 from vfbLib.ufo.typing import (
     TUfoStemPPMsDict,
     TUfoStemsDict,
@@ -26,7 +24,6 @@ from vfbLib.ufo.typing import (
 from vfbLib.ufo.vfb2ufo import TT_GLYPH_LIB_KEY, TT_LIB_KEY
 
 if TYPE_CHECKING:
-    from fontTools.ufoLib.glifLib import GLIFPointPen
     from vfbLib.typing import Anchor, ClassFlagDict, GuidePropertyList
     from vfbLib.ufo.typing import UfoGroups, UfoMMKerning
 
@@ -155,7 +152,9 @@ class VfbToUfoWriter:
         # TrueType hinting, needs to come after mm_nodes, because it needs
         # access to the point indices.
         if "tth" in data:
-            build_tt_glyph_hints(g, data["tth"], self.zone_names, self.stems)
+            tth = TTGlyphHints(g, data["tth"], self.zone_names, self.stems)
+            g.tth_commands = tth.commands
+            del tth
 
     def set_glyph_background(self, data: Dict[str, Any]) -> None:
         assert self.current_glyph is not None
@@ -498,17 +497,6 @@ class VfbToUfoWriter:
 
         return self.info
 
-    def draw_glyph(self, pen: GLIFPointPen) -> None:
-        """
-        Draw the current glyph onto pen. Use self.master_index for which outlines
-        or component transformations to use.
-        """
-        master_glyph = UfoMasterGlyph(
-            self.current_mmglyph, self.glyphOrder, self.master_index
-        )
-        master_glyph.build()
-        master_glyph.draw_glyph(pen)
-
     def write(self, out_path: Path, overwrite=False, silent=False, ufoz=False) -> None:
         self.ufo_groups = transform_groups(
             self.groups,
@@ -546,50 +534,21 @@ class VfbToUfoWriter:
         # FIXME: In ufoz, we can't make a directory
         glyphs_path = master_path / "glyphs"
         glyphs_path.mkdir()
-        gs = GlyphSet(glyphs_path)
-        for name, self.current_mmglyph in self.glyph_masters.items():
-            logger.debug(f"    {name}, {type(name)}, {self.current_mmglyph}")
-            g = UfoGlyph(name, gs)
-            g.anchors = self.current_mmglyph.anchors
-            # Apply master anchor positions
-            if self.current_mmglyph.mm_anchors is not None:
-                for j, anchor in enumerate(self.current_mmglyph.mm_anchors):
-                    g.anchors[j]["x"] = anchor["x"][index]
-                    g.anchors[j]["y"] = anchor["y"][index]
-            g.lib = self.current_mmglyph.lib
-            if self.encode_data_base64:
-                if TT_GLYPH_LIB_KEY in g.lib:
-                    data = g.lib[TT_GLYPH_LIB_KEY]
-                    if not isinstance(data, bytes):
-                        g.lib[TT_GLYPH_LIB_KEY] = b64encode(data.encode("ascii"))
+        self.glyph_set = GlyphSet(glyphs_path)
+        for name, mm_glyph in self.glyph_masters.items():
+            logger.debug(f"    {name}, {type(name)}, {mm_glyph}")
+            master_glyph = UfoMasterGlyph(
+                self.glyph_set, mm_glyph, self.glyphOrder, self.master_index
+            )
+            master_glyph.build(
+                self.minimal, self.include_ps_hints, self.encode_data_base64
+            )
+            self.glyph_set.writeGlyph(
+                name, glyphObject=master_glyph, drawPointsFunc=master_glyph.draw_glyph
+            )
 
-            if self.include_ps_hints:
-                # Apply master hint positions and widths
-
-                master_hints = get_master_hints(
-                    mmglyph=self.current_mmglyph, master_index=index
-                )
-                if master_hints:
-                    build_ps_glyph_hints(
-                        mmglyph=self.current_mmglyph,
-                        glyph=g,
-                        master_hints=master_hints,
-                    )
-
-            if not self.minimal and self.current_mmglyph.mm_guides is not None:
-                master_guides = get_master_guides(self.current_mmglyph.mm_guides, index)
-                apply_guide_properties(
-                    master_guides, self.current_mmglyph.guide_properties
-                )
-                if master_guides:
-                    g.guidelines = master_guides
-
-            g.unicodes = self.current_mmglyph.unicodes
-            g.width, g.height = self.current_mmglyph.mm_metrics[index]
-            gs.writeGlyph(name, glyphObject=g, drawPointsFunc=self.draw_glyph)
-
-        gs.writeContents()
-        gs.writeLayerInfo(writer.getGlyphSet())
+        self.glyph_set.writeContents()
+        self.glyph_set.writeLayerInfo(writer.getGlyphSet())
 
         writer.writeLayerContents()
         writer.writeGroups(self.ufo_groups)

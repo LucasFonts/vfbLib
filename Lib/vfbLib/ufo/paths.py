@@ -2,11 +2,17 @@ from __future__ import annotations
 
 import logging
 
-from typing import Dict, List, TYPE_CHECKING
-
+from base64 import b64encode
+from copy import deepcopy
+from typing import Any, Dict, List, TYPE_CHECKING
+from vfbLib.ufo.guides import apply_guide_properties, get_master_guides
+from vfbLib.ufo.pshints import build_ps_glyph_hints, get_master_hints
+from vfbLib.ufo.tth import set_tth_lib
+from vfbLib.ufo.vfb2ufo import TT_GLYPH_LIB_KEY
 
 if TYPE_CHECKING:
-    from fontTools.ufoLib.glifLib import GLIFPointPen
+    from fontTools.ufoLib.glifLib import GLIFPointPen, GlyphSet
+    from vfbLib.typing import Anchor
     from vfbLib.ufo.glyph import VfbToUfoGlyph
     from vfbLib.ufo.typing import UfoComponent, UfoContour
 
@@ -16,21 +22,89 @@ logger = logging.getLogger(__name__)
 
 class UfoMasterGlyph:
     def __init__(
-        self, mm_glyph: VfbToUfoGlyph, glyph_order: List[str], master_index: int
+        self,
+        glyph_set: GlyphSet,
+        mm_glyph: VfbToUfoGlyph,
+        glyph_order: List[str],
+        master_index: int,
     ) -> None:
         self.mm_glyph = mm_glyph
         self.glyph_order = glyph_order
         self.master_index = master_index
 
+        self.glyphSet = glyph_set
+        self.lib: Dict[str, Any] = {}
+        self.anchors: List[Anchor] = []
+        self.guidelines: List = []
+        self.unicodes: List[int] = []
+        self.width: int = 0
+        self.height: int = 0
+
         self.components: List[UfoComponent] = []
         self.contours: List[UfoContour] = []
         self.rename_points: Dict[str, str] = {}
+        self.tth_commands: List[Dict[str, str | bool]] = []
 
-    def build(self) -> None:
+    @property
+    def name(self) -> str | None:
+        return self.mm_glyph.name
+
+    def build(
+        self,
+        minimal: bool = False,
+        include_ps_hints: bool = True,
+        encode_data_base64: bool = False,
+    ) -> None:
         # Extract the single master glyph from an mm glyph. The main method.
+        # Copy glyph lib
+        self.lib = deepcopy(self.mm_glyph.lib)
+        self.tth_commands = deepcopy(self.mm_glyph.tth_commands)
+        if include_ps_hints:
+            self._extract_master_ps_hints()
+        self._extract_master_tt_hints()
+        self._extract_master_contours()
+        self._finalize_point_labels(include_ps_hints)
+        self._extract_master_anchors()
+        if not minimal:
+            self._extract_master_guides()
+        self._finalize_lib(encode_data_base64)
+        self.unicodes = self.mm_glyph.unicodes
+        self.width, self.height = self.mm_glyph.mm_metrics[self.master_index]
 
+    def draw_glyph(self, pen: GLIFPointPen) -> None:
+        """
+        Draw the glyph to the supplied point pen.
+        """
+        for contour in self.contours:
+            pen.beginPath()
+            for segment_type, smooth, name, pt in contour:
+                pen.addPoint(pt, segment_type, name=name, smooth=smooth)
+            pen.endPath()
+
+        for gn, tr in self.components:
+            pen.addComponent(glyphName=gn, transformation=tr)
+
+    def _extract_master_anchors(self) -> None:
+        if self.mm_glyph.anchors is None:
+            return
+
+        # Copy anchors from the mm glyph
+        self.anchors = deepcopy(self.mm_glyph.anchors)
+
+        if self.mm_glyph.mm_anchors is None:
+            return
+
+        # Apply master anchor positions
+        for j, anchor in enumerate(self.mm_glyph.mm_anchors):
+            self.anchors[j]["x"] = anchor["x"][self.master_index]
+            self.anchors[j]["y"] = anchor["y"][self.master_index]
+
+    def _extract_master_contours(self):
+        """
+        Extract the contours and components from the mm contours.
+        """
         self.contours = []
-        rename_points_dict: Dict[str, str] = {}
+        self.rename_points = {}
         path_is_open = False
         in_qcurve = False
         if hasattr(self.mm_glyph, "mm_nodes"):
@@ -87,18 +161,93 @@ class UfoMasterGlyph:
                 )
                 self.components.append((self.glyph_order[c["gid"]], transform))
 
-    def draw_glyph(self, pen: GLIFPointPen) -> None:
-        """
-        Draw the glyph to the supplied point pen.
-        """
-        for contour in self.contours:
-            pen.beginPath()
-            for segment_type, smooth, name, pt in contour:
-                pen.addPoint(pt, segment_type, name=name, smooth=smooth)
-            pen.endPath()
+    def _extract_master_guides(self) -> None:
+        if self.mm_glyph.mm_guides is None:
+            return
 
-        for gn, tr in self.components:
-            pen.addComponent(glyphName=gn, transformation=tr)
+        master_guides = get_master_guides(self.mm_glyph.mm_guides, self.master_index)
+        apply_guide_properties(master_guides, self.mm_glyph.guide_properties)
+        if master_guides:
+            self.guidelines = master_guides
+
+    def _extract_master_ps_hints(self) -> None:
+        """
+        Apply master hint positions and widths.
+        """
+        master_hints = get_master_hints(
+            mmglyph=self.mm_glyph, master_index=self.master_index
+        )
+        build_ps_glyph_hints(
+            mmglyph=self.mm_glyph,
+            glyph=self,
+            master_hints=master_hints,
+        )
+
+    def _extract_master_tt_hints(self) -> None:
+        if self.mm_glyph.tth_commands is None:
+            return
+
+        set_tth_lib(self, self.tth_commands)
+
+    def _finalize_lib(self, encode_data_base64: bool = False) -> None:
+        # If requested, apply base64 encoding to TT lib
+        if encode_data_base64 and TT_GLYPH_LIB_KEY in self.lib:
+            data = self.lib[TT_GLYPH_LIB_KEY]
+            if not isinstance(data, bytes):
+                self.lib[TT_GLYPH_LIB_KEY] = b64encode(data.encode("ascii"))
+
+    def _finalize_point_labels(self, include_ps_hints: bool = True) -> None:
+        self._finalize_tt_point_labels()
+        if include_ps_hints:
+            self._finalize_ps_point_labels()
+
+    def _finalize_ps_point_labels(self) -> None:
+        """
+        Rename the ps-hinted point labels according to the supplied rename_dict.
+        """
+        if not self.rename_points:
+            return
+
+        # FIXME
+
+    def _finalize_tt_point_labels(self) -> None:
+        """
+        Rename the tt-hinted point labels according to the supplied rename_dict.
+        """
+        if not self.rename_points:
+            return
+
+        for cmd in self.tth_commands:
+            code = cmd["code"]
+            if code in (
+                "alignb",
+                "alignt",
+                "alignh",
+                "alignv",
+                "mdeltah",
+                "mdeltav",
+                "fdeltah",
+                "fdeltav",
+            ):
+                self._rename_point_in_cmd(cmd, "point")
+            elif code in ("singleh", "singlev", "doubleh", "doublev"):
+                self._rename_point_in_cmd(cmd, "point1")
+                self._rename_point_in_cmd(cmd, "point2")
+            elif code in ("interpolateh", "interpolatev"):
+                self._rename_point_in_cmd(cmd, "point")
+                self._rename_point_in_cmd(cmd, "point1")
+                self._rename_point_in_cmd(cmd, "point2")
+            else:
+                logger.error(f"Unknown TT command: {code}")
+                raise ValueError
+
+    def _rename_point_in_cmd(self, cmd, key: str) -> None:
+        """
+        Rename a point label in a TTH cmd according to the current rename_points dict.
+        """
+        pt_name = cmd[key]
+        if pt_name in self.rename_points:
+            cmd[key] = self.rename_points[pt_name]
 
     def _append_contour(self, contour: UfoContour, path_is_open: bool) -> None:
         """
@@ -122,6 +271,7 @@ class UfoMasterGlyph:
                     t, smooth, _, pt = contour[0]
                     contour[0] = (t, smooth, name, pt)
                 else:
+                    logger.warning(f"Glyph '{self.name}':")
                     logger.warning(
                         f"Point name conflict in {contour[0]} vs. {name} while "
                         f"applying closepath. Not applying old name ({name})"

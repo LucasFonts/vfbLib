@@ -17,7 +17,28 @@ if TYPE_CHECKING:
 logger = logging.getLogger(__name__)
 
 
-def make_tt_cmd(tt_dict: Dict[str, Any]) -> str:
+def get_xml_tth(commands) -> List[str]:
+    """
+    Convert the glyph's list of TTH commands to a list of TTH command xml strings.
+    """
+    return [tt_cmd_dict_to_xml(cmd_dict) for cmd_dict in commands]
+
+
+def set_tth_lib(glyph, commands) -> None:
+    """
+    Save the TTH commands to the glyph's lib. Optionally rename the hinted points.
+    """
+    tth = get_xml_tth(commands)
+    if tth:
+        glyph.lib[TT_GLYPH_LIB_KEY] = (
+            "  <ttProgram>\n" + "\n".join(tth) + "\n  </ttProgram>\n"
+        )
+
+
+def tt_cmd_dict_to_xml(tt_dict: Dict[str, Any]) -> str:
+    """
+    Convert the dict tt command into a FontLab XML string.
+    """
     code = tt_dict["code"]
     cmd = f'    <ttc code="{code}"'
     for attr in (
@@ -42,83 +63,6 @@ def make_tt_cmd(tt_dict: Dict[str, Any]) -> str:
     return cmd
 
 
-def build_tt_glyph_hints(
-    glyph: VfbToUfoGlyph,
-    data: List[Dict[str, Any]],
-    zone_names: Dict[str, List[str]],
-    stems: TUfoStemsDict,
-) -> None:
-    # Write TT hints into glyph lib.
-    tth = []
-    for cmd in data:
-        code = cmd["cmd"]
-        params = cmd["params"]
-        d: Dict[str, str | bool] = {"code": vfb2ufo_command_codes[code]}
-        if code in ("AlignBottom", "AlignTop"):
-            d["point"] = glyph.get_point_label(params["pt"], code)
-            if code == "AlignBottom":
-                zd = "ttZonesB"
-            else:
-                zd = "ttZonesT"
-            d["zone"] = zone_names[zd][params["zone"]]
-        elif code in ("AlignH", "AlignV"):
-            d["point"] = glyph.get_point_label(params["pt"], code)
-            if "align" in params:
-                align = params["align"]
-                if align > -1:
-                    d["align"] = vfb2ufo_alignment_rev[align]
-        elif code in (
-            "SingleLinkH",
-            "SingleLinkV",
-            "DoubleLinkH",
-            "DoubleLinkV",
-        ):
-            d["point1"] = glyph.get_point_label(params["pt1"], code)
-            d["point2"] = glyph.get_point_label(params["pt2"], code)
-            if "stem" in params:
-                stem = params["stem"]
-                if stem == -2:
-                    d["round"] = True
-                elif stem == -1:
-                    pass
-                else:
-                    stem_dir = "ttStemsH" if code.endswith("H") else "ttStemsV"
-                    d["stem"] = stems[stem_dir][stem]["name"]
-            if "align" in params:
-                align = params["align"]
-                if align > -1:
-                    d["align"] = vfb2ufo_alignment_rev[align]
-        elif code in (
-            "InterpolateH",
-            "InterpolateV",
-        ):
-            d["point"] = glyph.get_point_label(params["pti"], code)
-            d["point1"] = glyph.get_point_label(params["pt1"], code)
-            d["point2"] = glyph.get_point_label(params["pt2"], code)
-            if "align" in params:
-                align = params["align"]
-                if align > -1:
-                    d["align"] = vfb2ufo_alignment_rev[align]
-        elif code in (
-            "MDeltaH",
-            "MDeltaV",
-            "FDeltaH",
-            "FDeltaV",
-        ):
-            d["point"] = glyph.get_point_label(params["pt"], code)
-            d["delta"] = params["shift"]
-            d["ppm1"] = params["ppm1"]
-            d["ppm2"] = params["ppm2"]
-        else:
-            logger.error(f"Unknown TT command: {code}")
-
-        tth.append(make_tt_cmd(d))
-
-    glyph.lib[TT_GLYPH_LIB_KEY] = (
-        "  <ttProgram>\n" + "\n".join(tth) + "\n  </ttProgram>\n"
-    )
-
-
 def transform_stem_rounds(data: Dict[str, int], name: str) -> Dict[str, int]:
     d = {"0": 1}
     for k, v in data.items():
@@ -130,3 +74,88 @@ def transform_stem_rounds(data: Dict[str, int], name: str) -> Dict[str, int]:
             )
         d[key] = val
     return d
+
+
+class TTGlyphHints:
+    def __init__(
+        self,
+        mm_glyph: VfbToUfoGlyph,
+        data: List[Dict[str, Any]],
+        zone_names: Dict[str, List[str]],
+        stems: TUfoStemsDict,
+    ) -> None:
+        self.glyph: VfbToUfoGlyph = mm_glyph
+        self.zone_names = zone_names
+        self.stems = stems
+
+        self.commands: List[Dict] = []
+
+        self._build_tt_glyph_hints(data)
+
+    def _build_tt_glyph_hints(self, data: List[Dict[str, Any]]) -> None:
+        # Write TT hints into glyph lib.
+        self.commands = []
+        for cmd in data:
+            code = cmd["cmd"]
+            params = cmd["params"]
+            d: Dict[str, str | bool] = {"code": vfb2ufo_command_codes[code]}
+            if code in ("AlignBottom", "AlignTop"):
+                d["point"] = self.glyph.get_point_label(params["pt"], code)
+                if code == "AlignBottom":
+                    zd = "ttZonesB"
+                else:
+                    zd = "ttZonesT"
+                d["zone"] = self.zone_names[zd][params["zone"]]
+            elif code in ("AlignH", "AlignV"):
+                d["point"] = self.glyph.get_point_label(params["pt"], code)
+                if "align" in params:
+                    align = params["align"]
+                    if align > -1:
+                        d["align"] = vfb2ufo_alignment_rev[align]
+            elif code in (
+                "SingleLinkH",
+                "SingleLinkV",
+                "DoubleLinkH",
+                "DoubleLinkV",
+            ):
+                d["point1"] = self.glyph.get_point_label(params["pt1"], code)
+                d["point2"] = self.glyph.get_point_label(params["pt2"], code)
+                if "stem" in params:
+                    stem = params["stem"]
+                    if stem == -2:
+                        d["round"] = True
+                    elif stem == -1:
+                        pass
+                    else:
+                        stem_dir = "ttStemsH" if code.endswith("H") else "ttStemsV"
+                        d["stem"] = self.stems[stem_dir][stem]["name"]
+                if "align" in params:
+                    align = params["align"]
+                    if align > -1:
+                        d["align"] = vfb2ufo_alignment_rev[align]
+            elif code in (
+                "InterpolateH",
+                "InterpolateV",
+            ):
+                d["point"] = self.glyph.get_point_label(params["pti"], code)
+                d["point1"] = self.glyph.get_point_label(params["pt1"], code)
+                d["point2"] = self.glyph.get_point_label(params["pt2"], code)
+                if "align" in params:
+                    align = params["align"]
+                    if align > -1:
+                        d["align"] = vfb2ufo_alignment_rev[align]
+            elif code in (
+                "MDeltaH",
+                "MDeltaV",
+                "FDeltaH",
+                "FDeltaV",
+            ):
+                d["point"] = self.glyph.get_point_label(params["pt"], code)
+                d["delta"] = params["shift"]
+                d["ppm1"] = params["ppm1"]
+                d["ppm2"] = params["ppm2"]
+            else:
+                logger.error(f"Unknown TT command: {code}")
+                raise ValueError
+
+            self.commands.append(d)

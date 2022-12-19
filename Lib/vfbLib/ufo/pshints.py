@@ -10,7 +10,8 @@ from typing import TYPE_CHECKING, Dict, List, Tuple
 
 if TYPE_CHECKING:
     from vfbLib.typing import Hint, HintTuple
-    from vfbLib.ufo.glyph import VfbToUfoGlyph, UfoGlyph
+    from vfbLib.ufo.glyph import VfbToUfoGlyph
+    from vfbLib.ufo.paths import UfoMasterGlyph
 
 
 logger = logging.getLogger(__name__)
@@ -31,7 +32,7 @@ def normalize_hint_dict(hint: Hint, name: str = "dummy"):
 
 def build_ps_glyph_hints(
     mmglyph: VfbToUfoGlyph,
-    glyph: UfoGlyph,
+    glyph: UfoMasterGlyph,
     master_hints: Dict[str, List[str | HintTuple]],
 ) -> None:
     # Set the master-specific hints from data to the glyph lib
