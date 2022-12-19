@@ -11,7 +11,7 @@ from vfbLib.ufo.tth import set_tth_lib
 from vfbLib.ufo.vfb2ufo import TT_GLYPH_LIB_KEY
 
 if TYPE_CHECKING:
-    from fontTools.ufoLib.glifLib import GLIFPointPen, GlyphSet
+    from fontTools.ufoLib.glifLib import GLIFPointPen
     from vfbLib.typing import Anchor
     from vfbLib.ufo.glyph import VfbToUfoGlyph
     from vfbLib.ufo.typing import UfoComponent, UfoContour
@@ -23,7 +23,6 @@ logger = logging.getLogger(__name__)
 class UfoMasterGlyph:
     def __init__(
         self,
-        glyph_set: GlyphSet,
         mm_glyph: VfbToUfoGlyph,
         glyph_order: List[str],
         master_index: int,
@@ -32,7 +31,6 @@ class UfoMasterGlyph:
         self.glyph_order = glyph_order
         self.master_index = master_index
 
-        self.glyphSet = glyph_set
         self.lib: Dict[str, Any] = {}
         self.anchors: List[Anchor] = []
         self.guidelines: List = []
