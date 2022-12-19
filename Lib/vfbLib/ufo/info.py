@@ -5,11 +5,12 @@ import logging
 from typing import TYPE_CHECKING, List, Tuple
 from vfbLib.helpers import binaryToIntList
 from vfbLib.ufo.time import convert_timestamp
+from vfbLib.ufo.typing import TUfoGaspRecDict
 
 
 if TYPE_CHECKING:
     from vfbLib.typing import GaspList
-    from vfbLib.ufo.typing import TUfoGaspRecDict, UfoGuide
+    from vfbLib.ufo.typing import UfoGuide
 
 
 logger = logging.getLogger(__name__)
