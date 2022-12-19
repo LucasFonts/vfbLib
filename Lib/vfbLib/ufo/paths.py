@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import logging
 
-from typing import List, Tuple, TYPE_CHECKING
+from typing import Dict, List, Tuple, TYPE_CHECKING
 
 
 if TYPE_CHECKING:
@@ -28,7 +28,7 @@ def draw_glyph(
         pen.addComponent(glyphName=gn, transformation=tr)
 
 
-def apply_closepath(contour):
+def apply_closepath(contour) -> Tuple[str, str] | None:
     if contour[-1][3] == contour[0][3]:
         # Equal coords, use closepath to draw the last line
         name = contour[0][2]
@@ -43,22 +43,39 @@ def apply_closepath(contour):
                     f"Point name conflict in {contour[0]} vs. {name} while "
                     f"applying closepath. Not applying old name ({name})"
                 )
+                # Return the old and new name so the labels can be updated
+                return (name, contour[0])
 
     else:
         _, smooth, name, pt = contour[0]
         contour[0] = ("line", smooth, name, pt)
 
 
-def flush_contour(contour, path_is_open) -> List:
+def flush_contour(contour, path_is_open) -> Tuple[List, Tuple[str, str] | None]:
+    rename_points = None
     if not path_is_open:
         last_type = contour[-1][0]
         if last_type in ("line", "curve", "qcurve"):
-            apply_closepath(contour)
+            rename_points = apply_closepath(contour)
 
         elif last_type is None:
             _, smooth, name, pt = contour[0]
             contour[0] = ("qcurve", smooth, name, pt)
-    return contour
+    return contour, rename_points
+
+
+def append_segment(
+    contour: UfoContour,
+    path_is_open: bool,
+    contours: List[UfoContour],
+    rename_points_dict: Dict[str, str],
+) -> None:
+    if contour:
+        ct, rename_points = flush_contour(contour, path_is_open)
+        contours.append(ct)
+        if rename_points is not None:
+            k, v = rename_points
+            rename_points_dict[k] = v
 
 
 def get_master_glyph(
@@ -67,6 +84,7 @@ def get_master_glyph(
     # Extract a single master glyph from an mm glyph
 
     contours = []
+    rename_points_dict: Dict[str, str] = {}
     path_is_open = False
     in_qcurve = False
     if hasattr(mmglyph, "mm_nodes"):
@@ -80,8 +98,7 @@ def get_master_glyph(
             smooth = bool(flags & 1)
 
             if segment_type == "move":
-                if contour:
-                    contours.append(flush_contour(contour, path_is_open))
+                append_segment(contour, path_is_open, contours, rename_points_dict)
                 contour = [("move", smooth, name, pt)]
                 path_is_open = bool(flags & 8)
                 in_qcurve = False
@@ -109,7 +126,7 @@ def get_master_glyph(
                 raise ValueError
 
         if contour:
-            contours.append(flush_contour(contour, path_is_open))
+            append_segment(contour, path_is_open, contours, rename_points_dict)
 
     components: List[UfoComponent] = []
     if hasattr(mmglyph, "mm_components"):
