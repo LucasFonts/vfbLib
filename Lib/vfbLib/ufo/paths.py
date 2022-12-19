@@ -26,65 +26,8 @@ class UfoMasterGlyph:
         self.contours: List[UfoContour] = []
         self.rename_points: Dict[str, str] = {}
 
-    def draw_glyph(
-        self,
-        pen: GLIFPointPen,
-    ):
-        for contour in self.contours:
-            pen.beginPath()
-            for segment_type, smooth, name, pt in contour:
-                pen.addPoint(pt, segment_type, name=name, smooth=smooth)
-            pen.endPath()
-
-        for gn, tr in self.components:
-            pen.addComponent(glyphName=gn, transformation=tr)
-
-    def apply_closepath(self, contour) -> None:
-        if contour[-1][3] == contour[0][3]:
-            # Equal coords, use closepath to draw the last line
-            name = contour[0][2]
-            contour[0] = contour.pop()
-            if name is not None:
-                # Keep old point name
-                if contour[0][2] is None:
-                    t, smooth, _, pt = contour[0]
-                    contour[0] = (t, smooth, name, pt)
-                else:
-                    logger.warning(
-                        f"Point name conflict in {contour[0]} vs. {name} while "
-                        f"applying closepath. Not applying old name ({name})"
-                    )
-                    # Note the old and new name so the labels can be updated
-                    self.rename_points[name] = contour[0]
-
-        else:
-            _, smooth, name, pt = contour[0]
-            contour[0] = ("line", smooth, name, pt)
-
-    def flush_contour(
-        self, contour, path_is_open
-    ) -> List:
-        if not path_is_open:
-            last_type = contour[-1][0]
-            if last_type in ("line", "curve", "qcurve"):
-                self.apply_closepath(contour)
-
-            elif last_type is None:
-                _, smooth, name, pt = contour[0]
-                contour[0] = ("qcurve", smooth, name, pt)
-        return contour
-
-    def append_contour(
-        self,
-        contour: UfoContour,
-        path_is_open: bool,
-    ) -> None:
-        if contour:
-            ct = self.flush_contour(contour, path_is_open)
-            self.contours.append(ct)
-
     def build(self) -> None:
-        # Extract the single master glyph from an mm glyph
+        # Extract the single master glyph from an mm glyph. The main method.
 
         self.contours = []
         rename_points_dict: Dict[str, str] = {}
@@ -101,7 +44,7 @@ class UfoMasterGlyph:
                 smooth = bool(flags & 1)
 
                 if segment_type == "move":
-                    self.append_contour(contour, path_is_open)
+                    self._append_contour(contour, path_is_open)
                     contour = [("move", smooth, name, pt)]
                     path_is_open = bool(flags & 8)
                     in_qcurve = False
@@ -129,7 +72,7 @@ class UfoMasterGlyph:
                     raise ValueError
 
             if contour:
-                self.append_contour(contour, path_is_open)
+                self._append_contour(contour, path_is_open)
 
         self.components: List[UfoComponent] = []
         if hasattr(self.mm_glyph, "mm_components"):
@@ -143,3 +86,63 @@ class UfoMasterGlyph:
                     c["offsetY"][self.master_index],
                 )
                 self.components.append((self.glyph_order[c["gid"]], transform))
+
+    def draw_glyph(self, pen: GLIFPointPen) -> None:
+        """
+        Draw the glyph to the supplied point pen.
+        """
+        for contour in self.contours:
+            pen.beginPath()
+            for segment_type, smooth, name, pt in contour:
+                pen.addPoint(pt, segment_type, name=name, smooth=smooth)
+            pen.endPath()
+
+        for gn, tr in self.components:
+            pen.addComponent(glyphName=gn, transformation=tr)
+
+    def _append_contour(self, contour: UfoContour, path_is_open: bool) -> None:
+        """
+        Append the contour to the glyph's contours, applying closepath optimizations.
+        """
+        if contour:
+            ct = self._flush_contour(contour, path_is_open)
+            self.contours.append(ct)
+
+    def _apply_closepath(self, contour: UfoContour) -> None:
+        """
+        Apply closepath optimizations to the contour.
+        """
+        if contour[-1][3] == contour[0][3]:
+            # Equal coords, use closepath to draw the last line
+            name = contour[0][2]
+            contour[0] = contour.pop()
+            if name is not None:
+                # Keep old point name
+                if contour[0][2] is None:
+                    t, smooth, _, pt = contour[0]
+                    contour[0] = (t, smooth, name, pt)
+                else:
+                    logger.warning(
+                        f"Point name conflict in {contour[0]} vs. {name} while "
+                        f"applying closepath. Not applying old name ({name})"
+                    )
+                    # Note the old and new name so the labels can be updated
+                    self.rename_points[name] = contour[0][2]
+
+        else:
+            _, smooth, name, pt = contour[0]
+            contour[0] = ("line", smooth, name, pt)
+
+    def _flush_contour(self, contour: UfoContour, path_is_open: bool) -> UfoContour:
+        """
+        Post-process a contour before it is appended to the glyph's contours.
+        """
+        if not path_is_open:
+            last_type = contour[-1][0]
+            if last_type in ("line", "curve", "qcurve"):
+                self._apply_closepath(contour)
+
+            elif last_type is None:
+                _, smooth, name, pt = contour[0]
+                contour[0] = ("qcurve", smooth, name, pt)
+        return contour
