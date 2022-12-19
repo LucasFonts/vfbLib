@@ -3,6 +3,7 @@ from __future__ import annotations
 from unittest import TestCase
 
 from pprint import pprint
+from vfbLib.ufo.glyph import VfbToUfoGlyph
 from vfbLib.ufo.paths import UfoMasterGlyph
 
 
@@ -268,21 +269,16 @@ complex_tt = [
 ]
 
 
-class MMGlyph:
-    def __init__(self, name, paths):
-        self.name = name
-        self.mm_nodes = paths
-        self.point_labels = {}
-        # For testing those must be there
-        self.anchors = []
-        self.mm_anchors = []
-        self.mm_metrics = [[1000, 0]]
-        self.lib = {}
-        self.tth_commands = []
-        self.unicodes = []
+def MMGlyph(name, paths):
+    g = VfbToUfoGlyph()
+    g.name = name
+    g.mm_nodes = paths
+    g.point_labels = {}
+    g.mm_metrics = [(1000, 0)]
+    return g
 
 
-def get_master_glyph(mm_glyph: MMGlyph, glyph_order, master_index):
+def get_master_glyph(mm_glyph: VfbToUfoGlyph, glyph_order, master_index):
     m = UfoMasterGlyph(mm_glyph, glyph_order, master_index)
     m.build(minimal=True, include_ps_hints=False, encode_data_base64=False)
     return m.contours, m.components
