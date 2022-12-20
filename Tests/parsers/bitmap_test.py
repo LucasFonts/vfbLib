@@ -140,7 +140,7 @@ class BitmapTest(TestCase):
         gfx = pprint_bitmap(bitmap, invert=True)
         assert gfx == [
             "                  ",
-            "    ████████    ██",
+            "    ████████      ",
             "  ████    ████    ",
             "  ████    ████    ",
             "          ████    ",

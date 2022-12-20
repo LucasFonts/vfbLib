@@ -39,10 +39,13 @@ def pprint_bitmap(bitmap, invert=False) -> List[str]:
 
             # print(f"Index: {i}, value: {byte}")
             col += num2binary(byte, bits=8).replace("0", "  ").replace("1", "██")
-        gfx.append(col[: w * 2])
+            col += "|"
+        print(f"|{col}")
+        # gfx.append(col[: w * 2])
+        gfx.append(col)
     if invert:
         gfx.reverse()
-    print("\n".join(gfx))
+    # print("\n".join(gfx))
     print(gfx)
     return gfx
 
