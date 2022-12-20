@@ -537,9 +537,7 @@ class VfbToUfoWriter:
         self.glyph_set = GlyphSet(glyphs_path)
         for name, mm_glyph in self.glyph_masters.items():
             logger.debug(f"    {name}, {type(name)}, {mm_glyph}")
-            master_glyph = UfoMasterGlyph(
-                mm_glyph, self.glyphOrder, self.master_index
-            )
+            master_glyph = UfoMasterGlyph(mm_glyph, self.glyphOrder, self.master_index)
             master_glyph.build(
                 self.minimal, self.include_ps_hints, self.encode_data_base64
             )
