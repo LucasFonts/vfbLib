@@ -18,7 +18,7 @@ mmk = {
 }
 
 
-kerning = UfoKerning(glyphOrder=glyph_order, groups=groups, mm_kerning=mmk)
+kerning = UfoKerning(glyph_order=glyph_order, groups=groups, mm_kerning=mmk)
 kerning.mm_kerning_names = {
     ("public.kern1.A", "public.kern2.T"): [-100, -80],
     ("public.kern1.T", "public.kern2.A"): [-100, -80],

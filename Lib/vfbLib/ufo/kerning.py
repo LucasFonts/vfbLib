@@ -3,6 +3,7 @@ from __future__ import annotations
 import logging
 
 from typing import TYPE_CHECKING, Dict, List, Tuple
+from vfbLib.ufo.groups import build_glyph_to_group_maps
 
 if TYPE_CHECKING:
     from vfbLib.ufo.typing import UfoGroups, UfoMasterKerning, UfoMMKerning
@@ -14,43 +15,16 @@ logger = logging.getLogger(__name__)
 class UfoKerning:
     def __init__(
         self,
-        glyphOrder: List[str],
+        glyph_order: List[str],
         groups: UfoGroups,
         mm_kerning: UfoMMKerning,
     ):
-        self.glyphOrder = glyphOrder
-        self.groups = groups
+        self.glyph_order = glyph_order
+        group_info = build_glyph_to_group_maps(groups)
+        self.groups, self.glyph_group_1, self.glyph_group_2 = group_info
         self.mm_kerning = mm_kerning
         self.master_kerning: UfoMasterKerning = {}
-        self._build_glyph_to_groups_mapping()
         self._make_name_based_kerning()
-
-    def _build_glyph_to_groups_mapping(self) -> None:
-        """
-        Glyph name to kerning groups
-        """
-        self.glyph_group_1: Dict[str, str] = {}
-        self.glyph_group_2: Dict[str, str] = {}
-        for group in self.groups.items():
-            name, glyphs = group
-            if name.startswith("public.kern1"):
-                for g in glyphs:
-                    if g in self.glyph_group_1:
-                        logger.error(
-                            f"Multiple kerning groups (kern1) for glyph {g}: "
-                            f"{self.glyph_group_1[g]}, {name}. New group ignored."
-                        )
-                        continue
-                    self.glyph_group_1[g] = name
-            elif name.startswith("public.kern2"):
-                for g in glyphs:
-                    if g in self.glyph_group_2:
-                        logger.error(
-                            f"Multiple kerning groups (kern2) for glyph {g}: "
-                            f"{self.glyph_group_2[g]}, {name}. New group ignored."
-                        )
-                        continue
-                    self.glyph_group_2[g] = name
 
     def _is_exception(self, L: str, R: str):
         L_is_key = f"public.kern1.{L}" in self.groups or L not in self.glyph_group_1
@@ -71,7 +45,7 @@ class UfoKerning:
         for pair, values in self.mm_kerning.items():
             L, Rid = pair
             # Make right GID into glyph name
-            R = self.glyphOrder[int(Rid)]
+            R = self.glyph_order[int(Rid)]
 
             # Is the left glyph a keyglyph? It is so if there's a kerning group
             # named after it. In that case, use the group name instead of the

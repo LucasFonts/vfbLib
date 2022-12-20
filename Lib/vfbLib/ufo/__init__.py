@@ -505,6 +505,7 @@ class VfbToUfoWriter:
             self.minimal,
         )
         self.ufo_kerning = UfoKerning(self.glyphOrder, self.ufo_groups, self.mm_kerning)
+        self.ufo_groups = self.ufo_kerning.groups
         for i in range(len(self.masters)):
             self.write_master(i, out_path, overwrite, silent, ufoz)
 
