@@ -53,19 +53,11 @@ class UfoKerning:
                     self.glyph_group_2[g] = name
 
     def _is_exception(self, L: str, R: str):
-        L_group = f"public.kern1.{L}"
-        if L_group in self.groups:
-            left_is_key = True
-        else:
-            left_is_key = L not in self.glyph_group_1
+        L_is_key = f"public.kern1.{L}" in self.groups or L not in self.glyph_group_1
 
-        right_group = f"public.kern2.{R}"
-        if right_group in self.groups:
-            right_is_key = True
-        else:
-            right_is_key = R not in self.glyph_group_2
+        R_is_key = f"public.kern2.{R}" in self.groups or R not in self.glyph_group_2
 
-        if left_is_key and right_is_key:
+        if L_is_key and R_is_key:
             return False
 
         return True
@@ -85,17 +77,12 @@ class UfoKerning:
             # named after it. In that case, use the group name instead of the
             # glyph name.
             left_group = f"public.kern1.{L}"
-            if left_group in self.groups:
-                left = left_group
-            else:
-                left = L
+            left = left_group if left_group in self.groups else L
 
             # Is the right glyph a keyglyph?
             right_group = f"public.kern2.{R}"
-            if right_group in self.groups:
-                right = right_group
-            else:
-                right = R
+            right = right_group if right_group in self.groups else R
+
             self.mm_kerning_names[left, right] = values
 
     def extract_master_kerning(self, master_index) -> None:
