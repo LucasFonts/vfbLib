@@ -67,4 +67,4 @@ class UfoKerning:
         for pair, values in self.mm_kerning_names.items():
             value = values[master_index]
             if value != 0 or self._is_exception(*pair):
-                self.master_kerning[*pair] = value
+                self.master_kerning[pair] = value
