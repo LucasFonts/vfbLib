@@ -97,7 +97,7 @@ class UfoMasterGlyph:
             self.anchors[j]["x"] = anchor["x"][self.master_index]
             self.anchors[j]["y"] = anchor["y"][self.master_index]
 
-    def _extract_master_contours(self):
+    def _extract_master_contours(self) -> None:
         """
         Extract the contours and components from the mm contours.
         """
@@ -146,7 +146,7 @@ class UfoMasterGlyph:
             if contour:
                 self._append_contour(contour, path_is_open)
 
-        self.components: List[UfoComponent] = []
+        self.components = []
         if hasattr(self.mm_glyph, "mm_components"):
             for c in self.mm_glyph.mm_components:
                 transform = (

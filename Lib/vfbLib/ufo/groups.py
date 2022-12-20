@@ -109,7 +109,7 @@ def build_glyph_to_group_maps(
 
 
 def _build_groups(glyph_to_group_mapping: Dict[str, str]) -> UfoGroups:
-    groups = {}
+    groups: UfoGroups = {}
     for name, group in glyph_to_group_mapping.items():
         if group in groups:
             groups[group].append(name)

@@ -3,7 +3,7 @@ from __future__ import annotations
 import codecs
 import logging
 
-from defcon import Font
+from defcon.objects.font import Font
 from ufonormalizer import normalizeUFO
 from pathlib import Path
 from tempfile import NamedTemporaryFile
@@ -82,7 +82,7 @@ def normalize_ufo(
         fix_vfb2ufo_feature_encoding(filepath)  # FIXME: Support ufoz
 
     try:
-        f = Font(filepath)
+        f = Font(str(filepath))
     except:  # noqa: E722
         logger.error(f"Skipping UFO with errors: {filepath}")
         raise
@@ -123,8 +123,8 @@ def normalize_ufo(
         else:
             if filepath.suffix == ".ufoz":
                 filepath = filepath.with_suffix(".ufo")
-        f.save(path=filepath, formatVersion=3, structure=structure)
-        normalizeUFO(ufoPath=filepath, onlyModified=False, writeModTimes=False)
+        f.save(path=str(filepath), formatVersion=3, structure=structure)
+        normalizeUFO(ufoPath=str(filepath), onlyModified=False, writeModTimes=False)
         if structure == "package":
             normalized_file.touch()
 

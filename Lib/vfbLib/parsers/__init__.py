@@ -144,7 +144,7 @@ class EncodedValueListWithCountParser(BaseParser):
     @classmethod
     def _parse(cls) -> Dict[str, List[int]]:
         count = read_encoded_value(cls.stream)
-        values = {"values": []}
+        values: Dict[str, List[int]] = {"values": []}
         for _ in range(count):
             val = read_encoded_value(cls.stream)
             values["values"].append(val)

@@ -141,6 +141,7 @@ class VfbToUfoWriter:
         if "kerning" in data:
             kerning: Dict[int, List[int]] = data["kerning"]
             for Rid, values in kerning.items():
+                assert g.name is not None
                 self.mm_kerning[(g.name, Rid)] = values
 
         g.mm_metrics = data["metrics"]  # width and height
@@ -564,4 +565,4 @@ class VfbToUfoWriter:
             writer.writeFeatures(features)
         writer.writeLib(self.lib)
         writer.close()
-        normalizeUFO(ufoPath=master_path, onlyModified=False, writeModTimes=False)
+        normalizeUFO(ufoPath=str(master_path), onlyModified=False, writeModTimes=False)
