@@ -506,9 +506,9 @@ class VfbToUfoWriter:
         )
         self.ufo_kerning = UfoKerning(self.glyphOrder, self.ufo_groups, self.mm_kerning)
         for i in range(len(self.masters)):
-            self.writer_master(i, out_path, overwrite, silent, ufoz)
+            self.write_master(i, out_path, overwrite, silent, ufoz)
 
-    def writer_master(
+    def write_master(
         self, index: int, out_path: Path, overwrite=False, silent=False, ufoz=False
     ) -> None:
         if index > 0:
