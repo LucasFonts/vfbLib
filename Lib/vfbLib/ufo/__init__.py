@@ -248,11 +248,12 @@ class VfbToUfoWriter:
                     name = "%s%02i" % (dname, i)
                     i += 1
                 if name in lib:
-                    logger.error(
-                        f"ERROR: Duplicate TrueType stem name '{name}'. "
-                        "Make stem names unique in VFB."
+                    oldname = name
+                    name = "%s#%02i" % (oldname, i)
+                    logger.warning(
+                        f"Duplicate TrueType stem name '{oldname}', renamed to '{name}'"
+                        ". Preferably make stem names unique in VFB."
                     )
-                    raise KeyError
                 lib[name] = stem
         if lib:
             self.lib[TT_LIB_KEY]["stems"] = lib
