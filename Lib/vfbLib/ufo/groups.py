@@ -48,17 +48,22 @@ def transform_groups(
                         logger.warning("Not adding empty kerning group to the UFO.")
                         continue
 
-            key_glyph = glyphs[0]  # Keyglyph is used for group name
-            if key_glyph in missing:
-                if num_missing != num_glyphs:
-                    logger.warning(
-                        f"Key glyph '{key_glyph}' for group '{name}' is missing "
-                        "from the font."
-                    )
+            if glyphs:
+                key_glyph = glyphs[0]  # Keyglyph is used for group name
+                if key_glyph in missing:
+                    if num_missing != num_glyphs:
+                        logger.warning(
+                            f"Key glyph '{key_glyph}' for group '{name}' is missing "
+                            "from the font."
+                        )
 
-            # Sort group glyphs by glyphOrder
-            if not missing:
-                glyphs.sort(key=lambda n: glyphOrder.index(n))
+                # Sort group glyphs by glyphOrder
+                if not missing:
+                    glyphs.sort(key=lambda n: glyphOrder.index(n))
+            else:
+                # The group is empty, use its original name to build the ufo group name
+                groups[name] = []
+                key_glyph = name
 
             if name in kerning_class_flags:
                 flags = kerning_class_flags[name][0]
