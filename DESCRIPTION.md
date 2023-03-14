@@ -98,6 +98,24 @@ options:
 ```
 
 
+### diffvfb
+
+Generate a diff of two VFB files, either in unified diff or HTML format.
+
+```
+usage: diffvfb [-h] [--html HTML] file1 file2
+
+diffvfb Copyright (c) 2023 by LucasFonts Build 2023-03-14
+
+positional arguments:
+  file1        First input file path (.vfb)
+  file2        Second input file path (.vfb)
+
+options:
+  -h, --help   show this help message and exit
+  --html HTML  Output diff in HTML format to file path
+```
+
 ## Copyright
 
-© 2022 by [LucasFonts GmbH](https://www.lucasfonts.com/), Berlin
+© 2022–2023 by [LucasFonts GmbH](https://www.lucasfonts.com/), Berlin
