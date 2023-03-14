@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import logging
 
+from fontTools.designspaceLib import AxisDescriptor, DesignSpaceDocument
 from fontTools.ufoLib import UFOFileStructure, UFOWriter
 from fontTools.ufoLib.glifLib import GlyphSet
 from pathlib import Path
@@ -42,6 +43,9 @@ class VfbToUfoWriter:
         """
         Serialize the JSON structure to UFO(s)
         """
+        self.axes: List[AxisDescriptor] = []
+        self.axis_count = 0
+        self.current_axis: AxisDescriptor | None = None
         self.json = json
         self.minimal = minimal
         self.encode_data_base64 = base64
@@ -338,9 +342,17 @@ class VfbToUfoWriter:
             elif name == "Axis Count":  # 1513
                 self.axis_count = data
             elif name == "Axis Name":  # 1514
-                pass
+                if self.current_axis is not None:
+                    self.axes.append(self.current_axis)
+                self.current_axis = AxisDescriptor(tag=None, name=data)
+                print(f"Axis: {self.current_axis}")
             elif name == "Axis Mapping":  # 1516
-                pass
+                for u, d in data:
+                    if (u, d) == (0.0, 0.0):
+                        break
+                    self.current_axis.map.append((u, round(d * 1000)))
+            elif name == "Axis Count":  # 1523
+                self.axis_count = data
             elif name == "Blue Values Count":  # 1530
                 self.num_blue_values = data
             elif name == "Other Blues Count":  # 1531
@@ -430,6 +442,9 @@ class VfbToUfoWriter:
             else:
                 logger.info(f"Unhandled key: {name}")
 
+        if self.current_axis is not None:
+            print(f"Appending final axis: {self.current_axis}")
+            self.axes.append(self.current_axis)
         if self.current_glyph is not None:
             assert self.current_glyph.name is not None
             self.glyph_masters[self.current_glyph.name] = self.current_glyph
@@ -508,8 +523,15 @@ class VfbToUfoWriter:
         )
         self.ufo_kerning = UfoKerning(self.glyphOrder, self.ufo_groups, self.mm_kerning)
         self.ufo_groups = self.ufo_kerning.groups
+        if self.axes:
+            self.write_designspace(out_path.with_suffix(".designspace"))
         for i in range(len(self.masters)):
             self.write_master(i, out_path, overwrite, silent, ufoz)
+
+    def write_designspace(self, out_path):
+        ds = DesignSpaceDocument()
+        ds.axes = self.axes
+        ds.write(out_path)
 
     def write_master(
         self, index: int, out_path: Path, overwrite=False, silent=False, ufoz=False

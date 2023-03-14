@@ -133,6 +133,7 @@ parser_classes = {
     1514: ("Axis Name", StringParser),
     1516: ("Axis Mapping", AxisMappingsParser),
     1517: ("1517", DoubleParser),
+    1523: ("1523", EncodedValueListParser),
     1524: ("1524", EncodedValueListParser),
     1530: ("Blue Values Count", IntParser),
     1531: ("Other Blues Count", IntParser),
