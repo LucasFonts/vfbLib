@@ -10,6 +10,7 @@ from vfbLib.parsers import (
     GaspParser,
     GlyphEncodingParser,
     OpenTypeClassFlagsParser,
+    OpenTypeStringParser,
     StringParser,
 )
 from vfbLib.parsers.bitmap import BackgroundBitmapParser, GlyphBitmapParser
@@ -116,7 +117,7 @@ parser_classes = {
     1273: ("TrueType Zone Deltas", TrueTypeZoneDeltasParser),
     1274: ("Zone Stop PPEM", IntParser),
     1275: ("Code Stop PPEM", IntParser),
-    1276: ("openTypeFeatures", StringParser),
+    1276: ("openTypeFeatures", OpenTypeStringParser),
     1277: ("OpenType Class", StringParser),
     1278: ("hhea_ascender", SignedIntParser),
     1279: ("hhea_descender", SignedIntParser),

@@ -320,7 +320,7 @@ class VfbToUfoWriter:
             elif name == "Code Stop PPEM":  # 1275
                 self.set_tt_code_stop(data)
             elif name == "openTypeFeatures":  # 1276
-                self.features = data
+                self.features = "\n".join(data)
             elif name == "OpenType Class":  # 1277
                 self.add_ot_class(data)
             elif name == "Global Guides":  # 1294
