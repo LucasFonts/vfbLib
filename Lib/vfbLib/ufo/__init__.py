@@ -13,6 +13,7 @@ from pathlib import Path
 from shutil import rmtree
 from typing import TYPE_CHECKING, Any, Dict, List, Tuple
 from ufonormalizer import normalizeUFO
+from vfbLib.ufo.designspace import get_ds_master_location
 from vfbLib.ufo.glyph import VfbToUfoGlyph
 from vfbLib.ufo.groups import transform_groups
 from vfbLib.ufo.guides import apply_guide_properties, get_master_guides
@@ -563,6 +564,7 @@ class VfbToUfoWriter:
         ds.axes = self.axes
         for i in range(self.master_count):
             ds.addSourceDescriptor(
+                location=get_ds_master_location(self.axes, self.master_locations[i+1]),
                 name=self.masters[i],
                 path=str(self.get_master_path(out_path.with_suffix(".ufo"), i)),
             )
