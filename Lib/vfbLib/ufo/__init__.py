@@ -548,29 +548,43 @@ class VfbToUfoWriter:
         )
         self.ufo_kerning = UfoKerning(self.glyphOrder, self.ufo_groups, self.mm_kerning)
         self.ufo_groups = self.ufo_kerning.groups
-        if self.axes:
-            self.write_designspace(out_path.with_suffix(".designspace"))
         for i in range(len(self.masters)):
             self.write_master(i, out_path, overwrite, silent, ufoz)
+        if self.axes:
+            self.write_designspace(
+                out_path.with_suffix(".designspace"), overwrite, silent
+            )
 
-    def write_designspace(self, out_path):
+    def write_designspace(self, out_path: Path, overwrite=False, silent=False) -> None:
+        if out_path.exists():
+            if not overwrite:
+                raise FileExistsError(str(out_path))
         ds = DesignSpaceDocument()
         ds.axes = self.axes
-        ds.write(out_path)
+        for i in range(self.master_count):
+            ds.addSourceDescriptor(
+                name=self.masters[i],
+                path=str(self.get_master_path(out_path.with_suffix(".ufo"), i)),
+            )
+        if not silent:
+            print(f"Writing designspace: {out_path}")
+        ds.write(str(out_path))
+
+    def get_master_path(self, out_path: Path, master_index: int) -> Path:
+        if master_index > 0:
+            return out_path.with_stem(f"{out_path.stem}-{master_index}")
+        return out_path
 
     def write_master(
         self, index: int, out_path: Path, overwrite=False, silent=False, ufoz=False
     ) -> None:
-        if index > 0:
-            master_path = out_path.with_stem(f"{out_path.stem}-{index}")
-        else:
-            master_path = out_path
+        master_path = self.get_master_path(out_path, index)
 
         if master_path.exists():
             if overwrite:
                 rmtree(master_path)
             else:
-                raise FileExistsError
+                raise FileExistsError(str(master_path))
 
         if not silent:
             print(f"Processing font: {self.info.ui_name.strip()}, master {index}")
