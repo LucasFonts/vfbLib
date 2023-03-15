@@ -610,6 +610,9 @@ class VfbToUfoWriter:
                 userLocation=get_ds_location(self.axes, loc, 1),
             )
 
+        # Add labels
+        # TODO
+
         if not silent:
             print(f"Writing designspace: {out_path}")
         ds.write(str(out_path))
