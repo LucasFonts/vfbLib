@@ -383,8 +383,21 @@ class VfbToUfoWriter:
                 self.axis_mappings_count = data
             elif name == "Axis Mappings":  # 1516
                 self.add_axis_mappings(data)
-            elif name == "Axis Count":  # 1523
-                self.axis_count = data
+            elif name == "Anisotropic Interpolation Mappings":  # 1523
+                # TODO: Can we properly output this to designspace?
+                for axis in data:
+                    for a, b in axis:
+                        if a != b:
+                            maps = {
+                                self.axes[i].name: data[i] for i in range(self.axis_count)
+                            }
+                            logger.warning(
+                                "WARNING: Designspace output of anisotropic "
+                                "interpolation settings is not yet supported. You must "
+                                "set it up manually."
+                            )
+                            logger.warning(f"         Mappings: {maps}")
+                            break
             elif name == "Blue Values Count":  # 1530
                 self.num_blue_values = data
             elif name == "Other Blues Count":  # 1531
@@ -584,6 +597,7 @@ class VfbToUfoWriter:
             if not isinstance(loc, list):
                 raise TypeError
 
+            # FIXME: Support anisotropic interpolation
             ds.addInstanceDescriptor(
                 familyName=self.info.ds_family_name,
                 styleName=p["name"],
