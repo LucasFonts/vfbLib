@@ -2,7 +2,11 @@ from __future__ import annotations
 
 import logging
 
-from fontTools.designspaceLib import AxisDescriptor, DesignSpaceDocument
+from fontTools.designspaceLib import (
+    AxisDescriptor,
+    DesignSpaceDocument,
+    DiscreteAxisDescriptor,
+)
 from fontTools.ufoLib import UFOFileStructure, UFOWriter
 from fontTools.ufoLib.glifLib import GlyphSet
 from pathlib import Path
@@ -43,7 +47,7 @@ class VfbToUfoWriter:
         """
         Serialize the JSON structure to UFO(s)
         """
-        self.axes: List[AxisDescriptor] = []
+        self.axes: List[AxisDescriptor | DiscreteAxisDescriptor] = []
         self.axis_count = 0
         self.json = json
         self.minimal = minimal
@@ -359,13 +363,15 @@ class VfbToUfoWriter:
                     if n > 0:
                         # Use only n mappings out of 10 for the current axis
                         mappings = data[:n]
-                        self.axes[i].map = [(u, round(d * 1000)) for u, d in mappings]
-                        # Derive min/max from the mappings
-                        # FIXME: Is this info available elsewhere in the VFB?
-                        user_coords = [c[0] for c in mappings]
-                        self.axes[i].minimum = min(user_coords, default=0)
-                        self.axes[i].default = self.axes[i].minimum
-                        self.axes[i].maximum = max(user_coords, default=1000)
+                        axis = self.axes[i]
+                        axis.map = [(u, round(d * 1000)) for u, d in mappings]
+                        if isinstance(axis, AxisDescriptor):
+                            # Derive min/max from the mappings
+                            # FIXME: Is this info available elsewhere in the VFB?
+                            user_coords = [c[0] for c in mappings]
+                            axis.minimum = min(user_coords, default=0)
+                            axis.default = axis.minimum
+                            axis.maximum = max(user_coords, default=1000)
                     # Jump to the next 10 axis mappings
                     data = data[10:]
             elif name == "Axis Count":  # 1523
