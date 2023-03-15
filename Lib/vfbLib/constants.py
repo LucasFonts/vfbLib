@@ -108,6 +108,7 @@ parser_classes = {
     1139: ("OT Mac Name", StringParser),
     1140: ("1140", BaseParser),
     1141: ("Custom CMAPs", CustomCmapParser),
+    1247: ("1247", BaseParser),  # MM
     1250: ("Glyph Unicode", GlyphUnicodeParser),
     1253: ("Glyph Unicode Non-BMP", GlyphUnicodeSuppParser),
     1254: ("Primary Instances", PrimaryInstancesParser),
@@ -173,6 +174,7 @@ parser_classes = {
     2025: ("fontNote", StringParser),
     2026: ("OpenType Kerning Class Flags", OpenTypeClassFlagsParser),
     2027: ("Glyph Origin", GlyphOriginParser),
+    2028: ("2028", EncodedValueListParser),  # MM, proportional to number of masters
     2029: ("Glyph Anchors MM", GlyphAnchorsParser),  # MM-compatible
     2031: ("Glyph Guide Properties", GuidePropertiesParser),
     2032: ("2032", IntParser),
