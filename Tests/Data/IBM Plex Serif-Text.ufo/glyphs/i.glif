@@ -21,7 +21,7 @@
 		</contour>
 		<contour>
 			<point name="sv03" x="48" y="50" type="line"/>
-			<point x="119" y="50" type="line"/>
+			<point name="hr00" x="119" y="50" type="line"/>
 			<point name="sv04" x="119" y="446" type="line"/>
 			<point name="sv05" x="48" y="459" type="line"/>
 			<point name="iv01" x="48" y="497" type="line"/>
@@ -44,7 +44,18 @@
 				<array>
 					<dict>
 						<key>pointTag</key>
-						<string>ab01</string>
+						<string>sv01</string>
+						<key>stems</key>
+						<array>
+							<string>hstem 0 50</string>
+							<string>hstem 446 84</string>
+							<string>hstem 627 123</string>
+							<string>vstem 107 120</string>
+						</array>
+					</dict>
+					<dict>
+						<key>pointTag</key>
+						<string>hr00</string>
 						<key>stems</key>
 						<array>
 							<string>hstem 0 50</string>

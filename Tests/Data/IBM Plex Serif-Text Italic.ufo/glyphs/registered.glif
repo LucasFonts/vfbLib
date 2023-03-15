@@ -90,13 +90,49 @@
 			<point x="330" y="549"/>
 			<point x="333" y="562"/>
 			<point x="333" y="567" type="qcurve"/>
-			<point x="333" y="586"/>
+			<point name="hr00" x="333" y="586"/>
 			<point x="310" y="586" type="qcurve"/>
 			<point name="sv09" x="274" y="586" type="line"/>
 		</contour>
 	</outline>
 	<lib>
 		<dict>
+			<key>com.adobe.type.autohint.v2</key>
+			<dict>
+				<key>hintSetList</key>
+				<array>
+					<dict>
+						<key>pointTag</key>
+						<string>sv03</string>
+						<key>stems</key>
+						<array>
+							<string>hstem 298 31</string>
+							<string>hstem 398 19</string>
+							<string>hstem 490 21</string>
+							<string>hstem 591 19</string>
+							<string>hstem 679 31</string>
+							<string>vstem 89 35</string>
+							<string>vstem 333 42</string>
+							<string>vstem 444 35</string>
+						</array>
+					</dict>
+					<dict>
+						<key>pointTag</key>
+						<string>hr00</string>
+						<key>stems</key>
+						<array>
+							<string>hstem 298 31</string>
+							<string>hstem 398 19</string>
+							<string>hstem 490 21</string>
+							<string>hstem 586 24</string>
+							<string>hstem 679 31</string>
+							<string>vstem 89 35</string>
+							<string>vstem 333 42</string>
+							<string>vstem 444 35</string>
+						</array>
+					</dict>
+				</array>
+			</dict>
 			<key>com.fontlab.ttprogram</key>
 			<string>  &lt;ttProgram&gt;
     &lt;ttc code="alignt" point="at01" zone="capheight"/&gt;

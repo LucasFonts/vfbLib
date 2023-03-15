@@ -4,7 +4,7 @@
 	<advance width="608"/>
 	<outline>
 		<contour>
-			<point name="hr00" x="517" y="0" type="line"/>
+			<point name="ab01" x="517" y="0" type="line"/>
 			<point x="457" y="0"/>
 			<point x="381" y="42"/>
 			<point x="352" y="95" type="qcurve"/>
@@ -83,6 +83,18 @@
     &lt;ttc code="interpolatev" point="iv01" point1="sv04" point2="sv05"/&gt;
     &lt;ttc code="singlev" point1="ab01" point2="sv09" stem="stem_serif"/&gt;
   &lt;/ttProgram&gt;
+</string>
+			<key>com.fontlab.v5.userData</key>
+			<string>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;
+&lt;plist version="1.0"&gt;
+&lt;dict&gt;
+	&lt;key&gt;com.type-invaders.name.final&lt;/key&gt;
+	&lt;string&gt;uni20B9&lt;/string&gt;
+	&lt;key&gt;com.type-invaders.name.production&lt;/key&gt;
+	&lt;string&gt;rupeeindian&lt;/string&gt;
+&lt;/dict&gt;
+&lt;/plist&gt;
 </string>
 		</dict>
 	</lib>

@@ -56,9 +56,9 @@
 						<key>stems</key>
 						<array>
 							<string>hstem 396 100</string>
-							<string>hstem 639 105</string>
+							<string>hstem 744 -105</string>
 							<string>vstem 51 103</string>
-							<string>vstem 304 101</string>
+							<string>vstem 405 -101</string>
 						</array>
 					</dict>
 				</array>

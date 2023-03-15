@@ -1,3 +1,6 @@
+@caps = [A B C D E F G H I J K L M N O P Q R S T U V W X Y Z Agrave Aacute Acircumflex Atilde Adieresis Aring AE Ccedilla Egrave Eacute Ecircumflex Edieresis Igrave Iacute Icircumflex Idieresis Eth Ntilde Ograve Oacute Ocircumflex Otilde Odieresis Oslash Ugrave Uacute Ucircumflex Udieresis Yacute Thorn Lslash OE Scaron Ydieresis Zcaron Delta Omega uni0394 uni03A9 Scedilla Gbreve Idotaccent];
+
+
 @case_source = [
 # <protection state="no"/>
 parenleft parenright hyphen bracketleft bracketright 
@@ -205,7 +208,6 @@ languagesystem latn TRK;
 
 
 
-
 feature aalt {
 #------------------------------
 # All Alternates
@@ -227,7 +229,6 @@ feature aalt {
     feature ss01;
     feature ornm;
 } aalt;
-
 feature locl {
 #------------------------------
 # Localized Forms
@@ -261,7 +262,6 @@ feature locl {
     # Turkish
       sub i by i.latn_TRK;
 } locl;
-
 feature calt {
 #------------------------------
 # Contextual Alternates
@@ -271,7 +271,6 @@ feature calt {
     sub @uppercaseLetters @combMark_source' by @combMark_target;
     sub afii10026 afii10026' by afii10026.calt;
 } calt;
-
 
 feature frac {
 #------------------------------
@@ -283,7 +282,6 @@ feature frac {
     sub one @fractionSlashes two by onehalf;
     sub three @fractionSlashes four by threequarters;
 } frac;
-
 feature ordn {
 #------------------------------
 # Ordinals
@@ -292,7 +290,6 @@ feature ordn {
 #------------------------------
     sub [@ordnnumbers @ordn_target] @ordn_source' by @ordn_target;
 } ordn;
-
 feature hist {
 #------------------------------
 # Historical Forms
@@ -301,7 +298,6 @@ feature hist {
 #------------------------------
     sub @hist_source by @hist_target;
 } hist;
-
 feature case {
 #------------------------------
 # Case-Sensitive Forms
@@ -310,7 +306,6 @@ feature case {
 #------------------------------
     sub @case_source by @case_target;
 } case;
-
 feature dlig {
 #------------------------------
 # Discretionary Ligatures
@@ -335,7 +330,6 @@ feature dlig {
     sub zero seven by zero_seven;
     sub zero zero by zero_zero;
 } dlig;
-
 feature liga {
 #------------------------------
 # Standard Ligatures
@@ -346,7 +340,6 @@ feature liga {
     sub f i by fi;
     sub f l by fl;
 } liga;
-
 feature hlig {
 #------------------------------
 # Historical Ligatures
@@ -356,7 +349,6 @@ feature hlig {
     sub longs i by longs_i;
     sub longs longs by longs_longs;
 } hlig;
-
 feature salt {
 #------------------------------
 # Stylistic Alternates
@@ -365,7 +357,6 @@ feature salt {
 #------------------------------
     sub @ss01_source by @ss01_target;
 } salt;
-
 feature ss01 {
 #------------------------------
 # Stylistic Set 1
@@ -374,7 +365,6 @@ feature ss01 {
 #------------------------------
     sub @ss01_source by @ss01_target;
 } ss01;
-
 feature ss02 {
 #------------------------------
 # Stylistic Set 2
@@ -383,7 +373,6 @@ feature ss02 {
 #------------------------------
     sub @ss02_source by @ss02_target;
 } ss02;
-
 feature ss03 {
 #------------------------------
 # Stylistic Set 3
@@ -393,7 +382,6 @@ feature ss03 {
 # clone of hist (Historical Forms)
     sub @hist_source by @hist_target;
 } ss03;
-
 feature ornm {
 #------------------------------
 # Ornaments
@@ -402,7 +390,6 @@ feature ornm {
 #------------------------------
     sub bullet from @ornaments;
 } ornm;
-
 feature cpsp {
 #------------------------------
 # Capital Spacing
@@ -418,4 +405,3 @@ feature cpsp {
 
 
 
-

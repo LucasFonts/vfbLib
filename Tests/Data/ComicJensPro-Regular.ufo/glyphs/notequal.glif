@@ -87,10 +87,10 @@
 						<string>hr00</string>
 						<key>stems</key>
 						<array>
-							<string>hstem -2 -21</string>
+							<string>hstem 19 -21</string>
 							<string>hstem 184 103</string>
-							<string>hstem 363 100</string>
-							<string>hstem 731 -21</string>
+							<string>hstem 463 -100</string>
+							<string>hstem 731 -20</string>
 						</array>
 					</dict>
 				</array>

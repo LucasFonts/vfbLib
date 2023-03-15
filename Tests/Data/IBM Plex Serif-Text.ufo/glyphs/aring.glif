@@ -6,6 +6,7 @@
 		<component base="a"/>
 		<component base="ring" xOffset="-37"/>
 	</outline>
+	<anchor name="top" x="263" y="810"/>
 	<lib>
 		<dict>
 			<key>public.markColor</key>

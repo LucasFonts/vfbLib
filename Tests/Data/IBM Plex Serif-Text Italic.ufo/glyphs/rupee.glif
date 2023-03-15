@@ -12,7 +12,7 @@
 			<point name="sv01" x="227" y="322" type="line"/>
 			<point name="sv03" x="158" y="45" type="line"/>
 			<point x="228" y="45" type="line"/>
-			<point name="hr01" x="217" y="0" type="line"/>
+			<point x="217" y="0" type="line"/>
 			<point name="ab01" x="-21" y="0" type="line"/>
 			<point name="sv02" x="-10" y="45" type="line"/>
 			<point x="60" y="45" type="line"/>
@@ -24,7 +24,7 @@
 			<point x="555" y="630"/>
 			<point x="555" y="569" type="qcurve"/>
 			<point x="555" y="533"/>
-			<point x="536" y="461"/>
+			<point name="hr00" x="536" y="461"/>
 			<point x="497" y="399"/>
 			<point x="436" y="351"/>
 			<point name="iv02" x="394" y="339" type="qcurve"/>
@@ -42,14 +42,14 @@
 			<point name="iv03" x="580" y="228" type="qcurve"/>
 			<point x="560" y="251"/>
 			<point x="536" y="299"/>
-			<point name="hr02" x="536" y="331" type="qcurve"/>
+			<point x="536" y="331" type="qcurve"/>
 			<point x="536" y="364"/>
 			<point x="562" y="418"/>
 			<point x="608" y="457"/>
 			<point x="671" y="478"/>
 			<point name="av01" x="707" y="478" type="qcurve"/>
 			<point x="758" y="478"/>
-			<point x="804" y="440"/>
+			<point name="hr01" x="804" y="440"/>
 			<point x="804" y="414" type="qcurve"/>
 			<point x="804" y="392"/>
 			<point x="777" y="359"/>
@@ -68,7 +68,7 @@
 			<point x="620" y="364" type="qcurve"/>
 			<point x="620" y="344"/>
 			<point x="632" y="313"/>
-			<point x="652" y="284"/>
+			<point name="hr02" x="652" y="284"/>
 			<point x="678" y="255"/>
 			<point name="iv04" x="692" y="237" type="qcurve"/>
 			<point x="709" y="217"/>
@@ -104,7 +104,20 @@
 				<array>
 					<dict>
 						<key>pointTag</key>
-						<string>hr01</string>
+						<string>ab02</string>
+						<key>stems</key>
+						<array>
+							<string>hstem -12 43</string>
+							<string>hstem 322 49</string>
+							<string>hstem 452 26</string>
+							<string>hstem 653 45</string>
+							<string>vstem 461 94</string>
+							<string>vstem 652 84</string>
+						</array>
+					</dict>
+					<dict>
+						<key>pointTag</key>
+						<string>sv03</string>
 						<key>stems</key>
 						<array>
 							<string>hstem 0 45</string>
@@ -117,27 +130,41 @@
 					</dict>
 					<dict>
 						<key>pointTag</key>
+						<string>hr00</string>
+						<key>stems</key>
+						<array>
+							<string>hstem -12 43</string>
+							<string>hstem 322 49</string>
+							<string>hstem 452 26</string>
+							<string>hstem 653 45</string>
+							<string>vstem 536 84</string>
+							<string>vstem 652 84</string>
+						</array>
+					</dict>
+					<dict>
+						<key>pointTag</key>
+						<string>hr01</string>
+						<key>stems</key>
+						<array>
+							<string>hstem 0 45</string>
+							<string>hstem 322 49</string>
+							<string>hstem 452 26</string>
+							<string>hstem 653 45</string>
+							<string>vstem 536 84</string>
+							<string>vstem 708 96</string>
+						</array>
+					</dict>
+					<dict>
+						<key>pointTag</key>
 						<string>hr02</string>
 						<key>stems</key>
 						<array>
 							<string>hstem -12 43</string>
-							<string>hstem -12 43</string>
-							<string>hstem 0 45</string>
 							<string>hstem 322 49</string>
-							<string>hstem 322 49</string>
-							<string>hstem 322 49</string>
-							<string>hstem 452 26</string>
-							<string>hstem 452 26</string>
 							<string>hstem 452 26</string>
 							<string>hstem 649 49</string>
-							<string>hstem 653 45</string>
-							<string>hstem 653 45</string>
 							<string>vstem 461 94</string>
-							<string>vstem 536 84</string>
-							<string>vstem 536 84</string>
 							<string>vstem 652 84</string>
-							<string>vstem 652 84</string>
-							<string>vstem 708 96</string>
 						</array>
 					</dict>
 				</array>
@@ -161,6 +188,18 @@
     &lt;ttc code="interpolatev" point="iv05" point1="sv06" point2="iv04" align="round"/&gt;
     &lt;ttc code="singlev" point1="at01" point2="sv07" stem="uc_serif"/&gt;
   &lt;/ttProgram&gt;
+</string>
+			<key>com.fontlab.v5.userData</key>
+			<string>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;
+&lt;plist version="1.0"&gt;
+&lt;dict&gt;
+	&lt;key&gt;com.type-invaders.name.final&lt;/key&gt;
+	&lt;string&gt;uni20A8&lt;/string&gt;
+	&lt;key&gt;com.type-invaders.name.production&lt;/key&gt;
+	&lt;string&gt;rupee&lt;/string&gt;
+&lt;/dict&gt;
+&lt;/plist&gt;
 </string>
 		</dict>
 	</lib>

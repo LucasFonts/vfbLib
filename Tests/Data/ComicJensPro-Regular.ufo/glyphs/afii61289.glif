@@ -76,20 +76,15 @@
 						<key>stems</key>
 						<array>
 							<string>hstem -29 100</string>
-							<string>hstem 680 109</string>
+							<string>hstem 789 -109</string>
 							<string>vstem 59 98</string>
-							<string>vstem 283 99</string>
+							<string>vstem 382 -99</string>
 						</array>
 					</dict>
 				</array>
 			</dict>
-			<key>com.typemytype.robofont.mark</key>
-			<array>
-				<real>0.656</real>
-				<integer>1</integer>
-				<real>0.6</real>
-				<integer>1</integer>
-			</array>
+			<key>public.markColor</key>
+			<string>0.6838,0.952,0.648,1</string>
 		</dict>
 	</lib>
 </glyph>

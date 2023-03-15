@@ -53,6 +53,9 @@
 						<string>sv03</string>
 						<key>stems</key>
 						<array>
+							<string>hstem 57 128</string>
+							<string>hstem 276 58</string>
+							<string>hstem 425 128</string>
 							<string>vstem 237 126</string>
 						</array>
 					</dict>

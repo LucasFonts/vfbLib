@@ -10,8 +10,8 @@
 		<dict>
 			<key>com.fontlab.ttprogram</key>
 			<string>  &lt;ttProgram&gt;
-    &lt;ttc code="alignt" point="" zone="ascender"/&gt;
-    &lt;ttc code="singlev" point1="" point2="" round="true"/&gt;
+    &lt;ttc code="alignt" point="at01" zone="ascender"/&gt;
+    &lt;ttc code="singlev" point1="at01" point2="sv01" round="true"/&gt;
   &lt;/ttProgram&gt;
 </string>
 			<key>public.markColor</key>

@@ -47,6 +47,9 @@
 						<array>
 							<string>hstem 0 50</string>
 							<string>hstem 468 50</string>
+							<string>vstem 119 96</string>
+							<string>vstem 392 96</string>
+							<string>vstem 665 96</string>
 						</array>
 					</dict>
 				</array>

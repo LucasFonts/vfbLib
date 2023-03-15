@@ -35,7 +35,7 @@
 			<point x="714" y="270"/>
 			<point x="714" y="282" type="qcurve"/>
 			<point x="714" y="315"/>
-			<point x="686" y="344"/>
+			<point name="hr00" x="686" y="344"/>
 			<point name="sv04" x="663" y="344" type="qcurve"/>
 			<point x="588" y="344"/>
 			<point x="557" y="222" type="qcurve"/>
@@ -73,7 +73,7 @@
 			<point x="460" y="147"/>
 			<point x="483" y="242"/>
 			<point x="533" y="326"/>
-			<point x="612" y="384"/>
+			<point name="hr01" x="612" y="384"/>
 			<point name="iv02" x="668" y="384" type="qcurve"/>
 			<point x="719" y="384"/>
 			<point x="784" y="327"/>
@@ -86,12 +86,88 @@
 		<contour>
 			<point name="at02" x="720" y="698" type="line"/>
 			<point x="780" y="698" type="line"/>
-			<point x="166" y="0" type="line"/>
+			<point name="hr02" x="166" y="0" type="line"/>
 			<point name="ab02" x="106" y="0" type="line"/>
 		</contour>
 	</outline>
 	<lib>
 		<dict>
+			<key>com.adobe.type.autohint.v2</key>
+			<dict>
+				<key>hintSetList</key>
+				<array>
+					<dict>
+						<key>pointTag</key>
+						<string>sv01</string>
+						<key>stems</key>
+						<array>
+							<string>hstem -12 40</string>
+							<string>hstem 314 40</string>
+							<string>hstem 670 40</string>
+							<string>vstem 105 70</string>
+							<string>vstem 359 70</string>
+							<string>vstem 460 70</string>
+							<string>vstem 714 70</string>
+						</array>
+					</dict>
+					<dict>
+						<key>pointTag</key>
+						<string>hr00</string>
+						<key>stems</key>
+						<array>
+							<string>hstem -12 40</string>
+							<string>hstem 344 40</string>
+							<string>hstem 670 40</string>
+							<string>vstem 105 70</string>
+							<string>vstem 359 70</string>
+							<string>vstem 460 70</string>
+							<string>vstem 714 70</string>
+						</array>
+					</dict>
+					<dict>
+						<key>pointTag</key>
+						<string>iv01</string>
+						<key>stems</key>
+						<array>
+							<string>hstem -12 40</string>
+							<string>hstem 314 40</string>
+							<string>hstem 670 40</string>
+							<string>vstem 105 70</string>
+							<string>vstem 359 70</string>
+							<string>vstem 460 70</string>
+							<string>vstem 714 70</string>
+						</array>
+					</dict>
+					<dict>
+						<key>pointTag</key>
+						<string>hr01</string>
+						<key>stems</key>
+						<array>
+							<string>hstem -12 40</string>
+							<string>hstem 344 40</string>
+							<string>hstem 698 -20</string>
+							<string>vstem 105 70</string>
+							<string>vstem 359 70</string>
+							<string>vstem 460 70</string>
+							<string>vstem 714 70</string>
+						</array>
+					</dict>
+					<dict>
+						<key>pointTag</key>
+						<string>hr02</string>
+						<key>stems</key>
+						<array>
+							<string>hstem 21 -21</string>
+							<string>hstem 314 40</string>
+							<string>hstem 698 -20</string>
+							<string>vstem 105 70</string>
+							<string>vstem 359 70</string>
+							<string>vstem 460 70</string>
+							<string>vstem 714 70</string>
+						</array>
+					</dict>
+				</array>
+			</dict>
 			<key>com.fontlab.ttprogram</key>
 			<string>  &lt;ttProgram&gt;
     &lt;ttc code="alignt" point="at01" zone="capheight"/&gt;

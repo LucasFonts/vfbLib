@@ -4,6 +4,7 @@
 	<outline>
 		<component base="caronslovak" xOffset="-300"/>
 	</outline>
+	<anchor name="_topright" x="0" y="758"/>
 	<guideline x="0" y="0" angle="90"/>
 	<lib>
 		<dict>

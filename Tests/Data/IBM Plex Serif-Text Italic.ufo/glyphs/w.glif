@@ -4,7 +4,7 @@
 	<advance width="716"/>
 	<outline>
 		<contour>
-			<point x="106" y="473" type="line"/>
+			<point name="hr00" x="106" y="473" type="line"/>
 			<point name="sv01" x="63" y="473" type="line"/>
 			<point name="at01" x="74" y="518" type="line"/>
 			<point x="270" y="518" type="line"/>
@@ -40,6 +40,16 @@
 			<dict>
 				<key>hintSetList</key>
 				<array>
+					<dict>
+						<key>pointTag</key>
+						<string>hr00</string>
+						<key>stems</key>
+						<array>
+							<string>hstem 0 109</string>
+							<string>hstem 473 45</string>
+							<string>vstem 63 715</string>
+						</array>
+					</dict>
 					<dict>
 						<key>pointTag</key>
 						<string>hr01</string>

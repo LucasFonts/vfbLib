@@ -59,6 +59,36 @@
 	<guideline x="268" y="0" angle="90"/>
 	<lib>
 		<dict>
+			<key>com.adobe.type.autohint.v2</key>
+			<dict>
+				<key>hintSetList</key>
+				<array>
+					<dict>
+						<key>pointTag</key>
+						<string>ab01</string>
+						<key>stems</key>
+						<array>
+							<string>hstem -12 84</string>
+							<string>hstem 466 64</string>
+							<string>hstem 676 84</string>
+							<string>vstem 48 103</string>
+							<string>vstem 412 96</string>
+						</array>
+					</dict>
+					<dict>
+						<key>pointTag</key>
+						<string>sv06</string>
+						<key>stems</key>
+						<array>
+							<string>hstem -12 64</string>
+							<string>hstem 466 64</string>
+							<string>hstem 676 84</string>
+							<string>vstem 48 103</string>
+							<string>vstem 412 96</string>
+						</array>
+					</dict>
+				</array>
+			</dict>
 			<key>com.fontlab.ttprogram</key>
 			<string>  &lt;ttProgram&gt;
     &lt;ttc code="alignt" point="at01" zone="xheight"/&gt;

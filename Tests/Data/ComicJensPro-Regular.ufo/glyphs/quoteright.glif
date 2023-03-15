@@ -41,9 +41,9 @@
 						<string>hr00</string>
 						<key>stems</key>
 						<array>
-							<string>hstem 389 -21</string>
-							<string>hstem 664 -21</string>
-							<string>vstem 126 98</string>
+							<string>hstem 410 -21</string>
+							<string>hstem 664 -20</string>
+							<string>vstem 224 -98</string>
 						</array>
 					</dict>
 				</array>

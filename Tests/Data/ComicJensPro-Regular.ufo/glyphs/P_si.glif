@@ -74,13 +74,8 @@
 	</outline>
 	<lib>
 		<dict>
-			<key>com.typemytype.robofont.mark</key>
-			<array>
-				<real>0.656</real>
-				<integer>1</integer>
-				<real>0.6</real>
-				<integer>1</integer>
-			</array>
+			<key>public.markColor</key>
+			<string>0.6838,0.952,0.648,1</string>
 		</dict>
 	</lib>
 </glyph>

@@ -4,7 +4,7 @@
 	<advance width="594"/>
 	<outline>
 		<contour>
-			<point x="161" y="21" type="line"/>
+			<point name="hr00" x="161" y="21" type="line"/>
 			<point name="av02" x="-15" y="21" type="line"/>
 			<point name="sv01" x="-4" y="65" type="line"/>
 			<point x="66" y="65" type="line"/>
@@ -28,7 +28,7 @@
 			<point name="iv02" x="442" y="367" type="qcurve"/>
 			<point x="440" y="361" type="line"/>
 			<point x="487" y="348"/>
-			<point x="544" y="289"/>
+			<point name="hr01" x="544" y="289"/>
 			<point x="544" y="237" type="qcurve"/>
 			<point x="544" y="198"/>
 			<point x="513" y="121"/>
@@ -39,7 +39,7 @@
 			<point name="sv11" x="248" y="-82" type="line"/>
 			<point x="274" y="21" type="line"/>
 			<point name="sv08" x="210" y="21" type="line"/>
-			<point name="hr01" x="184" y="-82" type="line"/>
+			<point x="184" y="-82" type="line"/>
 			<point name="sv10" x="135" y="-82" type="line"/>
 		</contour>
 		<contour>
@@ -62,7 +62,7 @@
 			<point x="486" y="444"/>
 			<point x="499" y="495" type="qcurve"/>
 			<point x="503" y="509"/>
-			<point x="510" y="546"/>
+			<point name="hr02" x="510" y="546"/>
 			<point x="510" y="559" type="qcurve"/>
 			<point x="510" y="590"/>
 			<point x="475" y="629"/>
@@ -78,6 +78,17 @@
 				<array>
 					<dict>
 						<key>pointTag</key>
+						<string>hr00</string>
+						<key>stems</key>
+						<array>
+							<string>hstem 21 44</string>
+							<string>hstem 335 48</string>
+							<string>hstem 633 44</string>
+							<string>vstem 510 95</string>
+						</array>
+					</dict>
+					<dict>
+						<key>pointTag</key>
 						<string>hr01</string>
 						<key>stems</key>
 						<array>
@@ -89,16 +100,23 @@
 					</dict>
 					<dict>
 						<key>pointTag</key>
-						<string>sv13</string>
+						<string>sv12</string>
 						<key>stems</key>
 						<array>
 							<string>hstem 21 48</string>
-							<string>hstem 21 44</string>
 							<string>hstem 335 48</string>
-							<string>hstem 335 48</string>
-							<string>hstem 629 48</string>
 							<string>hstem 633 44</string>
 							<string>vstem 450 94</string>
+						</array>
+					</dict>
+					<dict>
+						<key>pointTag</key>
+						<string>hr02</string>
+						<key>stems</key>
+						<array>
+							<string>hstem 21 44</string>
+							<string>hstem 335 48</string>
+							<string>hstem 629 48</string>
 							<string>vstem 510 95</string>
 						</array>
 					</dict>
@@ -134,6 +152,18 @@
     &lt;ttc code="singlev" point1="av02" point2="sv12" stem="uc_serif"/&gt;
     &lt;ttc code="singlev" point1="av01" point2="sv13" stem="uc_serif"/&gt;
   &lt;/ttProgram&gt;
+</string>
+			<key>com.fontlab.v5.userData</key>
+			<string>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;
+&lt;plist version="1.0"&gt;
+&lt;dict&gt;
+	&lt;key&gt;com.type-invaders.name.final&lt;/key&gt;
+	&lt;string&gt;uni20BF&lt;/string&gt;
+	&lt;key&gt;com.type-invaders.name.production&lt;/key&gt;
+	&lt;string&gt;bitcoin&lt;/string&gt;
+&lt;/dict&gt;
+&lt;/plist&gt;
 </string>
 		</dict>
 	</lib>

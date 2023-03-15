@@ -4,7 +4,7 @@
 	<advance width="795"/>
 	<outline>
 		<contour>
-			<point x="62" y="468" type="line"/>
+			<point name="hr00" x="62" y="468" type="line"/>
 			<point name="sv01" x="11" y="468" type="line"/>
 			<point name="at01" x="11" y="518" type="line"/>
 			<point x="230" y="518" type="line"/>
@@ -26,7 +26,7 @@
 			<point name="ab02" x="516" y="0" type="line"/>
 			<point name="sv07" x="401" y="397" type="line"/>
 			<point x="397" y="397" type="line"/>
-			<point name="hr02" x="279" y="0" type="line"/>
+			<point name="hr01" x="279" y="0" type="line"/>
 			<point name="ab01" x="193" y="0" type="line"/>
 		</contour>
 	</outline>
@@ -42,6 +42,16 @@
 				<array>
 					<dict>
 						<key>pointTag</key>
+						<string>hr00</string>
+						<key>stems</key>
+						<array>
+							<string>hstem 0 94</string>
+							<string>hstem 468 50</string>
+							<string>vstem 11 773</string>
+						</array>
+					</dict>
+					<dict>
+						<key>pointTag</key>
 						<string>sv07</string>
 						<key>stems</key>
 						<array>
@@ -52,7 +62,7 @@
 					</dict>
 					<dict>
 						<key>pointTag</key>
-						<string>hr02</string>
+						<string>hr01</string>
 						<key>stems</key>
 						<array>
 							<string>hstem 0 94</string>

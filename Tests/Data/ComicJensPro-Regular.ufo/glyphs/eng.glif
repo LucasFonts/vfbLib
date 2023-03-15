@@ -72,13 +72,8 @@
 	<anchor name="bottom" x="503" y="0"/>
 	<lib>
 		<dict>
-			<key>com.typemytype.robofont.mark</key>
-			<array>
-				<real>0.845</real>
-				<integer>1</integer>
-				<real>0.6</real>
-				<integer>1</integer>
-			</array>
+			<key>public.markColor</key>
+			<string>0.8268,0.952,0.648,1</string>
 		</dict>
 	</lib>
 </glyph>

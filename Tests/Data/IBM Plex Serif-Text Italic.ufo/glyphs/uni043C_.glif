@@ -53,7 +53,7 @@
 			<point name="av01" x="330" y="3" type="line"/>
 			<point x="286" y="336" type="line"/>
 			<point name="sv07" x="277" y="426" type="line"/>
-			<point name="hr01" x="271" y="426" type="line"/>
+			<point x="271" y="426" type="line"/>
 			<point x="241" y="304" type="line"/>
 			<point x="223" y="232"/>
 			<point x="196" y="135"/>
@@ -71,7 +71,18 @@
 				<array>
 					<dict>
 						<key>pointTag</key>
-						<string>hr01</string>
+						<string>ab02</string>
+						<key>stems</key>
+						<array>
+							<string>hstem -12 42</string>
+							<string>hstem 473 45</string>
+							<string>vstem -27 114</string>
+							<string>vstem 513 89</string>
+						</array>
+					</dict>
+					<dict>
+						<key>pointTag</key>
+						<string>sv04</string>
 						<key>stems</key>
 						<array>
 							<string>hstem -12 61</string>

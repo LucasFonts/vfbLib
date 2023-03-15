@@ -35,7 +35,7 @@
 			<point x="170" y="-10"/>
 			<point name="ab01" x="139" y="-10" type="qcurve"/>
 			<point x="86" y="-10"/>
-			<point x="38" y="67"/>
+			<point name="hr00" x="38" y="67"/>
 			<point x="38" y="138" type="qcurve"/>
 			<point x="38" y="199"/>
 			<point x="74" y="336"/>
@@ -62,7 +62,7 @@
 			<point x="374" y="347" type="qcurve"/>
 			<point x="380" y="368" type="line"/>
 			<point x="392" y="414"/>
-			<point x="364" y="474"/>
+			<point name="hr01" x="364" y="474"/>
 			<point name="sv04" x="322" y="474" type="qcurve"/>
 			<point x="271" y="474"/>
 			<point x="187" y="382"/>
@@ -80,6 +80,56 @@
 	<guideline x="180" y="0" angle="75.96"/>
 	<lib>
 		<dict>
+			<key>com.adobe.type.autohint.v2</key>
+			<dict>
+				<key>hintSetList</key>
+				<array>
+					<dict>
+						<key>pointTag</key>
+						<string>ab02</string>
+						<key>stems</key>
+						<array>
+							<string>hstem -212 41</string>
+							<string>hstem -10 69</string>
+							<string>hstem 474 56</string>
+							<string>vstem -4 115</string>
+						</array>
+					</dict>
+					<dict>
+						<key>pointTag</key>
+						<string>hr00</string>
+						<key>stems</key>
+						<array>
+							<string>hstem -212 41</string>
+							<string>hstem -10 69</string>
+							<string>hstem 474 56</string>
+							<string>vstem 38 96</string>
+						</array>
+					</dict>
+					<dict>
+						<key>pointTag</key>
+						<string>at02</string>
+						<key>stems</key>
+						<array>
+							<string>hstem -212 41</string>
+							<string>hstem -10 69</string>
+							<string>hstem 518 -20</string>
+							<string>vstem 38 96</string>
+						</array>
+					</dict>
+					<dict>
+						<key>pointTag</key>
+						<string>hr01</string>
+						<key>stems</key>
+						<array>
+							<string>hstem -212 41</string>
+							<string>hstem -10 69</string>
+							<string>hstem 474 56</string>
+							<string>vstem 38 96</string>
+						</array>
+					</dict>
+				</array>
+			</dict>
 			<key>com.fontlab.ttprogram</key>
 			<string>  &lt;ttProgram&gt;
     &lt;ttc code="alignt" point="at01" zone="xheight"/&gt;

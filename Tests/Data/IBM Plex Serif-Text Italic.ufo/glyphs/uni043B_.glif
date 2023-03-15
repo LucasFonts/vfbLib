@@ -57,6 +57,34 @@
 	</outline>
 	<lib>
 		<dict>
+			<key>com.adobe.type.autohint.v2</key>
+			<dict>
+				<key>hintSetList</key>
+				<array>
+					<dict>
+						<key>pointTag</key>
+						<string>ab02</string>
+						<key>stems</key>
+						<array>
+							<string>hstem -12 42</string>
+							<string>hstem 473 45</string>
+							<string>vstem -27 114</string>
+							<string>vstem 327 89</string>
+						</array>
+					</dict>
+					<dict>
+						<key>pointTag</key>
+						<string>sv03</string>
+						<key>stems</key>
+						<array>
+							<string>hstem -12 61</string>
+							<string>hstem 469 49</string>
+							<string>vstem -27 114</string>
+							<string>vstem 327 89</string>
+						</array>
+					</dict>
+				</array>
+			</dict>
 			<key>com.fontlab.ttprogram</key>
 			<string>  &lt;ttProgram&gt;
     &lt;ttc code="alignt" point="at01" zone="xheight"/&gt;

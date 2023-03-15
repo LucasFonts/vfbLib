@@ -95,10 +95,10 @@
 						<string>hr00</string>
 						<key>stems</key>
 						<array>
-							<string>hstem -292 -21</string>
+							<string>hstem -271 -21</string>
 							<string>hstem 182 103</string>
-							<string>hstem 524 -21</string>
-							<string>hstem 716 -21</string>
+							<string>hstem 524 -20</string>
+							<string>hstem 716 -20</string>
 						</array>
 					</dict>
 				</array>

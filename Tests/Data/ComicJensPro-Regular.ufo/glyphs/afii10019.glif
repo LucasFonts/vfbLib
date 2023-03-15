@@ -4,7 +4,7 @@
 	<advance width="610"/>
 	<outline>
 		<contour>
-			<point x="95" y="561" type="curve" smooth="yes"/>
+			<point name="hr00" x="95" y="561" type="curve" smooth="yes"/>
 			<point x="87" y="486"/>
 			<point x="81" y="410"/>
 			<point x="73" y="335" type="curve" smooth="yes"/>
@@ -109,12 +109,22 @@
 				<array>
 					<dict>
 						<key>pointTag</key>
+						<string>hr00</string>
+						<key>stems</key>
+						<array>
+							<string>hstem -23 99</string>
+							<string>hstem 718 -102</string>
+							<string>vstem 500 -99</string>
+						</array>
+					</dict>
+					<dict>
+						<key>pointTag</key>
 						<string>hr01</string>
 						<key>stems</key>
 						<array>
 							<string>hstem -23 99</string>
-							<string>hstem 616 102</string>
-							<string>vstem 474 101</string>
+							<string>hstem 718 -102</string>
+							<string>vstem 575 -101</string>
 						</array>
 					</dict>
 					<dict>
@@ -123,8 +133,8 @@
 						<key>stems</key>
 						<array>
 							<string>hstem -23 99</string>
-							<string>hstem 616 102</string>
-							<string>vstem 401 99</string>
+							<string>hstem 718 -102</string>
+							<string>vstem 500 -99</string>
 						</array>
 					</dict>
 					<dict>
@@ -133,19 +143,14 @@
 						<key>stems</key>
 						<array>
 							<string>hstem -23 99</string>
-							<string>hstem 616 102</string>
-							<string>vstem 474 101</string>
+							<string>hstem 718 -102</string>
+							<string>vstem 575 -101</string>
 						</array>
 					</dict>
 				</array>
 			</dict>
-			<key>com.typemytype.robofont.mark</key>
-			<array>
-				<real>0.656</real>
-				<integer>1</integer>
-				<real>0.6</real>
-				<integer>1</integer>
-			</array>
+			<key>public.markColor</key>
+			<string>0.6838,0.952,0.648,1</string>
 		</dict>
 	</lib>
 </glyph>

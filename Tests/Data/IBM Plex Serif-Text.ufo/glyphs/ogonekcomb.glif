@@ -4,6 +4,7 @@
 	<outline>
 		<component base="ogonek" xOffset="-300"/>
 	</outline>
+	<anchor name="_bottomright" x="0" y="0"/>
 	<guideline x="0" y="0" angle="90"/>
 	<lib>
 		<dict>

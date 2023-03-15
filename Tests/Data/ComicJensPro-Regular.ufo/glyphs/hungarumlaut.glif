@@ -58,8 +58,8 @@
 						<string>hr00</string>
 						<key>stems</key>
 						<array>
-							<string>hstem 508 -21</string>
-							<string>hstem 760 -21</string>
+							<string>hstem 529 -21</string>
+							<string>hstem 760 -20</string>
 						</array>
 					</dict>
 				</array>

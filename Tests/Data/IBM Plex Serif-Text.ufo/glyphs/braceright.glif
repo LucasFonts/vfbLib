@@ -51,6 +51,9 @@
 						<string>sv01</string>
 						<key>stems</key>
 						<array>
+							<string>hstem -138 49</string>
+							<string>hstem 283 56</string>
+							<string>hstem 711 49</string>
 							<string>vstem 129 88</string>
 							<string>vstem 240 78</string>
 						</array>

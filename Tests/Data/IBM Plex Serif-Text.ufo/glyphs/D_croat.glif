@@ -39,7 +39,7 @@
 			<point name="sv02" x="227" y="644" type="line"/>
 			<point name="sv06" x="227" y="375" type="line"/>
 			<point x="359" y="375" type="line"/>
-			<point name="hr01" x="359" y="323" type="line"/>
+			<point x="359" y="323" type="line"/>
 			<point name="sv07" x="227" y="323" type="line"/>
 		</contour>
 	</outline>
@@ -51,9 +51,24 @@
 				<array>
 					<dict>
 						<key>pointTag</key>
-						<string>hr01</string>
+						<string>sv01</string>
 						<key>stems</key>
 						<array>
+							<string>hstem 0 50</string>
+							<string>hstem 323 52</string>
+							<string>hstem 648 50</string>
+							<string>vstem 126 101</string>
+							<string>vstem 553 112</string>
+						</array>
+					</dict>
+					<dict>
+						<key>pointTag</key>
+						<string>sv05</string>
+						<key>stems</key>
+						<array>
+							<string>hstem 0 54</string>
+							<string>hstem 323 52</string>
+							<string>hstem 644 54</string>
 							<string>vstem 126 101</string>
 							<string>vstem 553 112</string>
 						</array>

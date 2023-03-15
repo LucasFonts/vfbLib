@@ -118,8 +118,8 @@
 						<key>stems</key>
 						<array>
 							<string>hstem -17 100</string>
-							<string>hstem 621 100</string>
-							<string>hstem 883 -21</string>
+							<string>hstem 721 -100</string>
+							<string>hstem 883 -20</string>
 						</array>
 					</dict>
 				</array>

@@ -4,7 +4,7 @@
 	<advance width="254"/>
 	<outline>
 		<contour>
-			<point name="hr00" x="-52" y="-138" type="line"/>
+			<point name="sv02" x="-52" y="-138" type="line"/>
 			<point x="-15" y="-109"/>
 			<point x="43" y="-41"/>
 			<point name="ab01" x="60" y="-10" type="qcurve"/>

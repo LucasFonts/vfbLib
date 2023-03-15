@@ -35,19 +35,14 @@
 						<string>hr00</string>
 						<key>stems</key>
 						<array>
-							<string>hstem 565 -21</string>
-							<string>hstem 793 -21</string>
+							<string>hstem 586 -21</string>
+							<string>hstem 793 -20</string>
 						</array>
 					</dict>
 				</array>
 			</dict>
-			<key>com.typemytype.robofont.mark</key>
-			<array>
-				<real>0.6</real>
-				<real>0.986</real>
-				<integer>1</integer>
-				<integer>1</integer>
-			</array>
+			<key>public.markColor</key>
+			<string>0.648,0.9341,0.952,1</string>
 		</dict>
 	</lib>
 </glyph>

@@ -35,7 +35,7 @@
 			<point x="575" y="597"/>
 			<point x="572" y="570"/>
 			<point x="567" y="550" type="qcurve"/>
-			<point x="552" y="491" type="line"/>
+			<point name="hr00" x="552" y="491" type="line"/>
 			<point name="sv03" x="512" y="491" type="line"/>
 			<point x="463" y="491"/>
 			<point x="395" y="447"/>
@@ -54,7 +54,7 @@
 			<point x="368" y="-12"/>
 			<point name="ab02" x="326" y="-12" type="qcurve"/>
 			<point x="270" y="-12"/>
-			<point x="218" y="27"/>
+			<point name="hr01" x="218" y="27"/>
 			<point x="218" y="58" type="qcurve"/>
 			<point x="218" y="81"/>
 			<point x="248" y="117"/>
@@ -64,7 +64,7 @@
 			<point x="325" y="68" type="qcurve"/>
 			<point x="325" y="57"/>
 			<point x="315" y="31"/>
-			<point x="306" y="23" type="qcurve"/>
+			<point name="hr02" x="306" y="23" type="qcurve"/>
 			<point name="sv04" x="311" y="16" type="line"/>
 			<point x="332" y="17"/>
 			<point x="376" y="26"/>
@@ -86,8 +86,8 @@
 			<point name="at03" x="471" y="516" type="qcurve"/>
 			<point x="484" y="568" type="line"/>
 			<point x="489" y="587"/>
-			<point x="492" y="615"/>
-			<point name="hr01" x="492" y="629" type="qcurve"/>
+			<point name="hr03" x="492" y="615"/>
+			<point x="492" y="629" type="qcurve"/>
 			<point x="492" y="674"/>
 			<point x="448" y="719"/>
 			<point name="sv05" x="409" y="719" type="qcurve"/>
@@ -107,36 +107,71 @@
 				<array>
 					<dict>
 						<key>pointTag</key>
+						<string>ab01</string>
+						<key>stems</key>
+						<array>
+							<string>hstem -212 28</string>
+							<string>hstem -12 28</string>
+							<string>hstem 469 49</string>
+							<string>hstem 719 41</string>
+							<string>vstem -178 109</string>
+							<string>vstem 306 89</string>
+							<string>vstem 492 83</string>
+						</array>
+					</dict>
+					<dict>
+						<key>pointTag</key>
+						<string>hr00</string>
+						<key>stems</key>
+						<array>
+							<string>hstem -212 28</string>
+							<string>hstem -12 28</string>
+							<string>hstem 491 25</string>
+							<string>hstem 719 41</string>
+							<string>vstem -178 109</string>
+							<string>vstem 306 89</string>
+							<string>vstem 435 88</string>
+						</array>
+					</dict>
+					<dict>
+						<key>pointTag</key>
 						<string>hr01</string>
 						<key>stems</key>
 						<array>
 							<string>hstem -212 28</string>
-							<string>hstem -212 28</string>
-							<string>hstem -212 28</string>
-							<string>hstem -212 28</string>
-							<string>hstem -12 28</string>
-							<string>hstem -12 28</string>
-							<string>hstem -12 28</string>
 							<string>hstem -12 28</string>
 							<string>hstem 491 25</string>
-							<string>hstem 491 25</string>
-							<string>hstem 491 25</string>
-							<string>hstem 491 25</string>
 							<string>hstem 719 41</string>
-							<string>hstem 719 41</string>
-							<string>hstem 719 41</string>
-							<string>hstem 719 41</string>
-							<string>vstem -178 109</string>
-							<string>vstem -178 109</string>
-							<string>vstem -178 109</string>
 							<string>vstem -178 109</string>
 							<string>vstem 218 107</string>
-							<string>vstem 306 89</string>
-							<string>vstem 306 89</string>
-							<string>vstem 306 89</string>
-							<string>vstem 435 88</string>
-							<string>vstem 435 88</string>
 							<string>vstem 492 83</string>
+						</array>
+					</dict>
+					<dict>
+						<key>pointTag</key>
+						<string>hr02</string>
+						<key>stems</key>
+						<array>
+							<string>hstem -212 28</string>
+							<string>hstem -12 28</string>
+							<string>hstem 491 25</string>
+							<string>hstem 719 41</string>
+							<string>vstem -178 109</string>
+							<string>vstem 306 89</string>
+							<string>vstem 435 88</string>
+						</array>
+					</dict>
+					<dict>
+						<key>pointTag</key>
+						<string>hr03</string>
+						<key>stems</key>
+						<array>
+							<string>hstem -212 28</string>
+							<string>hstem -12 28</string>
+							<string>hstem 491 25</string>
+							<string>hstem 719 41</string>
+							<string>vstem -178 109</string>
+							<string>vstem 306 89</string>
 							<string>vstem 492 83</string>
 						</array>
 					</dict>

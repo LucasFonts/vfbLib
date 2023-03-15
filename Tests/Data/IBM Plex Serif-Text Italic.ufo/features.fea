@@ -26,7 +26,6 @@ languagesystem cyrl dflt;   # Cyrillic default
 
 
 
-
 feature aalt {
 	sub a from [a.alt01]; # 1 glyph(s)
 	sub g from [g.alt01 g.alt02]; # 2 glyph(s)
@@ -88,12 +87,10 @@ feature aalt {
 	sub dieresismacron from [dieresismacron.case]; # 1 glyph(s)
 	sub circumflextilde from [circumflextilde.case]; # 1 glyph(s)
 } aalt;
-
 feature ordn {
 	# ordinals
 	sub [a o] by [ordfeminine ordmasculine];
 } ordn;
-
 feature frac {
 	# fractions
 	sub @numbers_dflt by @numbers_sups;
@@ -101,32 +98,26 @@ feature frac {
 	sub fraction @numbers_sups' by @numbers_sinf;
 	sub @numbers_sinf @numbers_sups' by @numbers_sinf;
 } frac;
-
 feature numr {
 	# numerators
 	sub @numbers_dflt by @numbers_sups;
 } numr;
-
 feature dnom {
 	# denominators
 	sub @numbers_dflt by @numbers_sinf;
 } dnom;
-
 feature sups {
 	# superiors
 	sub @numbers_dflt by @numbers_sups;
 } sups;
-
 feature sinf {
 	# inferiors
 	sub @numbers_dflt by @numbers_sinf;
 } sinf;
-
 feature zero {
 	# slashed zero
 	sub zero by zero.alt01;
 } zero;
-
 feature ss01 {
 	featureNames {
 		name 3 1 0x0409 "alternate lowercase a"; # Win / Unicode / English US
@@ -136,7 +127,6 @@ feature ss01 {
 	sub @lca_dflt by @lca_alt1;
 	sub @lca_cyrl_dflt by @lca_cyrl_alt1;
 } ss01;
-
 feature ss02 {
 	featureNames {
 		name 3 1 0x0409 "alternate lowercase g"; # Win / Unicode / English US
@@ -145,7 +135,6 @@ feature ss02 {
 	# stylistic set 2 - double storey g
 	sub @lcg_dflt by @lcg_alt1;
 } ss02;
-
 feature ss03 {
 	featureNames {
 		name 3 1 0x0409 "slashed number zero"; # Win / Unicode / English US
@@ -154,7 +143,6 @@ feature ss03 {
 	# slashed zero
 	sub zero by zero.alt01;
 } ss03;
-
 feature ss04 {
 	featureNames {
 		name 3 1 0x0409 "dotted number zero"; # Win / Unicode / English US
@@ -163,7 +151,6 @@ feature ss04 {
 	# plain zero
 	sub zero by zero.alt02;
 } ss04;
-
 feature ss05 {
 	featureNames {
 		name 3 1 0x0409 "alternate lowercase eszett"; # Win / Unicode / English US
@@ -172,7 +159,6 @@ feature ss05 {
 	# alternative german eszett
 	sub germandbls by germandbls.alt01;
 } ss05;
-
 feature salt {
 	# stylistic alternates - all stylistic sets combined
 	sub @lca_dflt by @lca_alt1;
@@ -181,12 +167,10 @@ feature salt {
 	sub zero by zero.alt02;
 	sub germandbls by germandbls.alt01;
 } salt;
-
 feature liga {
 	sub f i by fi;
 	sub f l by fl;
 } liga;
-
 feature ccmp {
 	# glyph composition/decomposition
 	@uc_basic = [A AE Aogonek B C Ccedilla D E Eogonek F G H I Iogonek J K L M N O OE Ohorn Oslash P Q R S Schwa T U Uhorn Uogonek V W X Y Z]; # 37 glyphs
@@ -218,7 +202,6 @@ feature ccmp {
 		sub @uc_basic @acc_comb_dflt' by @acc_comb_case; # case accents
 	} contextSubs;
 } ccmp;
-
 feature kern {
 	# Created: Thu Dec 21 18:25:46 2017
 	# PS Name: IBMPlexSerif-TextItalic
@@ -8946,7 +8929,6 @@ feature kern {
 	pos @MMK_L_uc_z x -20;
 	pos @MMK_L_uc_z zeroinferior 10;
 } kern;
-
 feature mark {
 	# Created: Thu Aug 30 18:07:29 2018
 	# PS Name: IBMPlexSerif-TextItalic
@@ -9182,4 +9164,3 @@ feature mark {
 } mark;
 
 
-

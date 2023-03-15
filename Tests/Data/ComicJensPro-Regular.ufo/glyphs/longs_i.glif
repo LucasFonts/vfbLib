@@ -87,9 +87,9 @@
 						<string>hr00</string>
 						<key>stems</key>
 						<array>
-							<string>hstem -23 -21</string>
-							<string>hstem 537 -21</string>
-							<string>hstem 679 98</string>
+							<string>hstem -2 -21</string>
+							<string>hstem 537 -20</string>
+							<string>hstem 777 -98</string>
 							<string>vstem 77 100</string>
 							<string>vstem 346 99</string>
 						</array>

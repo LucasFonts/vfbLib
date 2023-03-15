@@ -486,11 +486,22 @@
 				</dict>
 			</dict>
 		</dict>
-		<key>org.unifiedfontobject.normalizer.modTimes</key>
-		<string>version: 0.6.1
-1669131098.9 fontinfo.plist
-1669131098.9 layercontents.plist
-1669131098.9 metainfo.plist</string>
+		<key>com.fontlab.v5.userData</key>
+		<string>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;
+&lt;plist version="1.0"&gt;
+&lt;dict&gt;
+	&lt;key&gt;com.type-invaders.fontnaming.macfam&lt;/key&gt;
+	&lt;string&gt;IBM Plex Serif&lt;/string&gt;
+	&lt;key&gt;com.type-invaders.fontnaming.macstyle&lt;/key&gt;
+	&lt;string&gt;Text&lt;/string&gt;
+	&lt;key&gt;com.type-invaders.fontnaming.winfam&lt;/key&gt;
+	&lt;string&gt;IBM Plex Serif Text&lt;/string&gt;
+	&lt;key&gt;com.type-invaders.fontnaming.winstyle&lt;/key&gt;
+	&lt;string&gt;Regular&lt;/string&gt;
+&lt;/dict&gt;
+&lt;/plist&gt;
+</string>
 		<key>public.glyphOrder</key>
 		<array>
 			<string>.notdef</string>

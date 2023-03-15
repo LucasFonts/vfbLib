@@ -3,7 +3,7 @@
 	<advance width="1187"/>
 	<outline>
 		<contour>
-			<point x="1030" y="523" type="curve"/>
+			<point name="hr00" x="1030" y="523" type="curve"/>
 			<point x="1011" y="523"/>
 			<point x="994" y="524"/>
 			<point x="977" y="524" type="curve" smooth="yes"/>
@@ -147,11 +147,24 @@
 				<array>
 					<dict>
 						<key>pointTag</key>
+						<string>hr00</string>
+						<key>stems</key>
+						<array>
+							<string>hstem -14 99</string>
+							<string>hstem 524 -100</string>
+							<string>vstem 30 105</string>
+							<string>vstem 421 100</string>
+							<string>vstem 593 99</string>
+							<string>vstem 977 93</string>
+						</array>
+					</dict>
+					<dict>
+						<key>pointTag</key>
 						<string>hr01</string>
 						<key>stems</key>
 						<array>
 							<string>hstem 10 101</string>
-							<string>hstem 406 102</string>
+							<string>hstem 508 -102</string>
 							<string>vstem 30 105</string>
 							<string>vstem 421 100</string>
 							<string>vstem 593 99</string>
@@ -164,7 +177,7 @@
 						<key>stems</key>
 						<array>
 							<string>hstem -14 99</string>
-							<string>hstem 424 100</string>
+							<string>hstem 524 -100</string>
 							<string>vstem 30 105</string>
 							<string>vstem 421 100</string>
 							<string>vstem 593 99</string>
@@ -177,7 +190,7 @@
 						<key>stems</key>
 						<array>
 							<string>hstem 10 101</string>
-							<string>hstem 406 102</string>
+							<string>hstem 508 -102</string>
 							<string>vstem 30 105</string>
 							<string>vstem 421 100</string>
 							<string>vstem 593 99</string>

@@ -46,7 +46,7 @@
 		<contour>
 			<point name="sv11" x="176" y="285" type="line"/>
 			<point x="368" y="285" type="line"/>
-			<point name="hr01" x="262" y="602" type="line"/>
+			<point name="hr00" x="262" y="602" type="line"/>
 			<point name="sv16" x="255" y="602" type="line"/>
 		</contour>
 		<contour>
@@ -64,7 +64,19 @@
 				<array>
 					<dict>
 						<key>pointTag</key>
-						<string>hr01</string>
+						<string>sv01</string>
+						<key>stems</key>
+						<array>
+							<string>hstem 0 45</string>
+							<string>hstem 241 45</string>
+							<string>hstem 412 45</string>
+							<string>hstem 653 45</string>
+							<string>vstem -21 803</string>
+						</array>
+					</dict>
+					<dict>
+						<key>pointTag</key>
+						<string>hr00</string>
 						<key>stems</key>
 						<array>
 							<string>hstem 0 146</string>
@@ -102,6 +114,18 @@
     &lt;ttc code="singlev" point1="at01" point2="sv16"/&gt;
     &lt;ttc code="singlev" point1="ab02" point2="sv17"/&gt;
   &lt;/ttProgram&gt;
+</string>
+			<key>com.fontlab.v5.userData</key>
+			<string>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;
+&lt;plist version="1.0"&gt;
+&lt;dict&gt;
+	&lt;key&gt;com.type-invaders.name.final&lt;/key&gt;
+	&lt;string&gt;uni20A6&lt;/string&gt;
+	&lt;key&gt;com.type-invaders.name.production&lt;/key&gt;
+	&lt;string&gt;naira&lt;/string&gt;
+&lt;/dict&gt;
+&lt;/plist&gt;
 </string>
 		</dict>
 	</lib>

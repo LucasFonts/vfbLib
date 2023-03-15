@@ -118,6 +118,38 @@
 	</outline>
 	<lib>
 		<dict>
+			<key>com.adobe.type.autohint.v2</key>
+			<dict>
+				<key>hintSetList</key>
+				<array>
+					<dict>
+						<key>pointTag</key>
+						<string>av01</string>
+						<key>stems</key>
+						<array>
+							<string>hstem -121 41</string>
+							<string>hstem 69 42</string>
+							<string>hstem 461 48</string>
+							<string>hstem 673 37</string>
+							<string>vstem 65 56</string>
+							<string>vstem 744 56</string>
+						</array>
+					</dict>
+					<dict>
+						<key>pointTag</key>
+						<string>sv06</string>
+						<key>stems</key>
+						<array>
+							<string>hstem -121 41</string>
+							<string>hstem 69 58</string>
+							<string>hstem 461 48</string>
+							<string>hstem 673 37</string>
+							<string>vstem 65 56</string>
+							<string>vstem 744 56</string>
+						</array>
+					</dict>
+				</array>
+			</dict>
 			<key>com.fontlab.ttprogram</key>
 			<string>  &lt;ttProgram&gt;
     &lt;ttc code="alignv" point="av01" align="round"/&gt;

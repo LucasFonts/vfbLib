@@ -119,12 +119,12 @@
 						<string>hr00</string>
 						<key>stems</key>
 						<array>
-							<string>hstem -57 -21</string>
+							<string>hstem -36 -21</string>
 							<string>hstem -15 106</string>
-							<string>hstem 292 98</string>
-							<string>hstem 427 -21</string>
-							<string>hstem 710 -21</string>
-							<string>hstem 769 -21</string>
+							<string>hstem 390 -98</string>
+							<string>hstem 448 -21</string>
+							<string>hstem 710 -20</string>
+							<string>hstem 769 -20</string>
 						</array>
 					</dict>
 				</array>

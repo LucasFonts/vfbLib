@@ -35,7 +35,7 @@
 						<string>hr00</string>
 						<key>stems</key>
 						<array>
-							<string>hstem 245 100</string>
+							<string>hstem 345 -100</string>
 						</array>
 					</dict>
 				</array>

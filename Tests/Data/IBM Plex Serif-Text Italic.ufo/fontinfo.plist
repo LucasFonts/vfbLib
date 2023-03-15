@@ -23,11 +23,41 @@
 		<string>IBMPlexSerif TextItalic</string>
 		<key>note</key>
 		<string>How razorback-jumping frogs can level six piqued gymnasts!</string>
+		<key>openTypeGaspRangeRecords</key>
+		<array>
+			<dict>
+				<key>rangeGaspBehavior</key>
+				<array>
+					<integer>1</integer>
+				</array>
+				<key>rangeMaxPPEM</key>
+				<integer>8</integer>
+			</dict>
+			<dict>
+				<key>rangeGaspBehavior</key>
+				<array>
+					<integer>0</integer>
+				</array>
+				<key>rangeMaxPPEM</key>
+				<integer>16</integer>
+			</dict>
+			<dict>
+				<key>rangeGaspBehavior</key>
+				<array>
+					<integer>0</integer>
+					<integer>1</integer>
+				</array>
+				<key>rangeMaxPPEM</key>
+				<integer>65535</integer>
+			</dict>
+		</array>
 		<key>openTypeHeadCreated</key>
-		<string>2018/06/19 03:55:14</string>
+		<string>1970/01/01 00:00:00</string>
 		<key>openTypeHeadFlags</key>
 		<array>
 		</array>
+		<key>openTypeHeadLowestRecPPEM</key>
+		<integer>9</integer>
 		<key>openTypeHheaAscender</key>
 		<integer>1025</integer>
 		<key>openTypeHheaDescender</key>
@@ -52,6 +82,393 @@
 		<string>IBM Plex Serif</string>
 		<key>openTypeNamePreferredSubfamilyName</key>
 		<string>Text Italic</string>
+		<key>openTypeNameRecords</key>
+		<array>
+			<dict>
+				<key>encodingID</key>
+				<integer>0</integer>
+				<key>languageID</key>
+				<integer>0</integer>
+				<key>nameID</key>
+				<integer>0</integer>
+				<key>platformID</key>
+				<integer>1</integer>
+				<key>string</key>
+				<string>Copyright 2018 IBM Corp. All rights reserved.</string>
+			</dict>
+			<dict>
+				<key>encodingID</key>
+				<integer>1</integer>
+				<key>languageID</key>
+				<integer>1033</integer>
+				<key>nameID</key>
+				<integer>0</integer>
+				<key>platformID</key>
+				<integer>3</integer>
+				<key>string</key>
+				<string>Copyright 2018 IBM Corp. All rights reserved.</string>
+			</dict>
+			<dict>
+				<key>encodingID</key>
+				<integer>0</integer>
+				<key>languageID</key>
+				<integer>0</integer>
+				<key>nameID</key>
+				<integer>1</integer>
+				<key>platformID</key>
+				<integer>1</integer>
+				<key>string</key>
+				<string>IBM Plex Serif Text</string>
+			</dict>
+			<dict>
+				<key>encodingID</key>
+				<integer>1</integer>
+				<key>languageID</key>
+				<integer>1033</integer>
+				<key>nameID</key>
+				<integer>1</integer>
+				<key>platformID</key>
+				<integer>3</integer>
+				<key>string</key>
+				<string>IBM Plex Serif Text</string>
+			</dict>
+			<dict>
+				<key>encodingID</key>
+				<integer>0</integer>
+				<key>languageID</key>
+				<integer>0</integer>
+				<key>nameID</key>
+				<integer>2</integer>
+				<key>platformID</key>
+				<integer>1</integer>
+				<key>string</key>
+				<string>Italic</string>
+			</dict>
+			<dict>
+				<key>encodingID</key>
+				<integer>1</integer>
+				<key>languageID</key>
+				<integer>1033</integer>
+				<key>nameID</key>
+				<integer>2</integer>
+				<key>platformID</key>
+				<integer>3</integer>
+				<key>string</key>
+				<string>Italic</string>
+			</dict>
+			<dict>
+				<key>encodingID</key>
+				<integer>0</integer>
+				<key>languageID</key>
+				<integer>0</integer>
+				<key>nameID</key>
+				<integer>3</integer>
+				<key>platformID</key>
+				<integer>1</integer>
+				<key>string</key>
+				<string>IBM;IBMPlexSerif-TextItalic;2.005;2018</string>
+			</dict>
+			<dict>
+				<key>encodingID</key>
+				<integer>1</integer>
+				<key>languageID</key>
+				<integer>1033</integer>
+				<key>nameID</key>
+				<integer>3</integer>
+				<key>platformID</key>
+				<integer>3</integer>
+				<key>string</key>
+				<string>IBM;IBMPlexSerif-TextItalic;2.005;2018</string>
+			</dict>
+			<dict>
+				<key>encodingID</key>
+				<integer>0</integer>
+				<key>languageID</key>
+				<integer>0</integer>
+				<key>nameID</key>
+				<integer>4</integer>
+				<key>platformID</key>
+				<integer>1</integer>
+				<key>string</key>
+				<string>IBM Plex Serif Text Italic</string>
+			</dict>
+			<dict>
+				<key>encodingID</key>
+				<integer>1</integer>
+				<key>languageID</key>
+				<integer>1033</integer>
+				<key>nameID</key>
+				<integer>4</integer>
+				<key>platformID</key>
+				<integer>3</integer>
+				<key>string</key>
+				<string>IBM Plex Serif Text Italic</string>
+			</dict>
+			<dict>
+				<key>encodingID</key>
+				<integer>0</integer>
+				<key>languageID</key>
+				<integer>0</integer>
+				<key>nameID</key>
+				<integer>5</integer>
+				<key>platformID</key>
+				<integer>1</integer>
+				<key>string</key>
+				<string>Version 2.005 2018</string>
+			</dict>
+			<dict>
+				<key>encodingID</key>
+				<integer>1</integer>
+				<key>languageID</key>
+				<integer>1033</integer>
+				<key>nameID</key>
+				<integer>5</integer>
+				<key>platformID</key>
+				<integer>3</integer>
+				<key>string</key>
+				<string>Version 2.005 2018</string>
+			</dict>
+			<dict>
+				<key>encodingID</key>
+				<integer>0</integer>
+				<key>languageID</key>
+				<integer>0</integer>
+				<key>nameID</key>
+				<integer>6</integer>
+				<key>platformID</key>
+				<integer>1</integer>
+				<key>string</key>
+				<string>IBMPlexSerif-TextItalic</string>
+			</dict>
+			<dict>
+				<key>encodingID</key>
+				<integer>1</integer>
+				<key>languageID</key>
+				<integer>1033</integer>
+				<key>nameID</key>
+				<integer>6</integer>
+				<key>platformID</key>
+				<integer>3</integer>
+				<key>string</key>
+				<string>IBMPlexSerif-TextItalic</string>
+			</dict>
+			<dict>
+				<key>encodingID</key>
+				<integer>0</integer>
+				<key>languageID</key>
+				<integer>0</integer>
+				<key>nameID</key>
+				<integer>7</integer>
+				<key>platformID</key>
+				<integer>1</integer>
+				<key>string</key>
+				<string>IBM Plexª is a trademark of IBM Corp, registered in many jurisdictions worldwide.</string>
+			</dict>
+			<dict>
+				<key>encodingID</key>
+				<integer>1</integer>
+				<key>languageID</key>
+				<integer>1033</integer>
+				<key>nameID</key>
+				<integer>7</integer>
+				<key>platformID</key>
+				<integer>3</integer>
+				<key>string</key>
+				<string>IBM Plex™ is a trademark of IBM Corp, registered in many jurisdictions worldwide.</string>
+			</dict>
+			<dict>
+				<key>encodingID</key>
+				<integer>0</integer>
+				<key>languageID</key>
+				<integer>0</integer>
+				<key>nameID</key>
+				<integer>8</integer>
+				<key>platformID</key>
+				<integer>1</integer>
+				<key>string</key>
+				<string>Bold Monday</string>
+			</dict>
+			<dict>
+				<key>encodingID</key>
+				<integer>1</integer>
+				<key>languageID</key>
+				<integer>1033</integer>
+				<key>nameID</key>
+				<integer>8</integer>
+				<key>platformID</key>
+				<integer>3</integer>
+				<key>string</key>
+				<string>Bold Monday</string>
+			</dict>
+			<dict>
+				<key>encodingID</key>
+				<integer>0</integer>
+				<key>languageID</key>
+				<integer>0</integer>
+				<key>nameID</key>
+				<integer>9</integer>
+				<key>platformID</key>
+				<integer>1</integer>
+				<key>string</key>
+				<string>Mike Abbink, Paul van der Laan, Pieter van Rosmalen</string>
+			</dict>
+			<dict>
+				<key>encodingID</key>
+				<integer>1</integer>
+				<key>languageID</key>
+				<integer>1033</integer>
+				<key>nameID</key>
+				<integer>9</integer>
+				<key>platformID</key>
+				<integer>3</integer>
+				<key>string</key>
+				<string>Mike Abbink, Paul van der Laan, Pieter van Rosmalen</string>
+			</dict>
+			<dict>
+				<key>encodingID</key>
+				<integer>0</integer>
+				<key>languageID</key>
+				<integer>0</integer>
+				<key>nameID</key>
+				<integer>11</integer>
+				<key>platformID</key>
+				<integer>1</integer>
+				<key>string</key>
+				<string>http://www.boldmonday.com</string>
+			</dict>
+			<dict>
+				<key>encodingID</key>
+				<integer>1</integer>
+				<key>languageID</key>
+				<integer>1033</integer>
+				<key>nameID</key>
+				<integer>11</integer>
+				<key>platformID</key>
+				<integer>3</integer>
+				<key>string</key>
+				<string>http://www.boldmonday.com</string>
+			</dict>
+			<dict>
+				<key>encodingID</key>
+				<integer>0</integer>
+				<key>languageID</key>
+				<integer>0</integer>
+				<key>nameID</key>
+				<integer>12</integer>
+				<key>platformID</key>
+				<integer>1</integer>
+				<key>string</key>
+				<string>http://www.ibm.com</string>
+			</dict>
+			<dict>
+				<key>encodingID</key>
+				<integer>1</integer>
+				<key>languageID</key>
+				<integer>1033</integer>
+				<key>nameID</key>
+				<integer>12</integer>
+				<key>platformID</key>
+				<integer>3</integer>
+				<key>string</key>
+				<string>http://www.ibm.com</string>
+			</dict>
+			<dict>
+				<key>encodingID</key>
+				<integer>0</integer>
+				<key>languageID</key>
+				<integer>0</integer>
+				<key>nameID</key>
+				<integer>13</integer>
+				<key>platformID</key>
+				<integer>1</integer>
+				<key>string</key>
+				<string>This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: http://scripts.sil.org/OFL</string>
+			</dict>
+			<dict>
+				<key>encodingID</key>
+				<integer>1</integer>
+				<key>languageID</key>
+				<integer>1033</integer>
+				<key>nameID</key>
+				<integer>13</integer>
+				<key>platformID</key>
+				<integer>3</integer>
+				<key>string</key>
+				<string>This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: http://scripts.sil.org/OFL</string>
+			</dict>
+			<dict>
+				<key>encodingID</key>
+				<integer>0</integer>
+				<key>languageID</key>
+				<integer>0</integer>
+				<key>nameID</key>
+				<integer>14</integer>
+				<key>platformID</key>
+				<integer>1</integer>
+				<key>string</key>
+				<string>http://scripts.sil.org/OFL</string>
+			</dict>
+			<dict>
+				<key>encodingID</key>
+				<integer>1</integer>
+				<key>languageID</key>
+				<integer>1033</integer>
+				<key>nameID</key>
+				<integer>14</integer>
+				<key>platformID</key>
+				<integer>3</integer>
+				<key>string</key>
+				<string>http://scripts.sil.org/OFL</string>
+			</dict>
+			<dict>
+				<key>encodingID</key>
+				<integer>1</integer>
+				<key>languageID</key>
+				<integer>1033</integer>
+				<key>nameID</key>
+				<integer>16</integer>
+				<key>platformID</key>
+				<integer>3</integer>
+				<key>string</key>
+				<string>IBM Plex Serif</string>
+			</dict>
+			<dict>
+				<key>encodingID</key>
+				<integer>1</integer>
+				<key>languageID</key>
+				<integer>1033</integer>
+				<key>nameID</key>
+				<integer>17</integer>
+				<key>platformID</key>
+				<integer>3</integer>
+				<key>string</key>
+				<string>Text Italic</string>
+			</dict>
+			<dict>
+				<key>encodingID</key>
+				<integer>0</integer>
+				<key>languageID</key>
+				<integer>0</integer>
+				<key>nameID</key>
+				<integer>19</integer>
+				<key>platformID</key>
+				<integer>1</integer>
+				<key>string</key>
+				<string>How razorback-jumping frogs can level six piqued gymnasts!</string>
+			</dict>
+			<dict>
+				<key>encodingID</key>
+				<integer>1</integer>
+				<key>languageID</key>
+				<integer>1033</integer>
+				<key>nameID</key>
+				<integer>19</integer>
+				<key>platformID</key>
+				<integer>3</integer>
+				<key>string</key>
+				<string>How razorback-jumping frogs can level six piqued gymnasts!</string>
+			</dict>
+		</array>
 		<key>openTypeNameSampleText</key>
 		<string></string>
 		<key>openTypeNameUniqueID</key>
@@ -113,9 +530,9 @@
 		<array>
 		</array>
 		<key>openTypeOS2TypoAscender</key>
-		<integer>780</integer>
+		<integer>1025</integer>
 		<key>openTypeOS2TypoDescender</key>
-		<integer>-220</integer>
+		<integer>-275</integer>
 		<key>openTypeOS2TypoLineGap</key>
 		<integer>0</integer>
 		<key>openTypeOS2UnicodeRanges</key>
@@ -141,7 +558,7 @@
 		<key>openTypeOS2VendorID</key>
 		<string>IBM</string>
 		<key>openTypeOS2WeightClass</key>
-		<integer>500</integer>
+		<integer>450</integer>
 		<key>openTypeOS2WidthClass</key>
 		<integer>5</integer>
 		<key>openTypeOS2WinAscent</key>
@@ -211,7 +628,7 @@
 		<key>postscriptUniqueID</key>
 		<integer>-1</integer>
 		<key>postscriptWeightName</key>
-		<string>Medium</string>
+		<string>Text Italic</string>
 		<key>styleMapFamilyName</key>
 		<string>IBM Plex Serif Text</string>
 		<key>styleMapStyleName</key>

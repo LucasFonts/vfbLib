@@ -4,7 +4,7 @@
 	<advance width="334"/>
 	<outline>
 		<contour>
-			<point name="hr00" x="203" y="-138" type="line"/>
+			<point name="av01" x="203" y="-138" type="line"/>
 			<point x="159" y="-138"/>
 			<point x="116" y="-91"/>
 			<point x="116" y="-53" type="qcurve"/>
@@ -51,6 +51,9 @@
 						<string>hr00</string>
 						<key>stems</key>
 						<array>
+							<string>hstem -138 49</string>
+							<string>hstem 283 56</string>
+							<string>hstem 711 49</string>
 							<string>vstem 15 78</string>
 							<string>vstem 116 88</string>
 						</array>

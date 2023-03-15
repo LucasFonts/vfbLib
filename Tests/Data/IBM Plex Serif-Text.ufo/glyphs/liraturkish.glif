@@ -51,7 +51,7 @@
 			<point x="542" y="118"/>
 			<point x="466" y="44"/>
 			<point x="354" y="0"/>
-			<point x="284" y="0" type="qcurve"/>
+			<point name="hr00" x="284" y="0" type="qcurve"/>
 			<point name="ab01" x="53" y="0" type="line"/>
 		</contour>
 	</outline>
@@ -63,16 +63,34 @@
 				<array>
 					<dict>
 						<key>pointTag</key>
+						<string>sv01</string>
+						<key>stems</key>
+						<array>
+							<string>hstem 0 50</string>
+							<string>hstem 230 132</string>
+							<string>hstem 648 50</string>
+							<string>vstem 127 101</string>
+						</array>
+					</dict>
+					<dict>
+						<key>pointTag</key>
 						<string>sv03</string>
 						<key>stems</key>
 						<array>
 							<string>hstem 0 54</string>
-							<string>hstem 0 50</string>
 							<string>hstem 230 132</string>
-							<string>hstem 230 132</string>
-							<string>hstem 648 50</string>
 							<string>hstem 648 50</string>
 							<string>vstem 127 101</string>
+						</array>
+					</dict>
+					<dict>
+						<key>pointTag</key>
+						<string>hr00</string>
+						<key>stems</key>
+						<array>
+							<string>hstem 0 50</string>
+							<string>hstem 230 132</string>
+							<string>hstem 648 50</string>
 							<string>vstem 127 101</string>
 						</array>
 					</dict>

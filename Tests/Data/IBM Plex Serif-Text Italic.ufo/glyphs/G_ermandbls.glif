@@ -6,7 +6,7 @@
 		<contour>
 			<point name="ab02" x="372" y="-12" type="qcurve"/>
 			<point x="304" y="-12"/>
-			<point x="235" y="45"/>
+			<point name="hr00" x="235" y="45"/>
 			<point x="235" y="87" type="qcurve"/>
 			<point x="235" y="119"/>
 			<point x="274" y="164"/>
@@ -19,7 +19,7 @@
 			<point x="294" y="57" type="qcurve"/>
 			<point x="294" y="49" type="line"/>
 			<point x="306" y="40"/>
-			<point x="343" y="34"/>
+			<point name="hr01" x="343" y="34"/>
 			<point name="sv01" x="365" y="34" type="qcurve"/>
 			<point x="428" y="34"/>
 			<point x="507" y="116"/>
@@ -36,7 +36,7 @@
 			<point name="iv01" x="376" y="400" type="line"/>
 			<point x="599" y="649" type="line"/>
 			<point name="sv03" x="309" y="649" type="line"/>
-			<point x="147" y="0" type="line"/>
+			<point name="hr02" x="147" y="0" type="line"/>
 			<point name="ab01" x="-21" y="0" type="line"/>
 			<point name="sv04" x="-10" y="45" type="line"/>
 			<point x="60" y="45" type="line"/>
@@ -53,7 +53,7 @@
 			<point x="632" y="205"/>
 			<point x="595" y="107"/>
 			<point x="527" y="32"/>
-			<point x="431" y="-12"/>
+			<point name="hr03" x="431" y="-12"/>
 		</contour>
 	</outline>
 	<lib>
@@ -64,7 +64,19 @@
 				<array>
 					<dict>
 						<key>pointTag</key>
-						<string>iv02</string>
+						<string>ab02</string>
+						<key>stems</key>
+						<array>
+							<string>hstem -12 46</string>
+							<string>hstem 351 46</string>
+							<string>hstem 649 49</string>
+							<string>vstem 235 122</string>
+							<string>vstem 536 96</string>
+						</array>
+					</dict>
+					<dict>
+						<key>pointTag</key>
+						<string>hr00</string>
 						<key>stems</key>
 						<array>
 							<string>hstem 0 45</string>
@@ -76,23 +88,37 @@
 					</dict>
 					<dict>
 						<key>pointTag</key>
-						<string>ab01</string>
+						<string>hr01</string>
 						<key>stems</key>
 						<array>
 							<string>hstem -12 46</string>
-							<string>hstem -12 46</string>
+							<string>hstem 351 46</string>
+							<string>hstem 649 49</string>
+							<string>vstem 235 122</string>
+							<string>vstem 536 96</string>
+						</array>
+					</dict>
+					<dict>
+						<key>pointTag</key>
+						<string>hr02</string>
+						<key>stems</key>
+						<array>
 							<string>hstem 0 45</string>
 							<string>hstem 351 46</string>
-							<string>hstem 351 46</string>
-							<string>hstem 351 46</string>
-							<string>hstem 649 49</string>
-							<string>hstem 649 49</string>
 							<string>hstem 653 45</string>
 							<string>vstem 235 122</string>
-							<string>vstem 235 122</string>
-							<string>vstem 235 122</string>
 							<string>vstem 536 96</string>
-							<string>vstem 536 96</string>
+						</array>
+					</dict>
+					<dict>
+						<key>pointTag</key>
+						<string>hr03</string>
+						<key>stems</key>
+						<array>
+							<string>hstem -12 46</string>
+							<string>hstem 351 46</string>
+							<string>hstem 649 49</string>
+							<string>vstem 235 122</string>
 							<string>vstem 536 96</string>
 						</array>
 					</dict>
@@ -113,6 +139,18 @@
     &lt;ttc code="singlev" point1="sv03" point2="sv06"/&gt;
     &lt;ttc code="singlev" point1="iv01" point2="sv07"/&gt;
   &lt;/ttProgram&gt;
+</string>
+			<key>com.fontlab.v5.userData</key>
+			<string>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;
+&lt;plist version="1.0"&gt;
+&lt;dict&gt;
+	&lt;key&gt;com.type-invaders.name.final&lt;/key&gt;
+	&lt;string&gt;uni1E9E&lt;/string&gt;
+	&lt;key&gt;com.type-invaders.name.production&lt;/key&gt;
+	&lt;string&gt;Germandbls&lt;/string&gt;
+&lt;/dict&gt;
+&lt;/plist&gt;
 </string>
 		</dict>
 	</lib>

@@ -4,7 +4,7 @@
 	<advance width="328"/>
 	<outline>
 		<contour>
-			<point name="hr00" x="304" y="-154" type="line"/>
+			<point name="av02" x="304" y="-154" type="line"/>
 			<point x="260" y="-127"/>
 			<point x="171" y="-37"/>
 			<point x="100" y="82"/>

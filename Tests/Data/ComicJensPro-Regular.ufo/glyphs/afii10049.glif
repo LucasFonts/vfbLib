@@ -91,22 +91,17 @@
 						<string>hr00</string>
 						<key>stems</key>
 						<array>
-							<string>hstem -44 -21</string>
-							<string>hstem -19 -21</string>
-							<string>hstem 645 100</string>
+							<string>hstem -23 -21</string>
+							<string>hstem 2 -21</string>
+							<string>hstem 745 -100</string>
 							<string>vstem 116 100</string>
-							<string>vstem 412 100</string>
+							<string>vstem 512 -100</string>
 						</array>
 					</dict>
 				</array>
 			</dict>
-			<key>com.typemytype.robofont.mark</key>
-			<array>
-				<real>0.656</real>
-				<integer>1</integer>
-				<real>0.6</real>
-				<integer>1</integer>
-			</array>
+			<key>public.markColor</key>
+			<string>0.6838,0.952,0.648,1</string>
 		</dict>
 	</lib>
 </glyph>

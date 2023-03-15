@@ -4,7 +4,7 @@
 	<advance width="1040"/>
 	<outline>
 		<contour>
-			<point x="80" y="659" type="curve"/>
+			<point name="hr00" x="80" y="659" type="curve"/>
 			<point x="80" y="41" type="line" smooth="yes"/>
 			<point x="80" y="3"/>
 			<point x="104" y="-17"/>
@@ -125,17 +125,32 @@
 				<array>
 					<dict>
 						<key>pointTag</key>
+						<string>hr00</string>
+						<key>stems</key>
+						<array>
+							<string>hstem -20 -21</string>
+							<string>hstem 201 100</string>
+							<string>hstem 355 99</string>
+							<string>hstem 721 -20</string>
+							<string>vstem 80 100</string>
+							<string>vstem 550 -99</string>
+							<string>vstem 609 103</string>
+							<string>vstem 994 -99</string>
+						</array>
+					</dict>
+					<dict>
+						<key>pointTag</key>
 						<string>hr01</string>
 						<key>stems</key>
 						<array>
-							<string>hstem -41 -21</string>
+							<string>hstem -20 -21</string>
 							<string>hstem 201 100</string>
 							<string>hstem 355 99</string>
-							<string>hstem 622 101</string>
+							<string>hstem 723 -101</string>
 							<string>vstem 80 100</string>
-							<string>vstem 451 99</string>
+							<string>vstem 550 -99</string>
 							<string>vstem 609 103</string>
-							<string>vstem 895 99</string>
+							<string>vstem 994 -99</string>
 						</array>
 					</dict>
 					<dict>
@@ -143,14 +158,14 @@
 						<string>hr02</string>
 						<key>stems</key>
 						<array>
-							<string>hstem -41 -21</string>
+							<string>hstem -20 -21</string>
 							<string>hstem 201 100</string>
 							<string>hstem 355 99</string>
-							<string>hstem 721 -21</string>
+							<string>hstem 721 -20</string>
 							<string>vstem 80 100</string>
-							<string>vstem 451 99</string>
+							<string>vstem 550 -99</string>
 							<string>vstem 609 103</string>
-							<string>vstem 895 99</string>
+							<string>vstem 994 -99</string>
 						</array>
 					</dict>
 					<dict>
@@ -158,25 +173,20 @@
 						<string>hr03</string>
 						<key>stems</key>
 						<array>
-							<string>hstem -41 -21</string>
+							<string>hstem -20 -21</string>
 							<string>hstem 201 100</string>
 							<string>hstem 355 99</string>
-							<string>hstem 622 101</string>
+							<string>hstem 723 -101</string>
 							<string>vstem 80 100</string>
-							<string>vstem 451 99</string>
+							<string>vstem 550 -99</string>
 							<string>vstem 609 103</string>
-							<string>vstem 895 99</string>
+							<string>vstem 994 -99</string>
 						</array>
 					</dict>
 				</array>
 			</dict>
-			<key>com.typemytype.robofont.mark</key>
-			<array>
-				<real>0.656</real>
-				<integer>1</integer>
-				<real>0.6</real>
-				<integer>1</integer>
-			</array>
+			<key>public.markColor</key>
+			<string>0.6838,0.952,0.648,1</string>
 		</dict>
 	</lib>
 </glyph>

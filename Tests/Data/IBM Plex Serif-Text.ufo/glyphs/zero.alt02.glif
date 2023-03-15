@@ -68,6 +68,12 @@
 						<string>sv01</string>
 						<key>stems</key>
 						<array>
+							<string>hstem -12 53</string>
+							<string>hstem 293 112</string>
+							<string>hstem 657 53</string>
+							<string>vstem 48 109</string>
+							<string>vstem 247 106</string>
+							<string>vstem 443 109</string>
 						</array>
 					</dict>
 				</array>

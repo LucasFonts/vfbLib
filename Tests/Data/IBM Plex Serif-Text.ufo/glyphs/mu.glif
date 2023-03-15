@@ -49,7 +49,19 @@
 				<array>
 					<dict>
 						<key>pointTag</key>
-						<string>ab02</string>
+						<string>sv01</string>
+						<key>stems</key>
+						<array>
+							<string>hstem -179 -21</string>
+							<string>hstem -12 66</string>
+							<string>hstem 446 84</string>
+							<string>vstem 99 96</string>
+							<string>vstem 423 96</string>
+						</array>
+					</dict>
+					<dict>
+						<key>pointTag</key>
+						<string>sv07</string>
 						<key>stems</key>
 						<array>
 							<string>hstem -179 -21</string>

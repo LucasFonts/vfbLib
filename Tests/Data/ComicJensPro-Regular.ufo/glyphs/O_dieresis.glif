@@ -109,11 +109,11 @@
 						<key>stems</key>
 						<array>
 							<string>hstem -7 99</string>
-							<string>hstem 614 103</string>
-							<string>hstem 758 -21</string>
-							<string>hstem 978 -21</string>
+							<string>hstem 717 -103</string>
+							<string>hstem 779 -21</string>
+							<string>hstem 978 -20</string>
 							<string>vstem 35 103</string>
-							<string>vstem 594 103</string>
+							<string>vstem 697 -103</string>
 						</array>
 					</dict>
 				</array>

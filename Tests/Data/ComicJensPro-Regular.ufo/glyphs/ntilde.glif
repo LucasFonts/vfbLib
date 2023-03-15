@@ -106,11 +106,11 @@
 						<string>hr00</string>
 						<key>stems</key>
 						<array>
-							<string>hstem -25 -21</string>
-							<string>hstem 407 99</string>
-							<string>hstem 738 -21</string>
+							<string>hstem -4 -21</string>
+							<string>hstem 506 -99</string>
+							<string>hstem 738 -20</string>
 							<string>vstem 59 107</string>
-							<string>vstem 424 102</string>
+							<string>vstem 526 -102</string>
 						</array>
 					</dict>
 				</array>

@@ -109,8 +109,8 @@
 						<string>hr00</string>
 						<key>stems</key>
 						<array>
-							<string>hstem -31 -21</string>
-							<string>hstem 462 102</string>
+							<string>hstem -10 -21</string>
+							<string>hstem 564 -102</string>
 							<string>vstem 61 100</string>
 							<string>vstem 512 100</string>
 						</array>

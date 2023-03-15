@@ -60,7 +60,7 @@
 						<string>hr00</string>
 						<key>stems</key>
 						<array>
-							<string>hstem -10 150</string>
+							<string>hstem 140 -150</string>
 						</array>
 					</dict>
 				</array>

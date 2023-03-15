@@ -5,15 +5,12 @@
 	<outline>
 		<component base="afii10019"/>
 	</outline>
+	<anchor name="top" x="299" y="725"/>
+	<anchor name="bottom" x="299" y="-10"/>
 	<lib>
 		<dict>
-			<key>com.typemytype.robofont.mark</key>
-			<array>
-				<real>0.6</real>
-				<real>0.986</real>
-				<integer>1</integer>
-				<integer>1</integer>
-			</array>
+			<key>public.markColor</key>
+			<string>0.648,0.9341,0.952,1</string>
 		</dict>
 	</lib>
 </glyph>

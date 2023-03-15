@@ -83,6 +83,18 @@
     &lt;ttc code="singlev" point1="iv01" point2="sv03" stem="uc_stem"/&gt;
   &lt;/ttProgram&gt;
 </string>
+			<key>com.fontlab.v5.userData</key>
+			<string>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;
+&lt;plist version="1.0"&gt;
+&lt;dict&gt;
+	&lt;key&gt;com.type-invaders.name.final&lt;/key&gt;
+	&lt;string&gt;uni018F&lt;/string&gt;
+	&lt;key&gt;com.type-invaders.name.production&lt;/key&gt;
+	&lt;string&gt;Schwa&lt;/string&gt;
+&lt;/dict&gt;
+&lt;/plist&gt;
+</string>
 		</dict>
 	</lib>
 </glyph>

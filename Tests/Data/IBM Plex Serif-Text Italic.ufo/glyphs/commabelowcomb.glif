@@ -3,7 +3,7 @@
 	<unicode hex="0326"/>
 	<outline>
 		<contour>
-			<point name="hr00" x="-107" y="-248" type="line"/>
+			<point name="sv02" x="-107" y="-248" type="line"/>
 			<point x="-88" y="-230"/>
 			<point x="-51" y="-179"/>
 			<point name="sv01" x="-41" y="-158" type="qcurve"/>
@@ -57,6 +57,18 @@
     &lt;ttc code="mdeltav" point="sv02" delta="-8" ppm1="10" ppm2="12"/&gt;
     &lt;ttc code="mdeltav" point="sv02" delta="-8" ppm1="22" ppm2="23"/&gt;
   &lt;/ttProgram&gt;
+</string>
+			<key>com.fontlab.v5.userData</key>
+			<string>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;
+&lt;plist version="1.0"&gt;
+&lt;dict&gt;
+	&lt;key&gt;com.type-invaders.name.final&lt;/key&gt;
+	&lt;string&gt;uni0326&lt;/string&gt;
+	&lt;key&gt;com.type-invaders.name.production&lt;/key&gt;
+	&lt;string&gt;commabelowcomb&lt;/string&gt;
+&lt;/dict&gt;
+&lt;/plist&gt;
 </string>
 		</dict>
 	</lib>

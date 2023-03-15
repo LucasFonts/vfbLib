@@ -52,7 +52,7 @@
 						<string>hr00</string>
 						<key>stems</key>
 						<array>
-							<string>hstem 501 126</string>
+							<string>hstem 627 -126</string>
 						</array>
 					</dict>
 				</array>

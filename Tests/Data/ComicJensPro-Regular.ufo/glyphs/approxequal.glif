@@ -96,7 +96,7 @@
 						<key>stems</key>
 						<array>
 							<string>hstem 209 45</string>
-							<string>hstem 398 53</string>
+							<string>hstem 451 -53</string>
 						</array>
 					</dict>
 				</array>

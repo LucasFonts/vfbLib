@@ -21,7 +21,7 @@
 			<point x="152" y="464" type="qcurve"/>
 			<point x="152" y="462" type="line"/>
 			<point x="163" y="456"/>
-			<point x="183" y="432"/>
+			<point name="hr00" x="183" y="432"/>
 			<point x="183" y="410" type="qcurve"/>
 			<point x="183" y="383"/>
 			<point x="152" y="352"/>
@@ -112,18 +112,37 @@
 				<array>
 					<dict>
 						<key>pointTag</key>
-						<string>sv06</string>
+						<string>ab01</string>
 						<key>stems</key>
 						<array>
 							<string>hstem -12 70</string>
-							<string>hstem -12 62</string>
-							<string>hstem 480 50</string>
 							<string>hstem 480 50</string>
 							<string>vstem 43 103</string>
-							<string>vstem 67 116</string>
-							<string>vstem 347 96</string>
 							<string>vstem 347 96</string>
 							<string>vstem 684 99</string>
+						</array>
+					</dict>
+					<dict>
+						<key>pointTag</key>
+						<string>hr00</string>
+						<key>stems</key>
+						<array>
+							<string>hstem -12 70</string>
+							<string>hstem 480 50</string>
+							<string>vstem 67 116</string>
+							<string>vstem 347 96</string>
+							<string>vstem 684 99</string>
+						</array>
+					</dict>
+					<dict>
+						<key>pointTag</key>
+						<string>sv01</string>
+						<key>stems</key>
+						<array>
+							<string>hstem -12 62</string>
+							<string>hstem 480 50</string>
+							<string>vstem 43 103</string>
+							<string>vstem 347 96</string>
 							<string>vstem 684 99</string>
 						</array>
 					</dict>

@@ -28,7 +28,7 @@
 			<point x="443" y="50" type="line"/>
 			<point x="443" y="329" type="line"/>
 			<point x="443" y="398"/>
-			<point x="388" y="464"/>
+			<point name="hr00" x="388" y="464"/>
 			<point name="sv04" x="330" y="464" type="qcurve"/>
 			<point x="309" y="464"/>
 			<point x="268" y="452"/>
@@ -47,6 +47,34 @@
 	<guideline x="330" y="0" angle="90"/>
 	<lib>
 		<dict>
+			<key>com.adobe.type.autohint.v2</key>
+			<dict>
+				<key>hintSetList</key>
+				<array>
+					<dict>
+						<key>pointTag</key>
+						<string>sv01</string>
+						<key>stems</key>
+						<array>
+							<string>hstem 0 50</string>
+							<string>hstem 446 84</string>
+							<string>vstem 119 96</string>
+							<string>vstem 443 96</string>
+						</array>
+					</dict>
+					<dict>
+						<key>pointTag</key>
+						<string>hr00</string>
+						<key>stems</key>
+						<array>
+							<string>hstem 0 50</string>
+							<string>hstem 464 66</string>
+							<string>vstem 119 96</string>
+							<string>vstem 443 96</string>
+						</array>
+					</dict>
+				</array>
+			</dict>
 			<key>com.fontlab.ttprogram</key>
 			<string>  &lt;ttProgram&gt;
     &lt;ttc code="alignt" point="at01" zone="xheight"/&gt;

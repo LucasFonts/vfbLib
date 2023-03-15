@@ -22,7 +22,7 @@
 			<point x="388" y="454"/>
 			<point x="449" y="571"/>
 			<point x="545" y="658"/>
-			<point x="668" y="707"/>
+			<point name="hr00" x="668" y="707"/>
 			<point name="at02" x="738" y="707" type="qcurve"/>
 			<point x="827" y="707"/>
 			<point x="977" y="627"/>
@@ -48,7 +48,7 @@
 			<point x="898" y="117"/>
 			<point x="946" y="160"/>
 			<point x="964" y="186" type="qcurve"/>
-			<point name="hr01" x="1027" y="140" type="line"/>
+			<point x="1027" y="140" type="line"/>
 			<point x="977" y="71"/>
 			<point x="827" y="-9"/>
 		</contour>
@@ -97,7 +97,22 @@
 				<array>
 					<dict>
 						<key>pointTag</key>
-						<string>hr01</string>
+						<string>ab01</string>
+						<key>stems</key>
+						<array>
+							<string>hstem -9 75</string>
+							<string>hstem 143 75</string>
+							<string>hstem 311 76</string>
+							<string>hstem 480 75</string>
+							<string>hstem 622 76</string>
+							<string>vstem 173 72</string>
+							<string>vstem 381 75</string>
+							<string>vstem 531 77</string>
+						</array>
+					</dict>
+					<dict>
+						<key>pointTag</key>
+						<string>hr00</string>
 						<key>stems</key>
 						<array>
 							<string>hstem -9 75</string>
@@ -130,6 +145,18 @@
     &lt;ttc code="interpolatev" point="iv02" point1="sv07" point2="sv08"/&gt;
     &lt;ttc code="interpolatev" point="iv03" point1="sv07" point2="sv08"/&gt;
   &lt;/ttProgram&gt;
+</string>
+			<key>com.fontlab.v5.userData</key>
+			<string>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;
+&lt;plist version="1.0"&gt;
+&lt;dict&gt;
+	&lt;key&gt;com.type-invaders.name.final&lt;/key&gt;
+	&lt;string&gt;uniEFCC&lt;/string&gt;
+	&lt;key&gt;com.type-invaders.name.production&lt;/key&gt;
+	&lt;string&gt;fcclogo&lt;/string&gt;
+&lt;/dict&gt;
+&lt;/plist&gt;
 </string>
 		</dict>
 	</lib>

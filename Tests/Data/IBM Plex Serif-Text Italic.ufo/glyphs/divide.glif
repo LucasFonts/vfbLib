@@ -26,7 +26,7 @@
 		<contour>
 			<point name="sv04" x="324" y="431" type="qcurve"/>
 			<point x="298" y="431"/>
-			<point x="272" y="461"/>
+			<point name="hr00" x="272" y="461"/>
 			<point x="272" y="479" type="qcurve"/>
 			<point x="272" y="484"/>
 			<point x="272" y="494"/>
@@ -52,6 +52,34 @@
 	</outline>
 	<lib>
 		<dict>
+			<key>com.adobe.type.autohint.v2</key>
+			<dict>
+				<key>hintSetList</key>
+				<array>
+					<dict>
+						<key>pointTag</key>
+						<string>sv03</string>
+						<key>stems</key>
+						<array>
+							<string>hstem 61 118</string>
+							<string>hstem 278 54</string>
+							<string>hstem 431 118</string>
+							<string>vstem 181 119</string>
+						</array>
+					</dict>
+					<dict>
+						<key>pointTag</key>
+						<string>hr00</string>
+						<key>stems</key>
+						<array>
+							<string>hstem 61 118</string>
+							<string>hstem 278 54</string>
+							<string>hstem 431 118</string>
+							<string>vstem 272 119</string>
+						</array>
+					</dict>
+				</array>
+			</dict>
 			<key>com.fontlab.ttprogram</key>
 			<string>  &lt;ttProgram&gt;
     &lt;ttc code="alignv" point="av01" align="round"/&gt;

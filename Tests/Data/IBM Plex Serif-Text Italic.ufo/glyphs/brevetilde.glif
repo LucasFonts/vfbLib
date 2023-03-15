@@ -7,7 +7,7 @@
 			<point x="69" y="783"/>
 			<point x="47" y="794" type="qcurve"/>
 			<point x="23" y="806"/>
-			<point x="-11" y="822"/>
+			<point name="hr00" x="-11" y="822"/>
 			<point name="sv03" x="-26" y="822" type="qcurve"/>
 			<point x="-40" y="822"/>
 			<point x="-62" y="808"/>
@@ -20,7 +20,7 @@
 			<point x="52" y="866"/>
 			<point x="74" y="855" type="qcurve"/>
 			<point x="98" y="843"/>
-			<point x="132" y="827"/>
+			<point name="hr01" x="132" y="827"/>
 			<point name="sv05" x="147" y="827" type="qcurve"/>
 			<point x="161" y="827"/>
 			<point x="183" y="841"/>
@@ -62,14 +62,31 @@
 				<array>
 					<dict>
 						<key>pointTag</key>
-						<string>sv04</string>
+						<string>sv02</string>
 						<key>stems</key>
 						<array>
 							<string>hstem 584 65</string>
-							<string>hstem 584 65</string>
 							<string>hstem 768 59</string>
+							<string>vstem -101 323</string>
+						</array>
+					</dict>
+					<dict>
+						<key>pointTag</key>
+						<string>hr00</string>
+						<key>stems</key>
+						<array>
+							<string>hstem 584 65</string>
 							<string>hstem 822 59</string>
 							<string>vstem -101 323</string>
+						</array>
+					</dict>
+					<dict>
+						<key>pointTag</key>
+						<string>hr01</string>
+						<key>stems</key>
+						<array>
+							<string>hstem 584 65</string>
+							<string>hstem 768 59</string>
 							<string>vstem -101 323</string>
 						</array>
 					</dict>

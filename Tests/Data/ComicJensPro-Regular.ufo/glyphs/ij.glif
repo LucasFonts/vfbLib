@@ -120,22 +120,17 @@
 						<key>stems</key>
 						<array>
 							<string>hstem -351 101</string>
-							<string>hstem 3 -21</string>
-							<string>hstem 545 -21</string>
-							<string>hstem 616 131</string>
+							<string>hstem 24 -21</string>
+							<string>hstem 545 -20</string>
+							<string>hstem 747 -131</string>
 							<string>vstem 48 100</string>
-							<string>vstem 340 99</string>
+							<string>vstem 439 -99</string>
 						</array>
 					</dict>
 				</array>
 			</dict>
-			<key>com.typemytype.robofont.mark</key>
-			<array>
-				<real>0.845</real>
-				<integer>1</integer>
-				<real>0.6</real>
-				<integer>1</integer>
-			</array>
+			<key>public.markColor</key>
+			<string>0.8268,0.952,0.648,1</string>
 		</dict>
 	</lib>
 </glyph>

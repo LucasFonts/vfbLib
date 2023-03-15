@@ -33,13 +33,13 @@
 			<point x="333" y="530"/>
 			<point x="399" y="511"/>
 			<point x="445" y="478"/>
-			<point x="470" y="432"/>
+			<point name="hr00" x="470" y="432"/>
 			<point x="470" y="405" type="qcurve"/>
 			<point x="470" y="373"/>
 			<point x="435" y="334"/>
 			<point name="iv01" x="405" y="334" type="qcurve"/>
 			<point x="373" y="334"/>
-			<point x="341" y="371"/>
+			<point name="hr01" x="341" y="371"/>
 			<point x="341" y="397" type="qcurve"/>
 			<point x="341" y="420"/>
 			<point x="364" y="451"/>
@@ -71,7 +71,7 @@
 			<point x="313" y="-58"/>
 			<point name="sv01" x="330" y="-58" type="qcurve"/>
 			<point x="362" y="-58"/>
-			<point x="405" y="-91"/>
+			<point name="hr02" x="405" y="-91"/>
 			<point x="405" y="-123" type="qcurve"/>
 			<point x="405" y="-145"/>
 			<point x="387" y="-176"/>
@@ -81,6 +81,72 @@
 	</outline>
 	<lib>
 		<dict>
+			<key>com.adobe.type.autohint.v2</key>
+			<dict>
+				<key>hintSetList</key>
+				<array>
+					<dict>
+						<key>pointTag</key>
+						<string>sv04</string>
+						<key>stems</key>
+						<array>
+							<string>hstem -206 40</string>
+							<string>hstem -11 69</string>
+							<string>hstem 478 52</string>
+							<string>vstem 44 104</string>
+							<string>vstem 333 72</string>
+						</array>
+					</dict>
+					<dict>
+						<key>pointTag</key>
+						<string>hr00</string>
+						<key>stems</key>
+						<array>
+							<string>hstem -206 40</string>
+							<string>hstem -11 69</string>
+							<string>hstem 478 52</string>
+							<string>vstem 44 104</string>
+							<string>vstem 341 129</string>
+						</array>
+					</dict>
+					<dict>
+						<key>pointTag</key>
+						<string>iv01</string>
+						<key>stems</key>
+						<array>
+							<string>hstem -206 40</string>
+							<string>hstem -11 69</string>
+							<string>hstem 478 52</string>
+							<string>vstem 44 104</string>
+							<string>vstem 333 72</string>
+						</array>
+					</dict>
+					<dict>
+						<key>pointTag</key>
+						<string>hr01</string>
+						<key>stems</key>
+						<array>
+							<string>hstem -206 40</string>
+							<string>hstem -11 69</string>
+							<string>hstem 478 52</string>
+							<string>vstem 44 104</string>
+							<string>vstem 341 129</string>
+						</array>
+					</dict>
+					<dict>
+						<key>pointTag</key>
+						<string>hr02</string>
+						<key>stems</key>
+						<array>
+							<string>hstem -206 40</string>
+							<string>hstem -11 69</string>
+							<string>hstem 478 52</string>
+							<string>vstem 44 104</string>
+							<string>vstem 333 72</string>
+						</array>
+					</dict>
+				</array>
+			</dict>
 			<key>com.fontlab.ttprogram</key>
 			<string>  &lt;ttProgram&gt;
     &lt;ttc code="alignt" point="at01" zone="xheight"/&gt;
