@@ -352,7 +352,7 @@ class VfbToUfoWriter:
                     "Serif": "SERF",
                 }
                 self.axes.append(
-                    AxisDescriptor(tag=tags.get(data, data.lower()), name=data)
+                    AxisDescriptor(tag=tags.get(data, data.upper()[:4]), name=data)
                 )
             elif name == "Axis Mappings Count":  # 1515
                 self.axis_mappings_count = data
