@@ -38,7 +38,9 @@ from vfbLib.parsers.mm import (
     PrimaryInstancesParser,
 )
 from vfbLib.parsers.numeric import (
+    DoubleListParser,
     DoubleParser,
+    FloatListParser,
     IntParser,
     IntListParser,
     PanoseParser,
@@ -108,7 +110,7 @@ parser_classes = {
     1139: ("OT Mac Name", StringParser),
     1140: ("1140", BaseParser),
     1141: ("Custom CMAPs", CustomCmapParser),
-    1247: ("1247", BaseParser),  # MM
+    1247: ("Primary Instance Locations", DoubleListParser),
     1250: ("Glyph Unicode", GlyphUnicodeParser),
     1253: ("Glyph Unicode Non-BMP", GlyphUnicodeSuppParser),
     1254: ("Primary Instances", PrimaryInstancesParser),
