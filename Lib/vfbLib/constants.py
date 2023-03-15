@@ -31,6 +31,7 @@ from vfbLib.parsers.guides import (
     GuidePropertiesParser,
 )
 from vfbLib.parsers.mm import (
+    AxisMappingsCountParser,
     AxisMappingsParser,
     MasterFlagParser,
     PrimaryInstancesParser,
@@ -135,6 +136,7 @@ parser_classes = {
     1505: ("Master Flags", MasterFlagParser),
     1513: ("Axis Count", IntParser),
     1514: ("Axis Name", StringParser),
+    1515: ("Axis Mappings Count", AxisMappingsCountParser),
     1516: ("Axis Mappings", AxisMappingsParser),
     1517: ("1517", DoubleParser),
     1523: ("1523", EncodedValueListParser),

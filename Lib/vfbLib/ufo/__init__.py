@@ -342,15 +342,33 @@ class VfbToUfoWriter:
             elif name == "Axis Count":  # 1513
                 self.axis_count = data
             elif name == "Axis Name":  # 1514
-                if self.current_axis is not None:
-                    self.axes.append(self.current_axis)
-                self.current_axis = AxisDescriptor(tag=None, name=data)
-                print(f"Axis: {self.current_axis}")
-            elif name == "Axis Mapping":  # 1516
-                for u, d in data:
-                    if (u, d) == (0.0, 0.0):
-                        break
-                    self.current_axis.map.append((u, round(d * 1000)))
+                tags = {
+                    "Weight": "wght",
+                    "Width": "wdth",
+                    "Optical Size": "opsz",
+                    "Serif": "SERF",
+                }
+                self.axes.append(AxisDescriptor(tag=tags.get(data, data.lower()), name=data))
+            elif name == "Axis Mappings Count":  # 1515
+                self.axis_mappings_count = data
+            elif name == "Axis Mappings":  # 1516
+                if not self.axis_mappings_count:
+                    raise ValueError("If axis mappings are present, axis mappings count must be set before parsing them.")
+                for i in range(4):
+                    # Get the number of mappings for the current axis
+                    n = self.axis_mappings_count[i]
+                    if n > 0:
+                        # Use only n mappings out of 10 for the current axis
+                        mappings = data[:n]
+                        self.axes[i].map = [(u, round(d * 1000)) for u, d in mappings]
+                        # Derive min/max from the mappings
+                        # FIXME: Is this info available elsewhere in the VFB?
+                        user_coords = [c[0] for c in mappings]
+                        self.axes[i].minimum = min(user_coords, default=0)
+                        self.axes[i].default = self.axes[i].minimum
+                        self.axes[i].maximum = max(user_coords, default=1000)
+                    # Jump to the next 10 axis mappings
+                    data = data[10:]
             elif name == "Axis Count":  # 1523
                 self.axis_count = data
             elif name == "Blue Values Count":  # 1530

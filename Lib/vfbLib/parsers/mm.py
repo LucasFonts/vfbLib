@@ -10,6 +10,17 @@ from vfbLib.parsers import BaseParser, read_encoded_value
 logger = logging.getLogger(__name__)
 
 
+class AxisMappingsCountParser(BaseParser):
+    @classmethod
+    def _parse(cls) -> List[int]:
+        # An array of axis mapping counts per axis, for all 4 axes whether they exist
+        # or not.
+        # 0300 0000  0000 0000  0000 0000  0000 0000
+        # -> [3, 0, 0, 0]
+        assert cls.stream is not None
+        return [cls.read_uint32() for _ in range(4)]
+
+
 class AxisMappingsParser(BaseParser):
     @classmethod
     def _parse(cls) -> List[Tuple[float, float]]:
