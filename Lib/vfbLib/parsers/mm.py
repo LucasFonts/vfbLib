@@ -36,9 +36,10 @@ class AxisMappingsParser(BaseParser):
         return mappings
 
 
-class MasterFlagParser(BaseParser):
+class MasterLocationParser(BaseParser):
     @classmethod
     def _parse(cls) -> Tuple[int, Tuple[Any]]:
+        # The location on all 4 axes for this master
         assert cls.stream is not None
         # FIXME: Might also be 2 uint16:
         master_index = cls.read_uint32()

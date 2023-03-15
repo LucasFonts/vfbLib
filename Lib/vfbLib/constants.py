@@ -33,7 +33,7 @@ from vfbLib.parsers.guides import (
 from vfbLib.parsers.mm import (
     AxisMappingsCountParser,
     AxisMappingsParser,
-    MasterFlagParser,
+    MasterLocationParser,
     PrimaryInstancesParser,
 )
 from vfbLib.parsers.numeric import (
@@ -133,7 +133,7 @@ parser_classes = {
     1502: ("1502", IntParser),
     1503: ("Master Count", IntParser),
     1504: ("Master Name", StringParser),
-    1505: ("Master Flags", MasterFlagParser),
+    1505: ("Master Location", MasterLocationParser),
     1513: ("Axis Count", IntParser),
     1514: ("Axis Name", StringParser),
     1515: ("Axis Mappings Count", AxisMappingsCountParser),
