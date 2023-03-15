@@ -142,7 +142,7 @@ parser_classes = {
     1514: ("Axis Name", StringParser),
     1515: ("Axis Mappings Count", AxisMappingsCountParser),
     1516: ("Axis Mappings", AxisMappingsParser),
-    1517: ("1517", DoubleParser),
+    1517: ("Default Weight Vector", DoubleListParser),  # Interpolation coeffs for masters
     1523: ("Anisotropic Interpolation Mappings", AnisotropicInterpolationsParser),
     1524: ("1524", EncodedValueListParser),
     1530: ("Blue Values Count", IntParser),
