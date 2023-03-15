@@ -10,8 +10,6 @@ from vfbLib.parsers import (
     GaspParser,
     GlyphEncodingParser,
     OpenTypeClassFlagsParser,
-    OpenTypeStringParser,
-    StringParser,
 )
 from vfbLib.parsers.bitmap import BackgroundBitmapParser, GlyphBitmapParser
 from vfbLib.parsers.cmap import CustomCmapParser
@@ -48,7 +46,12 @@ from vfbLib.parsers.numeric import (
 )
 from vfbLib.parsers.options import ExportOptionsParser
 from vfbLib.parsers.ps import PostScriptInfoParser
-from vfbLib.parsers.text import NameRecordsParser
+from vfbLib.parsers.text import (
+    NameRecordsParser,
+    OpenTypeClassParser,
+    OpenTypeStringParser,
+    StringParser,
+)
 from vfbLib.parsers.truetype import (
     TrueTypeInfoParser,
     TrueTypeStemPpemsParser,
@@ -127,7 +130,7 @@ parser_classes = {
     1274: ("Zone Stop PPEM", IntParser),
     1275: ("Code Stop PPEM", IntParser),
     1276: ("openTypeFeatures", OpenTypeStringParser),
-    1277: ("OpenType Class", StringParser),
+    1277: ("OpenType Class", OpenTypeClassParser),
     1278: ("hhea_ascender", SignedIntParser),
     1279: ("hhea_descender", SignedIntParser),
     1294: ("Global Guides", GlobalGuidesParser),

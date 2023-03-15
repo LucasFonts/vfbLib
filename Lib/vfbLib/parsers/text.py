@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import logging
 
+from typing import Dict, List
 from vfbLib.parsers import BaseParser, read_encoded_value
 
 
@@ -35,3 +36,48 @@ class NameRecordsParser(BaseParser):
 
         assert stream.read() == b""
         return result
+
+
+class OpenTypeClassParser(BaseParser):
+    """
+    A parser that reads data as a Windows-1252-encoded strings and returns it formatted
+    to represent an OpenType class
+    """
+
+    @classmethod
+    def _parse(cls) -> Dict[str, List[str] | str]:
+        s = cls.stream.read().decode("cp1252").strip("\u0000 ")
+        if ":" not in s:
+            logger.warning(f"Malformed OpenType class: {s}")
+            return {"str": s, "err": "PARSE_ERROR"}
+            # raise ValueError
+
+        name, contents = s.split(":")
+
+        glyphs = []
+        for glyph in contents.split(" "):
+            glyph = glyph.strip()
+            if glyph:
+                glyphs.append(glyph)
+        return {"name": name, "glyphs": glyphs}
+
+
+class OpenTypeStringParser(BaseParser):
+    """
+    A parser that reads data as a Windows-1252-encoded strings and returns it as a list.
+    """
+
+    @classmethod
+    def _parse(cls) -> List[str]:
+        s = cls.stream.read().decode("cp1252").strip("\u0000 ")
+        return s.splitlines()
+
+
+class StringParser(BaseParser):
+    """
+    A parser that reads data as Windows-1252-encoded strings.
+    """
+
+    @classmethod
+    def _parse(cls):
+        return cls.stream.read().decode("cp1252").strip("\u0000 ")

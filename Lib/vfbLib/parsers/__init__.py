@@ -204,24 +204,3 @@ class OpenTypeClassFlagsParser(BaseParser):
             flag2 = read_encoded_value(cls.stream)
             class_flags[name] = (flag1, flag2)
         return class_flags
-
-
-class OpenTypeStringParser(BaseParser):
-    """
-    A parser that reads data as a Windows-1252-encoded strings and returns it as a list.
-    """
-
-    @classmethod
-    def _parse(cls) -> List[str]:
-        s = cls.stream.read().decode("cp1252").strip("\u0000 ")
-        return s.splitlines()
-
-
-class StringParser(BaseParser):
-    """
-    A parser that reads data as ASCII-encoded strings.
-    """
-
-    @classmethod
-    def _parse(cls):
-        return cls.stream.read().decode("cp1252").strip("\u0000 ")

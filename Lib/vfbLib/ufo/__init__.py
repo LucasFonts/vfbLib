@@ -110,15 +110,14 @@ class VfbToUfoWriter:
             # Jump to the next 10 axis mappings
             data = data[10:]
 
-    def add_ot_class(self, data: str) -> None:
-        if ":" not in data:
+    def add_ot_class(self, data: Dict[str, List[str] | str]) -> None:
+        if "name" not in data:
             logger.warning(f"Malformed OT class definition, skipping: {data}")
             return
 
-        parts = data.split(":", 1)
-        name: str = parts[0]
-        glyphs_str: str = parts[1]
-        name = name.strip()
+        name = data["name"]
+        if not isinstance(name, str):
+            raise TypeError(f"OT class name must be a string: {name} ({type(name)})")
 
         is_kerning = name.startswith("_")
 
@@ -126,8 +125,7 @@ class VfbToUfoWriter:
             logger.warning(f"Duplicate OT class name, skipping: {name}")
             return
 
-        glyphs_list = glyphs_str.split()
-
+        glyphs_list = data["glyphs"]
         if is_kerning:
             # Reorganize glyphs so that the "keyglyph" is first
             glyphs: List[str] = [g.strip() for g in glyphs_list if not g.endswith("'")]
