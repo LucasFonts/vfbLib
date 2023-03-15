@@ -351,12 +351,16 @@ class VfbToUfoWriter:
                     "Optical Size": "opsz",
                     "Serif": "SERF",
                 }
-                self.axes.append(AxisDescriptor(tag=tags.get(data, data.lower()), name=data))
+                self.axes.append(
+                    AxisDescriptor(tag=tags.get(data, data.lower()), name=data)
+                )
             elif name == "Axis Mappings Count":  # 1515
                 self.axis_mappings_count = data
             elif name == "Axis Mappings":  # 1516
                 if not self.axis_mappings_count:
-                    raise ValueError("If axis mappings are present, axis mappings count must be set before parsing them.")
+                    raise ValueError(
+                        "If axis mappings are present, axis mappings count must be set before parsing them."
+                    )
                 for i in range(4):
                     # Get the number of mappings for the current axis
                     n = self.axis_mappings_count[i]
