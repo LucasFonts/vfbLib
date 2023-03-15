@@ -597,11 +597,17 @@ class VfbToUfoWriter:
             if not isinstance(loc, list):
                 raise TypeError
 
+            style_name = p["name"]
             # FIXME: Support anisotropic interpolation
             ds.addInstanceDescriptor(
+                # designLocation=get_ds_design_location(self.axes, loc),
                 familyName=self.info.ds_family_name,
-                styleName=p["name"],
-                designLocation=get_ds_design_location(self.axes, loc)
+                filename=f"instance_ufo/{self.info.ds_family_name}-{style_name}.ufo",
+                # path="",
+                styleMapFamilyName=f"{self.info.ds_family_name} {style_name}".strip(),  # FIXME
+                styleMapStyleName=self.info.styleMapStyleName,
+                styleName=style_name,
+                userLocation=get_ds_location(self.axes, loc, 1),
             )
 
         if not silent:
