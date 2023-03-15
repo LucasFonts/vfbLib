@@ -16,9 +16,8 @@ class AxisMappingsParser(BaseParser):
         assert cls.stream is not None
         mappings = []
         for _ in range(cls.stream.getbuffer().nbytes // 16):
-            src = unpack("d", cls.stream.read(8))[0]
-            tgt = unpack("d", cls.stream.read(8))[0]
-            mappings.append((src, tgt))
+            src_tgt = cls.read_doubles(2)
+            mappings.append(src_tgt)
 
         return mappings
 

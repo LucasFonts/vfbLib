@@ -51,9 +51,11 @@ def read_encoded_value(stream: BufferedReader | BytesIO, signed=True) -> int:
     raise ValueError
 
 
-def read_double(num, stream):
+def read_doubles(num, stream):
+    # Read a number of doubles from the stream and return them
     return unpack(num * "d", stream.read(num * 8))
 
 
-def read_float(num, stream):
+def read_floats(num, stream):
+    # Read a number of floats from the stream and return them
     return unpack(num * "f", stream.read(num * 4))

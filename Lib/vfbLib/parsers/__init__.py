@@ -6,7 +6,7 @@ from fontTools.misc.textTools import hexStr
 from io import BufferedReader, BytesIO
 from struct import unpack
 from typing import TYPE_CHECKING, Any, Dict, List
-from vfbLib.parsers.value import read_double, read_encoded_value, read_float
+from vfbLib.parsers.value import read_doubles, read_encoded_value, read_floats
 
 if TYPE_CHECKING:
     from vfbLib.typing import ClassFlagDict
@@ -43,16 +43,28 @@ class BaseParser:
         return hexStr(cls.stream.read())
 
     @classmethod
-    def read_double(cls, num, stream=None):
+    def read_double(cls, stream=None):
         if stream is None:
             stream = cls.stream
-        return read_double(num, stream)
+        return read_doubles(1, stream)[0]
+    
+    @classmethod
+    def read_doubles(cls, num, stream=None):
+        if stream is None:
+            stream = cls.stream
+        return read_doubles(num, stream)
 
     @classmethod
-    def read_float(cls, num, stream=None):
+    def read_float(cls, stream=None):
         if stream is None:
             stream = cls.stream
-        return read_float(num, stream)
+        return read_floats(1, stream)[0]
+    
+    @classmethod
+    def read_floats(cls, num, stream=None):
+        if stream is None:
+            stream = cls.stream
+        return read_floats(num, stream)
 
     @classmethod
     def read_int16(cls, stream=None) -> int:
