@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import logging
 
+from functools import cached_property
 from typing import TYPE_CHECKING, List, Tuple
 from vfbLib.helpers import binaryToIntList
 from vfbLib.ufo.time import convert_timestamp
@@ -77,7 +78,7 @@ class VfbToUfoInfo:
 
         self.build_mapping()
     
-    @property
+    @cached_property
     def ds_family_name(self) -> str:
         if self.openTypeNamePreferredFamilyName:
             return self.openTypeNamePreferredFamilyName
@@ -85,7 +86,7 @@ class VfbToUfoInfo:
             return self.familyName
         return self.styleMapFamilyName
     
-    @property
+    @cached_property
     def ds_style_name(self) -> str:
         if self.openTypeNamePreferredSubfamilyName:
             return self.openTypeNamePreferredSubfamilyName
@@ -93,7 +94,7 @@ class VfbToUfoInfo:
             return self.styleName
         return self.styleMapStyleName
 
-    @property
+    @cached_property
     def ui_name(self) -> str:
         name = ""
         if hasattr(self, "familyName"):
