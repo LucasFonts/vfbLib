@@ -31,6 +31,7 @@ from vfbLib.parsers.guides import (
     GuidePropertiesParser,
 )
 from vfbLib.parsers.mm import (
+    AnisotropicInterpolationsParser,
     AxisMappingsCountParser,
     AxisMappingsParser,
     MasterLocationParser,
@@ -139,7 +140,7 @@ parser_classes = {
     1515: ("Axis Mappings Count", AxisMappingsCountParser),
     1516: ("Axis Mappings", AxisMappingsParser),
     1517: ("1517", DoubleParser),
-    1523: ("1523", EncodedValueListParser),
+    1523: ("Anisotropic Interpolation Mappings", AnisotropicInterpolationsParser),
     1524: ("1524", EncodedValueListParser),
     1530: ("Blue Values Count", IntParser),
     1531: ("Other Blues Count", IntParser),

@@ -10,6 +10,25 @@ from vfbLib.parsers import BaseParser, read_encoded_value
 logger = logging.getLogger(__name__)
 
 
+class AnisotropicInterpolationsParser(BaseParser):
+    @classmethod
+    def _parse(cls) -> List[int]:
+        # The graph used for anisotropic interpolation maps, for all axes.
+        assert cls.stream is not None
+        values = []
+        while True:
+            axis_values = []
+            try:
+                n = read_encoded_value(cls.stream)
+                axis_values = [
+                    (read_encoded_value(cls.stream), read_encoded_value(cls.stream))
+                    for _ in range(n)
+                ]
+                values.append(axis_values)
+            except EOFError:
+                return values
+
+
 class AxisMappingsCountParser(BaseParser):
     @classmethod
     def _parse(cls) -> List[int]:
