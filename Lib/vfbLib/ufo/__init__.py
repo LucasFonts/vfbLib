@@ -583,10 +583,11 @@ class VfbToUfoWriter:
         # Add sources
         for i in range(self.master_count):
             ds.addSourceDescriptor(
+                # designLocation=,
                 familyName=self.info.ds_family_name,
+                filename=f"{self.get_master_path(out_path.with_suffix('.ufo'), i)}",
                 location=get_ds_location(self.axes, self.master_locations[i + 1]),
                 name=self.masters[i],
-                path=str(self.get_master_path(out_path.with_suffix(".ufo"), i)),
                 styleName=f"Master {i}",
             )
 
@@ -603,7 +604,10 @@ class VfbToUfoWriter:
                 # designLocation=get_ds_design_location(self.axes, loc),
                 familyName=self.info.ds_family_name,
                 filename=f"instance_ufo/{self.info.ds_family_name}-{style_name}.ufo",
-                # path="",
+                # lib=,
+                # locationLabel="",
+                name=f"instance_{i}",
+                # postScriptFontName="",
                 styleMapFamilyName=f"{self.info.ds_family_name} {style_name}".strip(),  # FIXME
                 styleMapStyleName=self.info.styleMapStyleName,
                 styleName=style_name,
