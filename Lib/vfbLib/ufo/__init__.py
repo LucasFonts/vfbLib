@@ -84,6 +84,29 @@ class VfbToUfoWriter:
         self.tt_zone_names: List[str] = []
         self.zone_names: Dict[str, List[str]] = {}
         self.build()
+    
+    def add_axis_mappings(self, data: List[Tuple[float, float]]) -> None:
+        if not self.axis_mappings_count:
+            raise ValueError(
+                "If axis mappings are present, axis mappings count must be set before parsing them."
+            )
+        for i in range(4):
+            # Get the number of mappings for the current axis
+            n = self.axis_mappings_count[i]
+            if n > 0:
+                # Use only n mappings out of 10 for the current axis
+                mappings = data[:n]
+                axis = self.axes[i]
+                axis.map = [(u, round(d * 1000)) for u, d in mappings]
+                if isinstance(axis, AxisDescriptor):
+                    # Derive min/max from the mappings
+                    # FIXME: Is this info available elsewhere in the VFB?
+                    user_coords = [c[0] for c in mappings]
+                    axis.minimum = min(user_coords, default=0)
+                    axis.default = axis.minimum
+                    axis.maximum = max(user_coords, default=1000)
+            # Jump to the next 10 axis mappings
+            data = data[10:]
 
     def add_ot_class(self, data: str) -> None:
         if ":" not in data:
@@ -359,27 +382,7 @@ class VfbToUfoWriter:
             elif name == "Axis Mappings Count":  # 1515
                 self.axis_mappings_count = data
             elif name == "Axis Mappings":  # 1516
-                if not self.axis_mappings_count:
-                    raise ValueError(
-                        "If axis mappings are present, axis mappings count must be set before parsing them."
-                    )
-                for i in range(4):
-                    # Get the number of mappings for the current axis
-                    n = self.axis_mappings_count[i]
-                    if n > 0:
-                        # Use only n mappings out of 10 for the current axis
-                        mappings = data[:n]
-                        axis = self.axes[i]
-                        axis.map = [(u, round(d * 1000)) for u, d in mappings]
-                        if isinstance(axis, AxisDescriptor):
-                            # Derive min/max from the mappings
-                            # FIXME: Is this info available elsewhere in the VFB?
-                            user_coords = [c[0] for c in mappings]
-                            axis.minimum = min(user_coords, default=0)
-                            axis.default = axis.minimum
-                            axis.maximum = max(user_coords, default=1000)
-                    # Jump to the next 10 axis mappings
-                    data = data[10:]
+                self.add_axis_mappings(data)
             elif name == "Axis Count":  # 1523
                 self.axis_count = data
             elif name == "Blue Values Count":  # 1530
