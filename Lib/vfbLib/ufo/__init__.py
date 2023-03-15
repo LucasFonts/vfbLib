@@ -2,18 +2,14 @@ from __future__ import annotations
 
 import logging
 
-from fontTools.designspaceLib import (
-    AxisDescriptor,
-    DesignSpaceDocument,
-    DiscreteAxisDescriptor,
-)
+from fontTools.designspaceLib import AxisDescriptor, DesignSpaceDocument
 from fontTools.ufoLib import UFOFileStructure, UFOWriter
 from fontTools.ufoLib.glifLib import GlyphSet
 from pathlib import Path
 from shutil import rmtree
 from typing import TYPE_CHECKING, Any, Dict, List, Tuple
 from ufonormalizer import normalizeUFO
-from vfbLib.ufo.designspace import get_ds_master_location
+from vfbLib.ufo.designspace import get_ds_design_location, get_ds_location
 from vfbLib.ufo.glyph import VfbToUfoGlyph
 from vfbLib.ufo.groups import transform_groups
 from vfbLib.ufo.guides import apply_guide_properties, get_master_guides
@@ -30,6 +26,7 @@ from vfbLib.ufo.typing import (
 from vfbLib.ufo.vfb2ufo import TT_GLYPH_LIB_KEY, TT_LIB_KEY
 
 if TYPE_CHECKING:
+    from fontTools.designspaceLib import DiscreteAxisDescriptor
     from vfbLib.typing import Anchor, ClassFlagDict, GuidePropertyList
     from vfbLib.ufo.typing import UfoGroups, UfoMMKerning
 
@@ -74,6 +71,7 @@ class VfbToUfoWriter:
         self.masters: List[str] = []
         self.master_locations: Dict[int, List[float]] = {}
         self.masters_ps_info: List[Dict] = []
+        self.primary_instances: List[Dict[str, str | List[float]]] = []
         self.current_glyph: VfbToUfoGlyph | None = None
         self.glyph_masters: Dict[str, VfbToUfoGlyph] = {}
         self.glyphOrder: List[str] = []
@@ -330,6 +328,8 @@ class VfbToUfoWriter:
             elif name == "Glyph Unicode Non-BMP":  # 1253
                 assert self.current_glyph is not None
                 self.current_glyph.unicodes.extend(data)
+            elif name == "Primary Instances":  # 1254
+                self.primary_instances = data
             elif name == "TrueType Zones":  # 1255
                 self.set_tt_zones(data)
             elif name == "TrueType Info":  # 1264
@@ -567,9 +567,19 @@ class VfbToUfoWriter:
         ds.axes = self.axes
         for i in range(self.master_count):
             ds.addSourceDescriptor(
-                location=get_ds_master_location(self.axes, self.master_locations[i+1]),
+                location=get_ds_location(self.axes, self.master_locations[i+1]),
                 name=self.masters[i],
                 path=str(self.get_master_path(out_path.with_suffix(".ufo"), i)),
+            )
+        for i in range(len(self.primary_instances)):
+            p = self.primary_instances[i]
+            loc = p["values"]
+            if not isinstance(loc, list):
+                raise TypeError
+
+            ds.addInstanceDescriptor(
+                styleName=p["name"],
+                designLocation=get_ds_design_location(self.axes, loc)
             )
         if not silent:
             print(f"Writing designspace: {out_path}")
