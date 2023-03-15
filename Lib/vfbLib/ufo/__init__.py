@@ -82,7 +82,7 @@ class VfbToUfoWriter:
         self.tt_zone_names: List[str] = []
         self.zone_names: Dict[str, List[str]] = {}
         self.build()
-    
+
     def add_axis_mappings(self, data: List[Tuple[float, float]]) -> None:
         if not self.axis_mappings_count:
             raise ValueError(
@@ -570,7 +570,7 @@ class VfbToUfoWriter:
         # Add sources
         for i in range(self.master_count):
             ds.addSourceDescriptor(
-                location=get_ds_location(self.axes, self.master_locations[i+1]),
+                location=get_ds_location(self.axes, self.master_locations[i + 1]),
                 name=self.masters[i],
                 path=str(self.get_master_path(out_path.with_suffix(".ufo"), i)),
             )
