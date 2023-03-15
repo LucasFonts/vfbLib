@@ -71,7 +71,7 @@ class VfbToUfoWriter:
         self.kerning: Dict[Tuple[str, str], int] = {}
         self.lib: Dict[str, Any] = {}
         self.masters: List[str] = []
-        self.masters_1505: List[Any] = []
+        self.master_locations: Dict[int, List[float]] = {}
         self.masters_ps_info: List[Dict] = []
         self.current_glyph: VfbToUfoGlyph | None = None
         self.glyph_masters: Dict[str, VfbToUfoGlyph] = {}
@@ -340,8 +340,9 @@ class VfbToUfoWriter:
                 self.master_count = data
             elif name == "Master Name":  # 1504
                 self.masters.append(data)
-            elif name == "1505":
-                self.masters_1505.append(data)
+            elif name == "Master Location":  # 1505
+                index, locations = data
+                self.master_locations[index] = locations
             elif name == "Axis Count":  # 1513
                 self.axis_count = data
             elif name == "Axis Name":  # 1514
