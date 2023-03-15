@@ -2,7 +2,11 @@ from __future__ import annotations
 
 import logging
 
-from fontTools.designspaceLib import AxisDescriptor, DesignSpaceDocument
+from fontTools.designspaceLib import (
+    AxisDescriptor,
+    AxisLabelDescriptor,
+    DesignSpaceDocument,
+)
 from fontTools.ufoLib import UFOFileStructure, UFOWriter
 from fontTools.ufoLib.glifLib import GlyphSet
 from pathlib import Path
@@ -581,6 +585,19 @@ class VfbToUfoWriter:
         ds = DesignSpaceDocument()
         ds.axes = self.axes
 
+        # Add labels
+        if self.axis_count == 1:
+            # Only support the simple case here
+            for p in self.primary_instances:
+                self.axes[0].axisLabels.append(
+                    AxisLabelDescriptor(name=p["name"], userValue=p["values"][0])
+                )
+        else:
+            logger.warning(
+                "WARNING: Designspace output of AxisLabelDescriptors is only supported "
+                "for VFBs with 1 axis. Please add labels manually."
+            )
+
         # Add sources
         for i in range(self.master_count):
             ds.addSourceDescriptor(
@@ -614,9 +631,6 @@ class VfbToUfoWriter:
                 styleName=style_name,
                 userLocation=get_ds_location(self.axes, loc, 1),
             )
-
-        # Add labels
-        # TODO
 
         if not silent:
             print(f"Writing designspace: {out_path}")
