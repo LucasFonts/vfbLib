@@ -76,6 +76,22 @@ class VfbToUfoInfo:
         self.openTypeOS2CodePageRanges: List[int] = []
 
         self.build_mapping()
+    
+    @property
+    def ds_family_name(self) -> str:
+        if self.openTypeNamePreferredFamilyName:
+            return self.openTypeNamePreferredFamilyName
+        if self.familyName:
+            return self.familyName
+        return self.styleMapFamilyName
+    
+    @property
+    def ds_style_name(self) -> str:
+        if self.openTypeNamePreferredSubfamilyName:
+            return self.openTypeNamePreferredSubfamilyName
+        if self.styleName:
+            return self.styleName
+        return self.styleMapStyleName
 
     @property
     def ui_name(self) -> str:

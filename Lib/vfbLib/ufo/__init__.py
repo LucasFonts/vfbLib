@@ -570,9 +570,11 @@ class VfbToUfoWriter:
         # Add sources
         for i in range(self.master_count):
             ds.addSourceDescriptor(
+                familyName=self.info.ds_family_name,
                 location=get_ds_location(self.axes, self.master_locations[i + 1]),
                 name=self.masters[i],
                 path=str(self.get_master_path(out_path.with_suffix(".ufo"), i)),
+                styleName=f"Master {i}",
             )
 
         # Add instances
@@ -583,6 +585,7 @@ class VfbToUfoWriter:
                 raise TypeError
 
             ds.addInstanceDescriptor(
+                familyName=self.info.ds_family_name,
                 styleName=p["name"],
                 designLocation=get_ds_design_location(self.axes, loc)
             )
