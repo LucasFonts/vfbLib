@@ -389,7 +389,8 @@ class VfbToUfoWriter:
                     for a, b in axis:
                         if a != b:
                             maps = {
-                                self.axes[i].name: data[i] for i in range(self.axis_count)
+                                self.axes[i].name: data[i]
+                                for i in range(self.axis_count)
                             }
                             logger.warning(
                                 "WARNING: Designspace output of anisotropic "
@@ -619,6 +620,7 @@ class VfbToUfoWriter:
 
         if not silent:
             print(f"Writing designspace: {out_path}")
+
         ds.write(str(out_path))
 
     def get_master_path(self, out_path: Path, master_index: int) -> Path:
