@@ -22,6 +22,16 @@ class AxisMappingsParser(BaseParser):
         return mappings
 
 
+class MasterFlagParser(BaseParser):
+    @classmethod
+    def _parse(cls) -> Tuple[int, Tuple[Any]]:
+        assert cls.stream is not None
+        # FIXME: Might also be 2 uint16:
+        master_index = cls.read_uint32()
+        flags = cls.read_doubles(4)
+        return master_index, flags
+
+
 class PrimaryInstancesParser(BaseParser):
     @classmethod
     def _parse(cls) -> List[Dict[str, Any]]:
