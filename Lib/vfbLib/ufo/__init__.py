@@ -563,14 +563,19 @@ class VfbToUfoWriter:
         if out_path.exists():
             if not overwrite:
                 raise FileExistsError(str(out_path))
+
         ds = DesignSpaceDocument()
         ds.axes = self.axes
+
+        # Add sources
         for i in range(self.master_count):
             ds.addSourceDescriptor(
                 location=get_ds_location(self.axes, self.master_locations[i+1]),
                 name=self.masters[i],
                 path=str(self.get_master_path(out_path.with_suffix(".ufo"), i)),
             )
+
+        # Add instances
         for i in range(len(self.primary_instances)):
             p = self.primary_instances[i]
             loc = p["values"]
@@ -581,6 +586,7 @@ class VfbToUfoWriter:
                 styleName=p["name"],
                 designLocation=get_ds_design_location(self.axes, loc)
             )
+
         if not silent:
             print(f"Writing designspace: {out_path}")
         ds.write(str(out_path))
