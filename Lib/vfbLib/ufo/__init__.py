@@ -45,7 +45,6 @@ class VfbToUfoWriter:
         """
         self.axes: List[AxisDescriptor] = []
         self.axis_count = 0
-        self.current_axis: AxisDescriptor | None = None
         self.json = json
         self.minimal = minimal
         self.encode_data_base64 = base64
@@ -460,9 +459,6 @@ class VfbToUfoWriter:
             else:
                 logger.info(f"Unhandled key: {name}")
 
-        if self.current_axis is not None:
-            print(f"Appending final axis: {self.current_axis}")
-            self.axes.append(self.current_axis)
         if self.current_glyph is not None:
             assert self.current_glyph.name is not None
             self.glyph_masters[self.current_glyph.name] = self.current_glyph
