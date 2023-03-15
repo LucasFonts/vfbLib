@@ -13,6 +13,9 @@ logger = logging.getLogger(__name__)
 class AxisMappingsParser(BaseParser):
     @classmethod
     def _parse(cls) -> List[Tuple[float, float]]:
+        # 10 pairs of (user, design) coordinates per axis.
+        # Look at "Axis Mappings Count" to find out which mappings are used in each axis.
+        # The trailing unused fields may contain junk and must be ignored.
         assert cls.stream is not None
         mappings = []
         for _ in range(cls.stream.getbuffer().nbytes // 16):
