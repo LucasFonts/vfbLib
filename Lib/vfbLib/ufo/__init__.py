@@ -92,7 +92,7 @@ class VfbToUfoWriter:
             raise ValueError(
                 "If axis mappings are present, axis mappings count must be set before parsing them."
             )
-        for i in range(4):
+        for i in range(self.axis_count):
             # Get the number of mappings for the current axis
             n = self.axis_mappings_count[i]
             if n > 0:
