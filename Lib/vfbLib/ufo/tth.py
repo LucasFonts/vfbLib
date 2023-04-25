@@ -128,6 +128,16 @@ class TTGlyphHints:
                         pass
                     else:
                         stem_dir = "ttStemsH" if code.endswith("H") else "ttStemsV"
+                        if stem >= len(self.stems[stem_dir]):
+                            logger.warning(
+                                f"Stem index in {stem_dir} out of range in "
+                                f"{self.glyph.name}: {stem} (of "
+                                f"{len(self.stems[stem_dir])} existing stems). "
+                                "Choosing first stem."
+                            )
+                            logger.warning(f"{code}: {params}")
+                            logger.warning(self.stems[stem_dir])
+                            stem = 0
                         d["stem"] = self.stems[stem_dir][stem]["name"]
                 if "align" in params:
                     align = params["align"]
