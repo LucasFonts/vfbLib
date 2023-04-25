@@ -122,7 +122,7 @@ class TTGlyphHints:
                 d["point2"] = self.glyph.get_point_label(params["pt2"], code)
                 if "stem" in params:
                     stem = params["stem"]
-                    if stem == -2:
+                    if stem <= -2:
                         d["round"] = True
                     elif stem == -1:
                         pass
