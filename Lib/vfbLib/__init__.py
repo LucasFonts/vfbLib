@@ -110,7 +110,7 @@ class VFBReader:
     def _read_entry(self) -> Tuple[str, Type[BaseParser], int]:
         """
         Read an entry from the stream and return its key, specialized parser
-        class, and data.
+        class, and data size.
         """
         entry_id = BaseParser.read_uint16(self.stream)
         entry_info = parser_classes.get(
