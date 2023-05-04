@@ -45,7 +45,7 @@ class VFBReader:
     def parse(self, stream: BufferedReader):
         start = time()
         self.stream = stream
-        header = VfbHeaderParser.parse(stream)
+        header, _header_size = VfbHeaderParser.parse(stream)
         self.data.append(["header", header])
         while True:
             try:

@@ -3,7 +3,7 @@ from __future__ import annotations
 import logging
 
 from io import BufferedReader
-from typing import Any, Dict
+from typing import Any, Dict, Tuple
 from vfbLib.parsers import read_encoded_value, uint8, uint16
 
 
@@ -14,7 +14,7 @@ class VfbHeaderParser:
     stream: BufferedReader | None = None
 
     @classmethod
-    def parse(cls, stream: BufferedReader):
+    def parse(cls, stream: BufferedReader) -> Tuple[Dict[str, Any], int]:
         cls.stream = stream
         header: Dict[str, Any] = {}
         header["header0"] = cls.read_uint8()
@@ -37,7 +37,10 @@ class VfbHeaderParser:
         header["header13"] = cls.read_uint16()
         header["header14"] = cls.read_uint8()
 
-        return header
+        # Get the size of the original binary data
+        datasize = cls.stream.tell()
+
+        return header, datasize
 
     @classmethod
     def read_uint8(cls) -> int:
