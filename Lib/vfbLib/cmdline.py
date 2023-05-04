@@ -6,7 +6,7 @@ import logging
 
 from argparse import ArgumentParser
 from pathlib import Path
-from vfbLib import VFBReader
+from vfbLib import VFBReader, Vfb
 from vfbLib.ufo import VfbToUfoWriter
 from vfbLib.version import build_date
 
@@ -164,5 +164,39 @@ def vfb2ufo():
             silent=args.silent,
             ufoz=False,  # FIXME
         )
+    else:
+        parser.print_help()
+
+
+def vfbtool():
+    parser = ArgumentParser(
+        description=(
+            f"vfbtool\nCopyright (c) 2023 by LucasFonts\nBuild {build_date}"
+        )
+    )
+    parser.add_argument(
+        "-h",
+        "--header",
+        action="store_true",
+        default=False,
+        help="only read the VFB header, not the actual data",
+    )
+    parser.add_argument(
+        "inputpath",
+        type=str,
+        nargs=1,
+        help="input file path (.vfb)",
+    )
+    args = parser.parse_args()
+    if args:
+        vfb_path = Path(args.inputpath[0])
+        print(parser.description)
+        print(f"Reading file {vfb_path} ...")
+        vfb = Vfb(vfb_path)
+        vfb.read()
+        suffix = ".vfb.json"
+        out_path = vfb_path.with_suffix(suffix)
+        with codecs.open(str(out_path), "wb", "utf-8") as f:
+            json.dump(vfb.as_dict(), f, ensure_ascii=False, indent=4)
     else:
         parser.print_help()
