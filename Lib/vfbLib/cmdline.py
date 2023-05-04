@@ -175,7 +175,6 @@ def vfbtool():
         )
     )
     parser.add_argument(
-        "-h",
         "--header",
         action="store_true",
         default=False,
@@ -192,7 +191,7 @@ def vfbtool():
         vfb_path = Path(args.inputpath[0])
         print(parser.description)
         print(f"Reading file {vfb_path} ...")
-        vfb = Vfb(vfb_path)
+        vfb = Vfb(vfb_path, only_header=args.header)
         vfb.read()
         suffix = ".vfb.json"
         out_path = vfb_path.with_suffix(suffix)
