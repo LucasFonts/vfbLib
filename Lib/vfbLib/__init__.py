@@ -148,7 +148,7 @@ class VfbHeader:
         self.parser = VfbHeaderParser
         # The size of the compiled data
         self.size = 0
-    
+
     def as_dict(self) -> Dict[str, Any]:
         d = {
             "size": self.size,
@@ -174,7 +174,7 @@ class VfbHeader:
             return b""
 
         return self.data
-    
+
     def read(self, stream: BufferedReader) -> None:
         self.decompiled, self.size = self.parser.parse(stream)
         stream.seek(0)
@@ -195,7 +195,7 @@ class VfbEntry:
         self.parser: Type[BaseParser] | None = None
         # The size of the compiled data
         self.size = 0
-    
+
     def _read_entry(self) -> Tuple[str, Type[BaseParser], int]:
         """
         Read an entry from the stream and return its key, specialized parser
@@ -253,7 +253,7 @@ class VfbEntry:
             return b""
 
         return self.data
-    
+
     def read(self, stream: BufferedReader) -> None:
         """
         Read the entry from the stream without decompiling the data.
@@ -267,6 +267,7 @@ class Vfb:
     """
     Object to represent the vfb data, with the ability to read and write.
     """
+
     def __init__(
         self,
         vfb_path: Path,
@@ -285,7 +286,7 @@ class Vfb:
         self.only_header = only_header
 
         self.clear()
-    
+
     def as_dict(self) -> Dict[str, Dict[str, Any]]:
         """
         Return the Vfb structure as Dict, e.g. for saving as JSON.
@@ -296,14 +297,14 @@ class Vfb:
         if self.entries:
             d["entries"] = [e.as_dict() for e in self.entries]
         return d
-    
+
     def clear(self):
         """
         Clear any data that may have been read before.
         """
         self.header: VfbHeader | None = None
         self.entries: List[VfbEntry] = []
-    
+
     def parse(self, stream: BufferedReader):
         """
         Lazily parse the vfb stream, i.e. parse the header, but only read the binary
@@ -341,7 +342,7 @@ class Vfb:
         self.clear()
         with open(self.vfb_path, "rb") as vfb:
             self.parse(vfb)
-    
+
     def write(self, out_path: Path) -> None:
         """
         Compile any entries with changes, and write the VFB to out_path.
