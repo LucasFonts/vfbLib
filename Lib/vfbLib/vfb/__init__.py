@@ -43,6 +43,7 @@ class Vfb:
 
         # We need some minimal API to make pen access work ...
         self._glyphs: Dict[str, VfbGlyph] = {}
+        self.glyph_order: List[str] = []
 
         self.clear()
 
@@ -67,12 +68,13 @@ class Vfb:
     def _decompile_glyphs(self):
         for entry in self.entries:
             if entry.key == "Glyph":
-                glyph = VfbGlyph(entry)
+                glyph = VfbGlyph(entry, self)
                 name = glyph.decompile()
                 if name in self._glyphs:
                     logger.error(f"VFB contains duplicate glyph name: {name}")
                     # FIXME: Disambiguate duplicate names
                 self._glyphs[name] = glyph
+                self.glyph_order.append(name)
 
     def __getitem__(self, key: str) -> VfbGlyph:
         if not self._glyphs:

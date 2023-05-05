@@ -15,8 +15,9 @@ logger = logging.getLogger(__name__)
 
 
 class VfbGlyph:
-    def __init__(self, entry: VfbEntry) -> None:
+    def __init__(self, entry: VfbEntry, parent) -> None:
         self.entry = entry
+        self._parent = parent
         self._glyph: UfoMasterGlyph | None = None
         self._target_master = 0
 
@@ -55,7 +56,7 @@ class VfbGlyph:
         #     _mm_glyph.tth_commands = self.entry.decompiled["tth"]
 
         self._glyph = UfoMasterGlyph(
-            mm_glyph=_mm_glyph, glyph_order=[], master_index=self._target_master
+            mm_glyph=_mm_glyph, glyph_order=self._parent.glyph_order, master_index=self._target_master
         )
         self._glyph.build()
 
