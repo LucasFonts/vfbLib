@@ -69,9 +69,9 @@ class UfoMasterGlyph:
         self.unicodes = self.mm_glyph.unicodes
         self.width, self.height = self.mm_glyph.mm_metrics[self.master_index]
 
-    def draw_glyph(self, pen: GLIFPointPen) -> None:
+    def drawPoints(self, pen: GLIFPointPen) -> None:
         """
-        Draw the glyph to the supplied point pen.
+        Draw the glyph onto the supplied point pen.
         """
         for contour in self.contours:
             pen.beginPath()

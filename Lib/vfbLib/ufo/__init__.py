@@ -669,7 +669,7 @@ class VfbToUfoWriter:
                 self.minimal, self.include_ps_hints, self.encode_data_base64
             )
             self.glyph_set.writeGlyph(
-                name, glyphObject=master_glyph, drawPointsFunc=master_glyph.draw_glyph
+                name, glyphObject=master_glyph, drawPointsFunc=master_glyph.drawPoints
             )
 
         self.glyph_set.writeContents()
