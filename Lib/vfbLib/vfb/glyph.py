@@ -55,32 +55,45 @@ class VfbGlyph:
 
         in_path = False
         in_qcurve = False
+        path_is_open = False
         if "nodes" in self.entry.decompiled:
-            for node in self.entry.decompiled["nodes"]:
-                segment_type = node["type"]
+            for n in self.entry.decompiled["nodes"]:
+                nodes = n["points"][self._target_master]
+                pt = nodes[0]
+                segment_type = n["type"]
+                flags = n["flags"]
+                smooth = bool(flags & 1)
+
                 if segment_type == "move":
+                    path_is_open = bool(flags & 8)
                     if in_path:
                         pen.endPath()
                     pen.beginPath()
                     in_path = True
-                    # FIXME: Support open paths by checking the flags, and issuing "move"
-                    pen.addPoint(node["points"][self._target_master][0], "line")
+                    if path_is_open:
+                        pen.addPoint(pt, "move", smooth=smooth)
+                    else:
+                        pen.addPoint(pt, "line", smooth=smooth)  # FIXME
+
                 elif segment_type == "line":
                     if in_qcurve:
                         st = "qcurve"
                         in_qcurve = False
                     else:
                         st = segment_type
-                    pen.addPoint(node["points"][self._target_master][0], st)
+                    pen.addPoint(pt, st, smooth=smooth)
+
                 elif segment_type == "curve":
                     # Reorder the curve points
-                    p1, c0, c1 = node["points"][self._target_master]
-                    pen.addPoint(c0)
+                    pt, c1, c2 = nodes
                     pen.addPoint(c1)
-                    pen.addPoint(p1, "curve")
+                    pen.addPoint(c2)
+                    pen.addPoint(pt, "curve")
+
                 elif segment_type == "qcurve":
-                    pen.addPoint(node["points"][self._target_master][0])
+                    pen.addPoint(pt)
                     in_qcurve = True
+
             if in_path:
                 pen.endPath()
 
