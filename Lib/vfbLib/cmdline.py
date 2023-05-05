@@ -193,7 +193,6 @@ def vfbtool():
         print(parser.description)
         print(f"Reading file {vfb_path} ...")
         vfb = Vfb(vfb_path, only_header=args.header)
-        vfb.read()
         suffix = ".vfb.json"
         out_path = vfb_path.with_suffix(suffix)
         with codecs.open(str(out_path), "wb", "utf-8") as f:

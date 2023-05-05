@@ -47,7 +47,7 @@ class Vfb:
         self._glyphs: Dict[str, VfbGlyph] = {}
         self.glyph_order: List[str] = []
 
-        self.clear()
+        self.read()
 
     def as_dict(self) -> Dict[str, Dict[str, Any]]:
         """
