@@ -3,7 +3,9 @@ from __future__ import annotations
 import logging
 
 from fontTools.pens.pointPen import PointToSegmentPen
-from typing import TYPE_CHECKING, Type
+from typing import TYPE_CHECKING
+from vfbLib.ufo.glyph import VfbToUfoGlyph
+from vfbLib.ufo.paths import UfoMasterGlyph
 
 if TYPE_CHECKING:
     from fontTools.pens.pointPen import AbstractPointPen
@@ -15,6 +17,7 @@ logger = logging.getLogger(__name__)
 class VfbGlyph:
     def __init__(self, entry: VfbEntry) -> None:
         self.entry = entry
+        self._glyph: UfoMasterGlyph | None = None
         self._target_master = 0
 
     def decompile(self) -> str:
@@ -27,17 +30,51 @@ class VfbGlyph:
 
         return self.entry.decompiled["name"]
 
+    def _copy_to_ufo_glyph(self):
+        """
+        Copy minimal data to the VfbToUfoGlyph. Only data that is necessary for the pen
+        methods is copied.
+        """
+        if self.entry.decompiled is None:
+            raise ValueError
+
+        _mm_glyph = VfbToUfoGlyph()
+        _mm_glyph.name = self.entry.decompiled["name"]
+
+        if "components" in self.entry.decompiled:
+            _mm_glyph.mm_components = self.entry.decompiled["components"]
+
+        if "metrics" in self.entry.decompiled:
+            _mm_glyph.mm_metrics = self.entry.decompiled["metrics"]
+
+        if "nodes" in self.entry.decompiled:
+            _mm_glyph.mm_nodes = self.entry.decompiled["nodes"]
+
+        # TODO: Support point names used by TT hinting
+        # if "tth" in self.entry.decompiled:
+        #     _mm_glyph.tth_commands = self.entry.decompiled["tth"]
+
+        self._glyph = UfoMasterGlyph(
+            mm_glyph=_mm_glyph, glyph_order=[], master_index=self._target_master
+        )
+        self._glyph.build()
+
     @property
     def target_master(self) -> int:
         """
         Set the target master index before calling draw/pen methods to select the
         desired master.
         """
-        return self._target_master
+        if self._glyph is None:
+            return self._target_master
+
+        return self._glyph.master_index
 
     @target_master.setter
     def target_master(self, value: int) -> None:
         self._target_master = value
+        if self._glyph is not None:
+            self._glyph.master_index = value
 
     def draw(self, pen) -> None:
         """
@@ -53,49 +90,13 @@ class VfbGlyph:
         if self.entry.decompiled is None:
             raise ValueError
 
-        in_path = False
-        in_qcurve = False
-        path_is_open = False
-        if "nodes" in self.entry.decompiled:
-            for n in self.entry.decompiled["nodes"]:
-                nodes = n["points"][self._target_master]
-                pt = nodes[0]
-                segment_type = n["type"]
-                flags = n["flags"]
-                smooth = bool(flags & 1)
+        if self._glyph is None:
+            self._copy_to_ufo_glyph()
 
-                if segment_type == "move":
-                    path_is_open = bool(flags & 8)
-                    if in_path:
-                        pen.endPath()
-                    pen.beginPath()
-                    in_path = True
-                    if path_is_open:
-                        pen.addPoint(pt, "move", smooth=smooth)
-                    else:
-                        pen.addPoint(pt, "line", smooth=smooth)  # FIXME
+        if self._glyph is None:
+            raise ValueError
 
-                elif segment_type == "line":
-                    if in_qcurve:
-                        st = "qcurve"
-                        in_qcurve = False
-                    else:
-                        st = segment_type
-                    pen.addPoint(pt, st, smooth=smooth)
-
-                elif segment_type == "curve":
-                    # Reorder the curve points
-                    pt, c1, c2 = nodes
-                    pen.addPoint(c1)
-                    pen.addPoint(c2)
-                    pen.addPoint(pt, "curve")
-
-                elif segment_type == "qcurve":
-                    pen.addPoint(pt)
-                    in_qcurve = True
-
-            if in_path:
-                pen.endPath()
+        return self._glyph.drawPoints(pen)
 
     def getPen(self) -> None:
         """

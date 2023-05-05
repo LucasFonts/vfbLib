@@ -244,8 +244,9 @@ class VfbGlyphTest(TestCase):
     def test_drawPoints_quadratic(self):
         g = VfbGlyph(VfbEntry())
         g.entry.decompiled = glyph_dict_q
-        pen = RecordingPointPen()
+        g._copy_to_ufo_glyph()
         g.target_master = 0
+        pen = RecordingPointPen()
         g.drawPoints(pen)
         assert pen.value == [
             ("beginPath", (), {}),
@@ -345,8 +346,9 @@ class VfbGlyphTest(TestCase):
     def test_draw_quadratic(self):
         g = VfbGlyph(VfbEntry())
         g.entry.decompiled = glyph_dict_q
-        pen = RecordingPen()
+        g._copy_to_ufo_glyph()
         g.target_master = 0
+        pen = RecordingPen()
         g.draw(pen)
         assert pen.value == [
             ("moveTo", ((92, 0),)),
@@ -374,8 +376,9 @@ class VfbGlyphTest(TestCase):
     def test_drawPoints_cubic(self):
         g = VfbGlyph(VfbEntry())
         g.entry.decompiled = glyph_dict_c
-        pen = RecordingPointPen()
+        g._copy_to_ufo_glyph()
         g.target_master = 0
+        pen = RecordingPointPen()
         g.drawPoints(pen)
         assert pen.value == [
             ("beginPath", (), {}),
@@ -428,8 +431,9 @@ class VfbGlyphTest(TestCase):
     def test_draw_cubic(self):
         g = VfbGlyph(VfbEntry())
         g.entry.decompiled = glyph_dict_c
-        pen = RecordingPen()
+        g._copy_to_ufo_glyph()
         g.target_master = 0
+        pen = RecordingPen()
         g.draw(pen)
         assert pen.value == [
             ("moveTo", ((566, 210),)),
