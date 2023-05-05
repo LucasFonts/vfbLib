@@ -21,7 +21,9 @@ logger = logging.getLogger(__name__)
 
 class Vfb:
     """
-    Object to represent the vfb data, with the ability to read and write.
+    Object to represent the vfb data, with the ability to read and write. You can use
+    the Vfb object to access glyphs through dict methods, where the glyph name is the
+    key and the glyph object is the value.
     """
 
     def __init__(
