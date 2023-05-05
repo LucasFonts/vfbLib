@@ -11,7 +11,8 @@ from vfbLib.ufo.tth import set_tth_lib
 from vfbLib.ufo.vfb2ufo import TT_GLYPH_LIB_KEY
 
 if TYPE_CHECKING:
-    from fontTools.ufoLib.glifLib import GLIFPointPen
+    from fontTools.pens.pointPen import AbstractPointPen
+    # from fontTools.ufoLib.glifLib import GLIFPointPen
     from vfbLib.typing import Anchor
     from vfbLib.ufo.glyph import VfbToUfoGlyph
     from vfbLib.ufo.typing import UfoComponent, UfoContour
@@ -69,7 +70,7 @@ class UfoMasterGlyph:
         self.unicodes = self.mm_glyph.unicodes
         self.width, self.height = self.mm_glyph.mm_metrics[self.master_index]
 
-    def drawPoints(self, pen: GLIFPointPen) -> None:
+    def drawPoints(self, pen: AbstractPointPen) -> None:
         """
         Draw the glyph onto the supplied point pen.
         """
@@ -80,7 +81,7 @@ class UfoMasterGlyph:
             pen.endPath()
 
         for gn, tr in self.components:
-            pen.addComponent(glyphName=gn, transformation=tr)
+            pen.addComponent(gn, tr)
 
     def _extract_master_anchors(self) -> None:
         if self.mm_glyph.anchors is None:
