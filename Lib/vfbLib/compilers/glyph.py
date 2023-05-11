@@ -74,7 +74,7 @@ class GlyphCompiler(BaseCompiler):
         # Outlines
         cls.write_bytes(b"\x08")
         cls.write_encoded_value(cls.num_masters)  # Number of masters
-        cls.write_encoded_value(48)  # ???
+        cls.write_encoded_value(data["outlines_value"])  # ???
         if "nodes" in data:
             cls.write_encoded_value(len(data["nodes"]))  # Number of nodes
             ref_coords = [[0, 0] for _ in range(cls.num_masters)]

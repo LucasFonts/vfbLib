@@ -65,6 +65,7 @@ psglyph_1master = deHexStr(
 psglyph_1master_expected = {
     "constants": (1, 9, 7, 1),
     "name": "d",
+    "outlines_value": 490,
     "num_masters": 1,
     "nodes": [
         {"type": "move", "flags": 0, "points": [[(360, 664)]]},
