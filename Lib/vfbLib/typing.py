@@ -52,6 +52,7 @@ class GlyphData(TypedDict):
     name: NotRequired[str]
     nodes: NotRequired[List[MMNode]]
     num_masters: NotRequired[int]
+    outlines_value: NotRequired[int]
     tth: NotRequired[List[Instruction]]
 
 
