@@ -2,13 +2,17 @@ from __future__ import annotations
 
 import logging
 
-from fontTools.pens.pointPen import PointToSegmentPen
+from fontTools.pens.pointPen import (
+    AbstractPointPen,
+    PointToSegmentPen,
+    SegmentToPointPen,
+)
 from typing import TYPE_CHECKING
 from vfbLib.ufo.glyph import VfbToUfoGlyph
 from vfbLib.ufo.paths import UfoMasterGlyph
 
 if TYPE_CHECKING:
-    from fontTools.pens.pointPen import AbstractPointPen
+    from fontTools.pens.basePen import AbstractPen
     from vfbLib.vfb.entry import VfbEntry
 
 logger = logging.getLogger(__name__)
@@ -56,7 +60,9 @@ class VfbGlyph:
         #     _mm_glyph.tth_commands = self.entry.decompiled["tth"]
 
         self._glyph = UfoMasterGlyph(
-            mm_glyph=_mm_glyph, glyph_order=self._parent.glyph_order, master_index=self._target_master
+            mm_glyph=_mm_glyph,
+            glyph_order=self._parent.glyph_order,
+            master_index=self._target_master,
         )
         self._glyph.build()
 
@@ -99,14 +105,39 @@ class VfbGlyph:
 
         return self._glyph.drawPoints(pen)
 
-    def getPen(self) -> None:
+    def getPen(self) -> AbstractPen:
         """
-        Get a segment pen to draw into the VFB glyph.
+        Return a segment pen to draw into the VFB glyph.
         """
-        raise NotImplementedError
+        # TODO: Test
+        return SegmentToPointPen(self.getPointPen(), guessSmooth=True)
 
-    def getPointPen(self) -> None:
+    def getPointPen(self) -> VfbGlyphPointPen:
         """
-        Get a point pen to draw into the VFB glyph.
+        Return a point pen to draw into the VFB glyph.
         """
-        raise NotImplementedError
+        return VfbGlyphPointPen(self)
+
+
+class VfbGlyphPointPen(AbstractPointPen):
+    def __init__(self, glyph: VfbGlyph):
+        self.glyph = glyph
+        self.currentPath = None
+    
+    def beginPath(self):
+        self.currentPath = []
+
+    def addPoint(self, pt, segmentType=None, smooth=None, name=None, **kwargs):
+        self.currentPath.append((pt, segmentType, smooth, name))
+
+    # def addComponent(self, baseName, transformation):
+    #     assert self.currentPath is None
+    #     # make base glyph if needed, Component() needs the index
+    #     NewGlyph(self.glyph.parent, baseName, updateFont=False)
+    #     baseIndex = self.glyph.parent.FindGlyph(baseName)
+    #     if baseIndex == -1:
+    #         raise (KeyError, "couldn't find or make base glyph")
+    #     xx, xy, yx, yy, dx, dy = transformation
+    #     # XXX warn when xy or yx != 0
+    #     new = Component(baseIndex, Point(dx, dy), Point(xx, yy))
+    #     self.glyph.components.append(new)
