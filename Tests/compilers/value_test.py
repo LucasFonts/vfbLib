@@ -63,12 +63,20 @@ class ValueEncoderTest(TestCase):
 
     def test_0xff00001000(self):
         self.expect("ff00001000", 4096)
-    
+
     def test_0xff00001000u(self):
         self.expect("ff00001000", 4096, False)
 
     # def test_0xffffffffff(self):
     #     self.expect("ffffffffff", -1)
 
+    def test_0xffffffffffu(self):
+        # 4294967295 (max)
+        self.expect("ffffffffff", 0xFFFFFFFF, False)
+
     def test_0xffffffefff(self):
         self.expect("ffffffefff", -4097)
+
+    def test_0xffffffefffu(self):
+        # 4294963199
+        self.expect("ffffffefff", 0xFFFFEFFF, False)
