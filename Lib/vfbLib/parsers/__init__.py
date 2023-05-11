@@ -21,7 +21,7 @@ uint32 = 4
 
 class BaseParser:
     """
-    Base class to read data from a vfb file
+    Base class to parse data from a vfb file
     """
 
     master_count: int | None = None

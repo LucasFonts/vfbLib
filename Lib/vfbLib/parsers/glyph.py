@@ -158,12 +158,14 @@ class GlyphOriginParser(BaseParser):
 class GlyphParser(BaseParser):
     @classmethod
     def parse_guides(cls, stream: BytesIO, glyphdata: GlyphData, num_masters=1) -> None:
+        # Guidelines
         guides = parse_guides(stream, num_masters)
         if guides:
             glyphdata["guides"] = guides
 
     @classmethod
     def parse_binary(cls, stream: BytesIO, glyphdata: GlyphData) -> None:
+        # Imported binary TrueType data
         imported: Dict[str, Any] = {}
         while True:
             key = cls.read_uint8()
