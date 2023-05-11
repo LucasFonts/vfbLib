@@ -6,6 +6,7 @@ from fontTools.misc.textTools import hexStr
 from io import BytesIO
 from typing import TYPE_CHECKING, Any, Dict, Tuple, Type
 from vfbLib import FALLBACK_PARSER
+from vfbLib.compilers import BaseCompiler
 from vfbLib.constants import parser_classes
 from vfbLib.parsers import BaseParser
 
@@ -30,17 +31,21 @@ class VfbEntry:
         self.parser: Type[BaseParser] | None = None
         # The size of the compiled data
         self.size = 0
+        # The compiler which can convert the decompiled to compiled data
+        self.compiler: Type[BaseCompiler] | None = None
 
-    def _read_entry(self) -> Tuple[str, Type[BaseParser], int]:
+    def _read_entry(
+        self,
+    ) -> Tuple[str, Type[BaseParser], Type[BaseCompiler] | None, int]:
         """
         Read an entry from the stream and return its key, specialized parser
         class, and data size.
         """
         entry_id = BaseParser.read_uint16(self.stream)
         entry_info = parser_classes.get(
-            entry_id & ~0x8000, (str(entry_id), FALLBACK_PARSER)
+            entry_id & ~0x8000, (str(entry_id), FALLBACK_PARSER, None)
         )
-        key, parser_class = entry_info
+        key, parser_class, compiler_class = entry_info
 
         if entry_id == 5:
             # File end marker?
@@ -57,7 +62,7 @@ class VfbEntry:
             # Uses uint16 for data length
             num_bytes = BaseParser.read_uint16(self.stream)
 
-        return key, parser_class, num_bytes
+        return key, parser_class, compiler_class, num_bytes
 
     def as_dict(self) -> Dict[str, Any]:
         d = {
@@ -74,8 +79,15 @@ class VfbEntry:
             d["parser"] = str(self.parser.__name__)
         return d
 
-    def compile(self) -> bytes:
-        logger.error("Compiling the VFB entries is not supported yet.")
+    def compile(self) -> None:
+        """
+        Compile the entry. The result is stored in VfbEntry.data.
+        """
+        if self.compiler is None:
+            logger.error(f"Compiling '{self.key}' is not supported yet.")
+            return
+        
+        self.data = self.compiler.compile(self.decompiled)
 
         if self.data:
             self.size = len(self.data)
@@ -84,12 +96,10 @@ class VfbEntry:
 
         self.modified = False
 
-        if self.data is None:
-            return b""
-
-        return self.data
-
     def decompile(self):
+        """
+        Decompile the entry. The result is stored in VfbEntry.decompiled.
+        """
         if self.decompiled is not None:
             # Already decompiled
             return
@@ -107,5 +117,5 @@ class VfbEntry:
         Read the entry from the stream without decompiling the data.
         """
         self.stream = stream
-        self.key, self.parser, self.size = self._read_entry()
+        self.key, self.parser, self.compiler, self.size = self._read_entry()
         self.data = self.stream.read(self.size)

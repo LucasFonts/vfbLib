@@ -114,9 +114,9 @@ class VFBReader:
         """
         entry_id = BaseParser.read_uint16(self.stream)
         entry_info = parser_classes.get(
-            entry_id & ~0x8000, (str(entry_id), FALLBACK_PARSER)
+            entry_id & ~0x8000, (str(entry_id), FALLBACK_PARSER, None)
         )
-        key, parser_class = entry_info
+        key, parser_class, compiler_class = entry_info
 
         if entry_id == 5:
             # File end marker?
