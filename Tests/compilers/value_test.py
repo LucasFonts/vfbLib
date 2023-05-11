@@ -6,13 +6,18 @@ from fontTools.misc.textTools import deHexStr, hexStr
 from io import BytesIO
 from unittest import TestCase
 
-from vfbLib.compilers.value import write_encoded_value
+from vfbLib.compilers.value import write_encoded_value, write_value_5
 
 
 class ValueEncoderTest(TestCase):
     def expect(self, encoded, decoded, signed=True):
         data = BytesIO()
         write_encoded_value(decoded, data, signed)
+        assert hexStr(data.getvalue()) == encoded
+    
+    def expect_unoptimized(self, encoded, decoded, signed=True):
+        data = BytesIO()
+        write_value_5(decoded, data, signed)
         assert hexStr(data.getvalue()) == encoded
 
     def test_0x20(self):
@@ -58,8 +63,8 @@ class ValueEncoderTest(TestCase):
     def test_0xfeff(self):
         self.expect("feff", -1131)
 
-    # def test_0xff00000000(self):
-    #     self.expect("ff00000000", 0)
+    def test_0xff00000000(self):
+        self.expect_unoptimized("ff00000000", 0)
 
     def test_0xff00001000(self):
         self.expect("ff00001000", 4096)
@@ -67,8 +72,8 @@ class ValueEncoderTest(TestCase):
     def test_0xff00001000u(self):
         self.expect("ff00001000", 4096, False)
 
-    # def test_0xffffffffff(self):
-    #     self.expect("ffffffffff", -1)
+    def test_0xffffffffff(self):
+        self.expect_unoptimized("ffffffffff", -1)
 
     def test_0xffffffffffu(self):
         # 4294967295 (max)
