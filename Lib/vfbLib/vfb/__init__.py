@@ -51,7 +51,8 @@ class Vfb:
 
     def as_dict(self) -> Dict[str, Dict[str, Any]]:
         """
-        Return the Vfb structure as Dict, e.g. for saving as JSON.
+        Return the Vfb structure as Dict, e.g. for saving as JSON. The dict has the keys
+        "header" and "entries".
         """
         d = {}
         if self.header is not None:
