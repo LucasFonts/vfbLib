@@ -180,17 +180,17 @@ class PartCompiler(GlyphCompiler):
 
 
 class GlyphCompilerTest(TestCase):
-    # def test_psglyph_1master(self):
-    #     # Decompile
-    #     dec = GlyphParser.parse(BytesIO(psglyph_1master), len(psglyph_1master))
-    #     assert dec == psglyph_1master_expected
+    def test_psglyph_1master_roundtrip(self):
+        # Decompile
+        dec = GlyphParser.parse(BytesIO(psglyph_1master), len(psglyph_1master))
+        assert dec == psglyph_1master_expected
 
-    #     # Compile
-    #     compiled = GlyphCompiler.compile(dec)
-    #     print(hexStr(compiled))
-    #     # ... and parse again
-    #     cde = GlyphParser.parse(BytesIO(compiled), len(compiled))
-    #     assert dec == cde
+        # Compile
+        compiled = GlyphCompiler.compile(dec)
+        # print(hexStr(compiled))
+        # ... and parse again
+        cde = GlyphParser.parse(BytesIO(compiled), len(compiled))
+        assert dec == cde
 
     def test_hints_1(self):
         data = PartCompiler._compile(psglyph_1master_expected, 1, "_compile_hints")
