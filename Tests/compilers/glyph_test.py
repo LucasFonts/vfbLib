@@ -192,6 +192,10 @@ class GlyphCompilerTest(TestCase):
     #     cde = GlyphParser.parse(BytesIO(compiled), len(compiled))
     #     assert dec == cde
 
+    def test_hints_1(self):
+        data = PartCompiler._compile(psglyph_1master_expected, 1, "_compile_hints")
+        assert hexStr(data) == hexStr(deHexStr("03    8F  7F C3 F818 C3 F92A 53 85 C2  8D C1 EB F802 E5  8B"))
+
     def test_metrics_1(self):
         data = PartCompiler._compile(psglyph_1master_expected, 1, "_compile_metrics")
         assert hexStr(data) == "02f8b48b"

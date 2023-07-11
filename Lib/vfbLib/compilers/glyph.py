@@ -47,7 +47,30 @@ class GlyphCompiler(BaseCompiler):
     @classmethod
     def _compile_hints(cls, data):
         # PostScript hints
-        pass
+        if "hints" in data:
+            hints = data["hints"]
+            cls.write_uint1(3)
+            for direction in ("h", "v"):
+                if direction in hints:
+                    hints_dir = hints[direction]
+                    num_hints = len(hints_dir)
+                    cls.write_encoded_value(num_hints)
+                    for mm_hint in hints_dir:
+                        for i in range(cls.num_masters):
+                            hint = mm_hint[i]
+                            cls.write_encoded_value(hint["pos"])
+                            cls.write_encoded_value(hint["width"])
+                else:
+                    cls.write_encoded_value(0)
+            if "hintmasks" in hints:
+                # FIXME
+                # hintmasks = hints["hintmasks"]
+                # cls.write_encoded_value(len(hintmasks))
+                cls.write_encoded_value(0)
+                logger.warning("Compilation of hint masks is not supported yet.")
+            else:
+                cls.write_encoded_value(0)
+
 
     @classmethod
     def _compile_instructions(cls, data):
