@@ -80,7 +80,7 @@ class GlyphCompiler(BaseCompiler):
             ref_coords = [[0, 0] for _ in range(cls.num_masters)]
             for node in data["nodes"]:
                 type_flags = node_types[node["type"]] + node.get("flags", 0) << 4
-                cls.write_uint8(type_flags)
+                cls.write_uint1(type_flags)
                 for j in range(len(node["points"][0])):
                     for i in range(cls.num_masters):
                         x, y = node["points"][i][j]
