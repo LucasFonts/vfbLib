@@ -84,9 +84,10 @@ class GlyphCompiler(BaseCompiler):
                 for j in range(len(node["points"][0])):
                     for i in range(cls.num_masters):
                         x, y = node["points"][i][j]
-                        # TODO: Make relative to ref_coords
-                        cls.write_encoded_value(x)
-                        cls.write_encoded_value(y)
+                        refx, refy = ref_coords[i]
+                        cls.write_encoded_value(x - refx)
+                        cls.write_encoded_value(y - refy)
+                        ref_coords[i] = [x, y]
         else:
             cls.write_encoded_value(0)
 
