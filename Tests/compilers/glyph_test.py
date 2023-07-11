@@ -121,21 +121,16 @@ psglyph_1master_expected = {
 }
 
 
-class GlyphMetricsCompiler(GlyphCompiler):
+class PartCompiler(GlyphCompiler):
+    """
+    Compile part of the glyph data, by calling the method name passed in compile_method.
+    """
+
     @classmethod
-    def _compile(cls, data, num_masters):
+    def _compile(cls, data, num_masters, compile_method):
         cls.stream = BytesIO()
         cls.num_masters = num_masters
-        cls._compile_metrics(data)
-        return cls.stream.getvalue()
-
-
-class GlyphOutlinesCompiler(GlyphCompiler):
-    @classmethod
-    def _compile(cls, data):
-        cls.stream = BytesIO()
-        cls.num_masters = data["num_masters"]
-        cls._compile_outlines(data)
+        getattr(cls, compile_method)(data)
         return cls.stream.getvalue()
 
 
@@ -153,9 +148,17 @@ class GlyphCompilerTest(TestCase):
     #     assert dec == cde
 
     def test_metrics_1(self):
-        data = GlyphMetricsCompiler._compile(psglyph_1master_expected, 1)
+        data = PartCompiler._compile(psglyph_1master_expected, 1, "_compile_metrics")
         assert hexStr(data) == "02f8b48b"
 
+    def test_name_1(self):
+        data = PartCompiler._compile({"name": "d"}, 1, "_compile_glyph_name")
+        assert hexStr(data) == hexStr(deHexStr("01 8C 64"))
+
+    def test_name_2(self):
+        data = PartCompiler._compile({"name": "at"}, 1, "_compile_glyph_name")
+        assert hexStr(data) == hexStr(deHexStr("01 8D 61 74"))
+
     def test_outlines_1(self):
-        data = GlyphOutlinesCompiler._compile(psglyph_1master_expected)
+        data = PartCompiler._compile(psglyph_1master_expected, 1, "_compile_outlines")
         assert hexStr(data) == hexStr(deHexStr("08 8C F87E B2  00 F7FC F92C"))
