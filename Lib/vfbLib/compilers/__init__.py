@@ -43,6 +43,14 @@ class BaseCompiler:
             write_value_5(value, cls.stream)
 
     @classmethod
+    def write_uint1(cls, value: int) -> None:
+        """
+        Write a 1-byte unsigned value to the stream
+        """
+        encoded = pack(">B", value)
+        cls.stream.write(encoded)
+
+    @classmethod
     def write_uint8(cls, value: int) -> None:
         """
         Write a uint8 value to the stream
