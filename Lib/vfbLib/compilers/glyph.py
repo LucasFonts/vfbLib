@@ -63,7 +63,7 @@ class GlyphCompiler(BaseCompiler):
     def _compile_metrics(cls, data):
         # Metrics
         if "metrics" in data:
-            cls.write_bytes(b"\x02")
+            cls.write_uint1(2)
             for i in range(cls.num_masters):
                 x, y = data["metrics"][i]
                 cls.write_encoded_value(x)
@@ -107,4 +107,4 @@ class GlyphCompiler(BaseCompiler):
         cls._compile_kerning(data)
         cls._compile_binary(data)
         cls._compile_instructions(data)
-        cls.write_bytes(b"\x0f")  # End of glyph
+        cls.write_uint1(15)  # End of glyph
