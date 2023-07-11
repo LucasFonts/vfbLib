@@ -72,7 +72,7 @@ class GlyphCompiler(BaseCompiler):
     @classmethod
     def _compile_outlines(cls, data):
         # Outlines
-        cls.write_bytes(b"\x08")
+        cls.write_uint1(8)
         cls.write_encoded_value(cls.num_masters)  # Number of masters
         cls.write_encoded_value(data["outlines_value"])  # ???
         if "nodes" in data:
