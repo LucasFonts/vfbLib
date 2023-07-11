@@ -19,7 +19,7 @@ class BaseCompiler:
         cls.stream = BytesIO()
         cls._compile(data)
         return cls.stream.getvalue()
-    
+
     @classmethod
     def _compile(cls, data: Any) -> None:
         raise NotImplementedError
@@ -30,7 +30,7 @@ class BaseCompiler:
         Write a bytes value to the stream
         """
         cls.stream.write(value)
-    
+
     @classmethod
     def write_encoded_value(cls, value: int, shortest=True) -> None:
         """
