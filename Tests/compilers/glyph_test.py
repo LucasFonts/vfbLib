@@ -62,6 +62,51 @@ psglyph_1master = deHexStr(
 """
 )
 
+psglyph_1master_nodes = deHexStr(
+    """
+08    8C F87E B2
+      00 F7FC F92C
+      13 8F FB02 89 D5 8E 66
+      13 78 FBAB 9B F735 80 3B
+      13 87 FBA8 86 F716 8D 4B
+      03 99 FB55 82 E2 87 5B
+      01 F715 68
+      03 8C 8E 8B 89 8B 8C
+      03 FB0A 97 DA 84 64 8F
+      01 63 8B
+      01 F706 9F
+      13 8F 7E 86 9C 8E 7F
+      03 8B 8F 8E 80 89 93
+      11 86 B0
+      13 88 CE 8B 5E 8C A2
+      03 89 F76D 89 FB15 8A CB
+      03 9C F835 88 FB7E 92 F708
+      00 6C FB9C
+      13 40 F738 F702 26 51 CF
+      13 28 CA AB 77 7E 99
+      13 FB B5 28 F73C F71F FB0B 62
+      13 3D FBA6 8E F70F 86 4A
+      13 BD FB6D 5D F395 4F
+      13 F78D 34 FB3D 81 F67D
+      03 F76F F73E 2B FB0E D8 C5
+      01 2D E6
+      03 36 37 D5 BA 62 6E
+      33 5E 78 93 8C 87 8A
+      03 55 8D AC 89 7B 8C
+      13 98 F7C5 34 FB8A 88 F769
+      33 F727 AD 65 91 9F 85
+      03 A4 89 84 8D 95 89
+      13 75 92 98 87 85 8D
+      13 B1 70 5D A9 A8 78
+      13 A5 7A 86 8F 93 84
+      13 79 9B 96 83 85 8F
+      03 8E 87 80 95 94 84
+      13 A4 6E 7D 9E 93 82
+      03 9C 69 84 9C 90 83
+      03 8F 8D 89 77 96 B0
+"""
+)
+
 psglyph_1master_expected = {
     "constants": (1, 9, 7, 1),
     "name": "d",
@@ -161,4 +206,5 @@ class GlyphCompilerTest(TestCase):
 
     def test_outlines_1(self):
         data = PartCompiler._compile(psglyph_1master_expected, 1, "_compile_outlines")
-        assert hexStr(data) == hexStr(deHexStr("08 8C F87E B2  00 F7FC F92C"))
+        assert hexStr(data) == hexStr(psglyph_1master_nodes)  # hexStr(deHexStr("08 8C F87E B2  00 F7FC F92C  13 8F FB02 89 D5 8E 66  13 78 FBAB 9B F735 80 3B"))
+        assert len(data) == len(psglyph_1master_nodes)  # 285
