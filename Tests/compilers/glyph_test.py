@@ -210,5 +210,5 @@ class GlyphCompilerTest(TestCase):
 
     def test_outlines_1_master(self):
         data = PartCompiler._compile(psglyph_1master_expected, 1, "_compile_outlines")
-        assert hexStr(data) == hexStr(psglyph_1master_nodes)  # hexStr(deHexStr("08 8C F87E B2  00 F7FC F92C  13 8F FB02 89 D5 8E 66  13 78 FBAB 9B F735 80 3B"))
+        assert hexStr(data) == hexStr(psglyph_1master_nodes)
         assert len(data) == len(psglyph_1master_nodes)  # 285
