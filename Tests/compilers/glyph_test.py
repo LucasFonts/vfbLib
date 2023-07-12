@@ -9,6 +9,60 @@ from vfbLib.compilers.glyph import GlyphCompiler
 from vfbLib.parsers.glyph import GlyphParser
 
 
+composite_2_masters_binary = deHexStr(
+    """
+01 09 07 01
+01    94 41 64 69 65 72 65 73 69 73
+08    8D 8B 8B
+02    F8F1 8B F915 8B
+03    8B 8B 8B
+05    8D
+      91
+      8B 8B
+      000000000000F03F
+      000000000000F03F
+      8B 8B
+      000000000000F03F
+      000000000000F03F
+      FF00000715
+      C4 8B
+      000000000000F03F
+      000000000000F03F
+      D6 8B
+      000000000000F03F
+      000000000000F03F
+06    8C
+      FA2B FB0B 2C
+0F
+"""
+)
+
+composite_2_masters_json = {
+    "components": [
+        {
+            "gid": 6,
+            "offsetX": [0, 0],
+            "offsetY": [0, 0],
+            "scaleX": [1.0, 1.0],
+            "scaleY": [1.0, 1.0],
+        },
+        {
+            "gid": 1813,
+            "offsetX": [57, 75],
+            "offsetY": [0, 0],
+            "scaleX": [1.0, 1.0],
+            "scaleY": [1.0, 1.0],
+        },
+    ],
+    "constants": (1, 9, 7, 1),
+    "kerning": {919: [-119, -95]},
+    "metrics": [(605, 0), (641, 0)],
+    "name": "Adieresis",
+    "nodes": [],
+    "num_masters": 2,
+    "outlines_value": 0,
+}
+
 components_2_masters_binary = deHexStr(
     """
 05    8D
@@ -225,6 +279,20 @@ class GlyphCompilerTest(TestCase):
         # Decompile
         dec = GlyphParser.parse(BytesIO(psglyph_1master), len(psglyph_1master))
         assert dec == psglyph_1master_expected
+
+        # Compile
+        compiled = GlyphCompiler.compile(dec)
+        # print(hexStr(compiled))
+        # ... and parse again
+        cde = GlyphParser.parse(BytesIO(compiled), len(compiled))
+        assert dec == cde
+
+    def test_composite_2_masters_roundtrip(self):
+        # Decompile
+        dec = GlyphParser.parse(
+            BytesIO(composite_2_masters_binary), len(composite_2_masters_binary)
+        )
+        assert dec == composite_2_masters_json
 
         # Compile
         compiled = GlyphCompiler.compile(dec)
