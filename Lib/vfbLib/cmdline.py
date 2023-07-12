@@ -171,9 +171,7 @@ def vfb2ufo():
 
 def vfbtool():
     parser = ArgumentParser(
-        description=(
-            f"vfbtool\nCopyright (c) 2023 by LucasFonts\nBuild {build_date}"
-        )
+        description=(f"vfbtool\nCopyright (c) 2023 by LucasFonts\nBuild {build_date}")
     )
     parser.add_argument(
         "--header",
