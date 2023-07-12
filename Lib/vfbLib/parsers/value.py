@@ -18,13 +18,13 @@ def read_encoded_value(stream: BufferedReader | BytesIO, signed=True) -> int:
 
     elif val <= 0xFA:
         # 108 to 1131, represented by 2 bytes
-        val2 = int.from_bytes(stream.read(1))
+        val2 = int.from_bytes(stream.read(1), byteorder="little")
         # val - 0x8B + (val - 0xF7) * 0xFF + val2
         return 0x100 * val - 0xF694 + val2
 
     elif val <= 0xFE:
         # -108 to -1131, represented by 2 bytes
-        val2 = int.from_bytes(stream.read(1))
+        val2 = int.from_bytes(stream.read(1), byteorder="little")
         # 0x8F - val - (val - 0xFB) * 0xFF - val2
         return -0x100 * val + 0xFA94 - val2
 
