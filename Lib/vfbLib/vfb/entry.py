@@ -5,7 +5,7 @@ import logging
 from fontTools.misc.textTools import hexStr
 from io import BytesIO
 from typing import TYPE_CHECKING, Any, Dict, Tuple, Type
-from vfbLib import FALLBACK_PARSER
+# from vfbLib.reader import FALLBACK_PARSER
 from vfbLib.compilers import BaseCompiler
 from vfbLib.constants import parser_classes
 from vfbLib.parsers import BaseParser
@@ -16,6 +16,8 @@ if TYPE_CHECKING:
 
 logger = logging.getLogger(__name__)
 
+
+FALLBACK_PARSER = BaseParser
 
 class VfbEntry:
     def __init__(self) -> None:

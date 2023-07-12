@@ -13,6 +13,7 @@ from vfbLib.ufo.paths import UfoMasterGlyph
 
 if TYPE_CHECKING:
     from fontTools.pens.basePen import AbstractPen
+    from vfbLib.vfb import Vfb
     from vfbLib.vfb.entry import VfbEntry
 
 logger = logging.getLogger(__name__)

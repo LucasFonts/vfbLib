@@ -9,7 +9,7 @@ from pathlib import Path
 from vfbLib.reader import VFBReader
 from vfbLib.ufo import VfbToUfoWriter
 from vfbLib.version import build_date
-from vfbLib.vfb import Vfb
+from vfbLib.vfb.vfb import Vfb
 
 
 logger = logging.getLogger(__name__)
