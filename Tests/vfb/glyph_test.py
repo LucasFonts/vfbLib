@@ -1,9 +1,13 @@
 from __future__ import annotations
 
 from fontTools.pens.recordingPen import RecordingPen, RecordingPointPen
+from pathlib import Path
 from unittest import TestCase
+from vfbLib.vfb import Vfb
 from vfbLib.vfb.entry import VfbEntry
 from vfbLib.vfb.glyph import VfbGlyph
+
+empty_vfb_path = Path(__file__).parent.parent / "Data" / "empty_522.vfb"
 
 
 glyph_dict_c = {
@@ -242,7 +246,7 @@ glyph_dict_q = {
 
 class VfbGlyphTest(TestCase):
     def test_drawPoints_quadratic(self):
-        g = VfbGlyph(VfbEntry())
+        g = VfbGlyph(VfbEntry(), Vfb(empty_vfb_path))
         g.entry.decompiled = glyph_dict_q
         g._copy_to_ufo_glyph()
         g.target_master = 0
@@ -344,7 +348,7 @@ class VfbGlyphTest(TestCase):
         # ]
 
     def test_draw_quadratic(self):
-        g = VfbGlyph(VfbEntry())
+        g = VfbGlyph(VfbEntry(), Vfb(empty_vfb_path))
         g.entry.decompiled = glyph_dict_q
         g._copy_to_ufo_glyph()
         g.target_master = 0
@@ -374,7 +378,7 @@ class VfbGlyphTest(TestCase):
         ]
 
     def test_drawPoints_cubic(self):
-        g = VfbGlyph(VfbEntry())
+        g = VfbGlyph(VfbEntry(), Vfb(empty_vfb_path))
         g.entry.decompiled = glyph_dict_c
         g._copy_to_ufo_glyph()
         g.target_master = 0
@@ -429,7 +433,7 @@ class VfbGlyphTest(TestCase):
         ]
 
     def test_draw_cubic(self):
-        g = VfbGlyph(VfbEntry())
+        g = VfbGlyph(VfbEntry(), Vfb(empty_vfb_path))
         g.entry.decompiled = glyph_dict_c
         g._copy_to_ufo_glyph()
         g.target_master = 0
