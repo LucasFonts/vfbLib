@@ -103,6 +103,28 @@ components_2_masters_json = {
     ]
 }
 
+empty_glyph_binary = deHexStr(
+    """
+01 09 07 01
+01    90
+      2E 6E 75 6C 6C
+08    8D
+      8B 8B
+02    8B 8B 8B 8B
+03    8B 8B 8B
+0F
+"""
+)
+
+empty_glyph_json = {
+    "constants": (1, 9, 7, 1),
+    "name": ".null",
+    "outlines_value": 0,
+    "num_masters": 2,
+    "nodes": [],
+    "metrics": [(0, 0), (0, 0)],
+}
+
 
 psglyph_1master = deHexStr(
     """
@@ -416,6 +438,18 @@ class PartCompiler(GlyphCompiler):
 
 
 class GlyphCompilerTest(TestCase):
+    def test_empty_2masters_roundtrip(self):
+        # Decompile
+        dec = GlyphParser.parse(BytesIO(empty_glyph_binary), len(empty_glyph_binary))
+        assert dec == empty_glyph_json
+
+        # Compile
+        compiled = GlyphCompiler.compile(dec)
+        # print(hexStr(compiled))
+        # ... and parse again
+        cde = GlyphParser.parse(BytesIO(compiled), len(compiled))
+        assert dec == cde
+    
     def test_psglyph_1master_roundtrip(self):
         # Decompile
         dec = GlyphParser.parse(BytesIO(psglyph_1master), len(psglyph_1master))
