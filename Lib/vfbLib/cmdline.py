@@ -6,7 +6,7 @@ import logging
 
 from argparse import ArgumentParser
 from pathlib import Path
-from vfbLib import VFBReader
+from vfbLib.reader import VFBReader
 from vfbLib.ufo import VfbToUfoWriter
 from vfbLib.version import build_date
 from vfbLib.vfb import Vfb
