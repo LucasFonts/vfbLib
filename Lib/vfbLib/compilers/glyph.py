@@ -113,10 +113,12 @@ class GlyphCompiler(BaseCompiler):
         if not (kerning := data.get("kerning")):
             return
 
-        logger.warning("Compiling kerning is not supported.")
-        return
-
         cls.write_uint1(6)
+        cls.write_encoded_value(len(kerning))
+        for gid, values in kerning.items():
+            cls.write_encoded_value(gid)
+            for value in values:
+                cls.write_encoded_value(value)
 
     @classmethod
     def _compile_metrics(cls, data):
