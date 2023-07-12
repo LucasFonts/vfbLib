@@ -1,5 +1,6 @@
 from vfbLib import GLYPH_CONSTANT
 
+
 def get_empty_glyph(num_masters: int):
     return {
         "constants": GLYPH_CONSTANT,

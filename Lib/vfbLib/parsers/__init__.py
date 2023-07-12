@@ -47,7 +47,7 @@ class BaseParser:
         if stream is None:
             stream = cls.stream
         return read_doubles(1, stream)[0]
-    
+
     @classmethod
     def read_doubles(cls, num, stream=None):
         if stream is None:
@@ -59,7 +59,7 @@ class BaseParser:
         if stream is None:
             stream = cls.stream
         return read_floats(1, stream)[0]
-    
+
     @classmethod
     def read_floats(cls, num, stream=None):
         if stream is None:

@@ -41,7 +41,7 @@ class BaseCompiler:
             write_encoded_value(value, cls.stream)
         else:
             write_value_5(value, cls.stream)
-    
+
     @classmethod
     def write_float(cls, value: float, fmt: str = "d") -> None:
         """

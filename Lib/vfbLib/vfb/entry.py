@@ -5,6 +5,7 @@ import logging
 from fontTools.misc.textTools import hexStr
 from io import BytesIO
 from typing import TYPE_CHECKING, Any, Dict, Tuple, Type
+
 # from vfbLib.reader import FALLBACK_PARSER
 from vfbLib.compilers import BaseCompiler
 from vfbLib.constants import parser_classes
@@ -18,6 +19,7 @@ logger = logging.getLogger(__name__)
 
 
 FALLBACK_PARSER = BaseParser
+
 
 class VfbEntry:
     def __init__(
@@ -92,7 +94,7 @@ class VfbEntry:
         if self.compiler is None:
             logger.error(f"Compiling '{self.key}' is not supported yet.")
             return
-        
+
         self.data = self.compiler.compile(self.decompiled)
 
         if self.data:

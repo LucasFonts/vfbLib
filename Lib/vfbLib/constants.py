@@ -63,6 +63,7 @@ from vfbLib.parsers.truetype import (
 )
 
 
+# fmt: off
 parser_classes = {
     513: ("513", BaseParser, None),
     527: ("527", BaseParser, None),
@@ -189,6 +190,7 @@ parser_classes = {
     2031: ("Glyph Guide Properties", GuidePropertiesParser, None),
     2032: ("2032", IntParser, None),
 }
+# fmt: on
 
 ignore_minimal = [
     "Background Bitmap",
