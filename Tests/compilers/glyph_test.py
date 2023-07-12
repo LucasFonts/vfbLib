@@ -261,7 +261,57 @@ psglyph_1master_expected = {
 }
 
 ttglyph_2_masters_binary = deHexStr(
-    """01090701018C6F088DF784A300F87FF790F8B1F79D048BFB098BFB1004FB10FB23FB27FB2D01218BFB0F8B04258BFB0D8B04FB04F717FB13F710018BF70E8BF70C048BF7098BF71004F710F723F727F72D01F58BF70F8B04F18BF70D8B04F704FB17F713FB100054FB11FB51FB1D048BF08BBF0433F70468C0013D8B698B043C8B688B0432FB046754018B258B5A048B278B5704E3FB04AE5701D98BAD8B04DA8BAE8B04E4F703AFC102F8AE8BF8C88B038B8B8B0693F9A2827EF9A88A84F9B77B6FF9BA8785FF000004F37077FF000005055977FF00000506687EFF0000053C7A8A0AB19307918B039197898A03978B8B8A03919D8B8A019493028E8C04949A8B8A048EA08B8A8B8B8B0F"""
+    """
+01 09 07 01
+01    8C 6F
+08    8D F784 A3
+      00 F87F F790 F8B1 F79D
+      04 8B FB09 8B FB10
+      04 FB10 FB23 FB27 FB2D
+      01 21 8B FB0F 8B
+      04 25 8B FB0D 8B
+      04 FB04 F717 FB13 F710
+      01 8B F70E 8B F70C
+      04 8B F709 8B F710
+      04 F710 F723 F727 F72D
+      01 F58B F70F 8B
+      04 F18B F70D 8B
+      04 F704 FB17 F713 FB10
+      00 54 FB11 FB51 FB1D
+      04 8B F0 8B BF
+      04 33 F704 68 C0
+      01 3D 8B 69 8B
+      04 3C 8B 68 8B
+      04 32 FB04 67 54
+      01 8B 25 8B 5A
+      04 8B 27 8B 57
+      04 E3 FB04 AE 57
+      01 D9 8B AD 8B
+      04 DA 8B AE 8B
+      04 E4 F703 AF C1
+02    F8 AE 8B F8C8 8B
+03    8B 8B 8B
+06    93
+      F9A2 82 7E
+      F9A8 8A 84
+      F9B7 7B 6F
+      F9BA 87 85
+      FF000004F3 70 77
+      FF00000505 59 77
+      FF00000506 68 7E
+      FF0000053C 7A 8A
+0A    B1
+      93
+      07 91 8B
+      03 91 97 89 8A
+      03 97 8B 8B 8A
+      03 91 9D 8B 8A
+      01 94 93
+      02 8E 8C
+      04 94 9A 8B 8A
+      04 8E A0 8B 8A
+      8B 8B 8B
+0F"""
 )
 
 ttglyph_2_masters_json = {
@@ -321,6 +371,36 @@ ttglyph_2_masters_json = {
     ],
 }
 
+ttinstructions_binary = """
+0A    B1
+      93
+      07 91 8B
+      03 91 97 89 8A
+      03 97 8B 8B 8A
+      03 91 9D 8B 8A
+      01 94 93
+      02 8E 8C
+      04 94 9A 8B 8A
+      04 8E A0 8B 8A
+      8B 8B 8B
+"""
+
+ttinstructions_json = {
+    "tth": [
+        {"cmd": "AlignH", "params": {"align": 0, "pt": 6}},
+        {
+            "cmd": "SingleLinkH",
+            "params": {"align": -1, "pt1": 6, "pt2": 12, "stem": -2},
+        },
+        {"cmd": "SingleLinkH", "params": {"align": -1, "pt1": 12, "pt2": 0, "stem": 0}},
+        {"cmd": "SingleLinkH", "params": {"align": -1, "pt1": 6, "pt2": 18, "stem": 0}},
+        {"cmd": "AlignTop", "params": {"pt": 9, "zone": 8}},
+        {"cmd": "AlignBottom", "params": {"pt": 3, "zone": 1}},
+        {"cmd": "SingleLinkV", "params": {"align": -1, "pt1": 9, "pt2": 15, "stem": 0}},
+        {"cmd": "SingleLinkV", "params": {"align": -1, "pt1": 3, "pt2": 21, "stem": 0}},
+    ],
+}
+
 
 class PartCompiler(GlyphCompiler):
     """
@@ -340,6 +420,20 @@ class GlyphCompilerTest(TestCase):
         # Decompile
         dec = GlyphParser.parse(BytesIO(psglyph_1master), len(psglyph_1master))
         assert dec == psglyph_1master_expected
+
+        # Compile
+        compiled = GlyphCompiler.compile(dec)
+        # print(hexStr(compiled))
+        # ... and parse again
+        cde = GlyphParser.parse(BytesIO(compiled), len(compiled))
+        assert dec == cde
+
+    def test_truetype_2_masters_roundtrip(self):
+        # Decompile
+        dec = GlyphParser.parse(
+            BytesIO(ttglyph_2_masters_binary), len(ttglyph_2_masters_binary)
+        )
+        assert dec == ttglyph_2_masters_json
 
         # Compile
         compiled = GlyphCompiler.compile(dec)
@@ -390,3 +484,8 @@ class GlyphCompilerTest(TestCase):
         data = PartCompiler._compile(psglyph_1master_expected, 1, "_compile_outlines")
         assert hexStr(data) == hexStr(psglyph_1master_nodes)
         assert len(data) == len(psglyph_1master_nodes)  # 285
+
+    def test_instructions_2_masters(self):
+        data = PartCompiler._compile(ttinstructions_json, 2, "_compile_instructions")
+        assert hexStr(data) == hexStr(deHexStr(ttinstructions_binary))
+        # assert len(data) == len(psglyph_1master_nodes)  # 285

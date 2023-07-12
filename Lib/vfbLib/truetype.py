@@ -50,3 +50,6 @@ TT_COMMANDS: Dict[int, TTCommandDict] = {
         "params": ["pt", "shift", "ppm1", "ppm2"],
     },
 }
+
+# TT command names to constants
+TT_COMMAND_CONSTANTS = {v["name"]: k for k, v in TT_COMMANDS.items()}

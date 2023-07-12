@@ -3,6 +3,7 @@ from __future__ import annotations
 from struct import pack
 from typing import Any
 from vfbLib.compilers import BaseCompiler
+from vfbLib.truetype import TT_COMMAND_CONSTANTS, TT_COMMANDS
 
 import logging
 
@@ -16,6 +17,20 @@ node_types = {
     "curve": 3,
     "qcurve": 4,
 }
+
+
+class InstructionsCompiler(BaseCompiler):
+    @classmethod
+    def _compile(cls, data: Any) -> None:
+        cls.write_encoded_value(len(data))
+        for cmd in data:
+            command_id = TT_COMMAND_CONSTANTS[cmd["cmd"]]
+            cls.write_uint1(command_id)
+            params = cmd["params"]
+            for param_name in TT_COMMANDS[command_id]["params"]:
+                cls.write_encoded_value(params[param_name])
+        for _ in range(3):
+            cls.write_encoded_value(0)
 
 
 class GlyphCompiler(BaseCompiler):
@@ -102,10 +117,10 @@ class GlyphCompiler(BaseCompiler):
         if not (tth := data.get("tth")):
             return
 
-        logger.warning("Compiling TrueType instructions is not supported.")
-        return
-
         cls.write_uint1(0x0A)
+        instructions = InstructionsCompiler.compile(tth)
+        cls.write_encoded_value(len(instructions))
+        cls.stream.write(instructions)
 
     @classmethod
     def _compile_kerning(cls, data):
