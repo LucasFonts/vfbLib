@@ -289,7 +289,9 @@ class GlyphParser(BaseParser):
 
     @classmethod
     def parse_instructions(cls, stream: BytesIO, glyphdata: GlyphData) -> None:
-        num_bytes = read_encoded_value(stream)  # Number of bytes for instructions that follow
+        # Number of bytes for instructions that follow;
+        # we don't use it
+        _ = read_encoded_value(stream)
         num_commands = read_encoded_value(stream)
         commands: List[Instruction] = []
         for i in range(num_commands):
