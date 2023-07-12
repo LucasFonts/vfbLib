@@ -1,7 +1,8 @@
 from __future__ import annotations
 
+from io import BytesIO
 from struct import pack
-from typing import Any
+from typing import Any, Tuple
 from vfbLib.compilers import BaseCompiler
 from vfbLib.truetype import TT_COMMAND_CONSTANTS, TT_COMMANDS
 
@@ -139,24 +140,17 @@ class GlyphCompiler(BaseCompiler):
         # A minimal outlines structure is always written:
         cls.write_uint1(8)
         cls.write_encoded_value(cls.num_masters)  # Number of masters
-        cls.write_encoded_value(data["outlines_value"])  # FIXME: Must be calculated
+
         if not (nodes := data.get("nodes")):
+            # 0 nodes with 0 values
+            cls.write_encoded_value(0)
             cls.write_encoded_value(0)
             return
 
-        cls.write_encoded_value(len(nodes))  # Number of nodes, may be 0
-        ref_coords = [[0, 0] for _ in range(cls.num_masters)]
-        for node in nodes:
-            type_flags = node.get("flags", 0) * 16 + node_types[node["type"]]
-            cls.write_uint1(type_flags)
-            for j in range(len(node["points"][0])):
-                for i in range(cls.num_masters):
-                    x, y = node["points"][i][j]
-                    refx, refy = ref_coords[i]
-                    # Coordinates are written relatively to the previous coords
-                    cls.write_encoded_value(x - refx)
-                    cls.write_encoded_value(y - refy)
-                    ref_coords[i] = [x, y]
+        outlines, num_values = OutlinesCompiler.compile(nodes, cls.num_masters)
+        #cls.write_encoded_value(data["outlines_value"])  # FIXME: Must be calculated
+        cls.write_encoded_value(num_values)
+        cls.stream.write(outlines)
 
     @classmethod
     def _compile(cls, data: Any) -> None:
@@ -189,3 +183,32 @@ class InstructionsCompiler(BaseCompiler):
                 cls.write_encoded_value(params[param_name])
         for _ in range(3):
             cls.write_encoded_value(0)
+
+
+class OutlinesCompiler(BaseCompiler):
+    @classmethod
+    def compile(cls, data: Any, num_masters: int) -> Tuple[bytes, int]:
+        cls.num_masters = num_masters
+        cls.stream = BytesIO()
+        num_values = cls._compile(data)
+        return cls.stream.getvalue(), num_values
+
+    @classmethod
+    def _compile(cls, data: Any) -> int:
+        cls.write_encoded_value(len(data))  # Number of nodes, may be 0
+        num_values = 0
+        ref_coords = [[0, 0] for _ in range(cls.num_masters)]
+        for node in data:
+            type_flags = node.get("flags", 0) * 16 + node_types[node["type"]]
+            cls.write_uint1(type_flags)
+            num_values += 1
+            for j in range(len(node["points"][0])):
+                for i in range(cls.num_masters):
+                    x, y = node["points"][i][j]
+                    refx, refy = ref_coords[i]
+                    # Coordinates are written relatively to the previous coords
+                    cls.write_encoded_value(x - refx)
+                    cls.write_encoded_value(y - refy)
+                    num_values += 2
+                    ref_coords[i] = [x, y]
+        return 2 * num_values

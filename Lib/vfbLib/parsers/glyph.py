@@ -337,7 +337,7 @@ class GlyphParser(BaseParser):
         x = [0 for _ in range(num_masters)]
         y = [0 for _ in range(num_masters)]
 
-        for i in range(num_nodes):
+        for _ in range(num_nodes):
             byte = cls.read_uint8(stream)
             flags = byte >> 4
             cmd = byte & 0x0F
