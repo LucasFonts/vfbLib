@@ -22,7 +22,13 @@ class GlyphCompiler(BaseCompiler):
     @classmethod
     def _compile_binary(cls, data):
         # Imported binary data 8-)
-        pass
+        if not (imported := data.get("imported")):
+            return
+
+        logger.warning("Compiling imported binary data is not supported.")
+        return
+
+        cls.write_uint1(9)
 
     @classmethod
     def _compile_components(cls, data):
@@ -55,7 +61,13 @@ class GlyphCompiler(BaseCompiler):
     @classmethod
     def _compile_guides(cls, data):
         # Guidelines
-        pass
+        if not (guides := data.get("guides")):
+            return
+
+        logger.warning("Compiling guidelines is not supported.")
+        return
+
+        cls.write_uint1(4)
 
     @classmethod
     def _compile_hints(cls, data):
@@ -88,12 +100,24 @@ class GlyphCompiler(BaseCompiler):
     @classmethod
     def _compile_instructions(cls, data):
         # TrueType instructions
-        pass
+        if not (tth := data.get("tth")):
+            return
+
+        logger.warning("Compiling TrueType instructions is not supported.")
+        return
+
+        cls.write_uint1(0x0A)
 
     @classmethod
     def _compile_kerning(cls, data):
         # Kerning
-        pass
+        if not (kerning := data.get("kerning")):
+            return
+
+        logger.warning("Compiling kerning is not supported.")
+        return
+
+        cls.write_uint1(6)
 
     @classmethod
     def _compile_metrics(cls, data):
