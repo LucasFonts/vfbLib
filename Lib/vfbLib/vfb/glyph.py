@@ -7,7 +7,7 @@ from fontTools.pens.pointPen import (
     PointToSegmentPen,
     SegmentToPointPen,
 )
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Any, Dict, List, Tuple
 from vfbLib.ufo.glyph import VfbToUfoGlyph
 from vfbLib.ufo.paths import UfoMasterGlyph
 from vfbLib.templates.glyph import get_empty_glyph
@@ -21,7 +21,7 @@ logger = logging.getLogger(__name__)
 
 
 class VfbGlyph:
-    def __init__(self, entry: VfbEntry, parent) -> None:
+    def __init__(self, entry: VfbEntry, parent: Vfb) -> None:
         self.entry = entry
         self._parent = parent
         self._glyph: UfoMasterGlyph | None = None
@@ -131,14 +131,25 @@ class VfbGlyph:
 
 
 class VfbGlyphPointPen(AbstractPointPen):
-    def __init__(self, glyph: VfbGlyph):
+    def __init__(self, glyph: VfbGlyph) -> None:
         self.glyph = glyph
         self.currentPath = None
-    
-    def beginPath(self):
+
+    def beginPath(self) -> None:
         self.currentPath = []
 
-    def addPoint(self, pt, segmentType=None, smooth=None, name=None, **kwargs):
+    def endPath(self) -> None:
+        self.currentPath = None
+
+    def addPoint(
+        self,
+        pt: Tuple[int, int],
+        segmentType: str | None = None,
+        smooth: bool = False,
+        name: str | None = None,
+        **kwargs: Dict[str, Any],
+    ) -> None:
+        assert self.currentPath is not None
         self.currentPath.append((pt, segmentType, smooth, name))
 
     # def addComponent(self, baseName, transformation):
