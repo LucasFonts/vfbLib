@@ -3,6 +3,7 @@ from __future__ import annotations
 from io import BytesIO
 from struct import pack
 from typing import Any, Tuple
+from vfbLib import GLYPH_CONSTANT
 from vfbLib.compilers import BaseCompiler
 from vfbLib.truetype import TT_COMMAND_CONSTANTS, TT_COMMANDS
 
@@ -164,7 +165,7 @@ class GlyphCompiler(BaseCompiler):
     def _compile(cls, data: Any) -> None:
 
         # Constants?
-        cls.write_bytes(pack("<4B", *data["constants"]))
+        cls.write_bytes(pack("<4B", *GLYPH_CONSTANT))
         cls.num_masters = data["num_masters"]
 
         cls._compile_glyph_name(data)
