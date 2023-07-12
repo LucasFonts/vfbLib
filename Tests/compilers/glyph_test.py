@@ -224,40 +224,41 @@ psglyph_1master_nodes = deHexStr(
 """
 )
 
+# fmt: off
 psglyph_1master_expected = {
     "constants": (1, 9, 7, 1),
     "name": "d",
     "outlines_value": 490,
     "num_masters": 1,
     "nodes": [
-        {"type": "move", "flags": 0, "points": [[(360, 664)]]},
+        {"type": "move",  "flags": 0, "points": [[(360, 664)]]},
         {"type": "curve", "flags": 1, "points": [[(364, 554), (362, 628), (365, 591)]]},
         {"type": "curve", "flags": 1, "points": [[(346, 312), (362, 473), (351, 393)]]},
         {"type": "curve", "flags": 1, "points": [[(347, 117), (342, 247), (344, 183)]]},
-        {"type": "curve", "flags": 0, "points": [[(358, -10), (349, 77), (345, 29)]]},
-        {"type": "line", "flags": 0, "points": [[(474, -6)]]},
-        {"type": "curve", "flags": 0, "points": [[(475, -3), (475, -5), (475, -4)]]},
-        {"type": "curve", "flags": 0, "points": [[(357, 8), (436, 1), (397, 5)]]},
-        {"type": "line", "flags": 0, "points": [[(357, 5)]]},
-        {"type": "line", "flags": 0, "points": [[(471, 25)]]},
-        {"type": "curve", "flags": 1, "points": [[(475, 12), (470, 29), (473, 17)]]},
-        {"type": "curve", "flags": 0, "points": [[(473, 21), (476, 10), (474, 18)]]},
-        {"type": "line", "flags": 1, "points": [[(469, 55)]]},
-        {"type": "curve", "flags": 1, "points": [[(466, 122), (466, 77), (467, 100)]]},
+        {"type": "curve", "flags": 0, "points": [[(358, -10), (349,  77), (345,  29)]]},
+        {"type": "line",  "flags": 0, "points": [[(474,  -6)]]},
+        {"type": "curve", "flags": 0, "points": [[(475,  -3), (475,  -5), (475,  -4)]]},
+        {"type": "curve", "flags": 0, "points": [[(357,   8), (436,   1), (397,   5)]]},
+        {"type": "line",  "flags": 0, "points": [[(357,   5)]]},
+        {"type": "line",  "flags": 0, "points": [[(471,  25)]]},
+        {"type": "curve", "flags": 1, "points": [[(475,  12), (470,  29), (473,  17)]]},
+        {"type": "curve", "flags": 0, "points": [[(473,  21), (476,  10), (474,  18)]]},
+        {"type": "line",  "flags": 1, "points": [[(469,  55)]]},
+        {"type": "curve", "flags": 1, "points": [[(466, 122), (466,  77), (467, 100)]]},
         {"type": "curve", "flags": 0, "points": [[(465, 317), (463, 188), (462, 252)]]},
         {"type": "curve", "flags": 0, "points": [[(479, 669), (476, 435), (483, 551)]]},
-        {"type": "move", "flags": 0, "points": [[(452, 287)]]},
+        {"type": "move",  "flags": 0, "points": [[(452, 287)]]},
         {"type": "curve", "flags": 1, "points": [[(377, 451), (487, 350), (429, 418)]]},
         {"type": "curve", "flags": 1, "points": [[(330, 481), (362, 461), (349, 475)]]},
-        {"type": "curve", "flags": 1, "points": [[(60, 376), (228, 515), (109, 474)]]},
-        {"type": "curve", "flags": 1, "points": [[(31, 200), (34, 323), (29, 258)]]},
-        {"type": "curve", "flags": 1, "points": [[(79, 41), (33, 145), (43, 85)]]},
-        {"type": "curve", "flags": 1, "points": [[(292, -2), (123, -12), (230, -26)]]},
-        {"type": "curve", "flags": 0, "points": [[(449, 144), (353, 22), (430, 80)]]},
-        {"type": "line", "flags": 0, "points": [[(336, 171)]]},
-        {"type": "curve", "flags": 0, "points": [[(251, 87), (325, 134), (284, 105)]]},
-        {"type": "curve", "flags": 3, "points": [[(239, 86), (247, 87), (243, 86)]]},
-        {"type": "curve", "flags": 0, "points": [[(189, 88), (222, 86), (206, 87)]]},
+        {"type": "curve", "flags": 1, "points": [[( 60, 376), (228, 515), (109, 474)]]},
+        {"type": "curve", "flags": 1, "points": [[( 31, 200), ( 34, 323), ( 29, 258)]]},
+        {"type": "curve", "flags": 1, "points": [[( 79,  41), ( 33, 145), ( 43,  85)]]},
+        {"type": "curve", "flags": 1, "points": [[(292,  -2), (123, -12), (230, -26)]]},
+        {"type": "curve", "flags": 0, "points": [[(449, 144), (353,  22), (430,  80)]]},
+        {"type": "line",  "flags": 0, "points": [[(336, 171)]]},
+        {"type": "curve", "flags": 0, "points": [[(251,  87), (325, 134), (284, 105)]]},
+        {"type": "curve", "flags": 3, "points": [[(239,  86), (247,  87), (243,  86)]]},
+        {"type": "curve", "flags": 0, "points": [[(189,  88), (222,  86), (206,  87)]]},
         {"type": "curve", "flags": 1, "points": [[(219, 392), (132, 146), (129, 359)]]},
         {"type": "curve", "flags": 3, "points": [[(276, 393), (238, 399), (258, 393)]]},
         {"type": "curve", "flags": 0, "points": [[(283, 391), (276, 393), (286, 391)]]},
@@ -269,6 +270,7 @@ psglyph_1master_expected = {
         {"type": "curve", "flags": 1, "points": [[(334, 342), (320, 361), (328, 352)]]},
         {"type": "curve", "flags": 0, "points": [[(345, 318), (338, 335), (343, 327)]]},
         {"type": "curve", "flags": 0, "points": [[(347, 329), (345, 309), (356, 346)]]},
+        #          39                             + 39 + 39  +  32 + 32  +  32 + 32 = 245
     ],
     "metrics": [(544, 0)],
     "hints": {
@@ -281,6 +283,7 @@ psglyph_1master_expected = {
         ],
     },
 }
+# fmt: on
 
 ttglyph_2_masters_binary = deHexStr(
     """
