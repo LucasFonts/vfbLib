@@ -3,6 +3,8 @@ from __future__ import annotations
 from fontTools.pens.recordingPen import RecordingPen, RecordingPointPen
 from pathlib import Path
 from unittest import TestCase
+from vfbLib.compilers.glyph import GlyphCompiler
+from vfbLib.parsers.glyph import GlyphParser
 from vfbLib.vfb.vfb import Vfb
 from vfbLib.vfb.entry import VfbEntry
 from vfbLib.vfb.glyph import VfbGlyph
@@ -468,3 +470,21 @@ class VfbGlyphTest(TestCase):
             ("curveTo", ((392, 348), (452, 297), (452, 198))),
             ("closePath", ()),
         ]
+
+    def test_getPointPen(self):
+        # Get a point pen and draw into the vfb glyph
+        g = VfbGlyph(VfbEntry(parser=GlyphParser, compiler=GlyphCompiler), Vfb(empty_vfb_path))
+        g.empty(num_masters=1)
+        pen = g.getPointPen()
+        pen.beginPath()
+        pen.addPoint(pt=(100, 100), segmentType="line", smooth=False)
+        pen.addPoint(pt=(200, 100), segmentType="line", smooth=False)
+        pen.addPoint(pt=(200, 200), segmentType="line", smooth=False)
+        pen.addPoint(pt=(100, 150), segmentType="line", smooth=False)
+        pen.endPath()
+        # g.entry.compile()
+        # g.entry.decompile()
+        # assert g.entry.decompiled == {}
+
+    def test_getPointPenMM(self):
+        pass
