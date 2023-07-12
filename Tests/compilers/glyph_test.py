@@ -260,6 +260,67 @@ psglyph_1master_expected = {
     },
 }
 
+ttglyph_2_masters_binary = deHexStr(
+    """01090701018C6F088DF784A300F87FF790F8B1F79D048BFB098BFB1004FB10FB23FB27FB2D01218BFB0F8B04258BFB0D8B04FB04F717FB13F710018BF70E8BF70C048BF7098BF71004F710F723F727F72D01F58BF70F8B04F18BF70D8B04F704FB17F713FB100054FB11FB51FB1D048BF08BBF0433F70468C0013D8B698B043C8B688B0432FB046754018B258B5A048B278B5704E3FB04AE5701D98BAD8B04DA8BAE8B04E4F703AFC102F8AE8BF8C88B038B8B8B0693F9A2827EF9A88A84F9B77B6FF9BA8785FF000004F37077FF000005055977FF00000506687EFF0000053C7A8A0AB19307918B039197898A03978B8B8A03919D8B8A019493028E8C04949A8B8A048EA08B8A8B8B8B0F"""
+)
+
+ttglyph_2_masters_json = {
+    "constants": (1, 9, 7, 1),
+    "kerning": {
+        782: [-9, -13],
+        788: [-1, -7],
+        803: [-16, -28],
+        806: [-4, -6],
+        1267: [-27, -20],
+        1285: [-50, -20],
+        1286: [-35, -13],
+        1340: [-17, -1],
+    },
+    "metrics": [(538, 0), (564, 0)],
+    "name": "o",
+    "nodes": [
+        {"flags": 0, "points": [[(491, 252)], [(541, 265)]], "type": "move"},
+        {"flags": 0, "points": [[(491, 135)], [(541, 141)]], "type": "qcurve"},
+        {"flags": 0, "points": [[(367, -8)], [(394, -12)]], "type": "qcurve"},
+        {"flags": 0, "points": [[(261, -8)], [(271, -12)]], "type": "line"},
+        {"flags": 0, "points": [[(159, -8)], [(150, -12)]], "type": "qcurve"},
+        {"flags": 0, "points": [[(47, 123)], [(23, 112)]], "type": "qcurve"},
+        {"flags": 0, "points": [[(47, 245)], [(23, 232)]], "type": "line"},
+        {"flags": 0, "points": [[(47, 362)], [(23, 356)]], "type": "qcurve"},
+        {"flags": 0, "points": [[(171, 505)], [(170, 509)]], "type": "qcurve"},
+        {"flags": 0, "points": [[(277, 505)], [(293, 509)]], "type": "line"},
+        {"flags": 0, "points": [[(379, 505)], [(414, 509)]], "type": "qcurve"},
+        {"flags": 0, "points": [[(491, 374)], [(541, 385)]], "type": "qcurve"},
+        {"flags": 0, "points": [[(436, 249)], [(352, 248)]], "type": "move"},
+        {"flags": 0, "points": [[(436, 350)], [(352, 300)]], "type": "qcurve"},
+        {"flags": 0, "points": [[(348, 462)], [(317, 353)]], "type": "qcurve"},
+        {"flags": 0, "points": [[(270, 462)], [(283, 353)]], "type": "line"},
+        {"flags": 0, "points": [[(191, 462)], [(248, 353)]], "type": "qcurve"},
+        {"flags": 0, "points": [[(102, 350)], [(212, 298)]], "type": "qcurve"},
+        {"flags": 0, "points": [[(102, 248)], [(212, 249)]], "type": "line"},
+        {"flags": 0, "points": [[(102, 148)], [(212, 197)]], "type": "qcurve"},
+        {"flags": 0, "points": [[(190, 36)], [(247, 145)]], "type": "qcurve"},
+        {"flags": 0, "points": [[(268, 36)], [(281, 145)]], "type": "line"},
+        {"flags": 0, "points": [[(347, 36)], [(316, 145)]], "type": "qcurve"},
+        {"flags": 0, "points": [[(436, 147)], [(352, 199)]], "type": "qcurve"},
+    ],
+    "num_masters": 2,
+    "outlines_value": 240,
+    "tth": [
+        {"cmd": "AlignH", "params": {"align": 0, "pt": 6}},
+        {
+            "cmd": "SingleLinkH",
+            "params": {"align": -1, "pt1": 6, "pt2": 12, "stem": -2},
+        },
+        {"cmd": "SingleLinkH", "params": {"align": -1, "pt1": 12, "pt2": 0, "stem": 0}},
+        {"cmd": "SingleLinkH", "params": {"align": -1, "pt1": 6, "pt2": 18, "stem": 0}},
+        {"cmd": "AlignTop", "params": {"pt": 9, "zone": 8}},
+        {"cmd": "AlignBottom", "params": {"pt": 3, "zone": 1}},
+        {"cmd": "SingleLinkV", "params": {"align": -1, "pt1": 9, "pt2": 15, "stem": 0}},
+        {"cmd": "SingleLinkV", "params": {"align": -1, "pt1": 3, "pt2": 21, "stem": 0}},
+    ],
+}
+
 
 class PartCompiler(GlyphCompiler):
     """
