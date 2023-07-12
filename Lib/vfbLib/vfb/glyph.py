@@ -129,6 +129,12 @@ class VfbGlyph:
                 self.decompile()
         return VfbGlyphPointPen(self)
 
+    def getPointPenMM(self) -> VfbGlyphPointPenMM:
+        """
+        Return a MM-capable point pen to draw into the VFB glyph.
+        """
+        return VfbGlyphPointPenMM(self)
+
 
 class VfbGlyphPointPen(AbstractPointPen):
     def __init__(self, glyph: VfbGlyph) -> None:
@@ -151,6 +157,31 @@ class VfbGlyphPointPen(AbstractPointPen):
     ) -> None:
         assert self.currentPath is not None
         self.currentPath.append((pt, segmentType, smooth, name))
+
+    # def addComponent(self, baseName, transformation):
+    #     assert self.currentPath is None
+    #     # make base glyph if needed, Component() needs the index
+    #     NewGlyph(self.glyph.parent, baseName, updateFont=False)
+    #     baseIndex = self.glyph.parent.FindGlyph(baseName)
+    #     if baseIndex == -1:
+    #         raise (KeyError, "couldn't find or make base glyph")
+    #     xx, xy, yx, yy, dx, dy = transformation
+    #     # XXX warn when xy or yx != 0
+    #     new = Component(baseIndex, Point(dx, dy), Point(xx, yy))
+    #     self.glyph.components.append(new)
+
+
+class VfbGlyphPointPenMM(VfbGlyphPointPen):
+    def addPoint(
+        self,
+        pts: List[Tuple[int, int]],
+        segmentType: str | None = None,
+        smooth: bool = False,
+        name: str | None = None,
+        **kwargs: Dict[str, Any],
+    ) -> None:
+        assert self.currentPath is not None
+        self.currentPath.append((pts, segmentType, smooth, name))
 
     # def addComponent(self, baseName, transformation):
     #     assert self.currentPath is None
