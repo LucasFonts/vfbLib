@@ -27,7 +27,18 @@ class GlyphCompiler(BaseCompiler):
     @classmethod
     def _compile_components(cls, data):
         # Components
-        pass
+        if not (components := data.get("components")):
+            return
+
+        cls.write_uint1(5)
+        cls.write_encoded_value(len(components))
+        for component in components:
+            cls.write_encoded_value(component["gid"])
+            for i in range(cls.num_masters):
+                cls.write_encoded_value(component["offsetX"][i])
+                cls.write_encoded_value(component["offsetY"][i])
+                cls.write_float(component["scaleX"][i])
+                cls.write_float(component["scaleY"][i])
 
     @classmethod
     def _compile_glyph_name(cls, data):

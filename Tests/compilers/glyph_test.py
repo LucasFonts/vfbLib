@@ -9,6 +9,47 @@ from vfbLib.compilers.glyph import GlyphCompiler
 from vfbLib.parsers.glyph import GlyphParser
 
 
+components_2_masters_binary = deHexStr(
+    """
+05    8D
+      91
+      8B 8B
+      000000000000F03F
+      000000000000F03F
+      8B 8B
+      000000000000F03F
+      000000000000F03F
+      FF00000715
+      C4 8B
+      000000000000F03F
+      000000000000F03F
+      D6 8B
+      000000000000F03F
+      000000000000F03F
+"""
+)
+
+
+components_2_masters_json = {
+    "components": [
+        {
+            "gid": 6,
+            "offsetX": [0, 0],
+            "offsetY": [0, 0],
+            "scaleX": [1.0, 1.0],
+            "scaleY": [1.0, 1.0],
+        },
+        {
+            "gid": 1813,
+            "offsetX": [57, 75],
+            "offsetY": [0, 0],
+            "scaleX": [1.0, 1.0],
+            "scaleY": [1.0, 1.0],
+        },
+    ]
+}
+
+
 psglyph_1master = deHexStr(
     """
 01 09 07 01
@@ -191,6 +232,12 @@ class GlyphCompilerTest(TestCase):
         # ... and parse again
         cde = GlyphParser.parse(BytesIO(compiled), len(compiled))
         assert dec == cde
+
+    def test_components_2_masters(self):
+        data = PartCompiler._compile(
+            components_2_masters_json, 2, "_compile_components"
+        )
+        assert hexStr(data) == hexStr(components_2_masters_binary)
 
     def test_hints_1(self):
         data = PartCompiler._compile(psglyph_1master_expected, 1, "_compile_hints")
