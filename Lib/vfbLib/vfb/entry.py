@@ -20,7 +20,11 @@ logger = logging.getLogger(__name__)
 FALLBACK_PARSER = BaseParser
 
 class VfbEntry:
-    def __init__(self) -> None:
+    def __init__(
+        self,
+        parser: Type[BaseParser] | None = None,
+        compiler: Type[BaseCompiler] | None = None,
+    ) -> None:
         # The original or compiled binary data
         self.data: bytes | None = None
         # The decompiled data
@@ -30,11 +34,11 @@ class VfbEntry:
         # Has the data been modified, i.e. it needs recompilation
         self.modified = False
         # The parser which can convert data to decompiled
-        self.parser: Type[BaseParser] | None = None
+        self.parser = parser
         # The size of the compiled data
         self.size = 0
         # The compiler which can convert the decompiled to compiled data
-        self.compiler: Type[BaseCompiler] | None = None
+        self.compiler = compiler
 
     def _read_entry(
         self,
