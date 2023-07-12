@@ -19,20 +19,6 @@ node_types = {
 }
 
 
-class InstructionsCompiler(BaseCompiler):
-    @classmethod
-    def _compile(cls, data: Any) -> None:
-        cls.write_encoded_value(len(data))
-        for cmd in data:
-            command_id = TT_COMMAND_CONSTANTS[cmd["cmd"]]
-            cls.write_uint1(command_id)
-            params = cmd["params"]
-            for param_name in TT_COMMANDS[command_id]["params"]:
-                cls.write_encoded_value(params[param_name])
-        for _ in range(3):
-            cls.write_encoded_value(0)
-
-
 class GlyphCompiler(BaseCompiler):
     @classmethod
     def _compile_binary(cls, data):
@@ -189,3 +175,17 @@ class GlyphCompiler(BaseCompiler):
         cls._compile_binary(data)
         cls._compile_instructions(data)
         cls.write_uint1(15)  # End of glyph
+
+
+class InstructionsCompiler(BaseCompiler):
+    @classmethod
+    def _compile(cls, data: Any) -> None:
+        cls.write_encoded_value(len(data))
+        for cmd in data:
+            command_id = TT_COMMAND_CONSTANTS[cmd["cmd"]]
+            cls.write_uint1(command_id)
+            params = cmd["params"]
+            for param_name in TT_COMMANDS[command_id]["params"]:
+                cls.write_encoded_value(params[param_name])
+        for _ in range(3):
+            cls.write_encoded_value(0)
