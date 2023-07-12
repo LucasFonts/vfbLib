@@ -3,7 +3,7 @@ from __future__ import annotations
 from fontTools.pens.recordingPen import RecordingPen, RecordingPointPen
 from pathlib import Path
 from unittest import TestCase
-from vfbLib.vfb import Vfb
+from vfbLib.vfb.vfb import Vfb
 from vfbLib.vfb.entry import VfbEntry
 from vfbLib.vfb.glyph import VfbGlyph
 
