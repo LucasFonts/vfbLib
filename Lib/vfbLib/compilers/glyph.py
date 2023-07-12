@@ -153,7 +153,7 @@ class GlyphCompiler(BaseCompiler):
         # A minimal outlines structure is always written:
         cls.write_uint1(8)
         cls.write_encoded_value(cls.num_masters)  # Number of masters
-        cls.write_encoded_value(data["outlines_value"])  # ???
+        cls.write_encoded_value(data["outlines_value"])  # FIXME: Must be calculated
         if not (nodes := data.get("nodes")):
             cls.write_encoded_value(0)
             return
