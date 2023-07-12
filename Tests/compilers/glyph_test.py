@@ -60,7 +60,7 @@ composite_2_masters_json = {
     "name": "Adieresis",
     "nodes": [],
     "num_masters": 2,
-    "outlines_value": 0,
+    "num_node_values": 0,
 }
 
 components_2_masters_binary = deHexStr(
@@ -119,7 +119,7 @@ empty_glyph_binary = deHexStr(
 empty_glyph_json = {
     "constants": (1, 9, 7, 1),
     "name": ".null",
-    "outlines_value": 0,
+    "num_node_values": 0,
     "num_masters": 2,
     "nodes": [],
     "metrics": [(0, 0), (0, 0)],
@@ -228,7 +228,7 @@ psglyph_1master_nodes = deHexStr(
 psglyph_1master_expected = {
     "constants": (1, 9, 7, 1),
     "name": "d",
-    "outlines_value": 490,
+    "num_node_values": 490,
     "num_masters": 1,
     "nodes": [
         {"type": "move",  "flags": 0, "points": [[(360, 664)]]},
@@ -380,7 +380,7 @@ ttglyph_2_masters_json = {
         {"flags": 0, "points": [[(436, 147)], [(352, 199)]], "type": "qcurve"},
     ],
     "num_masters": 2,
-    "outlines_value": 240,
+    "num_node_values": 240,
     "tth": [
         {"cmd": "AlignH", "params": {"align": 0, "pt": 6}},
         {

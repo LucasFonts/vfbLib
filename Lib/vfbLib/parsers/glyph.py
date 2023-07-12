@@ -330,9 +330,12 @@ class GlyphParser(BaseParser):
     def parse_outlines(cls, stream: BytesIO, glyphdata: GlyphData) -> int:
         # Nodes
         num_masters = read_encoded_value(stream)
-        glyphdata["outlines_value"] = read_encoded_value(stream)  # XXX: What's this?
-        num_nodes = read_encoded_value(stream)
         glyphdata["num_masters"] = num_masters
+
+        # 2 x the number of values to be read after num_nodes, the reason is unclear.
+        glyphdata["num_node_values"] = read_encoded_value(stream)
+
+        num_nodes = read_encoded_value(stream)
         segments: List[MMNode] = []
         x = [0 for _ in range(num_masters)]
         y = [0 for _ in range(num_masters)]
