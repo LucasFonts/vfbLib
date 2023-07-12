@@ -121,6 +121,12 @@ class VfbGlyph:
         """
         Return a point pen to draw into the VFB glyph.
         """
+        if self.entry.decompiled is None:
+            if self.entry.data is None:
+                # Make an empty glyph
+                self.entry.decompiled = {}
+            else:
+                self.decompile()
         return VfbGlyphPointPen(self)
 
 
