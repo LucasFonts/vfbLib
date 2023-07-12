@@ -43,10 +43,10 @@ class GlyphCompiler(BaseCompiler):
     @classmethod
     def _compile_glyph_name(cls, data):
         # Glyph name
-        if "name" not in data:
+        if not (name := data.get("name")):
             return
 
-        glyph_name = data["name"].encode("cp1252")
+        glyph_name = name.encode("cp1252")
         glyph_name_length = len(glyph_name)
         cls.write_uint1(1)
         cls.write_encoded_value(glyph_name_length)
@@ -60,10 +60,9 @@ class GlyphCompiler(BaseCompiler):
     @classmethod
     def _compile_hints(cls, data):
         # PostScript hints
-        if "hints" not in data:
+        if not (hints := data.get("hints")):
             return
 
-        hints = data["hints"]
         cls.write_uint1(3)
         for direction in ("h", "v"):
             if direction in hints:
@@ -99,12 +98,12 @@ class GlyphCompiler(BaseCompiler):
     @classmethod
     def _compile_metrics(cls, data):
         # Metrics
-        if "metrics" not in data:
+        if not (metrics := data.get("metrics")):
             return
 
         cls.write_uint1(2)
         for i in range(cls.num_masters):
-            x, y = data["metrics"][i]
+            x, y = metrics[i]
             cls.write_encoded_value(x)
             cls.write_encoded_value(y)
 
@@ -115,13 +114,13 @@ class GlyphCompiler(BaseCompiler):
         cls.write_uint1(8)
         cls.write_encoded_value(cls.num_masters)  # Number of masters
         cls.write_encoded_value(data["outlines_value"])  # ???
-        if "nodes" not in data:
+        if not (nodes := data.get("nodes")):
             cls.write_encoded_value(0)
             return
 
-        cls.write_encoded_value(len(data["nodes"]))  # Number of nodes, may be 0
+        cls.write_encoded_value(len(nodes))  # Number of nodes, may be 0
         ref_coords = [[0, 0] for _ in range(cls.num_masters)]
-        for node in data["nodes"]:
+        for node in nodes:
             type_flags = node.get("flags", 0) * 16 + node_types[node["type"]]
             cls.write_uint1(type_flags)
             for j in range(len(node["points"][0])):
