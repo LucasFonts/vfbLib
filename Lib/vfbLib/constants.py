@@ -150,7 +150,7 @@ parser_classes = {
     1514: ("Axis Name", StringParser, None),
     1515: ("Axis Mappings Count", AxisMappingsCountParser, None),
     1516: ("Axis Mappings", AxisMappingsParser, None),
-    1517: ("Default Weight Vector", DoubleListParser, None),  # Interp. coeffs for all masters
+    1517: ("Default Weight Vector", DoubleListParser, None),  # Interp. coeffs for all masters  # noqa: E501
     1523: ("Anisotropic Interpolation Mappings", AnisotropicInterpolationsParser, None),
     1524: ("1524", EncodedValueListParser, None),
     1530: ("Blue Values Count", IntParser, None),
@@ -185,7 +185,7 @@ parser_classes = {
     2025: ("fontNote", StringParser, None),
     2026: ("OpenType Kerning Class Flags", OpenTypeClassFlagsParser, None),
     2027: ("Glyph Origin", GlyphOriginParser, None),
-    2028: ("2028", EncodedValueListParser, None),  # MM, proportional to number of masters
+    2028: ("2028", EncodedValueListParser, None),  # MM, proportional to num of masters
     2029: ("Glyph Anchors MM", GlyphAnchorsParser, None),  # MM-compatible
     2031: ("Glyph Guide Properties", GuidePropertiesParser, None),
     2032: ("2032", IntParser, None),
