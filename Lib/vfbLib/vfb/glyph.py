@@ -10,6 +10,7 @@ from fontTools.pens.pointPen import (
 from typing import TYPE_CHECKING
 from vfbLib.ufo.glyph import VfbToUfoGlyph
 from vfbLib.ufo.paths import UfoMasterGlyph
+from vfbLib.templates.glyph import get_empty_glyph
 
 if TYPE_CHECKING:
     from fontTools.pens.basePen import AbstractPen
@@ -35,6 +36,9 @@ class VfbGlyph:
             raise ValueError
 
         return self.entry.decompiled["name"]
+
+    def empty(self, num_masters: int = 1):
+        self.entry.decompiled = get_empty_glyph(num_masters)
 
     def _copy_to_ufo_glyph(self):
         """
