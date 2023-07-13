@@ -127,7 +127,7 @@ class VfbEntry:
         self.data = self.compiler.compile(self.decompiled)
         self.modified = False
 
-    def decompile(self):
+    def decompile(self) -> None:
         """
         Decompile the entry. The result is stored in VfbEntry.decompiled.
         """
