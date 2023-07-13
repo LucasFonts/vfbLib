@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from io import BytesIO
+from math import radians, tan
 from struct import pack
 from typing import Any, Tuple
 from vfbLib import GLYPH_CONSTANT
@@ -64,13 +65,20 @@ class GlyphCompiler(BaseCompiler):
     @classmethod
     def _compile_guides(cls, data):
         # Guidelines
+        # TODO: Reuse for global guides
         if not (guides := data.get("guides")):
             return
 
-        logger.warning("Compiling guidelines is not supported.")
-        return
-
         cls.write_uint1(4)
+        for direction in ("h", "v"):
+            direction_guides = guides.get(direction, [])
+            cls.write_encoded_value(len(direction_guides))
+            for m in range(cls.num_masters):
+                for guide in direction_guides[m]:
+                    pos = guide["pos"]
+                    angle = round(tan(radians(guide["angle"])) * 10000)
+                    cls.write_encoded_value(pos)
+                    cls.write_encoded_value(angle)
 
     @classmethod
     def _compile_hints(cls, data):
