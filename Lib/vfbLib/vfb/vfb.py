@@ -49,6 +49,26 @@ class Vfb:
 
         self.read()
 
+    @property
+    def num_masters(self) -> int:
+        """Return the number of masters in the vfb.
+
+        Returns:
+            int: The number of masters, or 0 if no glyphs are present.
+        """
+        if not self._glyphs:
+            glyph = None
+            for entry in self.entries:
+                if entry.key == "Glyph":
+                    glyph = entry
+            if glyph is None:
+                return 0  # No glyph was found
+
+            glyph.decompile()
+            return glyph.decompiled["num_masters"]
+
+        return self._glyphs[0].entry.decompiled["num_masters"]
+
     def as_dict(self) -> Dict[str, Dict[str, Any]]:
         """
         Return the Vfb structure as Dict, e.g. for saving as JSON. The dict has the keys
