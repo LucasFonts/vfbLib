@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from fontTools.misc.textTools import deHexStr, hexStr
 from fontTools.pens.recordingPen import RecordingPen, RecordingPointPen
 from pathlib import Path
 from unittest import TestCase
@@ -246,6 +247,48 @@ glyph_dict_q = {
 }
 
 
+glyph_nodes_q_1m = [
+    {"flags": 0, "points": [[(92, 0)]], "type": "move"},
+    {"flags": 0, "points": [[(92, 698)]], "type": "line"},
+    {"flags": 0, "points": [[(277, 698)]], "type": "line"},
+    {"flags": 0, "points": [[(336, 698)]], "type": "qcurve"},
+    {"flags": 0, "points": [[(419, 657)]], "type": "qcurve"},
+    {"flags": 0, "points": [[(461, 579)]], "type": "qcurve"},
+    {"flags": 0, "points": [[(461, 526)]], "type": "line"},
+    {"flags": 0, "points": [[(461, 471)]], "type": "qcurve"},
+    {"flags": 0, "points": [[(420, 391)]], "type": "qcurve"},
+    {"flags": 0, "points": [[(381, 371)]], "type": "line"},
+    {"flags": 0, "points": [[(416, 363)]], "type": "qcurve"},
+    {"flags": 0, "points": [[(472, 314)]], "type": "qcurve"},
+    {"flags": 0, "points": [[(502, 242)]], "type": "qcurve"},
+    {"flags": 0, "points": [[(502, 200)]], "type": "line"},
+    {"flags": 0, "points": [[(502, 138)]], "type": "qcurve"},
+    {"flags": 0, "points": [[(451, 47)]], "type": "qcurve"},
+    {"flags": 0, "points": [[(358, 0)]], "type": "qcurve"},
+    {"flags": 0, "points": [[(296, 0)]], "type": "line"},
+    {"flags": 0, "points": [[(286, 388)]], "type": "move"},
+    {"flags": 0, "points": [[(342, 388)]], "type": "qcurve"},
+    {"flags": 0, "points": [[(398, 454)]], "type": "qcurve"},
+    {"flags": 0, "points": [[(398, 519)]], "type": "line"},
+    {"flags": 0, "points": [[(398, 561)]], "type": "qcurve"},
+    {"flags": 0, "points": [[(369, 618)]], "type": "qcurve"},
+    {"flags": 0, "points": [[(312, 647)]], "type": "qcurve"},
+    {"flags": 0, "points": [[(269, 647)]], "type": "line"},
+    {"flags": 0, "points": [[(151, 647)]], "type": "line"},
+    {"flags": 0, "points": [[(151, 388)]], "type": "line"},
+    {"flags": 0, "points": [[(301, 51)]], "type": "move"},
+    {"flags": 0, "points": [[(342, 51)]], "type": "qcurve"},
+    {"flags": 0, "points": [[(405, 85)]], "type": "qcurve"},
+    {"flags": 0, "points": [[(439, 148)]], "type": "qcurve"},
+    {"flags": 0, "points": [[(439, 192)]], "type": "line"},
+    {"flags": 0, "points": [[(439, 263)]], "type": "qcurve"},
+    {"flags": 0, "points": [[(360, 338)]], "type": "qcurve"},
+    {"flags": 0, "points": [[(284, 338)]], "type": "line"},
+    {"flags": 0, "points": [[(151, 338)]], "type": "line"},
+    {"flags": 0, "points": [[(151, 51)]], "type": "line"},
+]
+
+
 class VfbGlyphTest(TestCase):
     def test_drawPoints_quadratic(self):
         g = VfbGlyph(VfbEntry(), Vfb(empty_vfb_path))
@@ -471,9 +514,11 @@ class VfbGlyphTest(TestCase):
             ("closePath", ()),
         ]
 
-    def test_getPointPen(self):
+    def test_getPointPen_simple(self):
         # Get a point pen and draw into the vfb glyph
-        g = VfbGlyph(VfbEntry(parser=GlyphParser, compiler=GlyphCompiler), Vfb(empty_vfb_path))
+        g = VfbGlyph(
+            VfbEntry(parser=GlyphParser, compiler=GlyphCompiler), Vfb(empty_vfb_path)
+        )
         g.empty(num_masters=1)
         pen = g.getPointPen()
         pen.beginPath()
@@ -482,9 +527,119 @@ class VfbGlyphTest(TestCase):
         pen.addPoint(pt=(200, 200), segmentType="line", smooth=False)
         pen.addPoint(pt=(100, 150), segmentType="line", smooth=False)
         pen.endPath()
-        # g.entry.compile()
-        # g.entry.decompile()
-        # assert g.entry.decompiled == {}
+        assert g.entry.decompiled["nodes"] == [
+            {"flags": 0, "points": [[(100, 100)]], "type": "move"},
+            {"flags": 0, "points": [[(200, 100)]], "type": "line"},
+            {"flags": 0, "points": [[(200, 200)]], "type": "line"},
+            {"flags": 0, "points": [[(100, 150)]], "type": "line"},
+        ]
+
+    def test_getPointPen_simple_compile(self):
+        # Get a point pen and draw into the vfb glyph
+        g = VfbGlyph(
+            VfbEntry(parser=GlyphParser, compiler=GlyphCompiler), Vfb(empty_vfb_path)
+        )
+        g.empty(num_masters=1)
+        g.entry.decompiled["name"] = "a"
+        g.entry.decompiled["metrics"] = [(833, 0)]
+        g.entry.decompiled["num_node_values"] = 24
+        pen = g.getPointPen()
+        pen.beginPath()
+        pen.addPoint(pt=(100, 100), segmentType="line", smooth=False)
+        pen.addPoint(pt=(200, 100), segmentType="line", smooth=False)
+        pen.addPoint(pt=(200, 200), segmentType="line", smooth=False)
+        pen.addPoint(pt=(100, 150), segmentType="line", smooth=False)
+        pen.endPath()
+        g.entry.compile()
+        assert (
+            hexStr(g.entry.data)
+            == "01090701018c61088ca38f00efef01ef8b018bef01275902f9d58b0f"
+        )
+
+    def test_getPointPen_simple_decompile(self):
+        # Get a point pen and draw into the vfb glyph
+        g = VfbGlyph(
+            VfbEntry(parser=GlyphParser, compiler=GlyphCompiler), Vfb(empty_vfb_path)
+        )
+        g.empty(num_masters=1)
+        g.entry.decompiled["name"] = "a"
+        g.entry.decompiled["metrics"] = [(833, 0)]
+        g.entry.decompiled["num_node_values"] = 24
+        pen = g.getPointPen()
+        pen.beginPath()
+        pen.addPoint(pt=(100, 100), segmentType="line", smooth=False)
+        pen.addPoint(pt=(200, 100), segmentType="line", smooth=False)
+        pen.addPoint(pt=(200, 200), segmentType="line", smooth=False)
+        pen.addPoint(pt=(100, 150), segmentType="line", smooth=False)
+        pen.endPath()
+        g.entry.compile()
+        expected = VfbEntry(GlyphParser)
+        expected.data = deHexStr(
+            "01090701018c61088ca38f00efef01ef8b018bef01275902f9d58b0f"
+        )
+        expected.decompile()
+        g.entry.decompile()
+        assert expected.decompiled == g.entry.decompiled
+
+    def test_getPointPen_quadratic_1_master(self):
+        # Get a point pen and draw into the vfb glyph
+        g = VfbGlyph(
+            VfbEntry(parser=GlyphParser, compiler=GlyphCompiler),
+            Vfb(empty_vfb_path),
+        )
+        g.empty(num_masters=1)
+        pen = g.getPointPen()
+        pen.beginPath()
+        pen.addPoint((92, 0), "line", False, None)
+        pen.addPoint((92, 698), "line", False, None)
+        pen.addPoint((277, 698), "line", False, None)
+        pen.addPoint((336, 698), None, False, None)
+        pen.addPoint((419, 657), None, False, None)
+        pen.addPoint((461, 579), None, False, None)
+        pen.addPoint((461, 526), "qcurve", False, None)
+        pen.addPoint((461, 471), None, False, None)
+        pen.addPoint((420, 391), None, False, None)
+        pen.addPoint((381, 371), "qcurve", False, None)
+        pen.addPoint((416, 363), None, False, None)
+        pen.addPoint((472, 314), None, False, None)
+        pen.addPoint((502, 242), None, False, None)
+        pen.addPoint((502, 200), "qcurve", False, None)
+        pen.addPoint((502, 138), None, False, None)
+        pen.addPoint((451, 47), None, False, None)
+        pen.addPoint((358, 0), None, False, None)
+        pen.addPoint((296, 0), "qcurve", False, None)
+        pen.endPath()
+        pen.beginPath()
+        pen.addPoint((286, 388), "line", False, None)
+        pen.addPoint((342, 388), None, False, None)
+        pen.addPoint((398, 454), None, False, None)
+        pen.addPoint((398, 519), "qcurve", False, None)
+        pen.addPoint((398, 561), None, False, None)
+        pen.addPoint((369, 618), None, False, None)
+        pen.addPoint((312, 647), None, False, None)
+        pen.addPoint((269, 647), "qcurve", False, None)
+        pen.addPoint((151, 647), "line", False, None)
+        pen.addPoint((151, 388), "line", False, None)
+        pen.endPath()
+        pen.beginPath()
+        pen.addPoint((301, 51), "line", False, None)
+        pen.addPoint((342, 51), None, False, None)
+        pen.addPoint((405, 85), None, False, None)
+        pen.addPoint((439, 148), None, False, None)
+        pen.addPoint((439, 192), "qcurve", False, None)
+        pen.addPoint((439, 263), None, False, None)
+        pen.addPoint((360, 338), None, False, None)
+        pen.addPoint((284, 338), "qcurve", False, None)
+        pen.addPoint((151, 338), "line", False, None)
+        pen.addPoint((151, 51), "line", False, None)
+        pen.endPath()
+        assert g.entry.decompiled["nodes"] == glyph_nodes_q_1m
+        g.entry.compile()
+        # Clear the structured data
+        g.entry.decompiled = None
+        # And decompile again
+        g.entry.decompile()
+        assert g.entry.decompiled["nodes"] == glyph_nodes_q_1m
 
     def test_getPointPenMM(self):
         pass

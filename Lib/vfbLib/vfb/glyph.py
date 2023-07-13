@@ -27,6 +27,19 @@ class VfbGlyph:
         self._glyph: UfoMasterGlyph | None = None
         self._target_master = 0
 
+    # UFO/cu2qu compatibility
+
+    def clearContours(self):
+        try:
+            del self.entry.decompiled["hints"]
+        except KeyError:
+            pass
+        self.entry.decompiled["nodes"] = []
+        self.entry.decompiled["num_node_values"] = 0
+        self.entry.modified = True
+
+    # Native methods
+
     def decompile(self) -> str:
         """
         Decompile the Glyph entry and return the glyph name.
@@ -124,7 +137,7 @@ class VfbGlyph:
         if self.entry.decompiled is None:
             if self.entry.data is None:
                 # Make an empty glyph
-                self.entry.decompiled = {}
+                self.empty(self._parent.num_masters)
             else:
                 self.decompile()
         return VfbGlyphPointPen(self)
@@ -137,14 +150,18 @@ class VfbGlyph:
 
 
 class VfbGlyphPointPen(AbstractPointPen):
+    # FIXME: Only supports TrueType curves
     def __init__(self, glyph: VfbGlyph) -> None:
         self.glyph = glyph
         self.currentPath = None
+        self.in_qcurve = False
+        self.last_type = None
 
     def beginPath(self) -> None:
         self.currentPath = []
 
     def endPath(self) -> None:
+        self.glyph.entry.decompiled["nodes"].extend(self.currentPath)
         self.currentPath = None
 
     def addPoint(
@@ -156,7 +173,44 @@ class VfbGlyphPointPen(AbstractPointPen):
         **kwargs: Dict[str, Any],
     ) -> None:
         assert self.currentPath is not None
-        self.currentPath.append((pt, segmentType, smooth, name))
+
+        flags = 0
+        x, y = pt
+        node = {
+            "type": None,
+            "flags": flags,
+            "points": [[(round(x), round(y))]],
+        }
+
+        if segmentType == "qcurve":
+            self.in_qcurve = True
+
+        if not self.currentPath:
+            # Begin a new path
+
+            if segmentType == "move":  # Open path
+                flags += 8
+
+            # VFB first node always has type "move", save real type for later
+            node["type"] = "move"
+            self.last_type = segmentType
+
+        else:
+            # During path
+            if segmentType is None:
+                node["type"] = "qcurve"
+            elif segmentType == "qcurve":
+                if self.in_qcurve:
+                    node["type"] = "line"
+                    self.in_qcurve = False
+            elif segmentType == "line":
+                node["type"] = "line"
+            else:
+                print(f"Unsupported segment type: {segmentType}")
+                raise ValueError
+
+        node["flags"] = flags
+        self.currentPath.append(node)
 
     # def addComponent(self, baseName, transformation):
     #     assert self.currentPath is None

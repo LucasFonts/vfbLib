@@ -5,10 +5,11 @@ import logging
 from functools import cached_property
 from pathlib import Path
 from time import time
-from typing import TYPE_CHECKING, Any, Dict, Iterable, List, Tuple
+from typing import TYPE_CHECKING, Any, Dict, Iterable, List, Set, Tuple
 from vfbLib.vfb.glyph import VfbGlyph
 from vfbLib.vfb.entry import VfbEntry
 from vfbLib.vfb.header import VfbHeader
+from vfbLib.vfb.info import VfbInfo
 
 if TYPE_CHECKING:
     from io import BufferedReader
@@ -32,21 +33,25 @@ class Vfb:
         vfb_path: Path,
         timing=True,
         minimal=False,
-        only_keys: List[str] | None = None,
+        drop_keys: Set[str] | None = None,
         only_header=False,
     ) -> None:
         self.vfb_path = vfb_path
         self.timing = timing
         self.minimal = minimal
-        if only_keys is None:
-            self.only_keys = []
+        if drop_keys is None:
+            self.drop_keys = set()
         else:
-            self.only_keys = only_keys
+            self.drop_keys = drop_keys
         self.only_header = only_header
 
         # We need some minimal API to make pen access work ...
         self._glyphs: Dict[str, VfbGlyph] = {}
         self.glyph_order: List[str] = []
+
+        # cu2qu accesses the info and lib ...
+        self.info = VfbInfo(vfb=self)
+        self.lib = {}
 
         self.read()
 
@@ -101,6 +106,11 @@ class Vfb:
                 self._glyphs[name] = glyph
                 self.glyph_order.append(name)
 
+    def __contains__(self, key: str) -> bool:
+        if not self._glyphs:
+            self._decompile_glyphs()
+        return key in self._glyphs
+
     def __getitem__(self, key: str) -> VfbGlyph:
         if not self._glyphs:
             self._decompile_glyphs()
@@ -136,7 +146,8 @@ class Vfb:
                 break
 
             if entry is not None:
-                self.entries.append(entry)
+                if entry.key not in self.drop_keys:
+                    self.entries.append(entry)
 
         end = time()
         if self.timing:

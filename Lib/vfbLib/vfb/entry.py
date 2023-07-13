@@ -37,7 +37,7 @@ class VfbEntry:
         self.id = None
         self.key = None
         # Has the data been modified, i.e. it needs recompilation
-        self.modified = False
+        self._modified = False
         # The parser which can convert data to decompiled
         self.parser = parser
         # The compiler which can convert the decompiled to compiled data
@@ -70,6 +70,40 @@ class VfbEntry:
             int: The size of the current compiled data.
         """
         return len(self.data)
+
+    @property
+    def modified(self) -> bool:
+        return self._modified
+
+    @modified.setter
+    def modified(self, value) -> None:
+        self._modified = value
+        if self._modified:
+            try:
+                delattr(self, "size")
+            except AttributeError:
+                pass
+        else:
+            self.size
+        # Optimized version?
+        # if value:
+        #     if self._modified:
+        #         # Value has not changed from True
+        #         return
+
+        #     # Value has changed from False to True, invalidate caches
+        #     try:
+        #         delattr(self, "size")
+        #     except AttributeError:
+        #         pass
+        #     return
+
+        # if self._modified:
+        #     # Value changes from True to False
+        #     self._modified = False
+        #     return
+
+        # # Value is False, no change
 
     def _read_entry(
         self,

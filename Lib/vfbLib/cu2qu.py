@@ -1,27 +1,10 @@
 from __future__ import annotations
 
 from argparse import ArgumentParser
+from fontTools.cu2qu.ufo import font_to_quadratic, fonts_to_quadratic
 from pathlib import Path
 from vfbLib.version import build_date
 from vfbLib.vfb.vfb import Vfb
-
-
-def to_quadratic_mm(vfb) -> None:
-    """Convert a multiple master VFB to quadratic. The object is modified in place.
-
-    Args:
-        vfb (Vfb): The VFB object.
-    """
-    pass
-
-
-def to_quadratic_single(vfb) -> None:
-    """Convert a single master VFB to quadratic. The object is modified in place.
-
-    Args:
-        vfb (Vfb): The VFB object.
-    """
-    pass
 
 
 def vfbcu2qu():
@@ -59,23 +42,39 @@ def vfbcu2qu():
     )
     parser.add_argument(
         "-m",
-        "--minimal",
-        action="store_true",
-        default=False,
-        help="parse only minimal amount of data, drop missing glyphs from groups, etc.",
+        "--max-err-em",
+        type=float,
+        nargs=1,
+        help="Maximum allowed error, relative to the font's units per em.",
     )
     args = parser.parse_args()
     if args:
         vfb_path = Path(args.inputpath[0])
         print(parser.description)
         print(f"Reading file {vfb_path} ...")
-        vfb = Vfb(vfb_path, minimal=args.minimal)
+        vfb = Vfb(vfb_path, drop_keys={"Links"})
+        kwargs = {
+            "max_err_em": None,
+            "max_err": None,
+            "reverse_direction": True,
+            "stats": None,
+            "dump_stats": False,
+            "remember_curve_type": False,  # Prevent write access to the lib
+            "all_quadratic": True,
+        }
+        if args.max_err_em:
+            kwargs["max_err_em"] = args.max_err_em[0]
         if vfb.num_masters == 1:
-            to_quadratic_single(vfb)
+            modified = font_to_quadratic(vfb, **kwargs)
         elif vfb.num_masters > 1:
-            to_quadratic_mm(vfb)
+            # FIXME: How do we set the master number?
+            modified = fonts_to_quadratic(vfb, **kwargs)
         else:
             print(f"Unsupported number of masters: {vfb.num_masters}")
+            return
+
+        if not modified:
+            print("File was not modified.")
             return
 
         suffix = ".qu.vfb"
