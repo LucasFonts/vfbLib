@@ -192,6 +192,12 @@ parser_classes = {
 }
 # fmt: on
 
+# Make sure the human-readable keys are unique
+all_classes = [key for key, _, _ in parser_classes.values()]
+assert len(set(all_classes)) == len(all_classes)
+
+entry_ids = {v[0]: k for k, v in parser_classes.items()}
+
 ignore_minimal = [
     "Background Bitmap",
     "fontNote",
