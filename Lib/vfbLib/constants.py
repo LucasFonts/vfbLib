@@ -140,6 +140,7 @@ parser_classes = {
     1279: ("hhea_descender", SignedIntParser, None),
     1294: ("Global Guides", GlobalGuidesParser, None),
     1296: ("Global Guide Properties", GuidePropertiesParser, None),
+    1410: ("1410", BaseParser, None),
     1500: ("Encoding", GlyphEncodingParser, None),
     1501: ("Encoding Mac", GlyphEncodingParser, None),
     1502: ("1502", IntParser, None),

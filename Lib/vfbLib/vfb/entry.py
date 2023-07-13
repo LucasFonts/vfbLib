@@ -183,4 +183,10 @@ class VfbEntry:
         """
         self.stream = stream
         self.key, self.parser, self.compiler, size = self._read_entry()
-        self.data = self.stream.read(size)
+        if self.key == "1410":
+            # FIXME: Special FL3 stuff?
+            if size != 4:
+                print(f"Entry 1410 with size {size}")
+            self.data = self.stream.read(10)
+        else:
+            self.data = self.stream.read(size)
