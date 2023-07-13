@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import logging
 
+from functools import cached_property
 from pathlib import Path
 from time import time
 from typing import TYPE_CHECKING, Any, Dict, Iterable, List, Tuple
@@ -49,7 +50,7 @@ class Vfb:
 
         self.read()
 
-    @property
+    @cached_property
     def num_masters(self) -> int:
         """Return the number of masters in the vfb.
 
