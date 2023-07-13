@@ -58,6 +58,7 @@ class Vfb:
             int: The number of masters, or 0 if no glyphs are present.
         """
         if not self._glyphs:
+            # Find a glyph and decompile it
             glyph = None
             for entry in self.entries:
                 if entry.key == "Glyph":
