@@ -6,7 +6,21 @@ from vfbLib.version import build_date
 from vfbLib.vfb.vfb import Vfb
 
 
+def to_quadratic_mm(vfb) -> None:
+    """Convert a multiple master VFB to quadratic. The object is modified in place.
+
+    Args:
+        vfb (Vfb): The VFB object.
+    """
+    pass
+
+
 def to_quadratic_single(vfb) -> None:
+    """Convert a single master VFB to quadratic. The object is modified in place.
+
+    Args:
+        vfb (Vfb): The VFB object.
+    """
     pass
 
 
@@ -56,6 +70,14 @@ def vfbcu2qu():
         print(parser.description)
         print(f"Reading file {vfb_path} ...")
         vfb = Vfb(vfb_path, minimal=args.minimal)
+        if vfb.num_masters == 1:
+            to_quadratic_single(vfb)
+        elif vfb.num_masters > 1:
+            to_quadratic_mm(vfb)
+        else:
+            print(f"Unsupported number of masters: {vfb.num_masters}")
+            return
+
         suffix = ".qu.vfb"
         if args.path:
             out_path = (Path(args.path[0]) / vfb_path.name).with_suffix(suffix)
