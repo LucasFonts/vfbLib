@@ -148,5 +148,7 @@ class Vfb:
             for entry in self.entries:
                 if entry.modified:
                     entry.compile()
-                assert entry.data
+                vfb.write(entry.header)
                 vfb.write(entry.data)
+            # File end marker
+            vfb.write(b"\05\00\00\00\02\00\00\00")

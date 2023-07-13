@@ -3,7 +3,9 @@ from __future__ import annotations
 import logging
 
 from fontTools.misc.textTools import hexStr
+from functools import cached_property
 from io import BytesIO
+from struct import pack
 from typing import TYPE_CHECKING, Any, Dict, Tuple, Type
 
 # from vfbLib.reader import FALLBACK_PARSER
@@ -31,16 +33,43 @@ class VfbEntry:
         self.data: bytes | None = None
         # The decompiled data
         self.decompiled = None
-        # The numeric key of the entry
+        # The numeric and human-readable key of the entry
+        self.id = None
         self.key = None
         # Has the data been modified, i.e. it needs recompilation
         self.modified = False
         # The parser which can convert data to decompiled
         self.parser = parser
-        # The size of the compiled data
-        self.size = 0
         # The compiler which can convert the decompiled to compiled data
         self.compiler = compiler
+
+    @cached_property
+    def header(self) -> bytes:
+        """The entry header.
+
+        Returns:
+            bytes: The data of the current entry header.
+        """
+        header = BytesIO()
+        if self.size > 0xFFFF:
+            entry_id = self.id | 0x8000
+        else:
+            entry_id = self.id
+        header.write(pack("<H", entry_id))
+        if self.size > 0xFFFF:
+            header.write(pack("<I", self.size))
+        else:
+            header.write(pack("<H", self.size))
+        return header.getvalue()
+
+    @cached_property
+    def size(self) -> int:
+        """The size of the compiled data.
+
+        Returns:
+            int: The size of the current compiled data.
+        """
+        return len(self.data)
 
     def _read_entry(
         self,
@@ -49,13 +78,13 @@ class VfbEntry:
         Read an entry from the stream and return its key, specialized parser
         class, and data size.
         """
-        entry_id = BaseParser.read_uint16(self.stream)
+        self.id = BaseParser.read_uint16(self.stream)
         entry_info = parser_classes.get(
-            entry_id & ~0x8000, (str(entry_id), FALLBACK_PARSER, None)
+            self.id & ~0x8000, (str(self.id), FALLBACK_PARSER, None)
         )
         key, parser_class, compiler_class = entry_info
 
-        if entry_id == 5:
+        if self.id == 5:
             # File end marker?
             BaseParser.read_uint16(self.stream)
             two = BaseParser.read_uint16(self.stream)
@@ -63,7 +92,7 @@ class VfbEntry:
                 BaseParser.read_uint16(self.stream)
                 raise EOFError
 
-        if entry_id & 0x8000:
+        if self.id & 0x8000:
             # Uses uint32 for data length
             num_bytes = BaseParser.read_uint32(self.stream)
         else:
@@ -96,12 +125,6 @@ class VfbEntry:
             return
 
         self.data = self.compiler.compile(self.decompiled)
-
-        if self.data:
-            self.size = len(self.data)
-        else:
-            self.size = 0
-
         self.modified = False
 
     def decompile(self):
@@ -125,5 +148,5 @@ class VfbEntry:
         Read the entry from the stream without decompiling the data.
         """
         self.stream = stream
-        self.key, self.parser, self.compiler, self.size = self._read_entry()
-        self.data = self.stream.read(self.size)
+        self.key, self.parser, self.compiler, size = self._read_entry()
+        self.data = self.stream.read(size)
