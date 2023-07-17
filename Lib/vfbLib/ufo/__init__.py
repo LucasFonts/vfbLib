@@ -12,6 +12,7 @@ from pathlib import Path
 from shutil import rmtree
 from typing import TYPE_CHECKING, Any, Dict, List, Tuple
 from ufoLib2 import Font
+from ufoLib2.objects.features import Features
 from ufonormalizer import normalizeUFO
 from vfbLib.ufo.designspace import get_ds_location
 from vfbLib.ufo.glyph import VfbToUfoGlyph
@@ -57,7 +58,7 @@ class VfbToUfoBuilder:
         self.include_ps_hints = pshints
 
         self.features_classes = ""
-        self.features = ""
+        self.features_code = ""
         self.groups: UfoGroups = {}
         self.guide_properties: GuidePropertyList = []
         self.info = VfbToUfoInfo()
@@ -354,7 +355,7 @@ class VfbToUfoBuilder:
             elif name == "Code Stop PPEM":  # 1275
                 self.set_tt_code_stop(data)
             elif name == "openTypeFeatures":  # 1276
-                self.features = "\n".join(data)
+                self.features_code = "\n".join(data)
             elif name == "OpenType Class":  # 1277
                 self.add_ot_class(data)
             elif name == "Global Guides":  # 1294
@@ -564,20 +565,13 @@ class VfbToUfoBuilder:
         if not silent:
             print(f"Processing font: {self.info.ui_name.strip()}, master {index}")
 
-        # Build the data that can be passed when instantiating the UFO
-        # FIXME: Features need to be done only once for all master UFOs
-        features = None
-        if self.features:
-            if self.features_classes:
-                features = self.features_classes + "\n\n" + self.features
-            else:
-                features = self.features
+        # Build the master-specific data that can be passed when instantiating the UFO
         self.ufo_kerning.extract_master_kerning(master_index=index)
         master_info = self.get_master_info(master_index=index)
 
         # Pass as much data right to the UFO
         ufo = Font(
-            features=features,
+            features=self.ufo_features,
             groups=self.ufo_groups,
             info=master_info,
             kerning=self.ufo_kerning.master_kerning,
@@ -618,6 +612,10 @@ class VfbToUfoBuilder:
         )
         self.ufo_kerning = UfoKerning(self.glyphOrder, self.ufo_groups, self.mm_kerning)
         self.ufo_groups = self.ufo_kerning.groups
+        self.ufo_features = Features(self.features_code)
+        if self.features_classes:
+            self.ufo_features.text = self.features_classes + "\n\n" + self.features_code
+
         ufo_masters: List[Font] = []
         for i in range(len(self.masters)):
             ufo_masters.append(self.get_ufo_master(i, silent))
