@@ -651,10 +651,7 @@ class VfbToUfoBuilder:
                 structure=strct,
             )
             ufo.write(writer)
-            # Needed?
-            normalizeUFO(
-                ufoPath=str(master_path), onlyModified=False, writeModTimes=False
-            )
+            normalizeUFO(ufoPath=master_path, onlyModified=False, writeModTimes=False)
 
         # Write the Designspace
         if ds:
