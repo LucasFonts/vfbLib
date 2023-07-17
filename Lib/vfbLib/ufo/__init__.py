@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import logging
 
+from copy import deepcopy
 from fontTools.designspaceLib import (
     AxisDescriptor,
     AxisLabelDescriptor,
@@ -504,6 +505,7 @@ class VfbToUfoBuilder:
         self.info.fix_underline_position()
 
     def get_master_info(self, master_index: int = 0) -> VfbToUfoInfo:
+        master_info = deepcopy(self.info)
         # Update the info with master-specific values
         properties = [
             ("ascender", "ascender"),
@@ -524,13 +526,13 @@ class VfbToUfoBuilder:
         for key, attr in properties:
             value = self.masters_ps_info[master_index].get(key, None)
             if value is not None:
-                setattr(self.info, attr, value)
+                setattr(master_info, attr, value)
 
         if self.include_ps_hints:
             # Set "force bold"
             value = self.masters_ps_info[master_index].get("force_bold", None)
             if value is not None:
-                self.info.postscriptForceBold = bool(value)
+                master_info.postscriptForceBold = bool(value)
 
             # Set attributes that must be clipped at a certain index
             for key, attr in (
@@ -548,7 +550,7 @@ class VfbToUfoBuilder:
 
                 value = self.masters_ps_info[master_index].get(key, None)
                 if value is not None:
-                    setattr(self.info, attr, value[:num_values])
+                    setattr(master_info, attr, value[:num_values])
 
         # Guides
         if not self.minimal and self.mm_guides is not None:
@@ -556,9 +558,9 @@ class VfbToUfoBuilder:
             apply_guide_properties(guides, self.guide_properties)
 
             if guides:
-                self.info.guidelines = guides
+                master_info.guidelines = guides
 
-        return self.info
+        return master_info
 
     def get_ufo_master(self, index: int, silent=False) -> Font:
         if not silent:
