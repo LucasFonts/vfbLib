@@ -16,5 +16,7 @@ class VfbInfo:
         for entry in self.parent.entries:
             if entry.key == "upm":
                 entry.decompile()
+                if entry.decompiled is None:
+                    return 0
                 return entry.decompiled
         return 0
