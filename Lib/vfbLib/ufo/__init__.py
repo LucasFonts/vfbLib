@@ -697,7 +697,8 @@ class VfbToUfoBuilder:
                 # locationLabel="",
                 name=f"instance_{i}",
                 # postScriptFontName="",
-                styleMapFamilyName=f"{self.info.ds_family_name} {style_name}".strip(),  # FIXME
+                # FIXME:
+                styleMapFamilyName=f"{self.info.ds_family_name} {style_name}".strip(),
                 styleMapStyleName=self.info.styleMapStyleName,
                 styleName=style_name,
                 userLocation=get_ds_location(self.axes, loc, 1),
