@@ -7,9 +7,8 @@ from fontTools.designspaceLib import (
     AxisLabelDescriptor,
     DesignSpaceDocument,
 )
-from fontTools.ufoLib import UFOFileStructure, UFOWriter
+from fontTools.ufoLib import UFOFileStructure
 from pathlib import Path
-from shutil import rmtree
 from typing import TYPE_CHECKING, Any, Dict, List, Tuple
 from ufoLib2 import Font
 from ufoLib2.objects.features import Features
@@ -636,19 +635,7 @@ class VfbToUfoBuilder:
         strct = UFOFileStructure.ZIP if ufoz else None
         for index, ufo in enumerate(ufos):
             master_path = self.get_master_path(out_path, index)
-            if master_path.exists():
-                if overwrite:
-                    rmtree(master_path)
-                else:
-                    raise FileExistsError(str(master_path))
-
-            writer = UFOWriter(
-                master_path,
-                formatVersion=3,
-                fileCreator="com.lucasfonts.vfb3ufo",
-                structure=strct,
-            )
-            ufo.write(writer)
+            ufo.save(master_path, structure=strct, overwrite=overwrite)
             normalizeUFO(ufoPath=master_path, onlyModified=False, writeModTimes=False)
 
         # Write the Designspace
