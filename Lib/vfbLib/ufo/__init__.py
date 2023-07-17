@@ -90,7 +90,8 @@ class VfbToUfoBuilder:
     def add_axis_mappings(self, data: List[Tuple[float, float]]) -> None:
         if not self.axis_mappings_count:
             raise ValueError(
-                "If axis mappings are present, axis mappings count must be set before parsing them."
+                "If axis mappings are present, axis mappings count must be set before "
+                "parsing them."
             )
         for i in range(self.axis_count):
             # Get the number of mappings for the current axis
