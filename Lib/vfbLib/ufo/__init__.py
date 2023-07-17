@@ -8,13 +8,12 @@ from fontTools.designspaceLib import (
     DesignSpaceDocument,
 )
 from fontTools.ufoLib import UFOFileStructure, UFOWriter
-from fontTools.ufoLib.glifLib import GlyphSet
 from pathlib import Path
 from shutil import rmtree
 from typing import TYPE_CHECKING, Any, Dict, List, Tuple
 from ufoLib2 import Font
 from ufonormalizer import normalizeUFO
-from vfbLib.ufo.designspace import get_ds_design_location, get_ds_location
+from vfbLib.ufo.designspace import get_ds_location
 from vfbLib.ufo.glyph import VfbToUfoGlyph
 from vfbLib.ufo.groups import transform_groups
 from vfbLib.ufo.guides import apply_guide_properties, get_master_guides
