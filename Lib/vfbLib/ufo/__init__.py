@@ -597,6 +597,12 @@ class VfbToUfoBuilder:
 
         return ufo
 
+    def get_ufo_masters(self, silent=False) -> List[Font]:
+        ufo_masters = []
+        for i in range(len(self.masters)):
+            ufo_masters.append(self.get_ufo_master(i, silent))
+        return ufo_masters
+
     def get_ufos_designspace(
         self, out_path: Path, silent=False
     ) -> Tuple[List[Font], DesignSpaceDocument | None]:
@@ -617,9 +623,7 @@ class VfbToUfoBuilder:
         if self.features_classes:
             self.ufo_features.text = self.features_classes + "\n\n" + self.features_code
 
-        ufo_masters: List[Font] = []
-        for i in range(len(self.masters)):
-            ufo_masters.append(self.get_ufo_master(i, silent))
+        ufo_masters = self.get_ufo_masters(silent)
         ds: DesignSpaceDocument | None = None
         if self.axes:
             ds = self.get_designspace(out_path)
