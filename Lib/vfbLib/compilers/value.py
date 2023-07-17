@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-from fontTools.misc.textTools import deHexStr, hexStr
 from io import BufferedWriter, BytesIO
 from struct import pack
 

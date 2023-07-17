@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import logging
 
-from struct import unpack
 from typing import Any, Dict, List, Tuple
 from vfbLib.parsers import BaseParser, read_encoded_value
 
