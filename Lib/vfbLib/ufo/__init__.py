@@ -12,6 +12,7 @@ from fontTools.ufoLib.glifLib import GlyphSet
 from pathlib import Path
 from shutil import rmtree
 from typing import TYPE_CHECKING, Any, Dict, List, Tuple
+from ufoLib2 import Font
 from ufonormalizer import normalizeUFO
 from vfbLib.ufo.designspace import get_ds_design_location, get_ds_location
 from vfbLib.ufo.glyph import VfbToUfoGlyph
@@ -38,7 +39,7 @@ if TYPE_CHECKING:
 logger = logging.getLogger(__name__)
 
 
-class VfbToUfoWriter:
+class VfbToUfoBuilder:
     def __init__(
         self,
         json: List[List[Any]],
@@ -559,7 +560,56 @@ class VfbToUfoWriter:
 
         return self.info
 
-    def write(self, out_path: Path, overwrite=False, silent=False, ufoz=False) -> None:
+    def get_ufo_master(self, index: int, silent=False) -> Font:
+        if not silent:
+            print(f"Processing font: {self.info.ui_name.strip()}, master {index}")
+
+        # Build the data that can be passed when instantiating the UFO
+        # FIXME: Features need to be done only once for all master UFOs
+        features = None
+        if self.features:
+            if self.features_classes:
+                features = self.features_classes + "\n\n" + self.features
+            else:
+                features = self.features
+        self.ufo_kerning.extract_master_kerning(master_index=index)
+        master_info = self.get_master_info(master_index=index)
+
+        # Pass as much data right to the UFO
+        ufo = Font(
+            features=features,
+            groups=self.ufo_groups,
+            info=master_info,
+            kerning=self.ufo_kerning.master_kerning,
+            lib=self.lib,
+        )
+
+        # Add the glyphs
+        for name, mm_glyph in self.glyph_masters.items():
+            logger.debug(f"    {name}, {type(name)}, {mm_glyph}")
+            master_glyph = UfoMasterGlyph(mm_glyph, self.glyphOrder, index)
+            master_glyph.build(
+                self.minimal, self.include_ps_hints, self.encode_data_base64
+            )
+            ufo_glyph = ufo.newGlyph(name)
+            pen = ufo_glyph.getPointPen()
+            master_glyph.drawPoints(pen)
+            ufo_glyph.anchors = master_glyph.anchors  # FIXME: Works, but typing wrong
+            ufo_glyph.guidelines = master_glyph.guidelines
+            ufo_glyph.lib = master_glyph.lib
+            ufo_glyph.width = master_glyph.width
+            ufo_glyph.unicodes = master_glyph.unicodes
+
+        return ufo
+
+    def get_ufos_designspace(
+        self, out_path: Path, silent=False
+    ) -> Tuple[List[Font], DesignSpaceDocument | None]:
+        """
+        Build UFOs and a DesignSpaceDocument from the VFB contents in memory and return
+        them. The DesignSpaceDocument is only returned for VFBs containing more than one
+        master. In other cases, the second element of the returned tuple is None.
+        """
         self.ufo_groups = transform_groups(
             self.groups,
             self.kerning_class_flags,
@@ -568,18 +618,59 @@ class VfbToUfoWriter:
         )
         self.ufo_kerning = UfoKerning(self.glyphOrder, self.ufo_groups, self.mm_kerning)
         self.ufo_groups = self.ufo_kerning.groups
+        ufo_masters: List[Font] = []
         for i in range(len(self.masters)):
-            self.write_master(i, out_path, overwrite, silent, ufoz)
+            ufo_masters.append(self.get_ufo_master(i, silent))
+        ds: DesignSpaceDocument | None = None
         if self.axes:
-            self.write_designspace(
-                out_path.with_suffix(".designspace"), overwrite, silent
+            ds = self.get_designspace(out_path)
+        return ufo_masters, ds
+
+    def write(self, out_path: Path, overwrite=False, silent=False, ufoz=False) -> None:
+        """
+        Write a the VFB contents to master UFOs and a designspace file. The designspace
+        file is only written if the VFB contains more than one master.
+        """
+        # Build UFOs and DesignSpace
+        ufos, ds = self.get_ufos_designspace(out_path, silent)
+
+        # Write the master UFOs
+        strct = UFOFileStructure.ZIP if ufoz else None
+        for index, ufo in enumerate(ufos):
+            master_path = self.get_master_path(out_path, index)
+            if master_path.exists():
+                if overwrite:
+                    rmtree(master_path)
+                else:
+                    raise FileExistsError(str(master_path))
+
+            writer = UFOWriter(
+                master_path,
+                formatVersion=3,
+                fileCreator="com.lucasfonts.vfb3ufo",
+                structure=strct,
+            )
+            ufo.write(writer)
+            # Needed?
+            normalizeUFO(
+                ufoPath=str(master_path), onlyModified=False, writeModTimes=False
             )
 
-    def write_designspace(self, out_path: Path, overwrite=False, silent=False) -> None:
-        if out_path.exists():
-            if not overwrite:
-                raise FileExistsError(str(out_path))
+        # Write the Designspace
+        if ds:
+            ds_path = out_path.with_suffix(".designspace")
+            if ds_path.exists():
+                if not overwrite:
+                    raise FileExistsError(str(ds_path))
+            if not silent:
+                print(f"Writing designspace: {out_path}")
+            ds.write(str(ds_path))
 
+    def get_designspace(self, out_path: Path) -> DesignSpaceDocument:
+        """
+        Build and return a DesignSpaceDocument. The out_path argument will be used to
+        construct the UFO paths assigned to the source descriptors.
+        """
         ds = DesignSpaceDocument()
         ds.axes = self.axes
 
@@ -630,10 +721,7 @@ class VfbToUfoWriter:
                 userLocation=get_ds_location(self.axes, loc, 1),
             )
 
-        if not silent:
-            print(f"Writing designspace: {out_path}")
-
-        ds.write(str(out_path))
+        return ds
 
     def get_master_path(self, out_path: Path, master_index: int) -> Path:
         if master_index > 0:

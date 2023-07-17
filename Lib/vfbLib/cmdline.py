@@ -7,7 +7,7 @@ import logging
 from argparse import ArgumentParser
 from pathlib import Path
 from vfbLib.reader import VFBReader
-from vfbLib.ufo import VfbToUfoWriter
+from vfbLib.ufo import VfbToUfoBuilder
 from vfbLib.version import build_date
 from vfbLib.vfb.vfb import Vfb
 
@@ -153,17 +153,17 @@ def vfb2ufo():
             out_path = (Path(args.path[0]) / vfb_path.name).with_suffix(suffix)
         else:
             out_path = vfb_path.with_suffix(suffix)
-        writer = VfbToUfoWriter(
+        builder = VfbToUfoBuilder(
             reader.data,
             minimal=args.minimal,
             base64=args.base64,
             pshints=not args.no_postscript_hints,
         )
-        writer.write(
+        builder.write(
             out_path,
             overwrite=args.force_overwrite,
             silent=args.silent,
-            ufoz=False,  # FIXME
+            ufoz=args.zip,
         )
     else:
         parser.print_help()
