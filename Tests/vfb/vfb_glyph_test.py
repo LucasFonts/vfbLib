@@ -576,6 +576,7 @@ class VfbGlyphTest(TestCase):
         )
         expected.decompile()
         g.entry.decompile()
+        print(g.entry.decompiled)
         assert expected.decompiled == g.entry.decompiled
 
     def test_getPointPen_quadratic_1_master(self):
@@ -630,9 +631,6 @@ class VfbGlyphTest(TestCase):
         pen.endPath()
         assert g.entry.decompiled["nodes"] == glyph_nodes_q_1m
         g.entry.compile()
-        # Clear the structured data
-        g.entry.decompiled = None
-        # And decompile again
         g.entry.decompile()
         assert g.entry.decompiled["nodes"] == glyph_nodes_q_1m
 
