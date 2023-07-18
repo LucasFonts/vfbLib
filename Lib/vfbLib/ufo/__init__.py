@@ -664,7 +664,7 @@ class VfbToUfoBuilder:
                 if not overwrite:
                     raise FileExistsError(str(ds_path))
             if not silent:
-                print(f"Writing designspace: {out_path}")
+                print(f"Writing designspace: {ds_path}")
             ds.write(str(ds_path))
 
     def get_designspace(self, out_path: Path) -> DesignSpaceDocument:
