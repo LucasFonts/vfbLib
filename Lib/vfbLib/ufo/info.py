@@ -82,6 +82,9 @@ class VfbToUfoInfo(Info):
 
     @cached_property
     def ds_family_name(self) -> str | None:
+        """
+        Return the family name for use in the DesignSpaceDocument.
+        """
         if self.openTypeNamePreferredFamilyName:
             return self.openTypeNamePreferredFamilyName
         if self.familyName:
@@ -90,6 +93,9 @@ class VfbToUfoInfo(Info):
 
     @cached_property
     def ds_style_name(self) -> str | None:
+        """
+        Return the style name for use in the DesignSpaceDocument.
+        """
         if self.openTypeNamePreferredSubfamilyName:
             return self.openTypeNamePreferredSubfamilyName
         if self.styleName:
