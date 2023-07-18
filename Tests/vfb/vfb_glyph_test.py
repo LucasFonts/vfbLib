@@ -14,7 +14,6 @@ empty_vfb_path = Path(__file__).parent.parent / "Data" / "empty_522.vfb"
 
 
 glyph_dict_c = {
-    "constants": (1, 9, 7, 1),
     "hints": {
         "h": [],
         "hintmasks": [
@@ -159,7 +158,6 @@ glyph_dict_c = {
 }
 
 glyph_dict_q = {
-    "constants": (1, 9, 7, 1),
     "guides": {"h": [[], []], "v": [[], []]},
     "metrics": [(550, 0), (550, 0)],
     "name": "B",
@@ -291,7 +289,8 @@ glyph_nodes_q_1m = [
 
 class VfbGlyphTest(TestCase):
     def test_drawPoints_quadratic(self):
-        g = VfbGlyph(VfbEntry(), Vfb(empty_vfb_path))
+        vfb = Vfb(empty_vfb_path)
+        g = VfbGlyph(VfbEntry(vfb), vfb)
         g.entry.decompiled = glyph_dict_q
         g._copy_to_ufo_glyph()
         g.target_master = 0
@@ -393,7 +392,8 @@ class VfbGlyphTest(TestCase):
         # ]
 
     def test_draw_quadratic(self):
-        g = VfbGlyph(VfbEntry(), Vfb(empty_vfb_path))
+        vfb = Vfb(empty_vfb_path)
+        g = VfbGlyph(VfbEntry(vfb), vfb)
         g.entry.decompiled = glyph_dict_q
         g._copy_to_ufo_glyph()
         g.target_master = 0
@@ -423,7 +423,8 @@ class VfbGlyphTest(TestCase):
         ]
 
     def test_drawPoints_cubic(self):
-        g = VfbGlyph(VfbEntry(), Vfb(empty_vfb_path))
+        vfb = Vfb(empty_vfb_path)
+        g = VfbGlyph(VfbEntry(vfb), vfb)
         g.entry.decompiled = glyph_dict_c
         g._copy_to_ufo_glyph()
         g.target_master = 0
@@ -478,7 +479,8 @@ class VfbGlyphTest(TestCase):
         ]
 
     def test_draw_cubic(self):
-        g = VfbGlyph(VfbEntry(), Vfb(empty_vfb_path))
+        vfb = Vfb(empty_vfb_path)
+        g = VfbGlyph(VfbEntry(vfb), vfb)
         g.entry.decompiled = glyph_dict_c
         g._copy_to_ufo_glyph()
         g.target_master = 0
@@ -516,10 +518,9 @@ class VfbGlyphTest(TestCase):
 
     def test_getPointPen_simple(self):
         # Get a point pen and draw into the vfb glyph
-        g = VfbGlyph(
-            VfbEntry(parser=GlyphParser, compiler=GlyphCompiler), Vfb(empty_vfb_path)
-        )
-        g.empty(num_masters=1)
+        vfb = Vfb(empty_vfb_path)
+        g = VfbGlyph(VfbEntry(vfb, parser=GlyphParser, compiler=GlyphCompiler), vfb)
+        g.empty()
         pen = g.getPointPen()
         pen.beginPath()
         pen.addPoint(pt=(100, 100), segmentType="line", smooth=False)
@@ -536,13 +537,11 @@ class VfbGlyphTest(TestCase):
 
     def test_getPointPen_simple_compile(self):
         # Get a point pen and draw into the vfb glyph
-        g = VfbGlyph(
-            VfbEntry(parser=GlyphParser, compiler=GlyphCompiler), Vfb(empty_vfb_path)
-        )
-        g.empty(num_masters=1)
+        vfb = Vfb(empty_vfb_path)
+        g = VfbGlyph(VfbEntry(vfb, parser=GlyphParser, compiler=GlyphCompiler), vfb)
+        g.empty()
         g.entry.decompiled["name"] = "a"
         g.entry.decompiled["metrics"] = [(833, 0)]
-        g.entry.decompiled["num_node_values"] = 24
         pen = g.getPointPen()
         pen.beginPath()
         pen.addPoint(pt=(100, 100), segmentType="line", smooth=False)
@@ -558,13 +557,11 @@ class VfbGlyphTest(TestCase):
 
     def test_getPointPen_simple_decompile(self):
         # Get a point pen and draw into the vfb glyph
-        g = VfbGlyph(
-            VfbEntry(parser=GlyphParser, compiler=GlyphCompiler), Vfb(empty_vfb_path)
-        )
-        g.empty(num_masters=1)
+        vfb = Vfb(empty_vfb_path)
+        g = VfbGlyph(VfbEntry(vfb, parser=GlyphParser, compiler=GlyphCompiler), vfb)
+        g.empty()
         g.entry.decompiled["name"] = "a"
         g.entry.decompiled["metrics"] = [(833, 0)]
-        g.entry.decompiled["num_node_values"] = 24
         pen = g.getPointPen()
         pen.beginPath()
         pen.addPoint(pt=(100, 100), segmentType="line", smooth=False)
@@ -573,7 +570,7 @@ class VfbGlyphTest(TestCase):
         pen.addPoint(pt=(100, 150), segmentType="line", smooth=False)
         pen.endPath()
         g.entry.compile()
-        expected = VfbEntry(GlyphParser)
+        expected = VfbEntry(vfb, GlyphParser)
         expected.data = deHexStr(
             "01090701018c61088ca38f00efef01ef8b018bef01275902f9d58b0f"
         )
@@ -583,11 +580,9 @@ class VfbGlyphTest(TestCase):
 
     def test_getPointPen_quadratic_1_master(self):
         # Get a point pen and draw into the vfb glyph
-        g = VfbGlyph(
-            VfbEntry(parser=GlyphParser, compiler=GlyphCompiler),
-            Vfb(empty_vfb_path),
-        )
-        g.empty(num_masters=1)
+        vfb = Vfb(empty_vfb_path)
+        g = VfbGlyph(VfbEntry(vfb, parser=GlyphParser, compiler=GlyphCompiler), vfb)
+        g.empty()
         pen = g.getPointPen()
         pen.beginPath()
         pen.addPoint((92, 0), "line", False, None)

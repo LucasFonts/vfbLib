@@ -7,6 +7,7 @@ from pathlib import Path
 from unittest import TestCase
 from vfbLib.reader import VFBReader
 from vfbLib.ufo import VfbToUfoBuilder
+from vfbLib.vfb.vfb import Vfb
 
 
 def data_path():
@@ -18,10 +19,10 @@ def vfb_path(name: str) -> Path:
 
 
 class GlyphCompilerTest(TestCase):
-    def test_vfb_to_ufo_mm_reader(self):
-        reader = VFBReader(vfb_path("masters.vfb"))
-        reader.read()
-        builder = VfbToUfoBuilder(reader.data)
+    def test_vfb_to_ufo_mm(self):
+        vfb = Vfb(vfb_path("masters.vfb"))
+        vfb.decompile()
+        builder = VfbToUfoBuilder(vfb)
         ufos, designspace = builder.get_ufos_designspace(data_path())
         assert len(ufos) == 4
         assert isinstance(designspace, DesignSpaceDocument)
@@ -58,9 +59,9 @@ class GlyphCompilerTest(TestCase):
 
     def test_vfb_to_ufo_mm_reader_deepcopy(self):
         # Check that objects have been copied and are not shared anymore between UFOs
-        reader = VFBReader(vfb_path("masters.vfb"))
-        reader.read()
-        builder = VfbToUfoBuilder(reader.data)
+        vfb = Vfb(vfb_path("masters.vfb"))
+        vfb.decompile()
+        builder = VfbToUfoBuilder(vfb)
         ufos = builder.get_ufo_masters(silent=True)
         assert len(ufos) == 4
 

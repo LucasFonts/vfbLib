@@ -54,13 +54,11 @@ composite_2_masters_json = {
             "scaleY": [1.0, 1.0],
         },
     ],
-    "constants": (1, 9, 7, 1),
     "kerning": {919: [-119, -95]},
     "metrics": [(605, 0), (641, 0)],
     "name": "Adieresis",
     "nodes": [],
     "num_masters": 2,
-    "num_node_values": 0,
 }
 
 components_2_masters_binary = deHexStr(
@@ -117,9 +115,7 @@ empty_glyph_binary = deHexStr(
 )
 
 empty_glyph_json = {
-    "constants": (1, 9, 7, 1),
     "name": ".null",
-    "num_node_values": 0,
     "num_masters": 2,
     "nodes": [],
     "metrics": [(0, 0), (0, 0)],
@@ -265,9 +261,7 @@ psglyph_1master_nodes = deHexStr(
 
 # fmt: off
 psglyph_1master_expected = {
-    "constants": (1, 9, 7, 1),
     "name": "d",
-    "num_node_values": 490,
     "num_masters": 1,
     "nodes": [
         {"type": "move",  "flags": 0, "points": [[(360, 664)]]},
@@ -379,7 +373,6 @@ ttglyph_2_masters_binary = deHexStr(
 )
 
 ttglyph_2_masters_json = {
-    "constants": (1, 9, 7, 1),
     "kerning": {
         782: [-9, -13],
         788: [-1, -7],
@@ -419,7 +412,6 @@ ttglyph_2_masters_json = {
         {"flags": 0, "points": [[(436, 147)], [(352, 199)]], "type": "qcurve"},
     ],
     "num_masters": 2,
-    "num_node_values": 240,
     "tth": [
         {"cmd": "AlignH", "params": {"align": 0, "pt": 6}},
         {
@@ -482,38 +474,38 @@ class PartCompiler(GlyphCompiler):
 class GlyphCompilerTest(TestCase):
     def test_empty_2masters_roundtrip(self):
         # Decompile
-        dec = GlyphParser.parse(BytesIO(empty_glyph_binary), len(empty_glyph_binary))
+        dec = GlyphParser.parse(BytesIO(empty_glyph_binary), len(empty_glyph_binary), 2)
         assert dec == empty_glyph_json
 
         # Compile
-        compiled = GlyphCompiler.compile(dec)
+        compiled = GlyphCompiler.compile(dec, 2)
         # print(hexStr(compiled))
         # ... and parse again
-        cde = GlyphParser.parse(BytesIO(compiled), len(compiled))
+        cde = GlyphParser.parse(BytesIO(compiled), len(compiled), 2)
         assert dec == cde
 
     def test_long_roundtrip(self):
         # Decompile
-        dec = GlyphParser.parse(BytesIO(long_binary), len(long_binary))
+        dec = GlyphParser.parse(BytesIO(long_binary), len(long_binary), 2)
         # assert dec == {}
 
         # Compile
-        compiled = GlyphCompiler.compile(dec)
+        compiled = GlyphCompiler.compile(dec, 2)
         # print(hexStr(compiled))
         # ... and parse again
-        cde = GlyphParser.parse(BytesIO(compiled), len(compiled))
+        cde = GlyphParser.parse(BytesIO(compiled), len(compiled), 2)
         assert dec == cde
 
     def test_psglyph_1master_roundtrip(self):
         # Decompile
-        dec = GlyphParser.parse(BytesIO(psglyph_1master), len(psglyph_1master))
+        dec = GlyphParser.parse(BytesIO(psglyph_1master), len(psglyph_1master), 1)
         assert dec == psglyph_1master_expected
 
         # Compile
-        compiled = GlyphCompiler.compile(dec)
+        compiled = GlyphCompiler.compile(dec, 1)
         # print(hexStr(compiled))
         # ... and parse again
-        cde = GlyphParser.parse(BytesIO(compiled), len(compiled))
+        cde = GlyphParser.parse(BytesIO(compiled), len(compiled), 1)
         assert dec == cde
 
     def test_truetype_2_masters_roundtrip(self):
@@ -524,24 +516,24 @@ class GlyphCompilerTest(TestCase):
         assert dec == ttglyph_2_masters_json
 
         # Compile
-        compiled = GlyphCompiler.compile(dec)
+        compiled = GlyphCompiler.compile(dec, 2)
         # print(hexStr(compiled))
         # ... and parse again
-        cde = GlyphParser.parse(BytesIO(compiled), len(compiled))
+        cde = GlyphParser.parse(BytesIO(compiled), len(compiled), 2)
         assert dec == cde
 
     def test_composite_2_masters_roundtrip(self):
         # Decompile
         dec = GlyphParser.parse(
-            BytesIO(composite_2_masters_binary), len(composite_2_masters_binary)
+            BytesIO(composite_2_masters_binary), len(composite_2_masters_binary), 2
         )
         assert dec == composite_2_masters_json
 
         # Compile
-        compiled = GlyphCompiler.compile(dec)
+        compiled = GlyphCompiler.compile(dec, 2)
         # print(hexStr(compiled))
         # ... and parse again
-        cde = GlyphParser.parse(BytesIO(compiled), len(compiled))
+        cde = GlyphParser.parse(BytesIO(compiled), len(compiled), 2)
         assert dec == cde
 
     def test_components_2_masters(self):
