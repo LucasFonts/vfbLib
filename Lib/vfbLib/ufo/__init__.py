@@ -652,7 +652,10 @@ class VfbToUfoBuilder:
         for index, ufo in enumerate(ufos):
             master_path = self.get_master_path(out_path, index)
             ufo.save(master_path, structure=strct, overwrite=overwrite)
-            normalizeUFO(ufoPath=master_path, onlyModified=False, writeModTimes=False)
+            if not ufoz:
+                normalizeUFO(
+                    ufoPath=master_path, onlyModified=False, writeModTimes=False
+                )
 
         # Write the Designspace
         if ds:
