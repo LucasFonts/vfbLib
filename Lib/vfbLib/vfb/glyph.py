@@ -50,8 +50,8 @@ class VfbGlyph:
 
         return self.entry.decompiled["name"]
 
-    def empty(self, num_masters: int = 1):
-        self.entry.decompiled = get_empty_glyph(num_masters)
+    def empty(self):
+        self.entry.decompiled = get_empty_glyph(self._parent.num_masters)
 
     def _copy_to_ufo_glyph(self):
         """
