@@ -145,7 +145,9 @@ def vfb2ufo():
         if not args.silent:
             print(parser.description)
             print(f"Reading file {vfb_path} ...")
-        reader = read_vfb(vfb_path, minimal=args.minimal)
+        vfb = Vfb(
+            vfb_path, minimal=args.minimal, drop_keys={"Encoding", "Encoding Mac"}
+        )
         suffix = ".ufo"
         # if args.zip:
         #     suffix += "z"
@@ -153,8 +155,9 @@ def vfb2ufo():
             out_path = (Path(args.path[0]) / vfb_path.name).with_suffix(suffix)
         else:
             out_path = vfb_path.with_suffix(suffix)
+        vfb.decompile()
         builder = VfbToUfoBuilder(
-            reader.data,
+            vfb,
             minimal=args.minimal,
             base64=args.base64,
             pshints=not args.no_postscript_hints,

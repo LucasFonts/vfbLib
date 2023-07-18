@@ -34,6 +34,7 @@ if TYPE_CHECKING:
     from fontTools.designspaceLib import DiscreteAxisDescriptor
     from vfbLib.typing import Anchor, ClassFlagDict, GuidePropertyList
     from vfbLib.ufo.typing import UfoGroups, UfoMMKerning
+    from vfbLib.vfb.vfb import Vfb
 
 
 logger = logging.getLogger(__name__)
@@ -42,7 +43,7 @@ logger = logging.getLogger(__name__)
 class VfbToUfoBuilder:
     def __init__(
         self,
-        json: List[List[Any]],
+        vfb: Vfb,
         minimal=False,
         base64=False,
         pshints=True,
@@ -52,7 +53,7 @@ class VfbToUfoBuilder:
         """
         self.axes: List[AxisDescriptor | DiscreteAxisDescriptor] = []
         self.axis_count = 0
-        self.json = json
+        self.vfb = vfb
         self.minimal = minimal
         self.encode_data_base64 = base64
         self.include_ps_hints = pshints
@@ -298,8 +299,13 @@ class VfbToUfoBuilder:
 
     def build(self) -> None:  # noqa: C901
         # Non-MM data
-        for e in self.json:
-            name, data = e
+        for e in self.vfb.entries:
+            name = e.key
+            if name is None:
+                raise TypeError
+            data = e.decompiled
+            if data is None:
+                continue
 
             # Font Info
             attr = self.info.mapping.get(name, None)
