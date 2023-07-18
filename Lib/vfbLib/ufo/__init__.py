@@ -572,16 +572,17 @@ class VfbToUfoBuilder:
 
         # Pass as much data right to the UFO
         ufo = Font(
-            features=deepcopy(self.ufo_features),
+            features=self.ufo_features.text,
             groups=deepcopy(self.ufo_groups),
             info=master_info,
             kerning=master_kerning,
-            lib=deepcopy(self.lib),
+            lib=self.lib,
         )
 
         # Add the glyphs
         for name, mm_glyph in self.glyph_masters.items():
             logger.debug(f"    {name}, {type(name)}, {mm_glyph}")
+            # TODO: Any way to use the ufoLib2 Glyph directly?
             master_glyph = UfoMasterGlyph(mm_glyph, self.glyphOrder, index)
             master_glyph.build(
                 self.minimal, self.include_ps_hints, self.encode_data_base64
@@ -590,12 +591,12 @@ class VfbToUfoBuilder:
             pen = ufo_glyph.getPointPen()
             master_glyph.drawPoints(pen)
             # FIXME: Anchors work, but typing wrong
-            ufo_glyph.anchors = deepcopy(master_glyph.anchors)
-            ufo_glyph.guidelines = deepcopy(master_glyph.guidelines)
+            ufo_glyph.anchors = master_glyph.anchors
+            ufo_glyph.guidelines = master_glyph.guidelines
             ufo_glyph.height = master_glyph.height
-            ufo_glyph.lib = deepcopy(master_glyph.lib)
+            ufo_glyph.lib = master_glyph.lib
             ufo_glyph.width = master_glyph.width
-            ufo_glyph.unicodes = deepcopy(master_glyph.unicodes)
+            ufo_glyph.unicodes = master_glyph.unicodes
 
         return ufo
 
