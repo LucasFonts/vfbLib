@@ -1,0 +1,2269 @@
+{
+    "header": {
+        "size": 71,
+        "decompiled": {
+            "header0": 26,
+            "filetype": "WLF10",
+            "header1": 3,
+            "header2": 44,
+            "reserved": "b'\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00'",
+            "header3": 1,
+            "header4": 0,
+            "header5": 4,
+            "header6": 0,
+            "header7": 10,
+            "header8": 11,
+            "header9": {
+                "1": 1
+            },
+            "header10": {
+                "2": 84017792
+            },
+            "header11": {
+                "3": 0
+            },
+            "header12": 0,
+            "header13": 262,
+            "header14": 0
+        },
+        "modified": false,
+        "parser": "VfbHeaderParser",
+        "data": "1a574c46313003002c000000000000000000000000000000000000000000000000000000000000000000000001000000040000000a000b00018c02ff05020280038b0006010000"
+    },
+    "entries": [
+        {
+            "key": "Encoding",
+            "size": 7,
+            "data": "00005f30303030",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 7,
+            "data": "01005f30303031",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 7,
+            "data": "02005f30303032",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 7,
+            "data": "03005f30303033",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 7,
+            "data": "04005f30303034",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 7,
+            "data": "05006272657665",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 11,
+            "data": "0600646f74616363656e74",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 7,
+            "data": "07005f30303037",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 6,
+            "data": "080072696e67",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 7,
+            "data": "09005f30303039",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 14,
+            "data": "0a0068756e676172756d6c617574",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 8,
+            "data": "0b006f676f6e656b",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 7,
+            "data": "0c006361726f6e",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 10,
+            "data": "0d00646f746c65737369",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 7,
+            "data": "0e005f30303134",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 7,
+            "data": "0f005f30303135",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 7,
+            "data": "10005f30303136",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 7,
+            "data": "11005f30303137",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 7,
+            "data": "12005f30303138",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 7,
+            "data": "13005f30303139",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 7,
+            "data": "14005f30303230",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 7,
+            "data": "15005f30303231",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 7,
+            "data": "16005f30303232",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 7,
+            "data": "17005f30303233",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 7,
+            "data": "18005f30303234",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 10,
+            "data": "19006672616374696f6e",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 4,
+            "data": "1a006669",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 4,
+            "data": "1b00666c",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 8,
+            "data": "1c004c736c617368",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 8,
+            "data": "1d006c736c617368",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 8,
+            "data": "1e005a6361726f6e",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 8,
+            "data": "1f007a6361726f6e",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 7,
+            "data": "20007370616365",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 8,
+            "data": "21006578636c616d",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 10,
+            "data": "220071756f746564626c",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 12,
+            "data": "23006e756d6265727369676e",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 8,
+            "data": "2400646f6c6c6172",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 9,
+            "data": "250070657263656e74",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 11,
+            "data": "2600616d70657273616e64",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 13,
+            "data": "270071756f746573696e676c65",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 11,
+            "data": "2800706172656e6c656674",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 12,
+            "data": "2900706172656e7269676874",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 10,
+            "data": "2a00617374657269736b",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 6,
+            "data": "2b00706c7573",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 7,
+            "data": "2c00636f6d6d61",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 8,
+            "data": "2d0068797068656e",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 8,
+            "data": "2e00706572696f64",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 7,
+            "data": "2f00736c617368",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 6,
+            "data": "30007a65726f",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 5,
+            "data": "31006f6e65",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 5,
+            "data": "320074776f",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 7,
+            "data": "33007468726565",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 6,
+            "data": "3400666f7572",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 6,
+            "data": "350066697665",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 5,
+            "data": "3600736978",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 7,
+            "data": "3700736576656e",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 7,
+            "data": "38006569676874",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 6,
+            "data": "39006e696e65",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 7,
+            "data": "3a00636f6c6f6e",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 11,
+            "data": "3b0073656d69636f6c6f6e",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 6,
+            "data": "3c006c657373",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 7,
+            "data": "3d00657175616c",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 9,
+            "data": "3e0067726561746572",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 10,
+            "data": "3f007175657374696f6e",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 4,
+            "data": "40006174",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 3,
+            "data": "410041",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 3,
+            "data": "420042",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 3,
+            "data": "430043",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 3,
+            "data": "440044",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 3,
+            "data": "450045",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 3,
+            "data": "460046",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 3,
+            "data": "470047",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 3,
+            "data": "480048",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 3,
+            "data": "490049",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 3,
+            "data": "4a004a",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 3,
+            "data": "4b004b",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 3,
+            "data": "4c004c",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 3,
+            "data": "4d004d",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 3,
+            "data": "4e004e",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 3,
+            "data": "4f004f",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 3,
+            "data": "500050",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 3,
+            "data": "510051",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 3,
+            "data": "520052",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 3,
+            "data": "530053",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 3,
+            "data": "540054",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 3,
+            "data": "550055",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 3,
+            "data": "560056",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 3,
+            "data": "570057",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 3,
+            "data": "580058",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 3,
+            "data": "590059",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 3,
+            "data": "5a005a",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 13,
+            "data": "5b00627261636b65746c656674",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 11,
+            "data": "5c006261636b736c617368",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 14,
+            "data": "5d00627261636b65747269676874",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 13,
+            "data": "5e00617363696963697263756d",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 12,
+            "data": "5f00756e64657273636f7265",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 7,
+            "data": "60006772617665",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 3,
+            "data": "610061",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 3,
+            "data": "620062",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 3,
+            "data": "630063",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 3,
+            "data": "640064",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 3,
+            "data": "650065",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 3,
+            "data": "660066",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 3,
+            "data": "670067",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 3,
+            "data": "680068",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 3,
+            "data": "690069",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 3,
+            "data": "6a006a",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 3,
+            "data": "6b006b",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 3,
+            "data": "6c006c",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 3,
+            "data": "6d006d",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 3,
+            "data": "6e006e",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 3,
+            "data": "6f006f",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 3,
+            "data": "700070",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 3,
+            "data": "710071",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 3,
+            "data": "720072",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 3,
+            "data": "730073",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 3,
+            "data": "740074",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 3,
+            "data": "750075",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 3,
+            "data": "760076",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 3,
+            "data": "770077",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 3,
+            "data": "780078",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 3,
+            "data": "790079",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 3,
+            "data": "7a007a",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 11,
+            "data": "7b0062726163656c656674",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 5,
+            "data": "7c00626172",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 12,
+            "data": "7d0062726163657269676874",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 12,
+            "data": "7e00617363696974696c6465",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 7,
+            "data": "7f005f30313237",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 6,
+            "data": "80004575726f",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 7,
+            "data": "81005f30313239",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 16,
+            "data": "820071756f746573696e676c62617365",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 8,
+            "data": "8300666c6f72696e",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 14,
+            "data": "840071756f746564626c62617365",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 10,
+            "data": "8500656c6c6970736973",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 8,
+            "data": "8600646167676572",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 11,
+            "data": "870064616767657264626c",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 12,
+            "data": "880063697263756d666c6578",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 13,
+            "data": "890070657274686f7573616e64",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 8,
+            "data": "8a00536361726f6e",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 15,
+            "data": "8b006775696c73696e676c6c656674",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 4,
+            "data": "8c004f45",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 7,
+            "data": "8d005f30313431",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 7,
+            "data": "8e005f30313432",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 7,
+            "data": "8f005f30313433",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 7,
+            "data": "90005f30313434",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 11,
+            "data": "910071756f74656c656674",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 12,
+            "data": "920071756f74657269676874",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 14,
+            "data": "930071756f746564626c6c656674",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 15,
+            "data": "940071756f746564626c7269676874",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 8,
+            "data": "950062756c6c6574",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 8,
+            "data": "9600656e64617368",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 8,
+            "data": "9700656d64617368",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 7,
+            "data": "980074696c6465",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 11,
+            "data": "990074726164656d61726b",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 8,
+            "data": "9a00736361726f6e",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 16,
+            "data": "9b006775696c73696e676c7269676874",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 4,
+            "data": "9c006f65",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 7,
+            "data": "9d005f30313537",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 7,
+            "data": "9e005f30313538",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 11,
+            "data": "9f00596469657265736973",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 9,
+            "data": "a000756e6930304130",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 12,
+            "data": "a1006578636c616d646f776e",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 6,
+            "data": "a20063656e74",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 10,
+            "data": "a300737465726c696e67",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 10,
+            "data": "a40063757272656e6379",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 5,
+            "data": "a50079656e",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 11,
+            "data": "a60062726f6b656e626172",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 9,
+            "data": "a70073656374696f6e",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 10,
+            "data": "a8006469657265736973",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 11,
+            "data": "a900636f70797269676874",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 13,
+            "data": "aa006f726466656d696e696e65",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 15,
+            "data": "ab006775696c6c656d6f746c656674",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 12,
+            "data": "ac006c6f676963616c6e6f74",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 7,
+            "data": "ad006d696e7573",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 12,
+            "data": "ae0072656769737465726564",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 8,
+            "data": "af006d6163726f6e",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 8,
+            "data": "b000646567726565",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 11,
+            "data": "b100706c75736d696e7573",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 13,
+            "data": "b20074776f7375706572696f72",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 15,
+            "data": "b30074687265657375706572696f72",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 7,
+            "data": "b4006163757465",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 4,
+            "data": "b5006d75",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 11,
+            "data": "b600706172616772617068",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 16,
+            "data": "b700706572696f6463656e7465726564",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 9,
+            "data": "b800636564696c6c61",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 13,
+            "data": "b9006f6e657375706572696f72",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 14,
+            "data": "ba006f72646d617363756c696e65",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 16,
+            "data": "bb006775696c6c656d6f747269676874",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 12,
+            "data": "bc006f6e6571756172746572",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 9,
+            "data": "bd006f6e6568616c66",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 15,
+            "data": "be0074687265657175617274657273",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 14,
+            "data": "bf007175657374696f6e646f776e",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 8,
+            "data": "c000416772617665",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 8,
+            "data": "c100416163757465",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 13,
+            "data": "c2004163697263756d666c6578",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 8,
+            "data": "c3004174696c6465",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 11,
+            "data": "c400416469657265736973",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 7,
+            "data": "c5004172696e67",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 4,
+            "data": "c6004145",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 10,
+            "data": "c70043636564696c6c61",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 8,
+            "data": "c800456772617665",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 8,
+            "data": "c900456163757465",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 13,
+            "data": "ca004563697263756d666c6578",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 11,
+            "data": "cb00456469657265736973",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 8,
+            "data": "cc00496772617665",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 8,
+            "data": "cd00496163757465",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 13,
+            "data": "ce004963697263756d666c6578",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 11,
+            "data": "cf00496469657265736973",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 5,
+            "data": "d000457468",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 8,
+            "data": "d1004e74696c6465",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 8,
+            "data": "d2004f6772617665",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 8,
+            "data": "d3004f6163757465",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 13,
+            "data": "d4004f63697263756d666c6578",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 8,
+            "data": "d5004f74696c6465",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 11,
+            "data": "d6004f6469657265736973",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 10,
+            "data": "d7006d756c7469706c79",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 8,
+            "data": "d8004f736c617368",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 8,
+            "data": "d900556772617665",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 8,
+            "data": "da00556163757465",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 13,
+            "data": "db005563697263756d666c6578",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 11,
+            "data": "dc00556469657265736973",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 8,
+            "data": "dd00596163757465",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 7,
+            "data": "de0054686f726e",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 12,
+            "data": "df006765726d616e64626c73",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 8,
+            "data": "e000616772617665",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 8,
+            "data": "e100616163757465",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 13,
+            "data": "e2006163697263756d666c6578",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 8,
+            "data": "e3006174696c6465",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 11,
+            "data": "e400616469657265736973",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 7,
+            "data": "e5006172696e67",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 4,
+            "data": "e6006165",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 10,
+            "data": "e70063636564696c6c61",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 8,
+            "data": "e800656772617665",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 8,
+            "data": "e900656163757465",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 13,
+            "data": "ea006563697263756d666c6578",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 11,
+            "data": "eb00656469657265736973",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 8,
+            "data": "ec00696772617665",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 8,
+            "data": "ed00696163757465",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 13,
+            "data": "ee006963697263756d666c6578",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 11,
+            "data": "ef00696469657265736973",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 5,
+            "data": "f000657468",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 8,
+            "data": "f1006e74696c6465",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 8,
+            "data": "f2006f6772617665",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 8,
+            "data": "f3006f6163757465",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 13,
+            "data": "f4006f63697263756d666c6578",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 8,
+            "data": "f5006f74696c6465",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 11,
+            "data": "f6006f6469657265736973",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 8,
+            "data": "f700646976696465",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 8,
+            "data": "f8006f736c617368",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 8,
+            "data": "f900756772617665",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 8,
+            "data": "fa00756163757465",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 13,
+            "data": "fb007563697263756d666c6578",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 11,
+            "data": "fc00756469657265736973",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 8,
+            "data": "fd00796163757465",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 7,
+            "data": "fe0074686f726e",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "Encoding",
+            "size": 11,
+            "data": "ff00796469657265736973",
+            "parser": "GlyphEncodingParser"
+        },
+        {
+            "key": "1502",
+            "size": 2,
+            "data": "0100",
+            "parser": "IntParser"
+        },
+        {
+            "key": "518",
+            "size": 0,
+            "parser": "BaseParser"
+        },
+        {
+            "key": "257",
+            "size": 0,
+            "parser": "BaseParser"
+        },
+        {
+            "key": "psn",
+            "size": 0,
+            "parser": "StringParser"
+        },
+        {
+            "key": "Master Count",
+            "size": 2,
+            "data": "0400",
+            "parser": "IntParser"
+        },
+        {
+            "key": "Default Weight Vector",
+            "size": 32,
+            "data": "000000000000f03f000000000000000000000000000000000000000000000000",
+            "parser": "DoubleListParser"
+        },
+        {
+            "key": "Type 1 Unique ID",
+            "size": 4,
+            "data": "ffffffff",
+            "parser": "SignedIntParser"
+        },
+        {
+            "key": "version full",
+            "size": 0,
+            "parser": "StringParser"
+        },
+        {
+            "key": "description",
+            "size": 0,
+            "parser": "StringParser"
+        },
+        {
+            "key": "ffn",
+            "size": 0,
+            "parser": "StringParser"
+        },
+        {
+            "key": "tfn",
+            "size": 0,
+            "parser": "StringParser"
+        },
+        {
+            "key": "sgn",
+            "size": 0,
+            "parser": "StringParser"
+        },
+        {
+            "key": "Menu Name",
+            "size": 0,
+            "parser": "StringParser"
+        },
+        {
+            "key": "FOND Name",
+            "size": 0,
+            "parser": "StringParser"
+        },
+        {
+            "key": "weight_name",
+            "size": 3,
+            "data": "416c6c",
+            "parser": "StringParser"
+        },
+        {
+            "key": "width_name",
+            "size": 3,
+            "data": "416c6c",
+            "parser": "StringParser"
+        },
+        {
+            "key": "License",
+            "size": 0,
+            "parser": "StringParser"
+        },
+        {
+            "key": "License URL",
+            "size": 0,
+            "parser": "StringParser"
+        },
+        {
+            "key": "copyright",
+            "size": 0,
+            "parser": "StringParser"
+        },
+        {
+            "key": "trademark",
+            "size": 0,
+            "parser": "StringParser"
+        },
+        {
+            "key": "designer",
+            "size": 0,
+            "parser": "StringParser"
+        },
+        {
+            "key": "designerURL",
+            "size": 0,
+            "parser": "StringParser"
+        },
+        {
+            "key": "manufacturerURL",
+            "size": 0,
+            "parser": "StringParser"
+        },
+        {
+            "key": "manufacturer",
+            "size": 0,
+            "parser": "StringParser"
+        },
+        {
+            "key": "Monospaced",
+            "size": 2,
+            "data": "0000",
+            "parser": "IntParser"
+        },
+        {
+            "key": "weight",
+            "size": 2,
+            "data": "0000",
+            "parser": "SignedIntParser"
+        },
+        {
+            "key": "Italic Angle",
+            "size": 8,
+            "data": "0000000000000000",
+            "parser": "DoubleParser"
+        },
+        {
+            "key": "Slant Angle",
+            "size": 8,
+            "data": "0000000000000000",
+            "parser": "DoubleParser"
+        },
+        {
+            "key": "underlinePosition",
+            "size": 2,
+            "data": "9cff",
+            "parser": "SignedIntParser"
+        },
+        {
+            "key": "underlineThickness",
+            "size": 2,
+            "data": "3200",
+            "parser": "IntParser"
+        },
+        {
+            "key": "MS Character Set",
+            "size": 2,
+            "data": "0000",
+            "parser": "IntParser"
+        },
+        {
+            "key": "panose",
+            "size": 10,
+            "data": "00000000000000000000",
+            "parser": "PanoseParser"
+        },
+        {
+            "key": "version",
+            "size": 0,
+            "parser": "StringParser"
+        },
+        {
+            "key": "UniqueID",
+            "size": 0,
+            "parser": "StringParser"
+        },
+        {
+            "key": "Style Name",
+            "size": 0,
+            "parser": "StringParser"
+        },
+        {
+            "key": "tsn",
+            "size": 0,
+            "parser": "StringParser"
+        },
+        {
+            "key": "OT Mac Name",
+            "size": 0,
+            "parser": "StringParser"
+        },
+        {
+            "key": "1140",
+            "size": 0,
+            "parser": "BaseParser"
+        },
+        {
+            "key": "vendorID",
+            "size": 4,
+            "data": "70797273",
+            "parser": "StringParser"
+        },
+        {
+            "key": "Type 1 XUIDs",
+            "size": 80,
+            "data": "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+            "parser": "IntListParser"
+        },
+        {
+            "key": "Type 1 XUIDs Count",
+            "size": 2,
+            "data": "0000",
+            "parser": "IntParser"
+        },
+        {
+            "key": "year",
+            "size": 2,
+            "data": "0000",
+            "parser": "IntParser"
+        },
+        {
+            "key": "versionMajor",
+            "size": 2,
+            "data": "0100",
+            "parser": "IntParser"
+        },
+        {
+            "key": "versionMinor",
+            "size": 2,
+            "data": "0000",
+            "parser": "IntParser"
+        },
+        {
+            "key": "upm",
+            "size": 2,
+            "data": "e803",
+            "parser": "IntParser"
+        },
+        {
+            "key": "FOND Family ID",
+            "size": 2,
+            "data": "8000",
+            "parser": "IntParser"
+        },
+        {
+            "key": "1093",
+            "size": 2,
+            "data": "0000",
+            "parser": "BaseParser"
+        },
+        {
+            "key": "1068",
+            "size": 1,
+            "data": "8b",
+            "parser": "EncodedValueListWithCountParser"
+        },
+        {
+            "key": "Blue Values Count",
+            "size": 2,
+            "data": "0000",
+            "parser": "IntParser"
+        },
+        {
+            "key": "Other Blues Count",
+            "size": 2,
+            "data": "0000",
+            "parser": "IntParser"
+        },
+        {
+            "key": "Family Blues Count",
+            "size": 2,
+            "data": "0000",
+            "parser": "IntParser"
+        },
+        {
+            "key": "Family Other Blues Count",
+            "size": 2,
+            "data": "0000",
+            "parser": "IntParser"
+        },
+        {
+            "key": "StemSnapH Count",
+            "size": 2,
+            "data": "0000",
+            "parser": "IntParser"
+        },
+        {
+            "key": "StemSnapV Count",
+            "size": 2,
+            "data": "0000",
+            "parser": "IntParser"
+        },
+        {
+            "key": "Selection",
+            "size": 2,
+            "data": "4000",
+            "parser": "IntParser"
+        },
+        {
+            "key": "MS ID",
+            "size": 2,
+            "data": "0000",
+            "parser": "IntParser"
+        },
+        {
+            "key": "1059",
+            "size": 3,
+            "data": "203955",
+            "parser": "BaseParser"
+        },
+        {
+            "key": "TrueType Info",
+            "size": 152,
+            "data": "338b348b358b368b378b388b39ff000200003afa7c3b8b3c9456ffdf9bfc4f578b3d8d3ef8243f90408f41f95042f91e438b44f72045f95046f91e478b48f87149bd4af78e4b8b4c000000000000000000004df9824efb8e4f8b508b518b528b5c8b53a2090a0b0c0d0f10111315181b1d2021252a2e32363a434b58a2090a0b0c0d0f10111315181b1d2021252a2e32363a434b548b8b32",
+            "parser": "TrueTypeInfoParser"
+        },
+        {
+            "key": "1271",
+            "size": 1,
+            "data": "8b",
+            "parser": "EncodedValueListParser"
+        },
+        {
+            "key": "hhea_line_gap",
+            "size": 2,
+            "data": "0900",
+            "parser": "IntParser"
+        },
+        {
+            "key": "hhea_ascender",
+            "size": 2,
+            "data": "ee02",
+            "parser": "SignedIntParser"
+        },
+        {
+            "key": "hhea_descender",
+            "size": 2,
+            "data": "06ff",
+            "parser": "SignedIntParser"
+        },
+        {
+            "key": "TrueType Stem PPEMs",
+            "size": 2,
+            "data": "8b8b",
+            "parser": "TrueTypeStemPpemsParser"
+        },
+        {
+            "key": "TrueType Stems",
+            "size": 2,
+            "data": "8b8b",
+            "parser": "TrueTypeStemsParser"
+        },
+        {
+            "key": "1524",
+            "size": 0,
+            "parser": "EncodedValueListParser"
+        },
+        {
+            "key": "TrueType Zones",
+            "size": 2,
+            "data": "8b8b",
+            "parser": "TrueTypeZonesParser"
+        },
+        {
+            "key": "Unicode Ranges",
+            "size": 16,
+            "data": "00000000000000000000000000000000",
+            "parser": "IntParser"
+        },
+        {
+            "key": "Pixel Snap",
+            "size": 2,
+            "data": "4400",
+            "parser": "IntParser"
+        },
+        {
+            "key": "Zone Stop PPEM",
+            "size": 2,
+            "data": "3000",
+            "parser": "IntParser"
+        },
+        {
+            "key": "Code Stop PPEM",
+            "size": 2,
+            "data": "0000",
+            "parser": "IntParser"
+        },
+        {
+            "key": "1604",
+            "size": 2,
+            "data": "ff00",
+            "parser": "IntParser"
+        },
+        {
+            "key": "2032",
+            "size": 2,
+            "data": "2c01",
+            "parser": "IntParser"
+        },
+        {
+            "key": "TrueType Zone Deltas",
+            "size": 1,
+            "data": "8b",
+            "parser": "TrueTypeZoneDeltasParser"
+        },
+        {
+            "key": "Name Records",
+            "size": 1,
+            "data": "8b",
+            "parser": "NameRecordsParser"
+        },
+        {
+            "key": "Custom CMAPs",
+            "size": 1,
+            "data": "8b",
+            "parser": "CustomCmapParser"
+        },
+        {
+            "key": "PCLT Table",
+            "size": 40,
+            "data": "8b8b8b8b8b8b8b000000000000000000000000000000000000000000000000000000000000000000",
+            "parser": "EncodedValueListParser"
+        },
+        {
+            "key": "Export PCLT Table",
+            "size": 2,
+            "data": "0000",
+            "parser": "IntParser"
+        },
+        {
+            "key": "2030",
+            "size": 4,
+            "data": "01000000",
+            "parser": "BaseParser"
+        },
+        {
+            "key": "Font User Data",
+            "size": 21,
+            "data": "636f6d2e6c75636173666f6e74732e7666626c6962",
+            "parser": "StringParser"
+        },
+        {
+            "key": "OpenType Metrics Class Flags",
+            "size": 15,
+            "data": "8c912e6d747278358bff000014018b",
+            "parser": "OpenTypeClassFlagsParser"
+        },
+        {
+            "key": "OpenType Kerning Class Flags",
+            "size": 36,
+            "data": "8e925f615f4c454654fa948b935f615f5249474854ff000008008b8d5f74ff00000c008b",
+            "parser": "OpenTypeClassFlagsParser"
+        },
+        {
+            "key": "openTypeFeatures",
+            "size": 67,
+            "data": "6c616e677561676573797374656d2044464c542064666c743b0d0a66656174757265206b65726e207b0a2020706f732061207420313030203b0a7d206b65726e3b0d0a",
+            "parser": "OpenTypeStringParser"
+        },
+        {
+            "key": "OpenType Class",
+            "size": 11,
+            "data": "5f615f4c4546543a206127",
+            "parser": "OpenTypeClassParser"
+        },
+        {
+            "key": "OpenType Class",
+            "size": 12,
+            "data": "5f615f52494748543a206127",
+            "parser": "OpenTypeClassParser"
+        },
+        {
+            "key": "OpenType Class",
+            "size": 6,
+            "data": "5f743a207427",
+            "parser": "OpenTypeClassParser"
+        },
+        {
+            "key": "OpenType Class",
+            "size": 8,
+            "data": "5f656d7074793a20",
+            "parser": "OpenTypeClassParser"
+        },
+        {
+            "key": "OpenType Class",
+            "size": 9,
+            "data": "2e6d747278353a2061",
+            "parser": "OpenTypeClassParser"
+        },
+        {
+            "key": "OpenType Class",
+            "size": 12,
+            "data": "6c6574746572733a20612074",
+            "parser": "OpenTypeClassParser"
+        },
+        {
+            "key": "513",
+            "size": 0,
+            "parser": "BaseParser"
+        },
+        {
+            "key": "271",
+            "size": 0,
+            "parser": "BaseParser"
+        },
+        {
+            "key": "Axis Count",
+            "size": 2,
+            "data": "0200",
+            "parser": "IntParser"
+        },
+        {
+            "key": "Axis Name",
+            "size": 6,
+            "data": "576569676874",
+            "parser": "StringParser"
+        },
+        {
+            "key": "Axis Name",
+            "size": 5,
+            "data": "5769647468",
+            "parser": "StringParser"
+        },
+        {
+            "key": "Anisotropic Interpolation Mappings",
+            "size": 14,
+            "data": "8d8b8bfa7cfa7c8d8b8bfa7cfa7c",
+            "parser": "AnisotropicInterpolationsParser"
+        },
+        {
+            "key": "Axis Mappings Count",
+            "size": 16,
+            "data": "02000000020000000000000000000000",
+            "parser": "AxisMappingsCountParser"
+        },
+        {
+            "key": "Axis Mappings",
+            "size": 640,
+            "data": "000000000000000000000000000000000000000000408f40000000000000f03f0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000408f40000000000000f03f00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+            "parser": "AxisMappingsParser"
+        },
+        {
+            "key": "Master Name",
+            "size": 8,
+            "data": "5774302057643020",
+            "parser": "StringParser"
+        },
+        {
+            "key": "Master Location",
+            "size": 36,
+            "data": "010000000000000000000000000000000000000000000000000000000000000000000000",
+            "parser": "MasterLocationParser"
+        },
+        {
+            "key": "Master Name",
+            "size": 8,
+            "data": "5774312057643020",
+            "parser": "StringParser"
+        },
+        {
+            "key": "Master Location",
+            "size": 36,
+            "data": "02000000000000000000f03f000000000000000000000000000000000000000000000000",
+            "parser": "MasterLocationParser"
+        },
+        {
+            "key": "Master Name",
+            "size": 8,
+            "data": "5774302057643120",
+            "parser": "StringParser"
+        },
+        {
+            "key": "Master Location",
+            "size": 36,
+            "data": "030000000000000000000000000000000000f03f00000000000000000000000000000000",
+            "parser": "MasterLocationParser"
+        },
+        {
+            "key": "Master Name",
+            "size": 8,
+            "data": "5774312057643120",
+            "parser": "StringParser"
+        },
+        {
+            "key": "Master Location",
+            "size": 36,
+            "data": "04000000000000000000f03f000000000000f03f00000000000000000000000000000000",
+            "parser": "MasterLocationParser"
+        },
+        {
+            "key": "PostScript Info",
+            "size": 400,
+            "data": "fca9f1d24d62503f00000000000000000000000000000000fca9f1d24d62503f00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000007d3f355eba49a43f07000000010000006400000032000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ff7fff7f018001800000000000000000f4010000ee02000006fffffff4010000bc020000",
+            "parser": "PostScriptInfoParser"
+        },
+        {
+            "key": "PostScript Info",
+            "size": 400,
+            "data": "fca9f1d24d62503f00000000000000000000000000000000fca9f1d24d62503f00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000007d3f355eba49a43f07000000010000006400000032000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ff7fff7f018001800000000000000000f4010000ee02000006fffffff4010000bc020000",
+            "parser": "PostScriptInfoParser"
+        },
+        {
+            "key": "PostScript Info",
+            "size": 400,
+            "data": "fca9f1d24d62503f00000000000000000000000000000000fca9f1d24d62503f00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000007d3f355eba49a43f07000000010000006400000032000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ff7fff7f018001800000000000000000f4010000ee02000006fffffff4010000bc020000",
+            "parser": "PostScriptInfoParser"
+        },
+        {
+            "key": "PostScript Info",
+            "size": 400,
+            "data": "fca9f1d24d62503f00000000000000000000000000000000fca9f1d24d62503f00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000007d3f355eba49a43f07000000010000006400000032000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ff7fff7f018001800000000000000000f4010000ee02000006fffffff4010000bc020000",
+            "parser": "PostScriptInfoParser"
+        },
+        {
+            "key": "527",
+            "size": 0,
+            "parser": "BaseParser"
+        },
+        {
+            "key": "Glyph",
+            "size": 195,
+            "data": "01090701018c61088ff76e9030c5f7bed9f7c9c5f7bed9f7cd33f70afb09f72afb28f734fb09f75ffb36fb0abffb2acdfb34bffb5fd3bf57cd49d157e54333f74df709f77ff728f78ff709f7d3f73656fb0947fb2843fb092ffb36c0bfcfcdd3bfe7d333fb0bf74afb2bf77bfb35f74afb62f790f70b57f72b49f73557f7624356bf47cd43bf2fd333fb4cfb09fb7dfb29fb8dfb09fbd1fb36bff709cdf729d1f709e5f736575749494557314302f7f58bf85d8bf8498bf8c98b068c8c42fb3a38620f",
+            "parser": "GlyphParser"
+        },
+        {
+            "key": "2023",
+            "size": 4,
+            "data": "8b8b8b8b",
+            "parser": "EncodedValueListParser"
+        },
+        {
+            "key": "2010",
+            "size": 4,
+            "data": "040000c0",
+            "parser": "BaseParser"
+        },
+        {
+            "key": "Glyph Origin",
+            "size": 4,
+            "data": "00000000",
+            "parser": "GlyphOriginParser"
+        },
+        {
+            "key": "Glyph Unicode",
+            "size": 2,
+            "data": "6100",
+            "parser": "GlyphUnicodeParser"
+        },
+        {
+            "key": "Glyph",
+            "size": 130,
+            "data": "01090701018c74088ff7249300b8f930b8f930b8f930b8f93001f82d8bf82d8bf82d8bf82d8b018bdc8bdc8bdc8bdc01fc2d8bfc2d8bfc2d8bfc2d8b00f733fd84f733fd84f733fd84f733fd8401e68be68be68be68b018bf9448bf9448bf9448bf94401308b308b308b308b02f8888bf8888bf8888bf8888b068c8b42fb3138610f",
+            "parser": "GlyphParser"
+        },
+        {
+            "key": "Background Bitmap",
+            "size": 107,
+            "data": "fb9efb64f971f9aba3a3ebfe0000fffe0000fffe0000fffe0000fffe0038ff003000ff003000ff003000ff00fe00ff00fe00ff003000ff003000ff003000ff003000ff003000ff003000ff003100ff003f00ff001e00fffe0000fffe0000fffe0000fffe0000fffe0000ff",
+            "parser": "BackgroundBitmapParser"
+        },
+        {
+            "key": "2023",
+            "size": 4,
+            "data": "8b8b8b8b",
+            "parser": "EncodedValueListParser"
+        },
+        {
+            "key": "2010",
+            "size": 4,
+            "data": "040000c0",
+            "parser": "BaseParser"
+        },
+        {
+            "key": "Glyph Origin",
+            "size": 4,
+            "data": "9cff0000",
+            "parser": "GlyphOriginParser"
+        },
+        {
+            "key": "Glyph Unicode",
+            "size": 2,
+            "data": "7400",
+            "parser": "GlyphUnicodeParser"
+        },
+        {
+            "key": "1742",
+            "size": 10,
+            "data": "018b02f72c03e5048c00",
+            "parser": "EncodedKeyValuesParser1742"
+        }
+    ]
+}
