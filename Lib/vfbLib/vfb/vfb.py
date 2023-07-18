@@ -42,7 +42,7 @@ class Vfb:
         if drop_keys is None:
             self.drop_keys = set()
         else:
-            self.drop_keys = drop_keys
+            self.drop_keys = set(drop_keys)
         self.only_header = only_header
 
         # We need some minimal API to make pen access work ...
