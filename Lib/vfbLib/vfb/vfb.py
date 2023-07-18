@@ -52,7 +52,7 @@ class Vfb:
         self.info = VfbInfo(vfb=self)
         self.lib = {}
 
-        self.num_masters = 0
+        self.num_masters: int = 0
         self.read()
 
     def as_dict(self) -> Dict[str, Dict[str, Any]]:
