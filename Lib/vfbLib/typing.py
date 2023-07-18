@@ -43,7 +43,7 @@ class GdefDict(TypedDict):
 
 class GlyphData(TypedDict):
     components: NotRequired[List[Component]]
-    constants: NotRequired[Tuple[Any, ...]]
+    # constants: NotRequired[Tuple[Any, ...]]
     guides: NotRequired[GuideDict]
     hints: NotRequired[HintDict]
     imported: NotRequired[Any]  # FIXME
@@ -52,7 +52,7 @@ class GlyphData(TypedDict):
     name: NotRequired[str]
     nodes: NotRequired[List[MMNode]]
     num_masters: NotRequired[int]
-    num_node_values: NotRequired[int]
+    # num_node_values: NotRequired[int]
     tth: NotRequired[List[Instruction]]
 
 

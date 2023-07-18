@@ -333,7 +333,8 @@ class GlyphParser(BaseParser):
         glyphdata["num_masters"] = num_masters
 
         # 2 x the number of values to be read after num_nodes, the reason is unclear.
-        glyphdata["num_node_values"] = read_encoded_value(stream)
+        _ = read_encoded_value(stream)
+        # glyphdata["num_node_values"] = num_node_values
 
         num_nodes = read_encoded_value(stream)
         segments: List[MMNode] = []
@@ -408,7 +409,11 @@ class GlyphParser(BaseParser):
         s = cls.stream
         glyphdata = GlyphData()
         start = unpack("<4B", s.read(4))
-        glyphdata["constants"] = start
+        if start != (1, 9, 7, 1):
+            logger.warning(
+                f"Unexpected glyph constant: {start}, please notify developer"
+            )
+        # glyphdata["constants"] = start
         num_masters = 1
         while True:
             # Read a value to decide what kind of information follows

@@ -1270,15 +1270,8 @@
     [
         "Glyph",
         {
-            "constants": [
-                1,
-                9,
-                7,
-                1
-            ],
             "name": "a",
             "num_masters": 4,
-            "num_node_values": 218,
             "nodes": [
                 {
                     "type": "move",
@@ -1616,15 +1609,8 @@
     [
         "Glyph",
         {
-            "constants": [
-                1,
-                9,
-                7,
-                1
-            ],
             "name": "t",
             "num_masters": 4,
-            "num_node_values": 144,
             "nodes": [
                 {
                     "type": "move",
