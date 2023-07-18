@@ -149,8 +149,8 @@ def vfb2ufo():
             vfb_path, minimal=args.minimal, drop_keys={"Encoding", "Encoding Mac"}
         )
         suffix = ".ufo"
-        # if args.zip:
-        #     suffix += "z"
+        if args.zip:
+            suffix += "z"
         if args.path:
             out_path = (Path(args.path[0]) / vfb_path.name).with_suffix(suffix)
         else:
