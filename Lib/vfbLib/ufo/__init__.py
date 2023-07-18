@@ -598,6 +598,19 @@ class VfbToUfoBuilder:
         return ufo
 
     def get_ufo_masters(self, silent=False) -> List[Font]:
+        # Prepare data shared by the master UFOs
+        self.ufo_groups = transform_groups(
+            self.groups,
+            self.kerning_class_flags,
+            self.glyphOrder,
+            self.minimal,
+        )
+        self.ufo_kerning = UfoKerning(self.glyphOrder, self.ufo_groups, self.mm_kerning)
+        self.ufo_groups = self.ufo_kerning.groups
+        self.ufo_features = Features(self.features_code)
+        if self.features_classes:
+            self.ufo_features.text = self.features_classes + "\n\n" + self.features_code
+
         ufo_masters = []
         for i in range(len(self.masters)):
             ufo_masters.append(self.get_ufo_master(i, silent))
@@ -611,18 +624,6 @@ class VfbToUfoBuilder:
         them. The DesignSpaceDocument is only returned for VFBs containing more than one
         master. In other cases, the second element of the returned tuple is None.
         """
-        self.ufo_groups = transform_groups(
-            self.groups,
-            self.kerning_class_flags,
-            self.glyphOrder,
-            self.minimal,
-        )
-        self.ufo_kerning = UfoKerning(self.glyphOrder, self.ufo_groups, self.mm_kerning)
-        self.ufo_groups = self.ufo_kerning.groups
-        self.ufo_features = Features(self.features_code)
-        if self.features_classes:
-            self.ufo_features.text = self.features_classes + "\n\n" + self.features_code
-
         ufo_masters = self.get_ufo_masters(silent)
         ds: DesignSpaceDocument | None = None
         if self.axes:
