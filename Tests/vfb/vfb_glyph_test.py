@@ -569,14 +569,15 @@ class VfbGlyphTest(TestCase):
         pen.addPoint(pt=(200, 200), segmentType="line", smooth=False)
         pen.addPoint(pt=(100, 150), segmentType="line", smooth=False)
         pen.endPath()
-        g.entry.compile()
         expected = VfbEntry(vfb, GlyphParser)
         expected.data = deHexStr(
             "01090701018c61088ca38f00efef01ef8b018bef01275902f9d58b0f"
         )
         expected.decompile()
+        g.entry.compile()
+        g.entry.clear_decompiled()
         g.entry.decompile()
-        print(g.entry.decompiled)
+        # print(g.entry.decompiled)
         assert expected.decompiled == g.entry.decompiled
 
     def test_getPointPen_quadratic_1_master(self):
@@ -631,6 +632,7 @@ class VfbGlyphTest(TestCase):
         pen.endPath()
         assert g.entry.decompiled["nodes"] == glyph_nodes_q_1m
         g.entry.compile()
+        g.entry.clear_decompiled()
         g.entry.decompile()
         assert g.entry.decompiled["nodes"] == glyph_nodes_q_1m
 

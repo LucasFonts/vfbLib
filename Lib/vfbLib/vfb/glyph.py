@@ -44,7 +44,6 @@ class VfbGlyph:
         """
         Decompile the Glyph entry and return the glyph name.
         """
-        self.entry.decompiled = None
         self.entry.decompile()
         if self.entry.decompiled is None:
             raise ValueError

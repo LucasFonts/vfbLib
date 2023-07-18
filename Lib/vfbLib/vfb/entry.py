@@ -154,6 +154,9 @@ class VfbEntry:
             d["parser"] = str(self.parser.__name__)
         return d
 
+    def clear_decompiled(self) -> None:
+        self.decompiled = None
+
     def compile(self) -> None:
         """
         Compile the entry. The result is stored in VfbEntry.data.
@@ -173,7 +176,12 @@ class VfbEntry:
         """
         if self.decompiled is not None:
             # Already decompiled
-            return
+            logger.error(
+                f"Entry is already decompiled: {self.key}. If you really want to "
+                "decompile again, clear the decompiled data beforehand using "
+                "`clear_decompiled()`."
+            )
+            raise ValueError
 
         if self.parser is None:
             raise ValueError
