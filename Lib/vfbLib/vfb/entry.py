@@ -139,19 +139,32 @@ class VfbEntry:
 
         return key, parser_class, compiler_class, num_bytes
 
-    def as_dict(self) -> Dict[str, Any]:
-        d = {
+    def as_dict(self, minimize=True) -> Dict[str, Any]:
+        d: Dict[str, Any] = {
             "key": str(self.key),
-            "size": self.size,
         }
-        if self.data:
+        if minimize:
+            if self.decompiled is None:
+                d["size"] = self.size
+                d["data"] = hexStr(self.data)
+                if self.parser is not None:
+                    d["parser"] = self.parser.__name__
+            else:
+                d["decompiled"] = self.decompiled
+                if self.compiler is not None:
+                    d["compiler"] = self.compiler.__name__
+                if self.modified:
+                    d["modified"] = True
+        else:
+            d["size"] = self.size
             d["data"] = hexStr(self.data)
-        if self.decompiled:
+            if self.parser is not None:
+                d["parser"] = self.parser.__name__
             d["decompiled"] = self.decompiled
-        if self.modified:
-            d["modified"] = self.modified
-        if self.parser is not None:
-            d["parser"] = str(self.parser.__name__)
+            if self.compiler is not None:
+                d["compiler"] = self.compiler.__name__
+            if self.modified:
+                d["modified"] = True
         return d
 
     def clear_decompiled(self) -> None:
