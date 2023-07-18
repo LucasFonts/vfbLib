@@ -186,7 +186,6 @@ class GaspParser(BaseParser):
 class GlyphEncodingParser(BaseParser):
     @classmethod
     def _parse(cls):
-        return 0  # FIXME: Encoding is ignored for now
         gid = int.from_bytes(cls.stream.read(2), byteorder="little")
         nam = cls.stream.read().decode("ascii")
         return gid, nam
