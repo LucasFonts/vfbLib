@@ -5,7 +5,6 @@ import pytest
 from fontTools.designspaceLib import DesignSpaceDocument
 from pathlib import Path
 from unittest import TestCase
-from vfbLib.reader import VFBReader
 from vfbLib.ufo import VfbToUfoBuilder
 from vfbLib.vfb.vfb import Vfb
 
