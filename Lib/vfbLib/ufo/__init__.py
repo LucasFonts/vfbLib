@@ -11,7 +11,7 @@ from fontTools.designspaceLib import (
 from fontTools.ufoLib import UFOFileStructure
 from pathlib import Path
 from typing import TYPE_CHECKING, Any, Dict, List, Tuple
-from ufoLib2 import Font
+from ufoLib2.objects.font import Font
 from ufoLib2.objects.features import Features
 from ufonormalizer import normalizeUFO
 from vfbLib.ufo.designspace import get_ds_location
@@ -567,16 +567,16 @@ class VfbToUfoBuilder:
             print(f"Processing font: {self.info.ui_name.strip()}, master {index}")
 
         # Build the master-specific data that can be passed when instantiating the UFO
-        self.ufo_kerning.extract_master_kerning(master_index=index)
+        master_kerning = self.ufo_kerning.get_master_kerning(master_index=index)
         master_info = self.get_master_info(master_index=index)
 
         # Pass as much data right to the UFO
         ufo = Font(
-            features=self.ufo_features,
-            groups=self.ufo_groups,
+            features=deepcopy(self.ufo_features),
+            groups=deepcopy(self.ufo_groups),
             info=master_info,
-            kerning=self.ufo_kerning.master_kerning,
-            lib=self.lib,
+            kerning=master_kerning,
+            lib=deepcopy(self.lib),
         )
 
         # Add the glyphs
