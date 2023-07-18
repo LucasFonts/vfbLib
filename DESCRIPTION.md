@@ -97,6 +97,35 @@ options:
 ```
 
 
+### vfbcu2qu
+
+Convert a VFB file to quadratic using the `cu2qu` library. Single master only.
+
+```bash
+$ vfbcu2qu MyFile.vfb
+```
+
+will convert the file and save it with the suffix `.qu.vfb` in the same directory.
+
+```
+usage: vfbcu2qu [-h] [-p PATH] [-fo] [-m MAX_ERR_EM] inputpath [outputpath]
+
+VFB Cubic to Quadratic Converter Copyright (c) 2023 by LucasFonts Build 2023-07-18
+
+positional arguments:
+  inputpath             input file path (.vfb)
+  outputpath            output file path (.vfb)
+
+options:
+  -h, --help            show this help message and exit
+  -p PATH, --path PATH  output folder
+  -fo, --force-overwrite
+                        force overwrite
+  -m MAX_ERR_EM, --max-err-em MAX_ERR_EM
+                        Maximum allowed error, relative to the font's units per em.
+```
+
+
 ### diffvfb
 
 Generate a diff of two VFB files, either in unified diff or HTML format.
