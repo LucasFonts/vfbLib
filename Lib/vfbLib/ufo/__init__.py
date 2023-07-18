@@ -592,6 +592,7 @@ class VfbToUfoBuilder:
             ufo_glyph.anchors = master_glyph.anchors  # FIXME: Works, but typing wrong
             ufo_glyph.guidelines = master_glyph.guidelines
             ufo_glyph.lib = master_glyph.lib
+            ufo_glyph.height = master_glyph.height
             ufo_glyph.width = master_glyph.width
             ufo_glyph.unicodes = master_glyph.unicodes
 
