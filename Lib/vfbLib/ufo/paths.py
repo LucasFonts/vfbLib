@@ -66,7 +66,7 @@ class UfoMasterGlyph:
         if not minimal:
             self._extract_master_guides()
         self._finalize_lib(encode_data_base64)
-        self.unicodes = self.mm_glyph.unicodes
+        self.unicodes = self.mm_glyph.unicodes.copy()
         self.width, self.height = self.mm_glyph.mm_metrics[self.master_index]
 
     def drawPoints(self, pen: AbstractPointPen) -> None:
