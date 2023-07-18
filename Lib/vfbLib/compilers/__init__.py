@@ -15,7 +15,8 @@ class BaseCompiler:
     """
 
     @classmethod
-    def compile(cls, data: Any) -> bytes:
+    def compile(cls, data: Any, master_count: int = 0) -> bytes:
+        cls.master_count = master_count
         cls.stream = BytesIO()
         cls._compile(data)
         return cls.stream.getvalue()

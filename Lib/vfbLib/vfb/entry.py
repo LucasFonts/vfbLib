@@ -15,6 +15,7 @@ from vfbLib.parsers import BaseParser
 
 if TYPE_CHECKING:
     from io import BufferedReader
+    from vfbLib.vfb.vfb import Vfb
 
 
 logger = logging.getLogger(__name__)
@@ -26,6 +27,7 @@ FALLBACK_PARSER = BaseParser
 class VfbEntry:
     def __init__(
         self,
+        parent: Vfb,
         parser: Type[BaseParser] | None = None,
         compiler: Type[BaseCompiler] | None = None,
     ) -> None:
@@ -42,6 +44,8 @@ class VfbEntry:
         self.parser = parser
         # The compiler which can convert the decompiled to compiled data
         self.compiler = compiler
+        # The parent object, Vfb
+        self.vfb = parent
 
     @cached_property
     def header(self) -> bytes:
@@ -158,7 +162,9 @@ class VfbEntry:
             logger.error(f"Compiling '{self.key}' is not supported yet.")
             return
 
-        self.data = self.compiler.compile(self.decompiled)
+        self.data = self.compiler.compile(
+            self.decompiled, master_count=self.vfb.num_masters
+        )
         self.modified = False
 
     def decompile(self) -> None:
@@ -175,7 +181,9 @@ class VfbEntry:
         if self.data is None:
             raise ValueError
 
-        self.decompiled = self.parser.parse(BytesIO(self.data), size=self.size)
+        self.decompiled = self.parser.parse(
+            BytesIO(self.data), size=self.size, master_count=self.vfb.num_masters
+        )
 
     def read(self, stream: BufferedReader) -> None:
         """

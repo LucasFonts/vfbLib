@@ -53,28 +53,8 @@ class Vfb:
         self.info = VfbInfo(vfb=self)
         self.lib = {}
 
+        self.num_masters = 0
         self.read()
-
-    @cached_property
-    def num_masters(self) -> int:
-        """Return the number of masters in the vfb.
-
-        Returns:
-            int: The number of masters, or 0 if no glyphs are present.
-        """
-        if not self._glyphs:
-            # Find a glyph and decompile it
-            glyph = None
-            for entry in self.entries:
-                if entry.key == "Glyph":
-                    glyph = entry
-            if glyph is None:
-                return 0  # No glyph was found
-
-            glyph.decompile()
-            return glyph.decompiled["num_masters"]
-
-        return self._glyphs[0].entry.decompiled["num_masters"]
 
     def as_dict(self) -> Dict[str, Dict[str, Any]]:
         """
@@ -116,6 +96,19 @@ class Vfb:
             self._decompile_glyphs()
         return self._glyphs[key]
 
+    def decompile(self) -> None:
+        """
+        Decompile all entries, except for the ones listed in `drop_keys`.
+        """
+        start = time()
+        for entry in self.entries:
+            print(entry.key)
+            entry.decompile()
+
+        end = time()
+        if self.timing:
+            print(f"Interpreting binary data took {round((end - start) * 1000)} ms.")
+
     def items(self) -> Iterable[Tuple[str, VfbGlyph]]:
         if not self._glyphs:
             self._decompile_glyphs()
@@ -126,10 +119,10 @@ class Vfb:
             self._decompile_glyphs()
         return self._glyphs.keys()
 
-    def parse(self, stream: BufferedReader):
+    def read_stream(self, stream: BufferedReader):
         """
-        Lazily parse the vfb stream, i.e. parse the header, but only read the binary
-        data of other entries.
+        Lazily read and parse the vfb stream, i.e. parse the header, but only read the
+        binary data of other entries.
         """
         start = time()
         self.header = VfbHeader()
@@ -140,21 +133,25 @@ class Vfb:
         entry: VfbEntry | None = None
         while True:
             try:
-                entry = VfbEntry()
+                entry = VfbEntry(self)
                 entry.read(stream)
             except EOFError:
                 break
 
             if entry is not None:
+                if entry.key == "Master Count":
+                    entry.decompile()
+                    self.num_masters = entry.decompiled
+                    entry.decompiled = None
+
                 if entry.key not in self.drop_keys:
                     self.entries.append(entry)
 
         end = time()
         if self.timing:
             print(
-                "Source file was successfully imported in",
-                round((end - start) * 1000),
-                "ms.",
+                "Source file was successfully read in "
+                f"{round((end - start) * 1000)} ms."
             )
 
     def read(self):
@@ -163,7 +160,7 @@ class Vfb:
         """
         self.clear()
         with open(self.vfb_path, "rb") as vfb:
-            self.parse(vfb)
+            self.read_stream(vfb)
 
     def write(self, out_path: Path) -> None:
         """
