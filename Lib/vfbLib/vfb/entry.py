@@ -189,9 +189,14 @@ class VfbEntry:
         if self.data is None:
             raise ValueError
 
-        self.decompiled = self.parser.parse(
-            BytesIO(self.data), size=self.size, master_count=self.vfb.num_masters
-        )
+        try:
+            self.decompiled = self.parser.parse(
+                BytesIO(self.data), size=self.size, master_count=self.vfb.num_masters
+            )
+        except:  # noqa: E722
+            logger.error(f"Parse error for data: {self.key}; {hexStr(self.data)}")
+            logger.error(f"Parser class: {self.parser.__name__}")
+            self.decompiled = None
 
     def read(self, stream: BufferedReader) -> None:
         """
