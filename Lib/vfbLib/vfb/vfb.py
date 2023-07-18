@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import logging
 
-from functools import cached_property
 from pathlib import Path
 from time import time
 from typing import TYPE_CHECKING, Any, Dict, Iterable, List, Set, Tuple
@@ -102,7 +101,6 @@ class Vfb:
         """
         start = time()
         for entry in self.entries:
-            print(entry.key)
             entry.decompile()
 
         end = time()
