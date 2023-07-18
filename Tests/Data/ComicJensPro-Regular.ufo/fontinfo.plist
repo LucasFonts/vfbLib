@@ -99,6 +99,8 @@
 		<integer>0</integer>
 		<key>macintoshFONDFamilyID</key>
 		<integer>128</integer>
+		<key>macintoshFONDName</key>
+		<string></string>
 		<key>openTypeGaspRangeRecords</key>
 		<array>
 			<dict>
@@ -803,7 +805,7 @@
 		<key>postscriptWeightName</key>
 		<string>Regular</string>
 		<key>styleMapFamilyName</key>
-		<string>Comic Jens Pro</string>
+		<string></string>
 		<key>styleMapStyleName</key>
 		<string>regular</string>
 		<key>styleName</key>

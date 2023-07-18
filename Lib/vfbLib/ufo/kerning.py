@@ -23,7 +23,6 @@ class UfoKerning:
         group_info = build_glyph_to_group_maps(groups)
         self.groups, self.glyph_group_1, self.glyph_group_2 = group_info
         self.mm_kerning = mm_kerning
-        self.master_kerning: UfoMasterKerning = {}
         self._make_name_based_kerning()
 
     def _is_exception(self, L: str, R: str):
@@ -59,12 +58,14 @@ class UfoKerning:
 
             self.mm_kerning_names[left, right] = values
 
-    def extract_master_kerning(self, master_index) -> None:
+    def get_master_kerning(self, master_index: int) -> UfoMasterKerning:
         """
-        Extract the kerning value for master_index.
+        Extract the kerning values for master_index and return the kerning as
+        Dict[Tuple[str, str], int].
         """
-        self.master_kerning = {}
+        master_kerning: UfoMasterKerning = {}
         for pair, values in self.mm_kerning_names.items():
             value = values[master_index]
             if value != 0 or self._is_exception(*pair):
-                self.master_kerning[pair] = value
+                master_kerning[pair] = value
+        return master_kerning

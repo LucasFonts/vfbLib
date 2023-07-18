@@ -4,6 +4,7 @@ import logging
 
 from functools import cached_property
 from typing import TYPE_CHECKING, List, Tuple
+from ufoLib2.objects.info import Info, WidthClass
 from vfbLib.helpers import binaryToIntList
 from vfbLib.ufo.time import convert_timestamp
 from vfbLib.ufo.typing import TUfoGaspRecDict
@@ -17,8 +18,9 @@ if TYPE_CHECKING:
 logger = logging.getLogger(__name__)
 
 
-class VfbToUfoInfo:
+class VfbToUfoInfo(Info):
     def __init__(self) -> None:
+        super(VfbToUfoInfo, self).__init__()
         # Chance to set some defaults that should always be written
         self.familyName = "Untitled"
         self.guidelines: List[UfoGuide] = []
@@ -48,7 +50,7 @@ class VfbToUfoInfo:
         self.openTypeOS2Type: List[int] = []
         self.openTypeOS2UnicodeRanges: List[int] = []
         self.openTypeOS2WeightClass = 400
-        self.openTypeOS2WidthClass = 5
+        self.openTypeOS2WidthClass = WidthClass(5)
         self.postscriptBlueValues: List[int] = []
         self.postscriptFamilyBlues: List[int] = []
         self.postscriptFamilyOtherBlues: List[int] = []
@@ -77,17 +79,23 @@ class VfbToUfoInfo:
         self.openTypeOS2CodePageRanges: List[int] = []
 
         self.build_mapping()
-    
+
     @cached_property
-    def ds_family_name(self) -> str:
+    def ds_family_name(self) -> str | None:
+        """
+        Return the family name for use in the DesignSpaceDocument.
+        """
         if self.openTypeNamePreferredFamilyName:
             return self.openTypeNamePreferredFamilyName
         if self.familyName:
             return self.familyName
         return self.styleMapFamilyName
-    
+
     @cached_property
-    def ds_style_name(self) -> str:
+    def ds_style_name(self) -> str | None:
+        """
+        Return the style name for use in the DesignSpaceDocument.
+        """
         if self.openTypeNamePreferredSubfamilyName:
             return self.openTypeNamePreferredSubfamilyName
         if self.styleName:
@@ -174,6 +182,15 @@ class VfbToUfoInfo:
     def fix_underline_position(self):
         # VFB stores middle of line and thickness, but spec says it must be
         # stored as top of line and thickness.
+        if (
+            self.postscriptUnderlinePosition is None
+            or self.postscriptUnderlineThickness is None
+        ):
+            logger.error(
+                "Can't fix underline position because position or thickness is None"
+            )
+            return
+
         self.postscriptUnderlinePosition += int(
             round(0.5 * self.postscriptUnderlineThickness)
         )

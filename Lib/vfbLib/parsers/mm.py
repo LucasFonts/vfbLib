@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import logging
 
-from struct import unpack
 from typing import Any, Dict, List, Tuple
 from vfbLib.parsers import BaseParser, read_encoded_value
 
@@ -44,7 +43,8 @@ class AxisMappingsParser(BaseParser):
     @classmethod
     def _parse(cls) -> List[Tuple[float, float]]:
         # 10 pairs of (user, design) coordinates per axis.
-        # Look at "Axis Mappings Count" to find out which mappings are used in each axis.
+        # Look at "Axis Mappings Count" to find out which mappings are used in each
+        # axis.
         # The trailing unused fields may contain junk and must be ignored.
         assert cls.stream is not None
         mappings = []

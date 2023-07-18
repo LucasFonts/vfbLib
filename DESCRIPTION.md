@@ -43,7 +43,7 @@ not be overwritten unless you specify the `-fo` option.
 vfb3ufo -h
 usage: vfb3ufo [-h] [-p PATH] [-fo] [-ttx] [-64] [-s] [-nops] [-z] [-m] inputpath [outputpath]
 
-VFB3UFO Converter Copyright (c) 2022 by LucasFonts Build 2022-12-12
+VFB3UFO Converter Copyright (c) 2023 by LucasFonts Build 2023-07-18
 
 positional arguments:
   inputpath             input file path (.vfb)
@@ -56,17 +56,14 @@ options:
                         force overwrite
   -64, --base64         write GLIF lib 'data' section using base64 (recommended)
   -s, --silent          no display (silent mode)
-
-Additional options:
-
-  -m, --minimal         parse only minimal amount of data, drop missing glyphs from groups, etc.
   -nops, --no-postscript-hints
                         Don't output PostScript hinting
+  -z, --zip             write UFOZ (compressed UFO)
+  -m, --minimal         parse only minimal amount of data, drop missing glyphs from groups, etc.
 
-Unimplemented options:
+Not yet implemented options:
 
   -ttx, --ttx           convert binary OpenType Layout data using TTX-like format
-  -z, --zip             write UFOZ (compressed UFO)
 ```
 
 
@@ -84,17 +81,48 @@ We expect this to be mostly used for debugging purposes.
 
 ```
 vfb2json -h
-usage: vfb2json [-h] [-m] [-p PATH] inputpath
+usage: vfb2json [-h] [-d] [--header] [-m] [-p PATH] inputpath
 
-VFB2JSON Converter Copyright (c) 2022 by LucasFonts Build 2022-11-08
+VFB2JSON Converter Copyright (c) 2023 by LucasFonts Build 2023-07-18
 
 positional arguments:
   inputpath             input file path (.vfb)
 
 options:
   -h, --help            show this help message and exit
+  -d, --no-decompile    don't decompile data, output binary in JSON
+  --header              only read the VFB header, not the actual data
   -m, --minimal         parse only minimal amount of data
   -p PATH, --path PATH  output folder
+```
+
+
+### vfbcu2qu
+
+Convert a VFB file to quadratic using the `cu2qu` library. Single master only.
+
+```bash
+$ vfbcu2qu MyFile.vfb
+```
+
+will convert the file and save it with the suffix `.qu.vfb` in the same directory.
+
+```
+usage: vfbcu2qu [-h] [-p PATH] [-fo] [-m MAX_ERR_EM] inputpath [outputpath]
+
+VFB Cubic to Quadratic Converter Copyright (c) 2023 by LucasFonts Build 2023-07-18
+
+positional arguments:
+  inputpath             input file path (.vfb)
+  outputpath            output file path (.vfb)
+
+options:
+  -h, --help            show this help message and exit
+  -p PATH, --path PATH  output folder
+  -fo, --force-overwrite
+                        force overwrite
+  -m MAX_ERR_EM, --max-err-em MAX_ERR_EM
+                        Maximum allowed error, relative to the font's units per em.
 ```
 
 
@@ -105,7 +133,7 @@ Generate a diff of two VFB files, either in unified diff or HTML format.
 ```
 usage: diffvfb [-h] [--html HTML] file1 file2
 
-diffvfb Copyright (c) 2023 by LucasFonts Build 2023-03-14
+diffvfb Copyright (c) 2023 by LucasFonts Build 2023-07-18
 
 positional arguments:
   file1        First input file path (.vfb)

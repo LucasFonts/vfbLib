@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<designspace format="5.0">
+  <axes>
+    <axis tag="wght" name="Weight" minimum="0" maximum="1000" default="0">
+      <map input="0" output="0"/>
+      <map input="1000" output="1000"/>
+    </axis>
+    <axis tag="wdth" name="Width" minimum="0" maximum="1000" default="0">
+      <map input="0" output="0"/>
+      <map input="1000" output="1000"/>
+    </axis>
+  </axes>
+  <sources>
+    <source filename="masters.ufo" name="Wt0 Wd0" familyname="" stylename="Master 0">
+      <location>
+        <dimension name="Weight" xvalue="0"/>
+        <dimension name="Width" xvalue="0"/>
+      </location>
+    </source>
+    <source filename="masters-1.ufo" name="Wt1 Wd0" familyname="" stylename="Master 1">
+      <location>
+        <dimension name="Weight" xvalue="1000"/>
+        <dimension name="Width" xvalue="0"/>
+      </location>
+    </source>
+    <source filename="masters-2.ufo" name="Wt0 Wd1" familyname="" stylename="Master 2">
+      <location>
+        <dimension name="Weight" xvalue="0"/>
+        <dimension name="Width" xvalue="1000"/>
+      </location>
+    </source>
+    <source filename="masters-3.ufo" name="Wt1 Wd1" familyname="" stylename="Master 3">
+      <location>
+        <dimension name="Weight" xvalue="1000"/>
+        <dimension name="Width" xvalue="1000"/>
+      </location>
+    </source>
+  </sources>
+</designspace>

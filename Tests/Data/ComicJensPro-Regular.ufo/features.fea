@@ -228,7 +228,8 @@ feature aalt {
     feature dlig;
     feature ss01;
     feature ornm;
-} aalt;
+} aalt;
+
 feature locl {
 #------------------------------
 # Localized Forms
@@ -261,7 +262,8 @@ feature locl {
     language TRK;
     # Turkish
       sub i by i.latn_TRK;
-} locl;
+} locl;
+
 feature calt {
 #------------------------------
 # Contextual Alternates
@@ -281,7 +283,8 @@ feature frac {
     sub one @fractionSlashes four by onequarter;
     sub one @fractionSlashes two by onehalf;
     sub three @fractionSlashes four by threequarters;
-} frac;
+} frac;
+
 feature ordn {
 #------------------------------
 # Ordinals
@@ -289,7 +292,8 @@ feature ordn {
 # <protection state="no"/>
 #------------------------------
     sub [@ordnnumbers @ordn_target] @ordn_source' by @ordn_target;
-} ordn;
+} ordn;
+
 feature hist {
 #------------------------------
 # Historical Forms
@@ -297,7 +301,8 @@ feature hist {
 # <protection state="no"/>
 #------------------------------
     sub @hist_source by @hist_target;
-} hist;
+} hist;
+
 feature case {
 #------------------------------
 # Case-Sensitive Forms
@@ -305,7 +310,8 @@ feature case {
 # <protection state="no"/>
 #------------------------------
     sub @case_source by @case_target;
-} case;
+} case;
+
 feature dlig {
 #------------------------------
 # Discretionary Ligatures
@@ -329,7 +335,8 @@ feature dlig {
     sub w w w by w_w_w;
     sub zero seven by zero_seven;
     sub zero zero by zero_zero;
-} dlig;
+} dlig;
+
 feature liga {
 #------------------------------
 # Standard Ligatures
@@ -339,7 +346,8 @@ feature liga {
     sub f f by uniFB00;
     sub f i by fi;
     sub f l by fl;
-} liga;
+} liga;
+
 feature hlig {
 #------------------------------
 # Historical Ligatures
@@ -348,7 +356,8 @@ feature hlig {
 #------------------------------
     sub longs i by longs_i;
     sub longs longs by longs_longs;
-} hlig;
+} hlig;
+
 feature salt {
 #------------------------------
 # Stylistic Alternates
@@ -356,7 +365,8 @@ feature salt {
 # <protection state="no"/>
 #------------------------------
     sub @ss01_source by @ss01_target;
-} salt;
+} salt;
+
 feature ss01 {
 #------------------------------
 # Stylistic Set 1
@@ -364,7 +374,8 @@ feature ss01 {
 # <protection state="no"/>
 #------------------------------
     sub @ss01_source by @ss01_target;
-} ss01;
+} ss01;
+
 feature ss02 {
 #------------------------------
 # Stylistic Set 2
@@ -372,7 +383,8 @@ feature ss02 {
 # <protection state="no"/>
 #------------------------------
     sub @ss02_source by @ss02_target;
-} ss02;
+} ss02;
+
 feature ss03 {
 #------------------------------
 # Stylistic Set 3
@@ -381,7 +393,8 @@ feature ss03 {
 #------------------------------
 # clone of hist (Historical Forms)
     sub @hist_source by @hist_target;
-} ss03;
+} ss03;
+
 feature ornm {
 #------------------------------
 # Ornaments
@@ -389,7 +402,8 @@ feature ornm {
 # <protection state="no"/>
 #------------------------------
     sub bullet from @ornaments;
-} ornm;
+} ornm;
+
 feature cpsp {
 #------------------------------
 # Capital Spacing
@@ -404,4 +418,4 @@ feature cpsp {
 
 
 
-
+

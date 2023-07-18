@@ -43,35 +43,46 @@ set infoEntries [dict create \
     1133 "Type 1 XUIDs" \
     1134 "Type 1 XUIDs Count" \
     1135 "Units Per Em" \
-    1136 "1136" \
+    1136 "PCLT Table" \
     1137 "Typographic Style Name" \
-    1138 "1138" \
+    1138 "Name Records" \
     1139 "OT Mac Name" \
     1140 "1140" \
-    1141 "1141" \
+    1141 "Custom CMAPs" \
+    1247 "Primary Instance Locations" \
     1250 "Glyph Unicode" \
+    1253 "Glyph Unicode Non-BMP" \
     1254 "Primary Instances" \
     1255 "TrueType Zones" \
-    1264 "Metrics" \
+    1264 "TrueType Info" \
     1265 "Gasp Ranges" \
     1267 "Selection" \
+    1268 "TrueType Stem PPEMs" \
     1269 "TrueType Stems" \
     1270 "hhea Line Gap" \
+    1271 "1271" \
     1272 "Pixel Snap" \
-    1273 "1273" \
+    1273 "TrueType Zone Deltas" \
     1274 "Zone Stop PPEM" \
     1275 "Code Stop PPEM" \
     1276 "OpenType Features" \
     1277 "OpenType Class" \
     1278 "hhea Ascender" \
     1279 "hhea Descender" \
-    1294 "1294" \
-    1296 "1296" \
+    1294 "Global Guides" \
+    1296 "Global Guide Properties" \
     1500 "Encoding" \
+    1501 "Encoding Mac" \
     1502 "1502" \
+    1503 "Master Count" \
     1504 "Master Name" \
+    1505 "Master Flags" \
+    1513 "Axis Count" \
     1514 "Axis Name" \
+    1515 "Axis Mappings Count" \
+    1516 "Axis Mappings" \
     1517 "1517" \
+    1523 "Anisotropic Interpolation Mappings" \
     1524 "1524" \
     1530 "Blue Values Count" \
     1531 "Other Blues Count" \

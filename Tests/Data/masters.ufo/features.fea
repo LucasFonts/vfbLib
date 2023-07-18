@@ -1,0 +1,7 @@
+@letters = [a t];
+
+
+languagesystem DFLT dflt;
+feature kern {
+  pos a t 100 ;
+} kern;

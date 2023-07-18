@@ -21,7 +21,7 @@ uint32 = 4
 
 class BaseParser:
     """
-    Base class to read data from a vfb file
+    Base class to parse data from a vfb file
     """
 
     master_count: int | None = None
@@ -47,7 +47,7 @@ class BaseParser:
         if stream is None:
             stream = cls.stream
         return read_doubles(1, stream)[0]
-    
+
     @classmethod
     def read_doubles(cls, num, stream=None):
         if stream is None:
@@ -59,7 +59,7 @@ class BaseParser:
         if stream is None:
             stream = cls.stream
         return read_floats(1, stream)[0]
-    
+
     @classmethod
     def read_floats(cls, num, stream=None):
         if stream is None:
@@ -186,7 +186,6 @@ class GaspParser(BaseParser):
 class GlyphEncodingParser(BaseParser):
     @classmethod
     def _parse(cls):
-        return 0  # FIXME: Encoding is ignored for now
         gid = int.from_bytes(cls.stream.read(2), byteorder="little")
         nam = cls.stream.read().decode("ascii")
         return gid, nam

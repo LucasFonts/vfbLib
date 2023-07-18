@@ -7,7 +7,7 @@ import logging
 from argparse import ArgumentParser
 from difflib import unified_diff, HtmlDiff
 from pathlib import Path
-from vfbLib import VFBReader
+from vfbLib.vfb.vfb import Vfb
 from vfbLib.version import build_date
 
 
@@ -43,12 +43,14 @@ def diffvfb():
     vfb1_path = Path(args.file1[0])
     vfb2_path = Path(args.file2[0])
 
-    vfb1 = VFBReader(vfb_path=vfb1_path, timing=False)
-    vfb2 = VFBReader(vfb_path=vfb2_path, timing=False)
+    vfb1 = Vfb(vfb_path=vfb1_path, timing=False)
+    vfb2 = Vfb(vfb_path=vfb2_path, timing=False)
     vfb1.read()
     vfb2.read()
-    vfb1_str = json.dumps(vfb1.data, ensure_ascii=False, indent=4).splitlines()
-    vfb2_str = json.dumps(vfb2.data, ensure_ascii=False, indent=4).splitlines()
+    vfb1.decompile()
+    vfb2.decompile()
+    vfb1_str = json.dumps(vfb1.as_dict(), ensure_ascii=False, indent=4).splitlines()
+    vfb2_str = json.dumps(vfb2.as_dict(), ensure_ascii=False, indent=4).splitlines()
     if args.html:
         html_diff = HtmlDiff()
         html = html_diff.make_file(

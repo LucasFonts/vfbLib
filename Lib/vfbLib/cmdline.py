@@ -6,9 +6,10 @@ import logging
 
 from argparse import ArgumentParser
 from pathlib import Path
-from vfbLib import VFBReader
-from vfbLib.ufo import VfbToUfoWriter
+from vfbLib.reader import VFBReader
+from vfbLib.ufo import VfbToUfoBuilder
 from vfbLib.version import build_date
+from vfbLib.vfb.vfb import Vfb
 
 
 logger = logging.getLogger(__name__)
@@ -28,8 +29,21 @@ def write_json(reader: VFBReader, json_path: Path) -> None:
 def vfb2json():
     parser = ArgumentParser(
         description=(
-            f"VFB2JSON Converter\nCopyright (c) 2022 by LucasFonts\nBuild {build_date}"
+            f"VFB2JSON Converter\nCopyright (c) 2023 by LucasFonts\nBuild {build_date}"
         )
+    )
+    parser.add_argument(
+        "-d",
+        "--no-decompile",
+        action="store_true",
+        default=False,
+        help="don't decompile data, output binary in JSON",
+    )
+    parser.add_argument(
+        "--header",
+        action="store_true",
+        default=False,
+        help="only read the VFB header, not the actual data",
     )
     parser.add_argument(
         "-m",
@@ -54,12 +68,18 @@ def vfb2json():
     args = parser.parse_args()
     if args:
         vfb_path = Path(args.inputpath[0])
-        reader = read_vfb(vfb_path, minimal=args.minimal)
+        print(parser.description)
+        print(f"Reading file {vfb_path} ...")
+        vfb = Vfb(vfb_path, only_header=args.header, minimal=args.minimal)
+        if not args.no_decompile:
+            vfb.decompile()
+        suffix = ".vfb.json"
         if args.path:
-            out_path = (Path(args.path[0]) / vfb_path.name).with_suffix(".json")
+            out_path = (Path(args.path[0]) / vfb_path.name).with_suffix(suffix)
         else:
-            out_path = vfb_path.with_suffix(".json")
-        write_json(reader, out_path)
+            out_path = vfb_path.with_suffix(suffix)
+        with codecs.open(str(out_path), "wb", "utf-8") as f:
+            json.dump(vfb.as_dict(), f, ensure_ascii=False, indent=4)
     else:
         parser.print_help()
 
@@ -67,7 +87,7 @@ def vfb2json():
 def vfb2ufo():
     parser = ArgumentParser(
         description=(
-            f"VFB3UFO Converter\nCopyright (c) 2022 by LucasFonts\nBuild {build_date}"
+            f"VFB3UFO Converter\nCopyright (c) 2023 by LucasFonts\nBuild {build_date}"
         )
     )
     parser.add_argument(
@@ -144,25 +164,28 @@ def vfb2ufo():
         if not args.silent:
             print(parser.description)
             print(f"Reading file {vfb_path} ...")
-        reader = read_vfb(vfb_path, minimal=args.minimal)
+        vfb = Vfb(
+            vfb_path, minimal=args.minimal, drop_keys={"Encoding", "Encoding Mac"}
+        )
         suffix = ".ufo"
-        # if args.zip:
-        #     suffix += "z"
+        if args.zip:
+            suffix += "z"
         if args.path:
             out_path = (Path(args.path[0]) / vfb_path.name).with_suffix(suffix)
         else:
             out_path = vfb_path.with_suffix(suffix)
-        writer = VfbToUfoWriter(
-            reader.data,
+        vfb.decompile()
+        builder = VfbToUfoBuilder(
+            vfb,
             minimal=args.minimal,
             base64=args.base64,
             pshints=not args.no_postscript_hints,
         )
-        writer.write(
+        builder.write(
             out_path,
             overwrite=args.force_overwrite,
             silent=args.silent,
-            ufoz=False,  # FIXME
+            ufoz=args.zip,
         )
     else:
         parser.print_help()

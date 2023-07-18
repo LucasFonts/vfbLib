@@ -158,12 +158,14 @@ class GlyphOriginParser(BaseParser):
 class GlyphParser(BaseParser):
     @classmethod
     def parse_guides(cls, stream: BytesIO, glyphdata: GlyphData, num_masters=1) -> None:
+        # Guidelines
         guides = parse_guides(stream, num_masters)
         if guides:
             glyphdata["guides"] = guides
 
     @classmethod
     def parse_binary(cls, stream: BytesIO, glyphdata: GlyphData) -> None:
+        # Imported binary TrueType data
         imported: Dict[str, Any] = {}
         while True:
             key = cls.read_uint8()
@@ -287,7 +289,9 @@ class GlyphParser(BaseParser):
 
     @classmethod
     def parse_instructions(cls, stream: BytesIO, glyphdata: GlyphData) -> None:
-        _ = read_encoded_value(stream)  # XXX: What's this?
+        # Number of bytes for instructions that follow;
+        # we don't use it
+        _ = read_encoded_value(stream)
         num_commands = read_encoded_value(stream)
         commands: List[Instruction] = []
         for i in range(num_commands):
@@ -326,14 +330,18 @@ class GlyphParser(BaseParser):
     def parse_outlines(cls, stream: BytesIO, glyphdata: GlyphData) -> int:
         # Nodes
         num_masters = read_encoded_value(stream)
-        _ = read_encoded_value(stream)  # XXX: What's this?
-        num_nodes = read_encoded_value(stream)
         glyphdata["num_masters"] = num_masters
+
+        # 2 x the number of values to be read after num_nodes, the reason is unclear.
+        _ = read_encoded_value(stream)
+        # glyphdata["num_node_values"] = num_node_values
+
+        num_nodes = read_encoded_value(stream)
         segments: List[MMNode] = []
         x = [0 for _ in range(num_masters)]
         y = [0 for _ in range(num_masters)]
 
-        for i in range(num_nodes):
+        for _ in range(num_nodes):
             byte = cls.read_uint8(stream)
             flags = byte >> 4
             cmd = byte & 0x0F
@@ -401,7 +409,11 @@ class GlyphParser(BaseParser):
         s = cls.stream
         glyphdata = GlyphData()
         start = unpack("<4B", s.read(4))
-        glyphdata["constants"] = start
+        if start != (1, 9, 7, 1):
+            logger.warning(
+                f"Unexpected glyph constant: {start}, please notify developer"
+            )
+        # glyphdata["constants"] = start
         num_masters = 1
         while True:
             # Read a value to decide what kind of information follows
