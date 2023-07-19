@@ -214,6 +214,7 @@ class VfbEntry:
             logger.error(f"Parse error for data: {self.key}; {hexStr(self.data)}")
             logger.error(f"Parser class: {self.parser.__name__}")
             self.decompiled = None
+            raise
 
     def merge_masters_data(self) -> None:
         """
