@@ -16,6 +16,16 @@ class BaseCompiler:
 
     @classmethod
     def compile(cls, data: Any, master_count: int = 0) -> bytes:
+        """
+        Compile the JSON-like main data structure and return the compiled binary data.
+
+        Args:
+            data (Any): The main data structure.
+            master_count (int, optional): The number of masters. Defaults to 0.
+
+        Returns:
+            bytes: The compiled binary data.
+        """
         cls.master_count = master_count
         cls.stream = BytesIO()
         cls._compile(data)
