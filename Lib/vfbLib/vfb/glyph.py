@@ -34,7 +34,6 @@ class VfbGlyph:
         except KeyError:
             pass
         self.entry.decompiled["nodes"] = []
-        self.entry.decompiled["num_node_values"] = 0
         self.entry.modified = True
 
     # Native methods
