@@ -95,6 +95,10 @@ class GlyphCompiler(BaseCompiler):
         # Guidelines
         # TODO: Reuse for global guides
         if not (guides := data.get("guides")):
+            # Seems to be required
+            cls.write_uint1(4)
+            cls.write_encoded_value(0)
+            cls.write_encoded_value(0)
             return
 
         cls.write_uint1(4)
@@ -112,6 +116,11 @@ class GlyphCompiler(BaseCompiler):
     def _compile_hints(cls, data):
         # PostScript hints
         if not (hints := data.get("hints")):
+            # Seems to be required
+            cls.write_uint1(3)
+            cls.write_encoded_value(0)
+            cls.write_encoded_value(0)
+            cls.write_encoded_value(0)
             return
 
         cls.write_uint1(3)
