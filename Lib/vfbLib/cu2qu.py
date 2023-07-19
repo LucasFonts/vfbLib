@@ -4,6 +4,7 @@ from argparse import ArgumentParser
 from fontTools.cu2qu.ufo import font_to_quadratic, fonts_to_quadratic
 from pathlib import Path
 from vfbLib.version import build_date
+from vfbLib.vfb.vfb import Vfb
 
 
 def vfbcu2qu():
