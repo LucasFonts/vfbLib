@@ -731,6 +731,7 @@ class VfbToUfoBuilder:
             try:
                 return out_path.with_stem(f"{out_path.stem}-{master_index}")
             except AttributeError:
+                # Python 3.8 doesn't have `Path.with_stem`
                 return out_path.with_name(
                     f"{out_path.stem}-{master_index}{out_path.suffix}"
                 )
