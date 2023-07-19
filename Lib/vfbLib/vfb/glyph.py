@@ -7,6 +7,7 @@ from fontTools.pens.pointPen import (
     PointToSegmentPen,
     SegmentToPointPen,
 )
+from functools import cached_property
 from typing import TYPE_CHECKING
 from vfbLib.ufo.glyph import VfbToUfoGlyph
 from vfbLib.ufo.paths import UfoMasterGlyph
@@ -30,6 +31,10 @@ class VfbGlyph:
         self.master_index = 0
 
     # UFO/cu2qu compatibility
+
+    @cached_property
+    def name(self) -> str:
+        return self._glyph.name
 
     def clearContours(self):
         try:
@@ -133,6 +138,10 @@ class VfbGlyphMaster:
         self.entry = glyph.entry
         self.master_index = master_index
         self._glyph = None
+
+    @cached_property
+    def name(self) -> str:
+        return self._glyph.name
 
     def _copy_to_ufo_glyph(self, master_index):
         """
