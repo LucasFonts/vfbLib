@@ -126,8 +126,90 @@ class VfbGlyph:
         return VfbGlyphPointPen(self, self._parent)
 
 
+class VfbGlyphMaster:
+    def __init__(self, glyph: VfbGlyph, master_index: int = 0):
+        self.glyph = glyph
+        self.entry = glyph.entry
+        self.master_index = master_index
+        self._glyph = None
 
+    def _copy_to_ufo_glyph(self, master_index):
         """
+        Copy minimal data to the VfbToUfoGlyph. Only data that is necessary for the pen
+        methods is copied.
+        """
+        if self.entry.decompiled is None:
+            raise ValueError
 
+        _mm_glyph = VfbToUfoGlyph()
+        _mm_glyph.name = self.entry.decompiled["name"]
+
+        if "components" in self.entry.decompiled:
+            _mm_glyph.mm_components = self.entry.decompiled["components"]
+
+        if "metrics" in self.entry.decompiled:
+            _mm_glyph.mm_metrics = self.entry.decompiled["metrics"]
+
+        if "nodes" in self.entry.decompiled:
+            _mm_glyph.mm_nodes = self.entry.decompiled["nodes"]
+
+        # TODO: Support point names used by TT hinting
+        # if "tth" in self.entry.decompiled:
+        #     _mm_glyph.tth_commands = self.entry.decompiled["tth"]
+
+        self._glyph = UfoMasterGlyph(
+            mm_glyph=_mm_glyph,
+            glyph_order=self.glyph._parent.glyph_order,
+            master_index=master_index,
+        )
+        self._glyph.build()
+
+    def clearContours(self):
+        if self.master_index == 0:
+            target = self.entry.decompiled
         else:
+            if self.entry.temp_masters is None:
+                self.entry.temp_masters = [
+                    {} for _ in range(self.glyph._parent.num_masters)
+                ]
+            target = self.entry.temp_masters[self.master_index]
+        try:
+            del target["hints"]
+        except KeyError:
+            pass
+        target["nodes"] = []
+        self.entry.modified = True
+
+    def drawPoints(self, pen: AbstractPointPen) -> None:
+        """
+        Draw the VFB glyph onto a point pen.
+        """
+        if self.entry.decompiled is None:
+            raise ValueError
+
+        if self._glyph is None:
+            self._copy_to_ufo_glyph(self.master_index)
+
+        if self._glyph is None:
+            raise ValueError
+
+        return self._glyph.drawPoints(pen)
+
+    def getPen(self) -> AbstractPen:
+        """
+        Return a segment pen to draw into the VFB glyph.
+        """
+        # TODO: Test
+        return SegmentToPointPen(self.getPointPen(), guessSmooth=True)
+
+    def getPointPen(self) -> VfbGlyphPointPen:
+        """
+        Return a point pen to draw into the VFB glyph.
+        """
+        if self.entry.decompiled is None:
+            if self.entry.data is None:
+                # Make an empty glyph
+                self.empty(self.glyph._parent.num_masters)
             else:
+                self.decompile()
+        return VfbGlyphPointPen(self, self.glyph._parent)

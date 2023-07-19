@@ -5,7 +5,7 @@ import logging
 from pathlib import Path
 from time import time
 from typing import TYPE_CHECKING, Any, Dict, Iterable, List, Set, Tuple
-from vfbLib.vfb.glyph import VfbGlyph
+from vfbLib.vfb.glyph import VfbGlyph, VfbGlyphMaster
 from vfbLib.vfb.entry import VfbEntry
 from vfbLib.vfb.header import VfbHeader
 from vfbLib.vfb.info import VfbInfo
@@ -99,6 +99,8 @@ class Vfb:
             self._decompile_glyphs()
         return self._glyphs[key]
 
+    def getGlyphMaster(self, key: str, master_index: int) -> VfbGlyphMaster:
+        return VfbGlyphMaster(self[key], master_index)
 
     def get_masters(self) -> List[VfbMaster]:
         return [VfbMaster(self, i) for i in range(self.num_masters)]
@@ -202,8 +204,8 @@ class VfbMaster:
     def __contains__(self, key: str) -> bool:
         return key in self.vfb
 
-    def __getitem__(self, key: str) -> VfbGlyph:
-        return self.vfb[key]
+    def __getitem__(self, key: str) -> VfbGlyphMaster:
+        return self.vfb.getGlyphMaster(key, self.master_index)
 
     @property
     def info(self) -> VfbInfo:
