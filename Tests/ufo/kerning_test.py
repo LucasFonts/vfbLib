@@ -1,3 +1,5 @@
+import pytest
+
 from unittest import TestCase
 
 from vfbLib.ufo.kerning import UfoKerning

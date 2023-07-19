@@ -1,6 +1,7 @@
 from __future__ import annotations
 
-from datetime import datetime
+import pytest
+
 from unittest import TestCase
 from vfbLib.ufo.time import convert_timestamp
 

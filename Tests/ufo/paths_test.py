@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import pytest
+
 from unittest import TestCase
 
 from pprint import pprint
