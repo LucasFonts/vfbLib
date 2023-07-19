@@ -79,9 +79,12 @@ class Vfb:
             if entry.key == "Glyph":
                 glyph = VfbGlyph(entry, self)
                 name = glyph.decompile()
-                if name in self._glyphs:
+                i = 0
+                while name in self._glyphs:
                     logger.error(f"VFB contains duplicate glyph name: {name}")
-                    # FIXME: Disambiguate duplicate names
+                    # Disambiguate duplicate names
+                    i += 1
+                    name = f"{name}#{i}"
                 self._glyphs[name] = glyph
                 self.glyph_order.append(name)
 
