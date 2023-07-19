@@ -27,6 +27,7 @@ class VfbGlyph:
         self.entry = entry
         self._parent = parent
         self._glyph: UfoMasterGlyph | None = None
+        self.master_index = 0
 
     # UFO/cu2qu compatibility
 
