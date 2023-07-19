@@ -11,7 +11,7 @@ from vfbLib.compilers.value import write_encoded_value, write_value_5
 
 class BaseCompiler:
     """
-    Base class to compile vfb data
+    Base class to compile vfb data.
     """
 
     @classmethod
@@ -47,7 +47,7 @@ class BaseCompiler:
             master_count (int, optional): The number of masters. Defaults to 0.
 
         Returns:
-            Any: The merged main data structure
+            Any: The merged main data structure.
         """
         # Must be implemented for compilers that need it, e.g. the GlyphCompiler.
         pass
@@ -55,7 +55,10 @@ class BaseCompiler:
     @classmethod
     def write_bytes(cls, value: bytes) -> None:
         """
-        Write a bytes value to the stream
+        Write binary data to the stream.
+
+        Args:
+            value (bytes): The data.
         """
         cls.stream.write(value)
 
@@ -64,6 +67,11 @@ class BaseCompiler:
         """
         Encode and write an int value to the stream. Optionally don't apply the length
         encoding optimization.
+
+        Args:
+            value (int): The value to write to the stream.
+            shortest (bool, optional): Whether to write in the shortest possible
+                notation. Defaults to True.
         """
         if shortest:
             write_encoded_value(value, cls.stream)
@@ -81,7 +89,7 @@ class BaseCompiler:
     @classmethod
     def write_uint1(cls, value: int) -> None:
         """
-        Write a 1-byte unsigned value to the stream
+        Write a 1-byte unsigned value to the stream.
         """
         encoded = pack(">B", value)
         cls.stream.write(encoded)
@@ -89,7 +97,7 @@ class BaseCompiler:
     @classmethod
     def write_uint8(cls, value: int) -> None:
         """
-        Write a uint8 value to the stream
+        Write a uint8 value to the stream.
         """
         encoded = pack(">H", value)
         cls.stream.write(encoded)
