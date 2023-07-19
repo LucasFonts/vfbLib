@@ -26,6 +26,23 @@ class BaseCompiler:
         raise NotImplementedError
 
     @classmethod
+    def merge(cls, masters_data: Any, data: Any, master_count: int = 0) -> Any:
+        """
+        Merge the data of additional masters into the main data structure. This operates
+        on the uncompiled JSON-like data structure.
+
+        Args:
+            masters_data (Any): The additional masters data.
+            data (Any): The main data structure.
+            master_count (int, optional): The number of masters. Defaults to 0.
+
+        Returns:
+            Any: The merged main data structure
+        """
+        # Must be implemented for compilers that need it, e.g. the GlyphCompiler.
+        pass
+
+    @classmethod
     def write_bytes(cls, value: bytes) -> None:
         """
         Write a bytes value to the stream

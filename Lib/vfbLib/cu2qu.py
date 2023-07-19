@@ -4,7 +4,7 @@ from argparse import ArgumentParser
 from fontTools.cu2qu.ufo import font_to_quadratic, fonts_to_quadratic
 from pathlib import Path
 from vfbLib.version import build_date
-from vfbLib.vfb.vfb import Vfb
+from vfbLib.vfb.vfb import Vfb, VfbMaster
 
 
 def vfbcu2qu():
@@ -67,8 +67,8 @@ def vfbcu2qu():
         if vfb.num_masters == 1:
             modified = font_to_quadratic(vfb, **kwargs)
         elif vfb.num_masters > 1:
-            # FIXME: How do we set the master number?
-            modified = fonts_to_quadratic(vfb, **kwargs)
+            vfbs = [VfbMaster(vfb, i) for i in range(vfb.num_masters)]
+            modified = fonts_to_quadratic(vfbs, **kwargs)
         else:
             print(f"Unsupported number of masters: {vfb.num_masters}")
             return

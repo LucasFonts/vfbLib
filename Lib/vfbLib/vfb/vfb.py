@@ -52,6 +52,7 @@ class Vfb:
         self.info = VfbInfo(vfb=self)
         self.lib = {}
 
+        self.master_index = 0
         self.num_masters: int = 0
         self.read()
 
@@ -183,3 +184,32 @@ class Vfb:
                 vfb.write(entry.data)
             # File end marker
             vfb.write(b"\05\00\00\00\02\00\00\00")
+
+
+class VfbMaster:
+    """
+    Minimal UFO interface for a single master of a multiple master VFB.
+    """
+
+    def __init__(self, vfb: Vfb, master_index: int = 0):
+        self.vfb = vfb
+        self.master_index = master_index
+
+    def __contains__(self, key: str) -> bool:
+        return key in self.vfb
+
+    def __getitem__(self, key: str) -> VfbGlyph:
+        return self.vfb[key]
+
+    @property
+    def info(self) -> VfbInfo:
+        return self.vfb.info
+
+    def items(self) -> Iterable[Tuple[str, VfbGlyph]]:
+        return self.vfb.items()
+
+    def keys(self) -> Iterable[str]:
+        return self.vfb.keys()
+
+    def num_masters(self) -> int:
+        return self.vfb.num_masters

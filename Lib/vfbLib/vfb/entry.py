@@ -35,6 +35,8 @@ class VfbEntry:
         self.data: bytes | None = None
         # The decompiled data
         self.decompiled = None
+        # Temporary data for additional master, must be merged when compiling
+        self.temp_masters = None
         # The numeric and human-readable key of the entry
         self.id = None
         self.key = None
@@ -178,6 +180,8 @@ class VfbEntry:
             logger.error(f"Compiling '{self.key}' is not supported yet.")
             return
 
+        self.merge_masters_data()
+
         self.data = self.compiler.compile(
             self.decompiled, master_count=self.vfb.num_masters
         )
@@ -210,6 +214,20 @@ class VfbEntry:
             logger.error(f"Parse error for data: {self.key}; {hexStr(self.data)}")
             logger.error(f"Parser class: {self.parser.__name__}")
             self.decompiled = None
+
+    def merge_masters_data(self) -> None:
+        """
+        Merge any temporary masters data into the main decompiled structure. Such data
+        can be added as the result of drawing with a PointPen into a multiple master
+        Vfb.
+        """
+        if self.temp_masters is None:
+            return
+
+        if self.vfb.num_masters == 1:
+            return
+
+        self.compiler.merge(self.temp_masters, self.decompiled, self.vfb.num_masters)
 
     def read(self, stream: BufferedReader) -> None:
         """

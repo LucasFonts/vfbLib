@@ -14,18 +14,17 @@ from vfbLib.templates.glyph import get_empty_glyph
 
 if TYPE_CHECKING:
     from fontTools.pens.basePen import AbstractPen
-    from vfbLib.vfb import Vfb
+    from vfbLib.vfb.vfb import Vfb, VfbMaster
     from vfbLib.vfb.entry import VfbEntry
 
 logger = logging.getLogger(__name__)
 
 
 class VfbGlyph:
-    def __init__(self, entry: VfbEntry, parent: Vfb) -> None:
+    def __init__(self, entry: VfbEntry, parent: Vfb | VfbMaster) -> None:
         self.entry = entry
         self._parent = parent
         self._glyph: UfoMasterGlyph | None = None
-        self._target_master = 0
 
     # UFO/cu2qu compatibility
 
@@ -80,26 +79,9 @@ class VfbGlyph:
         self._glyph = UfoMasterGlyph(
             mm_glyph=_mm_glyph,
             glyph_order=self._parent.glyph_order,
-            master_index=self._target_master,
+            master_index=self._parent.master_index,
         )
         self._glyph.build()
-
-    @property
-    def target_master(self) -> int:
-        """
-        Set the target master index before calling draw/pen methods to select the
-        desired master.
-        """
-        if self._glyph is None:
-            return self._target_master
-
-        return self._glyph.master_index
-
-    @target_master.setter
-    def target_master(self, value: int) -> None:
-        self._target_master = value
-        if self._glyph is not None:
-            self._glyph.master_index = value
 
     def draw(self, pen) -> None:
         """
@@ -140,28 +122,33 @@ class VfbGlyph:
                 self.empty(self._parent.num_masters)
             else:
                 self.decompile()
-        return VfbGlyphPointPen(self)
-
-    def getPointPenMM(self) -> VfbGlyphPointPenMM:
-        """
-        Return a MM-capable point pen to draw into the VFB glyph.
-        """
-        return VfbGlyphPointPenMM(self)
+        return VfbGlyphPointPen(self, self._parent)
 
 
 class VfbGlyphPointPen(AbstractPointPen):
     # FIXME: Only supports TrueType curves
-    def __init__(self, glyph: VfbGlyph) -> None:
+    def __init__(self, glyph: VfbGlyph, glyphSet: Vfb | VfbMaster) -> None:
+        """A PointPen to draw into the VFB glyph.
+
+        Args:
+            glyph (VfbGlyph): The glyph to draw into.
+        """
         self.glyph = glyph
+        self.glyphSet = glyphSet
         self.currentPath = None
         self.in_qcurve = False
-        self.last_type = None
+        if self.glyphSet.master_index == 0:
+            self.target = self.glyph.entry.decompiled
+        else:
+            if self.glyph.entry.temp_masters is None:
+                self.glyph.entry.temp_masters = [[] * self.glyphSet.num_masters]
+            self.target = self.glyph.entry.temp_masters[self.glyphSet.master_index]
 
     def beginPath(self) -> None:
         self.currentPath = []
 
     def endPath(self) -> None:
-        self.glyph.entry.decompiled["nodes"].extend(self.currentPath)
+        self.target["nodes"].extend(self.currentPath)
         self.currentPath = None
 
     def addPoint(
@@ -179,7 +166,9 @@ class VfbGlyphPointPen(AbstractPointPen):
         node = {
             "type": None,
             "flags": flags,
-            "points": [[(round(x), round(y))]],
+            "points": [
+                [(round(x), round(y))] for _ in range(self.glyphSet.num_masters)
+            ],
         }
 
         if segmentType == "qcurve":
@@ -191,9 +180,8 @@ class VfbGlyphPointPen(AbstractPointPen):
             if segmentType == "move":  # Open path
                 flags += 8
 
-            # VFB first node always has type "move", save real type for later
+            # VFB first node always has type "move"
             node["type"] = "move"
-            self.last_type = segmentType
 
         else:
             # During path
@@ -212,39 +200,28 @@ class VfbGlyphPointPen(AbstractPointPen):
         node["flags"] = flags
         self.currentPath.append(node)
 
-    # def addComponent(self, baseName, transformation):
-    #     assert self.currentPath is None
-    #     # make base glyph if needed, Component() needs the index
-    #     NewGlyph(self.glyph.parent, baseName, updateFont=False)
-    #     baseIndex = self.glyph.parent.FindGlyph(baseName)
-    #     if baseIndex == -1:
-    #         raise (KeyError, "couldn't find or make base glyph")
-    #     xx, xy, yx, yy, dx, dy = transformation
-    #     # XXX warn when xy or yx != 0
-    #     new = Component(baseIndex, Point(dx, dy), Point(xx, yy))
-    #     self.glyph.components.append(new)
-
-
-class VfbGlyphPointPenMM(VfbGlyphPointPen):
-    def addPoint(
+    def addComponent(
         self,
-        pts: List[Tuple[int, int]],
-        segmentType: str | None = None,
-        smooth: bool = False,
-        name: str | None = None,
-        **kwargs: Dict[str, Any],
+        baseGlyphName: str,
+        transformation: Tuple[float, float, float, float, float, float],
+        identifier: str | None = None,
+        **kwargs: Any,
     ) -> None:
-        assert self.currentPath is not None
-        self.currentPath.append((pts, segmentType, smooth, name))
+        assert self.currentPath is None
+        base_index = self.glyphSet.glyph_order.index(baseGlyphName)
+        if base_index == -1:
+            raise (KeyError, f"Base glyph not found: '{baseGlyphName}'")
 
-    # def addComponent(self, baseName, transformation):
-    #     assert self.currentPath is None
-    #     # make base glyph if needed, Component() needs the index
-    #     NewGlyph(self.glyph.parent, baseName, updateFont=False)
-    #     baseIndex = self.glyph.parent.FindGlyph(baseName)
-    #     if baseIndex == -1:
-    #         raise (KeyError, "couldn't find or make base glyph")
-    #     xx, xy, yx, yy, dx, dy = transformation
-    #     # XXX warn when xy or yx != 0
-    #     new = Component(baseIndex, Point(dx, dy), Point(xx, yy))
-    #     self.glyph.components.append(new)
+        xx, xy, yx, yy, dx, dy = transformation
+
+        if not "components" in self.target:
+            self.target["components"] = []
+        self.target["components"].append(
+            {
+                "gid": base_index,
+                "offsetX": [dx] * self.glyphSet.num_masters,
+                "offsetY": [dy] * self.glyphSet.num_masters,
+                "scaleX": [xx] * self.glyphSet.num_masters,
+                "scaleY": [yy] * self.glyphSet.num_masters,
+            }
+        )
