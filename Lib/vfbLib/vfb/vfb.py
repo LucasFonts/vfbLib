@@ -99,6 +99,10 @@ class Vfb:
             self._decompile_glyphs()
         return self._glyphs[key]
 
+
+    def get_masters(self) -> List[VfbMaster]:
+        return [VfbMaster(self, i) for i in range(self.num_masters)]
+
     def decompile(self) -> None:
         """
         Decompile all entries, except for the ones listed in `drop_keys`.
