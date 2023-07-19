@@ -79,6 +79,7 @@ def vfbcu2qu():
 
         suffix = ".qu.vfb"
         if args.path:
+            suffix = ".vfb"
             out_path = (Path(args.path[0]) / vfb_path.name).with_suffix(suffix)
         else:
             out_path = vfb_path.with_suffix(suffix)
@@ -88,7 +89,7 @@ def vfbcu2qu():
                     "Output file exists, new file was not saved. "
                     "Use -fo to force overwriting."
                 )
-                return
+                raise FileExistsError
 
         print(f"Saving converted file to {out_path}.")
         vfb.write(out_path)
