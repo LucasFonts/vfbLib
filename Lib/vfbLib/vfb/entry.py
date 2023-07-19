@@ -227,7 +227,7 @@ class VfbEntry:
         if self.vfb.num_masters == 1:
             return
 
-        self.compiler.merge(self.temp_masters, self.decompiled, self.vfb.num_masters)
+        self.compiler.merge(self.temp_masters, self.decompiled)
 
     def read(self, stream: BufferedReader) -> None:
         """

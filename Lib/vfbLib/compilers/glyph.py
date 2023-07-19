@@ -3,7 +3,7 @@ from __future__ import annotations
 from io import BytesIO
 from math import radians, tan
 from struct import pack
-from typing import Any, Tuple
+from typing import Any, List, Tuple
 from vfbLib import GLYPH_CONSTANT
 from vfbLib.compilers import BaseCompiler
 from vfbLib.truetype import TT_COMMAND_CONSTANTS, TT_COMMANDS
@@ -23,6 +23,23 @@ node_types = {
 
 
 class GlyphCompiler(BaseCompiler):
+    @classmethod
+    def merge(cls, masters_data: List[Any], data: Any) -> None:
+        num_masters = len(masters_data)
+        if num_masters < 2:
+            return
+
+        for m in range(1, num_masters):
+            master_data = masters_data[m]
+            # See if there is any data to merge
+            if "nodes" in master_data:
+                assert "nodes" in data
+                for i, tgt in enumerate(data["nodes"]):
+                    src = master_data["nodes"][i]
+                    for key in ("type", "flags"):
+                        assert src[key] == tgt[key]
+                    tgt["points"][m] = src["points"][m]
+
     @classmethod
     def _compile_binary(cls, data):
         # Imported binary data 8-)

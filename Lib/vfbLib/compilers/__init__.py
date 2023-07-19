@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from io import BytesIO
 from struct import pack
-from typing import Any
+from typing import Any, List
 from vfbLib.compilers.value import write_encoded_value, write_value_5
 
 
@@ -36,18 +36,15 @@ class BaseCompiler:
         raise NotImplementedError
 
     @classmethod
-    def merge(cls, masters_data: Any, data: Any, master_count: int = 0) -> Any:
+    def merge(cls, masters_data: List[Any], data: Any) -> None:
         """
         Merge the data of additional masters into the main data structure. This operates
         on the uncompiled JSON-like data structure.
 
         Args:
-            masters_data (Any): The additional masters data.
+            masters_data (List[Any]): The additional masters data as a list with one
+                entry per master.
             data (Any): The main data structure.
-            master_count (int, optional): The number of masters. Defaults to 0.
-
-        Returns:
-            Any: The merged main data structure.
         """
         # Must be implemented for compilers that need it, e.g. the GlyphCompiler.
         pass
