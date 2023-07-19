@@ -725,7 +725,13 @@ class VfbToUfoBuilder:
 
         return ds
 
-    def get_master_path(self, out_path: Path, master_index: int) -> Path:
+    @classmethod
+    def get_master_path(cls, out_path: Path, master_index: int) -> Path:
         if master_index > 0:
-            return out_path.with_stem(f"{out_path.stem}-{master_index}")
+            try:
+                return out_path.with_stem(f"{out_path.stem}-{master_index}")
+            except AttributeError:
+                return out_path.with_name(
+                    f"{out_path.stem}-{master_index}{out_path.suffix}"
+                )
         return out_path
