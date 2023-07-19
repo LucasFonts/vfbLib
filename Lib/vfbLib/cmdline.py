@@ -6,24 +6,12 @@ import logging
 
 from argparse import ArgumentParser
 from pathlib import Path
-from vfbLib.reader import VFBReader
 from vfbLib.ufo import VfbToUfoBuilder
 from vfbLib.version import build_date
 from vfbLib.vfb.vfb import Vfb
 
 
 logger = logging.getLogger(__name__)
-
-
-def read_vfb(vfb_path: Path, minimal=False) -> VFBReader:
-    reader = VFBReader(vfb_path, minimal=minimal)
-    reader.read()
-    return reader
-
-
-def write_json(reader: VFBReader, json_path: Path) -> None:
-    with codecs.open(str(json_path), "wb", "utf-8") as f:
-        json.dump(reader.data, f, ensure_ascii=False, indent=4)
 
 
 def vfb2json():
