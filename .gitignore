@@ -129,3 +129,4 @@ dmypy.json
 
 Tests/Data_untracked
 **.bak
+Tests/Data/out/**.*
