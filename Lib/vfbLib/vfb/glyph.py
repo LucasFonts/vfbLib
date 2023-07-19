@@ -7,15 +7,17 @@ from fontTools.pens.pointPen import (
     PointToSegmentPen,
     SegmentToPointPen,
 )
-from typing import TYPE_CHECKING, Any, Dict, List, Tuple
+from typing import TYPE_CHECKING
 from vfbLib.ufo.glyph import VfbToUfoGlyph
 from vfbLib.ufo.paths import UfoMasterGlyph
 from vfbLib.templates.glyph import get_empty_glyph
+from vfbLib.vfb.pens import VfbGlyphPointPen
 
 if TYPE_CHECKING:
     from fontTools.pens.basePen import AbstractPen
     from vfbLib.vfb.vfb import Vfb, VfbMaster
     from vfbLib.vfb.entry import VfbEntry
+
 
 logger = logging.getLogger(__name__)
 
@@ -124,103 +126,8 @@ class VfbGlyph:
         return VfbGlyphPointPen(self, self._parent)
 
 
-class VfbGlyphPointPen(AbstractPointPen):
-    # FIXME: Only supports TrueType curves
-    def __init__(self, glyph: VfbGlyph, glyphSet: Vfb | VfbMaster) -> None:
-        """A PointPen to draw into the VFB glyph.
 
-        Args:
-            glyph (VfbGlyph): The glyph to draw into.
         """
-        self.glyph = glyph
-        self.glyphSet = glyphSet
-        self.currentPath = None
-        self.in_qcurve = False
-        if self.glyphSet.master_index == 0:
-            self.target = self.glyph.entry.decompiled
-        else:
-            if self.glyph.entry.temp_masters is None:
-                self.glyph.entry.temp_masters = [[] * self.glyphSet.num_masters]
-            self.target = self.glyph.entry.temp_masters[self.glyphSet.master_index]
-
-    def beginPath(self) -> None:
-        self.currentPath = []
-
-    def endPath(self) -> None:
-        self.target["nodes"].extend(self.currentPath)
-        self.currentPath = None
-
-    def addPoint(
-        self,
-        pt: Tuple[int, int],
-        segmentType: str | None = None,
-        smooth: bool = False,
-        name: str | None = None,
-        **kwargs: Dict[str, Any],
-    ) -> None:
-        assert self.currentPath is not None
-
-        flags = 0
-        x, y = pt
-        node = {
-            "type": None,
-            "flags": flags,
-            "points": [
-                [(round(x), round(y))] for _ in range(self.glyphSet.num_masters)
-            ],
-        }
-
-        if segmentType == "qcurve":
-            self.in_qcurve = True
-
-        if not self.currentPath:
-            # Begin a new path
-
-            if segmentType == "move":  # Open path
-                flags += 8
-
-            # VFB first node always has type "move"
-            node["type"] = "move"
 
         else:
-            # During path
-            if segmentType is None:
-                node["type"] = "qcurve"
-            elif segmentType == "qcurve":
-                if self.in_qcurve:
-                    node["type"] = "line"
-                    self.in_qcurve = False
-            elif segmentType == "line":
-                node["type"] = "line"
             else:
-                print(f"Unsupported segment type: {segmentType}")
-                raise ValueError
-
-        node["flags"] = flags
-        self.currentPath.append(node)
-
-    def addComponent(
-        self,
-        baseGlyphName: str,
-        transformation: Tuple[float, float, float, float, float, float],
-        identifier: str | None = None,
-        **kwargs: Any,
-    ) -> None:
-        assert self.currentPath is None
-        base_index = self.glyphSet.glyph_order.index(baseGlyphName)
-        if base_index == -1:
-            raise (KeyError, f"Base glyph not found: '{baseGlyphName}'")
-
-        xx, xy, yx, yy, dx, dy = transformation
-
-        if not "components" in self.target:
-            self.target["components"] = []
-        self.target["components"].append(
-            {
-                "gid": base_index,
-                "offsetX": [dx] * self.glyphSet.num_masters,
-                "offsetY": [dy] * self.glyphSet.num_masters,
-                "scaleX": [xx] * self.glyphSet.num_masters,
-                "scaleY": [yy] * self.glyphSet.num_masters,
-            }
-        )
