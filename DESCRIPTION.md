@@ -75,7 +75,7 @@ Generate a representation that closely adheres to the VFB structure.
 $ vfb2json MyFile.vfb
 ```
 
-will convert the file to `MyFile.json` in the same directory. Existing files will be overwritten.
+will convert the file to `MyFile.vfb.json` in the same directory. Existing files will be overwritten.
 
 We expect this to be mostly used for debugging purposes.
 
