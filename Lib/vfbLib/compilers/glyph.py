@@ -51,8 +51,7 @@ class GlyphCompiler(BaseCompiler):
                     tgt["scaleX"][m] = src["scaleX"][m]
                     tgt["scaleY"][m] = src["scaleY"][m]
 
-    @classmethod
-    def _compile_binary(cls, data):
+    def _compile_binary(self, data):
         # Imported binary data 8-)
         if not (imported := data.get("imported")):
             return
@@ -60,140 +59,132 @@ class GlyphCompiler(BaseCompiler):
         logger.warning("Compiling imported binary data is not supported.")
         return
 
-        cls.write_uint1(9)
+        self.write_uint1(9)
 
-    @classmethod
-    def _compile_components(cls, data):
+    def _compile_components(self, data):
         # Components
         if not (components := data.get("components")):
             return
 
-        cls.write_uint1(5)
-        cls.write_encoded_value(len(components))
+        self.write_uint1(5)
+        self.write_encoded_value(len(components))
         for component in components:
-            cls.write_encoded_value(component["gid"])
-            for i in range(cls.num_masters):
-                cls.write_encoded_value(component["offsetX"][i])
-                cls.write_encoded_value(component["offsetY"][i])
-                cls.write_float(component["scaleX"][i])
-                cls.write_float(component["scaleY"][i])
+            self.write_encoded_value(component["gid"])
+            for i in range(self.num_masters):
+                self.write_encoded_value(component["offsetX"][i])
+                self.write_encoded_value(component["offsetY"][i])
+                self.write_float(component["scaleX"][i])
+                self.write_float(component["scaleY"][i])
 
-    @classmethod
-    def _compile_glyph_name(cls, data):
+    def _compile_glyph_name(self, data):
         # Glyph name
         if not (name := data.get("name")):
             return
 
         glyph_name = name.encode("cp1252")
         glyph_name_length = len(glyph_name)
-        cls.write_uint1(1)
-        cls.write_encoded_value(glyph_name_length)
-        cls.write_bytes(glyph_name)
+        self.write_uint1(1)
+        self.write_encoded_value(glyph_name_length)
+        self.write_bytes(glyph_name)
 
-    @classmethod
-    def _compile_guides(cls, data):
+    def _compile_guides(self, data):
         # Guidelines
         # TODO: Reuse for global guides
         if not (guides := data.get("guides")):
             # Seems to be required
-            cls.write_uint1(4)
-            cls.write_encoded_value(0)
-            cls.write_encoded_value(0)
+            self.write_uint1(4)
+            self.write_encoded_value(0)
+            self.write_encoded_value(0)
             return
 
-        cls.write_uint1(4)
+        self.write_uint1(4)
         for direction in ("h", "v"):
             direction_guides = guides.get(direction, [])
-            cls.write_encoded_value(len(direction_guides))
-            for m in range(cls.num_masters):
+            self.write_encoded_value(len(direction_guides))
+            for m in range(self.num_masters):
                 for guide in direction_guides[m]:
                     pos = guide["pos"]
                     angle = round(tan(radians(guide["angle"])) * 10000)
-                    cls.write_encoded_value(pos)
-                    cls.write_encoded_value(angle)
+                    self.write_encoded_value(pos)
+                    self.write_encoded_value(angle)
 
-    @classmethod
-    def _compile_hints(cls, data):
+    def _compile_hints(self, data):
         # PostScript hints
         if not (hints := data.get("hints")):
             # Seems to be required
-            cls.write_uint1(3)
-            cls.write_encoded_value(0)
-            cls.write_encoded_value(0)
-            cls.write_encoded_value(0)
+            self.write_uint1(3)
+            self.write_encoded_value(0)
+            self.write_encoded_value(0)
+            self.write_encoded_value(0)
             return
 
-        cls.write_uint1(3)
+        self.write_uint1(3)
         for direction in ("h", "v"):
             if direction_hints := hints.get(direction):
-                cls.write_encoded_value(len(direction_hints))
+                self.write_encoded_value(len(direction_hints))
                 for mm_hint in direction_hints:
-                    for i in range(cls.num_masters):
+                    for i in range(self.num_masters):
                         hint = mm_hint[i]
-                        cls.write_encoded_value(hint["pos"])
-                        cls.write_encoded_value(hint["width"])
+                        self.write_encoded_value(hint["pos"])
+                        self.write_encoded_value(hint["width"])
             else:
-                cls.write_encoded_value(0)
+                self.write_encoded_value(0)
 
         if not (hintmasks := hints.get("hintmasks")):
-            cls.write_encoded_value(0)
+            self.write_encoded_value(0)
             return
 
         # FIXME: Implement writing of hintmasks
-        # cls.write_encoded_value(len(hintmasks))
-        cls.write_encoded_value(0)
+        # self.write_encoded_value(len(hintmasks))
+        self.write_encoded_value(0)
         logger.warning("Compilation of hint masks is not supported.")
 
-    @classmethod
-    def _compile_instructions(cls, data):
+    def _compile_instructions(self, data):
         # TrueType instructions
         if not (tth := data.get("tth")):
             return
 
-        cls.write_uint1(0x0A)
-        instructions = InstructionsCompiler.compile(tth)
-        cls.write_encoded_value(len(instructions))
-        cls.stream.write(instructions)
+        self.write_uint1(0x0A)
+        instructions = InstructionsCompiler().compile(tth)
+        self.write_encoded_value(len(instructions))
+        self.stream.write(instructions)
 
-    @classmethod
-    def _compile_kerning(cls, data):
+    def _compile_kerning(self, data):
         # Kerning
         if not (kerning := data.get("kerning")):
             return
 
-        cls.write_uint1(6)
-        cls.write_encoded_value(len(kerning))
+        self.write_uint1(6)
+        self.write_encoded_value(len(kerning))
         for gid, values in kerning.items():
-            cls.write_encoded_value(gid)
+            self.write_encoded_value(gid)
             for value in values:
-                cls.write_encoded_value(value)
+                self.write_encoded_value(value)
 
-    @classmethod
-    def _compile_metrics(cls, data):
+    def _compile_metrics(self, data):
         # Metrics
         if not (metrics := data.get("metrics")):
             return
 
-        cls.write_uint1(2)
-        for i in range(cls.num_masters):
+        self.write_uint1(2)
+        for i in range(self.num_masters):
             x, y = metrics[i]
-            cls.write_encoded_value(x)
-            cls.write_encoded_value(y)
+            self.write_encoded_value(x)
+            self.write_encoded_value(y)
 
-    @classmethod
-    def _compile_outlines(cls, data):
+    def _compile_outlines(self, data):
         # Outlines
         # A minimal outlines structure is always written:
-        cls.write_uint1(8)
-        cls.write_encoded_value(cls.num_masters)  # Number of masters
+        self.write_uint1(8)
+        self.write_encoded_value(self.num_masters)  # Number of masters
 
         if not (nodes := data.get("nodes")):
             # 0 nodes with 0 values
-            cls.write_encoded_value(0)
-            cls.write_encoded_value(0)
+            self.write_encoded_value(0)
+            self.write_encoded_value(0)
             return
 
-        outlines, num_values = OutlinesCompiler.compile(nodes, cls.num_masters)
+        outlines, num_values = OutlinesCompiler().compile(nodes, self.num_masters)
         # try:
         #     num_values_old = data["num_node_values"]
         #     if num_values != num_values_old:
@@ -203,66 +194,63 @@ class GlyphCompiler(BaseCompiler):
         #         )
         # except KeyError:
         #     pass
-        cls.write_encoded_value(num_values)
-        cls.stream.write(outlines)
+        self.write_encoded_value(num_values)
+        self.stream.write(outlines)
 
-    @classmethod
-    def _compile(cls, data: Any) -> None:
+    def _compile(self, data: Any) -> None:
 
         # Constants?
-        cls.write_bytes(pack("<4B", *GLYPH_CONSTANT))
-        cls.num_masters = data["num_masters"]
+        self.write_bytes(pack("<4B", *GLYPH_CONSTANT))
+        self.num_masters = data["num_masters"]
 
-        cls._compile_glyph_name(data)
-        cls._compile_outlines(data)
-        cls._compile_metrics(data)
-        cls._compile_hints(data)
-        cls._compile_guides(data)
-        cls._compile_components(data)
-        cls._compile_kerning(data)
-        cls._compile_binary(data)
-        cls._compile_instructions(data)
-        cls.write_uint1(15)  # End of glyph
+        self._compile_glyph_name(data)
+        self._compile_outlines(data)
+        self._compile_metrics(data)
+        self._compile_hints(data)
+        self._compile_guides(data)
+        self._compile_components(data)
+        self._compile_kerning(data)
+        self._compile_binary(data)
+        self._compile_instructions(data)
+        self.write_uint1(15)  # End of glyph
 
 
 class InstructionsCompiler(BaseCompiler):
-    @classmethod
-    def _compile(cls, data: Any) -> None:
-        cls.write_encoded_value(len(data))
+    def _compile(self, data: Any) -> None:
+        self.write_encoded_value(len(data))
         for cmd in data:
             command_id = TT_COMMAND_CONSTANTS[cmd["cmd"]]
-            cls.write_uint1(command_id)
+            self.write_uint1(command_id)
             params = cmd["params"]
             for param_name in TT_COMMANDS[command_id]["params"]:
-                cls.write_encoded_value(params[param_name])
+                self.write_encoded_value(params[param_name])
         for _ in range(3):
-            cls.write_encoded_value(0)
+            self.write_encoded_value(0)
 
 
 class OutlinesCompiler(BaseCompiler):
-    @classmethod
-    def compile(cls, data: Any, num_masters: int) -> Tuple[bytes, int]:
-        cls.num_masters = num_masters
-        cls.stream = BytesIO()
-        num_values = cls._compile(data)
-        return cls.stream.getvalue(), num_values
+    def compile(self, data: Any, num_masters: int) -> Tuple[bytes, int]:
+        self.num_masters = num_masters
+        assert not hasattr(self, "stream")
+        self.stream = BytesIO()
+        num_values = self._compile(data)
+        return self.stream.getvalue(), num_values
 
-    @classmethod
-    def _compile(cls, data: Any) -> int:
-        cls.write_encoded_value(len(data))  # Number of nodes, may be 0
+    def _compile(self, data: Any) -> int:
+        self.write_encoded_value(len(data))  # Number of nodes, may be 0
         num_values = 0
-        ref_coords = [[0, 0] for _ in range(cls.num_masters)]
+        ref_coords = [[0, 0] for _ in range(self.num_masters)]
         for node in data:
             type_flags = node.get("flags", 0) * 16 + node_types[node["type"]]
-            cls.write_uint1(type_flags)
+            self.write_uint1(type_flags)
             num_values += 1
             for j in range(len(node["points"][0])):
-                for i in range(cls.num_masters):
+                for i in range(self.num_masters):
                     x, y = node["points"][i][j]
                     refx, refy = ref_coords[i]
                     # Coordinates are written relatively to the previous coords
-                    cls.write_encoded_value(x - refx)
-                    cls.write_encoded_value(y - refy)
+                    self.write_encoded_value(x - refx)
+                    self.write_encoded_value(y - refy)
                     num_values += 2
                     ref_coords[i] = [x, y]
         return 2 * num_values

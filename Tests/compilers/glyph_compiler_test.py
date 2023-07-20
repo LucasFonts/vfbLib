@@ -463,12 +463,11 @@ class PartCompiler(GlyphCompiler):
     Compile part of the glyph data, by calling the method name passed in compile_method.
     """
 
-    @classmethod
-    def _compile(cls, data, num_masters, compile_method):
-        cls.stream = BytesIO()
-        cls.num_masters = num_masters
-        getattr(cls, compile_method)(data)
-        return cls.stream.getvalue()
+    def _compile(self, data, num_masters, compile_method):
+        self.stream = BytesIO()
+        self.num_masters = num_masters
+        getattr(self, compile_method)(data)
+        return self.stream.getvalue()
 
 
 class GlyphCompilerTest(TestCase):
@@ -478,7 +477,7 @@ class GlyphCompilerTest(TestCase):
         assert dec == empty_glyph_json
 
         # Compile
-        compiled = GlyphCompiler.compile(dec, 2)
+        compiled = GlyphCompiler().compile(dec, 2)
         # print(hexStr(compiled))
         # ... and parse again
         cde = GlyphParser.parse(BytesIO(compiled), len(compiled), 2)
@@ -490,7 +489,7 @@ class GlyphCompilerTest(TestCase):
         # assert dec == {}
 
         # Compile
-        compiled = GlyphCompiler.compile(dec, 2)
+        compiled = GlyphCompiler().compile(dec, 2)
         # print(hexStr(compiled))
         # ... and parse again
         cde = GlyphParser.parse(BytesIO(compiled), len(compiled), 2)
@@ -502,7 +501,7 @@ class GlyphCompilerTest(TestCase):
         assert dec == psglyph_1master_expected
 
         # Compile
-        compiled = GlyphCompiler.compile(dec, 1)
+        compiled = GlyphCompiler().compile(dec, 1)
         # print(hexStr(compiled))
         # ... and parse again
         cde = GlyphParser.parse(BytesIO(compiled), len(compiled), 1)
@@ -516,7 +515,7 @@ class GlyphCompilerTest(TestCase):
         assert dec == ttglyph_2_masters_json
 
         # Compile
-        compiled = GlyphCompiler.compile(dec, 2)
+        compiled = GlyphCompiler().compile(dec, 2)
         # print(hexStr(compiled))
         # ... and parse again
         cde = GlyphParser.parse(BytesIO(compiled), len(compiled), 2)
@@ -530,50 +529,50 @@ class GlyphCompilerTest(TestCase):
         assert dec == composite_2_masters_json
 
         # Compile
-        compiled = GlyphCompiler.compile(dec, 2)
+        compiled = GlyphCompiler().compile(dec, 2)
         # print(hexStr(compiled))
         # ... and parse again
         cde = GlyphParser.parse(BytesIO(compiled), len(compiled), 2)
         assert dec == cde
 
     def test_components_2_masters(self):
-        data = PartCompiler._compile(
+        data = PartCompiler()._compile(
             components_2_masters_json, 2, "_compile_components"
         )
         assert hexStr(data) == hexStr(components_2_masters_binary)
 
     def test_guides_1_master(self):
-        data = PartCompiler._compile(glyph_guides_json, 1, "_compile_guides")
+        data = PartCompiler()._compile(glyph_guides_json, 1, "_compile_guides")
         assert hexStr(data) == hexStr(glyph_guides_binary)
 
     def test_guides_angled_1_master(self):
-        data = PartCompiler._compile(angled_glyph_guides_json, 1, "_compile_guides")
+        data = PartCompiler()._compile(angled_glyph_guides_json, 1, "_compile_guides")
         assert hexStr(data) == hexStr(angled_glyph_guides_binary)
 
     def test_hints_1(self):
-        data = PartCompiler._compile(psglyph_1master_expected, 1, "_compile_hints")
+        data = PartCompiler()._compile(psglyph_1master_expected, 1, "_compile_hints")
         assert hexStr(data) == hexStr(
             deHexStr("03    8F  7F C3 F818 C3 F92A 53 85 C2  8D C1 EB F802 E5  8B")
         )
 
     def test_metrics_1(self):
-        data = PartCompiler._compile(psglyph_1master_expected, 1, "_compile_metrics")
+        data = PartCompiler()._compile(psglyph_1master_expected, 1, "_compile_metrics")
         assert hexStr(data) == "02f8b48b"
 
     def test_name_1(self):
-        data = PartCompiler._compile({"name": "d"}, 1, "_compile_glyph_name")
+        data = PartCompiler()._compile({"name": "d"}, 1, "_compile_glyph_name")
         assert hexStr(data) == hexStr(deHexStr("01 8C 64"))
 
     def test_name_2(self):
-        data = PartCompiler._compile({"name": "at"}, 1, "_compile_glyph_name")
+        data = PartCompiler()._compile({"name": "at"}, 1, "_compile_glyph_name")
         assert hexStr(data) == hexStr(deHexStr("01 8D 61 74"))
 
     def test_outlines_1_master(self):
-        data = PartCompiler._compile(psglyph_1master_expected, 1, "_compile_outlines")
+        data = PartCompiler()._compile(psglyph_1master_expected, 1, "_compile_outlines")
         assert hexStr(data) == hexStr(psglyph_1master_nodes)
         assert len(data) == len(psglyph_1master_nodes)  # 285
 
     def test_instructions_2_masters(self):
-        data = PartCompiler._compile(ttinstructions_json, 2, "_compile_instructions")
+        data = PartCompiler()._compile(ttinstructions_json, 2, "_compile_instructions")
         assert hexStr(data) == hexStr(deHexStr(ttinstructions_binary))
         # assert len(data) == len(psglyph_1master_nodes)  # 285

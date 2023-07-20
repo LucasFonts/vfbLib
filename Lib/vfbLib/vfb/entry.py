@@ -182,7 +182,7 @@ class VfbEntry:
 
         self.merge_masters_data()
 
-        self.data = self.compiler.compile(
+        self.data = self.compiler().compile(
             self.decompiled, master_count=self.vfb.num_masters
         )
         self.modified = False
@@ -226,6 +226,9 @@ class VfbEntry:
             return
 
         if self.vfb.num_masters == 1:
+            return
+
+        if self.compiler is None:
             return
 
         self.compiler.merge(self.temp_masters, self.decompiled)

@@ -14,8 +14,7 @@ class BaseCompiler:
     Base class to compile vfb data.
     """
 
-    @classmethod
-    def compile(cls, data: Any, master_count: int = 0) -> bytes:
+    def compile(self, data: Any, master_count: int = 0) -> bytes:
         """
         Compile the JSON-like main data structure and return the compiled binary data.
 
@@ -26,13 +25,12 @@ class BaseCompiler:
         Returns:
             bytes: The compiled binary data.
         """
-        cls.master_count = master_count
-        cls.stream = BytesIO()
-        cls._compile(data)
-        return cls.stream.getvalue()
+        self.master_count = master_count
+        self.stream = BytesIO()
+        self._compile(data)
+        return self.stream.getvalue()
 
-    @classmethod
-    def _compile(cls, data: Any) -> None:
+    def _compile(self, data: Any) -> None:
         raise NotImplementedError
 
     @classmethod
@@ -49,18 +47,16 @@ class BaseCompiler:
         # Must be implemented for compilers that need it, e.g. the GlyphCompiler.
         pass
 
-    @classmethod
-    def write_bytes(cls, value: bytes) -> None:
+    def write_bytes(self, value: bytes) -> None:
         """
         Write binary data to the stream.
 
         Args:
             value (bytes): The data.
         """
-        cls.stream.write(value)
+        self.stream.write(value)
 
-    @classmethod
-    def write_encoded_value(cls, value: int, shortest=True) -> None:
+    def write_encoded_value(self, value: int, shortest=True) -> None:
         """
         Encode and write an int value to the stream. Optionally don't apply the length
         encoding optimization.
@@ -71,30 +67,27 @@ class BaseCompiler:
                 notation. Defaults to True.
         """
         if shortest:
-            write_encoded_value(value, cls.stream)
+            write_encoded_value(value, self.stream)
         else:
-            write_value_5(value, cls.stream)
+            write_value_5(value, self.stream)
 
-    @classmethod
-    def write_float(cls, value: float, fmt: str = "d") -> None:
+    def write_float(self, value: float, fmt: str = "d") -> None:
         """
         Write a float value to the stream.
         """
         encoded = pack(fmt, value)
-        cls.stream.write(encoded)
+        self.stream.write(encoded)
 
-    @classmethod
-    def write_uint1(cls, value: int) -> None:
+    def write_uint1(self, value: int) -> None:
         """
         Write a 1-byte unsigned value to the stream.
         """
         encoded = pack(">B", value)
-        cls.stream.write(encoded)
+        self.stream.write(encoded)
 
-    @classmethod
-    def write_uint8(cls, value: int) -> None:
+    def write_uint8(self, value: int) -> None:
         """
         Write a uint8 value to the stream.
         """
         encoded = pack(">H", value)
-        cls.stream.write(encoded)
+        self.stream.write(encoded)
