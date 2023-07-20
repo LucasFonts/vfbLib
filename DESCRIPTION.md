@@ -41,9 +41,9 @@ not be overwritten unless you specify the `-fo` option.
 
 ```
 vfb3ufo -h
-usage: vfb3ufo [-h] [-p PATH] [-fo] [-ttx] [-64] [-s] [-nops] [-z] [-m] inputpath [outputpath]
+usage: vfb3ufo [-h] [-p PATH] [-fo] [-ttx] [-64] [-s] [-nops] [-z] [-m] [-u] inputpath [outputpath]
 
-VFB3UFO Converter Copyright (c) 2023 by LucasFonts Build 2023-07-18
+VFB3UFO Converter Copyright (c) 2023 by LucasFonts Build 2023-07-19
 
 positional arguments:
   inputpath             input file path (.vfb)
@@ -60,6 +60,8 @@ options:
                         Don't output PostScript hinting
   -z, --zip             write UFOZ (compressed UFO)
   -m, --minimal         parse only minimal amount of data, drop missing glyphs from groups, etc.
+  -u, --unicode-strings
+                        interpret name table strings as Unicode instead of Windows-1252
 
 Not yet implemented options:
 
