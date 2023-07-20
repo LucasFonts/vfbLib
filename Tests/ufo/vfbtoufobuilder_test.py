@@ -5,7 +5,7 @@ import pytest
 from unittest import TestCase
 
 from pathlib import Path
-from vfbLib.ufo import VfbToUfoBuilder
+from vfbLib.ufo.builder import VfbToUfoBuilder
 
 
 class TestVfb:
