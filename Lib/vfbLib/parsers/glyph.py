@@ -7,7 +7,7 @@ from fontTools.ttLib.tables.ttProgram import Program
 from io import BytesIO
 from struct import unpack
 from typing import Any, Dict, List, Literal
-from vfbLib.parsers import BaseParser, read_encoded_value
+from vfbLib.parsers.base import BaseParser, read_encoded_value
 from vfbLib.parsers.guides import parse_guides
 from vfbLib.truetype import TT_COMMANDS
 from vfbLib.typing import (

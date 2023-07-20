@@ -3,7 +3,7 @@ from __future__ import annotations
 from fontTools.misc.textTools import deHexStr
 from io import BytesIO
 from unittest import TestCase
-from vfbLib.parsers import EncodedValueListParser
+from vfbLib.parsers.base import EncodedValueListParser
 
 
 class EncodedValueListParserTest(TestCase):

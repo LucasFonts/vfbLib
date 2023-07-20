@@ -11,7 +11,7 @@ from typing import TYPE_CHECKING, Any, Dict, Tuple, Type
 # from vfbLib.reader import FALLBACK_PARSER
 from vfbLib.compilers import BaseCompiler
 from vfbLib.constants import parser_classes
-from vfbLib.parsers import BaseParser
+from vfbLib.parsers.base import BaseParser
 
 if TYPE_CHECKING:
     from io import BufferedReader

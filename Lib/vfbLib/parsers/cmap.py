@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import logging
 
-from vfbLib.parsers import BaseParser
+from vfbLib.parsers.base import BaseParser
 from vfbLib.parsers.value import read_encoded_value
 
 

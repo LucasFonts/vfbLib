@@ -3,7 +3,7 @@ from __future__ import annotations
 import logging
 
 from typing import Dict, List
-from vfbLib.parsers import BaseParser, read_encoded_value
+from vfbLib.parsers.base import BaseParser, read_encoded_value
 
 
 logger = logging.getLogger(__name__)

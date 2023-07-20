@@ -4,7 +4,7 @@ import logging
 
 from io import BufferedReader
 from typing import Any, Dict, Tuple
-from vfbLib.parsers import read_encoded_value, uint8, uint16
+from vfbLib.parsers.base import read_encoded_value, uint8, uint16
 
 
 logger = logging.getLogger(__name__)

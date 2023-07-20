@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from vfbLib.compilers.glyph import GlyphCompiler
 
-from vfbLib.parsers import (
+from vfbLib.parsers.base import (
     BaseParser,
     # EncodedValueParser,
     EncodedValueListParser,

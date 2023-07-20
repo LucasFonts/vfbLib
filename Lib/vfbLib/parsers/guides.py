@@ -4,7 +4,7 @@ import logging
 
 from typing import TYPE_CHECKING, List, Literal, Sequence
 from math import atan2, degrees
-from vfbLib.parsers import BaseParser, read_encoded_value
+from vfbLib.parsers.base import BaseParser, read_encoded_value
 from vfbLib.typing import Guide, GuideDict, GuideProperty
 
 if TYPE_CHECKING:

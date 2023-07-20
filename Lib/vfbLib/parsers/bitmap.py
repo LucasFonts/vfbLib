@@ -7,7 +7,7 @@ from fontTools.misc.textTools import num2binary
 # from math import log2
 # from struct import unpack
 from typing import Any, Dict, List
-from vfbLib.parsers import BaseParser, read_encoded_value
+from vfbLib.parsers.base import BaseParser, read_encoded_value
 
 
 logger = logging.getLogger(__name__)
