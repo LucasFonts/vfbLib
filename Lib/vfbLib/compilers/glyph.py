@@ -185,15 +185,6 @@ class GlyphCompiler(BaseCompiler):
             return
 
         outlines, num_values = OutlinesCompiler().compile(nodes, self.num_masters)
-        # try:
-        #     num_values_old = data["num_node_values"]
-        #     if num_values != num_values_old:
-        #         logger.warning(
-        #             "Number of node values has changed: "
-        #             f"{num_values_old} -> {num_values}"
-        #         )
-        # except KeyError:
-        #     pass
         self.write_encoded_value(num_values)
         self.stream.write(outlines)
 
