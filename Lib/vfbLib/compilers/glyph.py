@@ -92,16 +92,16 @@ class GlyphCompiler(BaseCompiler):
         # Guidelines
         # TODO: Reuse for global guides
         if not (guides := data.get("guides")):
-            # Seems to be required
-            self.write_uint1(4)
-            self.write_encoded_value(0)
-            self.write_encoded_value(0)
             return
 
         self.write_uint1(4)
         for direction in ("h", "v"):
-            direction_guides = guides.get(direction, [])
-            self.write_encoded_value(len(direction_guides))
+            direction_guides = guides.get(direction)
+            if direction_guides is None:
+                self.write_encoded_value(0)
+                continue
+
+            self.write_encoded_value(len(direction_guides[0]))  # first master
             for m in range(self.num_masters):
                 for guide in direction_guides[m]:
                     pos = guide["pos"]
