@@ -40,7 +40,7 @@ from vfbLib.parsers.mm import (
 from vfbLib.parsers.numeric import (
     DoubleListParser,
     DoubleParser,
-    FloatListParser,
+    # FloatListParser,
     IntParser,
     IntListParser,
     PanoseParser,
