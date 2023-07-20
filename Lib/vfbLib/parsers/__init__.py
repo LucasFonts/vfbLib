@@ -24,6 +24,7 @@ class BaseParser:
     Base class to parse data from a vfb file
     """
 
+    encoding = "cp1252"
     master_count: int | None = None
     stream: BytesIO = BytesIO()
 
@@ -187,7 +188,7 @@ class GlyphEncodingParser(BaseParser):
     @classmethod
     def _parse(cls):
         gid = int.from_bytes(cls.stream.read(2), byteorder="little")
-        nam = cls.stream.read().decode("ascii")
+        nam = cls.stream.read().decode("cp1252")
         return gid, nam
 
 
@@ -198,7 +199,7 @@ class OpenTypeClassFlagsParser(BaseParser):
         num_classes = read_encoded_value(cls.stream)
         for _ in range(num_classes):
             n = read_encoded_value(cls.stream)
-            name = cls.stream.read(n).decode("cp1252")
+            name = cls.stream.read(n).decode(cls.encoding)
             flag1 = read_encoded_value(cls.stream)
             flag2 = read_encoded_value(cls.stream)
             class_flags[name] = (flag1, flag2)

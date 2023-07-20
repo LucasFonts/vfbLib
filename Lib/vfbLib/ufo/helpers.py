@@ -30,7 +30,7 @@ def fix_vfb2ufo_feature_encoding(ufo_path: Path) -> None:
         # UFOs may omit the fea file
         return
 
-    with codecs.open(str(fea_path), "rb", "windows-1252") as f:
+    with codecs.open(str(fea_path), "rb", "cp1252") as f:
         fea = f.read()
     with codecs.open(str(fea_path), "wb", "utf-8") as f:
         f.write(fea)

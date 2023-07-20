@@ -40,13 +40,13 @@ class NameRecordsParser(BaseParser):
 
 class OpenTypeClassParser(BaseParser):
     """
-    A parser that reads data as a Windows-1252-encoded strings and returns it formatted
-    to represent an OpenType class
+    A parser that reads data as strings and returns it formatted to represent an
+    OpenType class
     """
 
     @classmethod
     def _parse(cls) -> Dict[str, List[str] | str]:
-        s = cls.stream.read().decode("cp1252").strip("\u0000 ")
+        s = cls.stream.read().decode(cls.encoding).strip("\u0000 ")
         if ":" not in s:
             logger.warning(f"Malformed OpenType class: {s}")
             return {"str": s, "err": "PARSE_ERROR"}
@@ -64,20 +64,20 @@ class OpenTypeClassParser(BaseParser):
 
 class OpenTypeStringParser(BaseParser):
     """
-    A parser that reads data as a Windows-1252-encoded strings and returns it as a list.
+    A parser that reads data as a strings and returns it as a list.
     """
 
     @classmethod
     def _parse(cls) -> List[str]:
-        s = cls.stream.read().decode("cp1252").strip("\u0000 ")
+        s = cls.stream.read().decode(cls.encoding).strip("\u0000 ")
         return s.splitlines()
 
 
 class StringParser(BaseParser):
     """
-    A parser that reads data as Windows-1252-encoded strings.
+    A parser that reads data as strings.
     """
 
     @classmethod
     def _parse(cls):
-        return cls.stream.read().decode("cp1252").strip("\u0000 ")
+        return cls.stream.read().decode(cls.encoding).strip("\u0000 ")

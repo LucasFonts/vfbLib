@@ -112,7 +112,7 @@ class GlyphGDEFParser(BaseParser):
             anchor_name_length = read_encoded_value(stream)
             name = None
             if anchor_name_length > 0:
-                name = stream.read(anchor_name_length).decode("cp1252")
+                name = stream.read(anchor_name_length).decode(cls.encoding)
 
             x = read_encoded_value(stream)
             x1 = read_encoded_value(stream)
@@ -423,7 +423,7 @@ class GlyphParser(BaseParser):
                 # Glyph name
                 glyph_name_length = read_encoded_value(s)
                 glyph_name = s.read(glyph_name_length)
-                glyphdata["name"] = glyph_name.decode("cp1252")
+                glyphdata["name"] = glyph_name.decode(cls.encoding)
                 logger.debug(f"Glyph: {glyphdata['name']}")
 
             elif v == 0x02:

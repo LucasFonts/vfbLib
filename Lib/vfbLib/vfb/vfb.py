@@ -34,6 +34,7 @@ class Vfb:
         minimal=False,
         drop_keys: Set[str] | None = None,
         only_header=False,
+        unicode_strings = False,
     ) -> None:
         self.vfb_path = vfb_path
         self.timing = timing
@@ -43,6 +44,8 @@ class Vfb:
         else:
             self.drop_keys = set(drop_keys)
         self.only_header = only_header
+        # String encoding for nametable entries
+        self.encoding = "utf-8" if unicode_strings else "cp1252"
 
         # We need some minimal API to make pen access work ...
         self._glyphs: Dict[str, VfbGlyph] = {}

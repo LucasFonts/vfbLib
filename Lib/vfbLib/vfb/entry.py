@@ -124,6 +124,8 @@ class VfbEntry:
         )
         key, parser_class, compiler_class = entry_info
 
+        parser_class.encoding = self.vfb.encoding
+
         if self.id == 5:
             # File end marker?
             BaseParser.read_uint16(self.stream)

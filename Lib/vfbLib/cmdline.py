@@ -48,6 +48,13 @@ def vfb2json():
         help="output folder",
     )
     parser.add_argument(
+        "-u",
+        "--unicode-strings",
+        action="store_true",
+        default=False,
+        help="interpret name table strings as Unicode instead of Windows-1252",
+    )
+    parser.add_argument(
         "inputpath",
         type=str,
         nargs=1,
@@ -58,7 +65,12 @@ def vfb2json():
         vfb_path = Path(args.inputpath[0])
         print(parser.description)
         print(f"Reading file {vfb_path} ...")
-        vfb = Vfb(vfb_path, only_header=args.header, minimal=args.minimal)
+        vfb = Vfb(
+            vfb_path,
+            only_header=args.header,
+            minimal=args.minimal,
+            unicode_strings=args.unicode_strings,
+        )
         if not args.no_decompile:
             vfb.decompile()
         suffix = ".vfb.json"
@@ -146,6 +158,13 @@ def vfb2ufo():
         default=False,
         help="parse only minimal amount of data, drop missing glyphs from groups, etc.",
     )
+    parser.add_argument(
+        "-u",
+        "--unicode-strings",
+        action="store_true",
+        default=False,
+        help="interpret name table strings as Unicode instead of Windows-1252",
+    )
     args = parser.parse_args()
     if args:
         vfb_path = Path(args.inputpath[0])
@@ -153,7 +172,10 @@ def vfb2ufo():
             print(parser.description)
             print(f"Reading file {vfb_path} ...")
         vfb = Vfb(
-            vfb_path, minimal=args.minimal, drop_keys={"Encoding", "Encoding Mac"}
+            vfb_path,
+            minimal=args.minimal,
+            drop_keys={"Encoding", "Encoding Mac"},
+            unicode_strings=args.unicode_strings,
         )
         suffix = ".ufo"
         if args.zip:
