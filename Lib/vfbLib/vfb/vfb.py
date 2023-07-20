@@ -34,7 +34,7 @@ class Vfb:
         minimal=False,
         drop_keys: Set[str] | None = None,
         only_header=False,
-        unicode_strings = False,
+        unicode_strings=False,
     ) -> None:
         self.vfb_path = vfb_path
         self.timing = timing
