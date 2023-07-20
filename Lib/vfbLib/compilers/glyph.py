@@ -86,6 +86,7 @@ class GlyphCompiler(BaseCompiler):
         self.write_uint1(1)
         self.write_encoded_value(glyph_name_length)
         self.write_bytes(glyph_name)
+        logger.debug(f"Compiling glyph '{name}'")
 
     def _compile_guides(self, data):
         # Guidelines
