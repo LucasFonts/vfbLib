@@ -26,9 +26,9 @@ class NameRecordsParser(BaseParser):
             for c in name_codes:
                 try:
                     char = chr(c)
-                    # FIXME: Worth fixing the platform-specific encodings?
-                    # if platID == 1 and encID == 0:
-                    #     char = char.encode("utf-8").decode("macroman")
+                    # Fix platform-specific encodings for Mac
+                    if platID == 1 and encID == 0:
+                        char = c.to_bytes().decode("macroman")
                 except ValueError:
                     char = "\ufeff"
                 name += char
