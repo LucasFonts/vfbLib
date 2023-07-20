@@ -39,7 +39,7 @@ class GlyphCompiler(BaseCompiler):
                     for key in ("type", "flags"):
                         assert src[key] == tgt[key]
                     tgt["points"][m] = src["points"][m]
-            
+
             if "components" in master_data:
                 assert "components" in data
                 for i, tgt in enumerate(data["components"]):
