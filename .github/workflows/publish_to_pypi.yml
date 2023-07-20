@@ -9,8 +9,8 @@ jobs:
     environment:
       name: pypi
       url: https://pypi.org/p/vfbLib
-    permissions:
-      id-token: write
+    # permissions:
+    #   id-token: write
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python 3.9
