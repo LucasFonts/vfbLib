@@ -112,11 +112,6 @@ class GlyphCompiler(BaseCompiler):
     def _compile_hints(self, data):
         # PostScript hints
         if not (hints := data.get("hints")):
-            # Seems to be required
-            self.write_uint1(3)
-            self.write_encoded_value(0)
-            self.write_encoded_value(0)
-            self.write_encoded_value(0)
             return
 
         self.write_uint1(3)
