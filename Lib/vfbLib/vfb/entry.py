@@ -24,7 +24,7 @@ logger = logging.getLogger(__name__)
 FALLBACK_PARSER = BaseParser
 
 
-class VfbEntry:
+class VfbEntry(BaseParser):
     def __init__(
         self,
         parent: Vfb,
@@ -118,7 +118,7 @@ class VfbEntry:
         Read an entry from the stream and return its key, specialized parser
         class, and data size.
         """
-        self.id = BaseParser.read_uint16(self.stream)
+        self.id = self.read_uint16()
         entry_info = parser_classes.get(
             self.id & ~0x8000, (str(self.id), FALLBACK_PARSER, None)
         )
@@ -128,18 +128,18 @@ class VfbEntry:
 
         if self.id == 5:
             # File end marker?
-            BaseParser.read_uint16(self.stream)
-            two = BaseParser.read_uint16(self.stream)
+            self.read_uint16()
+            two = self.read_uint16()
             if two == 2:
-                BaseParser.read_uint16(self.stream)
+                self.read_uint16()
                 raise EOFError
 
         if self.id & 0x8000:
             # Uses uint32 for data length
-            num_bytes = BaseParser.read_uint32(self.stream)
+            num_bytes = self.read_uint32()
         else:
             # Uses uint16 for data length
-            num_bytes = BaseParser.read_uint16(self.stream)
+            num_bytes = self.read_uint16()
 
         return key, parser_class, compiler_class, num_bytes
 
@@ -209,7 +209,7 @@ class VfbEntry:
             raise ValueError
 
         try:
-            self.decompiled = self.parser.parse(
+            self.decompiled = self.parser().parse(
                 BytesIO(self.data), size=self.size, master_count=self.vfb.num_masters
             )
         except:  # noqa: E722
