@@ -31,7 +31,7 @@ class VfbHeader:
             "size": self.size,
             "decompiled": self.decompiled,
             "modified": self.modified,
-            "parser": "VfbHeaderParser",
+            "parser": self.parser.__name__,
         }
         if self.data:
             d["data"] = hexStr(self.data)
