@@ -9,7 +9,7 @@ from vfbLib.parsers.base import EncodedValueListParser
 class EncodedValueListParserTest(TestCase):
     def expect(self, encoded, decoded):
         data = deHexStr(encoded)
-        assert EncodedValueListParser.parse(BytesIO(data), len(data)) == decoded
+        assert EncodedValueListParser().parse(BytesIO(data), len(data)) == decoded
 
     def test_links_1(self):
         self.expect("8c8d898b", [1, 2, -2, 0])

@@ -28,88 +28,76 @@ class BaseParser:
     master_count: int | None = None
     stream: BytesIO = BytesIO()
 
-    @classmethod
     def parse(
-        cls,
+        self,
         stream: BufferedReader,
         size: int,
         master_count: int | None = None,
     ):
-        cls.stream = BytesIO(stream.read(size))
-        cls.master_count = master_count
-        return cls._parse()
+        self.stream = BytesIO(stream.read(size))
+        self.master_count = master_count
+        return self._parse()
 
-    @classmethod
-    def _parse(cls) -> Any:
-        return hexStr(cls.stream.read())
+    def _parse(self) -> Any:
+        return hexStr(self.stream.read())
 
-    @classmethod
-    def read_double(cls, stream=None):
+    def read_double(self, stream=None):
         if stream is None:
-            stream = cls.stream
+            stream = self.stream
         return read_doubles(1, stream)[0]
 
-    @classmethod
-    def read_doubles(cls, num, stream=None):
+    def read_doubles(self, num, stream=None):
         if stream is None:
-            stream = cls.stream
+            stream = self.stream
         return read_doubles(num, stream)
 
-    @classmethod
-    def read_float(cls, stream=None):
+    def read_float(self, stream=None):
         if stream is None:
-            stream = cls.stream
+            stream = self.stream
         return read_floats(1, stream)[0]
 
-    @classmethod
-    def read_floats(cls, num, stream=None):
+    def read_floats(self, num, stream=None):
         if stream is None:
-            stream = cls.stream
+            stream = self.stream
         return read_floats(num, stream)
 
-    @classmethod
-    def read_int16(cls, stream=None) -> int:
+    def read_int16(self, stream=None) -> int:
         if stream is None:
-            stream = cls.stream
+            stream = self.stream
         return int.from_bytes(stream.read(uint16), byteorder="little", signed=True)
 
-    @classmethod
-    def read_int32(cls, stream=None) -> int:
+    def read_int32(self, stream=None) -> int:
         if stream is None:
-            stream = cls.stream
+            stream = self.stream
         return int.from_bytes(stream.read(uint32), byteorder="little", signed=True)
 
-    @classmethod
-    def read_uint8(cls, stream=None) -> int:
+    def read_uint8(self, stream=None) -> int:
         if stream is None:
-            stream = cls.stream
+            stream = self.stream
         return int.from_bytes(stream.read(uint8), byteorder="little", signed=False)
 
-    @classmethod
-    def read_uint16(cls, stream=None) -> int:
+    def read_uint16(self, stream=None) -> int:
         if stream is None:
-            stream = cls.stream
+            stream = self.stream
         return int.from_bytes(stream.read(uint16), byteorder="little", signed=False)
 
-    @classmethod
-    def read_uint32(cls, stream=None) -> int:
+    def read_uint32(self, stream=None) -> int:
         if stream is None:
-            stream = cls.stream
+            stream = self.stream
         return int.from_bytes(stream.read(uint32), byteorder="little", signed=False)
 
 
 class EncodedKeyValuesParser(BaseParser):
     __end__ = 0x64
 
-    @classmethod
-    def _parse(cls) -> List[Dict[int, int]]:
+    def _parse(self) -> List[Dict[int, int]]:
         values = []
         while True:
-            key = cls.read_uint8()
-            if key == cls.__end__:
+            key = self.read_uint8()
+            if key == self.__end__:
                 break
 
-            val = read_encoded_value(cls.stream)
+            val = read_encoded_value(self.stream)
             values.append({key: val})
 
         return values
@@ -124,10 +112,9 @@ class EncodedValueParser(BaseParser):
     A parser that reads data as Yuri's optimized encoded value (1 value).
     """
 
-    @classmethod
-    def _parse(cls) -> int:
-        value = read_encoded_value(cls.stream)
-        assert cls.stream.read() == b""
+    def _parse(self) -> int:
+        value = read_encoded_value(self.stream)
+        assert self.stream.read() == b""
         return value
 
 
@@ -136,12 +123,11 @@ class EncodedValueListParser(BaseParser):
     A parser that reads data as Yuri's optimized encoded values.
     """
 
-    @classmethod
-    def _parse(cls) -> List[int]:
+    def _parse(self) -> List[int]:
         values = []
         while True:
             try:
-                val = read_encoded_value(cls.stream)
+                val = read_encoded_value(self.stream)
                 values.append(val)
             except EOFError:
                 logger.debug("EOF")
@@ -154,12 +140,11 @@ class EncodedValueListWithCountParser(BaseParser):
     preceded by a count value that specifies how many values should be read.
     """
 
-    @classmethod
-    def _parse(cls) -> Dict[str, List[int]]:
-        count = read_encoded_value(cls.stream)
+    def _parse(self) -> Dict[str, List[int]]:
+        count = read_encoded_value(self.stream)
         values: Dict[str, List[int]] = {"values": []}
         for _ in range(count):
-            val = read_encoded_value(cls.stream)
+            val = read_encoded_value(self.stream)
             values["values"].append(val)
         return values
 
@@ -169,10 +154,9 @@ class GaspParser(BaseParser):
     A parser that reads data as an array representing Gasp table values.
     """
 
-    @classmethod
-    def _parse(cls):
-        data = cls.stream.read()
-        # cls.stream.getbuffer().nbytes
+    def _parse(self):
+        data = self.stream.read()
+        # self.stream.getbuffer().nbytes
         gasp = unpack(f"<{len(data) // 2}H", data)
         it = iter(gasp)
         return [
@@ -185,22 +169,20 @@ class GaspParser(BaseParser):
 
 
 class GlyphEncodingParser(BaseParser):
-    @classmethod
-    def _parse(cls):
-        gid = int.from_bytes(cls.stream.read(2), byteorder="little")
-        nam = cls.stream.read().decode("cp1252")
+    def _parse(self):
+        gid = int.from_bytes(self.stream.read(2), byteorder="little")
+        nam = self.stream.read().decode("cp1252")
         return gid, nam
 
 
 class OpenTypeClassFlagsParser(BaseParser):
-    @classmethod
-    def _parse(cls) -> ClassFlagDict:
+    def _parse(self) -> ClassFlagDict:
         class_flags: ClassFlagDict = {}
-        num_classes = read_encoded_value(cls.stream)
+        num_classes = read_encoded_value(self.stream)
         for _ in range(num_classes):
-            n = read_encoded_value(cls.stream)
-            name = cls.stream.read(n).decode(cls.encoding)
-            flag1 = read_encoded_value(cls.stream)
-            flag2 = read_encoded_value(cls.stream)
+            n = read_encoded_value(self.stream)
+            name = self.stream.read(n).decode(self.encoding)
+            flag1 = read_encoded_value(self.stream)
+            flag2 = read_encoded_value(self.stream)
             class_flags[name] = (flag1, flag2)
         return class_flags

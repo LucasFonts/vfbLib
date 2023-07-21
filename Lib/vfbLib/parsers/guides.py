@@ -35,18 +35,17 @@ def parse_guides(stream: BytesIO, num_masters: int) -> GuideDict:
 
 
 class GlobalGuidesParser(BaseParser):
-    @classmethod
-    def _parse(cls) -> GuideDict:
-        assert cls.master_count is not None
-        guides = parse_guides(cls.stream, cls.master_count)
-        assert cls.stream.read() == b""
+    def _parse(self) -> GuideDict:
+        assert self.master_count is not None
+        print("parse global guides for", self.master_count, "masters")
+        guides = parse_guides(self.stream, self.master_count)
+        assert self.stream.read() == b""
         return guides
 
 
 class GuidePropertiesParser(BaseParser):
-    @classmethod
-    def _parse(cls) -> List:
-        stream = cls.stream
+    def _parse(self) -> List:
+        stream = self.stream
         guides = []
         for _ in range(2):
             while True:
@@ -62,7 +61,7 @@ class GuidePropertiesParser(BaseParser):
 
                 name_length = read_encoded_value(stream)
                 if name_length > 0:
-                    name = cls.stream.read(name_length).decode("cp1252")
+                    name = self.stream.read(name_length).decode("cp1252")
                     g["name"] = name
 
                 guides.append(g)

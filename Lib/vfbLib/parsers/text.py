@@ -10,9 +10,8 @@ logger = logging.getLogger(__name__)
 
 
 class NameRecordsParser(BaseParser):
-    @classmethod
-    def _parse(cls):
-        stream = cls.stream
+    def _parse(self):
+        stream = self.stream
         num = read_encoded_value(stream)
         result = []
         for _ in range(num):
@@ -44,9 +43,8 @@ class OpenTypeClassParser(BaseParser):
     OpenType class
     """
 
-    @classmethod
-    def _parse(cls) -> Dict[str, List[str] | str]:
-        s = cls.stream.read().decode(cls.encoding).strip("\u0000 ")
+    def _parse(self) -> Dict[str, List[str] | str]:
+        s = self.stream.read().decode(self.encoding).strip("\u0000 ")
         if ":" not in s:
             logger.warning(f"Malformed OpenType class: {s}")
             return {"str": s, "err": "PARSE_ERROR"}
@@ -67,9 +65,8 @@ class OpenTypeStringParser(BaseParser):
     A parser that reads data as a strings and returns it as a list.
     """
 
-    @classmethod
-    def _parse(cls) -> List[str]:
-        s = cls.stream.read().decode(cls.encoding).strip("\u0000 ")
+    def _parse(self) -> List[str]:
+        s = self.stream.read().decode(self.encoding).strip("\u0000 ")
         return s.splitlines()
 
 
@@ -78,6 +75,5 @@ class StringParser(BaseParser):
     A parser that reads data as strings.
     """
 
-    @classmethod
-    def _parse(cls):
-        return cls.stream.read().decode(cls.encoding).strip("\u0000 ")
+    def _parse(self):
+        return self.stream.read().decode(self.encoding).strip("\u0000 ")

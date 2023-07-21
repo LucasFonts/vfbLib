@@ -473,43 +473,43 @@ class PartCompiler(GlyphCompiler):
 class GlyphCompilerTest(TestCase):
     def test_empty_2masters_roundtrip(self):
         # Decompile
-        dec = GlyphParser.parse(BytesIO(empty_glyph_binary), len(empty_glyph_binary), 2)
+        dec = GlyphParser().parse(BytesIO(empty_glyph_binary), len(empty_glyph_binary), 2)
         assert dec == empty_glyph_json
 
         # Compile
         compiled = GlyphCompiler().compile(dec, 2)
         # print(hexStr(compiled))
         # ... and parse again
-        cde = GlyphParser.parse(BytesIO(compiled), len(compiled), 2)
+        cde = GlyphParser().parse(BytesIO(compiled), len(compiled), 2)
         assert dec == cde
 
     def test_long_roundtrip(self):
         # Decompile
-        dec = GlyphParser.parse(BytesIO(long_binary), len(long_binary), 2)
+        dec = GlyphParser().parse(BytesIO(long_binary), len(long_binary), 2)
         # assert dec == {}
 
         # Compile
         compiled = GlyphCompiler().compile(dec, 2)
         # print(hexStr(compiled))
         # ... and parse again
-        cde = GlyphParser.parse(BytesIO(compiled), len(compiled), 2)
+        cde = GlyphParser().parse(BytesIO(compiled), len(compiled), 2)
         assert dec == cde
 
     def test_psglyph_1master_roundtrip(self):
         # Decompile
-        dec = GlyphParser.parse(BytesIO(psglyph_1master), len(psglyph_1master), 1)
+        dec = GlyphParser().parse(BytesIO(psglyph_1master), len(psglyph_1master), 1)
         assert dec == psglyph_1master_expected
 
         # Compile
         compiled = GlyphCompiler().compile(dec, 1)
         # print(hexStr(compiled))
         # ... and parse again
-        cde = GlyphParser.parse(BytesIO(compiled), len(compiled), 1)
+        cde = GlyphParser().parse(BytesIO(compiled), len(compiled), 1)
         assert dec == cde
 
     def test_truetype_2_masters_roundtrip(self):
         # Decompile
-        dec = GlyphParser.parse(
+        dec = GlyphParser().parse(
             BytesIO(ttglyph_2_masters_binary), len(ttglyph_2_masters_binary)
         )
         assert dec == ttglyph_2_masters_json
@@ -518,12 +518,12 @@ class GlyphCompilerTest(TestCase):
         compiled = GlyphCompiler().compile(dec, 2)
         # print(hexStr(compiled))
         # ... and parse again
-        cde = GlyphParser.parse(BytesIO(compiled), len(compiled), 2)
+        cde = GlyphParser().parse(BytesIO(compiled), len(compiled), 2)
         assert dec == cde
 
     def test_composite_2_masters_roundtrip(self):
         # Decompile
-        dec = GlyphParser.parse(
+        dec = GlyphParser().parse(
             BytesIO(composite_2_masters_binary), len(composite_2_masters_binary), 2
         )
         assert dec == composite_2_masters_json
@@ -532,7 +532,7 @@ class GlyphCompilerTest(TestCase):
         compiled = GlyphCompiler().compile(dec, 2)
         # print(hexStr(compiled))
         # ... and parse again
-        cde = GlyphParser.parse(BytesIO(compiled), len(compiled), 2)
+        cde = GlyphParser().parse(BytesIO(compiled), len(compiled), 2)
         assert dec == cde
 
     def test_components_2_masters(self):

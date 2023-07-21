@@ -14,9 +14,8 @@ class DoubleParser(BaseParser):
     A parser that reads data as a double-size float.
     """
 
-    @classmethod
-    def _parse(cls):
-        return unpack("d", cls.stream.read(8))[0]
+    def _parse(self):
+        return unpack("d", self.stream.read(8))[0]
 
 
 class FloatListParser(BaseParser):
@@ -27,11 +26,10 @@ class FloatListParser(BaseParser):
     __size__ = 4
     __fmt__ = "f"
 
-    @classmethod
-    def _parse(cls):
+    def _parse(self):
         values = []
-        for _ in range(cls.stream.getbuffer().nbytes // cls.__size__):
-            values.extend(unpack(cls.__fmt__, cls.stream.read(cls.__size__)))
+        for _ in range(self.stream.getbuffer().nbytes // self.__size__):
+            values.extend(unpack(self.__fmt__, self.stream.read(self.__size__)))
 
         return values
 
@@ -50,9 +48,8 @@ class IntParser(BaseParser):
     A parser that reads data as UInt16.
     """
 
-    @classmethod
-    def _parse(cls):
-        return int.from_bytes(cls.stream.read(), byteorder="little", signed=False)
+    def _parse(self):
+        return int.from_bytes(self.stream.read(), byteorder="little", signed=False)
 
 
 class IntListParser(BaseParser):
@@ -62,13 +59,12 @@ class IntListParser(BaseParser):
 
     __size__ = 4
 
-    @classmethod
-    def _parse(cls):
+    def _parse(self):
         values = []
-        for _ in range(cls.stream.getbuffer().nbytes // cls.__size__):
+        for _ in range(self.stream.getbuffer().nbytes // self.__size__):
             values.append(
                 int.from_bytes(
-                    cls.stream.read(cls.__size__),
+                    self.stream.read(self.__size__),
                     byteorder="little",
                     signed=False,
                 )
@@ -81,9 +77,8 @@ class PanoseParser(BaseParser):
     A parser that reads data as an array representing PANOSE values.
     """
 
-    @classmethod
-    def _parse(cls):
-        return unpack("<10b", cls.stream.read())
+    def _parse(self):
+        return unpack("<10b", self.stream.read())
 
 
 class SignedIntParser(BaseParser):
@@ -91,6 +86,5 @@ class SignedIntParser(BaseParser):
     A parser that reads data as signed Int16.
     """
 
-    @classmethod
-    def _parse(cls):
-        return int.from_bytes(cls.stream.read(), byteorder="little", signed=True)
+    def _parse(self):
+        return int.from_bytes(self.stream.read(), byteorder="little", signed=True)

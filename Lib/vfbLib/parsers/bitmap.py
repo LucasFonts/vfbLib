@@ -48,8 +48,7 @@ def pprint_bitmap(bitmap, invert=False) -> List[str]:
 
 
 class BaseBitmapParser(BaseParser):
-    @classmethod
-    def parse_bitmap_data(cls, datalen) -> Dict[str, Any]:
+    def parse_bitmap_data(self, datalen) -> Dict[str, Any]:
         bitmap: Dict[str, Any] = {}
         if datalen < 2:
             logger.error("parse_bitmap_data: Got datalen", datalen)
@@ -58,17 +57,17 @@ class BaseBitmapParser(BaseParser):
         rest = 2
 
         if datalen > 2:
-            num_bytes = cls.read_uint8()
+            num_bytes = self.read_uint8()
             bitmap["num_bytes"] = num_bytes
             data = []
             for _ in range(num_bytes):
-                data.append(cls.read_uint8())
+                data.append(self.read_uint8())
             bitmap["bytes"] = data
             rest = datalen - num_bytes - 1
 
         extra = []
         for _ in range(rest):
-            extra.append(cls.read_uint8())
+            extra.append(self.read_uint8())
 
         if extra:
             bitmap["extra"] = extra
@@ -77,25 +76,23 @@ class BaseBitmapParser(BaseParser):
 
 
 class BackgroundBitmapParser(BaseBitmapParser):
-    @classmethod
-    def _parse(cls) -> Dict[str, Any]:
-        s = cls.stream
+    def _parse(self) -> Dict[str, Any]:
+        s = self.stream
         bitmap: Dict[str, Any] = {}
         bitmap["origin"] = (read_encoded_value(s), read_encoded_value(s))
         bitmap["size_units"] = (read_encoded_value(s), read_encoded_value(s))
         bitmap["size_pixels"] = (read_encoded_value(s), read_encoded_value(s))
         datalen = read_encoded_value(s)
         bitmap["len"] = datalen
-        bitmap["data"] = cls.parse_bitmap_data(datalen)
+        bitmap["data"] = self.parse_bitmap_data(datalen)
         # bitmap["preview"] = pprint_bitmap(bitmap)
         assert s.read() == b""
         return bitmap
 
 
 class GlyphBitmapParser(BaseBitmapParser):
-    @classmethod
-    def _parse(cls) -> List[Dict[str, Any]]:
-        s = cls.stream
+    def _parse(self) -> List[Dict[str, Any]]:
+        s = self.stream
         bitmaps: List[Dict[str, Any]] = []
         num_bitmaps = read_encoded_value(s)
         for _ in range(num_bitmaps):
@@ -106,7 +103,7 @@ class GlyphBitmapParser(BaseBitmapParser):
             bitmap["size_pixels"] = (read_encoded_value(s), read_encoded_value(s))
             datalen = read_encoded_value(s)
             bitmap["len"] = datalen
-            bitmap["data"] = cls.parse_bitmap_data(datalen)
+            bitmap["data"] = self.parse_bitmap_data(datalen)
             # bitmap["preview"] = pprint_bitmap(bitmap, invert=True)
             bitmaps.append(bitmap)
         assert s.read() == b""

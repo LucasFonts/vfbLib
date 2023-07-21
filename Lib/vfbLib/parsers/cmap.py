@@ -14,21 +14,20 @@ class CustomCmapParser(BaseParser):
     A parser that reads the custom CMAP settings.
     """
 
-    @classmethod
-    def _parse(cls):
-        count = read_encoded_value(cls.stream)  # number of cmap records, not values
+    def _parse(self):
+        count = read_encoded_value(self.stream)  # number of cmap records, not values
         values = {"values": []}
         for _ in range(count):
             cmap = {
-                "language_id": read_encoded_value(cls.stream),
-                "platform_id": read_encoded_value(cls.stream),
-                "encoding_id": read_encoded_value(cls.stream),
-                "format": read_encoded_value(cls.stream),
-                "option": read_encoded_value(cls.stream),
+                "language_id": read_encoded_value(self.stream),
+                "platform_id": read_encoded_value(self.stream),
+                "encoding_id": read_encoded_value(self.stream),
+                "format": read_encoded_value(self.stream),
+                "option": read_encoded_value(self.stream),
                 "records": [],
             }
-            num_encodings = read_encoded_value(cls.stream)
+            num_encodings = read_encoded_value(self.stream)
             if num_encodings > 0:
-                cmap["records"] = [cls.read_uint8() for _ in range(num_encodings)]
+                cmap["records"] = [self.read_uint8() for _ in range(num_encodings)]
             values["values"].append(cmap)
         return values

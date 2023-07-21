@@ -16,9 +16,8 @@ class TrueTypeInfoParser(BaseParser):
     A parser that reads data as "TrueType Info" values.
     """
 
-    @classmethod
     def read_key_value_pairs_encoded(
-        cls,
+        self,
         stream: BytesIO,
         num: int,
         target: List,
@@ -27,12 +26,11 @@ class TrueTypeInfoParser(BaseParser):
         if key_names is None:
             key_names = {}
         for _ in range(num):
-            k = cls.read_uint8(stream)
+            k = self.read_uint8(stream)
             v = read_encoded_value(stream)
             target.append({key_names.get(k, str(k)): v})
 
-    @classmethod
-    def _parse(cls):
+    def _parse(self):
         info_names = {
             0x33: "0x33",
             0x34: "0x34",
@@ -73,11 +71,11 @@ class TrueTypeInfoParser(BaseParser):
             0x58: "Hdmx PPMs 2",
             0x5C: "Average Width",
         }
-        s = cls.stream
+        s = self.stream
         info = []
 
         while True:
-            k = cls.read_uint8(s)
+            k = self.read_uint8(s)
 
             if k == 0x32:
                 return info
@@ -115,7 +113,7 @@ class TrueTypeInfoParser(BaseParser):
                 info.append([info_names.get(k, str(k)), read_encoded_value(s)])
 
             elif k == 0x4C:  # PANOSE?
-                v = [cls.read_uint8(s) for _ in range(10)]
+                v = [self.read_uint8(s) for _ in range(10)]
                 info.append([info_names.get(k, str(k)), v])
 
             elif k in (0x4D, 0x4E, 0x4F, 0x50, 0x51, 0x52):
@@ -123,7 +121,7 @@ class TrueTypeInfoParser(BaseParser):
 
             elif k == 0x53:
                 num_values = read_encoded_value(s)
-                v = [cls.read_uint8(s) for _ in range(num_values)]
+                v = [self.read_uint8(s) for _ in range(num_values)]
                 info.append([info_names.get(k, str(k)), v])
 
             elif k == 0x54:
@@ -149,7 +147,7 @@ class TrueTypeInfoParser(BaseParser):
 
             elif k == 0x58:
                 num_values = read_encoded_value(s)
-                v = [cls.read_uint8(s) for _ in range(num_values)]
+                v = [self.read_uint8(s) for _ in range(num_values)]
                 info.append([info_names.get(k, hex(k)), v])
 
             else:
@@ -157,9 +155,8 @@ class TrueTypeInfoParser(BaseParser):
 
 
 class TrueTypeStemsParser(BaseParser):
-    @classmethod
-    def _parse(cls):
-        stream = cls.stream
+    def _parse(self):
+        stream = self.stream
         names = ("ttStemsV", "ttStemsH")
         result = {}
         for i in range(2):
@@ -167,7 +164,7 @@ class TrueTypeStemsParser(BaseParser):
             num_stems = read_encoded_value(stream)
             for _ in range(num_stems):
                 width = read_encoded_value(stream)
-                stem_name_length = cls.read_uint8(stream)
+                stem_name_length = self.read_uint8(stream)
                 stem_name = stream.read(stem_name_length).decode("cp1252")
                 ppm6 = read_encoded_value(stream)
 
@@ -185,9 +182,8 @@ class TrueTypeStemsParser(BaseParser):
 
 
 class TrueTypeStemPpemsParser(BaseParser):
-    @classmethod
-    def _parse(cls):
-        stream = cls.stream
+    def _parse(self):
+        stream = self.stream
         names = ("ttStemsV", "ttStemsH")
         result = {}
         for i in range(2):
@@ -212,9 +208,8 @@ class TrueTypeStemPpemsParser(BaseParser):
 
 
 class TrueTypeZoneDeltasParser(BaseParser):
-    @classmethod
-    def _parse(cls):
-        stream = cls.stream
+    def _parse(self):
+        stream = self.stream
         num_deltas = read_encoded_value(stream)
         result = {}
         for _ in range(num_deltas):
@@ -232,9 +227,8 @@ class TrueTypeZoneDeltasParser(BaseParser):
 
 
 class TrueTypeZonesParser(BaseParser):
-    @classmethod
-    def _parse(cls):
-        stream = cls.stream
+    def _parse(self):
+        stream = self.stream
         names = ("ttZonesT", "ttZonesB")
         result = {}
         for i in range(2):
