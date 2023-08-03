@@ -17,12 +17,13 @@ def transform_groups(
     kerning_class_flags: ClassFlagDict,
     glyphOrder: List[str],
     skip_missing_group_glyphs: bool = False,
-) -> UfoGroups:
+) -> Tuple[UfoGroups, List[str]]:
     # Rename kerning groups by applying the side flags and using the key
     # glyph for naming
     FIRST = 2**10
     SECOND = 2**11
     groups: UfoGroups = {}
+    group_order = []
     for name, glyphs in orig_groups.items():
         if name.startswith("_"):
             # Kerning group
@@ -63,6 +64,7 @@ def transform_groups(
             else:
                 # The group is empty, use its original name to build the ufo group name
                 groups[name] = []
+                group_order.append(name)
                 key_glyph = name
 
             if name in kerning_class_flags:
@@ -77,10 +79,12 @@ def transform_groups(
                         logger.warning(f"Duplicate kern{sidename} group: {ufoname}")
                     else:
                         groups[ufoname] = glyphs
+                    group_order.append(ufoname)
         else:
             # Pass non-kerning groups verbatim
             groups[name] = glyphs
-    return groups
+            group_order.append(name)
+    return groups, group_order
 
 
 def build_glyph_to_group_maps(

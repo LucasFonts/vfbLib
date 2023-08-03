@@ -101,15 +101,24 @@ class GlyphCompilerTest(TestCase):
 
         # Groups
 
-        assert ufo0.groups == {
-            "_empty": [],
-            ".mtrx5": ["a"],
-            "letters": ["a", "t"],
-            "public.kern1.a": ["a"],
-            "public.kern1.t": ["t"],
-            "public.kern2.a": ["a"],
-            "public.kern2.t": ["t"],
-        }
+        expected_group_order = [
+            "public.kern1.a",
+            "public.kern2.a",
+            "public.kern1.t",
+            "public.kern2.t",
+            "_empty",
+            ".mtrx5",
+            "letters",
+        ]
+
+        expected_groups = dict(
+            zip(
+                expected_group_order,
+                [["a"], ["a"], ["t"], ["t"], [], ["a"], ["a", "t"]],
+            )
+        )
+
+        assert ufo0.groups == expected_groups
         assert ufo0.groups == ufo1.groups
         del ufo1.groups[".mtrx5"]
         assert ".mtrx5" in ufo0.groups
@@ -127,6 +136,7 @@ class GlyphCompilerTest(TestCase):
 
         # Lib
 
+        assert ufo0.lib["com.lucasfonts.vfblib.groupOrder"] == expected_group_order
         assert "com.lucasfonts.vfblib" in ufo0.lib["com.fontlab.v5.userData"]
         del ufo0.lib["com.fontlab.v5.userData"]
         assert "com.lucasfonts.vfblib" in ufo1.lib["com.fontlab.v5.userData"]

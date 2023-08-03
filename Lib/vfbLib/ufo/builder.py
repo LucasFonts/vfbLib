@@ -608,7 +608,7 @@ class VfbToUfoBuilder:
 
     def get_ufo_masters(self, silent=False) -> List[Font]:
         # Prepare data shared by the master UFOs
-        self.ufo_groups = transform_groups(
+        self.ufo_groups, group_order = transform_groups(
             self.groups,
             self.kerning_class_flags,
             self.glyphOrder,
@@ -616,6 +616,8 @@ class VfbToUfoBuilder:
         )
         self.ufo_kerning = UfoKerning(self.glyphOrder, self.ufo_groups, self.mm_kerning)
         self.ufo_groups = self.ufo_kerning.groups
+        # Store the order of groups in a non-standard lib key
+        self.lib["com.lucasfonts.vfblib.groupOrder"] = group_order
         self.ufo_features = Features(self.features_code)
         if self.features_classes:
             self.ufo_features.text = self.features_classes + "\n\n" + self.features_code
