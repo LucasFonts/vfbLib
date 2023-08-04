@@ -237,7 +237,8 @@ class VfbToUfoInfo(Info):
             name_parts.append("bold")
         if 0 in intlist:
             name_parts.append("italic")
-        self.styleMapStyleName = " ".join(name_parts)
+        if name_parts:
+            self.styleMapStyleName = " ".join(name_parts)
 
     def set_style_name(self, data: str) -> None:
         self.styleName = data
