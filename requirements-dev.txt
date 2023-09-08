@@ -9,7 +9,7 @@ mccabe==0.7.0
 mypy==0.991
 mypy-extensions==0.4.3
 packaging==21.3
-pathspec==0.10.1
+pathspec==0.11.2
 platformdirs==2.5.3
 pluggy==1.0.0
 pycodestyle==2.10.0
