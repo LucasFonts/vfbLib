@@ -614,13 +614,18 @@ class VfbToUfoBuilder:
             self.glyphOrder,
             self.minimal,
         )
-        self.ufo_kerning = UfoKerning(self.glyphOrder, self.ufo_groups, self.mm_kerning)
+        self.ufo_kerning = UfoKerning(
+            self.glyphOrder, ufo_groups, self.mm_kerning, key_glyphs
+        )
         self.ufo_groups = self.ufo_kerning.groups
+
         # Store the order of groups in a non-standard lib key
         self.lib["com.lucasfonts.vfblib.groupOrder"] = group_order
         self.ufo_features = Features(self.features_code)
         if self.features_classes:
             self.ufo_features.text = self.features_classes + "\n\n" + self.features_code
+        self.lib["com.lucasfonts.vfblib.groupKeyGlyphs"] = key_glyphs
+
 
         ufo_masters = []
         for i in range(len(self.masters)):
