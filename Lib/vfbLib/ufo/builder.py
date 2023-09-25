@@ -617,8 +617,10 @@ class VfbToUfoBuilder:
         self.ufo_groups = self.ufo_kerning.groups
 
         # Store the order of groups in a non-standard lib key
-        self.lib["com.lucasfonts.vfblib.groupOrder"] = group_order
-        self.lib["com.lucasfonts.vfblib.groupKeyGlyphs"] = key_glyphs
+        if group_order:
+            self.lib["com.lucasfonts.vfblib.groupOrder"] = group_order
+        if key_glyphs:
+            self.lib["com.lucasfonts.vfblib.groupKeyGlyphs"] = key_glyphs
 
         self.ufo_features = Features()
         # Also add non-kerning classes to the feature code
