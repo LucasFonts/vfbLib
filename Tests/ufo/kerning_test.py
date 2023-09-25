@@ -15,8 +15,8 @@ groups = {
     "public.kern2.E": ["E", "F"],
 }
 
-mmk = {
-    
+mmk = {}
+
 }
 
 
@@ -36,30 +36,30 @@ kerning.mm_kerning_names = {
 class UfoKerningTest(TestCase):
     def test_exception_keypair(self):
         assert not kerning._is_exception("A", "T")
-    
+
     def test_exception_key_member(self):
         assert kerning._is_exception("T", "Adieresis")
-    
+
     def test_exception_member_key(self):
         assert kerning._is_exception("Adieresis", "T")
-    
+
     def test_exception_member_member(self):
         assert kerning._is_exception("Tbar", "Adieresis")
-    
+
     def test_exception_nonmember_key(self):
         assert not kerning._is_exception("P", "A")
-    
+
     def test_exception_key_nonmember(self):
         assert not kerning._is_exception("T", "J")
-    
+
     def test_exception_nonmember_member(self):
         assert kerning._is_exception("Ydieresis", "Adieresis")
-    
+
     def test_exception_member_nonmember(self):
         assert kerning._is_exception("Adieresis", "Ydieresis")
-    
+
     def test_exception_nonmember_nonmember(self):
         assert not kerning._is_exception("P", "J")
-    
+
     def test_exception_unkerned(self):
         assert not kerning._is_exception("X", "hyphen")
