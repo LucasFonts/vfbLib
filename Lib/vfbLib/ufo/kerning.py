@@ -18,17 +18,19 @@ class UfoKerning:
         glyph_order: List[str],
         groups: UfoGroups,
         mm_kerning: UfoMMKerning,
+        key_glyphs: Dict[str, str],
     ):
         self.glyph_order = glyph_order
         group_info = build_glyph_to_group_maps(groups)
         self.groups, self.glyph_group_1, self.glyph_group_2 = group_info
         self.mm_kerning = mm_kerning
+        self.key_glyphs = self._reverse_key_glyph_dict(key_glyphs)
         self._make_name_based_kerning()
 
     def _is_exception(self, L: str, R: str):
-        L_is_key = f"public.kern1.{L}" in self.groups or L not in self.glyph_group_1
+        L_is_key = (1, L) in self.key_glyphs or L not in self.glyph_group_1
 
-        R_is_key = f"public.kern2.{R}" in self.groups or R not in self.glyph_group_2
+        R_is_key = (2, R) in self.key_glyphs or R not in self.glyph_group_2
 
         if L_is_key and R_is_key:
             return False
@@ -46,17 +48,42 @@ class UfoKerning:
             # Make right GID into glyph name
             R = self.glyph_order[int(Rid)]
 
-            # Is the left glyph a keyglyph? It is so if there's a kerning group
-            # named after it. In that case, use the group name instead of the
-            # glyph name.
-            left_group = f"public.kern1.{L}"
+            # Is the left glyph a keyglyph? In that case, use the group name instead of
+            # the glyph name.
+            left_group = self.key_glyphs.get((1, L))
             left = left_group if left_group in self.groups else L
 
             # Is the right glyph a keyglyph?
-            right_group = f"public.kern2.{R}"
+            right_group = self.key_glyphs.get((2, R))
             right = right_group if right_group in self.groups else R
 
             self.mm_kerning_names[left, right] = values
+
+    def _reverse_key_glyph_dict(
+        self, key_glyphs: Dict[str, str]
+    ) -> Dict[Tuple[int, str], str]:
+        """
+        Rebuild the key glyphs dict (group_name: key_ glyph_name) into a reverse dict by
+        kerning group side and key glyph to group name.
+        """
+        rev = {}
+        for name, key_glyph in key_glyphs.items():
+            if name.startswith("public.kern1"):
+                key = (1, key_glyph)
+            elif name.startswith("public.kern2"):
+                key = (2, key_glyph)
+            else:
+                logger.warning(
+                    f"Can't determine kerning group side from name: '{name}'"
+                )
+            if key in rev:
+                logger.warning(
+                    f"Glyph is key glyph for more than one kerning group: {key}"
+                )
+                continue
+
+            rev[key] = name
+        return rev
 
     def get_master_kerning(self, master_index: int) -> UfoMasterKerning:
         """
