@@ -190,7 +190,13 @@ class VfbToUfoBuilder:
 
     def set_glyph_background(self, data: Dict[str, Any]) -> None:
         assert self.current_glyph is not None
-        self.current_glyph.lib["com.fontlab.v5.background"] = data
+        lib = self.current_glyph.lib["com.fontlab.v5.background"] = data
+        if "data" in lib:
+            # Convert bytes arrays to hex data
+            for key in ("bytes", "extra"):
+                if byte_array := lib["data"].get(key):
+                    b = bytearray(byte_array)
+                    lib["data"][key] = b.hex()
 
     def set_tt_stem_ppms(self, data: Dict[str, List[Dict[str, Any]]]) -> None:
         for d in ("ttStemsH", "ttStemsV"):
