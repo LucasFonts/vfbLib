@@ -17,17 +17,25 @@ groups = {
 
 mmk = {}
 
+kg = {
+    "public.kern1.A": "A",
+    "public.kern2.A": "A",
+    "public.kern1.T": "T",
+    "public.kern2.T": "T",
+    "public.kern1.F": "F",
+    "public.kern2.E": "E",
 }
 
-
-kerning = UfoKerning(glyph_order=glyph_order, groups=groups, mm_kerning=mmk)
+kerning = UfoKerning(
+    glyph_order=glyph_order, groups=groups, mm_kerning=mmk, key_glyphs=kg
+)
 kerning.mm_kerning_names = {
     ("public.kern1.A", "public.kern2.T"): [-100, -80],
     ("public.kern1.T", "public.kern2.A"): [-100, -80],
     ("Adieresis", "public.kern2.T"): [-80, -60],
     ("public.kern1.T", "Adieresis"): [-80, -60],
-    ("public.kern1.F",  "public.kern2.A"): [-70, -65],
-    ("Tbar",  "Adieresis"): [-60, -55],
+    ("public.kern1.F", "public.kern2.A"): [-70, -65],
+    ("Tbar", "Adieresis"): [-60, -55],
     ("P", "A"): [-90, -85],
     ("P", "J"): [-90, -85],
 }
