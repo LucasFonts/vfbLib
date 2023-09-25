@@ -608,7 +608,7 @@ class VfbToUfoBuilder:
 
     def get_ufo_masters(self, silent=False) -> List[Font]:
         # Prepare data shared by the master UFOs
-        self.ufo_groups, group_order = transform_groups(
+        ufo_groups, group_order, key_glyphs = transform_groups(
             self.groups,
             self.kerning_class_flags,
             self.glyphOrder,

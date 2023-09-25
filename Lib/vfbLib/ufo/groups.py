@@ -17,74 +17,79 @@ def transform_groups(
     kerning_class_flags: ClassFlagDict,
     glyphOrder: List[str],
     skip_missing_group_glyphs: bool = False,
-) -> Tuple[UfoGroups, List[str]]:
-    # Rename kerning groups by applying the side flags and using the key
-    # glyph for naming
+) -> Tuple[UfoGroups, List[str], Dict[str, str]]:
+    # Rename kerning groups by applying the side flags and using the public.kern prefix.
+    # Remove missing glyphs from groups if requested.
     FIRST = 2**10
     SECOND = 2**11
     groups: UfoGroups = {}
     group_order = []
+    key_glyphs: Dict[str, str] = {}
     for name, glyphs in orig_groups.items():
+        # Check for missing glyphs
+        missing = [n for n in glyphs if n not in glyphOrder]
+        num_missing = len(missing)
+        num_glyphs = len(glyphs)
+        if missing:
+            if num_missing == num_glyphs:
+                logger.warning(
+                    f"All glyphs in group '{name}' are missing from "
+                    f"the font: {', '.join(missing)}"
+                )
+            else:
+                logger.warning(
+                    f"{num_missing} of {num_glyphs} glyphs in group "
+                    f"'{name}' are missing from the font: {', '.join(missing)}"
+                )
+            if skip_missing_group_glyphs:
+                glyphs = list(set(glyphs) - set(missing))
+                if not glyphs:
+                    logger.warning(f"Not adding empty group '{name}' to the UFO.")
+                    continue
+
         if name.startswith("_"):
             # Kerning group
-
-            # Check for missing glyphs
-            missing = [n for n in glyphs if n not in glyphOrder]
-            num_missing = len(missing)
-            num_glyphs = len(glyphs)
-            if missing:
-                if num_missing == num_glyphs:
-                    logger.warning(
-                        f"All glyphs in kerning group '{name}' are missing from "
-                        f"the font: {', '.join(missing)}"
-                    )
-                else:
-                    logger.warning(
-                        f"{num_missing} of {num_glyphs} glyphs in kerning group "
-                        f"'{name}' are missing from the font: {', '.join(missing)}"
-                    )
-                if skip_missing_group_glyphs:
-                    glyphs = list(set(glyphs) - set(missing))
-                    if not glyphs:
-                        logger.warning("Not adding empty kerning group to the UFO.")
-                        continue
-
+            key_glyph = None
             if glyphs:
-                key_glyph = glyphs[0]  # Keyglyph is used for group name
+                key_glyph = glyphs[0]  # Groups have been reordered so keyglyph is 1st
                 if key_glyph in missing:
                     if num_missing != num_glyphs:
+                        # Only warn if not all group glyphs are missing from the font
                         logger.warning(
                             f"Key glyph '{key_glyph}' for group '{name}' is missing "
                             "from the font."
                         )
 
-                # Sort group glyphs by glyphOrder
-                if not missing:
-                    glyphs.sort(key=lambda n: glyphOrder.index(n))
-            else:
-                # The group is empty, use its original name to build the ufo group name
-                groups[name] = []
-                group_order.append(name)
-                key_glyph = name
-
             if name in kerning_class_flags:
                 flags = kerning_class_flags[name][0]
             else:
-                # Don't add kerning groups without a side flag
-                flags = 0
+                # Don't add kerning groups without a side flag, as FLS ignores them when
+                # compiling the kern feature
+                logger.warning(f"Skipping kerning group without side flag: '{name}'")
+                continue
+
             for side, sidename in ((FIRST, 1), (SECOND, 2)):
                 if flags & side:
-                    ufoname = f"public.kern{sidename}.{key_glyph}"
+                    ufoname = f"public.kern{sidename}.{name}"
                     if ufoname in groups:
                         logger.warning(f"Duplicate kern{sidename} group: {ufoname}")
                     else:
                         groups[ufoname] = glyphs
                     group_order.append(ufoname)
+                    if ufoname in key_glyphs:
+                        if key_glyphs[ufoname] != key_glyph:
+                            logger.warning(
+                                f"Ignoring duplicate group '{ufoname}' with different "
+                                f"key glyphs: {key_glyphs[ufoname]} vs. {key_glyph}."
+                            )
+                    elif key_glyph is not None:
+                        key_glyphs[ufoname] = key_glyph
+
         else:
             # Pass non-kerning groups verbatim
             groups[name] = glyphs
             group_order.append(name)
-    return groups, group_order
+    return groups, group_order, key_glyphs
 
 
 def build_glyph_to_group_maps(
