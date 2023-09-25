@@ -185,7 +185,6 @@ class GlyphCompiler(BaseCompiler):
         self.stream.write(outlines)
 
     def _compile(self, data: Any) -> None:
-
         # Constants?
         self.write_bytes(pack("<4B", *GLYPH_CONSTANT))
         self.num_masters = data["num_masters"]

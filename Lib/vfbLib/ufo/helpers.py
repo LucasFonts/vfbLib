@@ -74,7 +74,6 @@ def normalize_ufo(
     normalized_file = filepath / ".normalized"
 
     if structure == "package":
-
         if normalized_file.exists():
             logger.info(f"    Skipping already normalized UFO: {filepath.name}")
             return
