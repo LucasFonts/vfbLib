@@ -102,11 +102,11 @@ class GlyphCompilerTest(TestCase):
         # Groups
 
         expected_group_order = [
-            "public.kern1.a",
-            "public.kern2.a",
-            "public.kern1.t",
-            "public.kern2.t",
-            "_empty",
+            "public.kern1._a_LEFT",
+            "public.kern2._a_RIGHT",
+            "public.kern1._t",
+            "public.kern2._t",
+            # "_empty",
             ".mtrx5",
             "letters",
         ]
@@ -114,7 +114,15 @@ class GlyphCompilerTest(TestCase):
         expected_groups = dict(
             zip(
                 expected_group_order,
-                [["a"], ["a"], ["t"], ["t"], [], ["a"], ["a", "t"]],
+                [
+                    ["a"],
+                    ["a"],
+                    ["t"],
+                    ["t"],
+                    # [],
+                    ["a"],
+                    ["a", "t"],
+                ],
             )
         )
 
@@ -122,17 +130,17 @@ class GlyphCompilerTest(TestCase):
         assert ufo0.groups == ufo1.groups
         del ufo1.groups[".mtrx5"]
         assert ".mtrx5" in ufo0.groups
-        ufo0.groups["_empty"].append("a")
-        assert ufo1.groups["_empty"] == []
+        ufo0.groups["_empty"] = ["a"]
+        assert "_empty" not in ufo1.groups
 
         # Kerning
 
-        ufo0.kerning[("public.kern1.a", "public.kern2.a")] = -10
-        assert ("public.kern1.a", "public.kern2.a") not in ufo1.kerning
-        assert ufo0.kerning[("public.kern1.a", "public.kern2.t")] == -73
-        ufo0.kerning[("public.kern1.a", "public.kern2.t")] = -72
-        assert ufo0.kerning[("public.kern1.a", "public.kern2.t")] == -72
-        assert ufo1.kerning[("public.kern1.a", "public.kern2.t")] == -166
+        ufo0.kerning[("public.kern1._a_LEFT", "public.kern2._a_RIGHT")] = -10
+        assert ("public.kern1._a_LEFT", "public.kern2._a_RIGHT") not in ufo1.kerning
+        assert ufo0.kerning[("public.kern1._a_LEFT", "public.kern2._t")] == -73
+        ufo0.kerning[("public.kern1._a_LEFT", "public.kern2._t")] = -72
+        assert ufo0.kerning[("public.kern1._a_LEFT", "public.kern2._t")] == -72
+        assert ufo1.kerning[("public.kern1._a_LEFT", "public.kern2._t")] == -166
 
         # Lib
 

@@ -144,9 +144,6 @@ class VfbToUfoBuilder:
         else:
             glyphs = [g.strip() for g in glyphs_list]
         self.groups[name] = glyphs
-        # Also add non-kerning classes to the feature code
-        if not is_kerning and not name.startswith("."):
-            self.features_classes += f"@{name} = [{' '.join(glyphs)}];\n"
 
     def assure_tt_lib(self) -> None:
         if TT_LIB_KEY not in self.lib:
@@ -608,19 +605,31 @@ class VfbToUfoBuilder:
 
     def get_ufo_masters(self, silent=False) -> List[Font]:
         # Prepare data shared by the master UFOs
-        self.ufo_groups, group_order = transform_groups(
+        ufo_groups, group_order, key_glyphs = transform_groups(
             self.groups,
             self.kerning_class_flags,
             self.glyphOrder,
             self.minimal,
         )
-        self.ufo_kerning = UfoKerning(self.glyphOrder, self.ufo_groups, self.mm_kerning)
+        self.ufo_kerning = UfoKerning(
+            self.glyphOrder, ufo_groups, self.mm_kerning, key_glyphs
+        )
         self.ufo_groups = self.ufo_kerning.groups
+
         # Store the order of groups in a non-standard lib key
-        self.lib["com.lucasfonts.vfblib.groupOrder"] = group_order
-        self.ufo_features = Features(self.features_code)
-        if self.features_classes:
-            self.ufo_features.text = self.features_classes + "\n\n" + self.features_code
+        if group_order:
+            self.lib["com.lucasfonts.vfblib.groupOrder"] = group_order
+        if key_glyphs:
+            self.lib["com.lucasfonts.vfblib.groupKeyGlyphs"] = key_glyphs
+
+        self.ufo_features = Features()
+        # Also add non-kerning classes to the feature code
+        for name, glyphs in ufo_groups.items():
+            if not name.startswith(".") and not name.startswith("public.kern"):
+                self.ufo_features.text += f"@{name} = [{' '.join(glyphs)}];\n"
+
+        if self.features_code:
+            self.ufo_features.text += f"\n\n{self.features_code}"
 
         ufo_masters = []
         for i in range(len(self.masters)):
