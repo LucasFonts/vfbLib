@@ -14,6 +14,7 @@ from typing import TYPE_CHECKING, Any, Dict, List, Tuple
 from ufoLib2.objects.font import Font
 from ufoLib2.objects.features import Features
 from ufonormalizer import normalizeUFO
+from vfbLib.constants import ignore_minimal
 from vfbLib.ufo.designspace import get_ds_location
 from vfbLib.ufo.glyph import VfbToUfoGlyph
 from vfbLib.ufo.groups import transform_groups
@@ -300,6 +301,8 @@ class VfbToUfoBuilder:
             name = e.key
             if name is None:
                 raise TypeError
+            if name in ignore_minimal:
+                continue
             data = e.decompiled
             if data is None:
                 continue
