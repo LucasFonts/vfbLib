@@ -1,4 +1,4 @@
-black==23.9.1
+black==23.10.1
 click==8.1.7
 flake8==6.1.0
 iniconfig==2.0.0
