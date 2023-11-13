@@ -1,7 +1,7 @@
 appdirs==1.4.4
 attrs==23.1.0
 defcon==0.10.3
-fonttools==4.43.1
+fonttools==4.44.0
 fs==2.4.16
 six==1.16.0
 typing_extensions==4.8.0
