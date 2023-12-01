@@ -101,7 +101,7 @@ options:
 
 ### vfbcu2qu
 
-Convert a VFB file to quadratic using the `cu2qu` library. Single master only.
+Convert a VFB file to quadratic using the `cu2qu` library.
 
 ```bash
 $ vfbcu2qu MyFile.vfb
