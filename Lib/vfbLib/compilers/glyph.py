@@ -53,7 +53,7 @@ class GlyphCompiler(BaseCompiler):
 
     def _compile_binary(self, data):
         # Imported binary data 8-)
-        if not (imported := data.get("imported")):
+        if not (imported := data.get("imported")):  # noqa: F841
             return
 
         logger.warning("Compiling imported binary data is not supported.")
@@ -126,7 +126,7 @@ class GlyphCompiler(BaseCompiler):
             else:
                 self.write_encoded_value(0)
 
-        if not (hintmasks := hints.get("hintmasks")):
+        if not (hintmasks := hints.get("hintmasks")):  # noqa: F841
             self.write_encoded_value(0)
             return
 
