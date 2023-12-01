@@ -27,7 +27,8 @@ class NameRecordsParser(BaseParser):
                     char = chr(c)
                     # Fix platform-specific encodings for Mac
                     if platID == 1 and encID == 0:
-                        char = c.to_bytes().decode("macroman")
+                        # TODO: Default arguments can be removed when Python < 3.11 is dropped
+                        char = c.to_bytes(length=1, byteorder="big").decode("macroman")
                 except ValueError:
                     char = "\ufeff"
                 name += char
