@@ -155,7 +155,7 @@ class VfbToUfoBuilder:
             self.lib[TT_GLYPH_LIB_KEY] = {}
 
     def build_mm_glyph(self, data: Dict[str, Any]) -> None:
-        g = self.current_glyph = VfbToUfoGlyph()
+        g = self.current_glyph = VfbToUfoGlyph(self)
         g.lib = {}
         g.name = data["name"]
         g.unicodes = []
@@ -182,12 +182,9 @@ class VfbToUfoBuilder:
         if "components" in data:
             g.mm_components = data["components"]
 
-        # TrueType hinting, needs to come after mm_nodes, because it needs
-        # access to the point indices.
+        # TrueType hinting, stored here for later processing after all glyphs are there.
         if "tth" in data:
-            tth = TTGlyphHints(g, data["tth"], self.zone_names, self.stems)
-            g.tth_commands = tth.commands
-            del tth
+            g.tt_glyph_hints = TTGlyphHints(g, data["tth"], self.zone_names, self.stems)
 
     def set_glyph_background(self, data: Dict[str, Any]) -> None:
         assert self.current_glyph is not None
@@ -294,6 +291,13 @@ class VfbToUfoBuilder:
         self.assure_tt_lib()
         if self.tt_zones:
             self.lib[TT_LIB_KEY]["zones"] = self.tt_zones
+
+    def build_tt_glyph_lib(self) -> None:
+        for glyph in sorted(self.glyph_masters.values()):
+            if glyph.tt_glyph_hints is None:
+                continue
+
+            glyph.tth_commands = glyph.tt_glyph_hints.get_tt_glyph_hints()
 
     def build(self) -> None:  # noqa: C901
         # Non-MM data
@@ -503,6 +507,7 @@ class VfbToUfoBuilder:
             self.glyph_masters[self.current_glyph.name] = self.current_glyph
             self.glyphOrder.append(self.current_glyph.name)
         self.lib["public.glyphOrder"] = self.glyphOrder
+        self.build_tt_glyph_lib()
         self.assure_tt_lib()
         self.build_tt_stems_lib()
         self.build_tt_zones_lib()

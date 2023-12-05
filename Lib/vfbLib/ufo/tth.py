@@ -85,17 +85,14 @@ class TTGlyphHints:
         stems: TUfoStemsDict,
     ) -> None:
         self.glyph: VfbToUfoGlyph = mm_glyph
+        self.data = data
         self.zone_names = zone_names
         self.stems = stems
 
-        self.commands: List[Dict] = []
-
-        self._build_tt_glyph_hints(data)
-
-    def _build_tt_glyph_hints(self, data: List[Dict[str, Any]]) -> None:
-        # Write TT hints into glyph lib.
-        self.commands = []
-        for cmd in data:
+    def get_tt_glyph_hints(self) -> List[Dict[str, str | bool]]:
+        # Build TT hints which into glyph lib and return them.
+        commands: List[Dict[str, str | bool]] = []
+        for cmd in self.data:
             code = cmd["cmd"]
             params = cmd["params"]
             d: Dict[str, str | bool] = {"code": vfb2ufo_command_codes[code]}
@@ -168,4 +165,5 @@ class TTGlyphHints:
                 logger.error(f"Unknown TT command: {code}")
                 raise ValueError
 
-            self.commands.append(d)
+            commands.append(d)
+        return commands
