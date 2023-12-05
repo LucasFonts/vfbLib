@@ -15,13 +15,16 @@ if TYPE_CHECKING:
         LinkDict,
         MMNode,
     )
+    from vfbLib.ufo.builder import VfbToUfoBuilder
+    from vfbLib.ufo.tth import TTGlyphHints
 
 
 logger = logging.getLogger(__name__)
 
 
 class VfbToUfoGlyph:
-    def __init__(self) -> None:
+    def __init__(self, builder: VfbToUfoBuilder | None = None) -> None:
+        self.builder = builder
         self.anchors: List[Anchor] = []
         self.guide_properties: GuidePropertyList = []
         self.hintmasks: List[Dict[str, int]] = []
@@ -38,10 +41,37 @@ class VfbToUfoGlyph:
         self.note: str | None = None
         self.point_labels: Dict[int, str] = {}
         self.rename_points: Dict[str, str]
+        self.tt_glyph_hints: TTGlyphHints | None = None
         self.tth_commands: List[Dict[str, str | bool]] = []
         self.unicodes: List[int] = []
 
     def get_point_label(self, index: int, code: str, start_count: int = 1) -> str:
+        if self.mm_components:
+            # Composite: We must add the label to the referenced glyph
+            if self.builder is None:
+                logger.error(
+                    "To compile composite TrueType hinting, you must supply the"
+                    "VfbToUfoBuilder to VfbToUfoGlyph.__init__()"
+                )
+                raise ValueError
+
+            # Find the right component the point index belongs to
+            orig_index = index
+            for i, mm_component in enumerate(self.mm_components):
+                component_name = self.builder.glyphOrder[mm_component["gid"]]
+                component = self.builder.glyph_masters[component_name]
+                num_nodes = len(component.mm_nodes)
+                if index < num_nodes:
+                    # Add the component index to the label to make it unique enough.
+                    return f"{component.get_point_label(index, code)}-{i}"
+
+                index -= num_nodes
+            logger.error(
+                f"Could not find point {orig_index} for hinted composite '{self.name}'."
+                " TrueType hinting will be broken in UFO glyph."
+            )
+            return "invalid"
+
         if index in self.point_labels:
             # We already have a label for this point index
             return self.point_labels[index]
@@ -68,3 +98,32 @@ class VfbToUfoGlyph:
         self.lib["public.markColor"] = "%0.4f,%0.4f,%0.4f,1" % hls_to_rgb(
             h=hue / 255, l=0.8, s=0.76
         )
+
+    def __eq__(self, other) -> bool:
+        if len(self.mm_components) == len(other.mm_components):
+            if self.name == other.name:
+                return True
+
+        return False
+
+    def __gt__(self, other) -> bool:
+        ns = len(self.mm_components)
+        no = len(other.mm_components)
+        if ns > no:
+            return True
+        if ns == no:
+            if self.name > other.name:
+                return True
+
+        return False
+
+    def __lt__(self, other) -> bool:
+        ns = len(self.mm_components)
+        no = len(other.mm_components)
+        if ns < no:
+            return True
+        if ns == no:
+            if self.name < other.name:
+                return True
+
+        return False
