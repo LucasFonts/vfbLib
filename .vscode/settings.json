@@ -2,5 +2,6 @@
     "python.formatting.blackArgs": [
         "--line-length",
         "88"
-    ]
+    ],
+    "git.ignoreLimitWarning": true
 }
