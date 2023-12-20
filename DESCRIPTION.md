@@ -18,6 +18,7 @@ this situation.
 - Guideline data is written to the official UFO v3 elements
 - Anchors are preserved in composite glyphs
 - PostScript hinting is written correctly, but to the Adobe lib key
+- TrueType hinting is supported in composite glyphs
 - Supports more UFO font info attributes:
   - `openTypeGaspRangeRecords`
   - `openTypeHeadLowestRecPPEM`
@@ -124,7 +125,7 @@ options:
   -fo, --force-overwrite
                         force overwrite
   -m MAX_ERR_EM, --max-err-em MAX_ERR_EM
-                        Maximum allowed error, relative to the font's units per em.
+                        Maximum allowed error, relative to the font's units per em. Default is 0.001.
 ```
 
 
