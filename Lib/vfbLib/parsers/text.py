@@ -68,7 +68,23 @@ class OpenTypeStringParser(BaseParser):
 
     def _parse(self) -> List[str]:
         s = self.stream.read().decode(self.encoding).strip("\u0000 ")
-        return s.splitlines()
+        # Filter more than 2 consecutive empty lines
+        lines = []
+        c = 0
+        for line in s.splitlines():
+            if line.strip():
+                c = 0
+                lines.append(line)
+            else:
+                if c < 2:
+                    lines.append(line)
+                c += 1
+
+        # Remove empty lines at the end, except one
+        while not lines[-1]:
+            lines.pop()
+        lines.append("")
+        return lines
 
 
 class StringParser(BaseParser):
