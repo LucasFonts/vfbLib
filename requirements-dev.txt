@@ -1,6 +1,6 @@
 black==23.12.1
 click==8.1.7
-flake8==6.1.0
+flake8==7.0.0
 iniconfig==2.0.0
 mccabe==0.7.0
 mypy==1.8.0
