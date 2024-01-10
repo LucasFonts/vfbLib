@@ -16,7 +16,7 @@ from ufoLib2.objects.features import Features
 from ufonormalizer import normalizeUFO
 from vfbLib.constants import ignore_minimal
 from vfbLib.ufo.designspace import get_ds_location
-from vfbLib.ufo.features import add_kerning_groups, rename_kern_classes_in_feature_code
+from vfbLib.ufo.features import rename_kern_classes_in_feature_code
 from vfbLib.ufo.glyph import VfbToUfoGlyph
 from vfbLib.ufo.groups import transform_groups
 from vfbLib.ufo.guides import apply_guide_properties, get_master_guides

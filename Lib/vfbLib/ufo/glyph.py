@@ -68,7 +68,7 @@ class VfbToUfoGlyph:
 
                 index -= num_nodes
                 total_num_nodes += num_nodes
-            
+
             # Side bearings may be hinted
             if orig_index == total_num_nodes:
                 return "lsb"
