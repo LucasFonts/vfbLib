@@ -73,6 +73,7 @@ class UfoKerning:
             elif name.startswith("public.kern2"):
                 key = (2, key_glyph)
             else:
+                key = None
                 logger.warning(
                     f"Can't determine kerning group side from name: '{name}'"
                 )
