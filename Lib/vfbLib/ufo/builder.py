@@ -495,6 +495,8 @@ class VfbToUfoBuilder:
                 pass
             elif name == "OpenType Metrics Class Flags":  # 2024
                 self.lib["com.fontlab.v5.metricsClassFlags"] = data
+            elif name == "fontNote":  # 2025
+                self.info.note = data
             elif name == "OpenType Kerning Class Flags":  # 2026
                 self.kerning_class_flags = data
             elif name == "Glyph Origin":  # 2027
