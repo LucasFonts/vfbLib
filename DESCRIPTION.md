@@ -151,4 +151,4 @@ options:
 
 ## Copyright
 
-© 2022–2023 by [LucasFonts GmbH](https://www.lucasfonts.com/), Berlin
+© 2022–2024 by [LucasFonts GmbH](https://www.lucasfonts.com/), Berlin
