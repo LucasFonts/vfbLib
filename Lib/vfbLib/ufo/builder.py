@@ -191,10 +191,7 @@ class VfbToUfoBuilder:
 
     def set_feature_code(self, data: List[str]) -> None:
         # Make the kern feature compilable
-        features = rename_kern_classes_in_feature_code(data)
-        if self.add_kerning_groups:
-            features = add_kerning_groups(features)
-        self.features_code = "\n".join(features)
+        self.features_code = "\n".join(rename_kern_classes_in_feature_code(data))
 
     def set_glyph_background(self, data: Dict[str, Any]) -> None:
         assert self.current_glyph is not None
@@ -646,8 +643,14 @@ class VfbToUfoBuilder:
         self.ufo_features = Features()
         # Also add non-kerning classes to the feature code
         for name, glyphs in ufo_groups.items():
-            if not name.startswith(".") and not name.startswith("public.kern"):
-                self.ufo_features.text += f"@{name} = [{' '.join(glyphs)}];\n"
+            if (
+                name.startswith(".")
+                or not self.add_kerning_groups
+                and name.startswith("public.kern")
+            ):
+                continue
+
+            self.ufo_features.text += f"@{name} = [{' '.join(glyphs)}];\n"
 
         if self.features_code:
             self.ufo_features.text += f"\n\n{self.features_code}"
