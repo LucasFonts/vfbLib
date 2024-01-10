@@ -114,6 +114,9 @@ class Vfb:
         """
         start = time()
         for entry in self.entries:
+            if entry.key in self.drop_keys:
+                continue
+
             entry.decompile()
 
         end = time()

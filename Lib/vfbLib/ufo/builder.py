@@ -306,11 +306,12 @@ class VfbToUfoBuilder:
 
     def build(self) -> None:  # noqa: C901
         # Non-MM data
+        minimal_build = self.vfb.minimal
         for e in self.vfb.entries:
             name = e.key
             if name is None:
                 raise TypeError
-            if name in ignore_minimal:
+            if minimal_build and name in ignore_minimal:
                 continue
             data = e.decompiled
             if data is None:
