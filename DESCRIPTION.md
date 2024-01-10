@@ -42,9 +42,9 @@ not be overwritten unless you specify the `-fo` option.
 
 ```
 vfb3ufo -h
-usage: vfb3ufo [-h] [-p PATH] [-fo] [-ttx] [-64] [-s] [-nops] [-z] [-m] [-u] inputpath [outputpath]
+usage: vfb3ufo [-h] [-p PATH] [-fo] [-k] [-ttx] [-64] [-s] [-nops] [-z] [-m] [-u] inputpath [outputpath]
 
-VFB3UFO Converter Copyright (c) 2023 by LucasFonts Build 2023-07-19
+VFB3UFO Converter Copyright (c) 2023 by LucasFonts Build 2024-01-10
 
 positional arguments:
   inputpath             input file path (.vfb)
@@ -55,6 +55,8 @@ options:
   -p PATH, --path PATH  output folder
   -fo, --force-overwrite
                         force overwrite
+  -k, --add-kerning-groups
+                        add kerning groups to feature code
   -64, --base64         write GLIF lib 'data' section using base64 (recommended)
   -s, --silent          no display (silent mode)
   -nops, --no-postscript-hints
