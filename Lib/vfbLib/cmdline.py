@@ -105,6 +105,13 @@ def vfb2ufo():
         help="force overwrite",
     )
     parser.add_argument(
+        "-k",
+        "--add-kerning-groups",
+        action="store_true",
+        default=False,
+        help="add kerning groups to feature code",
+    )
+    parser.add_argument(
         "-ttx",
         "--ttx",
         action="store_true",
@@ -190,6 +197,7 @@ def vfb2ufo():
             minimal=args.minimal,
             base64=args.base64,
             pshints=not args.no_postscript_hints,
+            add_kerning_groups=args.add_kerning_groups,
         )
         builder.write(
             out_path,

@@ -16,7 +16,7 @@ from ufoLib2.objects.features import Features
 from ufonormalizer import normalizeUFO
 from vfbLib.constants import ignore_minimal
 from vfbLib.ufo.designspace import get_ds_location
-from vfbLib.ufo.features import rename_kern_classes_in_feature_code
+from vfbLib.ufo.features import add_kerning_groups, rename_kern_classes_in_feature_code
 from vfbLib.ufo.glyph import VfbToUfoGlyph
 from vfbLib.ufo.groups import transform_groups
 from vfbLib.ufo.guides import apply_guide_properties, get_master_guides
@@ -49,6 +49,7 @@ class VfbToUfoBuilder:
         minimal=False,
         base64=False,
         pshints=True,
+        add_kerning_groups=False,
     ) -> None:
         """
         Serialize the JSON structure to UFO(s)
@@ -59,6 +60,7 @@ class VfbToUfoBuilder:
         self.minimal = minimal
         self.encode_data_base64 = base64
         self.include_ps_hints = pshints
+        self.add_kerning_groups = add_kerning_groups
 
         self.features_classes = ""
         self.features_code = ""
@@ -189,7 +191,10 @@ class VfbToUfoBuilder:
 
     def set_feature_code(self, data: List[str]) -> None:
         # Make the kern feature compilable
-        self.features_code = "\n".join(rename_kern_classes_in_feature_code(data))
+        features = rename_kern_classes_in_feature_code(data)
+        if self.add_kerning_groups:
+            features = add_kerning_groups(features)
+        self.features_code = "\n".join(features)
 
     def set_glyph_background(self, data: Dict[str, Any]) -> None:
         assert self.current_glyph is not None

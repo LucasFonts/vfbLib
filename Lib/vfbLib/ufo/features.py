@@ -4,6 +4,9 @@ from re import search
 from typing import List
 
 
+def add_kerning_groups(data: List[str]) -> List[str]:
+    return data
+
 def rename_kern_classes_in_feature_code(data: List[str]) -> List[str]:
     """
     Convert references to kerning classes in the feature code to current UFO naming
