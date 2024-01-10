@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="uni04B2" format="2">
+	<unicode hex="04B2"/>
+	<advance width="666"/>
+	<outline>
+		<contour>
+			<point name="hr00" x="553" y="0" type="line"/>
+			<point name="ab02" x="485" y="0" type="line"/>
+			<point x="316" y="278" type="line"/>
+			<point name="iv01" x="313" y="278" type="line"/>
+			<point x="146" y="0" type="line"/>
+			<point name="ab01" x="21" y="0" type="line"/>
+			<point x="247" y="357" type="line"/>
+			<point name="at01" x="29" y="698" type="line"/>
+			<point x="162" y="698" type="line"/>
+			<point name="iv02" x="321" y="438" type="line"/>
+			<point name="ih01" x="323" y="438" type="line"/>
+			<point name="at02" x="484" y="698" type="line"/>
+			<point x="609" y="698" type="line"/>
+			<point x="389" y="358" type="line"/>
+			<point name="sv01" x="554" y="100" type="line"/>
+			<point x="658" y="100" type="line"/>
+			<point x="658" y="-150" type="line"/>
+			<point name="sv02" x="553" y="-150" type="line"/>
+		</contour>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint.v2</key>
+			<dict>
+				<key>hintSetList</key>
+				<array>
+					<dict>
+						<key>pointTag</key>
+						<string>hr00</string>
+						<key>stems</key>
+						<array>
+							<string>hstem 0 100</string>
+							<string>hstem 698 -20</string>
+							<string>vstem 553 105</string>
+						</array>
+					</dict>
+				</array>
+			</dict>
+			<key>com.fontlab.ttprogram</key>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="interpolateh" point="ih01" point1="lsb" point2="rsb"/&gt;
+    &lt;ttc code="alignt" point="at01" zone="capheight"/&gt;
+    &lt;ttc code="alignt" point="at02" zone="capheight"/&gt;
+    &lt;ttc code="alignb" point="ab01" zone="baseline"/&gt;
+    &lt;ttc code="alignb" point="ab02" zone="baseline"/&gt;
+    &lt;ttc code="interpolatev" point="iv01" point1="at02" point2="ab02"/&gt;
+    &lt;ttc code="interpolatev" point="iv02" point1="at01" point2="ab01"/&gt;
+    &lt;ttc code="singlev" point1="ab02" point2="sv01" stem="uc-hstem"/&gt;
+    &lt;ttc code="singlev" point1="ab02" point2="sv02" round="true"/&gt;
+  &lt;/ttProgram&gt;
+</string>
+		</dict>
+	</lib>
+</glyph>

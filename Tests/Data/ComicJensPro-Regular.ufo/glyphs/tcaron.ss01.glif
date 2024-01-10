@@ -3,7 +3,7 @@
 	<advance width="467"/>
 	<outline>
 		<contour>
-			<point name="hr00" x="402" y="751" type="curve"/>
+			<point x="402" y="751" type="curve"/>
 			<point x="400" y="734"/>
 			<point x="389" y="660"/>
 			<point x="374" y="650" type="curve"/>
@@ -32,7 +32,7 @@
 				<array>
 					<dict>
 						<key>pointTag</key>
-						<string>hr00</string>
+						<string>hr00-0</string>
 						<key>stems</key>
 						<array>
 							<string>hstem 586 -21</string>

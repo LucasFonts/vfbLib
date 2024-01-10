@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="four" format="2">
+	<unicode hex="0034"/>
+	<advance width="600"/>
+	<outline>
+		<contour>
+			<point name="ab01" x="359" y="0" type="line"/>
+			<point x="359" y="136" type="line"/>
+			<point name="iv01" x="35" y="136" type="line"/>
+			<point name="sv02" x="35" y="233" type="line"/>
+			<point name="ih01" x="318" y="698" type="line"/>
+			<point x="466" y="698" type="line"/>
+			<point name="sv03" x="466" y="225" type="line"/>
+			<point x="561" y="225" type="line"/>
+			<point x="561" y="136" type="line"/>
+			<point name="sv04" x="466" y="136" type="line"/>
+			<point x="466" y="0" type="line"/>
+		</contour>
+		<contour>
+			<point name="sv01" x="131" y="225" type="line"/>
+			<point x="359" y="225" type="line"/>
+			<point x="359" y="595" type="line"/>
+			<point name="sh01" x="352" y="595" type="line"/>
+		</contour>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint.v2</key>
+			<dict>
+				<key>hintSetList</key>
+				<array>
+					<dict>
+						<key>pointTag</key>
+						<string>ab01</string>
+						<key>stems</key>
+						<array>
+							<string>hstem 21 -21</string>
+							<string>hstem 136 89</string>
+							<string>hstem 698 -20</string>
+							<string>vstem 359 107</string>
+						</array>
+					</dict>
+				</array>
+			</dict>
+			<key>com.fontlab.ttprogram</key>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="interpolateh" point="ih01" point1="lsb" point2="rsb"/&gt;
+    &lt;ttc code="singleh" point1="ih01" point2="sh01"/&gt;
+    &lt;ttc code="alignt" point="ih01" zone="capheight"/&gt;
+    &lt;ttc code="alignb" point="ab01" zone="baseline"/&gt;
+    &lt;ttc code="singlev" point1="ih01" point2="sh01"/&gt;
+    &lt;ttc code="interpolatev" point="iv01" point1="sh01" point2="ab01" align="round"/&gt;
+    &lt;ttc code="singlev" point1="iv01" point2="sv01" stem="lc-hstem"/&gt;
+    &lt;ttc code="singlev" point1="sv01" point2="sv02"/&gt;
+    &lt;ttc code="singlev" point1="sv01" point2="sv03"/&gt;
+    &lt;ttc code="singlev" point1="iv01" point2="sv04"/&gt;
+  &lt;/ttProgram&gt;
+</string>
+		</dict>
+	</lib>
+</glyph>

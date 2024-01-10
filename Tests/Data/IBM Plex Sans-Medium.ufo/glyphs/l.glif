@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="l" format="2">
+	<unicode hex="006C"/>
+	<advance width="285"/>
+	<outline>
+		<contour>
+			<point name="ab01" x="189" y="0" type="line"/>
+			<point x="133" y="0"/>
+			<point x="78" y="57"/>
+			<point x="78" y="108" type="qcurve"/>
+			<point name="at01" x="78" y="740" type="line"/>
+			<point x="187" y="740" type="line"/>
+			<point name="ih01" x="187" y="89" type="line"/>
+			<point x="259" y="89" type="line"/>
+			<point x="259" y="0" type="line"/>
+		</contour>
+	</outline>
+	<anchor name="bottom" x="169" y="0"/>
+	<anchor name="top" x="133" y="740"/>
+	<anchor name="topright" x="248" y="740"/>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint.v2</key>
+			<dict>
+				<key>hintSetList</key>
+				<array>
+					<dict>
+						<key>pointTag</key>
+						<string>ab01</string>
+						<key>stems</key>
+						<array>
+							<string>hstem 0 89</string>
+							<string>hstem 740 -20</string>
+							<string>vstem 78 109</string>
+						</array>
+					</dict>
+				</array>
+			</dict>
+			<key>com.fontlab.ttprogram</key>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="interpolateh" point="ih01" point1="lsb" point2="rsb"/&gt;
+    &lt;ttc code="alignt" point="at01" zone="ascender"/&gt;
+    &lt;ttc code="alignb" point="ab01" zone="baseline"/&gt;
+    &lt;ttc code="singlev" point1="ab01" point2="ih01" stem="lc-hstem"/&gt;
+  &lt;/ttProgram&gt;
+</string>
+		</dict>
+	</lib>
+</glyph>

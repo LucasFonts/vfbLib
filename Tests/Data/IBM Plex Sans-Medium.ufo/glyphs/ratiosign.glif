@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="ratiosign" format="2">
+	<unicode hex="2236"/>
+	<advance width="310"/>
+	<outline>
+		<component base="period" xOffset="10" yOffset="125"/>
+		<component base="period" xOffset="10" yOffset="445"/>
+	</outline>
+	<lib>
+		<dict>
+			<key>public.markColor</key>
+			<string>0.648,0.9341,0.952,1</string>
+		</dict>
+	</lib>
+</glyph>

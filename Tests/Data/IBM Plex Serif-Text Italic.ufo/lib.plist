@@ -4,6 +4,8 @@
 	<dict>
 		<key>com.fontlab.v2.tth</key>
 		<dict>
+			<key>codeppm</key>
+			<integer>0</integer>
 			<key>stems</key>
 			<dict>
 				<key>X: 105</key>

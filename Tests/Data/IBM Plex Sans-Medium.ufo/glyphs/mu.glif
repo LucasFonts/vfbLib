@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="mu" format="2">
+	<unicode hex="00B5"/>
+	<advance width="585"/>
+	<outline>
+		<contour>
+			<point name="ab01" x="78" y="-200" type="line"/>
+			<point name="at01" x="78" y="520" type="line"/>
+			<point x="187" y="520" type="line"/>
+			<point x="187" y="203" type="line"/>
+			<point x="187" y="82"/>
+			<point name="ih01" x="287" y="82" type="qcurve"/>
+			<point x="308" y="82"/>
+			<point x="348" y="93"/>
+			<point x="379" y="115"/>
+			<point x="398" y="149"/>
+			<point x="398" y="172" type="qcurve"/>
+			<point name="at02" x="398" y="520" type="line"/>
+			<point x="507" y="520" type="line"/>
+			<point x="507" y="0" type="line"/>
+			<point name="ab02" x="398" y="0" type="line"/>
+			<point x="398" y="86" type="line"/>
+			<point name="iv01" x="394" y="86" type="line"/>
+			<point x="387" y="67"/>
+			<point x="365" y="31"/>
+			<point x="333" y="4"/>
+			<point x="290" y="-12"/>
+			<point name="ab03" x="263" y="-12" type="qcurve"/>
+			<point x="198" y="-12"/>
+			<point x="175" y="36" type="qcurve"/>
+			<point name="iv02" x="171" y="36" type="line"/>
+			<point x="187" y="-71" type="line"/>
+			<point x="187" y="-200" type="line"/>
+		</contour>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint.v2</key>
+			<dict>
+				<key>hintSetList</key>
+				<array>
+					<dict>
+						<key>pointTag</key>
+						<string>ab01</string>
+						<key>stems</key>
+						<array>
+							<string>hstem -179 -21</string>
+							<string>hstem -12 94</string>
+							<string>hstem 21 -21</string>
+							<string>hstem 520 -20</string>
+							<string>vstem 78 109</string>
+							<string>vstem 398 109</string>
+						</array>
+					</dict>
+				</array>
+			</dict>
+			<key>com.fontlab.ttprogram</key>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="interpolateh" point="ih01" point1="lsb" point2="rsb"/&gt;
+    &lt;ttc code="alignt" point="at01" zone="xheight"/&gt;
+    &lt;ttc code="alignt" point="at02" zone="xheight"/&gt;
+    &lt;ttc code="alignb" point="ab01" zone="descender"/&gt;
+    &lt;ttc code="alignb" point="ab02" zone="baseline"/&gt;
+    &lt;ttc code="alignb" point="ab03" zone="baseline"/&gt;
+    &lt;ttc code="singlev" point1="ab03" point2="ih01" stem="lc-hstem"/&gt;
+    &lt;ttc code="interpolatev" point="iv01" point1="ih01" point2="at01"/&gt;
+    &lt;ttc code="interpolatev" point="iv02" point1="ih01" point2="ab03"/&gt;
+  &lt;/ttProgram&gt;
+</string>
+		</dict>
+	</lib>
+</glyph>

@@ -6,27 +6,24 @@
 		<array>
 			<string>a</string>
 		</array>
-		<key>_empty</key>
-		<array>
-		</array>
 		<key>letters</key>
 		<array>
 			<string>a</string>
 			<string>t</string>
 		</array>
-		<key>public.kern1.a</key>
+		<key>public.kern1._a_LEFT</key>
 		<array>
 			<string>a</string>
 		</array>
-		<key>public.kern1.t</key>
+		<key>public.kern1._t</key>
 		<array>
 			<string>t</string>
 		</array>
-		<key>public.kern2.a</key>
+		<key>public.kern2._a_RIGHT</key>
 		<array>
 			<string>a</string>
 		</array>
-		<key>public.kern2.t</key>
+		<key>public.kern2._t</key>
 		<array>
 			<string>t</string>
 		</array>

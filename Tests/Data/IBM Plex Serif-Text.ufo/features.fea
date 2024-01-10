@@ -1,3 +1,5 @@
+
+
 # ----------------
 # LANGUAGE SYSTEMS
 # ----------------
@@ -5,7 +7,6 @@
 languagesystem DFLT dflt;   # Default
 languagesystem latn dflt;   # Latin default
 languagesystem cyrl dflt;   # Cyrillic default
-
 
 
 # --------------
@@ -21,15 +22,6 @@ languagesystem cyrl dflt;   # Cyrillic default
 @numbers_dflt = [zero one two three four five six seven eight nine];   # 10 items
 @numbers_sups = [zerosuperior onesuperior twosuperior threesuperior foursuperior fivesuperior sixsuperior sevensuperior eightsuperior ninesuperior];   # 10 items
 @numbers_sinf = [zeroinferior oneinferior twoinferior threeinferior fourinferior fiveinferior sixinferior seveninferior eightinferior nineinferior];   # 10 items
-
-
-
-
-
-
-
-
-
 
 
 feature aalt {
@@ -8352,13 +8344,4 @@ feature mark {
 	} MARK_BASE_topright;
 
 
-
 } mark;
-
-
-
-
-
-
-
-

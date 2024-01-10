@@ -202,12 +202,6 @@ languagesystem latn ROM;
 languagesystem latn TRK;
 
 
-
-
-
-
-
-
 feature aalt {
 #------------------------------
 # All Alternates
@@ -412,10 +406,3 @@ feature cpsp {
 #------------------------------
     pos @uppercaseLetters <5 0 10 0>;
 } cpsp;
-
-
-
-
-
-
-

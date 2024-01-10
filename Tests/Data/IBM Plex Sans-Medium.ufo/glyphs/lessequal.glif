@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="lessequal" format="2">
+	<unicode hex="2264"/>
+	<advance width="600"/>
+	<outline>
+		<contour>
+			<point name="sh01" x="96" y="0" type="line"/>
+			<point name="sv01" x="96" y="89" type="line"/>
+			<point x="504" y="89" type="line"/>
+			<point x="504" y="0" type="line"/>
+		</contour>
+		<contour>
+			<point x="504" y="494" type="line"/>
+			<point x="214" y="367" type="line"/>
+			<point name="ih01" x="214" y="361" type="line"/>
+			<point x="504" y="236" type="line"/>
+			<point name="sv02" x="504" y="131" type="line"/>
+			<point x="96" y="320" type="line"/>
+			<point x="96" y="408" type="line"/>
+			<point name="av01" x="504" y="599" type="line"/>
+		</contour>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint.v2</key>
+			<dict>
+				<key>hintSetList</key>
+				<array>
+					<dict>
+						<key>pointTag</key>
+						<string>sh01</string>
+						<key>stems</key>
+						<array>
+							<string>hstem 0 89</string>
+							<string>vstem 96 408</string>
+						</array>
+					</dict>
+				</array>
+			</dict>
+			<key>com.fontlab.ttprogram</key>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="interpolateh" point="ih01" point1="lsb" point2="rsb"/&gt;
+    &lt;ttc code="singleh" point1="ih01" point2="sh01"/&gt;
+    &lt;ttc code="alignv" point="av01" align="round"/&gt;
+    &lt;ttc code="alignb" point="sh01" zone="baseline"/&gt;
+    &lt;ttc code="singlev" point1="sh01" point2="sv01" stem="lc-hstem"/&gt;
+    &lt;ttc code="singlev" point1="sv01" point2="sv02" round="true"/&gt;
+  &lt;/ttProgram&gt;
+</string>
+		</dict>
+	</lib>
+</glyph>

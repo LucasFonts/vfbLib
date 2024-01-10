@@ -17,6 +17,26 @@
 		</dict>
 		<key>com.fontlab.v5.userData</key>
 		<string>com.lucasfonts.vfblib</string>
+		<key>com.lucasfonts.vfblib.groupKeyGlyphs</key>
+		<dict>
+			<key>public.kern1._a_LEFT</key>
+			<string>a</string>
+			<key>public.kern1._t</key>
+			<string>t</string>
+			<key>public.kern2._a_RIGHT</key>
+			<string>a</string>
+			<key>public.kern2._t</key>
+			<string>t</string>
+		</dict>
+		<key>com.lucasfonts.vfblib.groupOrder</key>
+		<array>
+			<string>public.kern1._a_LEFT</string>
+			<string>public.kern2._a_RIGHT</string>
+			<string>public.kern1._t</string>
+			<string>public.kern2._t</string>
+			<string>.mtrx5</string>
+			<string>letters</string>
+		</array>
 		<key>public.glyphOrder</key>
 		<array>
 			<string>a</string>

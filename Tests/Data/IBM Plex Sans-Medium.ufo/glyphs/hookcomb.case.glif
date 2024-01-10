@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="hookcomb.case" format="2">
+	<outline>
+		<contour>
+			<point name="sv02" x="-99" y="947" type="line"/>
+			<point x="24" y="947" type="line"/>
+			<point x="70" y="947"/>
+			<point x="106" y="910"/>
+			<point x="106" y="884" type="qcurve"/>
+			<point x="106" y="859"/>
+			<point x="78" y="801"/>
+			<point x="54" y="771" type="qcurve"/>
+			<point name="av01" x="28" y="740" type="line"/>
+			<point x="-30" y="768" type="line"/>
+			<point x="20" y="867" type="line"/>
+			<point name="sv01" x="-99" y="867" type="line"/>
+		</contour>
+	</outline>
+	<anchor name="_top" x="0" y="698"/>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint.v2</key>
+			<dict>
+				<key>hintSetList</key>
+				<array>
+					<dict>
+						<key>pointTag</key>
+						<string>sv02</string>
+						<key>stems</key>
+						<array>
+							<string>hstem 867 80</string>
+							<string>vstem 20 86</string>
+						</array>
+					</dict>
+				</array>
+			</dict>
+			<key>com.fontlab.ttprogram</key>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="alignv" point="av01" align="round"/&gt;
+    &lt;ttc code="mdeltav" point="av01" delta="8" ppm1="14" ppm2="14"/&gt;
+    &lt;ttc code="mdeltav" point="av01" delta="8" ppm1="10" ppm2="11"/&gt;
+    &lt;ttc code="mdeltav" point="av01" delta="8" ppm1="18" ppm2="18"/&gt;
+    &lt;ttc code="mdeltav" point="av01" delta="-8" ppm1="25" ppm2="25"/&gt;
+    &lt;ttc code="singlev" point1="av01" point2="sv01" round="true"/&gt;
+    &lt;ttc code="singlev" point1="sv01" point2="sv02" stem="diacritics_thick"/&gt;
+  &lt;/ttProgram&gt;
+</string>
+		</dict>
+	</lib>
+</glyph>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="daggerdbl" format="2">
+	<unicode hex="2021"/>
+	<advance width="548"/>
+	<outline>
+		<contour>
+			<point name="ab01" x="227" y="-200" type="line"/>
+			<point name="ih01" x="227" y="24" type="line"/>
+			<point name="sv01" x="44" y="24" type="line"/>
+			<point name="av01" x="44" y="107" type="line"/>
+			<point x="227" y="107" type="line"/>
+			<point x="227" y="433" type="line"/>
+			<point name="sv02" x="44" y="433" type="line"/>
+			<point name="av02" x="44" y="516" type="line"/>
+			<point x="227" y="516" type="line"/>
+			<point name="at01" x="227" y="740" type="line"/>
+			<point x="321" y="740" type="line"/>
+			<point name="av03" x="321" y="516" type="line"/>
+			<point x="504" y="516" type="line"/>
+			<point x="504" y="433" type="line"/>
+			<point name="sv03" x="321" y="433" type="line"/>
+			<point name="sv04" x="321" y="107" type="line"/>
+			<point x="504" y="107" type="line"/>
+			<point x="504" y="24" type="line"/>
+			<point name="sv05" x="321" y="24" type="line"/>
+			<point x="321" y="-200" type="line"/>
+		</contour>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint.v2</key>
+			<dict>
+				<key>hintSetList</key>
+				<array>
+					<dict>
+						<key>pointTag</key>
+						<string>ab01</string>
+						<key>stems</key>
+						<array>
+							<string>hstem -179 -21</string>
+							<string>hstem 24 83</string>
+							<string>hstem 433 83</string>
+							<string>hstem 740 -20</string>
+							<string>vstem 227 94</string>
+						</array>
+					</dict>
+				</array>
+			</dict>
+			<key>com.fontlab.ttprogram</key>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="interpolateh" point="ih01" point1="lsb" point2="rsb"/&gt;
+    &lt;ttc code="alignv" point="av01" align="round"/&gt;
+    &lt;ttc code="alignv" point="av02" align="round"/&gt;
+    &lt;ttc code="alignv" point="av03" align="round"/&gt;
+    &lt;ttc code="alignt" point="at01" zone="ascender"/&gt;
+    &lt;ttc code="alignb" point="ab01" zone="descender"/&gt;
+    &lt;ttc code="singlev" point1="av01" point2="sv01" stem="lc-mid"/&gt;
+    &lt;ttc code="singlev" point1="av02" point2="sv02" stem="lc-mid"/&gt;
+    &lt;ttc code="singlev" point1="av03" point2="sv03" stem="lc-mid"/&gt;
+    &lt;ttc code="singlev" point1="av01" point2="sv04"/&gt;
+    &lt;ttc code="singlev" point1="sv01" point2="sv05"/&gt;
+  &lt;/ttProgram&gt;
+</string>
+		</dict>
+	</lib>
+</glyph>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="crossmark" format="2">
+	<unicode hex="274C"/>
+	<advance width="912"/>
+	<outline>
+		<contour>
+			<point name="av04" x="729" y="1" type="line"/>
+			<point name="ih01" x="456" y="275" type="line"/>
+			<point name="av03" x="183" y="1" type="line"/>
+			<point x="108" y="76" type="line"/>
+			<point x="382" y="349" type="line"/>
+			<point x="108" y="622" type="line"/>
+			<point name="av01" x="183" y="697" type="line"/>
+			<point x="456" y="423" type="line"/>
+			<point name="av02" x="729" y="697" type="line"/>
+			<point x="804" y="622" type="line"/>
+			<point x="530" y="349" type="line"/>
+			<point x="804" y="76" type="line"/>
+		</contour>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint.v2</key>
+			<dict>
+				<key>hintSetList</key>
+				<array>
+					<dict>
+						<key>pointTag</key>
+						<string>av04</string>
+						<key>stems</key>
+						<array>
+							<string>hstem 1 696</string>
+							<string>vstem 108 696</string>
+						</array>
+					</dict>
+				</array>
+			</dict>
+			<key>com.fontlab.ttprogram</key>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="interpolateh" point="ih01" point1="lsb" point2="rsb"/&gt;
+    &lt;ttc code="alignv" point="av01" align="round"/&gt;
+    &lt;ttc code="alignv" point="av02" align="round"/&gt;
+    &lt;ttc code="alignv" point="av03" align="round"/&gt;
+    &lt;ttc code="alignv" point="av04" align="round"/&gt;
+  &lt;/ttProgram&gt;
+</string>
+		</dict>
+	</lib>
+</glyph>

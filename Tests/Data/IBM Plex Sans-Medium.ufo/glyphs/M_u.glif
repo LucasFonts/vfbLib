@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="Mu" format="2">
+	<unicode hex="039C"/>
+	<advance width="814"/>
+	<outline>
+		<component base="M"/>
+	</outline>
+	<anchor name="bottom" x="407" y="0"/>
+	<anchor name="top" x="407" y="698"/>
+	<lib>
+		<dict>
+			<key>public.markColor</key>
+			<string>0.648,0.9341,0.952,1</string>
+		</dict>
+	</lib>
+</glyph>

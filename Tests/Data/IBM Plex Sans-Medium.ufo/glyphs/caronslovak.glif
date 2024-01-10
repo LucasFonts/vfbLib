@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="caronslovak" format="2">
+	<unicode hex="02BC"/>
+	<advance width="600"/>
+	<outline>
+		<contour>
+			<point name="ih01" x="302" y="542" type="line"/>
+			<point x="230" y="542" type="line"/>
+			<point name="at01" x="240" y="740" type="line"/>
+			<point x="360" y="740" type="line"/>
+		</contour>
+	</outline>
+	<anchor name="_topright" x="230" y="740"/>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint.v2</key>
+			<dict>
+				<key>hintSetList</key>
+				<array>
+					<dict>
+						<key>pointTag</key>
+						<string>ih01</string>
+						<key>stems</key>
+						<array>
+							<string>hstem 740 -20</string>
+							<string>vstem 230 130</string>
+						</array>
+					</dict>
+				</array>
+			</dict>
+			<key>com.fontlab.ttprogram</key>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="interpolateh" point="ih01" point1="lsb" point2="rsb"/&gt;
+    &lt;ttc code="alignt" point="at01" zone="ascender"/&gt;
+  &lt;/ttProgram&gt;
+</string>
+		</dict>
+	</lib>
+</glyph>

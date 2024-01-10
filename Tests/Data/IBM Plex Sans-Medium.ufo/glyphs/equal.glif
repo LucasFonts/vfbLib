@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="equal" format="2">
+	<unicode hex="003D"/>
+	<advance width="600"/>
+	<outline>
+		<contour>
+			<point name="sh01" x="67" y="368" type="line"/>
+			<point name="dv02" x="67" y="457" type="line"/>
+			<point x="533" y="457" type="line"/>
+			<point x="533" y="368" type="line"/>
+		</contour>
+		<contour>
+			<point name="ih01" x="67" y="154" type="line"/>
+			<point name="dv01" x="67" y="243" type="line"/>
+			<point x="533" y="243" type="line"/>
+			<point x="533" y="154" type="line"/>
+		</contour>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint.v2</key>
+			<dict>
+				<key>hintSetList</key>
+				<array>
+					<dict>
+						<key>pointTag</key>
+						<string>sh01</string>
+						<key>stems</key>
+						<array>
+							<string>hstem 154 89</string>
+							<string>hstem 368 89</string>
+							<string>vstem 67 466</string>
+						</array>
+					</dict>
+				</array>
+			</dict>
+			<key>com.fontlab.ttprogram</key>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="interpolateh" point="ih01" point1="lsb" point2="rsb"/&gt;
+    &lt;ttc code="singleh" point1="ih01" point2="sh01"/&gt;
+    &lt;ttc code="doublev" point1="dv01" point2="ih01" stem="lc-hstem"/&gt;
+    &lt;ttc code="doublev" point1="dv02" point2="sh01" stem="lc-hstem"/&gt;
+    &lt;ttc code="mdeltav" point="ih01" delta="8" ppm1="10" ppm2="10"/&gt;
+    &lt;ttc code="mdeltav" point="dv01" delta="7" ppm1="10" ppm2="10"/&gt;
+  &lt;/ttProgram&gt;
+</string>
+		</dict>
+	</lib>
+</glyph>

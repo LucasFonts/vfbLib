@@ -10,7 +10,7 @@
 		<dict>
 			<key>com.fontlab.ttprogram</key>
 			<string>  &lt;ttProgram&gt;
-    &lt;ttc code="doublev" point1="dv01" point2="dv02"/&gt;
+    &lt;ttc code="doublev" point1="at01-0" point2="av01-1"/&gt;
   &lt;/ttProgram&gt;
 </string>
 			<key>public.markColor</key>

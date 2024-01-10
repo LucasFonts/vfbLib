@@ -73,7 +73,77 @@
 			<string>Gbreve</string>
 			<string>Idotaccent</string>
 		</array>
-		<key>public.kern1.A</key>
+		<key>public.kern1._CYR_E</key>
+		<array>
+			<string>afii10022</string>
+			<string>uni0400</string>
+			<string>afii10023</string>
+		</array>
+		<key>public.kern1._CYR_Ge_LEFT</key>
+		<array>
+			<string>afii10020</string>
+			<string>afii10052</string>
+			<string>afii10050</string>
+		</array>
+		<key>public.kern1._CYR_I</key>
+		<array>
+			<string>afii10026</string>
+			<string>uni040D</string>
+			<string>afii10027</string>
+		</array>
+		<key>public.kern1._CYR_K_LEFT</key>
+		<array>
+			<string>afii10028</string>
+			<string>afii10061</string>
+		</array>
+		<key>public.kern1._CYR_U</key>
+		<array>
+			<string>afii10037</string>
+			<string>afii10062</string>
+		</array>
+		<key>public.kern1._CYR_k_LEFT</key>
+		<array>
+			<string>afii10076</string>
+			<string>afii10109</string>
+		</array>
+		<key>public.kern1._GRK_Alpha_LEFT</key>
+		<array>
+			<string>Alpha</string>
+			<string>Alphatonos</string>
+		</array>
+		<key>public.kern1._GRK_Epsilon_LEFT</key>
+		<array>
+			<string>Epsilon</string>
+			<string>Epsilontonos</string>
+		</array>
+		<key>public.kern1._GRK_Eta_LEFT</key>
+		<array>
+			<string>Eta</string>
+			<string>Etatonos</string>
+		</array>
+		<key>public.kern1._GRK_Iota_LEFT</key>
+		<array>
+			<string>Iota</string>
+			<string>Iotatonos</string>
+			<string>Iotadieresis</string>
+		</array>
+		<key>public.kern1._GRK_Omega_LEFT</key>
+		<array>
+			<string>Omega</string>
+			<string>Omegatonos</string>
+		</array>
+		<key>public.kern1._GRK_Omicron_LEFT</key>
+		<array>
+			<string>Omicron</string>
+			<string>Omicrontonos</string>
+			<string>Theta</string>
+		</array>
+		<key>public.kern1._GRK_Upsilon_LEFT</key>
+		<array>
+			<string>Upsilon</string>
+			<string>Upsilontonos</string>
+		</array>
+		<key>public.kern1._LAT_A_LEFT</key>
 		<array>
 			<string>A</string>
 			<string>Agrave</string>
@@ -87,12 +157,7 @@
 			<string>Aogonek</string>
 			<string>Aringacute</string>
 		</array>
-		<key>public.kern1.Alpha</key>
-		<array>
-			<string>Alphatonos</string>
-			<string>Alpha</string>
-		</array>
-		<key>public.kern1.C</key>
+		<key>public.kern1._LAT_C</key>
 		<array>
 			<string>C</string>
 			<string>Ccedilla</string>
@@ -101,39 +166,29 @@
 			<string>Cdotaccent</string>
 			<string>Ccaron</string>
 		</array>
-		<key>public.kern1.D</key>
+		<key>public.kern1._LAT_D_LEFT</key>
 		<array>
 			<string>D</string>
 			<string>Eth</string>
 			<string>Dcaron</string>
 			<string>Dcroat</string>
 		</array>
-		<key>public.kern1.E</key>
+		<key>public.kern1._LAT_E_LEFT</key>
 		<array>
 			<string>E</string>
-			<string>AE</string>
 			<string>Egrave</string>
 			<string>Eacute</string>
 			<string>Ecircumflex</string>
 			<string>Edieresis</string>
+			<string>OE</string>
+			<string>AE</string>
 			<string>Emacron</string>
 			<string>Ebreve</string>
 			<string>Edotaccent</string>
 			<string>Eogonek</string>
 			<string>Ecaron</string>
-			<string>OE</string>
 		</array>
-		<key>public.kern1.Epsilon</key>
-		<array>
-			<string>Epsilontonos</string>
-			<string>Epsilon</string>
-		</array>
-		<key>public.kern1.Eta</key>
-		<array>
-			<string>Etatonos</string>
-			<string>Eta</string>
-		</array>
-		<key>public.kern1.G</key>
+		<key>public.kern1._LAT_G</key>
 		<array>
 			<string>G</string>
 			<string>Gcircumflex</string>
@@ -141,7 +196,7 @@
 			<string>Gdotaccent</string>
 			<string>Gcommaaccent</string>
 		</array>
-		<key>public.kern1.I</key>
+		<key>public.kern1._LAT_I</key>
 		<array>
 			<string>I</string>
 			<string>bar</string>
@@ -149,38 +204,32 @@
 			<string>Iacute</string>
 			<string>Icircumflex</string>
 			<string>Idieresis</string>
+			<string>Idotaccent</string>
 			<string>Itilde</string>
 			<string>Imacron</string>
 			<string>Ibreve</string>
 			<string>Iogonek</string>
-			<string>Idotaccent</string>
 		</array>
-		<key>public.kern1.Iota</key>
-		<array>
-			<string>Iotatonos</string>
-			<string>Iota</string>
-			<string>Iotadieresis</string>
-		</array>
-		<key>public.kern1.J</key>
+		<key>public.kern1._LAT_J</key>
 		<array>
 			<string>J</string>
 			<string>Jcircumflex</string>
 		</array>
-		<key>public.kern1.K</key>
+		<key>public.kern1._LAT_K_LEFT</key>
 		<array>
 			<string>K</string>
 			<string>Kcommaaccent</string>
 		</array>
-		<key>public.kern1.L</key>
+		<key>public.kern1._LAT_L</key>
 		<array>
 			<string>L</string>
+			<string>Lslash</string>
 			<string>Lacute</string>
 			<string>Lcommaaccent</string>
 			<string>Lcaron</string>
 			<string>Ldot</string>
-			<string>Lslash</string>
 		</array>
-		<key>public.kern1.O</key>
+		<key>public.kern1._LAT_O_LEFT</key>
 		<array>
 			<string>O</string>
 			<string>Ograve</string>
@@ -193,39 +242,28 @@
 			<string>Obreve</string>
 			<string>Ohungarumlaut</string>
 		</array>
-		<key>public.kern1.Omega</key>
-		<array>
-			<string>Omegatonos</string>
-			<string>Omega</string>
-		</array>
-		<key>public.kern1.Omicron</key>
-		<array>
-			<string>Omicrontonos</string>
-			<string>Theta</string>
-			<string>Omicron</string>
-		</array>
-		<key>public.kern1.P</key>
+		<key>public.kern1._LAT_P</key>
 		<array>
 			<string>P</string>
 			<string>Thorn</string>
 		</array>
-		<key>public.kern1.R</key>
+		<key>public.kern1._LAT_R_LEFT</key>
 		<array>
 			<string>R</string>
 			<string>Racute</string>
 			<string>Rcommaaccent</string>
 			<string>Rcaron</string>
 		</array>
-		<key>public.kern1.S</key>
+		<key>public.kern1._LAT_S</key>
 		<array>
 			<string>S</string>
+			<string>Scaron</string>
 			<string>Sacute</string>
 			<string>Scircumflex</string>
 			<string>Scedilla</string>
-			<string>Scaron</string>
 			<string>Scommaaccent</string>
 		</array>
-		<key>public.kern1.T</key>
+		<key>public.kern1._LAT_T</key>
 		<array>
 			<string>T</string>
 			<string>Tcommaaccent</string>
@@ -233,7 +271,7 @@
 			<string>Tbar</string>
 			<string>uni021A</string>
 		</array>
-		<key>public.kern1.U</key>
+		<key>public.kern1._LAT_U</key>
 		<array>
 			<string>U</string>
 			<string>Ugrave</string>
@@ -246,12 +284,7 @@
 			<string>Uring</string>
 			<string>Uhungarumlaut</string>
 		</array>
-		<key>public.kern1.Upsilon</key>
-		<array>
-			<string>Upsilontonos</string>
-			<string>Upsilon</string>
-		</array>
-		<key>public.kern1.W</key>
+		<key>public.kern1._LAT_W</key>
 		<array>
 			<string>W</string>
 			<string>Wcircumflex</string>
@@ -259,29 +292,29 @@
 			<string>Wacute</string>
 			<string>Wdieresis</string>
 		</array>
-		<key>public.kern1.X</key>
+		<key>public.kern1._LAT_X</key>
 		<array>
 			<string>X</string>
 			<string>uni1E8A</string>
 		</array>
-		<key>public.kern1.Y</key>
+		<key>public.kern1._LAT_Y</key>
 		<array>
 			<string>Y</string>
 			<string>Yacute</string>
-			<string>Ycircumflex</string>
 			<string>Ydieresis</string>
+			<string>Ycircumflex</string>
 			<string>Ygrave</string>
 		</array>
-		<key>public.kern1.Z</key>
+		<key>public.kern1._LAT_Z</key>
 		<array>
 			<string>Z</string>
+			<string>Zcaron</string>
 			<string>Zacute</string>
 			<string>Zdotaccent</string>
-			<string>Zcaron</string>
 			<string>uni01B5</string>
 			<string>Z.ss02</string>
 		</array>
-		<key>public.kern1.a</key>
+		<key>public.kern1._LAT_a_LEFT</key>
 		<array>
 			<string>a</string>
 			<string>agrave</string>
@@ -290,132 +323,99 @@
 			<string>atilde</string>
 			<string>adieresis</string>
 			<string>aring</string>
+			<string>a_a</string>
 			<string>amacron</string>
 			<string>abreve</string>
 			<string>aogonek</string>
 			<string>aringacute</string>
-			<string>a_a</string>
 		</array>
-		<key>public.kern1.afii10020</key>
-		<array>
-			<string>afii10052</string>
-			<string>afii10020</string>
-			<string>afii10050</string>
-		</array>
-		<key>public.kern1.afii10022</key>
-		<array>
-			<string>uni0400</string>
-			<string>afii10023</string>
-			<string>afii10022</string>
-		</array>
-		<key>public.kern1.afii10026</key>
-		<array>
-			<string>uni040D</string>
-			<string>afii10026</string>
-			<string>afii10027</string>
-		</array>
-		<key>public.kern1.afii10028</key>
-		<array>
-			<string>afii10061</string>
-			<string>afii10028</string>
-		</array>
-		<key>public.kern1.afii10037</key>
-		<array>
-			<string>afii10062</string>
-			<string>afii10037</string>
-		</array>
-		<key>public.kern1.afii10076</key>
-		<array>
-			<string>afii10076</string>
-			<string>afii10109</string>
-		</array>
-		<key>public.kern1.c</key>
+		<key>public.kern1._LAT_c</key>
 		<array>
 			<string>c</string>
 			<string>ccedilla</string>
 			<string>cacute</string>
+			<string>c_c</string>
 			<string>ccircumflex</string>
 			<string>cdotaccent</string>
 			<string>ccaron</string>
-			<string>c_c</string>
 		</array>
-		<key>public.kern1.d</key>
+		<key>public.kern1._LAT_d</key>
 		<array>
 			<string>d</string>
+			<string>d_d</string>
 			<string>dcaron</string>
 			<string>dcroat</string>
-			<string>d_d</string>
 		</array>
-		<key>public.kern1.e</key>
+		<key>public.kern1._LAT_e</key>
 		<array>
 			<string>e</string>
 			<string>egrave</string>
 			<string>eacute</string>
 			<string>ecircumflex</string>
 			<string>edieresis</string>
+			<string>e_e</string>
 			<string>emacron</string>
 			<string>ebreve</string>
 			<string>edotaccent</string>
 			<string>eogonek</string>
 			<string>ecaron</string>
 			<string>uni0259</string>
-			<string>e_e</string>
 		</array>
-		<key>public.kern1.g</key>
+		<key>public.kern1._LAT_g</key>
 		<array>
 			<string>g</string>
-			<string>gcircumflex</string>
+			<string>g_g</string>
 			<string>gbreve</string>
+			<string>gcircumflex</string>
 			<string>gdotaccent</string>
 			<string>gcommaaccent</string>
-			<string>g_g</string>
 		</array>
-		<key>public.kern1.i</key>
+		<key>public.kern1._LAT_i</key>
 		<array>
 			<string>i</string>
 			<string>igrave</string>
 			<string>iacute</string>
 			<string>icircumflex</string>
 			<string>idieresis</string>
+			<string>dotlessi</string>
 			<string>itilde</string>
 			<string>imacron</string>
 			<string>ibreve</string>
 			<string>iogonek</string>
-			<string>dotlessi</string>
 			<string>i.latn_TRK</string>
 		</array>
-		<key>public.kern1.k</key>
+		<key>public.kern1._LAT_k</key>
 		<array>
 			<string>k</string>
 			<string>kcommaaccent</string>
 		</array>
-		<key>public.kern1.l</key>
+		<key>public.kern1._LAT_l</key>
 		<array>
 			<string>l</string>
+			<string>l_l</string>
+			<string>ldot</string>
 			<string>lacute</string>
 			<string>lcommaaccent</string>
 			<string>lcaron</string>
-			<string>ldot</string>
-			<string>l_l</string>
 		</array>
-		<key>public.kern1.longs</key>
+		<key>public.kern1._LAT_longs</key>
 		<array>
 			<string>longs</string>
 			<string>longs_longs</string>
 		</array>
-		<key>public.kern1.n</key>
+		<key>public.kern1._LAT_n</key>
 		<array>
-			<string>m</string>
 			<string>n</string>
 			<string>ntilde</string>
+			<string>n_n</string>
+			<string>m</string>
+			<string>m_m</string>
 			<string>nacute</string>
 			<string>ncommaaccent</string>
 			<string>ncaron</string>
 			<string>napostrophe</string>
-			<string>m_m</string>
-			<string>n_n</string>
 		</array>
-		<key>public.kern1.o</key>
+		<key>public.kern1._LAT_o</key>
 		<array>
 			<string>o</string>
 			<string>ograve</string>
@@ -424,55 +424,55 @@
 			<string>otilde</string>
 			<string>odieresis</string>
 			<string>oslash</string>
+			<string>oe</string>
+			<string>o_o</string>
 			<string>omacron</string>
 			<string>obreve</string>
 			<string>ohungarumlaut</string>
-			<string>oe</string>
-			<string>o_o</string>
 		</array>
-		<key>public.kern1.p</key>
+		<key>public.kern1._LAT_p</key>
 		<array>
 			<string>p</string>
 			<string>thorn</string>
 			<string>p_p</string>
 		</array>
-		<key>public.kern1.r</key>
+		<key>public.kern1._LAT_r</key>
 		<array>
 			<string>r</string>
+			<string>r_r</string>
 			<string>racute</string>
 			<string>rcommaaccent</string>
 			<string>rcaron</string>
-			<string>r_r</string>
 		</array>
-		<key>public.kern1.s</key>
+		<key>public.kern1._LAT_s</key>
 		<array>
 			<string>s</string>
+			<string>scaron</string>
+			<string>s_s</string>
+			<string>scedilla</string>
 			<string>sacute</string>
 			<string>scircumflex</string>
-			<string>scedilla</string>
-			<string>scaron</string>
 			<string>scommaaccent</string>
-			<string>s_s</string>
 		</array>
-		<key>public.kern1.t</key>
+		<key>public.kern1._LAT_t</key>
 		<array>
 			<string>t</string>
+			<string>t_t</string>
 			<string>tcommaaccent</string>
 			<string>tcaron</string>
 			<string>tbar</string>
 			<string>uni021B</string>
-			<string>t_t</string>
 		</array>
-		<key>public.kern1.t.ss01</key>
+		<key>public.kern1._LAT_t.ss01</key>
 		<array>
 			<string>t.ss01</string>
 			<string>t_t.ss01</string>
-			<string>tbar.ss01</string>
-			<string>tcaron.ss01</string>
 			<string>tcommaaccent.ss01</string>
+			<string>tcaron.ss01</string>
+			<string>tbar.ss01</string>
 			<string>uni021B.ss01</string>
 		</array>
-		<key>public.kern1.u</key>
+		<key>public.kern1._LAT_u</key>
 		<array>
 			<string>u</string>
 			<string>ugrave</string>
@@ -486,21 +486,21 @@
 			<string>uhungarumlaut</string>
 			<string>uogonek</string>
 		</array>
-		<key>public.kern1.w</key>
+		<key>public.kern1._LAT_w</key>
 		<array>
 			<string>w</string>
+			<string>w_w_w</string>
 			<string>wcircumflex</string>
 			<string>wgrave</string>
 			<string>wacute</string>
 			<string>wdieresis</string>
-			<string>w_w_w</string>
 		</array>
-		<key>public.kern1.x</key>
+		<key>public.kern1._LAT_x</key>
 		<array>
 			<string>x</string>
 			<string>uni1E8B</string>
 		</array>
-		<key>public.kern1.y</key>
+		<key>public.kern1._LAT_y</key>
 		<array>
 			<string>y</string>
 			<string>yacute</string>
@@ -508,21 +508,49 @@
 			<string>ycircumflex</string>
 			<string>ygrave</string>
 		</array>
-		<key>public.kern1.z</key>
+		<key>public.kern1._LAT_z</key>
 		<array>
 			<string>z</string>
+			<string>zcaron</string>
 			<string>zacute</string>
 			<string>zdotaccent</string>
-			<string>zcaron</string>
 			<string>uni01B6</string>
 			<string>z.ss02</string>
 		</array>
-		<key>public.kern1.zero</key>
+		<key>public.kern1._zero</key>
 		<array>
 			<string>zero</string>
 			<string>zero_zero</string>
 		</array>
-		<key>public.kern2.A</key>
+		<key>public.kern2._CYR_E</key>
+		<array>
+			<string>afii10022</string>
+			<string>uni0400</string>
+			<string>afii10023</string>
+		</array>
+		<key>public.kern2._CYR_I</key>
+		<array>
+			<string>afii10026</string>
+			<string>uni040D</string>
+			<string>afii10027</string>
+		</array>
+		<key>public.kern2._CYR_T_RIGHT</key>
+		<array>
+			<string>afii10036</string>
+			<string>afii10051</string>
+			<string>afii10060</string>
+		</array>
+		<key>public.kern2._CYR_U</key>
+		<array>
+			<string>afii10037</string>
+			<string>afii10062</string>
+		</array>
+		<key>public.kern2._GRK_Omicron_RIGHT</key>
+		<array>
+			<string>Omicron</string>
+			<string>Theta</string>
+		</array>
+		<key>public.kern2._LAT_A_RIGHT</key>
 		<array>
 			<string>A</string>
 			<string>Agrave</string>
@@ -537,7 +565,7 @@
 			<string>Aogonek</string>
 			<string>Aringacute</string>
 		</array>
-		<key>public.kern2.C</key>
+		<key>public.kern2._LAT_C</key>
 		<array>
 			<string>C</string>
 			<string>Ccedilla</string>
@@ -546,7 +574,7 @@
 			<string>Cdotaccent</string>
 			<string>Ccaron</string>
 		</array>
-		<key>public.kern2.E</key>
+		<key>public.kern2._LAT_E_RIGHT</key>
 		<array>
 			<string>E</string>
 			<string>Egrave</string>
@@ -559,7 +587,7 @@
 			<string>Eogonek</string>
 			<string>Ecaron</string>
 		</array>
-		<key>public.kern2.G</key>
+		<key>public.kern2._LAT_G</key>
 		<array>
 			<string>G</string>
 			<string>Gcircumflex</string>
@@ -567,7 +595,7 @@
 			<string>Gdotaccent</string>
 			<string>Gcommaaccent</string>
 		</array>
-		<key>public.kern2.I</key>
+		<key>public.kern2._LAT_I</key>
 		<array>
 			<string>I</string>
 			<string>bar</string>
@@ -575,27 +603,27 @@
 			<string>Iacute</string>
 			<string>Icircumflex</string>
 			<string>Idieresis</string>
+			<string>Idotaccent</string>
 			<string>Itilde</string>
 			<string>Imacron</string>
 			<string>Ibreve</string>
 			<string>Iogonek</string>
-			<string>Idotaccent</string>
 		</array>
-		<key>public.kern2.J</key>
+		<key>public.kern2._LAT_J</key>
 		<array>
 			<string>J</string>
 			<string>Jcircumflex</string>
 		</array>
-		<key>public.kern2.L</key>
+		<key>public.kern2._LAT_L</key>
 		<array>
 			<string>L</string>
+			<string>Lslash</string>
 			<string>Lacute</string>
 			<string>Lcommaaccent</string>
 			<string>Lcaron</string>
 			<string>Ldot</string>
-			<string>Lslash</string>
 		</array>
-		<key>public.kern2.O</key>
+		<key>public.kern2._LAT_O_RIGHT</key>
 		<array>
 			<string>O</string>
 			<string>Ograve</string>
@@ -604,31 +632,26 @@
 			<string>Otilde</string>
 			<string>Odieresis</string>
 			<string>Oslash</string>
+			<string>OE</string>
 			<string>Omacron</string>
 			<string>Obreve</string>
 			<string>Ohungarumlaut</string>
-			<string>OE</string>
 		</array>
-		<key>public.kern2.Omicron</key>
-		<array>
-			<string>Theta</string>
-			<string>Omicron</string>
-		</array>
-		<key>public.kern2.P</key>
+		<key>public.kern2._LAT_P</key>
 		<array>
 			<string>P</string>
 			<string>Thorn</string>
 		</array>
-		<key>public.kern2.S</key>
+		<key>public.kern2._LAT_S</key>
 		<array>
 			<string>S</string>
+			<string>Scaron</string>
 			<string>Sacute</string>
 			<string>Scircumflex</string>
 			<string>Scedilla</string>
-			<string>Scaron</string>
 			<string>Scommaaccent</string>
 		</array>
-		<key>public.kern2.T</key>
+		<key>public.kern2._LAT_T</key>
 		<array>
 			<string>T</string>
 			<string>Tcommaaccent</string>
@@ -636,7 +659,7 @@
 			<string>Tbar</string>
 			<string>uni021A</string>
 		</array>
-		<key>public.kern2.U</key>
+		<key>public.kern2._LAT_U</key>
 		<array>
 			<string>U</string>
 			<string>Ugrave</string>
@@ -649,7 +672,7 @@
 			<string>Uring</string>
 			<string>Uhungarumlaut</string>
 		</array>
-		<key>public.kern2.W</key>
+		<key>public.kern2._LAT_W</key>
 		<array>
 			<string>W</string>
 			<string>Wcircumflex</string>
@@ -657,29 +680,29 @@
 			<string>Wacute</string>
 			<string>Wdieresis</string>
 		</array>
-		<key>public.kern2.X</key>
+		<key>public.kern2._LAT_X</key>
 		<array>
 			<string>X</string>
 			<string>uni1E8A</string>
 		</array>
-		<key>public.kern2.Y</key>
+		<key>public.kern2._LAT_Y</key>
 		<array>
 			<string>Y</string>
 			<string>Yacute</string>
-			<string>Ycircumflex</string>
 			<string>Ydieresis</string>
+			<string>Ycircumflex</string>
 			<string>Ygrave</string>
 		</array>
-		<key>public.kern2.Z</key>
+		<key>public.kern2._LAT_Z</key>
 		<array>
 			<string>Z</string>
+			<string>Zcaron</string>
 			<string>Zacute</string>
 			<string>Zdotaccent</string>
-			<string>Zcaron</string>
 			<string>uni01B5</string>
 			<string>Z.ss02</string>
 		</array>
-		<key>public.kern2.a</key>
+		<key>public.kern2._LAT_a_RIGHT</key>
 		<array>
 			<string>a</string>
 			<string>agrave</string>
@@ -688,136 +711,113 @@
 			<string>atilde</string>
 			<string>adieresis</string>
 			<string>aring</string>
+			<string>a_a</string>
 			<string>amacron</string>
 			<string>abreve</string>
 			<string>aogonek</string>
 			<string>aringacute</string>
-			<string>a_a</string>
 		</array>
-		<key>public.kern2.afii10022</key>
-		<array>
-			<string>uni0400</string>
-			<string>afii10023</string>
-			<string>afii10022</string>
-		</array>
-		<key>public.kern2.afii10026</key>
-		<array>
-			<string>uni040D</string>
-			<string>afii10026</string>
-			<string>afii10027</string>
-		</array>
-		<key>public.kern2.afii10036</key>
-		<array>
-			<string>afii10051</string>
-			<string>afii10060</string>
-			<string>afii10036</string>
-		</array>
-		<key>public.kern2.afii10037</key>
-		<array>
-			<string>afii10062</string>
-			<string>afii10037</string>
-		</array>
-		<key>public.kern2.c</key>
+		<key>public.kern2._LAT_c</key>
 		<array>
 			<string>c</string>
 			<string>ccedilla</string>
 			<string>cacute</string>
+			<string>c_c</string>
 			<string>ccircumflex</string>
 			<string>cdotaccent</string>
 			<string>ccaron</string>
-			<string>c_c</string>
 		</array>
-		<key>public.kern2.d</key>
+		<key>public.kern2._LAT_d</key>
 		<array>
 			<string>d</string>
+			<string>d_d</string>
 			<string>dcaron</string>
 			<string>dcroat</string>
-			<string>d_d</string>
 		</array>
-		<key>public.kern2.e</key>
+		<key>public.kern2._LAT_e</key>
 		<array>
 			<string>e</string>
 			<string>egrave</string>
 			<string>eacute</string>
 			<string>ecircumflex</string>
 			<string>edieresis</string>
+			<string>e_e</string>
 			<string>emacron</string>
 			<string>ebreve</string>
 			<string>edotaccent</string>
 			<string>eogonek</string>
 			<string>ecaron</string>
 			<string>uni0259</string>
-			<string>e_e</string>
 		</array>
-		<key>public.kern2.f</key>
+		<key>public.kern2._LAT_f.ss01_RIGHT</key>
 		<array>
-			<string>f</string>
-			<string>fi</string>
-			<string>fl</string>
-			<string>uniFB00</string>
-		</array>
-		<key>public.kern2.f.ss01</key>
-		<array>
-			<string>uniFB00.ss01</string>
 			<string>f.ss01</string>
+			<string>uniFB00.ss01</string>
 			<string>fi.ss01</string>
 			<string>fl.ss01</string>
 		</array>
-		<key>public.kern2.g</key>
+		<key>public.kern2._LAT_f_RIGHT</key>
+		<array>
+			<string>f</string>
+			<string>uniFB00</string>
+			<string>fi</string>
+			<string>fl</string>
+		</array>
+		<key>public.kern2._LAT_g</key>
 		<array>
 			<string>g</string>
-			<string>gcircumflex</string>
+			<string>g_g</string>
 			<string>gbreve</string>
+			<string>gcircumflex</string>
 			<string>gdotaccent</string>
 			<string>gcommaaccent</string>
-			<string>g_g</string>
 		</array>
-		<key>public.kern2.i</key>
+		<key>public.kern2._LAT_i</key>
 		<array>
 			<string>i</string>
 			<string>igrave</string>
 			<string>iacute</string>
 			<string>icircumflex</string>
 			<string>idieresis</string>
+			<string>dotlessi</string>
 			<string>itilde</string>
 			<string>imacron</string>
 			<string>ibreve</string>
 			<string>iogonek</string>
-			<string>dotlessi</string>
 			<string>i.latn_TRK</string>
 		</array>
-		<key>public.kern2.k</key>
+		<key>public.kern2._LAT_k</key>
 		<array>
 			<string>k</string>
 			<string>kcommaaccent</string>
 		</array>
-		<key>public.kern2.l</key>
+		<key>public.kern2._LAT_l</key>
 		<array>
 			<string>l</string>
+			<string>l_l</string>
+			<string>ldot</string>
 			<string>lacute</string>
 			<string>lcommaaccent</string>
 			<string>lcaron</string>
-			<string>ldot</string>
-			<string>l_l</string>
 		</array>
-		<key>public.kern2.longs</key>
+		<key>public.kern2._LAT_longs</key>
 		<array>
 			<string>longs</string>
 			<string>longs_longs</string>
 		</array>
-		<key>public.kern2.n</key>
+		<key>public.kern2._LAT_n</key>
 		<array>
-			<string>m</string>
 			<string>n</string>
 			<string>ntilde</string>
+			<string>n_n</string>
+			<string>m</string>
+			<string>m_m</string>
 			<string>nacute</string>
 			<string>ncommaaccent</string>
 			<string>ncaron</string>
 			<string>napostrophe</string>
-			<string>m_m</string>
-			<string>n_n</string>
 		</array>
-		<key>public.kern2.o</key>
+		<key>public.kern2._LAT_o</key>
 		<array>
 			<string>o</string>
 			<string>ograve</string>
@@ -826,55 +826,55 @@
 			<string>otilde</string>
 			<string>odieresis</string>
 			<string>oslash</string>
+			<string>oe</string>
+			<string>o_o</string>
 			<string>omacron</string>
 			<string>obreve</string>
 			<string>ohungarumlaut</string>
-			<string>oe</string>
-			<string>o_o</string>
 		</array>
-		<key>public.kern2.p</key>
+		<key>public.kern2._LAT_p</key>
 		<array>
 			<string>p</string>
 			<string>thorn</string>
 			<string>p_p</string>
 		</array>
-		<key>public.kern2.r</key>
+		<key>public.kern2._LAT_r</key>
 		<array>
 			<string>r</string>
+			<string>r_r</string>
 			<string>racute</string>
 			<string>rcommaaccent</string>
 			<string>rcaron</string>
-			<string>r_r</string>
 		</array>
-		<key>public.kern2.s</key>
+		<key>public.kern2._LAT_s</key>
 		<array>
 			<string>s</string>
+			<string>scaron</string>
+			<string>s_s</string>
+			<string>scedilla</string>
 			<string>sacute</string>
 			<string>scircumflex</string>
-			<string>scedilla</string>
-			<string>scaron</string>
 			<string>scommaaccent</string>
-			<string>s_s</string>
 		</array>
-		<key>public.kern2.t</key>
+		<key>public.kern2._LAT_t</key>
 		<array>
 			<string>t</string>
+			<string>t_t</string>
 			<string>tcommaaccent</string>
 			<string>tcaron</string>
 			<string>tbar</string>
 			<string>uni021B</string>
-			<string>t_t</string>
 		</array>
-		<key>public.kern2.t.ss01</key>
+		<key>public.kern2._LAT_t.ss01</key>
 		<array>
 			<string>t.ss01</string>
 			<string>t_t.ss01</string>
-			<string>tbar.ss01</string>
-			<string>tcaron.ss01</string>
 			<string>tcommaaccent.ss01</string>
+			<string>tcaron.ss01</string>
+			<string>tbar.ss01</string>
 			<string>uni021B.ss01</string>
 		</array>
-		<key>public.kern2.u</key>
+		<key>public.kern2._LAT_u</key>
 		<array>
 			<string>u</string>
 			<string>ugrave</string>
@@ -888,21 +888,21 @@
 			<string>uhungarumlaut</string>
 			<string>uogonek</string>
 		</array>
-		<key>public.kern2.w</key>
+		<key>public.kern2._LAT_w</key>
 		<array>
 			<string>w</string>
+			<string>w_w_w</string>
 			<string>wcircumflex</string>
 			<string>wgrave</string>
 			<string>wacute</string>
 			<string>wdieresis</string>
-			<string>w_w_w</string>
 		</array>
-		<key>public.kern2.x</key>
+		<key>public.kern2._LAT_x</key>
 		<array>
 			<string>x</string>
 			<string>uni1E8B</string>
 		</array>
-		<key>public.kern2.y</key>
+		<key>public.kern2._LAT_y</key>
 		<array>
 			<string>y</string>
 			<string>yacute</string>
@@ -910,16 +910,16 @@
 			<string>ycircumflex</string>
 			<string>ygrave</string>
 		</array>
-		<key>public.kern2.z</key>
+		<key>public.kern2._LAT_z</key>
 		<array>
 			<string>z</string>
+			<string>zcaron</string>
 			<string>zacute</string>
 			<string>zdotaccent</string>
-			<string>zcaron</string>
 			<string>uni01B6</string>
 			<string>z.ss02</string>
 		</array>
-		<key>public.kern2.zero</key>
+		<key>public.kern2._zero</key>
 		<array>
 			<string>zero</string>
 			<string>zero_zero</string>

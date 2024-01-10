@@ -4,6 +4,8 @@
 	<dict>
 		<key>com.fontlab.v2.tth</key>
 		<dict>
+			<key>codeppm</key>
+			<integer>0</integer>
 			<key>stems</key>
 			<dict>
 				<key>h00</key>
@@ -52,11 +54,6 @@
 				</dict>
 			</dict>
 		</dict>
-		<key>org.unifiedfontobject.normalizer.modTimes</key>
-		<string>version: 0.6.1
-1670422529.9 fontinfo.plist
-1670422529.9 layercontents.plist
-1670422529.9 metainfo.plist</string>
 		<key>public.glyphOrder</key>
 		<array>
 			<string>a</string>
