@@ -16,6 +16,7 @@ from ufoLib2.objects.features import Features
 from ufonormalizer import normalizeUFO
 from vfbLib.constants import ignore_minimal
 from vfbLib.ufo.designspace import get_ds_location
+from vfbLib.ufo.features import rename_kern_classes_in_feature_code
 from vfbLib.ufo.glyph import VfbToUfoGlyph
 from vfbLib.ufo.groups import transform_groups
 from vfbLib.ufo.guides import apply_guide_properties, get_master_guides
@@ -185,6 +186,10 @@ class VfbToUfoBuilder:
         # TrueType hinting, stored here for later processing after all glyphs are there.
         if "tth" in data:
             g.tt_glyph_hints = TTGlyphHints(g, data["tth"], self.zone_names, self.stems)
+
+    def set_feature_code(self, data: List[str]) -> None:
+        # Make the kern feature compilable
+        self.features_code = "\n".join(rename_kern_classes_in_feature_code(data))
 
     def set_glyph_background(self, data: Dict[str, Any]) -> None:
         assert self.current_glyph is not None
@@ -365,7 +370,7 @@ class VfbToUfoBuilder:
             elif name == "Code Stop PPEM":  # 1275
                 self.set_tt_code_stop(data)
             elif name == "openTypeFeatures":  # 1276
-                self.features_code = "\n".join(data)
+                self.set_feature_code(data)
             elif name == "OpenType Class":  # 1277
                 self.add_ot_class(data)
             elif name == "Global Guides":  # 1294
