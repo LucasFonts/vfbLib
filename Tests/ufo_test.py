@@ -70,7 +70,7 @@ class GlyphCompilerTest(TestCase):
 
         fea0 = (
             "@letters = [a t];\n\n\nlanguagesystem DFLT dflt;\nfeature kern {\n"
-            "  pos a t 100 ;\n} kern;"
+            "  pos a t 100 ;\n} kern;\n"
         )
 
         assert ufo0.features.text == fea0
