@@ -12,8 +12,6 @@ this situation.
 
 ## Installation
 
-This is a development version. Proceed with caution.
-
 ### Development Installation
 
 To install from source in editable mode:
