@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from datetime import datetime
+from datetime import UTC
 
 
 TIME_ZERO = 2082841200
@@ -14,4 +15,4 @@ def convert_timestamp(t: int) -> datetime:
     if t < TIME_ZERO:
         t = TIME_ZERO
 
-    return datetime.utcfromtimestamp(t - TIME_ZERO)
+    return datetime.fromtimestamp(t - TIME_ZERO, UTC)
