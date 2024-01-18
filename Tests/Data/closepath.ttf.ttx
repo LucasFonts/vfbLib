@@ -1,0 +1,709 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ttFont sfntVersion="\x00\x01\x00\x00" ttLibVersion="4.47">
+
+  <GlyphOrder>
+    <!-- The 'id' attribute is only for humans; it is ignored when parsed. -->
+    <GlyphID id="0" name=".notdef"/>
+    <GlyphID id="1" name="NULL"/>
+    <GlyphID id="2" name="nonmarkingreturn"/>
+    <GlyphID id="3" name="a"/>
+    <GlyphID id="4" name="b"/>
+    <GlyphID id="5" name="c"/>
+    <GlyphID id="6" name="d"/>
+    <GlyphID id="7" name="e"/>
+    <GlyphID id="8" name="f"/>
+  </GlyphOrder>
+
+  <head>
+    <!-- Most of this table will be recalculated by the compiler -->
+    <tableVersion value="1.0"/>
+    <fontRevision value="1.0"/>
+    <checkSumAdjustment value="0x22629321"/>
+    <magicNumber value="0x5f0f3cf5"/>
+    <flags value="00000000 00001001"/>
+    <unitsPerEm value="1000"/>
+    <created value="Thu Jan 18 10:57:52 2024"/>
+    <modified value="Thu Jan 18 11:18:09 2024"/>
+    <xMin value="0"/>
+    <yMin value="0"/>
+    <xMax value="672"/>
+    <yMax value="633"/>
+    <macStyle value="00000000 00000000"/>
+    <lowestRecPPEM value="9"/>
+    <fontDirectionHint value="2"/>
+    <indexToLocFormat value="0"/>
+    <glyphDataFormat value="0"/>
+  </head>
+
+  <hhea>
+    <tableVersion value="0x00010000"/>
+    <ascent value="750"/>
+    <descent value="-250"/>
+    <lineGap value="9"/>
+    <advanceWidthMax value="833"/>
+    <minLeftSideBearing value="127"/>
+    <minRightSideBearing value="161"/>
+    <xMaxExtent value="672"/>
+    <caretSlopeRise value="1"/>
+    <caretSlopeRun value="0"/>
+    <caretOffset value="0"/>
+    <reserved0 value="0"/>
+    <reserved1 value="0"/>
+    <reserved2 value="0"/>
+    <reserved3 value="0"/>
+    <metricDataFormat value="0"/>
+    <numberOfHMetrics value="9"/>
+  </hhea>
+
+  <maxp>
+    <!-- Most of this table will be recalculated by the compiler -->
+    <tableVersion value="0x10000"/>
+    <numGlyphs value="9"/>
+    <maxPoints value="40"/>
+    <maxContours value="2"/>
+    <maxCompositePoints value="0"/>
+    <maxCompositeContours value="0"/>
+    <maxZones value="1"/>
+    <maxTwilightPoints value="0"/>
+    <maxStorage value="0"/>
+    <maxFunctionDefs value="0"/>
+    <maxInstructionDefs value="0"/>
+    <maxStackElements value="0"/>
+    <maxSizeOfInstructions value="0"/>
+    <maxComponentElements value="0"/>
+    <maxComponentDepth value="0"/>
+  </maxp>
+
+  <OS_2>
+    <!-- The fields 'usFirstCharIndex' and 'usLastCharIndex'
+         will be recalculated by the compiler -->
+    <version value="3"/>
+    <xAvgCharWidth value="749"/>
+    <usWeightClass value="400"/>
+    <usWidthClass value="5"/>
+    <fsType value="00000000 00000100"/>
+    <ySubscriptXSize value="700"/>
+    <ySubscriptYSize value="650"/>
+    <ySubscriptXOffset value="0"/>
+    <ySubscriptYOffset value="140"/>
+    <ySuperscriptXSize value="700"/>
+    <ySuperscriptYSize value="650"/>
+    <ySuperscriptXOffset value="0"/>
+    <ySuperscriptYOffset value="477"/>
+    <yStrikeoutSize value="50"/>
+    <yStrikeoutPosition value="250"/>
+    <sFamilyClass value="0"/>
+    <panose>
+      <bFamilyType value="0"/>
+      <bSerifStyle value="0"/>
+      <bWeight value="0"/>
+      <bProportion value="0"/>
+      <bContrast value="0"/>
+      <bStrokeVariation value="0"/>
+      <bArmStyle value="0"/>
+      <bLetterForm value="0"/>
+      <bMidline value="0"/>
+      <bXHeight value="0"/>
+    </panose>
+    <ulUnicodeRange1 value="00000000 00000000 00000000 00000001"/>
+    <ulUnicodeRange2 value="00000000 00000000 00000000 00000000"/>
+    <ulUnicodeRange3 value="00000000 00000000 00000000 00000000"/>
+    <ulUnicodeRange4 value="00000000 00000000 00000000 00000000"/>
+    <achVendID value="iact"/>
+    <fsSelection value="00000000 01000000"/>
+    <usFirstCharIndex value="0"/>
+    <usLastCharIndex value="102"/>
+    <sTypoAscender value="750"/>
+    <sTypoDescender value="-250"/>
+    <sTypoLineGap value="0"/>
+    <usWinAscent value="633"/>
+    <usWinDescent value="0"/>
+    <ulCodePageRange1 value="00000000 00000000 00000000 00000001"/>
+    <ulCodePageRange2 value="00000000 00000000 00000000 00000000"/>
+    <sxHeight value="500"/>
+    <sCapHeight value="700"/>
+    <usDefaultChar value="0"/>
+    <usBreakChar value="32"/>
+    <usMaxContext value="0"/>
+  </OS_2>
+
+  <hmtx>
+    <mtx name=".notdef" width="500" lsb="0"/>
+    <mtx name="NULL" width="0" lsb="0"/>
+    <mtx name="a" width="833" lsb="127"/>
+    <mtx name="b" width="833" lsb="127"/>
+    <mtx name="c" width="833" lsb="127"/>
+    <mtx name="d" width="833" lsb="127"/>
+    <mtx name="e" width="833" lsb="127"/>
+    <mtx name="f" width="833" lsb="127"/>
+    <mtx name="nonmarkingreturn" width="500" lsb="0"/>
+  </hmtx>
+
+  <VDMX>
+    <version value="0"/>
+    <ratRanges>
+      <ratRange bCharSet="1" groupIndex="0" xRatio="1" yEndRatio="1" yStartRatio="1"/>
+    </ratRanges>
+    <groups>
+      <group index="0">
+        <!-- recs=248, startsz=8, endsz=255 -->
+        <record yPelHeight="8" yMax="6" yMin="0"/>
+        <record yPelHeight="9" yMax="6" yMin="0"/>
+        <record yPelHeight="10" yMax="7" yMin="0"/>
+        <record yPelHeight="11" yMax="7" yMin="0"/>
+        <record yPelHeight="12" yMax="8" yMin="0"/>
+        <record yPelHeight="13" yMax="9" yMin="0"/>
+        <record yPelHeight="14" yMax="9" yMin="0"/>
+        <record yPelHeight="15" yMax="10" yMin="0"/>
+        <record yPelHeight="16" yMax="11" yMin="0"/>
+        <record yPelHeight="17" yMax="11" yMin="0"/>
+        <record yPelHeight="18" yMax="12" yMin="0"/>
+        <record yPelHeight="19" yMax="13" yMin="0"/>
+        <record yPelHeight="20" yMax="13" yMin="0"/>
+        <record yPelHeight="21" yMax="14" yMin="0"/>
+        <record yPelHeight="22" yMax="14" yMin="0"/>
+        <record yPelHeight="23" yMax="15" yMin="0"/>
+        <record yPelHeight="24" yMax="16" yMin="0"/>
+        <record yPelHeight="25" yMax="16" yMin="0"/>
+        <record yPelHeight="26" yMax="17" yMin="0"/>
+        <record yPelHeight="27" yMax="18" yMin="0"/>
+        <record yPelHeight="28" yMax="18" yMin="0"/>
+        <record yPelHeight="29" yMax="19" yMin="0"/>
+        <record yPelHeight="30" yMax="19" yMin="0"/>
+        <record yPelHeight="31" yMax="20" yMin="0"/>
+        <record yPelHeight="32" yMax="21" yMin="0"/>
+        <record yPelHeight="33" yMax="21" yMin="0"/>
+        <record yPelHeight="34" yMax="22" yMin="0"/>
+        <record yPelHeight="35" yMax="23" yMin="0"/>
+        <record yPelHeight="36" yMax="23" yMin="0"/>
+        <record yPelHeight="37" yMax="24" yMin="0"/>
+        <record yPelHeight="38" yMax="25" yMin="0"/>
+        <record yPelHeight="39" yMax="25" yMin="0"/>
+        <record yPelHeight="40" yMax="26" yMin="0"/>
+        <record yPelHeight="41" yMax="26" yMin="0"/>
+        <record yPelHeight="42" yMax="27" yMin="0"/>
+        <record yPelHeight="43" yMax="28" yMin="0"/>
+        <record yPelHeight="44" yMax="28" yMin="0"/>
+        <record yPelHeight="45" yMax="29" yMin="0"/>
+        <record yPelHeight="46" yMax="30" yMin="0"/>
+        <record yPelHeight="47" yMax="30" yMin="0"/>
+        <record yPelHeight="48" yMax="31" yMin="0"/>
+        <record yPelHeight="49" yMax="32" yMin="0"/>
+        <record yPelHeight="50" yMax="32" yMin="0"/>
+        <record yPelHeight="51" yMax="33" yMin="0"/>
+        <record yPelHeight="52" yMax="33" yMin="0"/>
+        <record yPelHeight="53" yMax="34" yMin="0"/>
+        <record yPelHeight="54" yMax="35" yMin="0"/>
+        <record yPelHeight="55" yMax="35" yMin="0"/>
+        <record yPelHeight="56" yMax="36" yMin="0"/>
+        <record yPelHeight="57" yMax="37" yMin="0"/>
+        <record yPelHeight="58" yMax="37" yMin="0"/>
+        <record yPelHeight="59" yMax="38" yMin="0"/>
+        <record yPelHeight="60" yMax="38" yMin="0"/>
+        <record yPelHeight="61" yMax="39" yMin="0"/>
+        <record yPelHeight="62" yMax="40" yMin="0"/>
+        <record yPelHeight="63" yMax="40" yMin="0"/>
+        <record yPelHeight="64" yMax="41" yMin="0"/>
+        <record yPelHeight="65" yMax="42" yMin="0"/>
+        <record yPelHeight="66" yMax="42" yMin="0"/>
+        <record yPelHeight="67" yMax="43" yMin="0"/>
+        <record yPelHeight="68" yMax="44" yMin="0"/>
+        <record yPelHeight="69" yMax="44" yMin="0"/>
+        <record yPelHeight="70" yMax="45" yMin="0"/>
+        <record yPelHeight="71" yMax="45" yMin="0"/>
+        <record yPelHeight="72" yMax="46" yMin="0"/>
+        <record yPelHeight="73" yMax="47" yMin="0"/>
+        <record yPelHeight="74" yMax="47" yMin="0"/>
+        <record yPelHeight="75" yMax="48" yMin="0"/>
+        <record yPelHeight="76" yMax="49" yMin="0"/>
+        <record yPelHeight="77" yMax="49" yMin="0"/>
+        <record yPelHeight="78" yMax="50" yMin="0"/>
+        <record yPelHeight="79" yMax="51" yMin="0"/>
+        <record yPelHeight="80" yMax="51" yMin="0"/>
+        <record yPelHeight="81" yMax="52" yMin="0"/>
+        <record yPelHeight="82" yMax="52" yMin="0"/>
+        <record yPelHeight="83" yMax="53" yMin="0"/>
+        <record yPelHeight="84" yMax="54" yMin="0"/>
+        <record yPelHeight="85" yMax="54" yMin="0"/>
+        <record yPelHeight="86" yMax="55" yMin="0"/>
+        <record yPelHeight="87" yMax="56" yMin="0"/>
+        <record yPelHeight="88" yMax="56" yMin="0"/>
+        <record yPelHeight="89" yMax="57" yMin="0"/>
+        <record yPelHeight="90" yMax="57" yMin="0"/>
+        <record yPelHeight="91" yMax="58" yMin="0"/>
+        <record yPelHeight="92" yMax="59" yMin="0"/>
+        <record yPelHeight="93" yMax="59" yMin="0"/>
+        <record yPelHeight="94" yMax="60" yMin="0"/>
+        <record yPelHeight="95" yMax="61" yMin="0"/>
+        <record yPelHeight="96" yMax="61" yMin="0"/>
+        <record yPelHeight="97" yMax="62" yMin="0"/>
+        <record yPelHeight="98" yMax="63" yMin="0"/>
+        <record yPelHeight="99" yMax="63" yMin="0"/>
+        <record yPelHeight="100" yMax="64" yMin="0"/>
+        <record yPelHeight="101" yMax="64" yMin="0"/>
+        <record yPelHeight="102" yMax="65" yMin="0"/>
+        <record yPelHeight="103" yMax="66" yMin="0"/>
+        <record yPelHeight="104" yMax="66" yMin="0"/>
+        <record yPelHeight="105" yMax="67" yMin="0"/>
+        <record yPelHeight="106" yMax="68" yMin="0"/>
+        <record yPelHeight="107" yMax="68" yMin="0"/>
+        <record yPelHeight="108" yMax="69" yMin="0"/>
+        <record yPelHeight="109" yMax="69" yMin="0"/>
+        <record yPelHeight="110" yMax="70" yMin="0"/>
+        <record yPelHeight="111" yMax="71" yMin="0"/>
+        <record yPelHeight="112" yMax="71" yMin="0"/>
+        <record yPelHeight="113" yMax="72" yMin="0"/>
+        <record yPelHeight="114" yMax="73" yMin="0"/>
+        <record yPelHeight="115" yMax="73" yMin="0"/>
+        <record yPelHeight="116" yMax="74" yMin="0"/>
+        <record yPelHeight="117" yMax="75" yMin="0"/>
+        <record yPelHeight="118" yMax="75" yMin="0"/>
+        <record yPelHeight="119" yMax="76" yMin="0"/>
+        <record yPelHeight="120" yMax="76" yMin="0"/>
+        <record yPelHeight="121" yMax="77" yMin="0"/>
+        <record yPelHeight="122" yMax="78" yMin="0"/>
+        <record yPelHeight="123" yMax="78" yMin="0"/>
+        <record yPelHeight="124" yMax="79" yMin="0"/>
+        <record yPelHeight="125" yMax="80" yMin="0"/>
+        <record yPelHeight="126" yMax="80" yMin="0"/>
+        <record yPelHeight="127" yMax="81" yMin="0"/>
+        <record yPelHeight="128" yMax="82" yMin="0"/>
+        <record yPelHeight="129" yMax="82" yMin="0"/>
+        <record yPelHeight="130" yMax="83" yMin="0"/>
+        <record yPelHeight="131" yMax="83" yMin="0"/>
+        <record yPelHeight="132" yMax="84" yMin="0"/>
+        <record yPelHeight="133" yMax="85" yMin="0"/>
+        <record yPelHeight="134" yMax="85" yMin="0"/>
+        <record yPelHeight="135" yMax="86" yMin="0"/>
+        <record yPelHeight="136" yMax="87" yMin="0"/>
+        <record yPelHeight="137" yMax="87" yMin="0"/>
+        <record yPelHeight="138" yMax="88" yMin="0"/>
+        <record yPelHeight="139" yMax="88" yMin="0"/>
+        <record yPelHeight="140" yMax="89" yMin="0"/>
+        <record yPelHeight="141" yMax="90" yMin="0"/>
+        <record yPelHeight="142" yMax="90" yMin="0"/>
+        <record yPelHeight="143" yMax="91" yMin="0"/>
+        <record yPelHeight="144" yMax="92" yMin="0"/>
+        <record yPelHeight="145" yMax="92" yMin="0"/>
+        <record yPelHeight="146" yMax="93" yMin="0"/>
+        <record yPelHeight="147" yMax="94" yMin="0"/>
+        <record yPelHeight="148" yMax="94" yMin="0"/>
+        <record yPelHeight="149" yMax="95" yMin="0"/>
+        <record yPelHeight="150" yMax="95" yMin="0"/>
+        <record yPelHeight="151" yMax="96" yMin="0"/>
+        <record yPelHeight="152" yMax="97" yMin="0"/>
+        <record yPelHeight="153" yMax="97" yMin="0"/>
+        <record yPelHeight="154" yMax="98" yMin="0"/>
+        <record yPelHeight="155" yMax="99" yMin="0"/>
+        <record yPelHeight="156" yMax="99" yMin="0"/>
+        <record yPelHeight="157" yMax="100" yMin="0"/>
+        <record yPelHeight="158" yMax="101" yMin="0"/>
+        <record yPelHeight="159" yMax="101" yMin="0"/>
+        <record yPelHeight="160" yMax="102" yMin="0"/>
+        <record yPelHeight="161" yMax="102" yMin="0"/>
+        <record yPelHeight="162" yMax="103" yMin="0"/>
+        <record yPelHeight="163" yMax="104" yMin="0"/>
+        <record yPelHeight="164" yMax="104" yMin="0"/>
+        <record yPelHeight="165" yMax="105" yMin="0"/>
+        <record yPelHeight="166" yMax="106" yMin="0"/>
+        <record yPelHeight="167" yMax="106" yMin="0"/>
+        <record yPelHeight="168" yMax="107" yMin="0"/>
+        <record yPelHeight="169" yMax="107" yMin="0"/>
+        <record yPelHeight="170" yMax="108" yMin="0"/>
+        <record yPelHeight="171" yMax="109" yMin="0"/>
+        <record yPelHeight="172" yMax="109" yMin="0"/>
+        <record yPelHeight="173" yMax="110" yMin="0"/>
+        <record yPelHeight="174" yMax="111" yMin="0"/>
+        <record yPelHeight="175" yMax="111" yMin="0"/>
+        <record yPelHeight="176" yMax="112" yMin="0"/>
+        <record yPelHeight="177" yMax="113" yMin="0"/>
+        <record yPelHeight="178" yMax="113" yMin="0"/>
+        <record yPelHeight="179" yMax="114" yMin="0"/>
+        <record yPelHeight="180" yMax="114" yMin="0"/>
+        <record yPelHeight="181" yMax="115" yMin="0"/>
+        <record yPelHeight="182" yMax="116" yMin="0"/>
+        <record yPelHeight="183" yMax="116" yMin="0"/>
+        <record yPelHeight="184" yMax="117" yMin="0"/>
+        <record yPelHeight="185" yMax="118" yMin="0"/>
+        <record yPelHeight="186" yMax="118" yMin="0"/>
+        <record yPelHeight="187" yMax="119" yMin="0"/>
+        <record yPelHeight="188" yMax="120" yMin="0"/>
+        <record yPelHeight="189" yMax="120" yMin="0"/>
+        <record yPelHeight="190" yMax="121" yMin="0"/>
+        <record yPelHeight="191" yMax="121" yMin="0"/>
+        <record yPelHeight="192" yMax="122" yMin="0"/>
+        <record yPelHeight="193" yMax="123" yMin="0"/>
+        <record yPelHeight="194" yMax="123" yMin="0"/>
+        <record yPelHeight="195" yMax="124" yMin="0"/>
+        <record yPelHeight="196" yMax="125" yMin="0"/>
+        <record yPelHeight="197" yMax="125" yMin="0"/>
+        <record yPelHeight="198" yMax="126" yMin="0"/>
+        <record yPelHeight="199" yMax="126" yMin="0"/>
+        <record yPelHeight="200" yMax="127" yMin="0"/>
+        <record yPelHeight="201" yMax="128" yMin="0"/>
+        <record yPelHeight="202" yMax="128" yMin="0"/>
+        <record yPelHeight="203" yMax="129" yMin="0"/>
+        <record yPelHeight="204" yMax="130" yMin="0"/>
+        <record yPelHeight="205" yMax="130" yMin="0"/>
+        <record yPelHeight="206" yMax="131" yMin="0"/>
+        <record yPelHeight="207" yMax="132" yMin="0"/>
+        <record yPelHeight="208" yMax="132" yMin="0"/>
+        <record yPelHeight="209" yMax="133" yMin="0"/>
+        <record yPelHeight="210" yMax="133" yMin="0"/>
+        <record yPelHeight="211" yMax="134" yMin="0"/>
+        <record yPelHeight="212" yMax="135" yMin="0"/>
+        <record yPelHeight="213" yMax="135" yMin="0"/>
+        <record yPelHeight="214" yMax="136" yMin="0"/>
+        <record yPelHeight="215" yMax="137" yMin="0"/>
+        <record yPelHeight="216" yMax="137" yMin="0"/>
+        <record yPelHeight="217" yMax="138" yMin="0"/>
+        <record yPelHeight="218" yMax="138" yMin="0"/>
+        <record yPelHeight="219" yMax="139" yMin="0"/>
+        <record yPelHeight="220" yMax="140" yMin="0"/>
+        <record yPelHeight="221" yMax="140" yMin="0"/>
+        <record yPelHeight="222" yMax="141" yMin="0"/>
+        <record yPelHeight="223" yMax="142" yMin="0"/>
+        <record yPelHeight="224" yMax="142" yMin="0"/>
+        <record yPelHeight="225" yMax="143" yMin="0"/>
+        <record yPelHeight="226" yMax="144" yMin="0"/>
+        <record yPelHeight="227" yMax="144" yMin="0"/>
+        <record yPelHeight="228" yMax="145" yMin="0"/>
+        <record yPelHeight="229" yMax="145" yMin="0"/>
+        <record yPelHeight="230" yMax="146" yMin="0"/>
+        <record yPelHeight="231" yMax="147" yMin="0"/>
+        <record yPelHeight="232" yMax="147" yMin="0"/>
+        <record yPelHeight="233" yMax="148" yMin="0"/>
+        <record yPelHeight="234" yMax="149" yMin="0"/>
+        <record yPelHeight="235" yMax="149" yMin="0"/>
+        <record yPelHeight="236" yMax="150" yMin="0"/>
+        <record yPelHeight="237" yMax="151" yMin="0"/>
+        <record yPelHeight="238" yMax="151" yMin="0"/>
+        <record yPelHeight="239" yMax="152" yMin="0"/>
+        <record yPelHeight="240" yMax="152" yMin="0"/>
+        <record yPelHeight="241" yMax="153" yMin="0"/>
+        <record yPelHeight="242" yMax="154" yMin="0"/>
+        <record yPelHeight="243" yMax="154" yMin="0"/>
+        <record yPelHeight="244" yMax="155" yMin="0"/>
+        <record yPelHeight="245" yMax="156" yMin="0"/>
+        <record yPelHeight="246" yMax="156" yMin="0"/>
+        <record yPelHeight="247" yMax="157" yMin="0"/>
+        <record yPelHeight="248" yMax="157" yMin="0"/>
+        <record yPelHeight="249" yMax="158" yMin="0"/>
+        <record yPelHeight="250" yMax="159" yMin="0"/>
+        <record yPelHeight="251" yMax="159" yMin="0"/>
+        <record yPelHeight="252" yMax="160" yMin="0"/>
+        <record yPelHeight="253" yMax="161" yMin="0"/>
+        <record yPelHeight="254" yMax="161" yMin="0"/>
+        <record yPelHeight="255" yMax="162" yMin="0"/>
+      </group>
+    </groups>
+  </VDMX>
+
+  <cmap>
+    <tableVersion version="0"/>
+    <cmap_format_4 platformID="0" platEncID="3" language="0">
+      <map code="0x0" name="NULL"/><!-- ???? -->
+      <map code="0xd" name="nonmarkingreturn"/><!-- ???? -->
+      <map code="0x61" name="a"/><!-- LATIN SMALL LETTER A -->
+      <map code="0x62" name="b"/><!-- LATIN SMALL LETTER B -->
+      <map code="0x63" name="c"/><!-- LATIN SMALL LETTER C -->
+      <map code="0x64" name="d"/><!-- LATIN SMALL LETTER D -->
+      <map code="0x65" name="e"/><!-- LATIN SMALL LETTER E -->
+      <map code="0x66" name="f"/><!-- LATIN SMALL LETTER F -->
+    </cmap_format_4>
+    <cmap_format_6 platformID="1" platEncID="0" language="0">
+      <map code="0x0" name="NULL"/>
+      <map code="0xd" name="nonmarkingreturn"/>
+      <map code="0x61" name="a"/>
+      <map code="0x62" name="b"/>
+      <map code="0x63" name="c"/>
+      <map code="0x64" name="d"/>
+      <map code="0x65" name="e"/>
+      <map code="0x66" name="f"/>
+    </cmap_format_6>
+    <cmap_format_4 platformID="3" platEncID="1" language="0">
+      <map code="0x0" name="NULL"/><!-- ???? -->
+      <map code="0xd" name="nonmarkingreturn"/><!-- ???? -->
+      <map code="0x61" name="a"/><!-- LATIN SMALL LETTER A -->
+      <map code="0x62" name="b"/><!-- LATIN SMALL LETTER B -->
+      <map code="0x63" name="c"/><!-- LATIN SMALL LETTER C -->
+      <map code="0x64" name="d"/><!-- LATIN SMALL LETTER D -->
+      <map code="0x65" name="e"/><!-- LATIN SMALL LETTER E -->
+      <map code="0x66" name="f"/><!-- LATIN SMALL LETTER F -->
+    </cmap_format_4>
+  </cmap>
+
+  <loca>
+    <!-- The 'loca' table will be calculated by the compiler -->
+  </loca>
+
+  <glyf>
+
+    <!-- The xMin, yMin, xMax and yMax values
+         will be recalculated by the compiler. -->
+
+    <TTGlyph name=".notdef"/><!-- contains no outline data -->
+
+    <TTGlyph name="NULL"/><!-- contains no outline data -->
+
+    <TTGlyph name="a" xMin="127" yMin="89" xMax="671" yMax="633">
+      <contour>
+        <pt x="127" y="361" on="1"/>
+        <pt x="127" y="417" on="0"/>
+        <pt x="170" y="516" on="0"/>
+        <pt x="244" y="590" on="0"/>
+        <pt x="343" y="633" on="0"/>
+        <pt x="399" y="633" on="1"/>
+        <pt x="455" y="633" on="0"/>
+        <pt x="554" y="590" on="0"/>
+        <pt x="628" y="516" on="0"/>
+        <pt x="671" y="417" on="0"/>
+        <pt x="671" y="361" on="1"/>
+        <pt x="671" y="305" on="0"/>
+        <pt x="628" y="206" on="0"/>
+        <pt x="554" y="132" on="0"/>
+        <pt x="455" y="89" on="0"/>
+        <pt x="399" y="89" on="1"/>
+        <pt x="343" y="89" on="0"/>
+        <pt x="244" y="132" on="0"/>
+        <pt x="170" y="206" on="0"/>
+        <pt x="127" y="305" on="0"/>
+      </contour>
+      <contour>
+        <pt x="263" y="353" on="1"/>
+        <pt x="263" y="320" on="0"/>
+        <pt x="288" y="261" on="0"/>
+        <pt x="332" y="217" on="0"/>
+        <pt x="391" y="192" on="0"/>
+        <pt x="424" y="192" on="1"/>
+        <pt x="457" y="192" on="0"/>
+        <pt x="516" y="217" on="0"/>
+        <pt x="560" y="261" on="0"/>
+        <pt x="585" y="320" on="0"/>
+        <pt x="585" y="353" on="1"/>
+        <pt x="585" y="386" on="0"/>
+        <pt x="560" y="445" on="0"/>
+        <pt x="516" y="489" on="0"/>
+        <pt x="457" y="514" on="0"/>
+        <pt x="424" y="514" on="1"/>
+        <pt x="391" y="514" on="0"/>
+        <pt x="332" y="489" on="0"/>
+        <pt x="288" y="445" on="0"/>
+        <pt x="263" y="386" on="0"/>
+      </contour>
+      <instructions/>
+    </TTGlyph>
+
+    <TTGlyph name="b" xMin="127" yMin="89" xMax="671" yMax="633">
+      <contour>
+        <pt x="127" y="361" on="1"/>
+        <pt x="127" y="417" on="0"/>
+        <pt x="170" y="516" on="0"/>
+        <pt x="244" y="590" on="0"/>
+        <pt x="343" y="633" on="0"/>
+        <pt x="399" y="633" on="1"/>
+        <pt x="455" y="633" on="0"/>
+        <pt x="554" y="590" on="0"/>
+        <pt x="628" y="516" on="0"/>
+        <pt x="671" y="417" on="0"/>
+        <pt x="671" y="361" on="1"/>
+        <pt x="671" y="305" on="0"/>
+        <pt x="628" y="206" on="0"/>
+        <pt x="554" y="132" on="0"/>
+        <pt x="455" y="89" on="0"/>
+        <pt x="399" y="89" on="1"/>
+      </contour>
+      <contour>
+        <pt x="424" y="192" on="1"/>
+        <pt x="457" y="192" on="0"/>
+        <pt x="516" y="217" on="0"/>
+        <pt x="560" y="261" on="0"/>
+        <pt x="585" y="320" on="0"/>
+        <pt x="585" y="353" on="1"/>
+        <pt x="585" y="386" on="0"/>
+        <pt x="560" y="445" on="0"/>
+        <pt x="516" y="489" on="0"/>
+        <pt x="457" y="514" on="0"/>
+        <pt x="424" y="514" on="1"/>
+        <pt x="391" y="514" on="0"/>
+        <pt x="332" y="489" on="0"/>
+        <pt x="288" y="445" on="0"/>
+        <pt x="263" y="386" on="0"/>
+        <pt x="263" y="353" on="1"/>
+      </contour>
+      <instructions/>
+    </TTGlyph>
+
+    <TTGlyph name="c" xMin="127" yMin="89" xMax="671" yMax="633">
+      <contour>
+        <pt x="127" y="361" on="1"/>
+        <pt x="127" y="417" on="0"/>
+        <pt x="170" y="516" on="0"/>
+        <pt x="244" y="590" on="0"/>
+        <pt x="343" y="633" on="0"/>
+        <pt x="399" y="633" on="1"/>
+        <pt x="455" y="633" on="0"/>
+        <pt x="554" y="590" on="0"/>
+        <pt x="628" y="516" on="0"/>
+        <pt x="671" y="417" on="0"/>
+        <pt x="671" y="361" on="1"/>
+        <pt x="671" y="305" on="0"/>
+        <pt x="628" y="206" on="0"/>
+        <pt x="554" y="132" on="0"/>
+        <pt x="455" y="89" on="0"/>
+        <pt x="399" y="89" on="1"/>
+      </contour>
+      <contour>
+        <pt x="424" y="192" on="1"/>
+        <pt x="457" y="192" on="0"/>
+        <pt x="516" y="217" on="0"/>
+        <pt x="560" y="261" on="0"/>
+        <pt x="585" y="320" on="0"/>
+        <pt x="585" y="353" on="1"/>
+        <pt x="585" y="386" on="0"/>
+        <pt x="560" y="445" on="0"/>
+        <pt x="516" y="489" on="0"/>
+        <pt x="457" y="514" on="0"/>
+        <pt x="424" y="514" on="1"/>
+        <pt x="391" y="514" on="0"/>
+        <pt x="332" y="489" on="0"/>
+        <pt x="288" y="445" on="0"/>
+        <pt x="263" y="386" on="0"/>
+        <pt x="263" y="353" on="1"/>
+      </contour>
+      <instructions/>
+    </TTGlyph>
+
+    <TTGlyph name="d" xMin="127" yMin="89" xMax="672" yMax="633">
+      <contour>
+        <pt x="127" y="361" on="1"/>
+        <pt x="127" y="633" on="0"/>
+        <pt x="399" y="633" on="1"/>
+        <pt x="671" y="633" on="0"/>
+        <pt x="671" y="361" on="1"/>
+        <pt x="672" y="89" on="0"/>
+        <pt x="399" y="89" on="1"/>
+        <pt x="127" y="89" on="0"/>
+      </contour>
+      <contour>
+        <pt x="424" y="192" on="1"/>
+        <pt x="585" y="192" on="0"/>
+        <pt x="585" y="353" on="1"/>
+        <pt x="585" y="514" on="0"/>
+        <pt x="424" y="514" on="1"/>
+        <pt x="263" y="514" on="0"/>
+        <pt x="263" y="353" on="1"/>
+        <pt x="263" y="192" on="0"/>
+      </contour>
+      <instructions/>
+    </TTGlyph>
+
+    <TTGlyph name="e" xMin="127" yMin="89" xMax="672" yMax="633">
+      <contour>
+        <pt x="127" y="361" on="1"/>
+        <pt x="127" y="633" on="0"/>
+        <pt x="399" y="633" on="1"/>
+        <pt x="671" y="633" on="0"/>
+        <pt x="671" y="361" on="1"/>
+        <pt x="672" y="89" on="0"/>
+        <pt x="399" y="89" on="1"/>
+      </contour>
+      <contour>
+        <pt x="424" y="192" on="1"/>
+        <pt x="585" y="192" on="0"/>
+        <pt x="585" y="353" on="1"/>
+        <pt x="585" y="514" on="0"/>
+        <pt x="424" y="514" on="1"/>
+        <pt x="263" y="514" on="0"/>
+        <pt x="263" y="353" on="1"/>
+      </contour>
+      <instructions/>
+    </TTGlyph>
+
+    <TTGlyph name="f" xMin="127" yMin="89" xMax="672" yMax="633">
+      <contour>
+        <pt x="127" y="361" on="1"/>
+        <pt x="127" y="633" on="0"/>
+        <pt x="399" y="633" on="1"/>
+        <pt x="671" y="633" on="0"/>
+        <pt x="671" y="361" on="1"/>
+        <pt x="672" y="89" on="0"/>
+        <pt x="399" y="89" on="1"/>
+        <pt x="127" y="361" on="1"/>
+      </contour>
+      <contour>
+        <pt x="424" y="192" on="1"/>
+        <pt x="585" y="192" on="0"/>
+        <pt x="585" y="353" on="1"/>
+        <pt x="585" y="514" on="0"/>
+        <pt x="424" y="514" on="1"/>
+        <pt x="263" y="514" on="0"/>
+        <pt x="263" y="353" on="1"/>
+        <pt x="424" y="192" on="1"/>
+      </contour>
+      <instructions/>
+    </TTGlyph>
+
+    <TTGlyph name="nonmarkingreturn"/><!-- contains no outline data -->
+
+  </glyf>
+
+  <name>
+    <namerecord nameID="1" platformID="1" platEncID="0" langID="0x0" unicode="True">
+      Untitled
+    </namerecord>
+    <namerecord nameID="2" platformID="1" platEncID="0" langID="0x0" unicode="True">
+      Regular
+    </namerecord>
+    <namerecord nameID="3" platformID="1" platEncID="0" langID="0x0" unicode="True">
+      iact: 
+    </namerecord>
+    <namerecord nameID="4" platformID="1" platEncID="0" langID="0x0" unicode="True">
+      Untitled Regular
+    </namerecord>
+    <namerecord nameID="6" platformID="1" platEncID="0" langID="0x0" unicode="True">
+      Untitled
+    </namerecord>
+    <namerecord nameID="1" platformID="3" platEncID="1" langID="0x409">
+      Untitled
+    </namerecord>
+    <namerecord nameID="2" platformID="3" platEncID="1" langID="0x409">
+      Regular
+    </namerecord>
+    <namerecord nameID="3" platformID="3" platEncID="1" langID="0x409">
+      iact: 
+    </namerecord>
+    <namerecord nameID="4" platformID="3" platEncID="1" langID="0x409">
+      Untitled Regular
+    </namerecord>
+    <namerecord nameID="6" platformID="3" platEncID="1" langID="0x409">
+      Untitled
+    </namerecord>
+  </name>
+
+  <post>
+    <formatType value="2.0"/>
+    <italicAngle value="0.0"/>
+    <underlinePosition value="-75"/>
+    <underlineThickness value="50"/>
+    <isFixedPitch value="0"/>
+    <minMemType42 value="0"/>
+    <maxMemType42 value="0"/>
+    <minMemType1 value="0"/>
+    <maxMemType1 value="0"/>
+    <psNames>
+      <!-- This file uses unique glyph names based on the information
+           found in the 'post' table. Since these names might not be unique,
+           we have to invent artificial names in case of clashes. In order to
+           be able to retain the original information, we need a name to
+           ps name mapping for those cases where they differ. That's what
+           you see below.
+            -->
+    </psNames>
+    <extraNames>
+      <!-- following are the name that are not taken from the standard Mac glyph order -->
+      <psName name="NULL"/>
+    </extraNames>
+  </post>
+
+</ttFont>
