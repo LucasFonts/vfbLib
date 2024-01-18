@@ -5,14 +5,14 @@
 		<key>public.glyphOrder</key>
 		<array>
 			<string>.notdef</string>
+			<string>NULL</string>
+			<string>CR</string>
+			<string>a</string>
 			<string>b</string>
 			<string>c</string>
 			<string>d</string>
 			<string>e</string>
 			<string>f</string>
-			<string>NULL</string>
-			<string>CR</string>
-			<string>a</string>
 		</array>
 	</dict>
 </plist>
