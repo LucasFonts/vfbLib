@@ -270,6 +270,27 @@ complex_tt = [
     {"type": "qcurve", "flags": 0, "points": [[[195, 50]]]},
 ]
 
+# vfb2ufo optimizes away the last line with a closepath, but FL5 TTF export doesn't
+# f from closepath.vfb:
+no_closepath_tt = [
+    {"type": "move", "flags": 0, "points": [[[127, 361]]]},
+    {"type": "qcurve", "flags": 0, "points": [[[127, 633]]]},
+    {"type": "line", "flags": 0, "points": [[[399, 633]]]},
+    {"type": "qcurve", "flags": 0, "points": [[[671, 633]]]},
+    {"type": "line", "flags": 0, "points": [[[671, 361]]]},
+    {"type": "qcurve", "flags": 0, "points": [[[672, 89]]]},
+    {"type": "line", "flags": 0, "points": [[[399, 89]]]},
+    {"type": "line", "flags": 0, "points": [[[127, 361]]]},
+    {"type": "move", "flags": 0, "points": [[[424, 192]]]},  # ***
+    {"type": "qcurve", "flags": 0, "points": [[[585, 192]]]},
+    {"type": "line", "flags": 0, "points": [[[585, 353]]]},
+    {"type": "qcurve", "flags": 0, "points": [[[585, 514]]]},
+    {"type": "line", "flags": 0, "points": [[[424, 514]]]},
+    {"type": "qcurve", "flags": 0, "points": [[[263, 514]]]},
+    {"type": "line", "flags": 0, "points": [[[263, 353]]]},
+    {"type": "line", "flags": 0, "points": [[[424, 192]]]},  # ***
+]
+
 
 def MMGlyph(name, paths):
     g = VfbToUfoGlyph()
@@ -513,4 +534,34 @@ class PathsTest(TestCase):
             ("line", False, None, [146, 125]),
             (None, False, None, [146, 87]),
             (None, False, None, [195, 50]),
+        ]
+
+    def test_no_closepath_tt(self):
+        # A special case: vfb2ufo replaces the last line by a closepath,
+        # but FL5 TrueType export doesn't, so the outline is incompatible between TTF
+        # and UFO. We want to avoid that and be compatible to the TTF.
+        contours, components = get_master_glyph(MMGlyph("a", no_closepath_tt), [], 0)
+        assert components == []
+        # pprint(contours)
+        # The offending lines are commented out to make the test pass.
+        # Affected contours should be fixed in the source VFB.
+        assert contours[0] == [
+            ("line", False, None, [127, 361]),
+            (None, False, None, [127, 633]),
+            ("qcurve", False, None, [399, 633]),
+            (None, False, None, [671, 633]),
+            ("qcurve", False, None, [671, 361]),
+            (None, False, None, [672, 89]),
+            ("qcurve", False, None, [399, 89]),
+            # ("line", False, None, [127, 361]),
+        ]
+        assert contours[1] == [
+            ("line", False, None, [424, 192]),
+            (None, False, None, [585, 192]),
+            ("qcurve", False, None, [585, 353]),
+            (None, False, None, [585, 514]),
+            ("qcurve", False, None, [424, 514]),
+            (None, False, None, [263, 514]),
+            ("qcurve", False, None, [263, 353]),
+            # ("qcurve", False, None, [424, 192]),
         ]
