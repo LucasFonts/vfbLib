@@ -311,7 +311,7 @@ class PathsTest(TestCase):
     def test_closed_path(self):
         contours, components = get_master_glyph(MMGlyph("b", closed_path), [], 0)
         assert components == []
-        pprint(contours)
+        # pprint(contours)
         assert contours[0] == [
             ("curve", True, None, [92, 365]),
             (None, False, None, [92, 210]),
@@ -344,7 +344,7 @@ class PathsTest(TestCase):
     def test_open_path(self):
         contours, components = get_master_glyph(MMGlyph("a", open_path), [], 0)
         assert components == []
-        pprint(contours)
+        # pprint(contours)
         assert contours[0] == [
             ("move", True, None, [92, 365]),
             (None, False, None, [92, 210]),
@@ -378,7 +378,7 @@ class PathsTest(TestCase):
     def test_open_tt_path(self):
         contours, components = get_master_glyph(MMGlyph("c", open_path_tt), [], 0)
         assert components == []
-        pprint(contours)
+        # pprint(contours)
         assert contours[0] == [
             ("move", False, None, [92, 365]),
             (None, False, None, [92, 249]),
@@ -412,7 +412,7 @@ class PathsTest(TestCase):
     def test_closed_line_path(self):
         contours, components = get_master_glyph(MMGlyph("e", closed_path_line), [], 0)
         assert components == []
-        pprint(contours)
+        # pprint(contours)
         assert contours[0] == [
             ("line", False, None, [172, 163]),
             ("line", False, None, [395, 163]),
@@ -440,7 +440,7 @@ class PathsTest(TestCase):
     def test_open_line_path(self):
         contours, components = get_master_glyph(MMGlyph("f", open_path_line), [], 0)
         assert components == []
-        pprint(contours)
+        # pprint(contours)
         assert contours[0] == [
             ("move", False, None, [172, 163]),
             ("line", False, None, [395, 163]),
@@ -470,7 +470,7 @@ class PathsTest(TestCase):
     def test_complex_tt(self):
         contours, components = get_master_glyph(MMGlyph("a", complex_tt), [], 0)
         assert components == []
-        pprint(contours)
+        # pprint(contours)
         assert contours[0] == [
             ("qcurve", False, None, [199, -12]),  # was "move"
             (None, False, None, [124, -12]),
