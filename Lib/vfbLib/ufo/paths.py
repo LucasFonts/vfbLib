@@ -258,8 +258,9 @@ class UfoMasterGlyph:
         """
         Apply closepath optimizations to the contour.
         """
-        if contour[-1][3] == contour[0][3]:
-            # Equal coords, use closepath to draw the last line
+        if contour[-1][3] == contour[0][3] and contour[-1][0] != "line":
+            # Equal coords, use closepath to draw the last line, but not for explicit
+            # lines
             name = contour[0][2]
             contour[0] = contour.pop()
             if name is not None:

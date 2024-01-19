@@ -273,6 +273,7 @@ complex_tt = [
 # vfb2ufo optimizes away the last line with a closepath, but FL5 TTF export doesn't
 # f from closepath.vfb:
 no_closepath_tt = [
+    # Contour 0
     {"type": "move", "flags": 0, "points": [[[127, 361]]]},
     {"type": "qcurve", "flags": 0, "points": [[[127, 633]]]},
     {"type": "line", "flags": 0, "points": [[[399, 633]]]},
@@ -280,8 +281,9 @@ no_closepath_tt = [
     {"type": "line", "flags": 0, "points": [[[671, 361]]]},
     {"type": "qcurve", "flags": 0, "points": [[[672, 89]]]},
     {"type": "line", "flags": 0, "points": [[[399, 89]]]},
-    {"type": "line", "flags": 0, "points": [[[127, 361]]]},
-    {"type": "move", "flags": 0, "points": [[[424, 192]]]},  # ***
+    {"type": "line", "flags": 0, "points": [[[127, 361]]]},  # ***
+    # Contour 1
+    {"type": "move", "flags": 0, "points": [[[424, 192]]]},
     {"type": "qcurve", "flags": 0, "points": [[[585, 192]]]},
     {"type": "line", "flags": 0, "points": [[[585, 353]]]},
     {"type": "qcurve", "flags": 0, "points": [[[585, 514]]]},
@@ -553,7 +555,7 @@ class PathsTest(TestCase):
             ("qcurve", False, None, [671, 361]),
             (None, False, None, [672, 89]),
             ("qcurve", False, None, [399, 89]),
-            # ("line", False, None, [127, 361]),
+            ("line", False, None, [127, 361]),
         ]
         assert contours[1] == [
             ("line", False, None, [424, 192]),
@@ -563,5 +565,5 @@ class PathsTest(TestCase):
             ("qcurve", False, None, [424, 514]),
             (None, False, None, [263, 514]),
             ("qcurve", False, None, [263, 353]),
-            # ("qcurve", False, None, [424, 192]),
+            ("line", False, None, [424, 192]),
         ]
