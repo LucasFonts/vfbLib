@@ -143,8 +143,7 @@ class UfoMasterGlyph:
                     logger.error(f"Unknown segment type: {segment_type}")
                     raise ValueError
 
-            if contour:
-                self._append_contour(contour, path_is_open)
+            self._append_contour(contour, path_is_open)
 
         self.components = []
         if hasattr(self.mm_glyph, "mm_components"):
