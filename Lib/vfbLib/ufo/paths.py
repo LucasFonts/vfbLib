@@ -148,15 +148,21 @@ class UfoMasterGlyph:
         self.components = []
         if hasattr(self.mm_glyph, "mm_components"):
             for c in self.mm_glyph.mm_components:
-                transform = (
-                    c["scaleX"][self.master_index],
-                    0.0,
-                    0.0,
-                    c["scaleY"][self.master_index],
-                    c["offsetX"][self.master_index],
-                    c["offsetY"][self.master_index],
+                xx: float | int = c["scaleX"][self.master_index]
+                # The xy and yx components of the matrix are always 0
+                # xy = 0
+                # yx = 0
+                yy: float | int = c["scaleY"][self.master_index]
+                dx: int = c["offsetX"][self.master_index]
+                dy: int = c["offsetY"][self.master_index]
+                # Convert to integer to avoid type differences in the UFO pre/post save
+                if xx.is_integer():
+                    xx = int(xx)
+                if yy.is_integer():
+                    yy = int(yy)
+                self.components.append(
+                    (self.glyph_order[c["gid"]], (xx, 0, 0, yy, dx, dy))
                 )
-                self.components.append((self.glyph_order[c["gid"]], transform))
 
     def _extract_master_guides(self) -> None:
         if self.mm_glyph.mm_guides is None:
