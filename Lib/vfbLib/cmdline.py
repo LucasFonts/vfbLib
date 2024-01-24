@@ -17,7 +17,7 @@ logger = logging.getLogger(__name__)
 def vfb2json():
     parser = ArgumentParser(
         description=(
-            f"VFB2JSON Converter\nCopyright (c) 2023 by LucasFonts\nBuild {build_date}"
+            f"VFB2JSON Converter\nCopyright (c) 2024 by LucasFonts\nBuild {build_date}"
         )
     )
     parser.add_argument(
@@ -87,7 +87,7 @@ def vfb2json():
 def vfb2ufo():
     parser = ArgumentParser(
         description=(
-            f"VFB3UFO Converter\nCopyright (c) 2023 by LucasFonts\nBuild {build_date}"
+            f"VFB3UFO Converter\nCopyright (c) 2024 by LucasFonts\nBuild {build_date}"
         )
     )
     parser.add_argument(
