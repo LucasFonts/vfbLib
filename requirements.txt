@@ -4,7 +4,7 @@ defcon==0.10.3
 fonttools==4.49.0
 fs==2.4.16
 six==1.16.0
-typing_extensions==4.9.0
+typing_extensions==4.10.0
 ufoLib2==0.16.0
 ufonormalizer==0.6.1
 unicodedata2==15.1.0
