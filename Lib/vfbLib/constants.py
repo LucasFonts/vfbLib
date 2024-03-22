@@ -57,6 +57,7 @@ from vfbLib.parsers.text import (
 from vfbLib.parsers.truetype import (
     TrueTypeInfoParser,
     TrueTypeStemPpemsParser,
+    TrueTypeStemPpems1Parser,
     TrueTypeStemsParser,
     TrueTypeZoneDeltasParser,
     TrueTypeZonesParser,
@@ -153,7 +154,7 @@ parser_classes = {
     1516: ("Axis Mappings", AxisMappingsParser, None),
     1517: ("Default Weight Vector", DoubleListParser, None),  # Interp. coeffs for all masters  # noqa: E501
     1523: ("Anisotropic Interpolation Mappings", AnisotropicInterpolationsParser, None),
-    1524: ("1524", EncodedValueListParser, None),
+    1524: ("TrueType Stem PPEMs 1", TrueTypeStemPpems1Parser, None),
     1530: ("Blue Values Count", IntParser, None),
     1531: ("Other Blues Count", IntParser, None),
     1532: ("Family Blues Count", IntParser, None),
