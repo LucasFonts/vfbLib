@@ -5,6 +5,7 @@ on: push
 jobs:
   build-n-publish:
     name: Build and publish distribution packages
+    if: github.repository == 'jenskutilek/vfbLib'
     runs-on: ubuntu-latest
     environment:
       name: pypi
