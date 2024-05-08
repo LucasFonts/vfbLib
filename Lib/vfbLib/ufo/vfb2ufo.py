@@ -28,6 +28,8 @@ vfb2ufo_alignment = {
     "double": ALIGN_DOUBLE,
 }
 
+# There may be other values in the wild, which should be mapped to "round".
+# TODO: Use defaultdict?
 vfb2ufo_alignment_rev = {
     -1: "default",
     ALIGN_CLOSEST_PIXEL: "round",

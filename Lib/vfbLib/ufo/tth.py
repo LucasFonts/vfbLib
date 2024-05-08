@@ -108,7 +108,7 @@ class TTGlyphHints:
                 if "align" in params:
                     align = params["align"]
                     if align > -1:
-                        d["align"] = vfb2ufo_alignment_rev[align]
+                        d["align"] = vfb2ufo_alignment_rev.get(align, "round")
             elif code in (
                 "SingleLinkH",
                 "SingleLinkV",
@@ -139,7 +139,7 @@ class TTGlyphHints:
                 if "align" in params:
                     align = params["align"]
                     if align > -1:
-                        d["align"] = vfb2ufo_alignment_rev[align]
+                        d["align"] = vfb2ufo_alignment_rev.get(align, "round")
             elif code in (
                 "InterpolateH",
                 "InterpolateV",
@@ -150,7 +150,7 @@ class TTGlyphHints:
                 if "align" in params:
                     align = params["align"]
                     if align > -1:
-                        d["align"] = vfb2ufo_alignment_rev[align]
+                        d["align"] = vfb2ufo_alignment_rev.get(align, "round")
             elif code in (
                 "MDeltaH",
                 "MDeltaV",
