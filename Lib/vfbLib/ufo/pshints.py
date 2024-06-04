@@ -46,9 +46,16 @@ def build_ps_glyph_hints(
         for mask in mmglyph.hintmasks:
             for d in ("h", "v"):
                 if d in mask:
+                    master_direction_hints = master_hints[d]
                     hint_index = mask[d]
-                    hint: HintTuple | str = master_hints[d][hint_index]
-                    hint_set["stems"].append(hint)
+                    if hint_index < len(master_direction_hints):
+                        hint: HintTuple | str = master_direction_hints[hint_index]
+                        hint_set["stems"].append(hint)
+                    else:
+                        logger.debug(
+                            f"Hint mask '{d}' with index {hint_index} found in glyph "
+                            f"{glyph.name}, but hint list is empty."
+                        )
             if "r" in mask:
                 hint_set["pointTag"] = mmglyph.get_point_label(
                     index=int(hint_set["pointTag"]),
