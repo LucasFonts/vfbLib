@@ -34,9 +34,9 @@ class VfbEntry(BaseParser):
         # The original or compiled binary data
         self.data: bytes | None = None
         # The decompiled data
-        self.decompiled = None
+        self.decompiled: dict[str, Any] | int | list[Any] | str | None = None
         # Temporary data for additional master, must be merged when compiling
-        self.temp_masters = None
+        self.temp_masters: list[list] | None = None
         # The numeric and human-readable key of the entry
         self.id = None
         self.key = None
