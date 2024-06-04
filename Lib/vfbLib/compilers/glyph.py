@@ -3,7 +3,7 @@ from __future__ import annotations
 from io import BytesIO
 from math import radians, tan
 from struct import pack
-from typing import Any, List, Tuple
+from typing import Any
 from vfbLib import GLYPH_CONSTANT
 from vfbLib.compilers import BaseCompiler
 from vfbLib.truetype import TT_COMMAND_CONSTANTS, TT_COMMANDS
@@ -24,7 +24,7 @@ node_types = {
 
 class GlyphCompiler(BaseCompiler):
     @classmethod
-    def merge(cls, masters_data: List[Any], data: Any) -> None:
+    def merge(cls, masters_data: list[Any], data: Any) -> None:
         num_masters = len(masters_data)
         if num_masters < 2:
             return
@@ -215,7 +215,7 @@ class InstructionsCompiler(BaseCompiler):
 
 
 class OutlinesCompiler(BaseCompiler):
-    def compile(self, data: Any, num_masters: int) -> Tuple[bytes, int]:
+    def compile(self, data: Any, num_masters: int) -> tuple[bytes, int]:
         self.num_masters = num_masters
         assert not hasattr(self, "stream")
         self.stream = BytesIO()
