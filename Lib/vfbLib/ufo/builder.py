@@ -208,6 +208,15 @@ class VfbToUfoBuilder:
                 }
                 self.stem_ppms[d].append(stem)
 
+    def set_tt_stem_ppms_1(
+        self, data: Dict[str, List[Dict[str, int | Dict[str, int]]]]
+    ) -> None:
+        for d in ("ttStemsH", "ttStemsV"):
+            direction_stems = data[d]
+            for ds in direction_stems:
+                round_dict = self.stem_ppms[d][ds["stem"]]["round"]
+                round_dict[str(ds["round"]["1"])] = 1
+
     def set_tt_stems(self, data) -> None:
         for d in ("ttStemsH", "ttStemsV"):
             direction_stems = data[d]
@@ -421,6 +430,8 @@ class VfbToUfoBuilder:
                             )
                             logger.warning(f"         Mappings: {maps}")
                             break
+            elif name == "TrueType Stem PPEMs 1":  # 1524
+                self.set_tt_stem_ppms_1(data)
             elif name == "Blue Values Count":  # 1530
                 self.num_blue_values = data
             elif name == "Other Blues Count":  # 1531

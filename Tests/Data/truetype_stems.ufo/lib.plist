@@ -58,10 +58,10 @@
 					<true/>
 					<key>round</key>
 					<dict>
-						<key>2</key>
-						<integer>1</integer>
 						<key>12</key>
 						<integer>2</integer>
+						<key>2</key>
+						<integer>1</integer>
 						<key>20</key>
 						<integer>3</integer>
 						<key>27</key>
@@ -80,14 +80,14 @@
 					<true/>
 					<key>round</key>
 					<dict>
-						<key>3</key>
-						<integer>1</integer>
 						<key>11</key>
 						<integer>2</integer>
 						<key>18</key>
 						<integer>3</integer>
 						<key>25</key>
 						<integer>4</integer>
+						<key>3</key>
+						<integer>1</integer>
 						<key>33</key>
 						<integer>5</integer>
 						<key>40</key>
