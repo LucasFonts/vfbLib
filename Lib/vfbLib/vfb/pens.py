@@ -36,6 +36,15 @@ class VfbGlyphPointPen(AbstractPointPen):
         self.currentPath = []
 
     def endPath(self) -> None:
+        if not isinstance(self.target, dict):
+            raise TypeError
+
+        if "nodes" not in self.target:
+            self.target["nodes"] = []
+
+        if self.currentPath is None:
+            raise TypeError
+
         self.target["nodes"].extend(self.currentPath)
         self.currentPath = None
 
@@ -101,6 +110,9 @@ class VfbGlyphPointPen(AbstractPointPen):
             raise KeyError(f"Base glyph not found: '{baseGlyphName}'")
 
         xx, xy, yx, yy, dx, dy = transformation
+
+        if not isinstance(self.target, dict):
+            raise TypeError
 
         if "components" not in self.target:
             self.target["components"] = []
