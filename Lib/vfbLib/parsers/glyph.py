@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import logging
 
+from enum import Enum
 from fontTools.misc.textTools import hexStr  # , num2binary
 from fontTools.ttLib.tables.ttProgram import Program
 from io import BytesIO
@@ -28,17 +29,12 @@ from vfbLib.typing import (
 
 logger = logging.getLogger(__name__)
 
-cmd_name = {
-    0: "move",
-    1: "line",
-    3: "curve",
-    4: "qcurve",
-}
 
-MOVE = 0
-LINE = 1
-CURVE = 3
-QCURVE = 4
+class PathCommand(Enum):
+    move = 0
+    line = 1
+    curve = 3
+    qcurve = 4
 
 
 def read_absolute_point(
@@ -337,21 +333,17 @@ class GlyphParser(BaseParser):
             flags = byte >> 4
             cmd = byte & 0x0F
 
-            segment_type = cmd_name[cmd]
-            # logger.debug(f"    {i}: {segment_type}, flags: {flags}")
-
             # End point
             points: list[list[Point]] = [[] for _ in range(num_masters)]
             read_absolute_point(points, stream, num_masters, x, y)
 
-            if cmd == CURVE:
+            if cmd == PathCommand.curve:
                 # First control point
                 read_absolute_point(points, stream, num_masters, x, y)
                 # Second control point
                 read_absolute_point(points, stream, num_masters, x, y)
 
-            t: Literal["move", "curve", "line", "qcurve"] = segment_type
-            segment = MMNode(type=t, flags=flags, points=points)
+            segment = MMNode(type=PathCommand(cmd).name, flags=flags, points=points)
             segments.append(segment)
         glyphdata["nodes"] = segments
         return num_masters
