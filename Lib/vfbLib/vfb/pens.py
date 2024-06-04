@@ -98,7 +98,7 @@ class VfbGlyphPointPen(AbstractPointPen):
         assert self.currentPath is None
         base_index = self.glyphSet.glyph_order.index(baseGlyphName)
         if base_index == -1:
-            raise (KeyError, f"Base glyph not found: '{baseGlyphName}'")
+            raise KeyError(f"Base glyph not found: '{baseGlyphName}'")
 
         xx, xy, yx, yy, dx, dy = transformation
 
