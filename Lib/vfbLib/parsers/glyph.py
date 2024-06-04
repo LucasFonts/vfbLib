@@ -331,19 +331,19 @@ class GlyphParser(BaseParser):
         for _ in range(num_nodes):
             byte = self.read_uint8(stream)
             flags = byte >> 4
-            cmd = byte & 0x0F
+            cmd = PathCommand(byte & 0x0F).name
 
             # End point
             points: list[list[Point]] = [[] for _ in range(num_masters)]
             read_absolute_point(points, stream, num_masters, x, y)
 
-            if cmd == PathCommand.curve:
+            if cmd == "curve":
                 # First control point
                 read_absolute_point(points, stream, num_masters, x, y)
                 # Second control point
                 read_absolute_point(points, stream, num_masters, x, y)
 
-            segment = MMNode(type=PathCommand(cmd).name, flags=flags, points=points)
+            segment = MMNode(type=cmd, flags=flags, points=points)
             segments.append(segment)
         glyphdata["nodes"] = segments
         return num_masters
