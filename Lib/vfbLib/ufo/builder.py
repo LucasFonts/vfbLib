@@ -402,7 +402,7 @@ class VfbToUfoBuilder:
                     AxisDescriptor(tag=tags.get(data, data.upper()[:4]), name=data)
                 )
             elif name == "Axis Mappings Count":  # 1515
-                self.axis_mappings_count = data
+                self.axis_mappings_count: List[int] = data
             elif name == "Axis Mappings":  # 1516
                 self.add_axis_mappings(data)
             elif name == "Anisotropic Interpolation Mappings":  # 1523
@@ -634,9 +634,8 @@ class VfbToUfoBuilder:
         )
         self.ufo_groups = self.ufo_kerning.groups
 
-        # Store the order of groups in a non-standard lib key
         if group_order:
-            self.lib["com.lucasfonts.vfblib.groupOrder"] = group_order
+            self.lib["public.groupOrder"] = group_order
         if key_glyphs:
             self.lib["com.lucasfonts.vfblib.groupKeyGlyphs"] = key_glyphs
 
