@@ -4,7 +4,7 @@
 	<advance width="313"/>
 	<outline>
 		<contour>
-			<point name="av01" x="84" y="-138" type="line"/>
+			<point name="hr00" x="84" y="-138" type="line"/>
 			<point x="55" y="-138"/>
 			<point x="26" y="-106"/>
 			<point x="26" y="-82" type="qcurve"/>
@@ -42,6 +42,7 @@
 			<point name="sv01" x="107" y="-94" type="line"/>
 			<point x="197" y="-94" type="line"/>
 			<point x="186" y="-138" type="line"/>
+			<point name="av01" x="84" y="-138" type="line"/>
 		</contour>
 	</outline>
 	<lib>

@@ -3,7 +3,7 @@
 	<unicode hex="0326"/>
 	<outline>
 		<contour>
-			<point name="sv02" x="-107" y="-248" type="line"/>
+			<point name="hr00" x="-107" y="-248" type="line"/>
 			<point x="-88" y="-230"/>
 			<point x="-51" y="-179"/>
 			<point name="sv01" x="-41" y="-158" type="qcurve"/>
@@ -26,6 +26,7 @@
 			<point x="-23" y="-206"/>
 			<point x="-51" y="-236"/>
 			<point x="-65" y="-248" type="qcurve"/>
+			<point name="sv02" x="-107" y="-248" type="line"/>
 		</contour>
 	</outline>
 	<anchor name="_bottom" x="0" y="0"/>
