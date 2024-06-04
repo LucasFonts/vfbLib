@@ -6,20 +6,13 @@ from struct import pack
 from typing import Any
 from vfbLib import GLYPH_CONSTANT
 from vfbLib.compilers import BaseCompiler
+from vfbLib.parsers.glyph import PathCommand
 from vfbLib.truetype import TT_COMMAND_CONSTANTS, TT_COMMANDS
 
 import logging
 
 
 logger = logging.getLogger(__name__)
-
-
-node_types = {
-    "move": 0,
-    "line": 1,
-    "curve": 3,
-    "qcurve": 4,
-}
 
 
 class GlyphCompiler(BaseCompiler):
@@ -227,7 +220,7 @@ class OutlinesCompiler(BaseCompiler):
         num_values = 0
         ref_coords = [[0, 0] for _ in range(self.num_masters)]
         for node in data:
-            type_flags = node.get("flags", 0) * 16 + node_types[node["type"]]
+            type_flags = node.get("flags", 0) * 16 + PathCommand[node["type"]].value
             self.write_uint1(type_flags)
             num_values += 1
             for j in range(len(node["points"][0])):
