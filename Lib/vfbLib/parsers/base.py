@@ -27,15 +27,21 @@ class BaseParser:
     encoding = "cp1252"
     master_count: int | None = None
     stream: BytesIO = BytesIO()
+    ttStemsV_count: int | None = None
+    ttStemsH_count: int | None = None
 
     def parse(
         self,
         stream: BufferedReader,
         size: int,
         master_count: int | None = None,
+        ttStemsV_count: int | None = None,
+        ttStemsH_count: int | None = None,
     ):
         self.stream = BytesIO(stream.read(size))
         self.master_count = master_count
+        self.ttStemsV_count = ttStemsV_count
+        self.ttStemsH_count = ttStemsH_count
         return self._parse()
 
     def _parse(self) -> Any:

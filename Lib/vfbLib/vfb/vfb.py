@@ -57,6 +57,8 @@ class Vfb:
 
         self.master_index = 0
         self.num_masters: int = 0
+        self.ttStemsV_count: int = 0
+        self.ttStemsH_count: int = 0
         self.read()
 
     def as_dict(self) -> Dict[str, Dict[str, Any]]:
@@ -160,6 +162,13 @@ class Vfb:
                     entry.decompile()
                     if entry.decompiled is not None:
                         self.num_masters = entry.decompiled
+                        entry.decompiled = None
+
+                elif entry.key == "TrueType Stems":
+                    entry.decompile()
+                    if entry.decompiled is not None:
+                        self.ttStemsV_count = len(entry.decompiled.get("ttStemsV", []))
+                        self.ttStemsH_count = len(entry.decompiled.get("ttStemsH", []))
                         entry.decompiled = None
 
                 if entry.key not in self.drop_keys:

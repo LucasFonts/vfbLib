@@ -210,7 +210,11 @@ class VfbEntry(BaseParser):
 
         try:
             self.decompiled = self.parser().parse(
-                BytesIO(self.data), size=self.size, master_count=self.vfb.num_masters
+                BytesIO(self.data),
+                size=self.size,
+                master_count=self.vfb.num_masters,
+                ttStemsV_count=self.vfb.ttStemsV_count,
+                ttStemsH_count=self.vfb.ttStemsH_count,
             )
         except:  # noqa: E722
             logger.error(f"Parse error for data: {self.key}; {hexStr(self.data)}")
