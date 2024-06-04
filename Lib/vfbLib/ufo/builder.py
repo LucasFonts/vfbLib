@@ -25,6 +25,10 @@ from vfbLib.ufo.kerning import UfoKerning
 from vfbLib.ufo.paths import UfoMasterGlyph
 from vfbLib.ufo.tth import TTGlyphHints, transform_stem_rounds
 from vfbLib.ufo.typing import (
+    TUfoRawStemsDict,
+    TUfoStemDict,
+    TUfoStemPPMDict,
+    TUfoStemPPM1Dict,
     TUfoStemPPMsDict,
     TUfoStemsDict,
     TUfoTTZoneDict,
@@ -198,45 +202,63 @@ class VfbToUfoBuilder:
         self.current_glyph.lib["com.fontlab.v5.background"] = data
 
     def set_tt_stem_ppms(self, data: dict[str, list[dict[str, Any]]]) -> None:
+        """Set the TT stem PPMs for stem widths of 2 to 5 pixels.
+
+        Args:
+            data (dict[str, list[dict[str, Any]]]): The raw data.
+        """
         for d in ("ttStemsH", "ttStemsV"):
             direction_stems = data[d]
             for ds in direction_stems:
-                rounds = transform_stem_rounds(ds["round"], d)
-                stem = {
-                    "index": ds["stem"],
-                    "round": rounds,
-                }
+                index = ds["stem"]
+                # We can only show an index, self.stems is not filled yet
+                name = f"{d[-1]}#{index}"
+                rounds = transform_stem_rounds(ds["round"], name)
+                stem: TUfoStemPPMDict = {"index": index, "round": rounds}
                 self.stem_ppms[d].append(stem)
 
-    def set_tt_stem_ppms_1(
-        self, data: dict[str, list[dict[str, int | dict[str, int]]]]
-    ) -> None:
+    def set_tt_stem_ppms_1(self, data: TUfoStemPPMsDict) -> None:
+        """Set the TT stem PPMs for stem width of 1 pixel.
+
+        Args:
+            data (dict[str, list[dict[str, int  |  dict[str, int]]]]): _description_
+        """
         for d in ("ttStemsH", "ttStemsV"):
             direction_stems = data[d]
             for ds in direction_stems:
                 round_dict = self.stem_ppms[d][ds["stem"]]["round"]
                 round_dict[str(ds["round"]["1"])] = 1
 
-    def set_tt_stems(self, data) -> None:
+    def set_tt_stems(self, data: TUfoRawStemsDict) -> None:
         for d in ("ttStemsH", "ttStemsV"):
             direction_stems = data[d]
             for i, ds in enumerate(direction_stems):
+                # The rounding ppm value for 6 pixels is stored right here. We must
+                #  re-add it to the dict later
                 r = ds["round"]
                 rk = list(r.keys())[0]
                 rv = str(r[rk])
+
+                # Take the other rounding ppm values (2-5) from self.stem_ppms
                 stem_ppms = self.stem_ppms[d][i]
                 assert i == stem_ppms["index"]
-                stem = {
+
+                # Build the final stem dict
+                stem: TUfoStemDict = {
                     "horizontal": d == "ttStemsV",
                     "width": ds["value"],
                     "name": ds["name"],
                     "round": stem_ppms["round"],
                 }
+
+                # Re-add the rounding ppm value for 6 pixels
                 if rv in stem["round"]:
-                    logger.error(
-                        f"Error in stem rounding settings for {d}, duplicate ppm {rv}."
+                    logger.warning(
+                        f"Duplicate rounding ppm {rv} in TT stem {d[-1]}#{i}, "
+                        f"choosing bigger value {rk}px over {stem['round'][rv]}px."
                     )
                 stem["round"][rv] = int(rk)
+
                 self.stems[d].append(stem)
 
     def set_tt_zones(self, data: dict[str, list]) -> None:

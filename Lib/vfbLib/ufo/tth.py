@@ -64,15 +64,34 @@ def tt_cmd_dict_to_xml(tt_dict: dict[str, Any]) -> str:
 
 
 def transform_stem_rounds(data: dict[str, int], name: str) -> dict[str, int]:
+    """Transform the format of the stem rounding dict to fit the UFO output format, i.e.
+    exchange key and value.
+
+    Args:
+        data (dict[str, int]): The stem rounding data
+        name (str): A name that will be shown if there is any error.
+
+    Returns:
+        dict[str, int]: The transformed stem rounding dict.
+    """
     d = {}
     for k, v in data.items():
         key = str(v)
         val = int(k)
         if key in d:
-            logger.error(
-                f"Error in stem rounding settings for {name}, duplicate ppm {key}."
-            )
-        d[key] = val
+            if val > v:
+                logger.warning(
+                    f"Duplicate rounding ppm {key} in TT stem {name}, "
+                    f"choosing bigger value {val}px over {d[key]}px. {data}"
+                )
+                d[key] = val
+            else:
+                logger.warning(
+                    f"Duplicate rounding ppm {key} in TT stem {name}, "
+                    f"keeping value {d[key]}px, ignoring {val}px. {data}"
+                )
+        else:
+            d[key] = val
     return d
 
 

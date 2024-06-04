@@ -28,19 +28,47 @@ UfoContour = list[UfoSegment]
 TUfoTTZonesDict = dict[str, TUfoTTZoneDict]
 
 
+class TUfoRawStemDict(TypedDict):
+    name: str
+    round: dict[str, int]
+    value: int
+
+
+class TUfoRawStemsDict(TypedDict):
+    ttStemsH: list[TUfoRawStemDict]
+    ttStemsV: list[TUfoRawStemDict]
+
+
 class TUfoGaspRecDict(TypedDict):
     rangeMaxPPEM: int
     rangeGaspBehavior: list[int]
 
 
+class TUfoStemDict(TypedDict):
+    horizontal: bool
+    name: str
+    round: dict[str, int]
+    width: int
+
+
 class TUfoStemsDict(TypedDict):
-    ttStemsH: list
-    ttStemsV: list
+    ttStemsH: list[TUfoStemDict]
+    ttStemsV: list[TUfoStemDict]
+
+
+class TUfoStemPPMDict(TypedDict):
+    index: int
+    round: dict[str, int]
+
+
+class TUfoStemPPM1Dict(TypedDict):
+    index: int
+    round: dict[str, int]
 
 
 class TUfoStemPPMsDict(TypedDict):
-    ttStemsH: list
-    ttStemsV: list
+    ttStemsH: list[TUfoStemPPMDict]
+    ttStemsV: list[TUfoStemPPMDict]
 
 
 class UfoGuide(TypedDict):
