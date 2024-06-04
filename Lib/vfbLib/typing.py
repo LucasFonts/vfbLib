@@ -6,7 +6,7 @@ from __future__ import annotations
 # except ImportError:
 from typing_extensions import NotRequired, TypedDict
 
-from typing import Any, Dict, List, Literal, Tuple
+from typing import Any, Literal, Tuple
 
 
 Point = Tuple[int, int]
@@ -20,40 +20,40 @@ class Anchor(TypedDict):
     y1: NotRequired[int]
 
 
-ClassFlagDict = Dict[str, Tuple[int, int]]
+ClassFlagDict = dict[str, Tuple[int, int]]
 
 
 class Component(TypedDict):
     gid: int
-    offsetX: List[int]
-    offsetY: List[int]
-    scaleX: List[float]
-    scaleY: List[float]
+    offsetX: list[int]
+    offsetY: list[int]
+    scaleX: list[float]
+    scaleY: list[float]
 
 
-GaspList = List[Dict[str, int]]
+GaspList = list[dict[str, int]]
 
 
 class GdefDict(TypedDict):
-    anchors: NotRequired[List[Anchor]]
-    carets: NotRequired[List[Tuple[int, int]]]
+    anchors: NotRequired[list[Anchor]]
+    carets: NotRequired[list[tuple[int, int]]]
     glyph_class: NotRequired[str]
-    unknown: NotRequired[List[int]]
+    unknown: NotRequired[list[int]]
 
 
 class GlyphData(TypedDict):
-    components: NotRequired[List[Component]]
+    components: NotRequired[list[Component]]
     # constants: NotRequired[Tuple[Any, ...]]
     guides: NotRequired[GuideDict]
     hints: NotRequired[HintDict]
     imported: NotRequired[Any]  # FIXME
-    kerning: NotRequired[Dict[int, List[int]]]
-    metrics: NotRequired[List[Point]]
+    kerning: NotRequired[dict[int, list[int]]]
+    metrics: NotRequired[list[Point]]
     name: NotRequired[str]
-    nodes: NotRequired[List[MMNode]]
+    nodes: NotRequired[list[MMNode]]
     num_masters: NotRequired[int]
     # num_node_values: NotRequired[int]
-    tth: NotRequired[List[Instruction]]
+    tth: NotRequired[list[Instruction]]
 
 
 class Guide(TypedDict):
@@ -61,12 +61,12 @@ class Guide(TypedDict):
     pos: int
 
 
-GuideList = List[Guide]
+GuideList = list[Guide]
 
 
 class GuideDict(TypedDict):
-    h: List[GuideList]
-    v: List[GuideList]
+    h: list[GuideList]
+    v: list[GuideList]
 
 
 class GuideProperty(TypedDict):
@@ -75,7 +75,7 @@ class GuideProperty(TypedDict):
     name: NotRequired[str]
 
 
-GuidePropertyList = List[GuideProperty]
+GuidePropertyList = list[GuideProperty]
 
 
 class Hint(TypedDict):
@@ -84,9 +84,9 @@ class Hint(TypedDict):
 
 
 class HintDict(TypedDict):
-    h: List[List[Hint]]
-    v: List[List[Hint]]
-    hintmasks: NotRequired[List[Dict[str, int]]]
+    h: list[list[Hint]]
+    v: list[list[Hint]]
+    hintmasks: NotRequired[list[dict[str, int]]]
 
 
 HintTuple = Tuple[str, int, int]
@@ -94,12 +94,12 @@ HintTuple = Tuple[str, int, int]
 
 class Instruction(TypedDict):
     cmd: str
-    params: Dict[str, int]
+    params: dict[str, int]
 
 
 class LinkDict(TypedDict):
-    x: NotRequired[List[Tuple[int, int]]]
-    y: NotRequired[List[Tuple[int, int]]]
+    x: NotRequired[list[tuple[int, int]]]
+    y: NotRequired[list[tuple[int, int]]]
 
 
 class MaskData(GlyphData):
@@ -108,21 +108,21 @@ class MaskData(GlyphData):
 
 
 class MMAnchor(TypedDict):
-    x: List[int]
-    y: List[int]
+    x: list[int]
+    y: list[int]
 
 
 class MMHintsDict(TypedDict):
-    h: List[List[Hint]]
-    v: List[List[Hint]]
+    h: list[list[Hint]]
+    v: list[list[Hint]]
 
 
 class MMNode(TypedDict):
     flags: int
-    points: List[List[Point]]
+    points: list[list[Point]]
     type: Literal["move", "line", "curve", "qcurve"]
 
 
 class TTCommandDict(TypedDict):
     name: str
-    params: List[str]
+    params: list[str]

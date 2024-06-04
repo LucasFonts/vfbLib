@@ -1,10 +1,9 @@
 from __future__ import annotations
 
-from typing import Dict
 from vfbLib.typing import TTCommandDict
 
 
-TT_COMMANDS: Dict[int, TTCommandDict] = {
+TT_COMMANDS: dict[int, TTCommandDict] = {
     0x01: {"name": "AlignTop", "params": ["pt", "zone"]},
     0x02: {"name": "AlignBottom", "params": ["pt", "zone"]},
     0x03: {
