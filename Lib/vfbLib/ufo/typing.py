@@ -57,12 +57,7 @@ class TUfoStemsDict(TypedDict):
 
 
 class TUfoStemPPMDict(TypedDict):
-    index: int
-    round: dict[str, int]
-
-
-class TUfoStemPPM1Dict(TypedDict):
-    index: int
+    stem: int
     round: dict[str, int]
 
 

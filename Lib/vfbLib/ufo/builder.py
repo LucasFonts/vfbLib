@@ -28,7 +28,6 @@ from vfbLib.ufo.typing import (
     TUfoRawStemsDict,
     TUfoStemDict,
     TUfoStemPPMDict,
-    TUfoStemPPM1Dict,
     TUfoStemPPMsDict,
     TUfoStemsDict,
     TUfoTTZoneDict,
@@ -201,11 +200,11 @@ class VfbToUfoBuilder:
         assert self.current_glyph is not None
         self.current_glyph.lib["com.fontlab.v5.background"] = data
 
-    def set_tt_stem_ppms(self, data: dict[str, list[dict[str, Any]]]) -> None:
+    def set_tt_stem_ppms(self, data: TUfoStemPPMsDict) -> None:
         """Set the TT stem PPMs for stem widths of 2 to 5 pixels.
 
         Args:
-            data (dict[str, list[dict[str, Any]]]): The raw data.
+            data (TUfoStemPPMsDict): The raw data.
         """
         for d in ("ttStemsH", "ttStemsV"):
             direction_stems = data[d]
@@ -214,20 +213,29 @@ class VfbToUfoBuilder:
                 # We can only show an index, self.stems is not filled yet
                 name = f"{d[-1]}#{index}"
                 rounds = transform_stem_rounds(ds["round"], name)
-                stem: TUfoStemPPMDict = {"index": index, "round": rounds}
+                stem: TUfoStemPPMDict = {"stem": index, "round": rounds}
                 self.stem_ppms[d].append(stem)
 
     def set_tt_stem_ppms_1(self, data: TUfoStemPPMsDict) -> None:
         """Set the TT stem PPMs for stem width of 1 pixel.
 
         Args:
-            data (dict[str, list[dict[str, int  |  dict[str, int]]]]): _description_
+            data (TUfoStemPPMDict): The raw data.
         """
         for d in ("ttStemsH", "ttStemsV"):
             direction_stems = data[d]
             for ds in direction_stems:
                 round_dict = self.stem_ppms[d][ds["stem"]]["round"]
-                round_dict[str(ds["round"]["1"])] = 1
+                ppm = "1"
+                ppm1 = str(ds["round"][ppm])
+                if ppm1 in round_dict:
+                    logger.warning(
+                        f"Duplicate rounding ppm {ppm1} in TT stem {d[-1]}#{ds['stem']}"
+                        f", keeping value {round_dict[ppm1]}px over {ppm}px, "
+                        f"which may not be what you want. {round_dict}"
+                    )
+                else:
+                    round_dict[ppm1] = 1
 
     def set_tt_stems(self, data: TUfoRawStemsDict) -> None:
         for d in ("ttStemsH", "ttStemsV"):
@@ -241,7 +249,7 @@ class VfbToUfoBuilder:
 
                 # Take the other rounding ppm values (2-5) from self.stem_ppms
                 stem_ppms = self.stem_ppms[d][i]
-                assert i == stem_ppms["index"]
+                assert i == stem_ppms["stem"]
 
                 # Build the final stem dict
                 stem: TUfoStemDict = {
