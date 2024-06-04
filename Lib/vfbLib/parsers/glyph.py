@@ -6,7 +6,7 @@ from fontTools.misc.textTools import hexStr  # , num2binary
 from fontTools.ttLib.tables.ttProgram import Program
 from io import BytesIO
 from struct import unpack
-from typing import Any, Dict, List, Literal
+from typing import Any, Literal
 from vfbLib.parsers.base import BaseParser, read_encoded_value
 from vfbLib.parsers.guides import parse_guides
 from vfbLib.truetype import TT_COMMANDS
@@ -42,11 +42,11 @@ QCURVE = 4
 
 
 def read_absolute_point(
-    points: List[List[Any]],
+    points: list[list[Any]],
     stream,
     num_masters: int,
-    x_masters: List[int],
-    y_masters: List[int],
+    x_masters: list[int],
+    y_masters: list[int],
 ):
     # Read coordinates for all masters from stream, add the points to a list
     # of points per master. Keep track of the relative coordinates reference
@@ -61,7 +61,7 @@ def read_absolute_point(
 
 
 class GlyphAnchorsParser(BaseParser):
-    def _parse(self) -> List[MMAnchor]:
+    def _parse(self) -> list[MMAnchor]:
         stream = self.stream
         anchors = []
         num_anchors = read_encoded_value(stream)
@@ -76,7 +76,7 @@ class GlyphAnchorsParser(BaseParser):
 
 
 class GlyphAnchorsSuppParser(BaseParser):
-    def _parse(self) -> List:
+    def _parse(self) -> list:
         stream = self.stream
         anchors = []
         num_anchors = read_encoded_value(stream)
@@ -144,7 +144,7 @@ class GlyphGDEFParser(BaseParser):
 
 
 class GlyphOriginParser(BaseParser):
-    def _parse(self) -> Dict[str, Any]:
+    def _parse(self) -> dict[str, Any]:
         stream = self.stream
         x = int.from_bytes(stream.read(2), signed=True, byteorder="little")
         y = int.from_bytes(stream.read(2), signed=True, byteorder="little")
@@ -162,7 +162,7 @@ class GlyphParser(BaseParser):
 
     def parse_binary(self, stream: BytesIO, glyphdata: GlyphData) -> None:
         # Imported binary TrueType data
-        imported: Dict[str, Any] = {}
+        imported: dict[str, Any] = {}
         while True:
             key = self.read_uint8()
 
@@ -254,7 +254,7 @@ class GlyphParser(BaseParser):
 
         num_hintmasks = read_encoded_value(stream)
         if num_hintmasks > 0:
-            hintmasks: List[Dict[str, int]] = []
+            hintmasks: list[dict[str, int]] = []
             for i in range(num_hintmasks):
                 k = self.read_uint8(stream)
                 val = read_encoded_value(stream)
@@ -286,7 +286,7 @@ class GlyphParser(BaseParser):
         # we don't use it
         _ = read_encoded_value(stream)
         num_commands = read_encoded_value(stream)
-        commands: List[Instruction] = []
+        commands: list[Instruction] = []
         for i in range(num_commands):
             cmd = self.read_uint8(stream)
             params = [
@@ -309,7 +309,7 @@ class GlyphParser(BaseParser):
     def parse_metrics(
         self, stream: BytesIO, glyphdata: GlyphData, num_masters=1
     ) -> None:
-        metrics: List[Point] = []
+        metrics: list[Point] = []
         for _ in range(num_masters):
             master_metrics = (
                 read_encoded_value(stream),
@@ -328,7 +328,7 @@ class GlyphParser(BaseParser):
         # glyphdata["num_node_values"] = num_node_values
 
         num_nodes = read_encoded_value(stream)
-        segments: List[MMNode] = []
+        segments: list[MMNode] = []
         x = [0 for _ in range(num_masters)]
         y = [0 for _ in range(num_masters)]
 
@@ -341,7 +341,7 @@ class GlyphParser(BaseParser):
             # logger.debug(f"    {i}: {segment_type}, flags: {flags}")
 
             # End point
-            points: List[List[Point]] = [[] for _ in range(num_masters)]
+            points: list[list[Point]] = [[] for _ in range(num_masters)]
             read_absolute_point(points, stream, num_masters, x, y)
 
             if cmd == CURVE:
@@ -371,7 +371,7 @@ class GlyphParser(BaseParser):
             kerning[gid] = values
         glyphdata["kerning"] = kerning
 
-    def _parse(self) -> Dict[str, Any]:
+    def _parse(self) -> dict[str, Any]:
         """
         01090701
         01  92[7]2e 6e 6f 74 64 65 66 # Glyph name
@@ -460,7 +460,7 @@ class GlyphParser(BaseParser):
 
 
 class GlyphUnicodeParser(BaseParser):
-    def _parse(self) -> List:
+    def _parse(self) -> list:
         unicodes = []
         for _ in range(self.stream.getbuffer().nbytes // 2):
             u = self.read_uint16(self.stream)
@@ -469,7 +469,7 @@ class GlyphUnicodeParser(BaseParser):
 
 
 class GlyphUnicodeSuppParser(BaseParser):
-    def _parse(self) -> List:
+    def _parse(self) -> list:
         unicodes = []
         for _ in range(self.stream.getbuffer().nbytes // 4):
             u = self.read_uint32(self.stream)
@@ -478,7 +478,7 @@ class GlyphUnicodeSuppParser(BaseParser):
 
 
 class LinkParser(BaseParser):
-    def _parse(self) -> Dict[str, Any]:
+    def _parse(self) -> dict[str, Any]:
         s = self.stream
         links = LinkDict(x=[], y=[])
         for i in range(2):
@@ -491,7 +491,7 @@ class LinkParser(BaseParser):
 
 
 class MaskParser(GlyphParser):
-    def _parse(self) -> Dict[str, Any]:
+    def _parse(self) -> dict[str, Any]:
         s = self.stream
         num = read_encoded_value(s)
         maskdata = MaskData(num=num)

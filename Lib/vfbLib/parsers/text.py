@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import logging
 
-from typing import Dict, List
 from vfbLib.parsers.base import BaseParser, read_encoded_value
 
 
@@ -44,7 +43,7 @@ class OpenTypeClassParser(BaseParser):
     OpenType class
     """
 
-    def _parse(self) -> Dict[str, List[str] | str]:
+    def _parse(self) -> dict[str, list[str] | str]:
         s = self.stream.read().decode(self.encoding).strip("\u0000 ")
         if ":" not in s:
             logger.warning(f"Malformed OpenType class: {s}")
@@ -66,7 +65,7 @@ class OpenTypeStringParser(BaseParser):
     A parser that reads data as a strings and returns it as a list.
     """
 
-    def _parse(self) -> List[str]:
+    def _parse(self) -> list[str]:
         s = self.stream.read().decode(self.encoding).strip("\u0000 ")
         # Filter more than 2 consecutive empty lines
         lines = []

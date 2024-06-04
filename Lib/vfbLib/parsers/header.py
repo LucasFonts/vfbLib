@@ -3,7 +3,7 @@ from __future__ import annotations
 import logging
 
 from io import BufferedReader
-from typing import Any, Dict, Tuple
+from typing import Any
 from vfbLib.parsers.base import read_encoded_value, uint8, uint16
 
 
@@ -13,9 +13,9 @@ logger = logging.getLogger(__name__)
 class VfbHeaderParser:
     stream: BufferedReader | None = None
 
-    def parse(self, stream: BufferedReader) -> Tuple[Dict[str, Any], int]:
+    def parse(self, stream: BufferedReader) -> tuple[dict[str, Any], int]:
         self.stream = stream
-        header: Dict[str, Any] = {}
+        header: dict[str, Any] = {}
         header["header0"] = self.read_uint8()
         header["filetype"] = self.stream.read(5).decode("cp1252")
         header["header1"] = self.read_uint16()

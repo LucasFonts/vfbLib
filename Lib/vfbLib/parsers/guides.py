@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import logging
 
-from typing import TYPE_CHECKING, List, Literal, Sequence
+from typing import TYPE_CHECKING, Literal, Sequence
 from math import atan2, degrees
 from vfbLib.parsers.base import BaseParser, read_encoded_value
 from vfbLib.typing import Guide, GuideDict, GuideProperty
@@ -43,7 +43,7 @@ class GlobalGuidesParser(BaseParser):
 
 
 class GuidePropertiesParser(BaseParser):
-    def _parse(self) -> List:
+    def _parse(self) -> list:
         stream = self.stream
         guides = []
         for _ in range(2):

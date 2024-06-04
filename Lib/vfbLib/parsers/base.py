@@ -5,7 +5,7 @@ import logging
 from fontTools.misc.textTools import hexStr
 from io import BufferedReader, BytesIO
 from struct import unpack
-from typing import TYPE_CHECKING, Any, Dict, List
+from typing import TYPE_CHECKING, Any
 from vfbLib.parsers.value import read_doubles, read_encoded_value, read_floats
 
 if TYPE_CHECKING:
@@ -96,7 +96,7 @@ class BaseParser:
 class EncodedKeyValuesParser(BaseParser):
     __end__ = 0x64
 
-    def _parse(self) -> List[Dict[int, int]]:
+    def _parse(self) -> list[dict[int, int]]:
         values = []
         while True:
             key = self.read_uint8()
@@ -129,7 +129,7 @@ class EncodedValueListParser(BaseParser):
     A parser that reads data as Yuri's optimized encoded values.
     """
 
-    def _parse(self) -> List[int]:
+    def _parse(self) -> list[int]:
         values = []
         while True:
             try:
@@ -146,9 +146,9 @@ class EncodedValueListWithCountParser(BaseParser):
     preceded by a count value that specifies how many values should be read.
     """
 
-    def _parse(self) -> Dict[str, List[int]]:
+    def _parse(self) -> dict[str, list[int]]:
         count = read_encoded_value(self.stream)
-        values: Dict[str, List[int]] = {"values": []}
+        values: dict[str, list[int]] = {"values": []}
         for _ in range(count):
             val = read_encoded_value(self.stream)
             values["values"].append(val)

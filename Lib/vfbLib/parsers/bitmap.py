@@ -6,14 +6,14 @@ from fontTools.misc.textTools import num2binary
 
 # from math import log2
 # from struct import unpack
-from typing import Any, Dict, List
+from typing import Any
 from vfbLib.parsers.base import BaseParser, read_encoded_value
 
 
 logger = logging.getLogger(__name__)
 
 
-def pprint_bitmap(bitmap, invert=False) -> List[str]:
+def pprint_bitmap(bitmap, invert=False) -> list[str]:
     print(bitmap)
     w, h = bitmap["size_pixels"]
     data = bitmap["data"]
@@ -48,8 +48,8 @@ def pprint_bitmap(bitmap, invert=False) -> List[str]:
 
 
 class BaseBitmapParser(BaseParser):
-    def parse_bitmap_data(self, datalen) -> Dict[str, Any]:
-        bitmap: Dict[str, Any] = {}
+    def parse_bitmap_data(self, datalen) -> dict[str, Any]:
+        bitmap: dict[str, Any] = {}
         if datalen < 2:
             logger.error("parse_bitmap_data: Got datalen", datalen)
             raise ValueError
@@ -76,9 +76,9 @@ class BaseBitmapParser(BaseParser):
 
 
 class BackgroundBitmapParser(BaseBitmapParser):
-    def _parse(self) -> Dict[str, Any]:
+    def _parse(self) -> dict[str, Any]:
         s = self.stream
-        bitmap: Dict[str, Any] = {}
+        bitmap: dict[str, Any] = {}
         bitmap["origin"] = (read_encoded_value(s), read_encoded_value(s))
         bitmap["size_units"] = (read_encoded_value(s), read_encoded_value(s))
         bitmap["size_pixels"] = (read_encoded_value(s), read_encoded_value(s))
@@ -91,12 +91,12 @@ class BackgroundBitmapParser(BaseBitmapParser):
 
 
 class GlyphBitmapParser(BaseBitmapParser):
-    def _parse(self) -> List[Dict[str, Any]]:
+    def _parse(self) -> list[dict[str, Any]]:
         s = self.stream
-        bitmaps: List[Dict[str, Any]] = []
+        bitmaps: list[dict[str, Any]] = []
         num_bitmaps = read_encoded_value(s)
         for _ in range(num_bitmaps):
-            bitmap: Dict[str, Any] = {}
+            bitmap: dict[str, Any] = {}
             bitmap["ppm"] = read_encoded_value(s)
             bitmap["origin"] = (read_encoded_value(s), read_encoded_value(s))
             bitmap["adv"] = (read_encoded_value(s), read_encoded_value(s))

@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import logging
 
-from typing import Any, Dict, List, Tuple
+from typing import Any
 from vfbLib.parsers.base import BaseParser, read_encoded_value
 
 
@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 
 
 class AnisotropicInterpolationsParser(BaseParser):
-    def _parse(self) -> List[int]:
+    def _parse(self) -> list[int]:
         # The graph used for anisotropic interpolation maps, for all axes.
         assert self.stream is not None
         values = []
@@ -28,7 +28,7 @@ class AnisotropicInterpolationsParser(BaseParser):
 
 
 class AxisMappingsCountParser(BaseParser):
-    def _parse(self) -> List[int]:
+    def _parse(self) -> list[int]:
         # An array of axis mapping counts per axis, for all 4 axes whether they exist
         # or not.
         # 0300 0000  0000 0000  0000 0000  0000 0000
@@ -38,7 +38,7 @@ class AxisMappingsCountParser(BaseParser):
 
 
 class AxisMappingsParser(BaseParser):
-    def _parse(self) -> List[Tuple[float, float]]:
+    def _parse(self) -> list[tuple[float, float]]:
         # 10 pairs of (user, design) coordinates per axis.
         # Look at "Axis Mappings Count" to find out which mappings are used in each
         # axis.
@@ -53,7 +53,7 @@ class AxisMappingsParser(BaseParser):
 
 
 class MasterLocationParser(BaseParser):
-    def _parse(self) -> Tuple[int, Tuple[Any]]:
+    def _parse(self) -> tuple[int, tuple[Any]]:
         # The location on all 4 axes for this master
         assert self.stream is not None
         # FIXME: Might also be 2 uint16:
@@ -63,7 +63,7 @@ class MasterLocationParser(BaseParser):
 
 
 class PrimaryInstancesParser(BaseParser):
-    def _parse(self) -> List[Dict[str, Any]]:
+    def _parse(self) -> list[dict[str, Any]]:
         assert self.stream is not None
         stream = self.stream
         instances = []

@@ -3,7 +3,6 @@ from __future__ import annotations
 import logging
 
 from io import BytesIO
-from typing import Dict, List
 from vfbLib.helpers import binaryToIntList
 from vfbLib.parsers.base import BaseParser, read_encoded_value
 
@@ -20,8 +19,8 @@ class TrueTypeInfoParser(BaseParser):
         self,
         stream: BytesIO,
         num: int,
-        target: List,
-        key_names: Dict[int, str] | None = None,
+        target: list,
+        key_names: dict[int, str] | None = None,
     ):
         if key_names is None:
             key_names = {}
