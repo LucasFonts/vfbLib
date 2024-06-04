@@ -152,11 +152,15 @@ class Vfb:
             except EOFError:
                 break
 
+            # Some info needs to be stored for later access, so we decompile a selection
+            # of entries right here.
+
             if entry is not None:
                 if entry.key == "Master Count":
                     entry.decompile()
-                    self.num_masters = entry.decompiled
-                    entry.decompiled = None
+                    if entry.decompiled is not None:
+                        self.num_masters = entry.decompiled
+                        entry.decompiled = None
 
                 if entry.key not in self.drop_keys:
                     self.entries.append(entry)
