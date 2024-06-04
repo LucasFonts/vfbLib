@@ -2377,11 +2377,25 @@
             }
         },
         {
-            "key": "1524",
-            "decompiled": [
-                0,
-                0
-            ]
+            "key": "TrueType Stem PPEMs 1",
+            "decompiled": {
+                "ttStemsV": [
+                    {
+                        "stem": 0,
+                        "round": {
+                            "1": 0
+                        }
+                    }
+                ],
+                "ttStemsH": [
+                    {
+                        "stem": 0,
+                        "round": {
+                            "1": 0
+                        }
+                    }
+                ]
+            }
         },
         {
             "key": "TrueType Zones",
