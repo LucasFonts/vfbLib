@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import logging
 
-from typing import TYPE_CHECKING, Dict, List, Tuple
+from typing import TYPE_CHECKING
 from vfbLib.ufo.groups import build_glyph_to_group_maps
 
 if TYPE_CHECKING:
@@ -15,10 +15,10 @@ logger = logging.getLogger(__name__)
 class UfoKerning:
     def __init__(
         self,
-        glyph_order: List[str],
+        glyph_order: list[str],
         groups: UfoGroups,
         mm_kerning: UfoMMKerning,
-        key_glyphs: Dict[str, str],
+        key_glyphs: dict[str, str],
     ):
         self.glyph_order = glyph_order
         group_info = build_glyph_to_group_maps(groups)
@@ -42,7 +42,7 @@ class UfoKerning:
         Convert the glyph indices to glyph names. Also solves group kerning
         references.
         """
-        self.mm_kerning_names: Dict[Tuple[str, str], List[int]] = {}
+        self.mm_kerning_names: dict[tuple[str, str], list[int]] = {}
         for pair, values in self.mm_kerning.items():
             L, Rid = pair
             # Make right GID into glyph name
@@ -60,8 +60,8 @@ class UfoKerning:
             self.mm_kerning_names[left, right] = values
 
     def _reverse_key_glyph_dict(
-        self, key_glyphs: Dict[str, str]
-    ) -> Dict[Tuple[int, str], str]:
+        self, key_glyphs: dict[str, str]
+    ) -> dict[tuple[int, str], str]:
         """
         Rebuild the key glyphs dict (group_name: key_ glyph_name) into a reverse dict by
         kerning group side and key glyph to group name.

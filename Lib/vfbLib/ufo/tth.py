@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import logging
 
-from typing import TYPE_CHECKING, Any, Dict, List
+from typing import TYPE_CHECKING, Any
 from vfbLib.ufo.glyph import VfbToUfoGlyph
 from vfbLib.ufo.vfb2ufo import (
     TT_GLYPH_LIB_KEY,
@@ -17,7 +17,7 @@ if TYPE_CHECKING:
 logger = logging.getLogger(__name__)
 
 
-def get_xml_tth(commands) -> List[str]:
+def get_xml_tth(commands) -> list[str]:
     """
     Convert the glyph's list of TTH commands to a list of TTH command xml strings.
     """
@@ -35,7 +35,7 @@ def set_tth_lib(glyph, commands) -> None:
         )
 
 
-def tt_cmd_dict_to_xml(tt_dict: Dict[str, Any]) -> str:
+def tt_cmd_dict_to_xml(tt_dict: dict[str, Any]) -> str:
     """
     Convert the dict tt command into a FontLab XML string.
     """
@@ -63,7 +63,7 @@ def tt_cmd_dict_to_xml(tt_dict: Dict[str, Any]) -> str:
     return cmd
 
 
-def transform_stem_rounds(data: Dict[str, int], name: str) -> Dict[str, int]:
+def transform_stem_rounds(data: dict[str, int], name: str) -> dict[str, int]:
     d = {}
     for k, v in data.items():
         key = str(v)
@@ -80,8 +80,8 @@ class TTGlyphHints:
     def __init__(
         self,
         mm_glyph: VfbToUfoGlyph,
-        data: List[Dict[str, Any]],
-        zone_names: Dict[str, List[str]],
+        data: list[dict[str, Any]],
+        zone_names: dict[str, list[str]],
         stems: TUfoStemsDict,
     ) -> None:
         self.glyph: VfbToUfoGlyph = mm_glyph
@@ -89,13 +89,13 @@ class TTGlyphHints:
         self.zone_names = zone_names
         self.stems = stems
 
-    def get_tt_glyph_hints(self) -> List[Dict[str, str | bool]]:
+    def get_tt_glyph_hints(self) -> list[dict[str, str | bool]]:
         # Build TT hints which into glyph lib and return them.
-        commands: List[Dict[str, str | bool]] = []
+        commands: list[dict[str, str | bool]] = []
         for cmd in self.data:
             code = cmd["cmd"]
             params = cmd["params"]
-            d: Dict[str, str | bool] = {"code": vfb2ufo_command_codes[code]}
+            d: dict[str, str | bool] = {"code": vfb2ufo_command_codes[code]}
             if code in ("AlignBottom", "AlignTop"):
                 d["point"] = self.glyph.get_point_label(params["pt"], code)
                 if code == "AlignBottom":

@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import logging
 
-from typing import TYPE_CHECKING, List
+from typing import TYPE_CHECKING
 from vfbLib.ufo.typing import UfoGuide
 
 if TYPE_CHECKING:
@@ -15,7 +15,7 @@ if TYPE_CHECKING:
 logger = logging.getLogger(__name__)
 
 
-def get_master_guides(mm_guides: GuideDict, master_index: int) -> List[UfoGuide]:
+def get_master_guides(mm_guides: GuideDict, master_index: int) -> list[UfoGuide]:
     # Concatenate guidlines for both directions and extract coords for
     # master_index
     guides = []
@@ -40,7 +40,7 @@ def get_master_guides(mm_guides: GuideDict, master_index: int) -> List[UfoGuide]
 
 
 def apply_guide_properties(
-    guides: List[UfoGuide], properties: GuidePropertyList
+    guides: list[UfoGuide], properties: GuidePropertyList
 ) -> None:
     # Update the guides with names and colors from properties
     num_guides = len(guides)

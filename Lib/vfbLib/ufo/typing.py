@@ -6,7 +6,7 @@ from __future__ import annotations
 # except ImportError:
 from typing_extensions import NotRequired, TypedDict
 
-from typing import Dict, List, Optional, Tuple
+from typing import Optional, Tuple
 from vfbLib.typing import HintTuple
 
 
@@ -15,32 +15,32 @@ class TUfoTTZoneDict(TypedDict):
     top: bool
     width: int
     # Zone index, shift; index must be str to be saved in lib
-    delta: NotRequired[Dict[str, int]]
+    delta: NotRequired[dict[str, int]]
 
 
 UfoPoint = Tuple[int, int]
 UfoComponent = Tuple[str, Tuple[float, float, float, float, int, int]]
-UfoGroups = Dict[str, List[str]]  # name, glyphs
-UfoMasterKerning = Dict[Tuple[str, str], int]  # Lstr, Rstr, value
-UfoMMKerning = Dict[Tuple[str, int], List[int]]  # Lstr, Rid, master values
+UfoGroups = dict[str, list[str]]  # name, glyphs
+UfoMasterKerning = dict[Tuple[str, str], int]  # Lstr, Rstr, value
+UfoMMKerning = dict[Tuple[str, int], list[int]]  # Lstr, Rid, master values
 UfoSegment = Tuple[Optional[str], bool, Optional[str], UfoPoint]
-UfoContour = List[UfoSegment]
-TUfoTTZonesDict = Dict[str, TUfoTTZoneDict]
+UfoContour = list[UfoSegment]
+TUfoTTZonesDict = dict[str, TUfoTTZoneDict]
 
 
 class TUfoGaspRecDict(TypedDict):
     rangeMaxPPEM: int
-    rangeGaspBehavior: List[int]
+    rangeGaspBehavior: list[int]
 
 
 class TUfoStemsDict(TypedDict):
-    ttStemsH: List
-    ttStemsV: List
+    ttStemsH: list
+    ttStemsV: list
 
 
 class TUfoStemPPMsDict(TypedDict):
-    ttStemsH: List
-    ttStemsV: List
+    ttStemsH: list
+    ttStemsV: list
 
 
 class UfoGuide(TypedDict):
@@ -52,11 +52,11 @@ class UfoGuide(TypedDict):
 
 
 class UfoHintingV2(TypedDict):
-    flexList: NotRequired[List]
-    hintSetList: NotRequired[List[UfoHintSet]]
+    flexList: NotRequired[list]
+    hintSetList: NotRequired[list[UfoHintSet]]
     id: NotRequired[str]
 
 
 class UfoHintSet(TypedDict):
     pointTag: str
-    stems: List[str | HintTuple]
+    stems: list[str | HintTuple]

@@ -6,7 +6,7 @@ import xml.etree.cElementTree as elementTree
 
 from vfbLib.ufo.typing import UfoHintingV2, UfoHintSet
 from vfbLib.ufo.vfb2ufo import PS_GLYPH_LIB_KEY
-from typing import TYPE_CHECKING, Dict, List, Tuple
+from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from vfbLib.typing import Hint, HintTuple
@@ -17,7 +17,7 @@ if TYPE_CHECKING:
 logger = logging.getLogger(__name__)
 
 
-def normalize_hint(hint: Tuple[str, int, int]):
+def normalize_hint(hint: tuple[str, int, int]):
     direction, pos, width = hint
     if width < 0:
         if width not in (-21, -20):  # Skip ghost hints
@@ -33,14 +33,14 @@ def normalize_hint_dict(hint: Hint, name: str = "dummy"):
 def build_ps_glyph_hints(
     mmglyph: VfbToUfoGlyph,
     glyph: UfoMasterGlyph,
-    master_hints: Dict[str, List[str | HintTuple]],
+    master_hints: dict[str, list[str | HintTuple]],
 ) -> None:
     # Set the master-specific hints from data to the glyph lib
     # Use the format defined in UFO3, not what FL does.
     # https://github.com/adobe-type-tools/psautohint/blob/master/python/psautohint/ufoFont.py
     # https://unifiedfontobject.org/versions/ufo3/glyphs/glif/#publicpostscripthints
     hint_sets = []
-    stems: List[str | HintTuple] = []
+    stems: list[str | HintTuple] = []
     hint_set: UfoHintSet = UfoHintSet(pointTag="0", stems=stems)
     if mmglyph.hintmasks:
         for mask in mmglyph.hintmasks:
@@ -104,8 +104,8 @@ def build_ps_glyph_hints(
 
 def get_master_hints(
     mmglyph: VfbToUfoGlyph, master_index=0
-) -> Dict[str, List[str | HintTuple]]:
-    hints: Dict[str, List[str | HintTuple]] = {"h": [], "v": []}
+) -> dict[str, list[str | HintTuple]]:
+    hints: dict[str, list[str | HintTuple]] = {"h": [], "v": []}
 
     # Hints
     for d in "hv":
@@ -165,7 +165,7 @@ def update_adobe_hinting(data) -> UfoHintingV2:
     }
     root = elementTree.fromstring(data)
     hintset: UfoHintSet | None = None
-    hintSetList: List[UfoHintSet] = []
+    hintSetList: list[UfoHintSet] = []
     for el in root.iter():
         if el.tag == "hintSetList":
             hintSetList = []

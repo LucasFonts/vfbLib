@@ -4,7 +4,7 @@ import logging
 
 from base64 import b64encode
 from copy import deepcopy
-from typing import Any, Dict, List, TYPE_CHECKING
+from typing import Any, TYPE_CHECKING
 from vfbLib.ufo.guides import apply_guide_properties, get_master_guides
 from vfbLib.ufo.pshints import build_ps_glyph_hints, get_master_hints
 from vfbLib.ufo.tth import set_tth_lib
@@ -24,24 +24,24 @@ class UfoMasterGlyph:
     def __init__(
         self,
         mm_glyph: VfbToUfoGlyph,
-        glyph_order: List[str],
+        glyph_order: list[str],
         master_index: int,
     ) -> None:
         self.mm_glyph = mm_glyph
         self.glyph_order = glyph_order
         self.master_index = master_index
 
-        self.lib: Dict[str, Any] = {}
-        self.anchors: List[Anchor] = []
-        self.guidelines: List = []
-        self.unicodes: List[int] = []
+        self.lib: dict[str, Any] = {}
+        self.anchors: list[Anchor] = []
+        self.guidelines: list = []
+        self.unicodes: list[int] = []
         self.width: int = 0
         self.height: int = 0
 
-        self.components: List[UfoComponent] = []
-        self.contours: List[UfoContour] = []
-        self.rename_points: Dict[str, str] = {}
-        self.tth_commands: List[Dict[str, str | bool]] = []
+        self.components: list[UfoComponent] = []
+        self.contours: list[UfoContour] = []
+        self.rename_points: dict[str, str] = {}
+        self.tth_commands: list[dict[str, str | bool]] = []
 
     @property
     def name(self) -> str | None:

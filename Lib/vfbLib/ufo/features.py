@@ -1,10 +1,9 @@
 from __future__ import annotations
 
 from re import search
-from typing import List
 
 
-def rename_kern_classes_in_feature_code(data: List[str]) -> List[str]:
+def rename_kern_classes_in_feature_code(data: list[str]) -> list[str]:
     """
     Convert references to kerning classes in the feature code to current UFO naming
     standards (public.kern1, public.kern2).

@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import logging
 
-from typing import TYPE_CHECKING, Dict, List, Tuple
+from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from vfbLib.typing import ClassFlagDict
@@ -15,16 +15,16 @@ logger = logging.getLogger(__name__)
 def transform_groups(
     orig_groups: UfoGroups,
     kerning_class_flags: ClassFlagDict,
-    glyphOrder: List[str],
+    glyphOrder: list[str],
     skip_missing_group_glyphs: bool = False,
-) -> Tuple[UfoGroups, List[str], Dict[str, str]]:
+) -> tuple[UfoGroups, list[str], dict[str, str]]:
     # Rename kerning groups by applying the side flags and using the public.kern prefix.
     # Remove missing glyphs from groups if requested.
     FIRST = 2**10
     SECOND = 2**11
     groups: UfoGroups = {}
     group_order = []
-    key_glyphs: Dict[str, str] = {}
+    key_glyphs: dict[str, str] = {}
     for name, glyphs in orig_groups.items():
         # Check for missing glyphs
         missing = [n for n in glyphs if n not in glyphOrder]
@@ -94,9 +94,9 @@ def transform_groups(
 
 def build_glyph_to_group_maps(
     groups: UfoGroups,
-) -> Tuple[UfoGroups, Dict[str, str], Dict[str, str]]:
-    glyph_group_1: Dict[str, str] = {}
-    glyph_group_2: Dict[str, str] = {}
+) -> tuple[UfoGroups, dict[str, str], dict[str, str]]:
+    glyph_group_1: dict[str, str] = {}
+    glyph_group_2: dict[str, str] = {}
     for group in groups.items():
         name, glyphs = group
         if name.startswith("public.kern1"):
@@ -122,7 +122,7 @@ def build_glyph_to_group_maps(
     return groups, glyph_group_1, glyph_group_2
 
 
-def _build_groups(glyph_to_group_mapping: Dict[str, str]) -> UfoGroups:
+def _build_groups(glyph_to_group_mapping: dict[str, str]) -> UfoGroups:
     groups: UfoGroups = {}
     for name, group in glyph_to_group_mapping.items():
         if group in groups:
@@ -133,7 +133,7 @@ def _build_groups(glyph_to_group_mapping: Dict[str, str]) -> UfoGroups:
 
 
 def rebuild_kerning_groups(
-    groups: UfoGroups, glyph_group_1: Dict[str, str], glyph_group_2: Dict[str, str]
+    groups: UfoGroups, glyph_group_1: dict[str, str], glyph_group_2: dict[str, str]
 ) -> UfoGroups:
     """
     Rebuild the kerning groups from the left and right side glyph to group mappings.

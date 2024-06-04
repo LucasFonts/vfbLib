@@ -3,7 +3,7 @@ from __future__ import annotations
 import logging
 
 from functools import cached_property
-from typing import TYPE_CHECKING, List, Tuple
+from typing import TYPE_CHECKING
 from ufoLib2.objects.info import Info, WidthClass
 from vfbLib.helpers import binaryToIntList
 from vfbLib.ufo.time import convert_timestamp
@@ -20,23 +20,23 @@ logger = logging.getLogger(__name__)
 
 class VfbToUfoInfo(Info):
     def __init__(self) -> None:
-        super(VfbToUfoInfo, self).__init__()
+        super().__init__()
         # Chance to set some defaults that should always be written
         self.familyName = "Untitled"
-        self.guidelines: List[UfoGuide] = []
+        self.guidelines: list[UfoGuide] = []
         self.italicAngle: float | int = 0
-        self.openTypeGaspRangeRecords: List[TUfoGaspRecDict] = []
+        self.openTypeGaspRangeRecords: list[TUfoGaspRecDict] = []
         self.openTypeHeadCreated: str | None = None
-        self.openTypeHeadFlags: List[int] = []
+        self.openTypeHeadFlags: list[int] = []
         self.openTypeHheaLineGap = 0
         self.openTypeHeadLowestRecPPEM = 0
         self.openTypeNameDescription = ""
         self.openTypeNamePreferredFamilyName = ""
         self.openTypeNamePreferredSubfamilyName = ""
-        self.openTypeNameRecords: List | None = None
+        self.openTypeNameRecords: list | None = None
         self.openTypeNameSampleText = ""
         self.openTypeOS2FamilyClass = [0, 0]
-        self.openTypeOS2Selection: List[int] = []
+        self.openTypeOS2Selection: list[int] = []
         self.openTypeOS2SubscriptXSize = 0
         self.openTypeOS2SubscriptYSize = 0
         self.openTypeOS2SubscriptXOffset = 0
@@ -47,20 +47,20 @@ class VfbToUfoInfo(Info):
         self.openTypeOS2SuperscriptYOffset = 0
         self.openTypeOS2StrikeoutPosition = 0
         self.openTypeOS2StrikeoutSize = 0
-        self.openTypeOS2Type: List[int] = []
-        self.openTypeOS2UnicodeRanges: List[int] = []
+        self.openTypeOS2Type: list[int] = []
+        self.openTypeOS2UnicodeRanges: list[int] = []
         self.openTypeOS2WeightClass = 400
         self.openTypeOS2WidthClass = WidthClass(5)
-        self.postscriptBlueValues: List[int] = []
-        self.postscriptFamilyBlues: List[int] = []
-        self.postscriptFamilyOtherBlues: List[int] = []
+        self.postscriptBlueValues: list[int] = []
+        self.postscriptFamilyBlues: list[int] = []
+        self.postscriptFamilyOtherBlues: list[int] = []
         self.postscriptFontName = "Untitled-Regular"
         self.postscriptForceBold = False
         self.postscriptFullName = "Untitled Regular"
         self.postscriptIsFixedPitch = False
-        self.postscriptOtherBlues: List[int] = []
-        self.postscriptStemSnapH: List[int] | None = None
-        self.postscriptStemSnapV: List[int] | None = None
+        self.postscriptOtherBlues: list[int] = []
+        self.postscriptStemSnapH: list[int] | None = None
+        self.postscriptStemSnapV: list[int] | None = None
         self.postscriptUnderlinePosition = 0
         self.postscriptUnderlineThickness = 0
         self.postscriptWeightName = "Regular"
@@ -76,7 +76,7 @@ class VfbToUfoInfo(Info):
         self.openTypeOS2TypoLineGap = 0
         self.openTypeOS2WinAscent = 0
         self.openTypeOS2WinDescent = 0
-        self.openTypeOS2CodePageRanges: List[int] = []
+        self.openTypeOS2CodePageRanges: list[int] = []
 
         self.build_mapping()
 
@@ -204,7 +204,7 @@ class VfbToUfoInfo(Info):
     def set_fixed_pitch(self, data: int) -> None:
         self.postscriptIsFixedPitch = bool(data)
 
-    def set_name_records(self, data: List[Tuple[int, int, int, int, str]]) -> None:
+    def set_name_records(self, data: list[tuple[int, int, int, int, str]]) -> None:
         self.openTypeNameRecords = []
         for rec in data:
             nameID, platformID, encodingID, languageID, s = rec
@@ -246,7 +246,7 @@ class VfbToUfoInfo(Info):
 
     def set_tt_gasp(self, data: GaspList) -> None:
         # FIXME: Different results when hinting is compiled with flufocompile
-        gasp: List[TUfoGaspRecDict] = []
+        gasp: list[TUfoGaspRecDict] = []
         for rec in data:
             gasp.append(
                 TUfoGaspRecDict(
@@ -256,7 +256,7 @@ class VfbToUfoInfo(Info):
             )
         self.openTypeGaspRangeRecords = gasp
 
-    def set_tt_info(self, data: List[Tuple[str, int | List[int]]]):
+    def set_tt_info(self, data: list[tuple[str, int | list[int]]]):
         for k, v in data:
             if isinstance(v, int):
                 if k in self.mapping_int:

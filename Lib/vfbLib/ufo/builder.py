@@ -10,7 +10,7 @@ from fontTools.designspaceLib import (
 )
 from fontTools.ufoLib import UFOFileStructure
 from pathlib import Path
-from typing import TYPE_CHECKING, Any, Dict, List, Tuple
+from typing import TYPE_CHECKING, Any
 from ufoLib2.objects.font import Font
 from ufoLib2.objects.features import Features
 from ufonormalizer import normalizeUFO
@@ -54,7 +54,7 @@ class VfbToUfoBuilder:
         """
         Serialize the JSON structure to UFO(s)
         """
-        self.axes: List[AxisDescriptor | DiscreteAxisDescriptor] = []
+        self.axes: list[AxisDescriptor | DiscreteAxisDescriptor] = []
         self.axis_count = 0
         self.vfb = vfb
         self.minimal = minimal
@@ -76,24 +76,24 @@ class VfbToUfoBuilder:
         self.num_stem_snap_v = 0
         self.mm_guides = None
         self.mm_kerning: UfoMMKerning = {}
-        self.kerning: Dict[Tuple[str, str], int] = {}
-        self.lib: Dict[str, Any] = {}
-        self.masters: List[str] = []
-        self.master_locations: Dict[int, List[float]] = {}
-        self.masters_ps_info: List[Dict] = []
-        self.primary_instances: List[Dict[str, str | List[float]]] = []
+        self.kerning: dict[tuple[str, str], int] = {}
+        self.lib: dict[str, Any] = {}
+        self.masters: list[str] = []
+        self.master_locations: dict[int, list[float]] = {}
+        self.masters_ps_info: list[dict] = []
+        self.primary_instances: list[dict[str, str | list[float]]] = []
         self.current_glyph: VfbToUfoGlyph | None = None
-        self.glyph_masters: Dict[str, VfbToUfoGlyph] = {}
-        self.glyphOrder: List[str] = []
+        self.glyph_masters: dict[str, VfbToUfoGlyph] = {}
+        self.glyphOrder: list[str] = []
         # TT
         self.stem_ppms: TUfoStemPPMsDict = {"ttStemsH": [], "ttStemsV": []}
         self.stems: TUfoStemsDict = {"ttStemsH": [], "ttStemsV": []}
         self.tt_zones: TUfoTTZonesDict = {}
-        self.tt_zone_names: List[str] = []
-        self.zone_names: Dict[str, List[str]] = {}
+        self.tt_zone_names: list[str] = []
+        self.zone_names: dict[str, list[str]] = {}
         self.build()
 
-    def add_axis_mappings(self, data: List[Tuple[float, float]]) -> None:
+    def add_axis_mappings(self, data: list[tuple[float, float]]) -> None:
         if not self.axis_mappings_count:
             raise ValueError(
                 "If axis mappings are present, axis mappings count must be set before "
@@ -117,7 +117,7 @@ class VfbToUfoBuilder:
             # Jump to the next 10 axis mappings
             data = data[10:]
 
-    def add_ot_class(self, data: Dict[str, List[str] | str]) -> None:
+    def add_ot_class(self, data: dict[str, list[str] | str]) -> None:
         if "name" not in data:
             logger.warning(f"Malformed OT class definition, skipping: {data}")
             return
@@ -135,7 +135,7 @@ class VfbToUfoBuilder:
         glyphs_list = data["glyphs"]
         if is_kerning:
             # Reorganize glyphs so that the "keyglyph" is first
-            glyphs: List[str] = [g.strip() for g in glyphs_list if not g.endswith("'")]
+            glyphs: list[str] = [g.strip() for g in glyphs_list if not g.endswith("'")]
             keyglyphs = [g.strip() for g in glyphs_list if g.endswith("'")]
             keyglyphs = [k.strip("'") for k in keyglyphs]
             if len(keyglyphs) != 1:
@@ -157,7 +157,7 @@ class VfbToUfoBuilder:
         if TT_GLYPH_LIB_KEY not in self.lib:
             self.lib[TT_GLYPH_LIB_KEY] = {}
 
-    def build_mm_glyph(self, data: Dict[str, Any]) -> None:
+    def build_mm_glyph(self, data: dict[str, Any]) -> None:
         g = self.current_glyph = VfbToUfoGlyph(self)
         g.lib = {}
         g.name = data["name"]
@@ -174,7 +174,7 @@ class VfbToUfoBuilder:
                 del data["hints"]["hintmasks"]
 
         if "kerning" in data:
-            kerning: Dict[int, List[int]] = data["kerning"]
+            kerning: dict[int, list[int]] = data["kerning"]
             for Rid, values in kerning.items():
                 assert g.name is not None
                 self.mm_kerning[(g.name, Rid)] = values
@@ -189,15 +189,15 @@ class VfbToUfoBuilder:
         if "tth" in data:
             g.tt_glyph_hints = TTGlyphHints(g, data["tth"], self.zone_names, self.stems)
 
-    def set_feature_code(self, data: List[str]) -> None:
+    def set_feature_code(self, data: list[str]) -> None:
         # Make the kern feature compilable
         self.features_code = "\n".join(rename_kern_classes_in_feature_code(data))
 
-    def set_glyph_background(self, data: Dict[str, Any]) -> None:
+    def set_glyph_background(self, data: dict[str, Any]) -> None:
         assert self.current_glyph is not None
         self.current_glyph.lib["com.fontlab.v5.background"] = data
 
-    def set_tt_stem_ppms(self, data: Dict[str, List[Dict[str, Any]]]) -> None:
+    def set_tt_stem_ppms(self, data: dict[str, list[dict[str, Any]]]) -> None:
         for d in ("ttStemsH", "ttStemsV"):
             direction_stems = data[d]
             for ds in direction_stems:
@@ -209,7 +209,7 @@ class VfbToUfoBuilder:
                 self.stem_ppms[d].append(stem)
 
     def set_tt_stem_ppms_1(
-        self, data: Dict[str, List[Dict[str, int | Dict[str, int]]]]
+        self, data: dict[str, list[dict[str, int | dict[str, int]]]]
     ) -> None:
         for d in ("ttStemsH", "ttStemsV"):
             direction_stems = data[d]
@@ -239,7 +239,7 @@ class VfbToUfoBuilder:
                 stem["round"][rv] = int(rk)
                 self.stems[d].append(stem)
 
-    def set_tt_zones(self, data: Dict[str, List]) -> None:
+    def set_tt_zones(self, data: dict[str, list]) -> None:
         self.zone_names = {
             "ttZonesT": [],
             "ttZonesB": [],
@@ -411,7 +411,7 @@ class VfbToUfoBuilder:
                     AxisDescriptor(tag=tags.get(data, data.upper()[:4]), name=data)
                 )
             elif name == "Axis Mappings Count":  # 1515
-                self.axis_mappings_count: List[int] = data
+                self.axis_mappings_count: list[int] = data
             elif name == "Axis Mappings":  # 1516
                 self.add_axis_mappings(data)
             elif name == "Anisotropic Interpolation Mappings":  # 1523
@@ -632,7 +632,7 @@ class VfbToUfoBuilder:
 
         return ufo
 
-    def get_ufo_masters(self, silent=False) -> List[Font]:
+    def get_ufo_masters(self, silent=False) -> list[Font]:
         # Prepare data shared by the master UFOs
         ufo_groups, group_order, key_glyphs = transform_groups(
             self.groups,
@@ -672,7 +672,7 @@ class VfbToUfoBuilder:
 
     def get_ufos_designspace(
         self, out_path: Path, silent=False
-    ) -> Tuple[List[Font], DesignSpaceDocument | None]:
+    ) -> tuple[list[Font], DesignSpaceDocument | None]:
         """
         Build UFOs and a DesignSpaceDocument from the VFB contents in memory and return
         them. The DesignSpaceDocument is only returned for VFBs containing more than one
