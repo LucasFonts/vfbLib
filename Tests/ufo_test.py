@@ -144,7 +144,7 @@ class GlyphCompilerTest(TestCase):
 
         # Lib
 
-        assert ufo0.lib["com.lucasfonts.vfblib.groupOrder"] == expected_group_order
+        assert ufo0.lib["public.groupOrder"] == expected_group_order
         assert "com.lucasfonts.vfblib" in ufo0.lib["com.fontlab.v5.userData"]
         del ufo0.lib["com.fontlab.v5.userData"]
         assert "com.lucasfonts.vfblib" in ufo1.lib["com.fontlab.v5.userData"]
