@@ -4,7 +4,7 @@ import logging
 
 from pathlib import Path
 from time import time
-from typing import TYPE_CHECKING, Any, Dict, Iterable, List, Set, Tuple
+from typing import TYPE_CHECKING, Any, Iterable
 from vfbLib.vfb.glyph import VfbGlyph, VfbGlyphMaster
 from vfbLib.vfb.entry import VfbEntry
 from vfbLib.vfb.header import VfbHeader
@@ -32,7 +32,7 @@ class Vfb:
         vfb_path: Path,
         timing=True,
         minimal=False,
-        drop_keys: Set[str] | None = None,
+        drop_keys: set[str] | None = None,
         only_header=False,
         unicode_strings=False,
     ) -> None:
@@ -48,8 +48,8 @@ class Vfb:
         self.encoding = "utf-8" if unicode_strings else "cp1252"
 
         # We need some minimal API to make pen access work ...
-        self._glyphs: Dict[str, VfbGlyph] = {}
-        self.glyph_order: List[str] = []
+        self._glyphs: dict[str, VfbGlyph] = {}
+        self.glyph_order: list[str] = []
 
         # cu2qu accesses the info and lib ...
         self.info = VfbInfo(vfb=self)
@@ -61,7 +61,7 @@ class Vfb:
         self.ttStemsH_count: int = 0
         self.read()
 
-    def as_dict(self) -> Dict[str, Dict[str, Any]]:
+    def as_dict(self) -> dict[str, dict[str, Any]]:
         """
         Return the Vfb structure as Dict, e.g. for saving as JSON. The dict has the keys
         "header" and "entries".
@@ -78,7 +78,7 @@ class Vfb:
         Clear any data that may have been read before.
         """
         self.header: VfbHeader | None = None
-        self.entries: List[VfbEntry] = []
+        self.entries: list[VfbEntry] = []
 
     def _decompile_glyphs(self):
         for entry in self.entries:
@@ -107,7 +107,7 @@ class Vfb:
     def getGlyphMaster(self, key: str, master_index: int) -> VfbGlyphMaster:
         return VfbGlyphMaster(self[key], master_index)
 
-    def get_masters(self) -> List[VfbMaster]:
+    def get_masters(self) -> list[VfbMaster]:
         return [VfbMaster(self, i) for i in range(self.num_masters)]
 
     def decompile(self) -> None:
@@ -125,7 +125,7 @@ class Vfb:
         if self.timing:
             print(f"Interpreting binary data took {round((end - start) * 1000)} ms.")
 
-    def items(self) -> Iterable[Tuple[str, VfbGlyph]]:
+    def items(self) -> Iterable[tuple[str, VfbGlyph]]:
         if not self._glyphs:
             self._decompile_glyphs()
         return self._glyphs.items()
@@ -230,7 +230,7 @@ class VfbMaster:
     def info(self) -> VfbInfo:
         return self.vfb.info
 
-    def items(self) -> Iterable[Tuple[str, VfbGlyph]]:
+    def items(self) -> Iterable[tuple[str, VfbGlyph]]:
         return self.vfb.items()
 
     def keys(self) -> Iterable[str]:

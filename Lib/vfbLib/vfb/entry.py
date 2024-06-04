@@ -6,7 +6,7 @@ from fontTools.misc.textTools import hexStr
 from functools import cached_property
 from io import BytesIO
 from struct import pack
-from typing import TYPE_CHECKING, Any, Dict, Tuple, Type
+from typing import TYPE_CHECKING, Any
 
 # from vfbLib.reader import FALLBACK_PARSER
 from vfbLib.compilers import BaseCompiler
@@ -28,8 +28,8 @@ class VfbEntry(BaseParser):
     def __init__(
         self,
         parent: Vfb,
-        parser: Type[BaseParser] | None = None,
-        compiler: Type[BaseCompiler] | None = None,
+        parser: type[BaseParser] | None = None,
+        compiler: type[BaseCompiler] | None = None,
     ) -> None:
         # The original or compiled binary data
         self.data: bytes | None = None
@@ -113,7 +113,7 @@ class VfbEntry(BaseParser):
 
     def _read_entry(
         self,
-    ) -> Tuple[str, Type[BaseParser], Type[BaseCompiler] | None, int]:
+    ) -> tuple[str, type[BaseParser], type[BaseCompiler] | None, int]:
         """
         Read an entry from the stream and return its key, specialized parser
         class, and data size.
@@ -143,8 +143,8 @@ class VfbEntry(BaseParser):
 
         return key, parser_class, compiler_class, num_bytes
 
-    def as_dict(self, minimize=True) -> Dict[str, Any]:
-        d: Dict[str, Any] = {
+    def as_dict(self, minimize=True) -> dict[str, Any]:
+        d: dict[str, Any] = {
             "key": str(self.key),
         }
         if minimize:

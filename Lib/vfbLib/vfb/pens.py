@@ -3,7 +3,7 @@ from __future__ import annotations
 import logging
 
 from fontTools.pens.pointPen import AbstractPointPen
-from typing import TYPE_CHECKING, Any, Dict, Tuple
+from typing import TYPE_CHECKING, Any
 
 if TYPE_CHECKING:
     from vfbLib.vfb.glyph import VfbGlyph, VfbGlyphMaster
@@ -41,11 +41,11 @@ class VfbGlyphPointPen(AbstractPointPen):
 
     def addPoint(
         self,
-        pt: Tuple[int, int],
+        pt: tuple[int, int],
         segmentType: str | None = None,
         smooth: bool = False,
         name: str | None = None,
-        **kwargs: Dict[str, Any],
+        **kwargs: dict[str, Any],
     ) -> None:
         assert self.currentPath is not None
 
@@ -91,7 +91,7 @@ class VfbGlyphPointPen(AbstractPointPen):
     def addComponent(
         self,
         baseGlyphName: str,
-        transformation: Tuple[float, float, float, float, float, float],
+        transformation: tuple[float, float, float, float, float, float],
         identifier: str | None = None,
         **kwargs: Any,
     ) -> None:

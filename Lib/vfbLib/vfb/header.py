@@ -3,7 +3,7 @@ from __future__ import annotations
 import logging
 
 from fontTools.misc.textTools import hexStr
-from typing import TYPE_CHECKING, Any, Dict
+from typing import TYPE_CHECKING, Any
 from vfbLib.parsers.header import VfbHeaderParser
 
 if TYPE_CHECKING:
@@ -26,7 +26,7 @@ class VfbHeader:
         # The size of the compiled data
         self.size = 0
 
-    def as_dict(self) -> Dict[str, Any]:
+    def as_dict(self) -> dict[str, Any]:
         d = {
             "size": self.size,
             "decompiled": self.decompiled,
