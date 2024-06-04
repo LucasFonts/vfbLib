@@ -7,7 +7,7 @@ from fontTools.misc.textTools import hexStr  # , num2binary
 from fontTools.ttLib.tables.ttProgram import Program
 from io import BytesIO
 from struct import unpack
-from typing import Any, Literal
+from typing import Any
 from vfbLib.parsers.base import BaseParser, read_encoded_value
 from vfbLib.parsers.guides import parse_guides
 from vfbLib.truetype import TT_COMMANDS
