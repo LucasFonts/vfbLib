@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="dieresiscaron.case" format="2">
+	<outline>
+		<contour>
+			<point name="av01" x="-98" y="767" type="qcurve"/>
+			<point x="-124" y="767"/>
+			<point x="-153" y="797"/>
+			<point x="-153" y="820" type="qcurve"/>
+			<point x="-153" y="824" type="line"/>
+			<point x="-153" y="847"/>
+			<point x="-124" y="877"/>
+			<point name="sv01" x="-98" y="877" type="qcurve"/>
+			<point x="-72" y="877"/>
+			<point x="-43" y="847"/>
+			<point x="-43" y="824" type="qcurve"/>
+			<point x="-43" y="820" type="line"/>
+			<point x="-43" y="797"/>
+			<point x="-72" y="767"/>
+		</contour>
+		<contour>
+			<point name="sv02" x="98" y="767" type="qcurve"/>
+			<point x="72" y="767"/>
+			<point x="43" y="797"/>
+			<point x="43" y="820" type="qcurve"/>
+			<point x="43" y="824" type="line"/>
+			<point x="43" y="847"/>
+			<point x="72" y="877"/>
+			<point name="sv03" x="98" y="877" type="qcurve"/>
+			<point x="124" y="877"/>
+			<point x="153" y="847"/>
+			<point x="153" y="824" type="qcurve"/>
+			<point x="153" y="820" type="line"/>
+			<point x="153" y="797"/>
+			<point x="124" y="767"/>
+		</contour>
+		<contour>
+			<point x="-156" y="1052" type="line"/>
+			<point name="sv05" x="-129" y="1071" type="line"/>
+			<point name="sv06" x="0" y="972" type="line"/>
+			<point x="129" y="1071" type="line"/>
+			<point x="156" y="1052" type="line"/>
+			<point x="31" y="901" type="line"/>
+			<point name="sv04" x="-31" y="901" type="line"/>
+		</contour>
+	</outline>
+	<anchor name="_top" x="0" y="698"/>
+	<guideline x="0" y="0" angle="90"/>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint.v2</key>
+			<dict>
+				<key>hintSetList</key>
+				<array>
+					<dict>
+						<key>pointTag</key>
+						<string>av01</string>
+						<key>stems</key>
+						<array>
+							<string>hstem 767 110</string>
+							<string>vstem -153 110</string>
+							<string>vstem 43 110</string>
+						</array>
+					</dict>
+				</array>
+			</dict>
+			<key>com.fontlab.ttprogram</key>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="alignv" point="av01" align="round"/&gt;
+    &lt;ttc code="mdeltav" point="av01" delta="8" ppm1="11" ppm2="11"/&gt;
+    &lt;ttc code="singlev" point1="av01" point2="sv01" round="true"/&gt;
+    &lt;ttc code="singlev" point1="av01" point2="sv02"/&gt;
+    &lt;ttc code="singlev" point1="sv01" point2="sv03"/&gt;
+    &lt;ttc code="singlev" point1="sv01" point2="sv04" round="true"/&gt;
+    &lt;ttc code="singlev" point1="sv04" point2="sv05" round="true"/&gt;
+    &lt;ttc code="singlev" point1="sv04" point2="sv06" round="true"/&gt;
+  &lt;/ttProgram&gt;
+</string>
+		</dict>
+	</lib>
+</glyph>

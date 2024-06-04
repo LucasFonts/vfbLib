@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="arrowupleftcounterclock" format="2">
+	<unicode hex="21BA"/>
+	<advance width="860"/>
+	<outline>
+		<contour>
+			<point name="ab01" x="432" y="-12" type="qcurve"/>
+			<point x="363" y="-12"/>
+			<point x="243" y="36"/>
+			<point x="154" y="122"/>
+			<point x="102" y="240"/>
+			<point x="102" y="309" type="qcurve"/>
+			<point x="102" y="403"/>
+			<point x="198" y="556"/>
+			<point x="277" y="604" type="qcurve"/>
+			<point x="322" y="540" type="line"/>
+			<point x="253" y="496"/>
+			<point x="185" y="378"/>
+			<point x="185" y="311" type="qcurve"/>
+			<point x="185" y="257"/>
+			<point x="225" y="167"/>
+			<point x="292" y="102"/>
+			<point x="383" y="66"/>
+			<point name="sv01" x="434" y="66" type="qcurve"/>
+			<point x="485" y="66"/>
+			<point x="574" y="100"/>
+			<point x="639" y="163"/>
+			<point x="677" y="249"/>
+			<point x="677" y="302" type="qcurve"/>
+			<point x="677" y="344"/>
+			<point x="656" y="413"/>
+			<point x="612" y="479"/>
+			<point x="544" y="550"/>
+			<point x="497" y="595" type="qcurve"/>
+			<point x="462" y="396" type="line"/>
+			<point x="422" y="400" type="line"/>
+			<point name="at01" x="422" y="698" type="line"/>
+			<point x="721" y="698" type="line"/>
+			<point x="725" y="659" type="line"/>
+			<point x="525" y="623" type="line"/>
+			<point x="577" y="582"/>
+			<point x="663" y="508"/>
+			<point x="725" y="432"/>
+			<point x="759" y="349"/>
+			<point x="759" y="300" type="qcurve"/>
+			<point x="759" y="234"/>
+			<point x="709" y="120"/>
+			<point x="622" y="36"/>
+			<point x="502" y="-12"/>
+		</contour>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint.v2</key>
+			<dict>
+				<key>hintSetList</key>
+				<array>
+					<dict>
+						<key>pointTag</key>
+						<string>ab01</string>
+						<key>stems</key>
+						<array>
+							<string>hstem -12 78</string>
+							<string>hstem 698 -20</string>
+							<string>vstem 102 83</string>
+							<string>vstem 677 82</string>
+						</array>
+					</dict>
+				</array>
+			</dict>
+			<key>com.fontlab.ttprogram</key>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="alignt" point="at01" zone="capheight"/&gt;
+    &lt;ttc code="alignb" point="ab01" zone="baseline"/&gt;
+    &lt;ttc code="singlev" point1="ab01" point2="sv01" stem="arrows"/&gt;
+  &lt;/ttProgram&gt;
+</string>
+			<key>com.fontlab.v5.userData</key>
+			<string>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;
+&lt;plist version="1.0"&gt;
+&lt;dict&gt;
+	&lt;key&gt;com.type-invaders.name.final&lt;/key&gt;
+	&lt;string&gt;uni21BA&lt;/string&gt;
+	&lt;key&gt;com.type-invaders.name.production&lt;/key&gt;
+	&lt;string&gt;arrowupleftcounterclock&lt;/string&gt;
+&lt;/dict&gt;
+&lt;/plist&gt;
+</string>
+		</dict>
+	</lib>
+</glyph>

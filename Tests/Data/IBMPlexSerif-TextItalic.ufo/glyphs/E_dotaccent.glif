@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="Edotaccent" format="2">
+	<unicode hex="0116"/>
+	<advance width="599"/>
+	<outline>
+		<component base="E"/>
+		<component base="dotaccent.case" xOffset="107"/>
+	</outline>
+	<lib>
+		<dict>
+			<key>public.markColor</key>
+			<string>0.648,0.9341,0.952,1</string>
+		</dict>
+	</lib>
+</glyph>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="four" format="2">
+	<unicode hex="0034"/>
+	<advance width="600"/>
+	<outline>
+		<contour>
+			<point name="hr00" x="359" y="161" type="line"/>
+			<point name="sv01" x="39" y="161" type="line"/>
+			<point name="sv02" x="39" y="226" type="line"/>
+			<point name="at01" x="360" y="698" type="line"/>
+			<point x="455" y="698" type="line"/>
+			<point name="sv03" x="455" y="235" type="line"/>
+			<point x="556" y="235" type="line"/>
+			<point x="556" y="161" type="line"/>
+			<point name="sv04" x="455" y="161" type="line"/>
+			<point x="455" y="0" type="line"/>
+			<point name="ab01" x="359" y="0" type="line"/>
+		</contour>
+		<contour>
+			<point name="iv01" x="103" y="235" type="line"/>
+			<point x="359" y="235" type="line"/>
+			<point x="359" y="602" type="line"/>
+			<point name="sv05" x="355" y="602" type="line"/>
+		</contour>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint.v2</key>
+			<dict>
+				<key>hintSetList</key>
+				<array>
+					<dict>
+						<key>pointTag</key>
+						<string>hr00</string>
+						<key>stems</key>
+						<array>
+							<string>hstem 21 -21</string>
+							<string>hstem 161 74</string>
+							<string>hstem 602 96</string>
+							<string>vstem 359 96</string>
+						</array>
+					</dict>
+				</array>
+			</dict>
+			<key>com.fontlab.ttprogram</key>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="alignt" point="at01" zone="capheight"/&gt;
+    &lt;ttc code="alignb" point="ab01" zone="baseline"/&gt;
+    &lt;ttc code="interpolatev" point="iv01" point1="at01" point2="ab01" align="round"/&gt;
+    &lt;ttc code="mdeltav" point="iv01" delta="8" ppm1="10" ppm2="10"/&gt;
+    &lt;ttc code="singlev" point1="iv01" point2="sv01" round="true"/&gt;
+    &lt;ttc code="singlev" point1="iv01" point2="sv02"/&gt;
+    &lt;ttc code="singlev" point1="iv01" point2="sv03"/&gt;
+    &lt;ttc code="singlev" point1="sv01" point2="sv04"/&gt;
+    &lt;ttc code="singlev" point1="at01" point2="sv05"/&gt;
+  &lt;/ttProgram&gt;
+</string>
+		</dict>
+	</lib>
+</glyph>

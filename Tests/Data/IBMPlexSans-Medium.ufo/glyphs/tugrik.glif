@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="tugrik" format="2">
+	<unicode hex="20AE"/>
+	<advance width="607"/>
+	<outline>
+		<contour>
+			<point name="hr00" x="360" y="213" type="line"/>
+			<point x="360" y="0" type="line"/>
+			<point name="ih01" x="247" y="0" type="line"/>
+			<point x="247" y="159" type="line"/>
+			<point x="119" y="98" type="line"/>
+			<point x="119" y="176" type="line"/>
+			<point x="247" y="237" type="line"/>
+			<point x="247" y="318" type="line"/>
+			<point x="119" y="257" type="line"/>
+			<point x="119" y="335" type="line"/>
+			<point x="247" y="396" type="line"/>
+			<point x="247" y="603" type="line"/>
+			<point name="sv01" x="39" y="603" type="line"/>
+			<point name="at01" x="39" y="698" type="line"/>
+			<point x="568" y="698" type="line"/>
+			<point x="568" y="603" type="line"/>
+			<point name="sv02" x="360" y="603" type="line"/>
+			<point x="360" y="450" type="line"/>
+			<point x="488" y="511" type="line"/>
+			<point x="488" y="433" type="line"/>
+			<point x="360" y="372" type="line"/>
+			<point x="360" y="291" type="line"/>
+			<point x="488" y="353" type="line"/>
+			<point x="488" y="275" type="line"/>
+		</contour>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint.v2</key>
+			<dict>
+				<key>hintSetList</key>
+				<array>
+					<dict>
+						<key>pointTag</key>
+						<string>hr00</string>
+						<key>stems</key>
+						<array>
+							<string>hstem 21 -21</string>
+							<string>hstem 603 95</string>
+							<string>vstem 247 113</string>
+						</array>
+					</dict>
+				</array>
+			</dict>
+			<key>com.fontlab.ttprogram</key>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="interpolateh" point="ih01" point1="lsb" point2="rsb"/&gt;
+    &lt;ttc code="alignt" point="at01" zone="capheight"/&gt;
+    &lt;ttc code="alignb" point="ih01" zone="baseline"/&gt;
+    &lt;ttc code="singlev" point1="at01" point2="sv01" stem="uc-hstem"/&gt;
+    &lt;ttc code="singlev" point1="sv01" point2="sv02"/&gt;
+  &lt;/ttProgram&gt;
+</string>
+		</dict>
+	</lib>
+</glyph>

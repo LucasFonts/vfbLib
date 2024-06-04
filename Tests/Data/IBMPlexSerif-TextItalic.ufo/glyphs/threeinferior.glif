@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="threeinferior" format="2">
+	<unicode hex="2083"/>
+	<advance width="343"/>
+	<outline>
+		<contour>
+			<point name="ab01" x="93" y="-6" type="qcurve"/>
+			<point x="47" y="-6"/>
+			<point x="-6" y="34"/>
+			<point x="-6" y="65" type="qcurve"/>
+			<point x="-6" y="88"/>
+			<point x="22" y="117"/>
+			<point name="iv02" x="40" y="117" type="qcurve"/>
+			<point x="56" y="117"/>
+			<point x="76" y="99"/>
+			<point x="76" y="83" type="qcurve"/>
+			<point x="76" y="66"/>
+			<point x="56" y="45"/>
+			<point x="42" y="43" type="qcurve"/>
+			<point x="40" y="38" type="line"/>
+			<point x="48" y="32"/>
+			<point x="72" y="28"/>
+			<point name="sv01" x="85" y="28" type="qcurve"/>
+			<point x="118" y="28"/>
+			<point x="168" y="65"/>
+			<point x="176" y="99" type="qcurve"/>
+			<point x="178" y="104"/>
+			<point x="182" y="124"/>
+			<point x="182" y="131" type="qcurve"/>
+			<point x="182" y="173"/>
+			<point x="128" y="173" type="qcurve"/>
+			<point name="sv02" x="98" y="173" type="line"/>
+			<point name="iv01" x="108" y="210" type="line"/>
+			<point x="130" y="210" type="line"/>
+			<point x="165" y="210"/>
+			<point x="206" y="248"/>
+			<point x="213" y="273" type="qcurve"/>
+			<point x="214" y="276"/>
+			<point name="hr00" x="218" y="295"/>
+			<point x="218" y="302" type="qcurve"/>
+			<point x="218" y="321"/>
+			<point x="193" y="340"/>
+			<point name="sv03" x="173" y="340" type="qcurve"/>
+			<point x="159" y="340"/>
+			<point x="133" y="335"/>
+			<point x="123" y="331" type="qcurve"/>
+			<point x="121" y="327" type="line"/>
+			<point x="129" y="324"/>
+			<point x="139" y="309"/>
+			<point x="139" y="298" type="qcurve"/>
+			<point x="139" y="281"/>
+			<point x="114" y="254"/>
+			<point name="iv03" x="94" y="254" type="qcurve"/>
+			<point name="hr01" x="76" y="254"/>
+			<point name="hr02" x="59" y="274"/>
+			<point x="59" y="290" type="qcurve"/>
+			<point x="59" y="306"/>
+			<point x="80" y="337"/>
+			<point x="116" y="360"/>
+			<point x="164" y="374"/>
+			<point name="at01" x="190" y="374" type="qcurve"/>
+			<point x="241" y="374"/>
+			<point x="295" y="338"/>
+			<point x="295" y="301" type="qcurve"/>
+			<point x="295" y="277"/>
+			<point x="276" y="240"/>
+			<point x="247" y="214"/>
+			<point x="211" y="199"/>
+			<point name="iv04" x="194" y="196" type="qcurve"/>
+			<point x="193" y="192" type="line"/>
+			<point x="222" y="186"/>
+			<point name="hr03" x="255" y="148"/>
+			<point x="255" y="122" type="qcurve"/>
+			<point x="255" y="97"/>
+			<point x="234" y="51"/>
+			<point x="194" y="15"/>
+			<point x="133" y="-6"/>
+		</contour>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint.v2</key>
+			<dict>
+				<key>hintSetList</key>
+				<array>
+					<dict>
+						<key>pointTag</key>
+						<string>ab01</string>
+						<key>stems</key>
+						<array>
+							<string>hstem -6 34</string>
+							<string>hstem 173 37</string>
+							<string>hstem 340 34</string>
+							<string>vstem -6 82</string>
+							<string>vstem 182 73</string>
+						</array>
+					</dict>
+					<dict>
+						<key>pointTag</key>
+						<string>hr00</string>
+						<key>stems</key>
+						<array>
+							<string>hstem -6 34</string>
+							<string>hstem 173 37</string>
+							<string>hstem 340 34</string>
+							<string>vstem 59 80</string>
+							<string>vstem 218 77</string>
+						</array>
+					</dict>
+					<dict>
+						<key>pointTag</key>
+						<string>hr01</string>
+						<key>stems</key>
+						<array>
+							<string>hstem -6 34</string>
+							<string>hstem 173 37</string>
+							<string>hstem 340 34</string>
+							<string>vstem -6 82</string>
+							<string>vstem 218 77</string>
+						</array>
+					</dict>
+					<dict>
+						<key>pointTag</key>
+						<string>hr02</string>
+						<key>stems</key>
+						<array>
+							<string>hstem -6 34</string>
+							<string>hstem 173 37</string>
+							<string>hstem 340 34</string>
+							<string>vstem 59 80</string>
+							<string>vstem 218 77</string>
+						</array>
+					</dict>
+					<dict>
+						<key>pointTag</key>
+						<string>hr03</string>
+						<key>stems</key>
+						<array>
+							<string>hstem -6 34</string>
+							<string>hstem 173 37</string>
+							<string>hstem 340 34</string>
+							<string>vstem 59 80</string>
+							<string>vstem 182 73</string>
+						</array>
+					</dict>
+				</array>
+			</dict>
+			<key>com.fontlab.ttprogram</key>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="alignt" point="at01" zone="inf_top"/&gt;
+    &lt;ttc code="alignb" point="ab01" zone="baseline"/&gt;
+    &lt;ttc code="singlev" point1="ab01" point2="sv01" stem="lc_thins"/&gt;
+    &lt;ttc code="interpolatev" point="iv01" point1="at01" point2="sv01" align="round"/&gt;
+    &lt;ttc code="singlev" point1="iv01" point2="sv02" stem="lc_thins"/&gt;
+    &lt;ttc code="interpolatev" point="iv02" point1="sv02" point2="sv01" align="round"/&gt;
+    &lt;ttc code="singlev" point1="at01" point2="sv03" stem="lc_thins"/&gt;
+    &lt;ttc code="interpolatev" point="iv03" point1="sv03" point2="iv01" align="round"/&gt;
+    &lt;ttc code="interpolatev" point="iv04" point1="iv01" point2="sv02"/&gt;
+  &lt;/ttProgram&gt;
+</string>
+			<key>com.fontlab.v5.userData</key>
+			<string>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;
+&lt;plist version="1.0"&gt;
+&lt;dict&gt;
+	&lt;key&gt;com.type-invaders.name.final&lt;/key&gt;
+	&lt;string&gt;uni2083&lt;/string&gt;
+	&lt;key&gt;com.type-invaders.name.production&lt;/key&gt;
+	&lt;string&gt;threeinferior&lt;/string&gt;
+&lt;/dict&gt;
+&lt;/plist&gt;
+</string>
+		</dict>
+	</lib>
+</glyph>

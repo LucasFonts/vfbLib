@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="quotesinglbase" format="2">
+	<unicode hex="201A"/>
+	<advance width="286"/>
+	<outline>
+		<contour>
+			<point name="ih01" x="140" y="155" type="qcurve"/>
+			<point x="178" y="155"/>
+			<point x="212" y="119"/>
+			<point x="212" y="90" type="qcurve"/>
+			<point x="212" y="73" type="line"/>
+			<point x="212" y="49"/>
+			<point x="198" y="-2"/>
+			<point x="172" y="-52"/>
+			<point x="136" y="-98"/>
+			<point x="114" y="-116" type="qcurve"/>
+			<point name="sv01" x="36" y="-116" type="line"/>
+			<point x="68" y="-85"/>
+			<point x="108" y="-25"/>
+			<point name="sv02" x="119" y="10" type="qcurve"/>
+			<point x="93" y="15"/>
+			<point x="68" y="49"/>
+			<point x="68" y="72" type="qcurve"/>
+			<point x="68" y="90" type="line"/>
+			<point x="68" y="119"/>
+			<point x="102" y="155"/>
+		</contour>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint.v2</key>
+			<dict>
+				<key>hintSetList</key>
+				<array>
+					<dict>
+						<key>pointTag</key>
+						<string>ih01</string>
+						<key>stems</key>
+						<array>
+							<string>hstem 10 145</string>
+							<string>vstem 68 144</string>
+						</array>
+					</dict>
+				</array>
+			</dict>
+			<key>com.fontlab.ttprogram</key>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="interpolateh" point="ih01" point1="lsb" point2="rsb"/&gt;
+    &lt;ttc code="alignv" point="ih01" align="round"/&gt;
+    &lt;ttc code="singlev" point1="ih01" point2="sv01" round="true"/&gt;
+    &lt;ttc code="singlev" point1="ih01" point2="sv02" round="true"/&gt;
+  &lt;/ttProgram&gt;
+</string>
+		</dict>
+	</lib>
+</glyph>

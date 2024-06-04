@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="zerowidthjoiner" format="2">
+	<unicode hex="200D"/>
+	<outline>
+		<contour>
+			<point name="hr00" x="-9" y="674" type="line"/>
+			<point x="-85" y="602" type="line"/>
+			<point x="-97" y="613" type="line"/>
+			<point x="-12" y="694" type="line"/>
+			<point x="-97" y="775" type="line"/>
+			<point name="av02" x="-85" y="786" type="line"/>
+			<point x="0" y="705" type="line"/>
+			<point name="sv01" x="85" y="786" type="line"/>
+			<point x="97" y="775" type="line"/>
+			<point x="12" y="694" type="line"/>
+			<point x="97" y="613" type="line"/>
+			<point x="85" y="602" type="line"/>
+			<point x="9" y="674" type="line"/>
+			<point x="9" y="-220" type="line"/>
+			<point name="av01" x="-9" y="-220" type="line"/>
+		</contour>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint.v2</key>
+			<dict>
+				<key>hintSetList</key>
+				<array>
+					<dict>
+						<key>pointTag</key>
+						<string>hr00</string>
+						<key>stems</key>
+						<array>
+							<string>hstem -220 1006</string>
+							<string>vstem -97 194</string>
+						</array>
+					</dict>
+				</array>
+			</dict>
+			<key>com.fontlab.ttprogram</key>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="alignv" point="av01" align="round"/&gt;
+    &lt;ttc code="alignv" point="av02" align="round"/&gt;
+    &lt;ttc code="singlev" point1="av02" point2="sv01"/&gt;
+  &lt;/ttProgram&gt;
+</string>
+		</dict>
+	</lib>
+</glyph>

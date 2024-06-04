@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="tenge" format="2">
+	<unicode hex="20B8"/>
+	<advance width="626"/>
+	<outline>
+		<contour>
+			<point name="sv01" x="121" y="45" type="line"/>
+			<point x="211" y="45" type="line"/>
+			<point x="333" y="535" type="line"/>
+			<point name="sv04" x="183" y="535" type="line"/>
+			<point x="152" y="411" type="line"/>
+			<point name="sv05" x="76" y="411" type="line"/>
+			<point name="sv03" x="118" y="580" type="line"/>
+			<point x="669" y="580" type="line"/>
+			<point x="627" y="411" type="line"/>
+			<point name="sv06" x="551" y="411" type="line"/>
+			<point x="581" y="535" type="line"/>
+			<point name="sv07" x="431" y="535" type="line"/>
+			<point name="sv08" x="309" y="45" type="line"/>
+			<point x="399" y="45" type="line"/>
+			<point x="388" y="0" type="line"/>
+			<point name="ab01" x="110" y="0" type="line"/>
+		</contour>
+		<contour>
+			<point name="at01" x="148" y="698" type="line"/>
+			<point x="699" y="698" type="line"/>
+			<point x="688" y="653" type="line"/>
+			<point name="sv02" x="137" y="653" type="line"/>
+		</contour>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint.v2</key>
+			<dict>
+				<key>hintSetList</key>
+				<array>
+					<dict>
+						<key>pointTag</key>
+						<string>sv01</string>
+						<key>stems</key>
+						<array>
+							<string>hstem 0 45</string>
+							<string>hstem 535 45</string>
+							<string>hstem 653 45</string>
+							<string>vstem 76 623</string>
+						</array>
+					</dict>
+				</array>
+			</dict>
+			<key>com.fontlab.ttprogram</key>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="alignt" point="at01" zone="capheight"/&gt;
+    &lt;ttc code="alignb" point="ab01" zone="baseline"/&gt;
+    &lt;ttc code="singlev" point1="ab01" point2="sv01" stem="uc_serif"/&gt;
+    &lt;ttc code="singlev" point1="at01" point2="sv02" stem="uc_stem"/&gt;
+    &lt;ttc code="singlev" point1="sv02" point2="sv03" stem="uc_stem"/&gt;
+    &lt;ttc code="singlev" point1="sv03" point2="sv04" stem="uc_stem"/&gt;
+    &lt;ttc code="singlev" point1="sv04" point2="sv05" round="true"/&gt;
+    &lt;ttc code="singlev" point1="sv05" point2="sv06"/&gt;
+    &lt;ttc code="singlev" point1="sv04" point2="sv07"/&gt;
+    &lt;ttc code="singlev" point1="sv01" point2="sv08"/&gt;
+  &lt;/ttProgram&gt;
+</string>
+			<key>com.fontlab.v5.userData</key>
+			<string>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;
+&lt;plist version="1.0"&gt;
+&lt;dict&gt;
+	&lt;key&gt;com.type-invaders.name.final&lt;/key&gt;
+	&lt;string&gt;uni20B8&lt;/string&gt;
+	&lt;key&gt;com.type-invaders.name.production&lt;/key&gt;
+	&lt;string&gt;tenge&lt;/string&gt;
+&lt;/dict&gt;
+&lt;/plist&gt;
+</string>
+		</dict>
+	</lib>
+</glyph>

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="won" format="2">
+	<unicode hex="20A9"/>
+	<advance width="982"/>
+	<outline>
+		<contour>
+			<point name="hr00" x="574" y="233" type="line"/>
+			<point name="sv02" x="402" y="233" type="line"/>
+			<point x="343" y="0" type="line"/>
+			<point name="ab01" x="217" y="0" type="line"/>
+			<point x="163" y="232" type="line"/>
+			<point name="sv01" x="37" y="232" type="line"/>
+			<point name="dv02" x="37" y="309" type="line"/>
+			<point x="144" y="309" type="line"/>
+			<point x="125" y="392" type="line"/>
+			<point name="dv01" x="37" y="392" type="line"/>
+			<point name="sv03" x="37" y="469" type="line"/>
+			<point x="107" y="469" type="line"/>
+			<point name="at01" x="53" y="698" type="line"/>
+			<point x="165" y="698" type="line"/>
+			<point name="sv04" x="214" y="467" type="line"/>
+			<point x="371" y="467" type="line"/>
+			<point name="sh01" x="429" y="698" type="line"/>
+			<point x="555" y="698" type="line"/>
+			<point name="sv05" x="611" y="468" type="line"/>
+			<point x="770" y="468" type="line"/>
+			<point name="at02" x="821" y="698" type="line"/>
+			<point x="931" y="698" type="line"/>
+			<point name="sv06" x="874" y="470" type="line"/>
+			<point x="945" y="470" type="line"/>
+			<point x="945" y="393" type="line"/>
+			<point name="sv08" x="855" y="393" type="line"/>
+			<point name="sv10" x="835" y="309" type="line"/>
+			<point x="945" y="309" type="line"/>
+			<point x="945" y="232" type="line"/>
+			<point name="sv11" x="816" y="232" type="line"/>
+			<point x="758" y="0" type="line"/>
+			<point name="ab02" x="632" y="0" type="line"/>
+		</contour>
+		<contour>
+			<point x="345" y="360" type="line"/>
+			<point name="sh02" x="353" y="394" type="line"/>
+			<point name="sv07" x="229" y="394" type="line"/>
+			<point x="237" y="360" type="line"/>
+			<point name="sv12" x="286" y="128" type="line"/>
+			<point x="289" y="128" type="line"/>
+		</contour>
+		<contour>
+			<point x="696" y="129" type="line"/>
+			<point x="746" y="359" type="line"/>
+			<point x="754" y="395" type="line"/>
+			<point name="sh03" x="629" y="395" type="line"/>
+			<point x="637" y="362" type="line"/>
+			<point name="sv13" x="693" y="129" type="line"/>
+		</contour>
+		<contour>
+			<point name="sv09" x="421" y="306" type="line"/>
+			<point x="556" y="306" type="line"/>
+			<point x="545" y="350" type="line"/>
+			<point name="ih01" x="490" y="578" type="line"/>
+			<point name="sv14" x="488" y="578" type="line"/>
+			<point x="432" y="351" type="line"/>
+		</contour>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint.v2</key>
+			<dict>
+				<key>hintSetList</key>
+				<array>
+					<dict>
+						<key>pointTag</key>
+						<string>hr00</string>
+						<key>stems</key>
+						<array>
+							<string>hstem 21 -21</string>
+							<string>hstem 232 77</string>
+							<string>hstem 393 77</string>
+							<string>hstem 698 -20</string>
+							<string>vstem 37 908</string>
+						</array>
+					</dict>
+				</array>
+			</dict>
+			<key>com.fontlab.ttprogram</key>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="interpolateh" point="ih01" point1="lsb" point2="rsb"/&gt;
+    &lt;ttc code="singleh" point1="ih01" point2="sh01"/&gt;
+    &lt;ttc code="singleh" point1="ih01" point2="sh02"/&gt;
+    &lt;ttc code="singleh" point1="ih01" point2="sh03"/&gt;
+    &lt;ttc code="alignt" point="at01" zone="capheight"/&gt;
+    &lt;ttc code="alignt" point="sh01" zone="capheight"/&gt;
+    &lt;ttc code="alignt" point="at02" zone="capheight"/&gt;
+    &lt;ttc code="alignb" point="ab01" zone="baseline"/&gt;
+    &lt;ttc code="alignb" point="ab02" zone="baseline"/&gt;
+    &lt;ttc code="doublev" point1="dv01" point2="dv02" stem="currency_white"/&gt;
+    &lt;ttc code="mdeltav" point="dv02" delta="8" ppm1="14" ppm2="14"/&gt;
+    &lt;ttc code="mdeltav" point="dv02" delta="8" ppm1="11" ppm2="11"/&gt;
+    &lt;ttc code="singlev" point1="dv02" point2="sv01" stem="currency_stroke"/&gt;
+    &lt;ttc code="singlev" point1="sv01" point2="sv02"/&gt;
+    &lt;ttc code="mdeltav" point="dv01" delta="8" ppm1="14" ppm2="14"/&gt;
+    &lt;ttc code="mdeltav" point="dv01" delta="8" ppm1="11" ppm2="11"/&gt;
+    &lt;ttc code="singlev" point1="dv01" point2="sv03" stem="currency_stroke"/&gt;
+    &lt;ttc code="singlev" point1="sv03" point2="sv04"/&gt;
+    &lt;ttc code="singlev" point1="sv04" point2="sv05"/&gt;
+    &lt;ttc code="singlev" point1="sv05" point2="sv06"/&gt;
+    &lt;ttc code="singlev" point1="dv01" point2="sv07"/&gt;
+    &lt;ttc code="singlev" point1="sv07" point2="sh03"/&gt;
+    &lt;ttc code="singlev" point1="sh03" point2="sv08"/&gt;
+    &lt;ttc code="singlev" point1="dv02" point2="sv09"/&gt;
+    &lt;ttc code="singlev" point1="sv09" point2="sv10"/&gt;
+    &lt;ttc code="singlev" point1="sv02" point2="sv11"/&gt;
+    &lt;ttc code="singlev" point1="ab01" point2="sv12"/&gt;
+    &lt;ttc code="singlev" point1="ab02" point2="sv13"/&gt;
+    &lt;ttc code="singlev" point1="sh01" point2="sv14"/&gt;
+  &lt;/ttProgram&gt;
+</string>
+		</dict>
+	</lib>
+</glyph>

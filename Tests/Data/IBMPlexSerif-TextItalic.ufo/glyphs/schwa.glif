@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="schwa" format="2">
+	<unicode hex="0259"/>
+	<advance width="454"/>
+	<outline>
+		<contour>
+			<point name="ab01" x="142" y="-12" type="qcurve"/>
+			<point x="119" y="-12"/>
+			<point x="73" y="-2"/>
+			<point x="36" y="21"/>
+			<point x="13" y="60"/>
+			<point x="13" y="89" type="qcurve"/>
+			<point x="13" y="117"/>
+			<point x="39" y="173"/>
+			<point x="105" y="220"/>
+			<point x="216" y="253"/>
+			<point name="iv01" x="300" y="258" type="qcurve"/>
+			<point x="307" y="290"/>
+			<point x="317" y="355"/>
+			<point x="317" y="382" type="qcurve"/>
+			<point x="317" y="424"/>
+			<point x="285" y="469"/>
+			<point name="sv02" x="250" y="469" type="qcurve"/>
+			<point x="205" y="469"/>
+			<point x="122" y="393"/>
+			<point name="iv02" x="85" y="325" type="qcurve"/>
+			<point x="53" y="340" type="line"/>
+			<point x="77" y="388"/>
+			<point x="126" y="460"/>
+			<point x="180" y="507"/>
+			<point x="241" y="530"/>
+			<point name="at01" x="279" y="530" type="qcurve"/>
+			<point x="350" y="530"/>
+			<point x="413" y="449"/>
+			<point x="413" y="369" type="qcurve"/>
+			<point x="413" y="332"/>
+			<point x="399" y="246"/>
+			<point x="371" y="161"/>
+			<point x="327" y="83"/>
+			<point x="267" y="24"/>
+			<point x="190" y="-12"/>
+		</contour>
+		<contour>
+			<point name="sv01" x="154" y="32" type="qcurve"/>
+			<point x="176" y="32"/>
+			<point x="214" y="51"/>
+			<point x="247" y="96"/>
+			<point x="278" y="170"/>
+			<point name="sv03" x="292" y="225" type="qcurve"/>
+			<point x="189" y="213"/>
+			<point x="98" y="148"/>
+			<point x="98" y="93" type="qcurve"/>
+			<point x="98" y="67"/>
+			<point x="122" y="32"/>
+		</contour>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint.v2</key>
+			<dict>
+				<key>hintSetList</key>
+				<array>
+					<dict>
+						<key>pointTag</key>
+						<string>ab01</string>
+						<key>stems</key>
+						<array>
+							<string>hstem -12 44</string>
+							<string>hstem 469 61</string>
+							<string>vstem 13 85</string>
+							<string>vstem 317 96</string>
+						</array>
+					</dict>
+				</array>
+			</dict>
+			<key>com.fontlab.ttprogram</key>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="alignt" point="at01" zone="xheight"/&gt;
+    &lt;ttc code="alignb" point="ab01" zone="baseline"/&gt;
+    &lt;ttc code="singlev" point1="ab01" point2="sv01" stem="lc_mediums"/&gt;
+    &lt;ttc code="singlev" point1="at01" point2="sv02" stem="bowl_thin"/&gt;
+    &lt;ttc code="interpolatev" point="iv01" point1="sv01" point2="sv02" align="round"/&gt;
+    &lt;ttc code="interpolatev" point="iv02" point1="iv01" point2="sv02"/&gt;
+    &lt;ttc code="singlev" point1="iv01" point2="sv03" stem="lc_thins"/&gt;
+  &lt;/ttProgram&gt;
+</string>
+			<key>com.fontlab.v5.userData</key>
+			<string>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;
+&lt;plist version="1.0"&gt;
+&lt;dict&gt;
+	&lt;key&gt;com.type-invaders.name.final&lt;/key&gt;
+	&lt;string&gt;uni0259&lt;/string&gt;
+	&lt;key&gt;com.type-invaders.name.production&lt;/key&gt;
+	&lt;string&gt;schwa&lt;/string&gt;
+&lt;/dict&gt;
+&lt;/plist&gt;
+</string>
+		</dict>
+	</lib>
+</glyph>

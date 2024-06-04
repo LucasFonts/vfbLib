@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="hookcomb" format="2">
+	<unicode hex="0309"/>
+	<outline>
+		<contour>
+			<point name="hr00" x="-14" y="592" type="line"/>
+			<point x="38" y="700" type="line"/>
+			<point name="sv02" x="-90" y="700" type="line"/>
+			<point name="sv01" x="-90" y="769" type="line"/>
+			<point x="23" y="769" type="line"/>
+			<point x="62" y="769"/>
+			<point x="94" y="737"/>
+			<point x="94" y="714" type="qcurve"/>
+			<point x="94" y="692"/>
+			<point x="68" y="641"/>
+			<point x="45" y="611" type="qcurve"/>
+			<point name="av01" x="18" y="576" type="line"/>
+		</contour>
+	</outline>
+	<anchor name="_top" x="0" y="540"/>
+	<guideline x="0" y="0" angle="90"/>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint.v2</key>
+			<dict>
+				<key>hintSetList</key>
+				<array>
+					<dict>
+						<key>pointTag</key>
+						<string>hr00</string>
+						<key>stems</key>
+						<array>
+							<string>hstem 700 69</string>
+							<string>vstem 38 56</string>
+						</array>
+					</dict>
+				</array>
+			</dict>
+			<key>com.fontlab.ttprogram</key>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="alignv" point="av01" align="round"/&gt;
+    &lt;ttc code="mdeltav" point="av01" delta="8" ppm1="9" ppm2="9"/&gt;
+    &lt;ttc code="mdeltav" point="av01" delta="8" ppm1="13" ppm2="13"/&gt;
+    &lt;ttc code="mdeltav" point="av01" delta="8" ppm1="11" ppm2="11"/&gt;
+    &lt;ttc code="singlev" point1="av01" point2="sv01" round="true"/&gt;
+    &lt;ttc code="singlev" point1="sv01" point2="sv02" round="true"/&gt;
+  &lt;/ttProgram&gt;
+</string>
+			<key>com.fontlab.v5.userData</key>
+			<string>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;
+&lt;plist version="1.0"&gt;
+&lt;dict&gt;
+	&lt;key&gt;com.type-invaders.name.final&lt;/key&gt;
+	&lt;string&gt;uni0309&lt;/string&gt;
+	&lt;key&gt;com.type-invaders.name.production&lt;/key&gt;
+	&lt;string&gt;hookcomb&lt;/string&gt;
+&lt;/dict&gt;
+&lt;/plist&gt;
+</string>
+		</dict>
+	</lib>
+</glyph>

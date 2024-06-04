@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="fivesuperior" format="2">
+	<unicode hex="2075"/>
+	<advance width="338"/>
+	<outline>
+		<contour>
+			<point name="ab01" x="182" y="324" type="qcurve"/>
+			<point x="129" y="324"/>
+			<point x="82" y="367"/>
+			<point x="82" y="392" type="qcurve"/>
+			<point x="82" y="417"/>
+			<point x="109" y="447"/>
+			<point name="iv02" x="128" y="447" type="qcurve"/>
+			<point x="148" y="447"/>
+			<point x="164" y="427"/>
+			<point x="164" y="412" type="qcurve"/>
+			<point x="164" y="395"/>
+			<point x="142" y="376"/>
+			<point x="130" y="373" type="qcurve"/>
+			<point x="128" y="368" type="line"/>
+			<point x="143" y="358"/>
+			<point name="sv02" x="174" y="358" type="qcurve"/>
+			<point x="209" y="358"/>
+			<point x="258" y="403"/>
+			<point x="267" y="440" type="qcurve"/>
+			<point x="269" y="446"/>
+			<point x="272" y="465"/>
+			<point x="272" y="473" type="qcurve"/>
+			<point x="272" y="498"/>
+			<point x="247" y="519"/>
+			<point name="sv03" x="227" y="519" type="qcurve"/>
+			<point x="207" y="519"/>
+			<point x="178" y="500"/>
+			<point x="168" y="487" type="qcurve"/>
+			<point x="123" y="495" type="line"/>
+			<point name="at01" x="187" y="698" type="line"/>
+			<point x="390" y="698" type="line"/>
+			<point x="377" y="645" type="line"/>
+			<point name="sv01" x="205" y="645" type="line"/>
+			<point x="165" y="514" type="line"/>
+			<point x="170" y="513" type="line"/>
+			<point x="183" y="533"/>
+			<point x="229" y="563"/>
+			<point name="iv01" x="261" y="563" type="qcurve"/>
+			<point x="349" y="563"/>
+			<point x="349" y="481" type="qcurve"/>
+			<point x="349" y="444"/>
+			<point x="322" y="386"/>
+			<point x="275" y="345"/>
+			<point x="215" y="324"/>
+		</contour>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint.v2</key>
+			<dict>
+				<key>hintSetList</key>
+				<array>
+					<dict>
+						<key>pointTag</key>
+						<string>ab01</string>
+						<key>stems</key>
+						<array>
+							<string>hstem 324 34</string>
+							<string>hstem 519 44</string>
+							<string>hstem 645 53</string>
+							<string>vstem 82 82</string>
+							<string>vstem 272 77</string>
+						</array>
+					</dict>
+				</array>
+			</dict>
+			<key>com.fontlab.ttprogram</key>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="alignt" point="at01" zone="capheight"/&gt;
+    &lt;ttc code="alignb" point="ab01" zone="sup_bot"/&gt;
+    &lt;ttc code="singlev" point1="at01" point2="sv01" round="true"/&gt;
+    &lt;ttc code="singlev" point1="ab01" point2="sv02" stem="lc_thins"/&gt;
+    &lt;ttc code="interpolatev" point="iv01" point1="sv01" point2="sv02" align="round"/&gt;
+    &lt;ttc code="singlev" point1="iv01" point2="sv03" stem="lc_thins"/&gt;
+    &lt;ttc code="interpolatev" point="iv02" point1="sv03" point2="sv02" align="left"/&gt;
+  &lt;/ttProgram&gt;
+</string>
+			<key>com.fontlab.v5.userData</key>
+			<string>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;
+&lt;plist version="1.0"&gt;
+&lt;dict&gt;
+	&lt;key&gt;com.type-invaders.name.final&lt;/key&gt;
+	&lt;string&gt;uni2075&lt;/string&gt;
+	&lt;key&gt;com.type-invaders.name.production&lt;/key&gt;
+	&lt;string&gt;fivesuperior&lt;/string&gt;
+&lt;/dict&gt;
+&lt;/plist&gt;
+</string>
+		</dict>
+	</lib>
+</glyph>

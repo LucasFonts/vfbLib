@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="acircumflexdotbelow" format="2">
+	<unicode hex="1EAD"/>
+	<advance width="549"/>
+	<outline>
+		<component base="a"/>
+		<component base="circumflex" xOffset="-41"/>
+		<component base="dotbelowcomb" xOffset="255"/>
+	</outline>
+	<anchor name="bottomright" x="520" y="0"/>
+	<lib>
+		<dict>
+			<key>public.markColor</key>
+			<string>0.648,0.9341,0.952,1</string>
+		</dict>
+	</lib>
+</glyph>

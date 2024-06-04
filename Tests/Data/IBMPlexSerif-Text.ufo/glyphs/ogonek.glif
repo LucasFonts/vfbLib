@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="ogonek" format="2">
+	<unicode hex="02DB"/>
+	<advance width="600"/>
+	<outline>
+		<contour>
+			<point name="ab01" x="243" y="-206" type="qcurve"/>
+			<point x="202" y="-206"/>
+			<point x="146" y="-170"/>
+			<point x="146" y="-130" type="qcurve"/>
+			<point x="146" y="-90"/>
+			<point x="208" y="-32"/>
+			<point name="sv01" x="262" y="3" type="qcurve"/>
+			<point x="257" y="21" type="line"/>
+			<point x="292" y="21" type="line"/>
+			<point name="ab02" x="300" y="0" type="line"/>
+			<point x="272" y="-23"/>
+			<point x="240" y="-59"/>
+			<point x="224" y="-88"/>
+			<point x="220" y="-110"/>
+			<point x="220" y="-119" type="qcurve"/>
+			<point x="220" y="-139"/>
+			<point x="245" y="-165"/>
+			<point name="sv02" x="266" y="-165" type="qcurve"/>
+			<point x="280" y="-165"/>
+			<point x="302" y="-152"/>
+			<point name="sv03" x="309" y="-143" type="qcurve"/>
+			<point x="333" y="-166" type="line"/>
+			<point x="322" y="-183"/>
+			<point x="278" y="-206"/>
+		</contour>
+	</outline>
+	<anchor name="_bottomright" x="300" y="0"/>
+	<guideline x="300" y="0" angle="90"/>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint.v2</key>
+			<dict>
+				<key>hintSetList</key>
+				<array>
+					<dict>
+						<key>pointTag</key>
+						<string>ab01</string>
+						<key>stems</key>
+						<array>
+							<string>hstem -206 41</string>
+							<string>vstem 146 74</string>
+						</array>
+					</dict>
+				</array>
+			</dict>
+			<key>com.fontlab.ttprogram</key>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="alignb" point="ab01" zone="descender"/&gt;
+    &lt;ttc code="alignb" point="ab02" zone="baseline"/&gt;
+    &lt;ttc code="mdeltav" point="ab01" delta="-8" ppm1="9" ppm2="17"/&gt;
+    &lt;ttc code="singlev" point1="ab02" point2="sv01"/&gt;
+    &lt;ttc code="singlev" point1="ab01" point2="sv02" round="true"/&gt;
+    &lt;ttc code="singlev" point1="sv02" point2="sv03" round="true"/&gt;
+  &lt;/ttProgram&gt;
+</string>
+		</dict>
+	</lib>
+</glyph>

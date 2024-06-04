@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="N" format="2">
+	<unicode hex="004E"/>
+	<advance width="715"/>
+	<outline>
+		<contour>
+			<point name="sv01" x="-10" y="45" type="line"/>
+			<point x="60" y="45" type="line"/>
+			<point x="212" y="653" type="line"/>
+			<point name="sv02" x="142" y="653" type="line"/>
+			<point name="at01" x="153" y="698" type="line"/>
+			<point x="329" y="698" type="line"/>
+			<point name="sv03" x="522" y="146" type="line"/>
+			<point x="529" y="146" type="line"/>
+			<point x="656" y="653" type="line"/>
+			<point name="sv04" x="586" y="653" type="line"/>
+			<point name="at02" x="597" y="698" type="line"/>
+			<point x="793" y="698" type="line"/>
+			<point x="782" y="653" type="line"/>
+			<point name="sv05" x="712" y="653" type="line"/>
+			<point x="548" y="0" type="line"/>
+			<point name="ab02" x="476" y="0" type="line"/>
+			<point name="hr00" x="262" y="602" type="line"/>
+			<point name="sv06" x="255" y="602" type="line"/>
+			<point name="sv07" x="116" y="45" type="line"/>
+			<point x="186" y="45" type="line"/>
+			<point x="175" y="0" type="line"/>
+			<point name="ab01" x="-21" y="0" type="line"/>
+		</contour>
+	</outline>
+	<anchor name="top" x="480" y="698"/>
+	<anchor name="bottom" x="309" y="0"/>
+	<guideline x="305" y="0" angle="75.96"/>
+	<guideline x="309" y="0" angle="75.96"/>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint.v2</key>
+			<dict>
+				<key>hintSetList</key>
+				<array>
+					<dict>
+						<key>pointTag</key>
+						<string>sv01</string>
+						<key>stems</key>
+						<array>
+							<string>hstem 0 45</string>
+							<string>hstem 653 45</string>
+							<string>vstem -21 814</string>
+						</array>
+					</dict>
+					<dict>
+						<key>pointTag</key>
+						<string>sv03</string>
+						<key>stems</key>
+						<array>
+							<string>hstem 0 146</string>
+							<string>hstem 653 45</string>
+							<string>vstem -21 814</string>
+						</array>
+					</dict>
+					<dict>
+						<key>pointTag</key>
+						<string>hr00</string>
+						<key>stems</key>
+						<array>
+							<string>hstem 0 45</string>
+							<string>hstem 602 96</string>
+							<string>vstem -21 814</string>
+						</array>
+					</dict>
+				</array>
+			</dict>
+			<key>com.fontlab.ttprogram</key>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="alignt" point="at01" zone="capheight"/&gt;
+    &lt;ttc code="alignt" point="at02" zone="capheight"/&gt;
+    &lt;ttc code="alignb" point="ab01" zone="baseline"/&gt;
+    &lt;ttc code="alignb" point="ab02" zone="baseline"/&gt;
+    &lt;ttc code="singlev" point1="ab01" point2="sv01" stem="uc_serif"/&gt;
+    &lt;ttc code="singlev" point1="at01" point2="sv02" stem="uc_serif"/&gt;
+    &lt;ttc code="singlev" point1="ab02" point2="sv03"/&gt;
+    &lt;ttc code="singlev" point1="at02" point2="sv04" stem="uc_serif"/&gt;
+    &lt;ttc code="singlev" point1="sv04" point2="sv05"/&gt;
+    &lt;ttc code="singlev" point1="at01" point2="sv06"/&gt;
+    &lt;ttc code="singlev" point1="sv01" point2="sv07"/&gt;
+  &lt;/ttProgram&gt;
+</string>
+		</dict>
+	</lib>
+</glyph>

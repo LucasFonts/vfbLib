@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="dotaccent.case" format="2">
+	<advance width="600"/>
+	<outline>
+		<contour>
+			<point name="ih01" x="300" y="768" type="qcurve"/>
+			<point x="262" y="768"/>
+			<point x="230" y="802"/>
+			<point x="230" y="828" type="qcurve"/>
+			<point x="230" y="849" type="line"/>
+			<point x="230" y="875"/>
+			<point x="262" y="909"/>
+			<point name="sv01" x="300" y="909" type="qcurve"/>
+			<point x="338" y="909"/>
+			<point x="370" y="875"/>
+			<point x="370" y="849" type="qcurve"/>
+			<point x="370" y="828" type="line"/>
+			<point x="370" y="802"/>
+			<point x="338" y="768"/>
+		</contour>
+	</outline>
+	<anchor name="_top" x="300" y="698"/>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint.v2</key>
+			<dict>
+				<key>hintSetList</key>
+				<array>
+					<dict>
+						<key>pointTag</key>
+						<string>ih01</string>
+						<key>stems</key>
+						<array>
+							<string>hstem 768 141</string>
+							<string>vstem 230 140</string>
+						</array>
+					</dict>
+				</array>
+			</dict>
+			<key>com.fontlab.ttprogram</key>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="interpolateh" point="ih01" point1="lsb" point2="rsb"/&gt;
+    &lt;ttc code="alignv" point="ih01" align="round"/&gt;
+    &lt;ttc code="mdeltav" point="ih01" delta="8" ppm1="24" ppm2="24"/&gt;
+    &lt;ttc code="mdeltav" point="ih01" delta="8" ppm1="11" ppm2="11"/&gt;
+    &lt;ttc code="mdeltav" point="ih01" delta="8" ppm1="29" ppm2="29"/&gt;
+    &lt;ttc code="mdeltav" point="ih01" delta="8" ppm1="20" ppm2="21"/&gt;
+    &lt;ttc code="mdeltav" point="ih01" delta="8" ppm1="16" ppm2="18"/&gt;
+    &lt;ttc code="singlev" point1="ih01" point2="sv01" round="true"/&gt;
+    &lt;ttc code="mdeltav" point="sv01" delta="-8" ppm1="18" ppm2="19"/&gt;
+    &lt;ttc code="mdeltav" point="sv01" delta="-8" ppm1="12" ppm2="12"/&gt;
+  &lt;/ttProgram&gt;
+</string>
+		</dict>
+	</lib>
+</glyph>

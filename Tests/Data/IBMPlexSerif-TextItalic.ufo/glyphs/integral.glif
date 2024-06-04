@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="integral" format="2">
+	<unicode hex="222B"/>
+	<advance width="386"/>
+	<outline>
+		<contour>
+			<point name="ab01" x="-27" y="-212" type="qcurve"/>
+			<point x="-76" y="-212"/>
+			<point x="-117" y="-172"/>
+			<point x="-117" y="-145" type="qcurve"/>
+			<point x="-117" y="-119"/>
+			<point x="-86" y="-83"/>
+			<point name="iv01" x="-59" y="-83" type="qcurve"/>
+			<point x="-36" y="-83"/>
+			<point x="-9" y="-111"/>
+			<point x="-9" y="-131" type="qcurve"/>
+			<point x="-9" y="-143"/>
+			<point x="-21" y="-168"/>
+			<point x="-35" y="-177" type="qcurve"/>
+			<point name="sv01" x="-30" y="-184" type="line"/>
+			<point x="14" y="-183"/>
+			<point x="63" y="-122"/>
+			<point x="77" y="-65" type="qcurve"/>
+			<point x="240" y="586" type="line"/>
+			<point x="260" y="666"/>
+			<point x="345" y="752"/>
+			<point name="at01" x="411" y="752" type="qcurve"/>
+			<point x="460" y="752"/>
+			<point x="501" y="712"/>
+			<point x="501" y="685" type="qcurve"/>
+			<point x="501" y="659"/>
+			<point x="470" y="623"/>
+			<point name="iv02" x="443" y="623" type="qcurve"/>
+			<point x="420" y="623"/>
+			<point x="393" y="651"/>
+			<point x="393" y="671" type="qcurve"/>
+			<point x="393" y="683"/>
+			<point x="405" y="708"/>
+			<point x="419" y="717" type="qcurve"/>
+			<point name="sv02" x="414" y="724" type="line"/>
+			<point x="370" y="723"/>
+			<point x="321" y="662"/>
+			<point x="307" y="605" type="qcurve"/>
+			<point x="144" y="-46" type="line"/>
+			<point x="124" y="-126"/>
+			<point x="39" y="-212"/>
+		</contour>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint.v2</key>
+			<dict>
+				<key>hintSetList</key>
+				<array>
+					<dict>
+						<key>pointTag</key>
+						<string>ab01</string>
+						<key>stems</key>
+						<array>
+							<string>hstem -212 28</string>
+							<string>hstem 724 28</string>
+							<string>vstem -117 108</string>
+							<string>vstem 393 108</string>
+						</array>
+					</dict>
+				</array>
+			</dict>
+			<key>com.fontlab.ttprogram</key>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="alignt" point="at01" zone="slashes"/&gt;
+    &lt;ttc code="alignb" point="ab01" zone="descender"/&gt;
+    &lt;ttc code="singlev" point1="ab01" point2="sv01" stem="lc_thins"/&gt;
+    &lt;ttc code="singlev" point1="at01" point2="sv02" stem="lc_thins"/&gt;
+    &lt;ttc code="interpolatev" point="iv01" point1="sv01" point2="sv02" align="round"/&gt;
+    &lt;ttc code="interpolatev" point="iv02" point1="sv02" point2="sv01" align="round"/&gt;
+  &lt;/ttProgram&gt;
+</string>
+		</dict>
+	</lib>
+</glyph>

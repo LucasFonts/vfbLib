@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="equal" format="2">
+	<unicode hex="003D"/>
+	<advance width="600"/>
+	<outline>
+		<contour>
+			<point name="sv02" x="66" y="229" type="line"/>
+			<point x="534" y="229" type="line"/>
+			<point x="534" y="171" type="line"/>
+			<point name="sv03" x="66" y="171" type="line"/>
+		</contour>
+		<contour>
+			<point name="av01" x="66" y="439" type="line"/>
+			<point x="534" y="439" type="line"/>
+			<point x="534" y="381" type="line"/>
+			<point name="sv01" x="66" y="381" type="line"/>
+		</contour>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint.v2</key>
+			<dict>
+				<key>hintSetList</key>
+				<array>
+					<dict>
+						<key>pointTag</key>
+						<string>sv02</string>
+						<key>stems</key>
+						<array>
+							<string>hstem 171 58</string>
+							<string>hstem 381 58</string>
+							<string>vstem 66 468</string>
+						</array>
+					</dict>
+				</array>
+			</dict>
+			<key>com.fontlab.ttprogram</key>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="alignv" point="av01" align="round"/&gt;
+    &lt;ttc code="mdeltav" point="av01" delta="8" ppm1="10" ppm2="10"/&gt;
+    &lt;ttc code="singlev" point1="av01" point2="sv01" stem="uc_stem"/&gt;
+    &lt;ttc code="singlev" point1="sv01" point2="sv02" round="true"/&gt;
+    &lt;ttc code="mdeltav" point="sv02" delta="8" ppm1="10" ppm2="10"/&gt;
+    &lt;ttc code="singlev" point1="sv02" point2="sv03" stem="uc_stem"/&gt;
+  &lt;/ttProgram&gt;
+</string>
+		</dict>
+	</lib>
+</glyph>

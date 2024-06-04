@@ -207,6 +207,32 @@ class TrueTypeStemPpemsParser(BaseParser):
         return result
 
 
+class TrueTypeStemPpems1Parser(BaseParser):
+    # PPEM 1 for each stem is stored in a separate entry ...
+    def _parse(self):
+        stream = self.stream
+        names = ("ttStemsV", "ttStemsH")
+        result = {}
+        for i in range(2):
+            direction = []
+            num_stems = (self.ttStemsV_count, self.ttStemsH_count)[i]
+            if num_stems is None:
+                raise ValueError
+
+            for j in range(num_stems):
+                ppm = read_encoded_value(stream)
+                direction.append(
+                    {
+                        "stem": j,
+                        "round": {"1": ppm},
+                    }
+                )
+            result[names[i]] = direction
+
+        assert stream.read() == b""
+        return result
+
+
 class TrueTypeZoneDeltasParser(BaseParser):
     def _parse(self):
         stream = self.stream

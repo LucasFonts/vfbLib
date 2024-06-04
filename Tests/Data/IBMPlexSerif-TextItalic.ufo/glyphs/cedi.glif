@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="cedi" format="2">
+	<unicode hex="20B5"/>
+	<advance width="580"/>
+	<outline>
+		<contour>
+			<point name="sv01" x="171" y="10" type="line"/>
+			<point x="115" y="30"/>
+			<point x="56" y="133"/>
+			<point x="56" y="215" type="qcurve"/>
+			<point x="56" y="264"/>
+			<point x="75" y="374"/>
+			<point x="113" y="481"/>
+			<point x="172" y="580"/>
+			<point x="251" y="655"/>
+			<point x="352" y="700"/>
+			<point name="at01" x="413" y="700" type="qcurve"/>
+			<point x="440" y="700" type="line"/>
+			<point name="sv02" x="470" y="780" type="line"/>
+			<point x="520" y="780" type="line"/>
+			<point name="sv03" x="486" y="693" type="line"/>
+			<point x="511" y="687"/>
+			<point x="555" y="666"/>
+			<point x="588" y="637"/>
+			<point x="607" y="601"/>
+			<point x="607" y="579" type="qcurve"/>
+			<point x="607" y="545"/>
+			<point x="568" y="495"/>
+			<point name="iv01" x="535" y="495" type="qcurve"/>
+			<point x="511" y="495"/>
+			<point x="483" y="524"/>
+			<point x="483" y="546" type="qcurve"/>
+			<point x="483" y="572"/>
+			<point x="512" y="612"/>
+			<point x="541" y="620" type="qcurve"/>
+			<point x="542" y="626" type="line"/>
+			<point x="528" y="634"/>
+			<point x="489" y="645"/>
+			<point name="sv06" x="467" y="647" type="qcurve"/>
+			<point x="241" y="65" type="line"/>
+			<point x="251" y="62"/>
+			<point x="273" y="59"/>
+			<point name="sv05" x="283" y="59" type="qcurve"/>
+			<point x="315" y="59"/>
+			<point x="372" y="79"/>
+			<point x="420" y="115"/>
+			<point x="460" y="163"/>
+			<point x="477" y="191" type="qcurve"/>
+			<point x="511" y="170" type="line"/>
+			<point x="495" y="142"/>
+			<point x="446" y="81"/>
+			<point x="381" y="31"/>
+			<point x="300" y="-2"/>
+			<point name="ab01" x="252" y="-2" type="qcurve"/>
+			<point x="233" y="-2"/>
+			<point x="217" y="1" type="qcurve"/>
+			<point x="186" y="-82" type="line"/>
+			<point name="sv07" x="136" y="-82" type="line"/>
+		</contour>
+		<contour>
+			<point name="sv04" x="421" y="649" type="line"/>
+			<point x="373" y="647"/>
+			<point x="298" y="609"/>
+			<point x="241" y="543"/>
+			<point x="202" y="455"/>
+			<point x="190" y="404" type="qcurve"/>
+			<point x="185" y="385"/>
+			<point x="172" y="334"/>
+			<point x="160" y="280"/>
+			<point x="152" y="229"/>
+			<point x="152" y="209" type="qcurve"/>
+			<point x="152" y="161"/>
+			<point x="179" y="103"/>
+			<point name="sv08" x="202" y="86" type="qcurve"/>
+		</contour>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint.v2</key>
+			<dict>
+				<key>hintSetList</key>
+				<array>
+					<dict>
+						<key>pointTag</key>
+						<string>sv01</string>
+						<key>stems</key>
+						<array>
+							<string>hstem -2 61</string>
+							<string>hstem 649 51</string>
+							<string>vstem 56 96</string>
+							<string>vstem 483 124</string>
+						</array>
+					</dict>
+				</array>
+			</dict>
+			<key>com.fontlab.ttprogram</key>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="alignt" point="at01" zone="capheight"/&gt;
+    &lt;ttc code="alignb" point="ab01" zone="baseline"/&gt;
+    &lt;ttc code="singlev" point1="ab01" point2="sv01"/&gt;
+    &lt;ttc code="singlev" point1="at01" point2="sv02" round="true"/&gt;
+    &lt;ttc code="singlev" point1="at01" point2="sv03"/&gt;
+    &lt;ttc code="singlev" point1="at01" point2="sv04" stem="uc_serif"/&gt;
+    &lt;ttc code="singlev" point1="ab01" point2="sv05" stem="bowl_thin"/&gt;
+    &lt;ttc code="interpolatev" point="iv01" point1="sv04" point2="sv05" align="round"/&gt;
+    &lt;ttc code="singlev" point1="sv04" point2="sv06"/&gt;
+    &lt;ttc code="singlev" point1="ab01" point2="sv07" round="true"/&gt;
+    &lt;ttc code="singlev" point1="sv05" point2="sv08"/&gt;
+  &lt;/ttProgram&gt;
+</string>
+			<key>com.fontlab.v5.userData</key>
+			<string>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;
+&lt;plist version="1.0"&gt;
+&lt;dict&gt;
+	&lt;key&gt;com.type-invaders.name.final&lt;/key&gt;
+	&lt;string&gt;uni20B5&lt;/string&gt;
+	&lt;key&gt;com.type-invaders.name.production&lt;/key&gt;
+	&lt;string&gt;cedi&lt;/string&gt;
+&lt;/dict&gt;
+&lt;/plist&gt;
+</string>
+		</dict>
+	</lib>
+</glyph>

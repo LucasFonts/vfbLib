@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="caron.case" format="2">
+	<advance width="600"/>
+	<outline>
+		<contour>
+			<point name="hr00" x="204" y="927" type="line"/>
+			<point name="sv01" x="231" y="941" type="line"/>
+			<point name="sv02" x="328" y="845" type="line"/>
+			<point name="sv03" x="476" y="941" type="line"/>
+			<point x="500" y="924" type="line"/>
+			<point x="347" y="768" type="line"/>
+			<point name="av01" x="284" y="768" type="line"/>
+		</contour>
+	</outline>
+	<anchor name="_top" x="300" y="698"/>
+	<guideline x="125" y="0" angle="75.96"/>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint.v2</key>
+			<dict>
+				<key>hintSetList</key>
+				<array>
+					<dict>
+						<key>pointTag</key>
+						<string>hr00</string>
+						<key>stems</key>
+						<array>
+							<string>hstem 768 173</string>
+							<string>vstem 204 296</string>
+						</array>
+					</dict>
+				</array>
+			</dict>
+			<key>com.fontlab.ttprogram</key>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="alignv" point="av01" align="round"/&gt;
+    &lt;ttc code="mdeltav" point="av01" delta="8" ppm1="11" ppm2="11"/&gt;
+    &lt;ttc code="mdeltav" point="av01" delta="-8" ppm1="15" ppm2="15"/&gt;
+    &lt;ttc code="mdeltav" point="av01" delta="-8" ppm1="19" ppm2="19"/&gt;
+    &lt;ttc code="singlev" point1="av01" point2="sv01" round="true"/&gt;
+    &lt;ttc code="singlev" point1="av01" point2="sv02" round="true"/&gt;
+    &lt;ttc code="singlev" point1="sv01" point2="sv03"/&gt;
+  &lt;/ttProgram&gt;
+</string>
+		</dict>
+	</lib>
+</glyph>

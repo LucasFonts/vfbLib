@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="guarani" format="2">
+	<unicode hex="20B2"/>
+	<advance width="670"/>
+	<outline>
+		<contour>
+			<point name="sv01" x="193" y="8" type="line"/>
+			<point x="127" y="29"/>
+			<point x="57" y="139"/>
+			<point x="57" y="231" type="qcurve"/>
+			<point x="57" y="280"/>
+			<point x="77" y="388"/>
+			<point x="117" y="493"/>
+			<point x="179" y="587"/>
+			<point x="262" y="658"/>
+			<point x="368" y="700"/>
+			<point name="at01" x="432" y="700" type="qcurve"/>
+			<point x="440" y="700"/>
+			<point x="457" y="700"/>
+			<point x="467" y="699" type="qcurve"/>
+			<point name="sv02" x="499" y="780" type="line"/>
+			<point x="548" y="780" type="line"/>
+			<point name="sv03" x="513" y="691" type="line"/>
+			<point x="567" y="679"/>
+			<point x="636" y="622"/>
+			<point x="636" y="578" type="qcurve"/>
+			<point x="636" y="544"/>
+			<point x="597" y="495"/>
+			<point name="iv02" x="565" y="495" type="qcurve"/>
+			<point x="540" y="495"/>
+			<point x="512" y="523"/>
+			<point x="512" y="546" type="qcurve"/>
+			<point x="512" y="572"/>
+			<point x="541" y="612"/>
+			<point x="570" y="619" type="qcurve"/>
+			<point x="571" y="626" type="line"/>
+			<point x="557" y="632"/>
+			<point x="519" y="644"/>
+			<point name="sv06" x="493" y="646" type="qcurve"/>
+			<point name="iv01" x="368" y="330" type="line"/>
+			<point x="649" y="330" type="line"/>
+			<point x="638" y="285" type="line"/>
+			<point name="sv08" x="582" y="285" type="line"/>
+			<point x="511" y="0" type="line"/>
+			<point name="ab02" x="483" y="0" type="line"/>
+			<point x="464" y="101" type="line"/>
+			<point name="iv03" x="457" y="101" type="line"/>
+			<point x="445" y="82"/>
+			<point x="409" y="45"/>
+			<point x="361" y="16"/>
+			<point name="hr00" x="301" y="-2"/>
+			<point x="265" y="-2" type="qcurve"/>
+			<point x="258" y="-2"/>
+			<point x="245" y="-1"/>
+			<point name="ab01" x="238" y="0" type="qcurve"/>
+			<point x="206" y="-82" type="line"/>
+			<point name="sv09" x="157" y="-82" type="line"/>
+		</contour>
+		<contour>
+			<point name="sv04" x="448" y="649" type="line"/>
+			<point x="393" y="649"/>
+			<point x="308" y="610"/>
+			<point x="245" y="544"/>
+			<point x="204" y="458"/>
+			<point x="192" y="410" type="qcurve"/>
+			<point x="181" y="364"/>
+			<point x="166" y="302"/>
+			<point x="157" y="257"/>
+			<point x="153" y="223"/>
+			<point x="153" y="206" type="qcurve"/>
+			<point x="153" y="158"/>
+			<point x="187" y="88"/>
+			<point name="sv10" x="220" y="70" type="qcurve"/>
+		</contour>
+		<contour>
+			<point name="hr01" x="284" y="52" type="qcurve"/>
+			<point x="317" y="52"/>
+			<point x="378" y="73"/>
+			<point x="427" y="112"/>
+			<point x="464" y="168"/>
+			<point x="473" y="204" type="qcurve"/>
+			<point x="494" y="285" type="line"/>
+			<point name="sv07" x="350" y="285" type="line"/>
+			<point name="sv05" x="259" y="54" type="line"/>
+			<point x="265" y="53"/>
+			<point x="277" y="52"/>
+		</contour>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint.v2</key>
+			<dict>
+				<key>hintSetList</key>
+				<array>
+					<dict>
+						<key>pointTag</key>
+						<string>sv01</string>
+						<key>stems</key>
+						<array>
+							<string>hstem 21 -21</string>
+							<string>hstem 285 45</string>
+							<string>hstem 649 51</string>
+							<string>vstem 57 96</string>
+							<string>vstem 512 124</string>
+						</array>
+					</dict>
+					<dict>
+						<key>pointTag</key>
+						<string>hr00</string>
+						<key>stems</key>
+						<array>
+							<string>hstem -2 54</string>
+							<string>hstem 285 45</string>
+							<string>hstem 649 51</string>
+							<string>vstem 57 96</string>
+							<string>vstem 512 124</string>
+						</array>
+					</dict>
+					<dict>
+						<key>pointTag</key>
+						<string>ab01</string>
+						<key>stems</key>
+						<array>
+							<string>hstem 21 -21</string>
+							<string>hstem 285 45</string>
+							<string>hstem 649 51</string>
+							<string>vstem 57 96</string>
+							<string>vstem 512 124</string>
+						</array>
+					</dict>
+					<dict>
+						<key>pointTag</key>
+						<string>hr01</string>
+						<key>stems</key>
+						<array>
+							<string>hstem -2 54</string>
+							<string>hstem 285 45</string>
+							<string>hstem 649 51</string>
+							<string>vstem 57 96</string>
+							<string>vstem 512 124</string>
+						</array>
+					</dict>
+				</array>
+			</dict>
+			<key>com.fontlab.ttprogram</key>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="alignt" point="at01" zone="capheight"/&gt;
+    &lt;ttc code="alignb" point="ab01" zone="baseline"/&gt;
+    &lt;ttc code="alignb" point="ab02" zone="baseline"/&gt;
+    &lt;ttc code="singlev" point1="ab01" point2="sv01"/&gt;
+    &lt;ttc code="singlev" point1="at01" point2="sv02" round="true"/&gt;
+    &lt;ttc code="singlev" point1="at01" point2="sv03"/&gt;
+    &lt;ttc code="singlev" point1="at01" point2="sv04" stem="uc_serif"/&gt;
+    &lt;ttc code="singlev" point1="ab01" point2="sv05" stem="uc_serif"/&gt;
+    &lt;ttc code="interpolatev" point="iv01" point1="sv04" point2="sv05" align="round"/&gt;
+    &lt;ttc code="interpolatev" point="iv02" point1="sv04" point2="iv01" align="round"/&gt;
+    &lt;ttc code="singlev" point1="sv04" point2="sv06"/&gt;
+    &lt;ttc code="singlev" point1="iv01" point2="sv07" stem="lc_stemserif"/&gt;
+    &lt;ttc code="singlev" point1="sv07" point2="sv08"/&gt;
+    &lt;ttc code="interpolatev" point="iv03" point1="sv05" point2="sv07"/&gt;
+    &lt;ttc code="singlev" point1="ab01" point2="sv09" round="true"/&gt;
+    &lt;ttc code="singlev" point1="sv05" point2="sv10"/&gt;
+  &lt;/ttProgram&gt;
+</string>
+			<key>com.fontlab.v5.userData</key>
+			<string>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;
+&lt;plist version="1.0"&gt;
+&lt;dict&gt;
+	&lt;key&gt;com.type-invaders.name.final&lt;/key&gt;
+	&lt;string&gt;uni20B2&lt;/string&gt;
+	&lt;key&gt;com.type-invaders.name.production&lt;/key&gt;
+	&lt;string&gt;guarani&lt;/string&gt;
+&lt;/dict&gt;
+&lt;/plist&gt;
+</string>
+		</dict>
+	</lib>
+</glyph>

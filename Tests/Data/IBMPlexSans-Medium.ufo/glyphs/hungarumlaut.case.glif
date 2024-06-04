@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="hungarumlaut.case" format="2">
+	<advance width="600"/>
+	<outline>
+		<contour>
+			<point name="av01" x="220" y="749" type="line"/>
+			<point x="158" y="778" type="line"/>
+			<point x="249" y="959" type="line"/>
+			<point name="sh01" x="338" y="915" type="line"/>
+		</contour>
+		<contour>
+			<point name="sv01" x="399" y="749" type="line"/>
+			<point name="ih01" x="337" y="778" type="line"/>
+			<point x="428" y="959" type="line"/>
+			<point x="517" y="915" type="line"/>
+		</contour>
+	</outline>
+	<anchor name="_top" x="300" y="698"/>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint.v2</key>
+			<dict>
+				<key>hintSetList</key>
+				<array>
+					<dict>
+						<key>pointTag</key>
+						<string>av01</string>
+						<key>stems</key>
+						<array>
+							<string>hstem 749 210</string>
+							<string>vstem 158 359</string>
+						</array>
+					</dict>
+				</array>
+			</dict>
+			<key>com.fontlab.ttprogram</key>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="interpolateh" point="ih01" point1="lsb" point2="rsb"/&gt;
+    &lt;ttc code="singleh" point1="ih01" point2="sh01"/&gt;
+    &lt;ttc code="alignv" point="av01" align="round"/&gt;
+    &lt;ttc code="mdeltav" point="av01" delta="8" ppm1="34" ppm2="34"/&gt;
+    &lt;ttc code="mdeltav" point="av01" delta="8" ppm1="10" ppm2="11"/&gt;
+    &lt;ttc code="mdeltav" point="av01" delta="8" ppm1="38" ppm2="38"/&gt;
+    &lt;ttc code="mdeltav" point="av01" delta="8" ppm1="14" ppm2="14"/&gt;
+    &lt;ttc code="mdeltav" point="av01" delta="8" ppm1="18" ppm2="18"/&gt;
+    &lt;ttc code="mdeltav" point="av01" delta="-8" ppm1="29" ppm2="29"/&gt;
+    &lt;ttc code="singlev" point1="av01" point2="sv01"/&gt;
+  &lt;/ttProgram&gt;
+</string>
+		</dict>
+	</lib>
+</glyph>

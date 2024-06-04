@@ -11,16 +11,26 @@
 		<key>descender</key>
 		<integer>-250</integer>
 		<key>familyName</key>
-		<string>Untitled</string>
+		<string></string>
+		<key>guidelines</key>
+		<array>
+		</array>
 		<key>italicAngle</key>
 		<integer>0</integer>
 		<key>macintoshFONDFamilyID</key>
 		<integer>128</integer>
+		<key>macintoshFONDName</key>
+		<string></string>
+		<key>openTypeGaspRangeRecords</key>
+		<array>
+		</array>
 		<key>openTypeHeadCreated</key>
-		<string>2024/01/18 10:57:52</string>
+		<string>2024/01/18 11:57:52</string>
 		<key>openTypeHeadFlags</key>
 		<array>
 		</array>
+		<key>openTypeHeadLowestRecPPEM</key>
+		<integer>9</integer>
 		<key>openTypeHheaAscender</key>
 		<integer>750</integer>
 		<key>openTypeHheaDescender</key>
@@ -41,12 +51,22 @@
 		<string></string>
 		<key>openTypeNameManufacturerURL</key>
 		<string></string>
+		<key>openTypeNamePreferredFamilyName</key>
+		<string></string>
+		<key>openTypeNamePreferredSubfamilyName</key>
+		<string></string>
+		<key>openTypeNameRecords</key>
+		<array>
+		</array>
 		<key>openTypeNameSampleText</key>
 		<string></string>
 		<key>openTypeNameUniqueID</key>
 		<string></string>
 		<key>openTypeNameVersion</key>
 		<string></string>
+		<key>openTypeOS2CodePageRanges</key>
+		<array>
+		</array>
 		<key>openTypeOS2FamilyClass</key>
 		<array>
 			<integer>0</integer>
@@ -97,11 +117,14 @@
 		<key>openTypeOS2TypoDescender</key>
 		<integer>-250</integer>
 		<key>openTypeOS2TypoLineGap</key>
-		<integer>9</integer>
+		<integer>0</integer>
+		<key>openTypeOS2UnicodeRanges</key>
+		<array>
+		</array>
 		<key>openTypeOS2VendorID</key>
 		<string>iact</string>
 		<key>openTypeOS2WeightClass</key>
-		<integer>400</integer>
+		<integer>1</integer>
 		<key>openTypeOS2WidthClass</key>
 		<integer>5</integer>
 		<key>openTypeOS2WinAscent</key>
@@ -116,17 +139,24 @@
 		<integer>7</integer>
 		<key>postscriptBlueValues</key>
 		<array>
-			<integer>-20</integer>
-			<integer>0</integer>
+		</array>
+		<key>postscriptFamilyBlues</key>
+		<array>
+		</array>
+		<key>postscriptFamilyOtherBlues</key>
+		<array>
 		</array>
 		<key>postscriptFontName</key>
-		<string>Untitled-Regular</string>
+		<string></string>
 		<key>postscriptForceBold</key>
 		<false/>
 		<key>postscriptFullName</key>
-		<string>Untitled Regular</string>
+		<string></string>
 		<key>postscriptIsFixedPitch</key>
 		<false/>
+		<key>postscriptOtherBlues</key>
+		<array>
+		</array>
 		<key>postscriptUnderlinePosition</key>
 		<integer>-75</integer>
 		<key>postscriptUnderlineThickness</key>
@@ -134,13 +164,13 @@
 		<key>postscriptUniqueID</key>
 		<integer>-1</integer>
 		<key>postscriptWeightName</key>
-		<string>Regular</string>
+		<string></string>
 		<key>styleMapFamilyName</key>
-		<string>Untitled</string>
+		<string></string>
 		<key>styleMapStyleName</key>
 		<string>regular</string>
 		<key>styleName</key>
-		<string>Regular</string>
+		<string></string>
 		<key>trademark</key>
 		<string></string>
 		<key>unitsPerEm</key>

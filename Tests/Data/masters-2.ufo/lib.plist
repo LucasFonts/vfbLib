@@ -28,7 +28,12 @@
 			<key>public.kern2._t</key>
 			<string>t</string>
 		</dict>
-		<key>com.lucasfonts.vfblib.groupOrder</key>
+		<key>public.glyphOrder</key>
+		<array>
+			<string>a</string>
+			<string>t</string>
+		</array>
+		<key>public.groupOrder</key>
 		<array>
 			<string>public.kern1._a_LEFT</string>
 			<string>public.kern2._a_RIGHT</string>
@@ -36,11 +41,6 @@
 			<string>public.kern2._t</string>
 			<string>.mtrx5</string>
 			<string>letters</string>
-		</array>
-		<key>public.glyphOrder</key>
-		<array>
-			<string>a</string>
-			<string>t</string>
 		</array>
 	</dict>
 </plist>

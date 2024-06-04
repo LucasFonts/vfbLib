@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="arrowup" format="2">
+	<unicode hex="2191"/>
+	<advance width="854"/>
+	<outline>
+		<contour>
+			<point name="hr00" x="648" y="489" type="line"/>
+			<point x="586" y="427" type="line"/>
+			<point x="511" y="503" type="line"/>
+			<point x="471" y="550" type="line"/>
+			<point x="467" y="549" type="line"/>
+			<point x="473" y="459" type="line"/>
+			<point x="473" y="0" type="line"/>
+			<point name="ab01" x="382" y="0" type="line"/>
+			<point x="382" y="459" type="line"/>
+			<point x="387" y="549" type="line"/>
+			<point x="383" y="550" type="line"/>
+			<point x="343" y="503" type="line"/>
+			<point x="268" y="427" type="line"/>
+			<point x="206" y="489" type="line"/>
+			<point name="ih01" x="427" y="710" type="line"/>
+		</contour>
+	</outline>
+	<guideline x="0" y="710" angle="0"/>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint.v2</key>
+			<dict>
+				<key>hintSetList</key>
+				<array>
+					<dict>
+						<key>pointTag</key>
+						<string>hr00</string>
+						<key>stems</key>
+						<array>
+							<string>hstem 21 -21</string>
+							<string>vstem 382 91</string>
+						</array>
+					</dict>
+				</array>
+			</dict>
+			<key>com.fontlab.ttprogram</key>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="interpolateh" point="ih01" point1="lsb" point2="rsb"/&gt;
+    &lt;ttc code="alignt" point="ih01" zone="capheight"/&gt;
+    &lt;ttc code="alignb" point="ab01" zone="baseline"/&gt;
+  &lt;/ttProgram&gt;
+</string>
+		</dict>
+	</lib>
+</glyph>

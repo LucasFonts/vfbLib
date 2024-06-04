@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="commaturnedtop" format="2">
+	<unicode hex="02BB"/>
+	<advance width="600"/>
+	<outline>
+		<contour>
+			<point name="av01" x="315" y="589" type="qcurve"/>
+			<point x="294" y="589"/>
+			<point x="270" y="612"/>
+			<point x="270" y="630" type="qcurve"/>
+			<point x="270" y="640"/>
+			<point x="273" y="652" type="qcurve"/>
+			<point x="277" y="668"/>
+			<point x="295" y="703"/>
+			<point x="319" y="736"/>
+			<point x="347" y="766"/>
+			<point name="sv01" x="361" y="778" type="qcurve"/>
+			<point x="403" y="778" type="line"/>
+			<point x="384" y="760"/>
+			<point x="347" y="709"/>
+			<point name="sv02" x="337" y="688" type="qcurve"/>
+			<point x="354" y="686"/>
+			<point x="374" y="664"/>
+			<point x="374" y="650" type="qcurve"/>
+			<point x="374" y="645"/>
+			<point x="373" y="636"/>
+			<point x="371" y="629" type="qcurve"/>
+			<point x="365" y="609"/>
+			<point x="335" y="589"/>
+		</contour>
+	</outline>
+	<anchor name="_top" x="300" y="540"/>
+	<guideline x="165" y="0" angle="75.96"/>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint.v2</key>
+			<dict>
+				<key>hintSetList</key>
+				<array>
+					<dict>
+						<key>pointTag</key>
+						<string>av01</string>
+						<key>stems</key>
+						<array>
+							<string>hstem 589 99</string>
+							<string>vstem 270 104</string>
+						</array>
+					</dict>
+				</array>
+			</dict>
+			<key>com.fontlab.ttprogram</key>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="alignv" point="av01" align="round"/&gt;
+    &lt;ttc code="mdeltav" point="av01" delta="8" ppm1="9" ppm2="9"/&gt;
+    &lt;ttc code="mdeltav" point="av01" delta="8" ppm1="11" ppm2="11"/&gt;
+    &lt;ttc code="singlev" point1="av01" point2="sv01" round="true"/&gt;
+    &lt;ttc code="singlev" point1="av01" point2="sv02" round="true"/&gt;
+  &lt;/ttProgram&gt;
+</string>
+			<key>com.fontlab.v5.userData</key>
+			<string>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;
+&lt;plist version="1.0"&gt;
+&lt;dict&gt;
+	&lt;key&gt;com.type-invaders.name.final&lt;/key&gt;
+	&lt;string&gt;uni02BB&lt;/string&gt;
+	&lt;key&gt;com.type-invaders.name.production&lt;/key&gt;
+	&lt;string&gt;commaturnedtop&lt;/string&gt;
+&lt;/dict&gt;
+&lt;/plist&gt;
+</string>
+		</dict>
+	</lib>
+</glyph>

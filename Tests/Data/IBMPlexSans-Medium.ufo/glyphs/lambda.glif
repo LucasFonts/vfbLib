@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="lambda" format="2">
+	<unicode hex="03BB"/>
+	<advance width="521"/>
+	<outline>
+		<contour>
+			<point name="hr00" x="161" y="651" type="line"/>
+			<point name="sv01" x="64" y="651" type="line"/>
+			<point name="at01" x="64" y="740" type="line"/>
+			<point x="157" y="740" type="line"/>
+			<point x="203" y="740"/>
+			<point x="249" y="705"/>
+			<point name="ih01" x="262" y="665" type="qcurve"/>
+			<point name="sv02" x="450" y="89" type="line"/>
+			<point x="513" y="89" type="line"/>
+			<point x="513" y="0" type="line"/>
+			<point name="ab02" x="454" y="0" type="line"/>
+			<point x="408" y="0"/>
+			<point x="361" y="35"/>
+			<point x="348" y="75" type="qcurve"/>
+			<point x="293" y="245" type="line"/>
+			<point x="254" y="400" type="line"/>
+			<point name="sv03" x="247" y="400" type="line"/>
+			<point x="201" y="245" type="line"/>
+			<point x="110" y="0" type="line"/>
+			<point name="ab01" x="5" y="0" type="line"/>
+			<point name="at02" x="203" y="520" type="line"/>
+		</contour>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint.v2</key>
+			<dict>
+				<key>hintSetList</key>
+				<array>
+					<dict>
+						<key>pointTag</key>
+						<string>hr00</string>
+						<key>stems</key>
+						<array>
+							<string>hstem 0 89</string>
+							<string>hstem 651 89</string>
+							<string>vstem 5 508</string>
+						</array>
+					</dict>
+				</array>
+			</dict>
+			<key>com.fontlab.ttprogram</key>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="interpolateh" point="ih01" point1="lsb" point2="rsb"/&gt;
+    &lt;ttc code="alignt" point="at01" zone="ascender"/&gt;
+    &lt;ttc code="alignt" point="at02" zone="xheight"/&gt;
+    &lt;ttc code="alignb" point="ab01" zone="baseline"/&gt;
+    &lt;ttc code="alignb" point="ab02" zone="baseline"/&gt;
+    &lt;ttc code="singlev" point1="at01" point2="sv01" stem="lc-hstem"/&gt;
+    &lt;ttc code="singlev" point1="ab02" point2="sv02" stem="lc-hstem"/&gt;
+    &lt;ttc code="singlev" point1="at02" point2="sv03"/&gt;
+  &lt;/ttProgram&gt;
+</string>
+		</dict>
+	</lib>
+</glyph>

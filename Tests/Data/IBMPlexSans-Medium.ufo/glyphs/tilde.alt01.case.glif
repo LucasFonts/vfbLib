@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="tilde.alt01.case" format="2">
+	<advance width="600"/>
+	<outline>
+		<contour>
+			<point name="av01" x="364" y="776" type="qcurve"/>
+			<point x="342" y="776"/>
+			<point x="310" y="789"/>
+			<point name="ih01" x="296" y="797" type="qcurve"/>
+			<point x="277" y="806"/>
+			<point x="249" y="818"/>
+			<point name="sv01" x="234" y="818" type="qcurve"/>
+			<point x="220" y="818"/>
+			<point x="195" y="805"/>
+			<point name="iv01" x="181" y="793" type="qcurve"/>
+			<point x="140" y="843" type="line"/>
+			<point x="155" y="866"/>
+			<point x="202" y="901"/>
+			<point name="sv02" x="236" y="901" type="qcurve"/>
+			<point x="258" y="901"/>
+			<point x="290" y="888"/>
+			<point x="304" y="880" type="qcurve"/>
+			<point x="323" y="871"/>
+			<point x="351" y="859"/>
+			<point name="sv03" x="366" y="859" type="qcurve"/>
+			<point x="380" y="859"/>
+			<point x="405" y="872"/>
+			<point name="iv02" x="419" y="884" type="qcurve"/>
+			<point x="460" y="834" type="line"/>
+			<point x="445" y="811"/>
+			<point x="398" y="776"/>
+		</contour>
+	</outline>
+	<anchor name="_top" x="300" y="698"/>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint.v2</key>
+			<dict>
+				<key>hintSetList</key>
+				<array>
+					<dict>
+						<key>pointTag</key>
+						<string>av01</string>
+						<key>stems</key>
+						<array>
+							<string>hstem 776 83</string>
+							<string>hstem 818 83</string>
+							<string>vstem 140 320</string>
+						</array>
+					</dict>
+				</array>
+			</dict>
+			<key>com.fontlab.ttprogram</key>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="interpolateh" point="ih01" point1="lsb" point2="rsb"/&gt;
+    &lt;ttc code="alignv" point="av01" align="round"/&gt;
+    &lt;ttc code="mdeltav" point="av01" delta="8" ppm1="16" ppm2="18"/&gt;
+    &lt;ttc code="mdeltav" point="av01" delta="8" ppm1="38" ppm2="38"/&gt;
+    &lt;ttc code="mdeltav" point="av01" delta="8" ppm1="21" ppm2="21"/&gt;
+    &lt;ttc code="singlev" point1="av01" point2="sv01" round="true"/&gt;
+    &lt;ttc code="interpolatev" point="iv01" point1="av01" point2="sv01" align="left"/&gt;
+    &lt;ttc code="singlev" point1="sv01" point2="sv02" stem="diacritics_thick"/&gt;
+    &lt;ttc code="singlev" point1="av01" point2="sv03" stem="diacritics_thick"/&gt;
+    &lt;ttc code="interpolatev" point="iv02" point1="sv02" point2="sv03" align="right"/&gt;
+  &lt;/ttProgram&gt;
+</string>
+		</dict>
+	</lib>
+</glyph>

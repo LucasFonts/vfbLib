@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="circumflexacute.case" format="2">
+	<outline>
+		<contour>
+			<point name="iv01" x="162" y="879" type="line"/>
+			<point x="100" y="909" type="line"/>
+			<point x="191" y="1089" type="line"/>
+			<point x="280" y="1045" type="line"/>
+		</contour>
+		<contour>
+			<point x="49" y="927" type="line"/>
+			<point x="174" y="787" type="line"/>
+			<point name="sv03" x="121" y="742" type="line"/>
+			<point name="sv01" x="0" y="851" type="line"/>
+			<point name="av01" x="-121" y="742" type="line"/>
+			<point x="-174" y="787" type="line"/>
+			<point name="sv02" x="-49" y="927" type="line"/>
+		</contour>
+	</outline>
+	<anchor name="_top" x="0" y="698"/>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint.v2</key>
+			<dict>
+				<key>hintSetList</key>
+				<array>
+					<dict>
+						<key>pointTag</key>
+						<string>iv01</string>
+						<key>stems</key>
+						<array>
+							<string>hstem 742 347</string>
+							<string>vstem -174 454</string>
+						</array>
+					</dict>
+				</array>
+			</dict>
+			<key>com.fontlab.ttprogram</key>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="alignv" point="av01" align="round"/&gt;
+    &lt;ttc code="mdeltav" point="av01" delta="8" ppm1="18" ppm2="18"/&gt;
+    &lt;ttc code="mdeltav" point="av01" delta="8" ppm1="14" ppm2="14"/&gt;
+    &lt;ttc code="mdeltav" point="av01" delta="8" ppm1="10" ppm2="11"/&gt;
+    &lt;ttc code="mdeltav" point="av01" delta="-8" ppm1="29" ppm2="29"/&gt;
+    &lt;ttc code="mdeltav" point="av01" delta="-8" ppm1="25" ppm2="25"/&gt;
+    &lt;ttc code="singlev" point1="av01" point2="sv01" round="true"/&gt;
+    &lt;ttc code="singlev" point1="sv01" point2="sv02" stem="diacritics_thick"/&gt;
+    &lt;ttc code="interpolatev" point="iv01" point1="sv02" point2="av01" align="right"/&gt;
+    &lt;ttc code="singlev" point1="av01" point2="sv03"/&gt;
+  &lt;/ttProgram&gt;
+</string>
+		</dict>
+	</lib>
+</glyph>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="y" format="2">
+	<unicode hex="0079"/>
+	<advance width="467"/>
+	<outline>
+		<contour>
+			<point name="ab01" x="-11" y="-212" type="qcurve"/>
+			<point x="-49" y="-212"/>
+			<point x="-95" y="-176"/>
+			<point x="-95" y="-147" type="qcurve"/>
+			<point x="-95" y="-120"/>
+			<point x="-60" y="-79"/>
+			<point name="iv01" x="-31" y="-79" type="qcurve"/>
+			<point x="-7" y="-79"/>
+			<point x="19" y="-106"/>
+			<point x="19" y="-128" type="qcurve"/>
+			<point x="19" y="-141"/>
+			<point x="8" y="-166"/>
+			<point x="0" y="-173" type="qcurve"/>
+			<point name="sv01" x="7" y="-178" type="line"/>
+			<point x="40" y="-164"/>
+			<point x="103" y="-95"/>
+			<point name="iv02" x="139" y="-25" type="qcurve"/>
+			<point x="93" y="473" type="line"/>
+			<point name="sv02" x="50" y="473" type="line"/>
+			<point name="at01" x="61" y="518" type="line"/>
+			<point x="259" y="518" type="line"/>
+			<point x="248" y="473" type="line"/>
+			<point name="sv03" x="188" y="473" type="line"/>
+			<point name="sv04" x="211" y="103" type="line"/>
+			<point x="220" y="103" type="line"/>
+			<point x="425" y="473" type="line"/>
+			<point name="sv05" x="363" y="473" type="line"/>
+			<point name="at02" x="374" y="518" type="line"/>
+			<point x="536" y="518" type="line"/>
+			<point x="525" y="473" type="line"/>
+			<point name="sv06" x="485" y="473" type="line"/>
+			<point x="163" y="-70" type="line"/>
+			<point x="140" y="-110"/>
+			<point x="94" y="-164"/>
+			<point x="50" y="-197"/>
+			<point x="8" y="-212"/>
+		</contour>
+	</outline>
+	<anchor name="top" x="320" y="540"/>
+	<anchor name="bottom" x="312" y="0"/>
+	<guideline x="185" y="0" angle="75.96"/>
+	<guideline x="312" y="0" angle="75.96"/>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint.v2</key>
+			<dict>
+				<key>hintSetList</key>
+				<array>
+					<dict>
+						<key>pointTag</key>
+						<string>ab01</string>
+						<key>stems</key>
+						<array>
+							<string>hstem -212 34</string>
+							<string>hstem 473 45</string>
+							<string>vstem -95 114</string>
+						</array>
+					</dict>
+				</array>
+			</dict>
+			<key>com.fontlab.ttprogram</key>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="alignt" point="at01" zone="xheight"/&gt;
+    &lt;ttc code="alignt" point="at02" zone="xheight"/&gt;
+    &lt;ttc code="alignb" point="ab01" zone="descender"/&gt;
+    &lt;ttc code="singlev" point1="ab01" point2="sv01" stem="lc_thins"/&gt;
+    &lt;ttc code="interpolatev" point="iv01" point1="sv01" point2="at01" align="round"/&gt;
+    &lt;ttc code="mdeltav" point="iv01" delta="-8" ppm1="9" ppm2="12"/&gt;
+    &lt;ttc code="mdeltav" point="iv01" delta="-8" ppm1="17" ppm2="21"/&gt;
+    &lt;ttc code="interpolatev" point="iv02" point1="at01" point2="ab01"/&gt;
+    &lt;ttc code="singlev" point1="at01" point2="sv02" stem="lc_stemserif"/&gt;
+    &lt;ttc code="singlev" point1="sv02" point2="sv03"/&gt;
+    &lt;ttc code="singlev" point1="iv02" point2="sv04"/&gt;
+    &lt;ttc code="singlev" point1="at02" point2="sv05" stem="lc_stemserif"/&gt;
+    &lt;ttc code="singlev" point1="sv05" point2="sv06"/&gt;
+  &lt;/ttProgram&gt;
+</string>
+		</dict>
+	</lib>
+</glyph>

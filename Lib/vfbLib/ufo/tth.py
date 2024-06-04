@@ -64,7 +64,7 @@ def tt_cmd_dict_to_xml(tt_dict: Dict[str, Any]) -> str:
 
 
 def transform_stem_rounds(data: Dict[str, int], name: str) -> Dict[str, int]:
-    d = {"0": 1}
+    d = {}
     for k, v in data.items():
         key = str(v)
         val = int(k)

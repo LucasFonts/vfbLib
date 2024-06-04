@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="tugrik" format="2">
+	<unicode hex="20AE"/>
+	<advance width="618"/>
+	<outline>
+		<contour>
+			<point name="sv01" x="117" y="45" type="line"/>
+			<point x="207" y="45" type="line"/>
+			<point name="iv03" x="241" y="181" type="line"/>
+			<point name="iv01" x="114" y="121" type="line"/>
+			<point name="sv05" x="128" y="177" type="line"/>
+			<point name="iv04" x="255" y="236" type="line"/>
+			<point name="iv05" x="279" y="334" type="line"/>
+			<point name="sv08" x="153" y="275" type="line"/>
+			<point name="sv07" x="167" y="331" type="line"/>
+			<point name="iv06" x="293" y="390" type="line"/>
+			<point x="357" y="649" type="line"/>
+			<point name="sv02" x="205" y="649" type="line"/>
+			<point x="174" y="527" type="line"/>
+			<point name="sv09" x="98" y="527" type="line"/>
+			<point name="at01" x="141" y="698" type="line"/>
+			<point x="696" y="698" type="line"/>
+			<point x="653" y="527" type="line"/>
+			<point name="sv10" x="577" y="527" type="line"/>
+			<point x="607" y="649" type="line"/>
+			<point name="sv11" x="455" y="649" type="line"/>
+			<point name="iv07" x="404" y="442" type="line"/>
+			<point name="iv02" x="531" y="501" type="line"/>
+			<point name="sv03" x="517" y="446" type="line"/>
+			<point name="iv08" x="390" y="386" type="line"/>
+			<point name="iv09" x="366" y="288" type="line"/>
+			<point name="sv06" x="492" y="347" type="line"/>
+			<point name="sv04" x="478" y="292" type="line"/>
+			<point name="iv10" x="352" y="232" type="line"/>
+			<point name="sv12" x="305" y="45" type="line"/>
+			<point x="395" y="45" type="line"/>
+			<point x="384" y="0" type="line"/>
+			<point name="ab01" x="106" y="0" type="line"/>
+		</contour>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint.v2</key>
+			<dict>
+				<key>hintSetList</key>
+				<array>
+					<dict>
+						<key>pointTag</key>
+						<string>sv01</string>
+						<key>stems</key>
+						<array>
+							<string>hstem 0 45</string>
+							<string>hstem 649 49</string>
+							<string>vstem 98 598</string>
+						</array>
+					</dict>
+				</array>
+			</dict>
+			<key>com.fontlab.ttprogram</key>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="alignt" point="at01" zone="capheight"/&gt;
+    &lt;ttc code="alignb" point="ab01" zone="baseline"/&gt;
+    &lt;ttc code="singlev" point1="ab01" point2="sv01" stem="uc_serif"/&gt;
+    &lt;ttc code="singlev" point1="at01" point2="sv02" stem="uc_stem"/&gt;
+    &lt;ttc code="interpolatev" point="iv01" point1="sv01" point2="sv02" align="round"/&gt;
+    &lt;ttc code="interpolatev" point="iv02" point1="at01" point2="sv01" align="round"/&gt;
+    &lt;ttc code="singlev" point1="iv02" point2="sv03" stem="uc_stem"/&gt;
+    &lt;ttc code="singlev" point1="sv03" point2="sv04" round="true"/&gt;
+    &lt;ttc code="interpolatev" point="iv03" point1="iv01" point2="sv04"/&gt;
+    &lt;ttc code="singlev" point1="iv01" point2="sv05" stem="uc_stem"/&gt;
+    &lt;ttc code="singlev" point1="sv04" point2="sv06" stem="uc_stem"/&gt;
+    &lt;ttc code="interpolatev" point="iv04" point1="sv05" point2="sv06"/&gt;
+    &lt;ttc code="singlev" point1="sv05" point2="sv07" round="true"/&gt;
+    &lt;ttc code="singlev" point1="sv07" point2="sv08" stem="uc_stem"/&gt;
+    &lt;ttc code="interpolatev" point="iv05" point1="sv08" point2="sv03"/&gt;
+    &lt;ttc code="interpolatev" point="iv06" point1="sv07" point2="iv02"/&gt;
+    &lt;ttc code="singlev" point1="at01" point2="sv09" round="true"/&gt;
+    &lt;ttc code="singlev" point1="sv09" point2="sv10"/&gt;
+    &lt;ttc code="singlev" point1="sv02" point2="sv11"/&gt;
+    &lt;ttc code="interpolatev" point="iv07" point1="iv02" point2="sv07"/&gt;
+    &lt;ttc code="interpolatev" point="iv08" point1="sv03" point2="sv08"/&gt;
+    &lt;ttc code="interpolatev" point="iv09" point1="sv06" point2="sv05"/&gt;
+    &lt;ttc code="interpolatev" point="iv10" point1="sv04" point2="iv01"/&gt;
+    &lt;ttc code="singlev" point1="sv01" point2="sv12"/&gt;
+  &lt;/ttProgram&gt;
+</string>
+			<key>com.fontlab.v5.userData</key>
+			<string>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;
+&lt;plist version="1.0"&gt;
+&lt;dict&gt;
+	&lt;key&gt;com.type-invaders.name.final&lt;/key&gt;
+	&lt;string&gt;uni20AE&lt;/string&gt;
+	&lt;key&gt;com.type-invaders.name.production&lt;/key&gt;
+	&lt;string&gt;tugrik&lt;/string&gt;
+&lt;/dict&gt;
+&lt;/plist&gt;
+</string>
+		</dict>
+	</lib>
+</glyph>

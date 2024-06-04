@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="summation" format="2">
+	<unicode hex="2211"/>
+	<advance width="616"/>
+	<outline>
+		<contour>
+			<point name="sv02" x="57" y="-127" type="line"/>
+			<point x="305" y="226" type="line"/>
+			<point x="305" y="230" type="line"/>
+			<point name="sv04" x="57" y="625" type="line"/>
+			<point name="at01" x="57" y="698" type="line"/>
+			<point x="547" y="698" type="line"/>
+			<point x="547" y="527" type="line"/>
+			<point name="sv05" x="493" y="527" type="line"/>
+			<point x="493" y="644" type="line"/>
+			<point name="sv03" x="160" y="644" type="line"/>
+			<point x="383" y="291" type="line"/>
+			<point x="383" y="236" type="line"/>
+			<point name="sv01" x="137" y="-110" type="line"/>
+			<point x="493" y="-110" type="line"/>
+			<point name="sv06" x="493" y="8" type="line"/>
+			<point x="547" y="8" type="line"/>
+			<point x="547" y="-200" type="line"/>
+			<point name="ab01" x="57" y="-200" type="line"/>
+		</contour>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint.v2</key>
+			<dict>
+				<key>hintSetList</key>
+				<array>
+					<dict>
+						<key>pointTag</key>
+						<string>sv02</string>
+						<key>stems</key>
+						<array>
+							<string>hstem -200 90</string>
+							<string>hstem 625 73</string>
+							<string>vstem 493 54</string>
+						</array>
+					</dict>
+				</array>
+			</dict>
+			<key>com.fontlab.ttprogram</key>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="alignt" point="at01" zone="capheight"/&gt;
+    &lt;ttc code="alignb" point="ab01" zone="descender"/&gt;
+    &lt;ttc code="singlev" point1="ab01" point2="sv01" stem="uc_thick"/&gt;
+    &lt;ttc code="singlev" point1="sv01" point2="sv02"/&gt;
+    &lt;ttc code="singlev" point1="at01" point2="sv03" stem="uc_stem"/&gt;
+    &lt;ttc code="singlev" point1="sv03" point2="sv04"/&gt;
+    &lt;ttc code="singlev" point1="at01" point2="sv05" round="true"/&gt;
+    &lt;ttc code="singlev" point1="ab01" point2="sv06" round="true"/&gt;
+  &lt;/ttProgram&gt;
+</string>
+		</dict>
+	</lib>
+</glyph>

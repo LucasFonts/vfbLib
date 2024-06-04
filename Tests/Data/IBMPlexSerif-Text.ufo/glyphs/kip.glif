@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="kip" format="2">
+	<unicode hex="20AD"/>
+	<advance width="705"/>
+	<outline>
+		<contour>
+			<point name="sv01" x="52" y="50" type="line"/>
+			<point x="126" y="50" type="line"/>
+			<point x="126" y="336" type="line"/>
+			<point name="sv02" x="47" y="336" type="line"/>
+			<point name="iv01" x="47" y="387" type="line"/>
+			<point x="126" y="387" type="line"/>
+			<point x="126" y="648" type="line"/>
+			<point name="sv03" x="52" y="648" type="line"/>
+			<point name="at01" x="52" y="698" type="line"/>
+			<point x="301" y="698" type="line"/>
+			<point x="301" y="648" type="line"/>
+			<point name="sv04" x="227" y="648" type="line"/>
+			<point name="sv05" x="227" y="387" type="line"/>
+			<point x="323" y="387" type="line"/>
+			<point x="525" y="648" type="line"/>
+			<point name="sv06" x="439" y="648" type="line"/>
+			<point name="at02" x="439" y="698" type="line"/>
+			<point x="659" y="698" type="line"/>
+			<point x="659" y="648" type="line"/>
+			<point name="sv07" x="591" y="648" type="line"/>
+			<point name="sv08" x="386" y="387" type="line"/>
+			<point x="601" y="387" type="line"/>
+			<point x="601" y="336" type="line"/>
+			<point name="sv10" x="476" y="336" type="line"/>
+			<point x="405" y="338" type="line"/>
+			<point x="476" y="241" type="line"/>
+			<point name="sv12" x="609" y="50" type="line"/>
+			<point x="679" y="50" type="line"/>
+			<point x="679" y="0" type="line"/>
+			<point name="ab02" x="429" y="0" type="line"/>
+			<point name="sv11" x="429" y="50" type="line"/>
+			<point x="495" y="50" type="line"/>
+			<point x="303" y="336" type="line"/>
+			<point name="sv09" x="227" y="336" type="line"/>
+			<point name="sv13" x="227" y="50" type="line"/>
+			<point x="301" y="50" type="line"/>
+			<point x="301" y="0" type="line"/>
+			<point name="ab01" x="52" y="0" type="line"/>
+		</contour>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint.v2</key>
+			<dict>
+				<key>hintSetList</key>
+				<array>
+					<dict>
+						<key>pointTag</key>
+						<string>sv01</string>
+						<key>stems</key>
+						<array>
+							<string>hstem 0 50</string>
+							<string>hstem 336 51</string>
+							<string>hstem 648 50</string>
+							<string>vstem 126 101</string>
+						</array>
+					</dict>
+				</array>
+			</dict>
+			<key>com.fontlab.ttprogram</key>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="alignt" point="at01" zone="capheight"/&gt;
+    &lt;ttc code="alignt" point="at02" zone="capheight"/&gt;
+    &lt;ttc code="alignb" point="ab01" zone="baseline"/&gt;
+    &lt;ttc code="alignb" point="ab02" zone="baseline"/&gt;
+    &lt;ttc code="singlev" point1="ab01" point2="sv01" stem="stem_serif"/&gt;
+    &lt;ttc code="interpolatev" point="iv01" point1="at01" point2="ab01" align="round"/&gt;
+    &lt;ttc code="mdeltav" point="iv01" delta="8" ppm1="9" ppm2="9"/&gt;
+    &lt;ttc code="mdeltav" point="iv01" delta="8" ppm1="11" ppm2="12"/&gt;
+    &lt;ttc code="singlev" point1="iv01" point2="sv02" stem="stem_serif"/&gt;
+    &lt;ttc code="singlev" point1="at01" point2="sv03" stem="stem_serif"/&gt;
+    &lt;ttc code="singlev" point1="sv03" point2="sv04"/&gt;
+    &lt;ttc code="singlev" point1="iv01" point2="sv05"/&gt;
+    &lt;ttc code="singlev" point1="at02" point2="sv06" stem="stem_serif"/&gt;
+    &lt;ttc code="singlev" point1="sv06" point2="sv07"/&gt;
+    &lt;ttc code="singlev" point1="sv05" point2="sv08"/&gt;
+    &lt;ttc code="singlev" point1="sv02" point2="sv09"/&gt;
+    &lt;ttc code="singlev" point1="sv09" point2="sv10"/&gt;
+    &lt;ttc code="singlev" point1="ab02" point2="sv11" stem="stem_serif"/&gt;
+    &lt;ttc code="singlev" point1="sv11" point2="sv12"/&gt;
+    &lt;ttc code="singlev" point1="sv01" point2="sv13"/&gt;
+  &lt;/ttProgram&gt;
+</string>
+			<key>com.fontlab.v5.userData</key>
+			<string>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;
+&lt;plist version="1.0"&gt;
+&lt;dict&gt;
+	&lt;key&gt;com.type-invaders.name.final&lt;/key&gt;
+	&lt;string&gt;uni20AD&lt;/string&gt;
+	&lt;key&gt;com.type-invaders.name.production&lt;/key&gt;
+	&lt;string&gt;kip&lt;/string&gt;
+&lt;/dict&gt;
+&lt;/plist&gt;
+</string>
+		</dict>
+	</lib>
+</glyph>

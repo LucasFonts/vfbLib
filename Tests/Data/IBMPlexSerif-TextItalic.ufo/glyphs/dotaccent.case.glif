@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="dotaccent.case" format="2">
+	<advance width="600"/>
+	<outline>
+		<contour>
+			<point name="av01" x="324" y="786" type="qcurve"/>
+			<point x="301" y="786"/>
+			<point x="277" y="813"/>
+			<point x="277" y="830" type="qcurve"/>
+			<point x="277" y="835"/>
+			<point x="277" y="844"/>
+			<point x="279" y="849" type="qcurve"/>
+			<point x="284" y="869"/>
+			<point x="314" y="895"/>
+			<point name="sv01" x="338" y="895" type="qcurve"/>
+			<point x="361" y="895"/>
+			<point x="385" y="868"/>
+			<point x="385" y="851" type="qcurve"/>
+			<point x="385" y="846"/>
+			<point x="385" y="837"/>
+			<point x="383" y="832" type="qcurve"/>
+			<point x="378" y="812"/>
+			<point x="348" y="786"/>
+		</contour>
+	</outline>
+	<anchor name="_top" x="300" y="698"/>
+	<guideline x="125" y="0" angle="75.96"/>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint.v2</key>
+			<dict>
+				<key>hintSetList</key>
+				<array>
+					<dict>
+						<key>pointTag</key>
+						<string>av01</string>
+						<key>stems</key>
+						<array>
+							<string>hstem 786 109</string>
+							<string>vstem 277 108</string>
+						</array>
+					</dict>
+				</array>
+			</dict>
+			<key>com.fontlab.ttprogram</key>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="alignv" point="av01" align="round"/&gt;
+    &lt;ttc code="mdeltav" point="av01" delta="-8" ppm1="15" ppm2="16"/&gt;
+    &lt;ttc code="singlev" point1="av01" point2="sv01" round="true"/&gt;
+  &lt;/ttProgram&gt;
+</string>
+		</dict>
+	</lib>
+</glyph>

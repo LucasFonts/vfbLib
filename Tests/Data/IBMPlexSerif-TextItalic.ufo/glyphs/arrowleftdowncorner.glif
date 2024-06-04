@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="arrowleftdowncorner" format="2">
+	<unicode hex="2B10"/>
+	<advance width="860"/>
+	<outline>
+		<contour>
+			<point name="hr00" x="75" y="307" type="line"/>
+			<point x="100" y="338" type="line"/>
+			<point x="266" y="222" type="line"/>
+			<point x="247" y="520" type="line"/>
+			<point name="av02" x="247" y="600" type="line"/>
+			<point x="785" y="600" type="line"/>
+			<point x="785" y="520" type="line"/>
+			<point name="sv01" x="322" y="520" type="line"/>
+			<point x="306" y="222" type="line"/>
+			<point x="472" y="338" type="line"/>
+			<point x="497" y="307" type="line"/>
+			<point name="av01" x="286" y="96" type="line"/>
+		</contour>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint.v2</key>
+			<dict>
+				<key>hintSetList</key>
+				<array>
+					<dict>
+						<key>pointTag</key>
+						<string>hr00</string>
+						<key>stems</key>
+						<array>
+							<string>hstem 520 80</string>
+							<string>vstem 247 75</string>
+						</array>
+					</dict>
+				</array>
+			</dict>
+			<key>com.fontlab.ttprogram</key>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="alignv" point="av01" align="round"/&gt;
+    &lt;ttc code="alignv" point="av02" align="round"/&gt;
+    &lt;ttc code="singlev" point1="av02" point2="sv01" stem="arrows"/&gt;
+  &lt;/ttProgram&gt;
+</string>
+			<key>com.fontlab.v5.userData</key>
+			<string>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;
+&lt;plist version="1.0"&gt;
+&lt;dict&gt;
+	&lt;key&gt;com.type-invaders.name.final&lt;/key&gt;
+	&lt;string&gt;uni2B10&lt;/string&gt;
+	&lt;key&gt;com.type-invaders.name.production&lt;/key&gt;
+	&lt;string&gt;arrowleftdowncorner&lt;/string&gt;
+&lt;/dict&gt;
+&lt;/plist&gt;
+</string>
+		</dict>
+	</lib>
+</glyph>

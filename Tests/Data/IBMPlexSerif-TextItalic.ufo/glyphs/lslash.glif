@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="lslash" format="2">
+	<unicode hex="0142"/>
+	<advance width="301"/>
+	<outline>
+		<contour>
+			<point name="ab01" x="109" y="-12" type="qcurve"/>
+			<point x="75" y="-12"/>
+			<point x="43" y="26"/>
+			<point x="43" y="51" type="qcurve"/>
+			<point x="43" y="62"/>
+			<point x="48" y="87"/>
+			<point x="50" y="98" type="qcurve"/>
+			<point name="iv03" x="109" y="333" type="line"/>
+			<point name="iv01" x="45" y="313" type="line"/>
+			<point name="sv02" x="56" y="363" type="line"/>
+			<point name="iv04" x="121" y="383" type="line"/>
+			<point x="196" y="681" type="line"/>
+			<point name="sv03" x="108" y="681" type="line"/>
+			<point name="sv04" x="118" y="721" type="line"/>
+			<point name="at01" x="308" y="760" type="line"/>
+			<point name="iv05" x="222" y="415" type="line"/>
+			<point name="iv02" x="315" y="445" type="line"/>
+			<point name="sv01" x="303" y="393" type="line"/>
+			<point name="iv06" x="209" y="364" type="line"/>
+			<point x="132" y="57" type="line"/>
+			<point name="sv05" x="150" y="49" type="line"/>
+			<point name="sv06" x="260" y="164" type="line"/>
+			<point x="286" y="145" type="line"/>
+			<point x="218" y="61" type="line"/>
+			<point x="183" y="17"/>
+			<point x="132" y="-12"/>
+		</contour>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint.v2</key>
+			<dict>
+				<key>hintSetList</key>
+				<array>
+					<dict>
+						<key>pointTag</key>
+						<string>ab01</string>
+						<key>stems</key>
+						<array>
+							<string>hstem -12 61</string>
+							<string>hstem 681 79</string>
+							<string>vstem 43 89</string>
+						</array>
+					</dict>
+				</array>
+			</dict>
+			<key>com.fontlab.ttprogram</key>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="alignt" point="at01" zone="ascender"/&gt;
+    &lt;ttc code="alignb" point="ab01" zone="baseline"/&gt;
+    &lt;ttc code="interpolatev" point="iv01" point1="at01" point2="ab01" align="round"/&gt;
+    &lt;ttc code="interpolatev" point="iv02" point1="at01" point2="ab01" align="round"/&gt;
+    &lt;ttc code="singlev" point1="iv02" point2="sv01" stem="lc_mediums"/&gt;
+    &lt;ttc code="interpolatev" point="iv03" point1="iv01" point2="sv01"/&gt;
+    &lt;ttc code="singlev" point1="iv01" point2="sv02" stem="lc_mediums"/&gt;
+    &lt;ttc code="interpolatev" point="iv04" point1="sv02" point2="iv02"/&gt;
+    &lt;ttc code="singlev" point1="at01" point2="sv03" stem="triangle"/&gt;
+    &lt;ttc code="singlev" point1="sv03" point2="sv04" stem="lc_stemserif"/&gt;
+    &lt;ttc code="interpolatev" point="iv05" point1="sv02" point2="iv02"/&gt;
+    &lt;ttc code="interpolatev" point="iv06" point1="iv01" point2="sv01"/&gt;
+    &lt;ttc code="singlev" point1="ab01" point2="sv05" stem="bowl_thin"/&gt;
+    &lt;ttc code="singlev" point1="sv05" point2="sv06" stem="stroke_tip"/&gt;
+  &lt;/ttProgram&gt;
+</string>
+		</dict>
+	</lib>
+</glyph>

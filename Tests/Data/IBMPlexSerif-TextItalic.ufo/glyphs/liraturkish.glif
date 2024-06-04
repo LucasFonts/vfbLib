@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="liraturkish" format="2">
+	<unicode hex="20BA"/>
+	<advance width="575"/>
+	<outline>
+		<contour>
+			<point name="sv01" x="-10" y="45" type="line"/>
+			<point x="60" y="45" type="line"/>
+			<point name="iv03" x="109" y="242" type="line"/>
+			<point name="iv01" x="6" y="193" type="line"/>
+			<point name="sv06" x="20" y="249" type="line"/>
+			<point name="iv04" x="123" y="297" type="line"/>
+			<point name="iv05" x="147" y="394" type="line"/>
+			<point name="sv09" x="45" y="346" type="line"/>
+			<point name="sv08" x="59" y="401" type="line"/>
+			<point name="iv06" x="161" y="449" type="line"/>
+			<point x="212" y="653" type="line"/>
+			<point name="sv02" x="142" y="653" type="line"/>
+			<point name="at01" x="153" y="698" type="line"/>
+			<point x="391" y="698" type="line"/>
+			<point x="380" y="653" type="line"/>
+			<point name="sv10" x="310" y="653" type="line"/>
+			<point name="iv07" x="272" y="502" type="line"/>
+			<point name="iv02" x="447" y="584" type="line"/>
+			<point name="sv04" x="433" y="528" type="line"/>
+			<point name="iv08" x="258" y="445" type="line"/>
+			<point name="iv09" x="234" y="350" type="line"/>
+			<point name="sv07" x="409" y="432" type="line"/>
+			<point name="sv05" x="395" y="376" type="line"/>
+			<point name="iv10" x="220" y="293" type="line"/>
+			<point name="sv03" x="159" y="49" type="line"/>
+			<point x="217" y="49" type="line"/>
+			<point x="276" y="49"/>
+			<point x="373" y="83"/>
+			<point x="446" y="138"/>
+			<point x="494" y="210"/>
+			<point x="505" y="249" type="qcurve"/>
+			<point x="499" y="251" type="line"/>
+			<point x="493" y="243"/>
+			<point x="470" y="231"/>
+			<point x="459" y="231" type="qcurve"/>
+			<point x="442" y="231"/>
+			<point x="411" y="256"/>
+			<point x="411" y="283" type="qcurve"/>
+			<point x="411" y="314"/>
+			<point x="455" y="361"/>
+			<point name="iv11" x="489" y="361" type="qcurve"/>
+			<point x="517" y="361"/>
+			<point x="553" y="324"/>
+			<point x="553" y="288" type="qcurve"/>
+			<point x="553" y="243"/>
+			<point x="506" y="141"/>
+			<point x="416" y="56"/>
+			<point x="287" y="0"/>
+			<point name="hr00" x="205" y="0" type="qcurve"/>
+			<point name="ab01" x="-21" y="0" type="line"/>
+		</contour>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint.v2</key>
+			<dict>
+				<key>hintSetList</key>
+				<array>
+					<dict>
+						<key>pointTag</key>
+						<string>sv01</string>
+						<key>stems</key>
+						<array>
+							<string>hstem 0 45</string>
+							<string>hstem 653 45</string>
+							<string>vstem 411 142</string>
+						</array>
+					</dict>
+					<dict>
+						<key>pointTag</key>
+						<string>sv03</string>
+						<key>stems</key>
+						<array>
+							<string>hstem 0 49</string>
+							<string>hstem 653 45</string>
+							<string>vstem 411 142</string>
+						</array>
+					</dict>
+					<dict>
+						<key>pointTag</key>
+						<string>hr00</string>
+						<key>stems</key>
+						<array>
+							<string>hstem 0 45</string>
+							<string>hstem 653 45</string>
+							<string>vstem 411 142</string>
+						</array>
+					</dict>
+				</array>
+			</dict>
+			<key>com.fontlab.ttprogram</key>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="alignt" point="at01" zone="capheight"/&gt;
+    &lt;ttc code="alignb" point="ab01" zone="baseline"/&gt;
+    &lt;ttc code="singlev" point1="ab01" point2="sv01" stem="uc_serif"/&gt;
+    &lt;ttc code="singlev" point1="at01" point2="sv02" stem="uc_serif"/&gt;
+    &lt;ttc code="interpolatev" point="iv01" point1="sv02" point2="ab01" align="left"/&gt;
+    &lt;ttc code="singlev" point1="ab01" point2="sv03" stem="uc_stem"/&gt;
+    &lt;ttc code="interpolatev" point="iv02" point1="at01" point2="sv03" align="round"/&gt;
+    &lt;ttc code="singlev" point1="iv02" point2="sv04" stem="uc_stem"/&gt;
+    &lt;ttc code="singlev" point1="sv04" point2="sv05" round="true"/&gt;
+    &lt;ttc code="interpolatev" point="iv03" point1="iv01" point2="sv05"/&gt;
+    &lt;ttc code="singlev" point1="iv01" point2="sv06" stem="uc_stem"/&gt;
+    &lt;ttc code="singlev" point1="sv05" point2="sv07" stem="uc_stem"/&gt;
+    &lt;ttc code="interpolatev" point="iv04" point1="sv06" point2="sv07"/&gt;
+    &lt;ttc code="singlev" point1="sv06" point2="sv08" round="true"/&gt;
+    &lt;ttc code="singlev" point1="sv08" point2="sv09" stem="uc_stem"/&gt;
+    &lt;ttc code="interpolatev" point="iv05" point1="sv09" point2="sv04"/&gt;
+    &lt;ttc code="interpolatev" point="iv06" point1="sv08" point2="iv02"/&gt;
+    &lt;ttc code="singlev" point1="sv02" point2="sv10"/&gt;
+    &lt;ttc code="interpolatev" point="iv07" point1="sv08" point2="iv02"/&gt;
+    &lt;ttc code="interpolatev" point="iv08" point1="sv09" point2="sv04"/&gt;
+    &lt;ttc code="interpolatev" point="iv09" point1="sv06" point2="sv07"/&gt;
+    &lt;ttc code="interpolatev" point="iv10" point1="iv01" point2="sv05"/&gt;
+    &lt;ttc code="interpolatev" point="iv11" point1="sv03" point2="sv02" align="round"/&gt;
+  &lt;/ttProgram&gt;
+</string>
+			<key>com.fontlab.v5.userData</key>
+			<string>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;
+&lt;plist version="1.0"&gt;
+&lt;dict&gt;
+	&lt;key&gt;com.type-invaders.name.final&lt;/key&gt;
+	&lt;string&gt;uni20BA&lt;/string&gt;
+	&lt;key&gt;com.type-invaders.name.production&lt;/key&gt;
+	&lt;string&gt;liraturkish&lt;/string&gt;
+&lt;/dict&gt;
+&lt;/plist&gt;
+</string>
+		</dict>
+	</lib>
+</glyph>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="Delta" format="2">
+	<unicode hex="2206"/>
+	<advance width="638"/>
+	<outline>
+		<contour>
+			<point name="sv02" x="42" y="51" type="line"/>
+			<point name="at01" x="267" y="698" type="line"/>
+			<point x="370" y="698" type="line"/>
+			<point name="sv03" x="595" y="51" type="line"/>
+			<point x="595" y="0" type="line"/>
+			<point name="ab01" x="42" y="0" type="line"/>
+		</contour>
+		<contour>
+			<point name="sv01" x="106" y="54" type="line"/>
+			<point x="488" y="54" type="line"/>
+			<point x="300" y="616" type="line"/>
+			<point name="sv04" x="294" y="616" type="line"/>
+		</contour>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.adobe.type.autohint.v2</key>
+			<dict>
+				<key>hintSetList</key>
+				<array>
+					<dict>
+						<key>pointTag</key>
+						<string>sv02</string>
+						<key>stems</key>
+						<array>
+							<string>hstem 0 54</string>
+							<string>hstem 616 82</string>
+							<string>vstem 42 553</string>
+						</array>
+					</dict>
+				</array>
+			</dict>
+			<key>com.fontlab.ttprogram</key>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="alignt" point="at01" zone="capheight"/&gt;
+    &lt;ttc code="alignb" point="ab01" zone="baseline"/&gt;
+    &lt;ttc code="singlev" point1="ab01" point2="sv01" stem="uc_stem"/&gt;
+    &lt;ttc code="singlev" point1="sv01" point2="sv02"/&gt;
+    &lt;ttc code="singlev" point1="sv01" point2="sv03"/&gt;
+    &lt;ttc code="singlev" point1="at01" point2="sv04"/&gt;
+  &lt;/ttProgram&gt;
+</string>
+		</dict>
+	</lib>
+</glyph>
