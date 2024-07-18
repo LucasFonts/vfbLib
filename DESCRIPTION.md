@@ -131,14 +131,14 @@ options:
 ```
 
 
-### diffvfb
+### vfbdiff
 
 Generate a diff of two VFB files, either in unified diff or HTML format.
 
 ```
-usage: diffvfb [-h] [--html HTML] file1 file2
+usage: vfbdiff [-h] [--html HTML] file1 file2
 
-diffvfb Copyright (c) 2023 by LucasFonts Build 2023-07-18
+vfbdiff Copyright (c) 2023 by LucasFonts Build 2023-07-18
 
 positional arguments:
   file1        First input file path (.vfb)
