@@ -473,7 +473,9 @@ class PartCompiler(GlyphCompiler):
 class GlyphCompilerTest(TestCase):
     def test_empty_2masters_roundtrip(self):
         # Decompile
-        dec = GlyphParser().parse(BytesIO(empty_glyph_binary), len(empty_glyph_binary), 2)
+        dec = GlyphParser().parse(
+            BytesIO(empty_glyph_binary), len(empty_glyph_binary), 2
+        )
         assert dec == empty_glyph_json
 
         # Compile

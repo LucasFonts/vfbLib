@@ -14,7 +14,7 @@ class ValueEncoderTest(TestCase):
         data = BytesIO()
         write_encoded_value(decoded, data, signed)
         assert hexStr(data.getvalue()) == encoded
-    
+
     def expect_unoptimized(self, encoded, decoded, signed=True):
         data = BytesIO()
         write_value_5(decoded, data, signed)
