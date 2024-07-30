@@ -79,9 +79,10 @@ class OpenTypeStringParser(BaseParser):
                     lines.append(line)
                 c += 1
 
-        # Remove empty lines at the end, except one
-        while not lines[-1]:
-            lines.pop()
+        if len(lines) > 1:
+            # Remove empty lines at the end, except one
+            while not lines[-1]:
+                lines.pop()
         lines.append("")
         return lines
 
