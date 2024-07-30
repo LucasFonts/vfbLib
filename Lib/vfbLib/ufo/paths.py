@@ -155,6 +155,13 @@ class UfoMasterGlyph:
                 yy: float | int = c["scaleY"][self.master_index]
                 dx: int = c["offsetX"][self.master_index]
                 dy: int = c["offsetY"][self.master_index]
+
+                # ufonormalizer seems to have problems if a float number has 16 decimals
+                # as may happen (#94). Should we round to 10 decimals here, as
+                # ufonormalizer does? But 15 solves the problem as well.
+                xx = round(xx, 15)
+                yy = round(yy, 15)
+
                 # Convert to integer to avoid type differences in the UFO pre/post save
                 if xx.is_integer():
                     xx = int(xx)
