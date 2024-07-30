@@ -167,6 +167,7 @@ class UfoMasterGlyph:
                     xx = int(xx)
                 if yy.is_integer():
                     yy = int(yy)
+
                 self.components.append(
                     (self.glyph_order[c["gid"]], (xx, 0, 0, yy, dx, dy))
                 )
