@@ -1,2 +1,2 @@
-version = "0.7.0"
-build_date = "2024-06-04"
+version = "0.7.1"
+build_date = "2024-07-30"
