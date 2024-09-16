@@ -77,9 +77,9 @@ class GlyphAnchorsSuppParser(BaseParser):
         anchors = []
         num_anchors = read_encoded_value(stream)
         for _ in range(num_anchors):
-            a = read_encoded_value(stream)
-            b = read_encoded_value(stream)
-            anchors.append([a, b])
+            hue = read_encoded_value(stream)
+            rv1 = read_encoded_value(stream)
+            anchors.append({"hue": hue, "reserved": rv1})
         return anchors
 
 

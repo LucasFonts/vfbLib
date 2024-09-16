@@ -3209,6 +3209,7 @@
         {
             "key": "Glyph GDEF Data",
             "decompiled": {
+                "glyph_class": "base",
                 "anchors": [
                     {
                         "x": 267,
@@ -3223,10 +3224,10 @@
         {
             "key": "Glyph Anchors Supplemental",
             "decompiled": [
-                [
-                    1,
-                    0
-                ]
+                {
+                    "hue": 1,
+                    "reserved": 0
+                }
             ]
         },
         {
@@ -3290,6 +3291,7 @@
         {
             "key": "Glyph GDEF Data",
             "decompiled": {
+                "glyph_class": "mark",
                 "anchors": [
                     {
                         "x": 149,
@@ -3304,10 +3306,10 @@
         {
             "key": "Glyph Anchors Supplemental",
             "decompiled": [
-                [
-                    1,
-                    0
-                ]
+                {
+                    "hue": 80,
+                    "reserved": 0
+                }
             ]
         },
         {
