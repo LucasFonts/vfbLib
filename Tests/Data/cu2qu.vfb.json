@@ -1,0 +1,3278 @@
+{
+    "header": {
+        "size": 71,
+        "decompiled": {
+            "header0": 26,
+            "filetype": "WLF10",
+            "header1": 3,
+            "header2": 44,
+            "reserved": "b'\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00'",
+            "header3": 1,
+            "header4": 0,
+            "header5": 4,
+            "header6": 0,
+            "header7": 10,
+            "header8": 11,
+            "header9": {
+                "1": 1
+            },
+            "header10": {
+                "2": 84017792
+            },
+            "header11": {
+                "3": 0
+            },
+            "header12": 0,
+            "header13": 262,
+            "header14": 0
+        },
+        "modified": false,
+        "parser": "VfbHeaderParser",
+        "data": "1a574c46313003002c000000000000000000000000000000000000000000000000000000000000000000000001000000040000000a000b00018c02ff05020280038b0006010000"
+    },
+    "entries": [
+        {
+            "key": "Encoding",
+            "decompiled": [
+                0,
+                "a"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                1,
+                "_0001"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                2,
+                "_0002"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                3,
+                "_0003"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                4,
+                "_0004"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                5,
+                "_0005"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                6,
+                "_0006"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                7,
+                "_0007"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                8,
+                "_0008"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                9,
+                "_0009"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                10,
+                "_0010"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                11,
+                "_0011"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                12,
+                "_0012"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                13,
+                "_0013"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                14,
+                "_0014"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                15,
+                "_0015"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                16,
+                "_0016"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                17,
+                "_0017"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                18,
+                "_0018"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                19,
+                "_0019"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                20,
+                "_0020"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                21,
+                "_0021"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                22,
+                "_0022"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                23,
+                "_0023"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                24,
+                "_0024"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                25,
+                "_0025"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                26,
+                "_0026"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                27,
+                "_0027"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                28,
+                "_0028"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                29,
+                "_0029"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                30,
+                "_0030"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                31,
+                "_0031"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                32,
+                "_0032"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                33,
+                "_0033"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                34,
+                "_0034"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                35,
+                "_0035"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                36,
+                "_0036"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                37,
+                "_0037"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                38,
+                "_0038"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                39,
+                "_0039"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                40,
+                "_0040"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                41,
+                "_0041"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                42,
+                "_0042"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                43,
+                "_0043"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                44,
+                "_0044"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                45,
+                "_0045"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                46,
+                "_0046"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                47,
+                "_0047"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                48,
+                "_0048"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                49,
+                "_0049"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                50,
+                "_0050"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                51,
+                "_0051"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                52,
+                "_0052"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                53,
+                "_0053"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                54,
+                "_0054"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                55,
+                "_0055"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                56,
+                "_0056"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                57,
+                "_0057"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                58,
+                "_0058"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                59,
+                "_0059"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                60,
+                "_0060"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                61,
+                "_0061"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                62,
+                "_0062"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                63,
+                "_0063"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                64,
+                "_0064"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                65,
+                "_0065"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                66,
+                "_0066"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                67,
+                "_0067"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                68,
+                "_0068"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                69,
+                "_0069"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                70,
+                "_0070"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                71,
+                "_0071"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                72,
+                "_0072"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                73,
+                "_0073"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                74,
+                "_0074"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                75,
+                "_0075"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                76,
+                "_0076"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                77,
+                "_0077"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                78,
+                "_0078"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                79,
+                "_0079"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                80,
+                "_0080"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                81,
+                "_0081"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                82,
+                "_0082"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                83,
+                "_0083"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                84,
+                "_0084"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                85,
+                "_0085"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                86,
+                "_0086"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                87,
+                "_0087"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                88,
+                "_0088"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                89,
+                "_0089"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                90,
+                "_0090"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                91,
+                "_0091"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                92,
+                "_0092"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                93,
+                "_0093"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                94,
+                "_0094"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                95,
+                "_0095"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                96,
+                "_0096"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                97,
+                "_0097"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                98,
+                "_0098"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                99,
+                "_0099"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                100,
+                "_0100"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                101,
+                "_0101"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                102,
+                "_0102"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                103,
+                "_0103"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                104,
+                "_0104"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                105,
+                "_0105"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                106,
+                "_0106"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                107,
+                "_0107"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                108,
+                "_0108"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                109,
+                "_0109"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                110,
+                "_0110"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                111,
+                "_0111"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                112,
+                "_0112"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                113,
+                "_0113"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                114,
+                "_0114"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                115,
+                "_0115"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                116,
+                "_0116"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                117,
+                "_0117"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                118,
+                "_0118"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                119,
+                "_0119"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                120,
+                "_0120"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                121,
+                "_0121"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                122,
+                "_0122"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                123,
+                "_0123"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                124,
+                "_0124"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                125,
+                "_0125"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                126,
+                "_0126"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                127,
+                "_0127"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                128,
+                "_0128"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                129,
+                "_0129"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                130,
+                "_0130"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                131,
+                "_0131"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                132,
+                "_0132"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                133,
+                "_0133"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                134,
+                "_0134"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                135,
+                "_0135"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                136,
+                "_0136"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                137,
+                "_0137"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                138,
+                "_0138"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                139,
+                "_0139"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                140,
+                "_0140"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                141,
+                "_0141"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                142,
+                "_0142"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                143,
+                "_0143"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                144,
+                "_0144"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                145,
+                "_0145"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                146,
+                "_0146"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                147,
+                "_0147"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                148,
+                "_0148"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                149,
+                "_0149"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                150,
+                "_0150"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                151,
+                "_0151"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                152,
+                "_0152"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                153,
+                "_0153"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                154,
+                "_0154"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                155,
+                "_0155"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                156,
+                "_0156"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                157,
+                "_0157"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                158,
+                "_0158"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                159,
+                "_0159"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                160,
+                "_0160"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                161,
+                "_0161"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                162,
+                "_0162"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                163,
+                "_0163"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                164,
+                "_0164"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                165,
+                "_0165"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                166,
+                "_0166"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                167,
+                "_0167"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                168,
+                "_0168"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                169,
+                "_0169"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                170,
+                "_0170"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                171,
+                "_0171"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                172,
+                "_0172"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                173,
+                "_0173"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                174,
+                "_0174"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                175,
+                "_0175"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                176,
+                "_0176"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                177,
+                "_0177"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                178,
+                "_0178"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                179,
+                "_0179"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                180,
+                "_0180"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                181,
+                "_0181"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                182,
+                "_0182"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                183,
+                "_0183"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                184,
+                "_0184"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                185,
+                "_0185"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                186,
+                "_0186"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                187,
+                "_0187"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                188,
+                "_0188"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                189,
+                "_0189"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                190,
+                "_0190"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                191,
+                "_0191"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                192,
+                "_0192"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                193,
+                "_0193"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                194,
+                "_0194"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                195,
+                "_0195"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                196,
+                "_0196"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                197,
+                "_0197"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                198,
+                "_0198"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                199,
+                "_0199"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                200,
+                "_0200"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                201,
+                "_0201"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                202,
+                "_0202"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                203,
+                "_0203"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                204,
+                "_0204"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                205,
+                "_0205"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                206,
+                "_0206"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                207,
+                "_0207"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                208,
+                "_0208"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                209,
+                "_0209"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                210,
+                "_0210"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                211,
+                "_0211"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                212,
+                "_0212"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                213,
+                "_0213"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                214,
+                "_0214"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                215,
+                "_0215"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                216,
+                "_0216"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                217,
+                "_0217"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                218,
+                "_0218"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                219,
+                "_0219"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                220,
+                "_0220"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                221,
+                "_0221"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                222,
+                "_0222"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                223,
+                "_0223"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                224,
+                "_0224"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                225,
+                "_0225"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                226,
+                "_0226"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                227,
+                "_0227"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                228,
+                "_0228"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                229,
+                "_0229"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                230,
+                "_0230"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                231,
+                "_0231"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                232,
+                "_0232"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                233,
+                "_0233"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                234,
+                "_0234"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                235,
+                "_0235"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                236,
+                "_0236"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                237,
+                "_0237"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                238,
+                "_0238"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                239,
+                "_0239"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                240,
+                "_0240"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                241,
+                "_0241"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                242,
+                "_0242"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                243,
+                "_0243"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                244,
+                "_0244"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                245,
+                "_0245"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                246,
+                "_0246"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                247,
+                "_0247"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                248,
+                "_0248"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                249,
+                "_0249"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                250,
+                "_0250"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                251,
+                "_0251"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                252,
+                "_0252"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                253,
+                "_0253"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                254,
+                "_0254"
+            ]
+        },
+        {
+            "key": "Encoding",
+            "decompiled": [
+                255,
+                "_0255"
+            ]
+        },
+        {
+            "key": "1502",
+            "decompiled": 0
+        },
+        {
+            "key": "518",
+            "decompiled": ""
+        },
+        {
+            "key": "257",
+            "decompiled": ""
+        },
+        {
+            "key": "psn",
+            "decompiled": ""
+        },
+        {
+            "key": "Master Count",
+            "decompiled": 1
+        },
+        {
+            "key": "Default Weight Vector",
+            "decompiled": [
+                1.0
+            ]
+        },
+        {
+            "key": "Type 1 Unique ID",
+            "decompiled": -1
+        },
+        {
+            "key": "version full",
+            "decompiled": ""
+        },
+        {
+            "key": "description",
+            "decompiled": ""
+        },
+        {
+            "key": "ffn",
+            "decompiled": ""
+        },
+        {
+            "key": "tfn",
+            "decompiled": ""
+        },
+        {
+            "key": "sgn",
+            "decompiled": ""
+        },
+        {
+            "key": "Menu Name",
+            "decompiled": ""
+        },
+        {
+            "key": "FOND Name",
+            "decompiled": ""
+        },
+        {
+            "key": "weight_name",
+            "decompiled": ""
+        },
+        {
+            "key": "width_name",
+            "decompiled": "Normal"
+        },
+        {
+            "key": "License",
+            "decompiled": ""
+        },
+        {
+            "key": "License URL",
+            "decompiled": ""
+        },
+        {
+            "key": "copyright",
+            "decompiled": ""
+        },
+        {
+            "key": "trademark",
+            "decompiled": ""
+        },
+        {
+            "key": "designer",
+            "decompiled": ""
+        },
+        {
+            "key": "designerURL",
+            "decompiled": ""
+        },
+        {
+            "key": "manufacturerURL",
+            "decompiled": ""
+        },
+        {
+            "key": "manufacturer",
+            "decompiled": ""
+        },
+        {
+            "key": "Monospaced",
+            "decompiled": 0
+        },
+        {
+            "key": "weight",
+            "decompiled": -1
+        },
+        {
+            "key": "Italic Angle",
+            "decompiled": 0.0
+        },
+        {
+            "key": "Slant Angle",
+            "decompiled": 0.0
+        },
+        {
+            "key": "underlinePosition",
+            "decompiled": -100
+        },
+        {
+            "key": "underlineThickness",
+            "decompiled": 50
+        },
+        {
+            "key": "MS Character Set",
+            "decompiled": 0
+        },
+        {
+            "key": "panose",
+            "decompiled": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "key": "version",
+            "decompiled": ""
+        },
+        {
+            "key": "UniqueID",
+            "decompiled": ""
+        },
+        {
+            "key": "Style Name",
+            "decompiled": ""
+        },
+        {
+            "key": "tsn",
+            "decompiled": ""
+        },
+        {
+            "key": "OT Mac Name",
+            "decompiled": ""
+        },
+        {
+            "key": "1140",
+            "decompiled": ""
+        },
+        {
+            "key": "vendorID",
+            "decompiled": "pyrs"
+        },
+        {
+            "key": "Type 1 XUIDs",
+            "decompiled": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "key": "Type 1 XUIDs Count",
+            "decompiled": 0
+        },
+        {
+            "key": "year",
+            "decompiled": 0
+        },
+        {
+            "key": "versionMajor",
+            "decompiled": 1
+        },
+        {
+            "key": "versionMinor",
+            "decompiled": 0
+        },
+        {
+            "key": "upm",
+            "decompiled": 1000
+        },
+        {
+            "key": "FOND Family ID",
+            "decompiled": 128
+        },
+        {
+            "key": "1093",
+            "decompiled": "0000"
+        },
+        {
+            "key": "1068",
+            "decompiled": {
+                "values": []
+            }
+        },
+        {
+            "key": "Blue Values Count",
+            "decompiled": 0
+        },
+        {
+            "key": "Other Blues Count",
+            "decompiled": 0
+        },
+        {
+            "key": "Family Blues Count",
+            "decompiled": 0
+        },
+        {
+            "key": "Family Other Blues Count",
+            "decompiled": 0
+        },
+        {
+            "key": "StemSnapH Count",
+            "decompiled": 0
+        },
+        {
+            "key": "StemSnapV Count",
+            "decompiled": 0
+        },
+        {
+            "key": "Selection",
+            "decompiled": 64
+        },
+        {
+            "key": "MS ID",
+            "decompiled": 0
+        },
+        {
+            "key": "1059",
+            "decompiled": "203955"
+        },
+        {
+            "key": "TrueType Info",
+            "decompiled": [
+                [
+                    "0x33",
+                    0
+                ],
+                [
+                    "0x34",
+                    0
+                ],
+                [
+                    "0x35",
+                    0
+                ],
+                [
+                    "0x36",
+                    0
+                ],
+                [
+                    "0x37",
+                    0
+                ],
+                [
+                    "0x38",
+                    0
+                ],
+                [
+                    "tt_font_info_settings",
+                    [
+                        "create_vdmx"
+                    ]
+                ],
+                [
+                    "units_per_em",
+                    1000
+                ],
+                [
+                    "0x3b",
+                    0
+                ],
+                [
+                    "lowest_rec_ppem",
+                    9
+                ],
+                [
+                    "timestamp",
+                    3772094810
+                ],
+                [
+                    "0x57",
+                    0
+                ],
+                [
+                    "font_direction_hint",
+                    2
+                ],
+                [
+                    "weight_class",
+                    400
+                ],
+                [
+                    "width_class",
+                    5
+                ],
+                [
+                    "embedding",
+                    4
+                ],
+                [
+                    "subscript_x_size",
+                    700
+                ],
+                [
+                    "subscript_y_size",
+                    650
+                ],
+                [
+                    "subscript_x_offset",
+                    0
+                ],
+                [
+                    "subscript_y_offset",
+                    140
+                ],
+                [
+                    "superscript_x_size",
+                    700
+                ],
+                [
+                    "superscript_y_size",
+                    650
+                ],
+                [
+                    "superscript_x_offset",
+                    0
+                ],
+                [
+                    "superscript_y_offset",
+                    477
+                ],
+                [
+                    "strikeout_size",
+                    50
+                ],
+                [
+                    "strikeout_position",
+                    250
+                ],
+                [
+                    "ibm_classification",
+                    0
+                ],
+                [
+                    "OpenTypeOS2Panose",
+                    [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                ],
+                [
+                    "OpenTypeOS2TypoAscender",
+                    750
+                ],
+                [
+                    "OpenTypeOS2TypoDescender",
+                    -250
+                ],
+                [
+                    "OpenTypeOS2TypoLineGap",
+                    0
+                ],
+                [
+                    "0x50",
+                    0
+                ],
+                [
+                    "OpenTypeOS2WinAscent",
+                    0
+                ],
+                [
+                    "OpenTypeOS2WinDescent",
+                    0
+                ],
+                [
+                    "Average Width",
+                    0
+                ],
+                [
+                    "Hdmx PPMs 1",
+                    [
+                        9,
+                        10,
+                        11,
+                        12,
+                        13,
+                        15,
+                        16,
+                        17,
+                        19,
+                        21,
+                        24,
+                        27,
+                        29,
+                        32,
+                        33,
+                        37,
+                        42,
+                        46,
+                        50,
+                        54,
+                        58,
+                        67,
+                        75
+                    ]
+                ],
+                [
+                    "Hdmx PPMs 2",
+                    [
+                        9,
+                        10,
+                        11,
+                        12,
+                        13,
+                        15,
+                        16,
+                        17,
+                        19,
+                        21,
+                        24,
+                        27,
+                        29,
+                        32,
+                        33,
+                        37,
+                        42,
+                        46,
+                        50,
+                        54,
+                        58,
+                        67,
+                        75
+                    ]
+                ],
+                [
+                    "Codepages",
+                    [
+                        0,
+                        0
+                    ]
+                ]
+            ]
+        },
+        {
+            "key": "1271",
+            "decompiled": [
+                0
+            ]
+        },
+        {
+            "key": "hhea_line_gap",
+            "decompiled": 9
+        },
+        {
+            "key": "hhea_ascender",
+            "decompiled": 750
+        },
+        {
+            "key": "hhea_descender",
+            "decompiled": -250
+        },
+        {
+            "key": "TrueType Stem PPEMs",
+            "decompiled": {
+                "ttStemsV": [],
+                "ttStemsH": []
+            }
+        },
+        {
+            "key": "TrueType Stems",
+            "decompiled": {
+                "ttStemsV": [],
+                "ttStemsH": []
+            }
+        },
+        {
+            "key": "TrueType Stem PPEMs 1",
+            "decompiled": {
+                "ttStemsV": [],
+                "ttStemsH": []
+            }
+        },
+        {
+            "key": "TrueType Zones",
+            "decompiled": {
+                "ttZonesT": [],
+                "ttZonesB": []
+            }
+        },
+        {
+            "key": "Unicode Ranges",
+            "decompiled": 0
+        },
+        {
+            "key": "Pixel Snap",
+            "decompiled": 68
+        },
+        {
+            "key": "Zone Stop PPEM",
+            "decompiled": 48
+        },
+        {
+            "key": "Code Stop PPEM",
+            "decompiled": 0
+        },
+        {
+            "key": "1604",
+            "decompiled": 255
+        },
+        {
+            "key": "2032",
+            "decompiled": 300
+        },
+        {
+            "key": "TrueType Zone Deltas",
+            "decompiled": {}
+        },
+        {
+            "key": "Name Records",
+            "decompiled": []
+        },
+        {
+            "key": "Custom CMAPs",
+            "decompiled": {
+                "values": []
+            }
+        },
+        {
+            "key": "PCLT Table",
+            "decompiled": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "key": "Export PCLT Table",
+            "decompiled": 0
+        },
+        {
+            "key": "2030",
+            "decompiled": "00000000"
+        },
+        {
+            "key": "513",
+            "decompiled": ""
+        },
+        {
+            "key": "271",
+            "decompiled": ""
+        },
+        {
+            "key": "Axis Count",
+            "decompiled": 0
+        },
+        {
+            "key": "Anisotropic Interpolation Mappings",
+            "decompiled": []
+        },
+        {
+            "key": "Axis Mappings Count",
+            "decompiled": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "key": "Axis Mappings",
+            "decompiled": [
+                [
+                    0.0,
+                    0.0
+                ],
+                [
+                    0.0,
+                    0.0
+                ],
+                [
+                    0.0,
+                    0.0
+                ],
+                [
+                    0.0,
+                    0.0
+                ],
+                [
+                    0.0,
+                    0.0
+                ],
+                [
+                    0.0,
+                    0.0
+                ],
+                [
+                    0.0,
+                    0.0
+                ],
+                [
+                    0.0,
+                    0.0
+                ],
+                [
+                    0.0,
+                    0.0
+                ],
+                [
+                    0.0,
+                    0.0
+                ],
+                [
+                    0.0,
+                    0.0
+                ],
+                [
+                    0.0,
+                    0.0
+                ],
+                [
+                    0.0,
+                    0.0
+                ],
+                [
+                    0.0,
+                    0.0
+                ],
+                [
+                    0.0,
+                    0.0
+                ],
+                [
+                    0.0,
+                    0.0
+                ],
+                [
+                    0.0,
+                    0.0
+                ],
+                [
+                    0.0,
+                    0.0
+                ],
+                [
+                    0.0,
+                    0.0
+                ],
+                [
+                    0.0,
+                    0.0
+                ],
+                [
+                    0.0,
+                    0.0
+                ],
+                [
+                    0.0,
+                    0.0
+                ],
+                [
+                    0.0,
+                    0.0
+                ],
+                [
+                    0.0,
+                    0.0
+                ],
+                [
+                    0.0,
+                    0.0
+                ],
+                [
+                    0.0,
+                    0.0
+                ],
+                [
+                    0.0,
+                    0.0
+                ],
+                [
+                    0.0,
+                    0.0
+                ],
+                [
+                    0.0,
+                    0.0
+                ],
+                [
+                    0.0,
+                    0.0
+                ],
+                [
+                    0.0,
+                    0.0
+                ],
+                [
+                    0.0,
+                    0.0
+                ],
+                [
+                    0.0,
+                    0.0
+                ],
+                [
+                    0.0,
+                    0.0
+                ],
+                [
+                    0.0,
+                    0.0
+                ],
+                [
+                    0.0,
+                    0.0
+                ],
+                [
+                    0.0,
+                    0.0
+                ],
+                [
+                    0.0,
+                    0.0
+                ],
+                [
+                    0.0,
+                    0.0
+                ],
+                [
+                    0.0,
+                    0.0
+                ]
+            ]
+        },
+        {
+            "key": "Master Name",
+            "decompiled": "Untitled"
+        },
+        {
+            "key": "Master Location",
+            "decompiled": [
+                1,
+                [
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0
+                ]
+            ]
+        },
+        {
+            "key": "PostScript Info",
+            "decompiled": {
+                "font_matrix": [
+                    0.001,
+                    0.0,
+                    0.0,
+                    0.001,
+                    0.0,
+                    0.0
+                ],
+                "force_bold": 0,
+                "blue_values": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                "other_blues": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                "family_blues": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                "family_other_blues": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                "blue_scale": 0.039625,
+                "blue_shift": 7,
+                "blue_fuzz": 1,
+                "std_hw": 100,
+                "std_vw": 50,
+                "stem_snap_h": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                "stem_snap_v": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                "bounding_box": {
+                    "xMin": 32767,
+                    "yMin": 32767,
+                    "xMax": -32767,
+                    "yMax": -32767
+                },
+                "adv_width_min": 0,
+                "adv_width_max": 0,
+                "adv_width_avg": 500,
+                "ascender": 750,
+                "descender": -250,
+                "x_height": 500,
+                "cap_height": 700
+            }
+        },
+        {
+            "key": "527",
+            "decompiled": ""
+        },
+        {
+            "key": "Glyph",
+            "decompiled": {
+                "name": "a",
+                "num_masters": 1,
+                "nodes": [
+                    {
+                        "type": "move",
+                        "flags": 1,
+                        "points": [
+                            [
+                                [
+                                    354,
+                                    509
+                                ]
+                            ]
+                        ]
+                    },
+                    {
+                        "type": "curve",
+                        "flags": 3,
+                        "points": [
+                            [
+                                [
+                                    30,
+                                    165
+                                ],
+                                [
+                                    162,
+                                    509
+                                ],
+                                [
+                                    30,
+                                    372
+                                ]
+                            ]
+                        ]
+                    },
+                    {
+                        "type": "curve",
+                        "flags": 3,
+                        "points": [
+                            [
+                                [
+                                    136,
+                                    -8
+                                ],
+                                [
+                                    30,
+                                    49
+                                ],
+                                [
+                                    61,
+                                    -8
+                                ]
+                            ]
+                        ]
+                    },
+                    {
+                        "type": "curve",
+                        "flags": 0,
+                        "points": [
+                            [
+                                [
+                                    403,
+                                    143
+                                ],
+                                [
+                                    224,
+                                    -8
+                                ],
+                                [
+                                    334,
+                                    50
+                                ]
+                            ]
+                        ]
+                    },
+                    {
+                        "type": "curve",
+                        "flags": 1,
+                        "points": [
+                            [
+                                [
+                                    454,
+                                    5
+                                ],
+                                [
+                                    406,
+                                    73
+                                ],
+                                [
+                                    418,
+                                    34
+                                ]
+                            ]
+                        ]
+                    },
+                    {
+                        "type": "curve",
+                        "flags": 3,
+                        "points": [
+                            [
+                                [
+                                    532,
+                                    -19
+                                ],
+                                [
+                                    476,
+                                    -13
+                                ],
+                                [
+                                    499,
+                                    -19
+                                ]
+                            ]
+                        ]
+                    },
+                    {
+                        "type": "curve",
+                        "flags": 3,
+                        "points": [
+                            [
+                                [
+                                    582,
+                                    27
+                                ],
+                                [
+                                    562,
+                                    -19
+                                ],
+                                [
+                                    582,
+                                    4
+                                ]
+                            ]
+                        ]
+                    },
+                    {
+                        "type": "curve",
+                        "flags": 1,
+                        "points": [
+                            [
+                                [
+                                    545,
+                                    76
+                                ],
+                                [
+                                    582,
+                                    46
+                                ],
+                                [
+                                    571,
+                                    67
+                                ]
+                            ]
+                        ]
+                    },
+                    {
+                        "type": "curve",
+                        "flags": 1,
+                        "points": [
+                            [
+                                [
+                                    514,
+                                    87
+                                ],
+                                [
+                                    537,
+                                    79
+                                ],
+                                [
+                                    525,
+                                    78
+                                ]
+                            ]
+                        ]
+                    },
+                    {
+                        "type": "curve",
+                        "flags": 3,
+                        "points": [
+                            [
+                                [
+                                    500,
+                                    162
+                                ],
+                                [
+                                    503,
+                                    95
+                                ],
+                                [
+                                    500,
+                                    130
+                                ]
+                            ]
+                        ]
+                    },
+                    {
+                        "type": "curve",
+                        "flags": 1,
+                        "points": [
+                            [
+                                [
+                                    518,
+                                    391
+                                ],
+                                [
+                                    500,
+                                    241
+                                ],
+                                [
+                                    518,
+                                    311
+                                ]
+                            ]
+                        ]
+                    },
+                    {
+                        "type": "curve",
+                        "flags": 1,
+                        "points": [
+                            [
+                                [
+                                    468,
+                                    442
+                                ],
+                                [
+                                    518,
+                                    417
+                                ],
+                                [
+                                    500,
+                                    442
+                                ]
+                            ]
+                        ]
+                    },
+                    {
+                        "type": "curve",
+                        "flags": 1,
+                        "points": [
+                            [
+                                [
+                                    425,
+                                    418
+                                ],
+                                [
+                                    448,
+                                    442
+                                ],
+                                [
+                                    433,
+                                    433
+                                ]
+                            ]
+                        ]
+                    },
+                    {
+                        "type": "curve",
+                        "flags": 1,
+                        "points": [
+                            [
+                                [
+                                    414,
+                                    381
+                                ],
+                                [
+                                    419,
+                                    407
+                                ],
+                                [
+                                    417,
+                                    394
+                                ]
+                            ]
+                        ]
+                    },
+                    {
+                        "type": "curve",
+                        "flags": 1,
+                        "points": [
+                            [
+                                [
+                                    293,
+                                    163
+                                ],
+                                [
+                                    398,
+                                    313
+                                ],
+                                [
+                                    337,
+                                    201
+                                ]
+                            ]
+                        ]
+                    },
+                    {
+                        "type": "curve",
+                        "flags": 3,
+                        "points": [
+                            [
+                                [
+                                    146,
+                                    91
+                                ],
+                                [
+                                    254,
+                                    129
+                                ],
+                                [
+                                    198,
+                                    91
+                                ]
+                            ]
+                        ]
+                    },
+                    {
+                        "type": "curve",
+                        "flags": 0,
+                        "points": [
+                            [
+                                [
+                                    135,
+                                    92
+                                ],
+                                [
+                                    143,
+                                    91
+                                ],
+                                [
+                                    139,
+                                    91
+                                ]
+                            ]
+                        ]
+                    },
+                    {
+                        "type": "curve",
+                        "flags": 3,
+                        "points": [
+                            [
+                                [
+                                    130,
+                                    166
+                                ],
+                                [
+                                    132,
+                                    115
+                                ],
+                                [
+                                    130,
+                                    143
+                                ]
+                            ]
+                        ]
+                    },
+                    {
+                        "type": "curve",
+                        "flags": 1,
+                        "points": [
+                            [
+                                [
+                                    331,
+                                    409
+                                ],
+                                [
+                                    130,
+                                    320
+                                ],
+                                [
+                                    217,
+                                    409
+                                ]
+                            ]
+                        ]
+                    },
+                    {
+                        "type": "curve",
+                        "flags": 0,
+                        "points": [
+                            [
+                                [
+                                    362,
+                                    407
+                                ],
+                                [
+                                    343,
+                                    409
+                                ],
+                                [
+                                    356,
+                                    408
+                                ]
+                            ]
+                        ]
+                    },
+                    {
+                        "type": "curve",
+                        "flags": 3,
+                        "points": [
+                            [
+                                [
+                                    386,
+                                    400
+                                ],
+                                [
+                                    369,
+                                    402
+                                ],
+                                [
+                                    378,
+                                    400
+                                ]
+                            ]
+                        ]
+                    },
+                    {
+                        "type": "curve",
+                        "flags": 3,
+                        "points": [
+                            [
+                                [
+                                    432,
+                                    453
+                                ],
+                                [
+                                    415,
+                                    400
+                                ],
+                                [
+                                    432,
+                                    426
+                                ]
+                            ]
+                        ]
+                    },
+                    {
+                        "type": "curve",
+                        "flags": 1,
+                        "points": [
+                            [
+                                [
+                                    354,
+                                    509
+                                ],
+                                [
+                                    432,
+                                    498
+                                ],
+                                [
+                                    393,
+                                    509
+                                ]
+                            ]
+                        ]
+                    }
+                ],
+                "metrics": [
+                    [
+                        603,
+                        0
+                    ]
+                ]
+            },
+            "compiler": "GlyphCompiler"
+        },
+        {
+            "key": "Links",
+            "decompiled": {
+                "x": [],
+                "y": []
+            }
+        },
+        {
+            "key": "2023",
+            "decompiled": [
+                0
+            ]
+        },
+        {
+            "key": "2010",
+            "decompiled": "040000c0"
+        },
+        {
+            "key": "Mask",
+            "decompiled": {
+                "num": 1,
+                "reserved0": 100000000,
+                "num_masters": 1,
+                "nodes": []
+            }
+        },
+        {
+            "key": "2011",
+            "decompiled": "fbff0000"
+        },
+        {
+            "key": "Glyph Origin",
+            "decompiled": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "key": "Glyph Unicode",
+            "decompiled": [
+                97
+            ]
+        },
+        {
+            "key": "Glyph GDEF Data",
+            "decompiled": {}
+        },
+        {
+            "key": "Glyph Anchors Supplemental",
+            "decompiled": []
+        },
+        {
+            "key": "1742",
+            "decompiled": [
+                {
+                    "1": 0
+                },
+                {
+                    "2": 152
+                },
+                {
+                    "3": 78
+                },
+                {
+                    "4": 0
+                }
+            ]
+        }
+    ]
+}
