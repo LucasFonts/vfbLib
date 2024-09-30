@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import logging
 
 from colorsys import hls_to_rgb

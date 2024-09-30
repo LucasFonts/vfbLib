@@ -72,12 +72,12 @@ class UfoGuide(TypedDict):
     y: int
 
 
+class UfoHintSet(TypedDict):
+    pointTag: str
+    stems: list[str | HintTuple]
+
+
 class UfoHintingV2(TypedDict):
     flexList: NotRequired[list]
     hintSetList: NotRequired[list[UfoHintSet]]
     id: NotRequired[str]
-
-
-class UfoHintSet(TypedDict):
-    pointTag: str
-    stems: list[str | HintTuple]

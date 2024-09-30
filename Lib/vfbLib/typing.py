@@ -39,21 +39,6 @@ class GdefDict(TypedDict):
     unknown: NotRequired[list[int]]
 
 
-class GlyphData(TypedDict):
-    components: NotRequired[list[Component]]
-    # constants: NotRequired[Tuple[Any, ...]]
-    guides: NotRequired[GuideDict]
-    hints: NotRequired[HintDict]
-    imported: NotRequired[Any]  # FIXME
-    kerning: NotRequired[dict[int, list[int]]]
-    metrics: NotRequired[list[Point]]
-    name: NotRequired[str]
-    nodes: NotRequired[list[MMNode]]
-    num_masters: NotRequired[int]
-    # num_node_values: NotRequired[int]
-    tth: NotRequired[list[Instruction]]
-
-
 class Guide(TypedDict):
     angle: float | int
     pos: int
@@ -100,11 +85,6 @@ class LinkDict(TypedDict):
     y: NotRequired[list[tuple[int, int]]]
 
 
-class MaskData(GlyphData):
-    num: int
-    reserved0: NotRequired[int]
-
-
 class MMAnchor(TypedDict):
     x: list[int]
     y: list[int]
@@ -124,3 +104,23 @@ class MMNode(TypedDict):
 class TTCommandDict(TypedDict):
     name: str
     params: list[str]
+
+
+class GlyphData(TypedDict):
+    components: NotRequired[list[Component]]
+    # constants: NotRequired[Tuple[Any, ...]]
+    guides: NotRequired[GuideDict]
+    hints: NotRequired[HintDict]
+    imported: NotRequired[Any]  # FIXME
+    kerning: NotRequired[dict[int, list[int]]]
+    metrics: NotRequired[list[Point]]
+    name: NotRequired[str]
+    nodes: NotRequired[list[MMNode]]
+    num_masters: NotRequired[int]
+    # num_node_values: NotRequired[int]
+    tth: NotRequired[list[Instruction]]
+
+
+class MaskData(GlyphData):
+    num: int
+    reserved0: NotRequired[int]
