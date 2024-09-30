@@ -1,7 +1,3 @@
-from __future__ import annotations
-
-import pytest
-
 from unittest import TestCase
 
 from vfbLib.ufo.pshints import update_adobe_hinting

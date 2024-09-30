@@ -1,7 +1,3 @@
-from __future__ import annotations
-
-import pytest
-
 from fontTools.designspaceLib import DesignSpaceDocument
 from pathlib import Path
 from unittest import TestCase

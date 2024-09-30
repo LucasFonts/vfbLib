@@ -1,7 +1,3 @@
-from __future__ import annotations
-
-import pytest
-
 from unittest import TestCase
 
 from vfbLib.ufo.kerning import UfoKerning

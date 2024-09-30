@@ -1,7 +1,3 @@
-from __future__ import annotations
-
-import pytest
-
 from unittest import TestCase
 
 from pathlib import Path
@@ -10,6 +6,7 @@ from vfbLib.ufo.builder import VfbToUfoBuilder
 
 class TestVfb:
     pass
+
 
 class VfbToUfoBuilderTest(TestCase):
     def test_get_master_path(self):

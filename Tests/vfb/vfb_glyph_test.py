@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from fontTools.misc.textTools import deHexStr, hexStr
 from fontTools.pens.recordingPen import RecordingPen, RecordingPointPen
 from pathlib import Path

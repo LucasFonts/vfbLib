@@ -1,10 +1,5 @@
-from __future__ import annotations
-
-import pytest
-
 from unittest import TestCase
 
-from pprint import pprint
 from vfbLib.ufo.glyph import VfbToUfoGlyph
 from vfbLib.ufo.paths import UfoMasterGlyph
 

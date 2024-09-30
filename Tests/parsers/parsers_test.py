@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from fontTools.misc.textTools import deHexStr
 from io import BytesIO
 from unittest import TestCase

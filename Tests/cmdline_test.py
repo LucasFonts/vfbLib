@@ -1,7 +1,3 @@
-from __future__ import annotations
-
-import pytest
-
 import contextlib
 import io
 import sys
