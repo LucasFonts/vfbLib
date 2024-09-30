@@ -6,7 +6,7 @@ from __future__ import annotations
 # except ImportError:
 from typing_extensions import NotRequired, TypedDict
 
-from typing import Optional, Tuple
+from typing import Optional
 from vfbLib.typing import HintTuple
 
 
@@ -18,12 +18,12 @@ class TUfoTTZoneDict(TypedDict):
     delta: NotRequired[dict[str, int]]
 
 
-UfoPoint = Tuple[int, int]
-UfoComponent = Tuple[str, Tuple[float, float, float, float, int, int]]
+UfoPoint = tuple[int, int]
+UfoComponent = tuple[str, tuple[float, float, float, float, int, int]]
 UfoGroups = dict[str, list[str]]  # name, glyphs
-UfoMasterKerning = dict[Tuple[str, str], int]  # Lstr, Rstr, value
-UfoMMKerning = dict[Tuple[str, int], list[int]]  # Lstr, Rid, master values
-UfoSegment = Tuple[Optional[str], bool, Optional[str], UfoPoint]
+UfoMasterKerning = dict[tuple[str, str], int]  # Lstr, Rstr, value
+UfoMMKerning = dict[tuple[str, int], list[int]]  # Lstr, Rid, master values
+UfoSegment = tuple[Optional[str], bool, Optional[str], UfoPoint]
 UfoContour = list[UfoSegment]
 TUfoTTZonesDict = dict[str, TUfoTTZoneDict]
 

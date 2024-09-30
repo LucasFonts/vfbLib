@@ -2,7 +2,8 @@ from __future__ import annotations
 
 import logging
 
-from typing import TYPE_CHECKING, Literal, Sequence
+from typing import TYPE_CHECKING, Literal
+from collections.abc import Sequence
 from math import atan2, degrees
 from vfbLib.parsers.base import BaseParser, read_encoded_value
 from vfbLib.typing import Guide, GuideDict, GuideProperty

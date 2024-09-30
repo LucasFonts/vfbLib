@@ -6,10 +6,10 @@ from __future__ import annotations
 # except ImportError:
 from typing_extensions import NotRequired, TypedDict
 
-from typing import Any, Literal, Tuple
+from typing import Any, Literal
 
 
-Point = Tuple[int, int]
+Point = tuple[int, int]
 
 
 class Anchor(TypedDict):
@@ -20,7 +20,7 @@ class Anchor(TypedDict):
     y1: NotRequired[int]
 
 
-ClassFlagDict = dict[str, Tuple[int, int]]
+ClassFlagDict = dict[str, tuple[int, int]]
 
 
 class Component(TypedDict):
@@ -89,7 +89,7 @@ class HintDict(TypedDict):
     hintmasks: NotRequired[list[dict[str, int]]]
 
 
-HintTuple = Tuple[str, int, int]
+HintTuple = tuple[str, int, int]
 
 
 class Instruction(TypedDict):

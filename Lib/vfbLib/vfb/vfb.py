@@ -4,7 +4,8 @@ import logging
 
 from pathlib import Path
 from time import time
-from typing import TYPE_CHECKING, Any, Iterable
+from typing import TYPE_CHECKING, Any
+from collections.abc import Iterable
 from vfbLib.vfb.glyph import VfbGlyph, VfbGlyphMaster
 from vfbLib.vfb.entry import VfbEntry
 from vfbLib.vfb.header import VfbHeader
