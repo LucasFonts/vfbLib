@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 import logging
 
 from base64 import b64encode

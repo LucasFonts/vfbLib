@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 # try:
 #     # NotRequired is only available in Python 3.11+
 #     from typing import NotRequired, TypedDict

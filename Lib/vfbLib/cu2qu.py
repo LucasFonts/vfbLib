@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from argparse import ArgumentParser
 from fontTools.cu2qu.ufo import font_to_quadratic, fonts_to_quadratic
 from pathlib import Path

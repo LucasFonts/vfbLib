@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from vfbLib.compilers.glyph import GlyphCompiler
 
 from vfbLib.parsers.base import (
