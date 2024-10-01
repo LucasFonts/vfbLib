@@ -119,7 +119,7 @@ def extract_truetype_hinting(vfb: Vfb) -> dict[str, Any]:
         elif key == "Code Stop PPEM":
             entry.decompile()
             assert isinstance(entry.decompiled, int)
-            font["code_ppm"] = entry.decompiled
+            font["codeppm"] = entry.decompiled
 
         elif key == "TrueType Zone Deltas":
             entry.decompile()
