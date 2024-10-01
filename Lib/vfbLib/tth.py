@@ -5,7 +5,7 @@ import logging
 from argparse import ArgumentParser
 from copy import deepcopy
 from pathlib import Path
-from vfbLib.ufo.tth import TTGlyphHints
+from vfbLib.ufo.tth import TTGlyphHints, transform_stem_rounds
 from vfbLib.version import build_date
 from vfbLib.vfb.vfb import Vfb
 
@@ -138,6 +138,7 @@ def extract_truetype_hinting(vfb: Vfb) -> dict[str, Any]:
             for stem_index, rounding in direction_data.items():
                 stem = font["stems"][direction][stem_index]
                 stem["round"].update(rounding)
+                stem["round"] = transform_stem_rounds(stem["round"], stem["name"])
 
     return d
 
