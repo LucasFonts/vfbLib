@@ -5,6 +5,7 @@ import logging
 from argparse import ArgumentParser
 from copy import deepcopy
 from pathlib import Path
+from vfbLib.ufo.glyph import IndexVfbToUfoGlyph
 from vfbLib.ufo.tth import TTGlyphHints, transform_stem_rounds
 from vfbLib.version import build_date
 from vfbLib.vfb.vfb import Vfb
@@ -137,18 +138,12 @@ def extract_truetype_hinting(vfb: Vfb) -> dict[str, Any]:
     return d
 
 
-class NonLabelMappingGlyph:
-    # A dummy glyph that does not convert point indices to point labels
-    def get_point_label(self, index: int, code: str) -> int:
-        return index
-
-
 def extract_glyph_hints(
     data: dict, target: dict, font_hints: dict, zone_names: dict
 ) -> None:
     if tth := data.get("tth"):
         ttg = TTGlyphHints(
-            NonLabelMappingGlyph(),
+            IndexVfbToUfoGlyph(),
             data=tth,
             zone_names=zone_names,
             stems=font_hints["stems"],

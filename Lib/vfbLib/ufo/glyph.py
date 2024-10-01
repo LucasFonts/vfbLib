@@ -135,3 +135,13 @@ class VfbToUfoGlyph:
                 return True
 
         return False
+
+
+class IndexVfbToUfoGlyph(VfbToUfoGlyph):
+    """
+    A glyph that does not convert point indices to point labels, but returns the
+    original point index again.
+    """
+
+    def get_point_label(self, index: int, code: str) -> int:
+        return index
