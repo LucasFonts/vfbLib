@@ -202,7 +202,7 @@ def extract_tt_zone_deltas(data: dict, target: dict):
 
 
 def extract_tt_zones(data: dict, target: dict, zone_names: dict) -> None:
-    target["zones"] = deepcopy(data)
+    target["zones"] = {"ttZonesT": [], "ttZonesB": []}
     zone_names_global = set()
     for side in ("ttZonesT", "ttZonesB"):
         for zone_index, zone in enumerate(data.get(side, [])):
@@ -216,6 +216,14 @@ def extract_tt_zones(data: dict, target: dict, zone_names: dict) -> None:
                 name = f"{name}#{i}"
             zone_names_global |= {name}
             zone_names[side][zone_index] = name
+            target["zones"][side].append(
+                {
+                    "name": name,
+                    "position": zone["position"],
+                    "top": side == "ttZonesT",
+                    "width": zone["value"],
+                }
+            )
 
 
 def merge_stem_information(data, font):
