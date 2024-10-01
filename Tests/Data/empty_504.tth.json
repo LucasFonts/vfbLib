@@ -1,0 +1,19 @@
+{
+    "font": {
+        "code_ppm": 0,
+        "lowest_rec_ppem": 9,
+        "pixel_snap": 68,
+        "stems": {
+            "ttStemsH": [],
+            "ttStemsV": []
+        },
+        "units_per_em": 1000,
+        "zone_deltas": {},
+        "zone_ppm": 48,
+        "zones": {
+            "ttZonesB": [],
+            "ttZonesT": []
+        }
+    },
+    "glyphs": {}
+}

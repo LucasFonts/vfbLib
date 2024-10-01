@@ -1,0 +1,155 @@
+{
+    "font": {
+        "code_ppm": 0,
+        "gasp": {
+            "8": 2,
+            "16": 1,
+            "65535": 3
+        },
+        "lowest_rec_ppem": 9,
+        "pixel_snap": 68,
+        "stems": {
+            "ttStemsH": [
+                {
+                    "name": "X: 49",
+                    "round": {
+                        "1": 0,
+                        "2": 31,
+                        "3": 52,
+                        "4": 72,
+                        "5": 92,
+                        "6": 113
+                    },
+                    "value": 49
+                },
+                {
+                    "name": "X: 54",
+                    "round": {
+                        "1": 0,
+                        "2": 28,
+                        "3": 47,
+                        "4": 65,
+                        "5": 84,
+                        "6": 102
+                    },
+                    "value": 54
+                },
+                {
+                    "name": "X: 86",
+                    "round": {
+                        "1": 0,
+                        "2": 18,
+                        "3": 30,
+                        "4": 41,
+                        "5": 53,
+                        "6": 64
+                    },
+                    "value": 86
+                }
+            ],
+            "ttStemsV": [
+                {
+                    "name": "Y: 39",
+                    "round": {
+                        "1": 0,
+                        "2": 11,
+                        "3": 18,
+                        "4": 25,
+                        "5": 33,
+                        "6": 142
+                    },
+                    "value": 39
+                },
+                {
+                    "name": "Y: 44",
+                    "round": {
+                        "1": 0,
+                        "2": 11,
+                        "3": 18,
+                        "4": 24,
+                        "5": 31,
+                        "6": 125
+                    },
+                    "value": 44
+                },
+                {
+                    "name": "Y: 49",
+                    "round": {
+                        "1": 0,
+                        "2": 10,
+                        "3": 17,
+                        "4": 24,
+                        "5": 30,
+                        "6": 113
+                    },
+                    "value": 49
+                }
+            ]
+        },
+        "units_per_em": 1000,
+        "zone_deltas": {},
+        "zone_ppm": 48,
+        "zones": {
+            "ttZonesB": [
+                {
+                    "name": "b: 0",
+                    "position": 0,
+                    "value": 8
+                },
+                {
+                    "name": "b: 1",
+                    "position": -252,
+                    "value": 8
+                },
+                {
+                    "name": "b: 2",
+                    "position": -83,
+                    "value": 8
+                },
+                {
+                    "name": "b: 3",
+                    "position": -194,
+                    "value": 8
+                },
+                {
+                    "name": "b: 4",
+                    "position": 361,
+                    "value": 8
+                }
+            ],
+            "ttZonesT": [
+                {
+                    "name": "t: 0",
+                    "position": 497,
+                    "value": 12
+                },
+                {
+                    "name": "t: 1",
+                    "position": 520,
+                    "value": 12
+                },
+                {
+                    "name": "t: 2",
+                    "position": 600,
+                    "value": 12
+                },
+                {
+                    "name": "t: 3",
+                    "position": 650,
+                    "value": 12
+                },
+                {
+                    "name": "t: 4",
+                    "position": 675,
+                    "value": 12
+                },
+                {
+                    "name": "t: 5",
+                    "position": 730,
+                    "value": 8
+                }
+            ]
+        }
+    },
+    "glyphs": {}
+}

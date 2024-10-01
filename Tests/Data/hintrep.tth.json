@@ -1,0 +1,45 @@
+{
+    "font": {
+        "code_ppm": 0,
+        "lowest_rec_ppem": 9,
+        "pixel_snap": 68,
+        "stems": {
+            "ttStemsH": [
+                {
+                    "name": "",
+                    "round": {
+                        "1": 0,
+                        "2": 10,
+                        "3": 16,
+                        "4": 22,
+                        "5": 29,
+                        "6": 35
+                    },
+                    "value": 160
+                }
+            ],
+            "ttStemsV": [
+                {
+                    "name": "",
+                    "round": {
+                        "1": 0,
+                        "2": 10,
+                        "3": 16,
+                        "4": 22,
+                        "5": 29,
+                        "6": 35
+                    },
+                    "value": 160
+                }
+            ]
+        },
+        "units_per_em": 1000,
+        "zone_deltas": {},
+        "zone_ppm": 48,
+        "zones": {
+            "ttZonesB": [],
+            "ttZonesT": []
+        }
+    },
+    "glyphs": {}
+}
