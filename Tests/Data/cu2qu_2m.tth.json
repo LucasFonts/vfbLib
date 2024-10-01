@@ -88,57 +88,57 @@
             "b: 0": {
                 "position": 0,
                 "top": false,
-                "value": 8
+                "width": 8
             },
             "b: 1": {
                 "position": -252,
                 "top": false,
-                "value": 8
+                "width": 8
             },
             "b: 2": {
                 "position": -83,
                 "top": false,
-                "value": 8
+                "width": 8
             },
             "b: 3": {
                 "position": -194,
                 "top": false,
-                "value": 8
+                "width": 8
             },
             "b: 4": {
                 "position": 361,
                 "top": false,
-                "value": 8
+                "width": 8
             },
             "t: 0": {
                 "position": 497,
                 "top": true,
-                "value": 12
+                "width": 12
             },
             "t: 1": {
                 "position": 520,
                 "top": true,
-                "value": 12
+                "width": 12
             },
             "t: 2": {
                 "position": 600,
                 "top": true,
-                "value": 12
+                "width": 12
             },
             "t: 3": {
                 "position": 650,
                 "top": true,
-                "value": 12
+                "width": 12
             },
             "t: 4": {
                 "position": 675,
                 "top": true,
-                "value": 12
+                "width": 12
             },
             "t: 5": {
                 "position": 730,
                 "top": true,
-                "value": 8
+                "width": 8
             }
         }
     },

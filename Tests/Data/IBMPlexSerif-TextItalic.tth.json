@@ -280,22 +280,22 @@
             "ascender": {
                 "position": 748,
                 "top": true,
-                "value": 12
+                "width": 12
             },
             "baseline": {
                 "position": 0,
                 "top": false,
-                "value": 12
+                "width": 12
             },
             "capheight": {
                 "position": 698,
                 "top": true,
-                "value": 12
+                "width": 12
             },
             "descender": {
                 "position": -200,
                 "top": false,
-                "value": 12
+                "width": 12
             },
             "inf_top": {
                 "deltas": {
@@ -306,12 +306,12 @@
                 },
                 "position": 368,
                 "top": true,
-                "value": 6
+                "width": 6
             },
             "slashes": {
                 "position": 740,
                 "top": true,
-                "value": 12
+                "width": 12
             },
             "sup_bot": {
                 "deltas": {
@@ -322,7 +322,7 @@
                 },
                 "position": 330,
                 "top": false,
-                "value": 6
+                "width": 6
             },
             "xheight": {
                 "deltas": {
@@ -331,7 +331,7 @@
                 },
                 "position": 518,
                 "top": true,
-                "value": 12
+                "width": 12
             }
         }
     },

@@ -220,22 +220,22 @@
             "ascender": {
                 "position": 740,
                 "top": true,
-                "value": 12
+                "width": 12
             },
             "baseline": {
                 "position": 0,
                 "top": false,
-                "value": 12
+                "width": 12
             },
             "capheight": {
                 "position": 698,
                 "top": true,
-                "value": 12
+                "width": 12
             },
             "descender": {
                 "position": -200,
                 "top": false,
-                "value": 12
+                "width": 12
             },
             "inf_top": {
                 "deltas": {
@@ -249,7 +249,7 @@
                 },
                 "position": 369,
                 "top": true,
-                "value": 6
+                "width": 6
             },
             "sup_bot": {
                 "deltas": {
@@ -262,7 +262,7 @@
                 },
                 "position": 329,
                 "top": false,
-                "value": 6
+                "width": 6
             },
             "tosf": {
                 "deltas": {
@@ -272,7 +272,7 @@
                 },
                 "position": 540,
                 "top": true,
-                "value": 12
+                "width": 12
             },
             "xheight": {
                 "deltas": {
@@ -282,7 +282,7 @@
                 },
                 "position": 520,
                 "top": true,
-                "value": 12
+                "width": 12
             }
         }
     },
