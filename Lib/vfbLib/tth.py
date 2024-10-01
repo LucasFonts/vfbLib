@@ -45,38 +45,44 @@ def vfb2tth():
             unicode_strings=True,
         )
         # vfb.decompile()
-        suffix = ".vfb.json"
+        suffix = ".tth.json"
         if args.path:
             out_path = (Path(args.path[0]) / vfb_path.name).with_suffix(suffix)
         else:
             out_path = vfb_path.with_suffix(suffix)
         with codecs.open(str(out_path), "wb", "utf-8") as f:
-            json.dump(extract_truetype_hinting(vfb), f, ensure_ascii=False, indent=4)
+            json.dump(
+                extract_truetype_hinting(vfb),
+                f,
+                ensure_ascii=False,
+                indent=4,
+                sort_keys=True,
+            )
     else:
         parser.print_help()
 
 
 def extract_truetype_hinting(vfb: Vfb) -> dict[str, Any]:
-    d = {}
+    font = {}
+    glyphs = {}
+    d: dict[str, Any] = {"font": font, "glyphs": glyphs}
     stem_round = {"ttStemsV": {}, "ttStemsH": {}}
     for entry in vfb.entries:
         key = entry.key
         if key == "Gasp Ranges":
             entry.decompile()
             assert isinstance(entry.decompiled, list)
-            d["gasp"] = {
+            font["gasp"] = {
                 gasp_range["maxPpem"]: gasp_range["flags"]
                 for gasp_range in entry.decompiled
             }
 
         elif key == "TrueType Info":
             entry.decompile()
-            assert isinstance(entry.decompiled, list)
-            for k, v in entry.decompiled:
-                if k == "lowest_rec_ppem":
-                    d["lowest_rec_ppem"] = v
-                if k == "units_per_em":
-                    d["units_per_em"] = v
+            assert isinstance(entry.decompiled, dict)
+            for k in ("lowest_rec_ppem", "units_per_em"):
+                if k in entry.decompiled:
+                    font[k] = entry.decompiled[k]
 
         elif key == "TrueType Stem PPEMs":
             entry.decompile()
@@ -92,7 +98,7 @@ def extract_truetype_hinting(vfb: Vfb) -> dict[str, Any]:
         elif key == "TrueType Stems":
             entry.decompile()
             assert isinstance(entry.decompiled, dict)
-            d["stems"] = deepcopy(entry.decompiled)
+            font["stems"] = deepcopy(entry.decompiled)
 
         elif key == "TrueType Stem PPEMs 1":
             entry.decompile()
@@ -107,43 +113,40 @@ def extract_truetype_hinting(vfb: Vfb) -> dict[str, Any]:
         elif key == "TrueType Zones":
             entry.decompile()
             assert isinstance(entry.decompiled, dict)
-            d["zones"] = deepcopy(entry.decompiled)
+            font["zones"] = deepcopy(entry.decompiled)
 
         elif key == "Pixel Snap":
             entry.decompile()
             assert isinstance(entry.decompiled, int)
-            d["pixel_snap"] = entry.decompiled
+            font["pixel_snap"] = entry.decompiled
 
         elif key == "Zone Stop PPEM":
             entry.decompile()
             assert isinstance(entry.decompiled, int)
-            d["zone_ppm"] = entry.decompiled
+            font["zone_ppm"] = entry.decompiled
 
         elif key == "Code Stop PPEM":
             entry.decompile()
             assert isinstance(entry.decompiled, int)
-            d["code_ppm"] = entry.decompiled
+            font["code_ppm"] = entry.decompiled
 
         elif key == "TrueType Zone Deltas":
             entry.decompile()
             assert isinstance(entry.decompiled, dict)
-            d["zone_deltas"] = deepcopy(entry.decompiled)
+            font["zone_deltas"] = deepcopy(entry.decompiled)
 
-        elif key == "TrueType Info":
+        elif key == "Glyph":
             entry.decompile()
-            assert isinstance(entry.decompiled, list)
-            for k, v in entry.decompiled:
-                if k == "lowest_rec_ppem":
-                    d["lowest_rec_ppem"] = v
-                if k == "units_per_em":
-                    d["units_per_em"] = v
+            assert isinstance(entry.decompiled, dict)
+            if tth := entry.decompiled.get("tth"):
+                glyphs[entry.decompiled["name"]] = deepcopy(tth)
 
     # Merge stem information
     for direction in ("ttStemsV", "ttStemsH"):
         if direction in stem_round:
             direction_data = stem_round[direction]
             for stem_index, rounding in direction_data.items():
-                stem = d["stems"][direction][stem_index]
+                stem = font["stems"][direction][stem_index]
                 stem["round"].update(rounding)
 
     return d
