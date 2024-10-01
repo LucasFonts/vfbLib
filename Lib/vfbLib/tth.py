@@ -109,12 +109,12 @@ def extract_truetype_hinting(vfb: Vfb) -> dict[str, Any]:
         elif key == "Pixel Snap":
             entry.decompile()
             assert isinstance(entry.decompiled, int)
-            font["pixel_snap"] = entry.decompiled
+            font["stemsnaplimit"] = entry.decompiled
 
         elif key == "Zone Stop PPEM":
             entry.decompile()
             assert isinstance(entry.decompiled, int)
-            font["zone_ppm"] = entry.decompiled
+            font["zoneppm"] = entry.decompiled
 
         elif key == "Code Stop PPEM":
             entry.decompile()
