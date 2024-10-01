@@ -87,13 +87,7 @@ def extract_truetype_hinting(vfb: Vfb) -> dict[str, Any]:
         elif key == "TrueType Stem PPEMs":
             entry.decompile()
             assert isinstance(entry.decompiled, dict)
-            for direction in ("ttStemsV", "ttStemsH"):
-                if direction in entry.decompiled:
-                    direction_data = entry.decompiled[direction]
-                    for stem_data in direction_data:
-                        stem_round[direction][stem_data["stem"]] = deepcopy(
-                            stem_data["round"]
-                        )
+            extract_tt_stem_ppems(entry.decompiled, stem_round)
 
         elif key == "TrueType Stems":
             entry.decompile()
@@ -103,12 +97,7 @@ def extract_truetype_hinting(vfb: Vfb) -> dict[str, Any]:
         elif key == "TrueType Stem PPEMs 1":
             entry.decompile()
             assert isinstance(entry.decompiled, dict)
-            for direction in ("ttStemsV", "ttStemsH"):
-                if direction in entry.decompiled:
-                    direction_data = entry.decompiled[direction]
-                    for stem_data in direction_data:
-                        stem_index = stem_data["stem"]
-                        stem_round[direction][stem_index]["1"] = stem_data["round"]["1"]
+            extract_tt_stem_ppem_1(entry.decompiled, stem_round)
 
         elif key == "TrueType Zones":
             entry.decompile()
@@ -138,8 +127,7 @@ def extract_truetype_hinting(vfb: Vfb) -> dict[str, Any]:
         elif key == "Glyph":
             entry.decompile()
             assert isinstance(entry.decompiled, dict)
-            if tth := entry.decompiled.get("tth"):
-                glyphs[entry.decompiled["name"]] = deepcopy(tth)
+            extract_glyph_hints(entry.decompiled, glyphs)
 
     # Merge stem information
     for direction in ("ttStemsV", "ttStemsH"):
@@ -150,3 +138,25 @@ def extract_truetype_hinting(vfb: Vfb) -> dict[str, Any]:
                 stem["round"].update(rounding)
 
     return d
+
+
+def extract_glyph_hints(data: dict, target: dict) -> None:
+    if tth := data.get("tth"):
+        target[data["name"]] = deepcopy(tth)
+
+
+def extract_tt_stem_ppems(data: dict, target: dict) -> None:
+    for direction in ("ttStemsV", "ttStemsH"):
+        if direction in data:
+            direction_data = data[direction]
+            for stem_data in direction_data:
+                target[direction][stem_data["stem"]] = deepcopy(stem_data["round"])
+
+
+def extract_tt_stem_ppem_1(data: dict, target: dict) -> None:
+    for direction in ("ttStemsV", "ttStemsH"):
+        if direction in data:
+            direction_data = data[direction]
+            for stem_data in direction_data:
+                stem_index = stem_data["stem"]
+                target[direction][stem_index]["1"] = stem_data["round"]["1"]
