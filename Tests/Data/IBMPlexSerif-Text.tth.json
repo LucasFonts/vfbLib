@@ -7,7 +7,6 @@
             "65535": 3
         },
         "lowest_rec_ppem": 9,
-        "pixel_snap": 68,
         "stems": {
             "ttStemsH": [
                 {
@@ -235,6 +234,7 @@
                 }
             ]
         },
+        "stemsnaplimit": 68,
         "units_per_em": 1000,
         "zone_deltas": {
             "2": {
