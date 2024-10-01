@@ -43,16 +43,17 @@ class BaseParser:
         self.master_count = master_count
         self.ttStemsV_count = ttStemsV_count
         self.ttStemsH_count = ttStemsH_count
-        decompiled = self._parse()
-        if not isinstance(decompiled, self.expected_decompiled_type):
-            logger.error(
-                f"Expected '{__class__.__name__}' to return an instance of "
-                f"{self.expected_decompiled_type.__name__}, got "
-                f"{type(decompiled).__name__} instead."
-            )
-            raise TypeError
+        return self._parse()
+        # decompiled = self._parse()
+        # if not isinstance(decompiled, self.expected_decompiled_type):
+        #     logger.error(
+        #         f"Expected '{__class__.__name__}' to return an instance of "
+        #         f"{self.expected_decompiled_type.__name__}, got "
+        #         f"{type(decompiled).__name__} instead."
+        #     )
+        #     raise TypeError
 
-        return decompiled
+        # return decompiled
 
     def _parse(self) -> Any:
         return hexStr(self.stream.read())
