@@ -131,14 +131,8 @@ def extract_truetype_hinting(vfb: Vfb) -> dict[str, Any]:
             assert isinstance(entry.decompiled, dict)
             extract_glyph_hints(entry.decompiled, glyphs, font, zone_names)
 
-    # Merge stem information
-    for direction in ("ttStemsV", "ttStemsH"):
-        if direction in stem_round:
-            direction_data = stem_round[direction]
-            for stem_index, rounding in direction_data.items():
-                stem = font["stems"][direction][stem_index]
-                stem["round"].update(rounding)
-                stem["round"] = transform_stem_rounds(stem["round"], stem["name"])
+    merge_stem_information(stem_round, font)
+    merge_zone_information(font)
 
     return d
 
@@ -204,9 +198,7 @@ def extract_tt_stems(data: dict, target: dict) -> None:
 
 
 def extract_tt_zone_deltas(data: dict, target: dict):
-    # Merge zone deltas into their respective zone
     target["zone_deltas"] = deepcopy(data)
-    # TODO
 
 
 def extract_tt_zones(data: dict, target: dict, zone_names: dict) -> None:
@@ -224,3 +216,43 @@ def extract_tt_zones(data: dict, target: dict, zone_names: dict) -> None:
                 name = f"{name}#{i}"
             zone_names_global |= {name}
             zone_names[side][zone_index] = name
+
+
+def merge_stem_information(data, font):
+    # Merge stem information
+    stems_dict = {}
+    for direction in ("ttStemsV", "ttStemsH"):
+        if direction in data:
+            direction_data = data[direction]
+            for stem_index, rounding in direction_data.items():
+                stem = font["stems"][direction][stem_index]
+                stem["round"].update(rounding)
+                stem["round"] = transform_stem_rounds(stem["round"], stem["name"])
+                stems_dict[stem["name"]] = deepcopy(stem)
+                del stems_dict[stem["name"]]["name"]
+    if stems_dict:
+        font["stems"] = stems_dict
+    else:
+        del font["stems"]
+
+
+def merge_zone_information(font):
+    # Merge zone information
+    all_zones = []
+    for side in ("ttZonesB", "ttZonesT"):
+        for zone in font["zones"].get(side, []):
+            zone["top"] = side == "ttZonesT"
+            all_zones.append(zone)
+    for zone_index, zone_delta in font.get("zone_deltas", {}).items():
+        zone = all_zones[zone_index]
+        zone["deltas"] = zone_delta
+
+    zones_dict = {}
+    for zone in all_zones:
+        zones_dict[zone["name"]] = deepcopy(zone)
+        del zones_dict[zone["name"]]["name"]
+    if zones_dict:
+        font["zones"] = zones_dict
+    else:
+        del font["zones"]
+    del font["zone_deltas"]
