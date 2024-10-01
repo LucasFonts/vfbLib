@@ -180,31 +180,40 @@ def extract_tt_stem_ppems(data: dict, target: dict) -> None:
 
 def extract_tt_stems(data: dict, target: dict) -> None:
     target["stems"] = {"ttStemsV": [], "ttStemsH": []}
+    stem_names = set()
     for direction in ("ttStemsV", "ttStemsH"):
-        stem_names = set()
         for stem in data.get(direction, []):
             name = stem["name"]
-            i = 0
-            # Make stem names unique per direction
-            while name in stem_names:
-                print(f"Duplicate stem name in {direction}: {name}")
-                i += 1
+            i = 1
+            # Make stem names unique
+            if name in stem_names:
+                print(f"Duplicate stem name: {name}")
+                while f"{name}#{i}" in stem_names:
+                    i += 1
                 name = f"{name}#{i}"
             stem_names |= {name}
             target["stems"][direction].append(
-                {"name": name, "round": deepcopy(stem["round"]), "value": stem["value"]}
+                {
+                    "name": name,
+                    "round": deepcopy(stem["round"]),
+                    "width": stem["value"],
+                    "horizontal": direction == "ttStemsH",
+                }
             )
 
 
 def extract_tt_zones(data: dict, target: dict, zone_names: dict) -> None:
     target["zones"] = deepcopy(data)
+    zone_names_global = set()
     for side in ("ttZonesT", "ttZonesB"):
         for zone_index, zone in enumerate(data.get(side, [])):
             name = zone["name"]
-            i = 0
-            # Make zone names unique per side
-            while name in zone_names[side].values():
-                print(f"Duplicate zone name in {side}: {name}")
-                i += 1
+            i = 1
+            # Make zone names unique
+            if name in zone_names_global:
+                print(f"Duplicate zone name: {name}")
+                while f"{name}#{i}" in zone_names_global:
+                    i += 1
                 name = f"{name}#{i}"
+            zone_names_global |= {name}
             zone_names[side][zone_index] = name
