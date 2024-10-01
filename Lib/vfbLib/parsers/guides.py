@@ -5,7 +5,7 @@ import logging
 from typing import TYPE_CHECKING, Literal
 from collections.abc import Sequence
 from math import atan2, degrees
-from vfbLib.parsers.base import BaseParser, read_encoded_value
+from vfbLib.parsers.base import BaseParser, read_encoded_value, ReturnsDict, ReturnsList
 from vfbLib.typing import Guide, GuideDict, GuideProperty
 
 if TYPE_CHECKING:
@@ -35,7 +35,7 @@ def parse_guides(stream: BytesIO, num_masters: int) -> GuideDict:
     return guides
 
 
-class GlobalGuidesParser(BaseParser):
+class GlobalGuidesParser(ReturnsDict, BaseParser):
     def _parse(self) -> GuideDict:
         assert self.master_count is not None
         guides = parse_guides(self.stream, self.master_count)
@@ -43,7 +43,7 @@ class GlobalGuidesParser(BaseParser):
         return guides
 
 
-class GuidePropertiesParser(BaseParser):
+class GuidePropertiesParser(ReturnsList, BaseParser):
     def _parse(self) -> list:
         stream = self.stream
         guides = []

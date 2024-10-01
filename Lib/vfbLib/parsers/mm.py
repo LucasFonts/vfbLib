@@ -1,13 +1,18 @@
 import logging
 
 from typing import Any
-from vfbLib.parsers.base import BaseParser, read_encoded_value
+from vfbLib.parsers.base import (
+    BaseParser,
+    read_encoded_value,
+    ReturnsList,
+    ReturnsTuple,
+)
 
 
 logger = logging.getLogger(__name__)
 
 
-class AnisotropicInterpolationsParser(BaseParser):
+class AnisotropicInterpolationsParser(ReturnsList, BaseParser):
     def _parse(self) -> list[int]:
         # The graph used for anisotropic interpolation maps, for all axes.
         assert self.stream is not None
@@ -25,7 +30,7 @@ class AnisotropicInterpolationsParser(BaseParser):
                 return values
 
 
-class AxisMappingsCountParser(BaseParser):
+class AxisMappingsCountParser(ReturnsList, BaseParser):
     def _parse(self) -> list[int]:
         # An array of axis mapping counts per axis, for all 4 axes whether they exist
         # or not.
@@ -35,7 +40,7 @@ class AxisMappingsCountParser(BaseParser):
         return [self.read_uint32() for _ in range(4)]
 
 
-class AxisMappingsParser(BaseParser):
+class AxisMappingsParser(ReturnsList, BaseParser):
     def _parse(self) -> list[tuple[float, float]]:
         # 10 pairs of (user, design) coordinates per axis.
         # Look at "Axis Mappings Count" to find out which mappings are used in each
@@ -50,7 +55,7 @@ class AxisMappingsParser(BaseParser):
         return mappings
 
 
-class MasterLocationParser(BaseParser):
+class MasterLocationParser(ReturnsTuple, BaseParser):
     def _parse(self) -> tuple[int, tuple[Any]]:
         # The location on all 4 axes for this master
         assert self.stream is not None
@@ -60,7 +65,7 @@ class MasterLocationParser(BaseParser):
         return master_index, flags
 
 
-class PrimaryInstancesParser(BaseParser):
+class PrimaryInstancesParser(ReturnsList, BaseParser):
     def _parse(self) -> list[dict[str, Any]]:
         assert self.stream is not None
         stream = self.stream

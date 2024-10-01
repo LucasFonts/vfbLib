@@ -1,12 +1,12 @@
 import logging
 
-from vfbLib.parsers.base import BaseParser, read_encoded_value
+from vfbLib.parsers.base import BaseParser, read_encoded_value, ReturnsDict, ReturnsList
 
 
 logger = logging.getLogger(__name__)
 
 
-class NameRecordsParser(BaseParser):
+class NameRecordsParser(ReturnsList, BaseParser):
     def _parse(self):
         stream = self.stream
         num = read_encoded_value(stream)
@@ -35,7 +35,7 @@ class NameRecordsParser(BaseParser):
         return result
 
 
-class OpenTypeClassParser(BaseParser):
+class OpenTypeClassParser(ReturnsDict, BaseParser):
     """
     A parser that reads data as strings and returns it formatted to represent an
     OpenType class
@@ -58,7 +58,7 @@ class OpenTypeClassParser(BaseParser):
         return {"name": name, "glyphs": glyphs}
 
 
-class OpenTypeStringParser(BaseParser):
+class OpenTypeStringParser(ReturnsList, BaseParser):
     """
     A parser that reads data as a strings and returns it as a list.
     """

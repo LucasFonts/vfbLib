@@ -1,13 +1,13 @@
 import logging
 
-from vfbLib.parsers.base import BaseParser
+from vfbLib.parsers.base import BaseParser, ReturnsDict
 from vfbLib.parsers.value import read_encoded_value
 
 
 logger = logging.getLogger(__name__)
 
 
-class CustomCmapParser(BaseParser):
+class CustomCmapParser(ReturnsDict, BaseParser):
     """
     A parser that reads the custom CMAP settings.
     """

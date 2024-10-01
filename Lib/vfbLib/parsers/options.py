@@ -1,13 +1,13 @@
 import logging
 
 from vfbLib.helpers import binaryToIntList
-from vfbLib.parsers.base import BaseParser
+from vfbLib.parsers.base import BaseParser, ReturnsList
 
 
 logger = logging.getLogger(__name__)
 
 
-class ExportOptionsParser(BaseParser):
+class ExportOptionsParser(ReturnsList, BaseParser):
     """
     A parser that reads data a bit field representing export options.
     """
