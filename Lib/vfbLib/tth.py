@@ -5,6 +5,7 @@ import logging
 from argparse import ArgumentParser
 from copy import deepcopy
 from pathlib import Path
+from vfbLib.ufo.tth import TTGlyphHints
 from vfbLib.version import build_date
 from vfbLib.vfb.vfb import Vfb
 
@@ -65,6 +66,7 @@ def vfb2tth():
 def extract_truetype_hinting(vfb: Vfb) -> dict[str, Any]:
     font = {}
     glyphs = {}
+    zone_names = {"ttZonesT": {}, "ttZonesB": {}}
     d: dict[str, Any] = {"font": font, "glyphs": glyphs}
     stem_round = {"ttStemsV": {}, "ttStemsH": {}}
     for entry in vfb.entries:
@@ -92,7 +94,7 @@ def extract_truetype_hinting(vfb: Vfb) -> dict[str, Any]:
         elif key == "TrueType Stems":
             entry.decompile()
             assert isinstance(entry.decompiled, dict)
-            font["stems"] = deepcopy(entry.decompiled)
+            extract_tt_stems(entry.decompiled, font)
 
         elif key == "TrueType Stem PPEMs 1":
             entry.decompile()
@@ -102,7 +104,7 @@ def extract_truetype_hinting(vfb: Vfb) -> dict[str, Any]:
         elif key == "TrueType Zones":
             entry.decompile()
             assert isinstance(entry.decompiled, dict)
-            font["zones"] = deepcopy(entry.decompiled)
+            extract_tt_zones(entry.decompiled, font, zone_names)
 
         elif key == "Pixel Snap":
             entry.decompile()
@@ -127,7 +129,7 @@ def extract_truetype_hinting(vfb: Vfb) -> dict[str, Any]:
         elif key == "Glyph":
             entry.decompile()
             assert isinstance(entry.decompiled, dict)
-            extract_glyph_hints(entry.decompiled, glyphs)
+            extract_glyph_hints(entry.decompiled, glyphs, font, zone_names)
 
     # Merge stem information
     for direction in ("ttStemsV", "ttStemsH"):
@@ -140,9 +142,32 @@ def extract_truetype_hinting(vfb: Vfb) -> dict[str, Any]:
     return d
 
 
-def extract_glyph_hints(data: dict, target: dict) -> None:
+class NonLabelMappingGlyph:
+    def get_point_label(self, index: int, code: str) -> int:
+        return index
+
+
+def extract_glyph_hints(
+    data: dict, target: dict, font_hints: dict, zone_names: dict
+) -> None:
     if tth := data.get("tth"):
-        target[data["name"]] = deepcopy(tth)
+        ttg = TTGlyphHints(
+            NonLabelMappingGlyph(),
+            data=tth,
+            zone_names=zone_names,
+            stems=font_hints["stems"],
+        )
+        tr = ttg.get_tt_glyph_hints()
+        target[data["name"]] = tr
+
+
+def extract_tt_stem_ppem_1(data: dict, target: dict) -> None:
+    for direction in ("ttStemsV", "ttStemsH"):
+        if direction in data:
+            direction_data = data[direction]
+            for stem_data in direction_data:
+                stem_index = stem_data["stem"]
+                target[direction][stem_index]["1"] = stem_data["round"]["1"]
 
 
 def extract_tt_stem_ppems(data: dict, target: dict) -> None:
@@ -153,10 +178,33 @@ def extract_tt_stem_ppems(data: dict, target: dict) -> None:
                 target[direction][stem_data["stem"]] = deepcopy(stem_data["round"])
 
 
-def extract_tt_stem_ppem_1(data: dict, target: dict) -> None:
+def extract_tt_stems(data: dict, target: dict) -> None:
+    target["stems"] = {"ttStemsV": [], "ttStemsH": []}
     for direction in ("ttStemsV", "ttStemsH"):
-        if direction in data:
-            direction_data = data[direction]
-            for stem_data in direction_data:
-                stem_index = stem_data["stem"]
-                target[direction][stem_index]["1"] = stem_data["round"]["1"]
+        stem_names = set()
+        for stem in data.get(direction, []):
+            name = stem["name"]
+            i = 0
+            # Make stem names unique per direction
+            while name in stem_names:
+                print(f"Duplicate stem name in {direction}: {name}")
+                i += 1
+                name = f"{name}#{i}"
+            stem_names |= {name}
+            target["stems"][direction].append(
+                {"name": name, "round": deepcopy(stem["round"]), "value": stem["value"]}
+            )
+
+
+def extract_tt_zones(data: dict, target: dict, zone_names: dict) -> None:
+    target["zones"] = deepcopy(data)
+    for side in ("ttZonesT", "ttZonesB"):
+        for zone_index, zone in enumerate(data.get(side, [])):
+            name = zone["name"]
+            i = 0
+            # Make zone names unique per side
+            while name in zone_names[side].values():
+                print(f"Duplicate zone name in {side}: {name}")
+                i += 1
+                name = f"{name}#{i}"
+            zone_names[side][zone_index] = name
