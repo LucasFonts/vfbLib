@@ -81,13 +81,13 @@ def transform_stem_rounds(data: dict[str, int], name: str) -> dict[str, int]:
         if key in d:
             if val > v:
                 logger.warning(
-                    f"Duplicate rounding ppm {key} in TT stem {name}, "
+                    f"Duplicate rounding ppm {key} in TT stem '{name}', "
                     f"choosing bigger value {val}px over {d[key]}px. {data}"
                 )
                 d[key] = val
             else:
                 logger.warning(
-                    f"Duplicate rounding ppm {key} in TT stem {name}, "
+                    f"Duplicate rounding ppm {key} in TT stem '{name}', "
                     f"keeping value {d[key]}px, ignoring {val}px. {data}"
                 )
         else:
