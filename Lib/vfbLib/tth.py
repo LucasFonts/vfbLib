@@ -198,7 +198,7 @@ def extract_tt_stems(data: dict, target: dict) -> None:
                     "name": name,
                     "round": deepcopy(stem["round"]),
                     "width": stem["value"],
-                    "horizontal": direction == "ttStemsH",
+                    "horizontal": direction == "ttStemsV",
                 }
             )
 
