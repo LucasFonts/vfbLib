@@ -138,6 +138,7 @@ def extract_truetype_hinting(vfb: Vfb) -> dict[str, Any]:
 
 
 class NonLabelMappingGlyph:
+    # A dummy glyph that does not convert point indices to point labels
     def get_point_label(self, index: int, code: str) -> int:
         return index
 
