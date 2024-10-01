@@ -13,6 +13,13 @@ class TrueTypeInfoParser(BaseParser):
     A parser that reads data as "TrueType Info" values.
     """
 
+    def assert_unique(
+        self, d: dict[str, int | list[int] | list[str]], key: str
+    ) -> None:
+        if key in d:
+            logger.error(f"Duplicate key in TrueType Info: {key} in {d}")
+            raise KeyError
+
     def read_key_value_pairs_encoded(
         self,
         stream: BytesIO,
@@ -69,29 +76,35 @@ class TrueTypeInfoParser(BaseParser):
             0x5C: "Average Width",
         }
         s = self.stream
-        info = []
+        info = {}
 
         while True:
             k = self.read_uint8(s)
+            bk = info_names.get(k, f"bit{k}")  # dict key, as a bit number
+            dk = info_names.get(k, str(k))  # dict key, human-readable
+            hk = info_names.get(k, hex(k))  # dict key, hex
 
             if k == 0x32:
                 return info
 
             elif k in (0x33, 0x34, 0x35, 0x36, 0x37, 0x38):
-                info.append([info_names.get(k, str(k)), read_encoded_value(s)])
+                self.assert_unique(info, dk)
+                info[dk] = read_encoded_value(s)
 
             elif k == 0x39:
+                # Options
+                self.assert_unique(info, dk)
                 bits = binaryToIntList(read_encoded_value(s))
                 settings = {
                     16: "use_custom_tt_values",
                     17: "create_vdmx",
                     18: "add_null_cr_space",
                 }
-                options = [settings.get(i, str(i)) for i in bits]
-                info.append([info_names.get(k, str(k)), options])
+                info[dk] = [settings.get(i, str(i)) for i in bits]
 
             elif k in (0x3A, 0x3B, 0x3C, 0x3D, 0x3E, 0x3F):
-                info.append([info_names.get(k, f"bit{k}"), read_encoded_value(s)])
+                self.assert_unique(info, bk)
+                info[bk] = read_encoded_value(s)
 
             elif k in (
                 0x40,
@@ -107,48 +120,46 @@ class TrueTypeInfoParser(BaseParser):
                 0x4A,
                 0x4B,
             ):
-                info.append([info_names.get(k, str(k)), read_encoded_value(s)])
+                self.assert_unique(info, dk)
+                info[dk] = read_encoded_value(s)
 
             elif k == 0x4C:  # PANOSE?
-                v = [self.read_uint8(s) for _ in range(10)]
-                info.append([info_names.get(k, str(k)), v])
+                self.assert_unique(info, dk)
+                info[dk] = [self.read_uint8(s) for _ in range(10)]
 
             elif k in (0x4D, 0x4E, 0x4F, 0x50, 0x51, 0x52):
-                info.append([info_names.get(k, str(k)), read_encoded_value(s)])
+                self.assert_unique(info, dk)
+                info[dk] = read_encoded_value(s)
 
             elif k == 0x53:
+                self.assert_unique(info, dk)
                 num_values = read_encoded_value(s)
-                v = [self.read_uint8(s) for _ in range(num_values)]
-                info.append([info_names.get(k, str(k)), v])
+                info[dk] = [self.read_uint8(s) for _ in range(num_values)]
 
             elif k == 0x54:
                 # Codepages
-                info.append(
-                    [
-                        info_names.get(k, str(k)),
-                        [
-                            read_encoded_value(s, signed=False),
-                            read_encoded_value(s, signed=False),
-                        ],
-                    ]
-                )
+                self.assert_unique(info, dk)
+                info[dk] = [
+                    read_encoded_value(s, signed=False),
+                    read_encoded_value(s, signed=False),
+                ]
 
             elif k == 0x56:
                 # Timestamp, unsigned
-                info.append(
-                    [info_names.get(k, str(k)), read_encoded_value(s, signed=False)]
-                )
+                self.assert_unique(info, dk)
+                info[dk] = read_encoded_value(s, signed=False)
 
             elif k in (0x57, 0x5C):
-                info.append([info_names.get(k, str(k)), read_encoded_value(s)])
+                self.assert_unique(info, dk)
+                info[dk] = read_encoded_value(s)
 
             elif k == 0x58:
+                self.assert_unique(info, hk)
                 num_values = read_encoded_value(s)
-                v = [self.read_uint8(s) for _ in range(num_values)]
-                info.append([info_names.get(k, hex(k)), v])
+                info[hk] = [self.read_uint8(s) for _ in range(num_values)]
 
             else:
-                logger.info(f"Unknown key in TrueType info: {hex(k)}")
+                logger.warning(f"Unknown key in TrueType info: {hex(k)}")
 
 
 class TrueTypeStemsParser(BaseParser):

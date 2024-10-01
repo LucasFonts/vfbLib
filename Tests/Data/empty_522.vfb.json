@@ -2089,224 +2089,110 @@
         },
         {
             "key": "TrueType Info",
-            "decompiled": [
-                [
-                    "0x33",
+            "decompiled": {
+                "0x33": 0,
+                "0x34": 0,
+                "0x35": 0,
+                "0x36": 0,
+                "0x37": 0,
+                "0x38": 0,
+                "tt_font_info_settings": [
+                    "create_vdmx"
+                ],
+                "units_per_em": 1000,
+                "0x3b": 0,
+                "lowest_rec_ppem": 9,
+                "timestamp": 3766043744,
+                "0x57": 0,
+                "font_direction_hint": 2,
+                "weight_class": 400,
+                "width_class": 5,
+                "embedding": 4,
+                "subscript_x_size": 700,
+                "subscript_y_size": 650,
+                "subscript_x_offset": 0,
+                "subscript_y_offset": 140,
+                "superscript_x_size": 700,
+                "superscript_y_size": 650,
+                "superscript_x_offset": 0,
+                "superscript_y_offset": 477,
+                "strikeout_size": 50,
+                "strikeout_position": 250,
+                "ibm_classification": 0,
+                "OpenTypeOS2Panose": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
                     0
                 ],
-                [
-                    "0x34",
+                "OpenTypeOS2TypoAscender": 750,
+                "OpenTypeOS2TypoDescender": -250,
+                "OpenTypeOS2TypoLineGap": 0,
+                "0x50": 0,
+                "OpenTypeOS2WinAscent": 0,
+                "OpenTypeOS2WinDescent": 0,
+                "Average Width": 0,
+                "Hdmx PPMs 1": [
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    15,
+                    16,
+                    17,
+                    19,
+                    21,
+                    24,
+                    27,
+                    29,
+                    32,
+                    33,
+                    37,
+                    42,
+                    46,
+                    50,
+                    54,
+                    58,
+                    67,
+                    75
+                ],
+                "Hdmx PPMs 2": [
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    15,
+                    16,
+                    17,
+                    19,
+                    21,
+                    24,
+                    27,
+                    29,
+                    32,
+                    33,
+                    37,
+                    42,
+                    46,
+                    50,
+                    54,
+                    58,
+                    67,
+                    75
+                ],
+                "Codepages": [
+                    0,
                     0
-                ],
-                [
-                    "0x35",
-                    0
-                ],
-                [
-                    "0x36",
-                    0
-                ],
-                [
-                    "0x37",
-                    0
-                ],
-                [
-                    "0x38",
-                    0
-                ],
-                [
-                    "tt_font_info_settings",
-                    [
-                        "create_vdmx"
-                    ]
-                ],
-                [
-                    "units_per_em",
-                    1000
-                ],
-                [
-                    "0x3b",
-                    0
-                ],
-                [
-                    "lowest_rec_ppem",
-                    9
-                ],
-                [
-                    "timestamp",
-                    3766043744
-                ],
-                [
-                    "0x57",
-                    0
-                ],
-                [
-                    "font_direction_hint",
-                    2
-                ],
-                [
-                    "weight_class",
-                    400
-                ],
-                [
-                    "width_class",
-                    5
-                ],
-                [
-                    "embedding",
-                    4
-                ],
-                [
-                    "subscript_x_size",
-                    700
-                ],
-                [
-                    "subscript_y_size",
-                    650
-                ],
-                [
-                    "subscript_x_offset",
-                    0
-                ],
-                [
-                    "subscript_y_offset",
-                    140
-                ],
-                [
-                    "superscript_x_size",
-                    700
-                ],
-                [
-                    "superscript_y_size",
-                    650
-                ],
-                [
-                    "superscript_x_offset",
-                    0
-                ],
-                [
-                    "superscript_y_offset",
-                    477
-                ],
-                [
-                    "strikeout_size",
-                    50
-                ],
-                [
-                    "strikeout_position",
-                    250
-                ],
-                [
-                    "ibm_classification",
-                    0
-                ],
-                [
-                    "OpenTypeOS2Panose",
-                    [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ]
-                ],
-                [
-                    "OpenTypeOS2TypoAscender",
-                    750
-                ],
-                [
-                    "OpenTypeOS2TypoDescender",
-                    -250
-                ],
-                [
-                    "OpenTypeOS2TypoLineGap",
-                    0
-                ],
-                [
-                    "0x50",
-                    0
-                ],
-                [
-                    "OpenTypeOS2WinAscent",
-                    0
-                ],
-                [
-                    "OpenTypeOS2WinDescent",
-                    0
-                ],
-                [
-                    "Average Width",
-                    0
-                ],
-                [
-                    "Hdmx PPMs 1",
-                    [
-                        9,
-                        10,
-                        11,
-                        12,
-                        13,
-                        15,
-                        16,
-                        17,
-                        19,
-                        21,
-                        24,
-                        27,
-                        29,
-                        32,
-                        33,
-                        37,
-                        42,
-                        46,
-                        50,
-                        54,
-                        58,
-                        67,
-                        75
-                    ]
-                ],
-                [
-                    "Hdmx PPMs 2",
-                    [
-                        9,
-                        10,
-                        11,
-                        12,
-                        13,
-                        15,
-                        16,
-                        17,
-                        19,
-                        21,
-                        24,
-                        27,
-                        29,
-                        32,
-                        33,
-                        37,
-                        42,
-                        46,
-                        50,
-                        54,
-                        58,
-                        67,
-                        75
-                    ]
-                ],
-                [
-                    "Codepages",
-                    [
-                        0,
-                        0
-                    ]
                 ]
-            ]
+            }
         },
         {
             "key": "1271",

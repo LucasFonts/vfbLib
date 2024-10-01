@@ -256,8 +256,8 @@ class VfbToUfoInfo(Info):
             )
         self.openTypeGaspRangeRecords = gasp
 
-    def set_tt_info(self, data: list[tuple[str, int | list[int]]]):
-        for k, v in data:
+    def set_tt_info(self, data: dict[str, int | list[int] | list[str]]):
+        for k, v in data.items():
             if isinstance(v, int):
                 if k in self.mapping_int:
                     setattr(self, self.mapping_int[k], v)
@@ -283,6 +283,8 @@ class VfbToUfoInfo(Info):
                     pass
                 elif k == "Codepages":
                     cp1, cp2 = v
+                    assert isinstance(cp1, int)
+                    assert isinstance(cp2, int)
                     ranges = binaryToIntList(cp1)
                     for cp in binaryToIntList(cp2):
                         ranges.append(cp + 32)
