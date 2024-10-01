@@ -8,58 +8,46 @@
         },
         "lowest_rec_ppem": 9,
         "stems": {
-            "ttStemsH": [
-                {
-                    "horizontal": true,
-                    "name": "X: 100",
-                    "round": {
-                        "0": 1,
-                        "15": 2,
-                        "25": 3,
-                        "35": 4,
-                        "45": 5,
-                        "55": 6
-                    },
-                    "width": 100
-                }
-            ],
-            "ttStemsV": [
-                {
-                    "horizontal": false,
-                    "name": "Y: 100",
-                    "round": {
-                        "0": 1,
-                        "15": 2,
-                        "25": 3,
-                        "35": 4,
-                        "45": 5,
-                        "55": 6
-                    },
-                    "width": 100
+            "X: 100": {
+                "horizontal": false,
+                "round": {
+                    "0": 1,
+                    "15": 2,
+                    "25": 3,
+                    "35": 4,
+                    "45": 5,
+                    "55": 6
                 },
-                {
-                    "horizontal": false,
-                    "name": "Y: 20",
-                    "round": {
-                        "0": 1,
-                        "125": 3,
-                        "175": 4,
-                        "225": 5,
-                        "275": 6,
-                        "75": 2
-                    },
-                    "width": 20
-                }
-            ]
+                "width": 100
+            },
+            "Y: 100": {
+                "horizontal": true,
+                "round": {
+                    "0": 1,
+                    "15": 2,
+                    "25": 3,
+                    "35": 4,
+                    "45": 5,
+                    "55": 6
+                },
+                "width": 100
+            },
+            "Y: 20": {
+                "horizontal": true,
+                "round": {
+                    "0": 1,
+                    "125": 3,
+                    "175": 4,
+                    "225": 5,
+                    "275": 6,
+                    "75": 2
+                },
+                "width": 20
+            }
         },
         "stemsnaplimit": 68,
         "units_per_em": 1024,
-        "zone_deltas": {},
-        "zone_ppm": 48,
-        "zones": {
-            "ttZonesB": [],
-            "ttZonesT": []
-        }
+        "zoneppm": 48
     },
     "glyphs": {}
 }

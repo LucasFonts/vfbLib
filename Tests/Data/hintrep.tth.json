@@ -3,45 +3,34 @@
         "codeppm": 0,
         "lowest_rec_ppem": 9,
         "stems": {
-            "ttStemsH": [
-                {
-                    "horizontal": true,
-                    "name": "#1",
-                    "round": {
-                        "0": 1,
-                        "10": 2,
-                        "16": 3,
-                        "22": 4,
-                        "29": 5,
-                        "35": 6
-                    },
-                    "width": 160
-                }
-            ],
-            "ttStemsV": [
-                {
-                    "horizontal": false,
-                    "name": "",
-                    "round": {
-                        "0": 1,
-                        "10": 2,
-                        "16": 3,
-                        "22": 4,
-                        "29": 5,
-                        "35": 6
-                    },
-                    "width": 160
-                }
-            ]
+            "": {
+                "horizontal": true,
+                "round": {
+                    "0": 1,
+                    "10": 2,
+                    "16": 3,
+                    "22": 4,
+                    "29": 5,
+                    "35": 6
+                },
+                "width": 160
+            },
+            "#1": {
+                "horizontal": false,
+                "round": {
+                    "0": 1,
+                    "10": 2,
+                    "16": 3,
+                    "22": 4,
+                    "29": 5,
+                    "35": 6
+                },
+                "width": 160
+            }
         },
         "stemsnaplimit": 68,
         "units_per_em": 1000,
-        "zone_deltas": {},
-        "zone_ppm": 48,
-        "zones": {
-            "ttZonesB": [],
-            "ttZonesT": []
-        }
+        "zoneppm": 48
     },
     "glyphs": {}
 }

@@ -8,298 +8,271 @@
         },
         "lowest_rec_ppem": 9,
         "stems": {
-            "ttStemsH": [
-                {
-                    "horizontal": true,
-                    "name": "X: 103",
-                    "round": {
-                        "0": 1,
-                        "15": 2,
-                        "25": 3,
-                        "34": 4,
-                        "44": 5,
-                        "54": 6
-                    },
-                    "width": 103
+            "X: 103": {
+                "horizontal": false,
+                "round": {
+                    "0": 1,
+                    "15": 2,
+                    "25": 3,
+                    "34": 4,
+                    "44": 5,
+                    "54": 6
                 },
-                {
-                    "horizontal": true,
-                    "name": "X: 81",
-                    "round": {
-                        "0": 1,
-                        "19": 2,
-                        "31": 3,
-                        "44": 4,
-                        "56": 5,
-                        "68": 6
-                    },
-                    "width": 81
+                "width": 103
+            },
+            "X: 116": {
+                "horizontal": false,
+                "round": {
+                    "0": 1,
+                    "13": 2,
+                    "22": 3,
+                    "31": 4,
+                    "39": 5,
+                    "48": 6
                 },
-                {
-                    "horizontal": true,
-                    "name": "X: 116",
-                    "round": {
-                        "0": 1,
-                        "13": 2,
-                        "22": 3,
-                        "31": 4,
-                        "39": 5,
-                        "48": 6
-                    },
-                    "width": 116
-                }
-            ],
-            "ttStemsV": [
-                {
-                    "horizontal": false,
-                    "name": "stem_serif",
-                    "round": {
-                        "0": 1,
-                        "106": 6,
-                        "28": 2,
-                        "46": 3,
-                        "64": 4,
-                        "86": 5
-                    },
-                    "width": 52
+                "width": 116
+            },
+            "X: 81": {
+                "horizontal": false,
+                "round": {
+                    "0": 1,
+                    "19": 2,
+                    "31": 3,
+                    "44": 4,
+                    "56": 5,
+                    "68": 6
                 },
-                {
-                    "horizontal": false,
-                    "name": "lc_thin",
-                    "round": {
-                        "0": 1,
-                        "112": 5,
-                        "138": 6,
-                        "36": 2,
-                        "60": 3,
-                        "84": 4
-                    },
-                    "width": 40
+                "width": 81
+            },
+            "arrows": {
+                "horizontal": true,
+                "round": {
+                    "0": 1,
+                    "22": 2,
+                    "34": 3,
+                    "44": 4,
+                    "54": 5,
+                    "68": 6
                 },
-                {
-                    "horizontal": false,
-                    "name": "lc_thick",
-                    "round": {
-                        "0": 1,
-                        "28": 2,
-                        "46": 3,
-                        "52": 4,
-                        "64": 5,
-                        "84": 6
-                    },
-                    "width": 68
+                "width": 80
+            },
+            "lc_cyrl": {
+                "horizontal": true,
+                "round": {
+                    "0": 1,
+                    "104": 6,
+                    "28": 2,
+                    "46": 3,
+                    "64": 4,
+                    "84": 5
                 },
-                {
-                    "horizontal": false,
-                    "name": "lc_mid",
-                    "round": {
-                        "0": 1,
-                        "120": 6,
-                        "28": 2,
-                        "52": 3,
-                        "76": 4,
-                        "98": 5
-                    },
-                    "width": 46
+                "width": 53
+            },
+            "lc_mid": {
+                "horizontal": true,
+                "round": {
+                    "0": 1,
+                    "120": 6,
+                    "28": 2,
+                    "52": 3,
+                    "76": 4,
+                    "98": 5
                 },
-                {
-                    "horizontal": false,
-                    "name": "triangle",
-                    "round": {
-                        "0": 1,
-                        "18": 2,
-                        "34": 3,
-                        "48": 4,
-                        "62": 5,
-                        "76": 6
-                    },
-                    "width": 72
+                "width": 46
+            },
+            "lc_thick": {
+                "horizontal": true,
+                "round": {
+                    "0": 1,
+                    "28": 2,
+                    "46": 3,
+                    "52": 4,
+                    "64": 5,
+                    "84": 6
                 },
-                {
-                    "horizontal": false,
-                    "name": "uc_stem",
-                    "round": {
-                        "0": 1,
-                        "28": 2,
-                        "46": 3,
-                        "64": 4,
-                        "84": 5,
-                        "98": 6
-                    },
-                    "width": 56
+                "width": 68
+            },
+            "lc_thin": {
+                "horizontal": true,
+                "round": {
+                    "0": 1,
+                    "112": 5,
+                    "138": 6,
+                    "36": 2,
+                    "60": 3,
+                    "84": 4
                 },
-                {
-                    "horizontal": false,
-                    "name": "logo_ce",
-                    "round": {
-                        "0": 1,
-                        "14": 2,
-                        "24": 3,
-                        "33": 4,
-                        "42": 5,
-                        "51": 6
-                    },
-                    "width": 108
+                "width": 40
+            },
+            "logo_ce": {
+                "horizontal": true,
+                "round": {
+                    "0": 1,
+                    "14": 2,
+                    "24": 3,
+                    "33": 4,
+                    "42": 5,
+                    "51": 6
                 },
-                {
-                    "horizontal": false,
-                    "name": "logo_fcc",
-                    "round": {
-                        "0": 1,
-                        "20": 2,
-                        "34": 3,
-                        "47": 4,
-                        "60": 5,
-                        "74": 6
-                    },
-                    "width": 75
+                "width": 108
+            },
+            "logo_fcc": {
+                "horizontal": true,
+                "round": {
+                    "0": 1,
+                    "20": 2,
+                    "34": 3,
+                    "47": 4,
+                    "60": 5,
+                    "74": 6
                 },
-                {
-                    "horizontal": false,
-                    "name": "arrows",
-                    "round": {
-                        "0": 1,
-                        "22": 2,
-                        "34": 3,
-                        "44": 4,
-                        "54": 5,
-                        "68": 6
-                    },
-                    "width": 80
+                "width": 75
+            },
+            "spur": {
+                "horizontal": true,
+                "round": {
+                    "0": 1,
+                    "10": 2,
+                    "16": 3,
+                    "23": 4,
+                    "30": 5,
+                    "37": 6
                 },
-                {
-                    "horizontal": false,
-                    "name": "uc_thick",
-                    "round": {
-                        "0": 1,
-                        "16": 2,
-                        "28": 3,
-                        "38": 4,
-                        "48": 5,
-                        "60": 6
-                    },
-                    "width": 87
+                "width": 150
+            },
+            "stem_serif": {
+                "horizontal": true,
+                "round": {
+                    "0": 1,
+                    "106": 6,
+                    "28": 2,
+                    "46": 3,
+                    "64": 4,
+                    "86": 5
                 },
-                {
-                    "horizontal": false,
-                    "name": "uc_thickest",
-                    "round": {
-                        "0": 1,
-                        "16": 2,
-                        "28": 3,
-                        "36": 4,
-                        "46": 5,
-                        "54": 6
-                    },
-                    "width": 95
+                "width": 52
+            },
+            "triangle": {
+                "horizontal": true,
+                "round": {
+                    "0": 1,
+                    "18": 2,
+                    "34": 3,
+                    "48": 4,
+                    "62": 5,
+                    "76": 6
                 },
-                {
-                    "horizontal": false,
-                    "name": "lc_cyrl",
-                    "round": {
-                        "0": 1,
-                        "104": 6,
-                        "28": 2,
-                        "46": 3,
-                        "64": 4,
-                        "84": 5
-                    },
-                    "width": 53
+                "width": 72
+            },
+            "uc_Spur": {
+                "horizontal": true,
+                "round": {
+                    "0": 1,
+                    "10": 2,
+                    "16": 3,
+                    "23": 4,
+                    "30": 5,
+                    "35": 6
                 },
-                {
-                    "horizontal": false,
-                    "name": "spur",
-                    "round": {
-                        "0": 1,
-                        "10": 2,
-                        "16": 3,
-                        "23": 4,
-                        "30": 5,
-                        "37": 6
-                    },
-                    "width": 150
+                "width": 160
+            },
+            "uc_stem": {
+                "horizontal": true,
+                "round": {
+                    "0": 1,
+                    "28": 2,
+                    "46": 3,
+                    "64": 4,
+                    "84": 5,
+                    "98": 6
                 },
-                {
-                    "horizontal": false,
-                    "name": "uc_Spur",
-                    "round": {
-                        "0": 1,
-                        "10": 2,
-                        "16": 3,
-                        "23": 4,
-                        "30": 5,
-                        "35": 6
-                    },
-                    "width": 160
-                }
-            ]
+                "width": 56
+            },
+            "uc_thick": {
+                "horizontal": true,
+                "round": {
+                    "0": 1,
+                    "16": 2,
+                    "28": 3,
+                    "38": 4,
+                    "48": 5,
+                    "60": 6
+                },
+                "width": 87
+            },
+            "uc_thickest": {
+                "horizontal": true,
+                "round": {
+                    "0": 1,
+                    "16": 2,
+                    "28": 3,
+                    "36": 4,
+                    "46": 5,
+                    "54": 6
+                },
+                "width": 95
+            }
         },
         "stemsnaplimit": 68,
         "units_per_em": 1000,
-        "zone_deltas": {
-            "2": {
-                "28": 8,
-                "29": -8,
-                "31": 8,
-                "35": -8
-            },
-            "3": {
-                "15": -8,
-                "26": -8,
-                "32": -8,
-                "45": -8
-            },
-            "4": {
-                "28": -8,
-                "30": -8
-            }
-        },
-        "zone_ppm": 48,
+        "zoneppm": 48,
         "zones": {
-            "ttZonesB": [
-                {
-                    "name": "baseline",
-                    "position": 0,
-                    "value": 12
+            "ascender": {
+                "position": 748,
+                "top": true,
+                "value": 12
+            },
+            "baseline": {
+                "position": 0,
+                "top": false,
+                "value": 12
+            },
+            "capheight": {
+                "position": 698,
+                "top": true,
+                "value": 12
+            },
+            "descender": {
+                "position": -200,
+                "top": false,
+                "value": 12
+            },
+            "inf_top": {
+                "deltas": {
+                    "15": -8,
+                    "26": -8,
+                    "32": -8,
+                    "45": -8
                 },
-                {
-                    "name": "descender",
-                    "position": -200,
-                    "value": 12
+                "position": 368,
+                "top": true,
+                "value": 6
+            },
+            "slashes": {
+                "position": 740,
+                "top": true,
+                "value": 12
+            },
+            "sup_bot": {
+                "deltas": {
+                    "28": 8,
+                    "29": -8,
+                    "31": 8,
+                    "35": -8
                 },
-                {
-                    "name": "sup_bot",
-                    "position": 330,
-                    "value": 6
-                }
-            ],
-            "ttZonesT": [
-                {
-                    "name": "inf_top",
-                    "position": 368,
-                    "value": 6
+                "position": 330,
+                "top": false,
+                "value": 6
+            },
+            "xheight": {
+                "deltas": {
+                    "28": -8,
+                    "30": -8
                 },
-                {
-                    "name": "xheight",
-                    "position": 518,
-                    "value": 12
-                },
-                {
-                    "name": "capheight",
-                    "position": 698,
-                    "value": 12
-                },
-                {
-                    "name": "slashes",
-                    "position": 740,
-                    "value": 12
-                },
-                {
-                    "name": "ascender",
-                    "position": 748,
-                    "value": 12
-                }
-            ]
+                "position": 518,
+                "top": true,
+                "value": 12
+            }
         }
     },
     "glyphs": {

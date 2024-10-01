@@ -8,153 +8,138 @@
         },
         "lowest_rec_ppem": 9,
         "stems": {
-            "ttStemsH": [
-                {
-                    "horizontal": true,
-                    "name": "X: 49",
-                    "round": {
-                        "0": 1,
-                        "113": 6,
-                        "31": 2,
-                        "52": 3,
-                        "72": 4,
-                        "92": 5
-                    },
-                    "width": 49
+            "X: 49": {
+                "horizontal": false,
+                "round": {
+                    "0": 1,
+                    "113": 6,
+                    "31": 2,
+                    "52": 3,
+                    "72": 4,
+                    "92": 5
                 },
-                {
-                    "horizontal": true,
-                    "name": "X: 54",
-                    "round": {
-                        "0": 1,
-                        "102": 6,
-                        "28": 2,
-                        "47": 3,
-                        "65": 4,
-                        "84": 5
-                    },
-                    "width": 54
+                "width": 49
+            },
+            "X: 54": {
+                "horizontal": false,
+                "round": {
+                    "0": 1,
+                    "102": 6,
+                    "28": 2,
+                    "47": 3,
+                    "65": 4,
+                    "84": 5
                 },
-                {
-                    "horizontal": true,
-                    "name": "X: 86",
-                    "round": {
-                        "0": 1,
-                        "18": 2,
-                        "30": 3,
-                        "41": 4,
-                        "53": 5,
-                        "64": 6
-                    },
-                    "width": 86
-                }
-            ],
-            "ttStemsV": [
-                {
-                    "horizontal": false,
-                    "name": "Y: 39",
-                    "round": {
-                        "0": 1,
-                        "11": 2,
-                        "142": 6,
-                        "18": 3,
-                        "25": 4,
-                        "33": 5
-                    },
-                    "width": 39
+                "width": 54
+            },
+            "X: 86": {
+                "horizontal": false,
+                "round": {
+                    "0": 1,
+                    "18": 2,
+                    "30": 3,
+                    "41": 4,
+                    "53": 5,
+                    "64": 6
                 },
-                {
-                    "horizontal": false,
-                    "name": "Y: 44",
-                    "round": {
-                        "0": 1,
-                        "11": 2,
-                        "125": 6,
-                        "18": 3,
-                        "24": 4,
-                        "31": 5
-                    },
-                    "width": 44
+                "width": 86
+            },
+            "Y: 39": {
+                "horizontal": true,
+                "round": {
+                    "0": 1,
+                    "11": 2,
+                    "142": 6,
+                    "18": 3,
+                    "25": 4,
+                    "33": 5
                 },
-                {
-                    "horizontal": false,
-                    "name": "Y: 49",
-                    "round": {
-                        "0": 1,
-                        "10": 2,
-                        "113": 6,
-                        "17": 3,
-                        "24": 4,
-                        "30": 5
-                    },
-                    "width": 49
-                }
-            ]
+                "width": 39
+            },
+            "Y: 44": {
+                "horizontal": true,
+                "round": {
+                    "0": 1,
+                    "11": 2,
+                    "125": 6,
+                    "18": 3,
+                    "24": 4,
+                    "31": 5
+                },
+                "width": 44
+            },
+            "Y: 49": {
+                "horizontal": true,
+                "round": {
+                    "0": 1,
+                    "10": 2,
+                    "113": 6,
+                    "17": 3,
+                    "24": 4,
+                    "30": 5
+                },
+                "width": 49
+            }
         },
         "stemsnaplimit": 68,
         "units_per_em": 1000,
-        "zone_deltas": {},
-        "zone_ppm": 48,
+        "zoneppm": 48,
         "zones": {
-            "ttZonesB": [
-                {
-                    "name": "b: 0",
-                    "position": 0,
-                    "value": 8
-                },
-                {
-                    "name": "b: 1",
-                    "position": -252,
-                    "value": 8
-                },
-                {
-                    "name": "b: 2",
-                    "position": -83,
-                    "value": 8
-                },
-                {
-                    "name": "b: 3",
-                    "position": -194,
-                    "value": 8
-                },
-                {
-                    "name": "b: 4",
-                    "position": 361,
-                    "value": 8
-                }
-            ],
-            "ttZonesT": [
-                {
-                    "name": "t: 0",
-                    "position": 497,
-                    "value": 12
-                },
-                {
-                    "name": "t: 1",
-                    "position": 520,
-                    "value": 12
-                },
-                {
-                    "name": "t: 2",
-                    "position": 600,
-                    "value": 12
-                },
-                {
-                    "name": "t: 3",
-                    "position": 650,
-                    "value": 12
-                },
-                {
-                    "name": "t: 4",
-                    "position": 675,
-                    "value": 12
-                },
-                {
-                    "name": "t: 5",
-                    "position": 730,
-                    "value": 8
-                }
-            ]
+            "b: 0": {
+                "position": 0,
+                "top": false,
+                "value": 8
+            },
+            "b: 1": {
+                "position": -252,
+                "top": false,
+                "value": 8
+            },
+            "b: 2": {
+                "position": -83,
+                "top": false,
+                "value": 8
+            },
+            "b: 3": {
+                "position": -194,
+                "top": false,
+                "value": 8
+            },
+            "b: 4": {
+                "position": 361,
+                "top": false,
+                "value": 8
+            },
+            "t: 0": {
+                "position": 497,
+                "top": true,
+                "value": 12
+            },
+            "t: 1": {
+                "position": 520,
+                "top": true,
+                "value": 12
+            },
+            "t: 2": {
+                "position": 600,
+                "top": true,
+                "value": 12
+            },
+            "t: 3": {
+                "position": 650,
+                "top": true,
+                "value": 12
+            },
+            "t: 4": {
+                "position": 675,
+                "top": true,
+                "value": 12
+            },
+            "t: 5": {
+                "position": 730,
+                "top": true,
+                "value": 8
+            }
         }
     },
     "glyphs": {}

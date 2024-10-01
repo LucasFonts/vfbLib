@@ -8,363 +8,331 @@
         },
         "lowest_rec_ppem": 9,
         "stems": {
-            "ttStemsH": [
-                {
-                    "horizontal": true,
-                    "name": "X: 105",
-                    "round": {
-                        "0": 1,
-                        "15": 2,
-                        "24": 3,
-                        "34": 4,
-                        "43": 5,
-                        "53": 6
-                    },
-                    "width": 105
+            "X: 105": {
+                "horizontal": false,
+                "round": {
+                    "0": 1,
+                    "15": 2,
+                    "24": 3,
+                    "34": 4,
+                    "43": 5,
+                    "53": 6
                 },
-                {
-                    "horizontal": true,
-                    "name": "X: 73",
-                    "round": {
-                        "0": 1,
-                        "21": 2,
-                        "35": 3,
-                        "48": 4,
-                        "62": 5,
-                        "76": 6
-                    },
-                    "width": 73
+                "width": 105
+            },
+            "X: 73": {
+                "horizontal": false,
+                "round": {
+                    "0": 1,
+                    "21": 2,
+                    "35": 3,
+                    "48": 4,
+                    "62": 5,
+                    "76": 6
                 },
-                {
-                    "horizontal": true,
-                    "name": "X: 88",
-                    "round": {
-                        "0": 1,
-                        "18": 2,
-                        "29": 3,
-                        "40": 4,
-                        "52": 5,
-                        "63": 6
-                    },
-                    "width": 88
+                "width": 73
+            },
+            "X: 88": {
+                "horizontal": false,
+                "round": {
+                    "0": 1,
+                    "18": 2,
+                    "29": 3,
+                    "40": 4,
+                    "52": 5,
+                    "63": 6
                 },
-                {
-                    "horizontal": true,
-                    "name": "X: 96",
-                    "round": {
-                        "0": 1,
-                        "16": 2,
-                        "27": 3,
-                        "37": 4,
-                        "47": 5,
-                        "58": 6
-                    },
-                    "width": 96
-                }
-            ],
-            "ttStemsV": [
-                {
-                    "horizontal": false,
-                    "name": "uc_serif",
-                    "round": {
-                        "0": 1,
-                        "100": 5,
-                        "122": 6,
-                        "28": 2,
-                        "46": 3,
-                        "68": 4
-                    },
-                    "width": 45
+                "width": 88
+            },
+            "X: 96": {
+                "horizontal": false,
+                "round": {
+                    "0": 1,
+                    "16": 2,
+                    "27": 3,
+                    "37": 4,
+                    "47": 5,
+                    "58": 6
                 },
-                {
-                    "horizontal": false,
-                    "name": "lc_stemserif",
-                    "round": {
-                        "0": 1,
-                        "100": 5,
-                        "122": 6,
-                        "28": 2,
-                        "46": 3,
-                        "68": 4
-                    },
-                    "width": 45
+                "width": 96
+            },
+            "arrows": {
+                "horizontal": true,
+                "round": {
+                    "0": 1,
+                    "22": 2,
+                    "34": 3,
+                    "44": 4,
+                    "54": 5,
+                    "68": 6
                 },
-                {
-                    "horizontal": false,
-                    "name": "bowl_thin",
-                    "round": {
-                        "0": 1,
-                        "28": 2,
-                        "46": 3,
-                        "68": 4,
-                        "80": 5,
-                        "98": 6
-                    },
-                    "width": 56
+                "width": 80
+            },
+            "bar": {
+                "horizontal": true,
+                "round": {
+                    "0": 1,
+                    "118": 6,
+                    "28": 2,
+                    "52": 3,
+                    "73": 4,
+                    "94": 5
                 },
-                {
-                    "horizontal": false,
-                    "name": "bowl_thick",
-                    "round": {
-                        "0": 1,
-                        "28": 2,
-                        "34": 3,
-                        "46": 4,
-                        "72": 5,
-                        "86": 6
-                    },
-                    "width": 64
+                "width": 50
+            },
+            "bowl_thick": {
+                "horizontal": true,
+                "round": {
+                    "0": 1,
+                    "28": 2,
+                    "34": 3,
+                    "46": 4,
+                    "72": 5,
+                    "86": 6
                 },
-                {
-                    "horizontal": false,
-                    "name": "stroke_tip",
-                    "round": {
-                        "0": 1,
-                        "16": 2,
-                        "24": 3,
-                        "34": 4,
-                        "40": 5,
-                        "48": 6
-                    },
-                    "width": 114
+                "width": 64
+            },
+            "bowl_thin": {
+                "horizontal": true,
+                "round": {
+                    "0": 1,
+                    "28": 2,
+                    "46": 3,
+                    "68": 4,
+                    "80": 5,
+                    "98": 6
                 },
-                {
-                    "horizontal": false,
-                    "name": "lc_thins",
-                    "round": {
-                        "0": 1,
-                        "134": 4,
-                        "174": 5,
-                        "212": 6,
-                        "50": 2,
-                        "96": 3
-                    },
-                    "width": 26
+                "width": 56
+            },
+            "lc_cyr": {
+                "horizontal": true,
+                "round": {
+                    "0": 1,
+                    "112": 6,
+                    "28": 2,
+                    "46": 3,
+                    "64": 4,
+                    "92": 5
                 },
-                {
-                    "horizontal": false,
-                    "name": "lc_mediums",
-                    "round": {
-                        "0": 1,
-                        "102": 5,
-                        "124": 6,
-                        "32": 2,
-                        "56": 3,
-                        "80": 4
-                    },
-                    "width": 44
+                "width": 49
+            },
+            "lc_mediums": {
+                "horizontal": true,
+                "round": {
+                    "0": 1,
+                    "102": 5,
+                    "124": 6,
+                    "32": 2,
+                    "56": 3,
+                    "80": 4
                 },
-                {
-                    "horizontal": false,
-                    "name": "triangle",
-                    "round": {
-                        "0": 1,
-                        "20": 2,
-                        "34": 3,
-                        "44": 4,
-                        "56": 5,
-                        "68": 6
-                    },
-                    "width": 80
+                "width": 44
+            },
+            "lc_stemserif": {
+                "horizontal": true,
+                "round": {
+                    "0": 1,
+                    "100": 5,
+                    "122": 6,
+                    "28": 2,
+                    "46": 3,
+                    "68": 4
                 },
-                {
-                    "horizontal": false,
-                    "name": "logo_ce",
-                    "round": {
-                        "0": 1,
-                        "14": 2,
-                        "24": 3,
-                        "33": 4,
-                        "42": 5,
-                        "51": 6
-                    },
-                    "width": 108
+                "width": 45
+            },
+            "lc_thins": {
+                "horizontal": true,
+                "round": {
+                    "0": 1,
+                    "134": 4,
+                    "174": 5,
+                    "212": 6,
+                    "50": 2,
+                    "96": 3
                 },
-                {
-                    "horizontal": false,
-                    "name": "logo_fcc",
-                    "round": {
-                        "0": 1,
-                        "20": 2,
-                        "34": 3,
-                        "47": 4,
-                        "60": 5,
-                        "74": 6
-                    },
-                    "width": 75
+                "width": 26
+            },
+            "logo_ce": {
+                "horizontal": true,
+                "round": {
+                    "0": 1,
+                    "14": 2,
+                    "24": 3,
+                    "33": 4,
+                    "42": 5,
+                    "51": 6
                 },
-                {
-                    "horizontal": false,
-                    "name": "uc_stem",
-                    "round": {
-                        "0": 1,
-                        "106": 6,
-                        "28": 2,
-                        "46": 3,
-                        "68": 4,
-                        "84": 5
-                    },
-                    "width": 52
+                "width": 108
+            },
+            "logo_fcc": {
+                "horizontal": true,
+                "round": {
+                    "0": 1,
+                    "20": 2,
+                    "34": 3,
+                    "47": 4,
+                    "60": 5,
+                    "74": 6
                 },
-                {
-                    "horizontal": false,
-                    "name": "arrows",
-                    "round": {
-                        "0": 1,
-                        "22": 2,
-                        "34": 3,
-                        "44": 4,
-                        "54": 5,
-                        "68": 6
-                    },
-                    "width": 80
+                "width": 75
+            },
+            "spur": {
+                "horizontal": true,
+                "round": {
+                    "0": 1,
+                    "10": 2,
+                    "16": 3,
+                    "23": 4,
+                    "30": 5,
+                    "37": 6
                 },
-                {
-                    "horizontal": false,
-                    "name": "uc_thick",
-                    "round": {
-                        "0": 1,
-                        "16": 2,
-                        "28": 3,
-                        "44": 4,
-                        "58": 5,
-                        "72": 6
-                    },
-                    "width": 73
+                "width": 150
+            },
+            "stroke_tip": {
+                "horizontal": true,
+                "round": {
+                    "0": 1,
+                    "16": 2,
+                    "24": 3,
+                    "34": 4,
+                    "40": 5,
+                    "48": 6
                 },
-                {
-                    "horizontal": false,
-                    "name": "uc_thickest",
-                    "round": {
-                        "0": 1,
-                        "16": 2,
-                        "28": 3,
-                        "44": 4,
-                        "58": 5,
-                        "72": 6
-                    },
-                    "width": 78
+                "width": 114
+            },
+            "triangle": {
+                "horizontal": true,
+                "round": {
+                    "0": 1,
+                    "20": 2,
+                    "34": 3,
+                    "44": 4,
+                    "56": 5,
+                    "68": 6
                 },
-                {
-                    "horizontal": false,
-                    "name": "lc_cyr",
-                    "round": {
-                        "0": 1,
-                        "112": 6,
-                        "28": 2,
-                        "46": 3,
-                        "64": 4,
-                        "92": 5
-                    },
-                    "width": 49
+                "width": 80
+            },
+            "uc_Spur": {
+                "horizontal": true,
+                "round": {
+                    "0": 1,
+                    "10": 2,
+                    "16": 3,
+                    "23": 4,
+                    "30": 5,
+                    "35": 6
                 },
-                {
-                    "horizontal": false,
-                    "name": "bar",
-                    "round": {
-                        "0": 1,
-                        "118": 6,
-                        "28": 2,
-                        "52": 3,
-                        "73": 4,
-                        "94": 5
-                    },
-                    "width": 50
+                "width": 160
+            },
+            "uc_serif": {
+                "horizontal": true,
+                "round": {
+                    "0": 1,
+                    "100": 5,
+                    "122": 6,
+                    "28": 2,
+                    "46": 3,
+                    "68": 4
                 },
-                {
-                    "horizontal": false,
-                    "name": "spur",
-                    "round": {
-                        "0": 1,
-                        "10": 2,
-                        "16": 3,
-                        "23": 4,
-                        "30": 5,
-                        "37": 6
-                    },
-                    "width": 150
+                "width": 45
+            },
+            "uc_stem": {
+                "horizontal": true,
+                "round": {
+                    "0": 1,
+                    "106": 6,
+                    "28": 2,
+                    "46": 3,
+                    "68": 4,
+                    "84": 5
                 },
-                {
-                    "horizontal": false,
-                    "name": "uc_Spur",
-                    "round": {
-                        "0": 1,
-                        "10": 2,
-                        "16": 3,
-                        "23": 4,
-                        "30": 5,
-                        "35": 6
-                    },
-                    "width": 160
-                }
-            ]
+                "width": 52
+            },
+            "uc_thick": {
+                "horizontal": true,
+                "round": {
+                    "0": 1,
+                    "16": 2,
+                    "28": 3,
+                    "44": 4,
+                    "58": 5,
+                    "72": 6
+                },
+                "width": 73
+            },
+            "uc_thickest": {
+                "horizontal": true,
+                "round": {
+                    "0": 1,
+                    "16": 2,
+                    "28": 3,
+                    "44": 4,
+                    "58": 5,
+                    "72": 6
+                },
+                "width": 78
+            }
         },
         "stemsnaplimit": 68,
         "units_per_em": 1000,
-        "zone_deltas": {
-            "2": {
-                "28": 8,
-                "29": -8,
-                "31": 8,
-                "35": -8
-            },
-            "3": {
-                "15": -8,
-                "26": -8,
-                "32": -8,
-                "45": -8
-            },
-            "4": {
-                "28": -8,
-                "30": -8
-            }
-        },
-        "zone_ppm": 48,
+        "zoneppm": 48,
         "zones": {
-            "ttZonesB": [
-                {
-                    "name": "baseline",
-                    "position": 0,
-                    "value": 12
+            "ascender": {
+                "position": 748,
+                "top": true,
+                "value": 12
+            },
+            "baseline": {
+                "position": 0,
+                "top": false,
+                "value": 12
+            },
+            "capheight": {
+                "position": 698,
+                "top": true,
+                "value": 12
+            },
+            "descender": {
+                "position": -200,
+                "top": false,
+                "value": 12
+            },
+            "inf_top": {
+                "deltas": {
+                    "15": -8,
+                    "26": -8,
+                    "32": -8,
+                    "45": -8
                 },
-                {
-                    "name": "descender",
-                    "position": -200,
-                    "value": 12
+                "position": 368,
+                "top": true,
+                "value": 6
+            },
+            "slashes": {
+                "position": 740,
+                "top": true,
+                "value": 12
+            },
+            "sup_bot": {
+                "deltas": {
+                    "28": 8,
+                    "29": -8,
+                    "31": 8,
+                    "35": -8
                 },
-                {
-                    "name": "sup_bot",
-                    "position": 330,
-                    "value": 6
-                }
-            ],
-            "ttZonesT": [
-                {
-                    "name": "inf_top",
-                    "position": 368,
-                    "value": 6
+                "position": 330,
+                "top": false,
+                "value": 6
+            },
+            "xheight": {
+                "deltas": {
+                    "28": -8,
+                    "30": -8
                 },
-                {
-                    "name": "xheight",
-                    "position": 518,
-                    "value": 12
-                },
-                {
-                    "name": "capheight",
-                    "position": 698,
-                    "value": 12
-                },
-                {
-                    "name": "slashes",
-                    "position": 740,
-                    "value": 12
-                },
-                {
-                    "name": "ascender",
-                    "position": 748,
-                    "value": 12
-                }
-            ]
+                "position": 518,
+                "top": true,
+                "value": 12
+            }
         }
     },
     "glyphs": {

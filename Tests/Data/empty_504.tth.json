@@ -2,18 +2,9 @@
     "font": {
         "codeppm": 0,
         "lowest_rec_ppem": 9,
-        "stems": {
-            "ttStemsH": [],
-            "ttStemsV": []
-        },
         "stemsnaplimit": 68,
         "units_per_em": 1000,
-        "zone_deltas": {},
-        "zone_ppm": 48,
-        "zones": {
-            "ttZonesB": [],
-            "ttZonesT": []
-        }
+        "zoneppm": 48
     },
     "glyphs": {}
 }
