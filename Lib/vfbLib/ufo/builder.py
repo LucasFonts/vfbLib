@@ -392,6 +392,7 @@ class VfbToUfoBuilder:
             elif name == "Primary Instances":  # 1254
                 self.primary_instances = data
             elif name == "TrueType Zones":  # 1255
+                # TODO: TrueType stuff could be separated
                 self.set_tt_zones(data)
             elif name == "TrueType Info":  # 1264
                 self.info.set_tt_info(data)

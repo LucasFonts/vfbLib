@@ -121,6 +121,7 @@ class TTGlyphHints:
                     zd = "ttZonesB"
                 else:
                     zd = "ttZonesT"
+                # Zones are indexed separately for top and bottom sides
                 d["zone"] = self.zone_names[zd][params["zone"]]
             elif code in ("AlignH", "AlignV"):
                 d["point"] = self.glyph.get_point_label(params["pt"], code)
@@ -144,6 +145,7 @@ class TTGlyphHints:
                         pass
                     else:
                         stem_dir = "ttStemsH" if code.endswith("H") else "ttStemsV"
+                        # Stems are indexed separately for H and V directions
                         if stem >= len(self.stems[stem_dir]):
                             logger.warning(
                                 f"Stem index in {stem_dir} out of range in "
