@@ -249,7 +249,6 @@ def merge_zone_information(font):
     all_zones = []
     for side in ("ttZonesB", "ttZonesT"):
         for zone in font["zones"].get(side, []):
-            zone["top"] = side == "ttZonesT"
             all_zones.append(zone)
     for zone_index, zone_delta in font.get("zone_deltas", {}).items():
         zone = all_zones[zone_index]
