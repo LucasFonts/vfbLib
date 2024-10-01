@@ -124,7 +124,7 @@ def extract_truetype_hinting(vfb: Vfb) -> dict[str, Any]:
         elif key == "TrueType Zone Deltas":
             entry.decompile()
             assert isinstance(entry.decompiled, dict)
-            font["zone_deltas"] = deepcopy(entry.decompiled)
+            extract_tt_zone_deltas(entry.decompiled, font)
 
         elif key == "Glyph":
             entry.decompile()
@@ -201,6 +201,12 @@ def extract_tt_stems(data: dict, target: dict) -> None:
                     "horizontal": direction == "ttStemsH",
                 }
             )
+
+
+def extract_tt_zone_deltas(data: dict, target: dict):
+    # Merge zone deltas into their respective zone
+    target["zone_deltas"] = deepcopy(data)
+    # TODO
 
 
 def extract_tt_zones(data: dict, target: dict, zone_names: dict) -> None:
