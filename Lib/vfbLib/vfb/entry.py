@@ -220,7 +220,9 @@ class VfbEntry(BaseParser):
             logger.error(f"Parse error for data: {self.key}; {hexStr(self.data)}")
             logger.error(f"Parser class: {self.parser.__name__}")
             self.decompiled = None
-            raise
+            self.error = "ERROR"  # TODO: Include traceback
+            self.vfb.any_errors |= True
+            # raise
 
     def merge_masters_data(self) -> None:
         """

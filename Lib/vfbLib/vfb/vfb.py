@@ -116,6 +116,7 @@ class Vfb:
         """
         Decompile all entries, except for the ones listed in `drop_keys`.
         """
+        self.any_errors = False
         start = time()
         for entry in self.entries:
             if entry.key in self.drop_keys:
