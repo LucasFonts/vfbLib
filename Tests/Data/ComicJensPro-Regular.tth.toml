@@ -1,0 +1,49 @@
+[font]
+lowest_rec_ppem = 9
+units_per_em = 1024
+stemsnaplimit = 68
+zoneppm = 48
+codeppm = 0
+
+[font.gasp]
+8 = 2
+16 = 1
+65535 = 3
+
+[font.stems."Y: 100"]
+width = 100
+horizontal = true
+
+[font.stems."Y: 100".round]
+0 = 1
+15 = 2
+25 = 3
+35 = 4
+45 = 5
+55 = 6
+
+[font.stems."Y: 20"]
+width = 20
+horizontal = true
+
+[font.stems."Y: 20".round]
+0 = 1
+75 = 2
+125 = 3
+175 = 4
+225 = 5
+275 = 6
+
+[font.stems."X: 100"]
+width = 100
+horizontal = false
+
+[font.stems."X: 100".round]
+0 = 1
+15 = 2
+25 = 3
+35 = 4
+45 = 5
+55 = 6
+
+[glyphs]

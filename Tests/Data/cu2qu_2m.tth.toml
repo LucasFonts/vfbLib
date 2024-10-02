@@ -1,0 +1,140 @@
+[font]
+lowest_rec_ppem = 9
+units_per_em = 1000
+stemsnaplimit = 68
+zoneppm = 48
+codeppm = 0
+
+[font.gasp]
+8 = 2
+16 = 1
+65535 = 3
+
+[font.stems."Y: 39"]
+width = 39
+horizontal = true
+
+[font.stems."Y: 39".round]
+0 = 1
+11 = 2
+18 = 3
+25 = 4
+33 = 5
+142 = 6
+
+[font.stems."Y: 44"]
+width = 44
+horizontal = true
+
+[font.stems."Y: 44".round]
+0 = 1
+11 = 2
+18 = 3
+24 = 4
+31 = 5
+125 = 6
+
+[font.stems."Y: 49"]
+width = 49
+horizontal = true
+
+[font.stems."Y: 49".round]
+0 = 1
+10 = 2
+17 = 3
+24 = 4
+30 = 5
+113 = 6
+
+[font.stems."X: 49"]
+width = 49
+horizontal = false
+
+[font.stems."X: 49".round]
+0 = 1
+31 = 2
+52 = 3
+72 = 4
+92 = 5
+113 = 6
+
+[font.stems."X: 54"]
+width = 54
+horizontal = false
+
+[font.stems."X: 54".round]
+0 = 1
+28 = 2
+47 = 3
+65 = 4
+84 = 5
+102 = 6
+
+[font.stems."X: 86"]
+width = 86
+horizontal = false
+
+[font.stems."X: 86".round]
+0 = 1
+18 = 2
+30 = 3
+41 = 4
+53 = 5
+64 = 6
+
+[font.zones."b: 0"]
+position = 0
+top = false
+width = 8
+
+[font.zones."b: 1"]
+position = -252
+top = false
+width = 8
+
+[font.zones."b: 2"]
+position = -83
+top = false
+width = 8
+
+[font.zones."b: 3"]
+position = -194
+top = false
+width = 8
+
+[font.zones."b: 4"]
+position = 361
+top = false
+width = 8
+
+[font.zones."t: 0"]
+position = 497
+top = true
+width = 12
+
+[font.zones."t: 1"]
+position = 520
+top = true
+width = 12
+
+[font.zones."t: 2"]
+position = 600
+top = true
+width = 12
+
+[font.zones."t: 3"]
+position = 650
+top = true
+width = 12
+
+[font.zones."t: 4"]
+position = 675
+top = true
+width = 12
+
+[font.zones."t: 5"]
+position = 730
+top = true
+width = 8
+
+[glyphs]

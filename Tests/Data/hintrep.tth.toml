@@ -1,0 +1,32 @@
+[font]
+lowest_rec_ppem = 9
+units_per_em = 1000
+stemsnaplimit = 68
+zoneppm = 48
+codeppm = 0
+
+[font.stems.""]
+width = 160
+horizontal = true
+
+[font.stems."".round]
+0 = 1
+10 = 2
+16 = 3
+22 = 4
+29 = 5
+35 = 6
+
+[font.stems."#1"]
+width = 160
+horizontal = false
+
+[font.stems."#1".round]
+0 = 1
+10 = 2
+16 = 3
+22 = 4
+29 = 5
+35 = 6
+
+[glyphs]
