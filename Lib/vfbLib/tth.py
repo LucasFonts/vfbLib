@@ -76,7 +76,7 @@ def extract_truetype_hinting(vfb: Vfb) -> dict[str, Any]:
             entry.decompile()
             assert isinstance(entry.decompiled, list)
             font["gasp"] = {
-                gasp_range["maxPpem"]: gasp_range["flags"]
+                str(gasp_range["maxPpem"]): gasp_range["flags"]
                 for gasp_range in entry.decompiled
             }
 
@@ -231,7 +231,11 @@ def merge_stem_information(data, font):
             for stem_index, rounding in direction_data.items():
                 stem = font["stems"][direction][stem_index]
                 stem["round"].update(rounding)
-                stem["round"] = transform_stem_rounds(stem["round"], stem["name"])
+                # Sort the rounding dict by value (px)
+                rd = transform_stem_rounds(stem["round"], stem["name"])
+                srtl = sorted(rd.items(), key=lambda item: item[1])
+                srd = {k: v for k, v in srtl}
+                stem["round"] = srd
                 stems_dict[stem["name"]] = deepcopy(stem)
                 del stems_dict[stem["name"]]["name"]
     if stems_dict:
@@ -248,7 +252,8 @@ def merge_zone_information(font):
             all_zones.append(zone)
     for zone_index, zone_delta in font.get("zone_deltas", {}).items():
         zone = all_zones[zone_index]
-        zone["deltas"] = zone_delta
+        # Sort and convert delta ppm to str
+        zone["deltas"] = {str(k): v for k, v in sorted(zone_delta.items())}
 
     zones_dict = {}
     for zone in all_zones:
