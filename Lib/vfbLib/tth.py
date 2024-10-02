@@ -1,6 +1,7 @@
 import codecs
 import json
 import logging
+import tomli_w
 
 from argparse import ArgumentParser
 from copy import deepcopy
@@ -30,6 +31,13 @@ def vfb2tth():
         help="output folder",
     )
     parser.add_argument(
+        "-t",
+        "--toml",
+        action="store_true",
+        default=False,
+        help="Output TOML instead of JSON",
+    )
+    parser.add_argument(
         "inputpath",
         type=str,
         nargs=1,
@@ -47,19 +55,24 @@ def vfb2tth():
             unicode_strings=True,
         )
         # vfb.decompile()
-        suffix = ".tth.json"
+        suffix = ".tth.toml" if args.toml else ".tth.json"
         if args.path:
             out_path = (Path(args.path[0]) / vfb_path.name).with_suffix(suffix)
         else:
             out_path = vfb_path.with_suffix(suffix)
-        with codecs.open(str(out_path), "wb", "utf-8") as f:
-            json.dump(
-                extract_truetype_hinting(vfb),
-                f,
-                ensure_ascii=False,
-                indent=4,
-                sort_keys=True,
-            )
+        data = extract_truetype_hinting(vfb)
+        if args.toml:
+            with open(out_path, "wb") as f:
+                tomli_w.dump(data, f)
+        else:
+            with codecs.open(str(out_path), "wb", "utf-8") as f:
+                json.dump(
+                    data,
+                    f,
+                    ensure_ascii=False,
+                    indent=4,
+                    sort_keys=True,
+                )
     else:
         parser.print_help()
 
