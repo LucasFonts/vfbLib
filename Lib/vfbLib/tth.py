@@ -1,8 +1,6 @@
 import codecs
 import json
 import logging
-import tomli_w
-import yaml
 
 from argparse import ArgumentParser
 from copy import deepcopy
@@ -62,9 +60,13 @@ def vfb2tth():
             out_path = vfb_path.with_suffix(suffix)
         data = extract_truetype_hinting(vfb)
         if args.format == "toml":
+            import tomli_w
+
             with open(out_path, "wb") as f:
                 tomli_w.dump(data, f)
         elif args.format == "yaml":
+            import yaml
+
             with codecs.open(str(out_path), "wb", "utf-8") as f:
                 yaml.dump(data, f, sort_keys=True, indent=2)
         else:
