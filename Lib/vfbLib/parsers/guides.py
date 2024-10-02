@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 DIRECTIONS: Sequence[Literal["h", "v"]] = ("h", "v")
 
 
-def parse_guides(stream: BytesIO, num_masters: int) -> GuideDict:
+def parse_guides(stream: BytesIO, num_masters: int, name: str) -> GuideDict:
     # Common parser for glyph and global guides
     guides: GuideDict = {
         "h": [[] for _ in range(num_masters)],
@@ -28,9 +28,13 @@ def parse_guides(stream: BytesIO, num_masters: int) -> GuideDict:
         num_guides = read_encoded_value(stream)
         for _ in range(num_guides):
             for m in range(num_masters):
-                pos = read_encoded_value(stream)
-                angle = degrees(atan2(read_encoded_value(stream), 10000))
-                guides[d][m].append(Guide(pos=pos, angle=angle))
+                try:
+                    pos = read_encoded_value(stream)
+                    angle = degrees(atan2(read_encoded_value(stream), 10000))
+                    guides[d][m].append(Guide(pos=pos, angle=angle))
+                except ValueError:
+                    logger.error(f"Missing {d} guideline data ({name})")
+                    raise
 
     return guides
 
@@ -38,7 +42,7 @@ def parse_guides(stream: BytesIO, num_masters: int) -> GuideDict:
 class GlobalGuidesParser(ReturnsDict, BaseParser):
     def _parse(self) -> GuideDict:
         assert self.master_count is not None
-        guides = parse_guides(self.stream, self.master_count)
+        guides = parse_guides(self.stream, self.master_count, "global")
         assert self.stream.read() == b""
         return guides
 

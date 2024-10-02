@@ -150,7 +150,7 @@ class GlyphParser(ReturnsDict, BaseParser):
         self, stream: BytesIO, glyphdata: GlyphData, num_masters=1
     ) -> None:
         # Guidelines
-        guides = parse_guides(stream, num_masters)
+        guides = parse_guides(stream, num_masters, f"glyph '{self.name}'")
         if guides:
             glyphdata["guides"] = guides
 
@@ -404,6 +404,7 @@ class GlyphParser(ReturnsDict, BaseParser):
                 glyph_name = s.read(glyph_name_length)
                 glyphdata["name"] = glyph_name.decode(self.encoding)
                 logger.debug(f"Glyph: {glyphdata['name']}")
+                self.name = glyphdata["name"]
 
             elif v == 0x02:
                 # Metrics
