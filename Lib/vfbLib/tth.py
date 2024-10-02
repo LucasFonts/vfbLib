@@ -78,11 +78,11 @@ def vfb2tth():
 
 
 def extract_truetype_hinting(vfb: Vfb) -> dict[str, Any]:
-    font = {}
-    glyphs = {}
-    zone_names = {"ttZonesT": {}, "ttZonesB": {}}
+    font: dict[str, Any] = {}
+    glyphs: dict[str, list[dict]] = {}
+    zone_names: dict[str, dict] = {"ttZonesT": {}, "ttZonesB": {}}
     d: dict[str, Any] = {"font": font, "glyphs": glyphs}
-    stem_round = {"ttStemsV": {}, "ttStemsH": {}}
+    stem_round: dict[str, dict] = {"ttStemsV": {}, "ttStemsH": {}}
     for entry in vfb.entries:
         key = entry.key
         if key == "Gasp Ranges":
