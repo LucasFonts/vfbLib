@@ -2,6 +2,7 @@ import codecs
 import json
 import logging
 import tomli_w
+import yaml
 
 from argparse import ArgumentParser
 from copy import deepcopy
@@ -24,18 +25,18 @@ def vfb2tth():
         )
     )
     parser.add_argument(
+        "-f",
+        "--format",
+        type=str,
+        default="json",
+        help="The output format: json (default), toml, or yaml",
+    )
+    parser.add_argument(
         "-p",
         "--path",
         type=str,
         nargs=1,
         help="output folder",
-    )
-    parser.add_argument(
-        "-t",
-        "--toml",
-        action="store_true",
-        default=False,
-        help="Output TOML instead of JSON",
     )
     parser.add_argument(
         "inputpath",
@@ -54,16 +55,18 @@ def vfb2tth():
             minimal=True,
             unicode_strings=True,
         )
-        # vfb.decompile()
-        suffix = ".tth.toml" if args.toml else ".tth.json"
+        suffix = f".tth.{args.format}"
         if args.path:
             out_path = (Path(args.path[0]) / vfb_path.name).with_suffix(suffix)
         else:
             out_path = vfb_path.with_suffix(suffix)
         data = extract_truetype_hinting(vfb)
-        if args.toml:
+        if args.format == "toml":
             with open(out_path, "wb") as f:
                 tomli_w.dump(data, f)
+        elif args.format == "yaml":
+            with codecs.open(str(out_path), "wb", "utf-8") as f:
+                yaml.dump(data, f, sort_keys=True, indent=2)
         else:
             with codecs.open(str(out_path), "wb", "utf-8") as f:
                 json.dump(

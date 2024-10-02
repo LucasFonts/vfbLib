@@ -1,0 +1,7 @@
+font:
+  codeppm: 0
+  lowest_rec_ppem: 9
+  stemsnaplimit: 68
+  units_per_em: 1000
+  zoneppm: 48
+glyphs: {}

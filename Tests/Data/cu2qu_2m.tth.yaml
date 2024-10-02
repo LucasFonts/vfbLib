@@ -1,0 +1,117 @@
+font:
+  codeppm: 0
+  gasp:
+    '16': 1
+    '65535': 3
+    '8': 2
+  lowest_rec_ppem: 9
+  stems:
+    'X: 49':
+      horizontal: false
+      round:
+        '0': 1
+        '113': 6
+        '31': 2
+        '52': 3
+        '72': 4
+        '92': 5
+      width: 49
+    'X: 54':
+      horizontal: false
+      round:
+        '0': 1
+        '102': 6
+        '28': 2
+        '47': 3
+        '65': 4
+        '84': 5
+      width: 54
+    'X: 86':
+      horizontal: false
+      round:
+        '0': 1
+        '18': 2
+        '30': 3
+        '41': 4
+        '53': 5
+        '64': 6
+      width: 86
+    'Y: 39':
+      horizontal: true
+      round:
+        '0': 1
+        '11': 2
+        '142': 6
+        '18': 3
+        '25': 4
+        '33': 5
+      width: 39
+    'Y: 44':
+      horizontal: true
+      round:
+        '0': 1
+        '11': 2
+        '125': 6
+        '18': 3
+        '24': 4
+        '31': 5
+      width: 44
+    'Y: 49':
+      horizontal: true
+      round:
+        '0': 1
+        '10': 2
+        '113': 6
+        '17': 3
+        '24': 4
+        '30': 5
+      width: 49
+  stemsnaplimit: 68
+  units_per_em: 1000
+  zoneppm: 48
+  zones:
+    'b: 0':
+      position: 0
+      top: false
+      width: 8
+    'b: 1':
+      position: -252
+      top: false
+      width: 8
+    'b: 2':
+      position: -83
+      top: false
+      width: 8
+    'b: 3':
+      position: -194
+      top: false
+      width: 8
+    'b: 4':
+      position: 361
+      top: false
+      width: 8
+    't: 0':
+      position: 497
+      top: true
+      width: 12
+    't: 1':
+      position: 520
+      top: true
+      width: 12
+    't: 2':
+      position: 600
+      top: true
+      width: 12
+    't: 3':
+      position: 650
+      top: true
+      width: 12
+    't: 4':
+      position: 675
+      top: true
+      width: 12
+    't: 5':
+      position: 730
+      top: true
+      width: 8
+glyphs: {}

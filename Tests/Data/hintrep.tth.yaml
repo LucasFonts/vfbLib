@@ -1,0 +1,28 @@
+font:
+  codeppm: 0
+  lowest_rec_ppem: 9
+  stems:
+    ? ''
+    : horizontal: true
+      round:
+        '0': 1
+        '10': 2
+        '16': 3
+        '22': 4
+        '29': 5
+        '35': 6
+      width: 160
+    '#1':
+      horizontal: false
+      round:
+        '0': 1
+        '10': 2
+        '16': 3
+        '22': 4
+        '29': 5
+        '35': 6
+      width: 160
+  stemsnaplimit: 68
+  units_per_em: 1000
+  zoneppm: 48
+glyphs: {}

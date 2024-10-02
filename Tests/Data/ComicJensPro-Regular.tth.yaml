@@ -1,0 +1,42 @@
+font:
+  codeppm: 0
+  gasp:
+    '16': 1
+    '65535': 3
+    '8': 2
+  lowest_rec_ppem: 9
+  stems:
+    'X: 100':
+      horizontal: false
+      round:
+        '0': 1
+        '15': 2
+        '25': 3
+        '35': 4
+        '45': 5
+        '55': 6
+      width: 100
+    'Y: 100':
+      horizontal: true
+      round:
+        '0': 1
+        '15': 2
+        '25': 3
+        '35': 4
+        '45': 5
+        '55': 6
+      width: 100
+    'Y: 20':
+      horizontal: true
+      round:
+        '0': 1
+        '125': 3
+        '175': 4
+        '225': 5
+        '275': 6
+        '75': 2
+      width: 20
+  stemsnaplimit: 68
+  units_per_em: 1024
+  zoneppm: 48
+glyphs: {}
