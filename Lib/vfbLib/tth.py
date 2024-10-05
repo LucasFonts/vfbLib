@@ -9,6 +9,7 @@ from vfbLib.ufo.glyph import IndexVfbToUfoGlyph
 from vfbLib.ufo.tth import TTGlyphHints, transform_stem_rounds
 from vfbLib.version import build_date
 from vfbLib.vfb.vfb import Vfb
+from sys import exit
 
 from typing import Any
 
@@ -78,8 +79,11 @@ def vfb2tth():
                     indent=4,
                     sort_keys=True,
                 )
+        if vfb.any_errors:
+            exit("There were decompilation errors.")
     else:
         parser.print_help()
+        exit(2)
 
 
 def extract_truetype_hinting(vfb: Vfb) -> dict[str, Any]:

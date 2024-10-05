@@ -60,6 +60,9 @@ class Vfb:
         self.num_masters: int = 0
         self.ttStemsV_count: int = 0
         self.ttStemsH_count: int = 0
+
+        # Track decompile errors
+        self.any_errors = False
         self.read()
 
     def as_dict(self) -> dict[str, dict[str, Any]]:
