@@ -3,7 +3,7 @@ from math import radians, tan
 from struct import pack
 from typing import Any
 from vfbLib import GLYPH_CONSTANT
-from vfbLib.compilers import BaseCompiler
+from vfbLib.compilers.base import BaseCompiler
 from vfbLib.parsers.glyph import PathCommand
 from vfbLib.truetype import TT_COMMAND_CONSTANTS, TT_COMMANDS
 
