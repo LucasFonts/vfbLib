@@ -1,19 +1,13 @@
 import logging
 
-from vfbLib.parsers.base import (
-    BaseParser,
-    ReturnsFloat,
-    ReturnsInt,
-    ReturnsList,
-    ReturnsTuple,
-)
+from vfbLib.parsers.base import BaseParser
 from struct import unpack
 
 
 logger = logging.getLogger(__name__)
 
 
-class DoubleParser(ReturnsFloat, BaseParser):
+class DoubleParser(BaseParser):
     """
     A parser that reads data as a double-size float.
     """
@@ -22,7 +16,7 @@ class DoubleParser(ReturnsFloat, BaseParser):
         return unpack("d", self.stream.read(8))[0]
 
 
-class FloatListParser(ReturnsList, BaseParser):
+class FloatListParser(BaseParser):
     """
     A parser that reads data as a list of floats.
     """
@@ -47,7 +41,7 @@ class DoubleListParser(FloatListParser):
     __fmt__ = "d"
 
 
-class IntParser(ReturnsInt, BaseParser):
+class IntParser(BaseParser):
     """
     A parser that reads data as UInt16.
     """
@@ -56,7 +50,7 @@ class IntParser(ReturnsInt, BaseParser):
         return int.from_bytes(self.stream.read(), byteorder="little", signed=False)
 
 
-class IntListParser(ReturnsList, BaseParser):
+class IntListParser(BaseParser):
     """
     A parser that reads data as a list of UInt16.
     """
@@ -76,7 +70,7 @@ class IntListParser(ReturnsList, BaseParser):
         return values
 
 
-class PanoseParser(ReturnsTuple, BaseParser):
+class PanoseParser(BaseParser):
     """
     A parser that reads data as an array representing PANOSE values.
     """
@@ -85,7 +79,7 @@ class PanoseParser(ReturnsTuple, BaseParser):
         return unpack("<10b", self.stream.read())
 
 
-class SignedIntParser(ReturnsInt, BaseParser):
+class SignedIntParser(BaseParser):
     """
     A parser that reads data as signed Int16.
     """

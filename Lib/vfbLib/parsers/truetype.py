@@ -2,13 +2,13 @@ import logging
 
 from io import BytesIO
 from vfbLib.helpers import binaryToIntList
-from vfbLib.parsers.base import BaseParser, read_encoded_value, ReturnsDict
+from vfbLib.parsers.base import BaseParser, read_encoded_value
 
 
 logger = logging.getLogger(__name__)
 
 
-class TrueTypeInfoParser(ReturnsDict, BaseParser):
+class TrueTypeInfoParser(BaseParser):
     """
     A parser that reads data as "TrueType Info" values.
     """
@@ -34,7 +34,7 @@ class TrueTypeInfoParser(ReturnsDict, BaseParser):
             v = read_encoded_value(stream)
             target.append({key_names.get(k, str(k)): v})
 
-    def _parse(self) -> dict[str, int | list[int] | list[str]]:
+    def _parse(self):
         info_names = {
             0x33: "0x33",
             0x34: "0x34",
@@ -162,8 +162,8 @@ class TrueTypeInfoParser(ReturnsDict, BaseParser):
                 logger.warning(f"Unknown key in TrueType info: {hex(k)}")
 
 
-class TrueTypeStemsParser(ReturnsDict, BaseParser):
-    def _parse(self) -> dict[str, dict]:
+class TrueTypeStemsParser(BaseParser):
+    def _parse(self):
         stream = self.stream
         names = ("ttStemsV", "ttStemsH")
         result = {}
@@ -189,8 +189,8 @@ class TrueTypeStemsParser(ReturnsDict, BaseParser):
         return result
 
 
-class TrueTypeStemPpemsParser(ReturnsDict, BaseParser):
-    def _parse(self) -> dict[str, dict]:
+class TrueTypeStemPpemsParser(BaseParser):
+    def _parse(self):
         stream = self.stream
         names = ("ttStemsV", "ttStemsH")
         result = {}
@@ -215,9 +215,9 @@ class TrueTypeStemPpemsParser(ReturnsDict, BaseParser):
         return result
 
 
-class TrueTypeStemPpems1Parser(ReturnsDict, BaseParser):
+class TrueTypeStemPpems1Parser(BaseParser):
     # PPEM 1 for each stem is stored in a separate entry ...
-    def _parse(self) -> dict[str, dict]:
+    def _parse(self):
         stream = self.stream
         names = ("ttStemsV", "ttStemsH")
         result = {}
@@ -241,8 +241,8 @@ class TrueTypeStemPpems1Parser(ReturnsDict, BaseParser):
         return result
 
 
-class TrueTypeZoneDeltasParser(ReturnsDict, BaseParser):
-    def _parse(self) -> dict:
+class TrueTypeZoneDeltasParser(BaseParser):
+    def _parse(self):
         stream = self.stream
         num_deltas = read_encoded_value(stream)
         result = {}
@@ -260,8 +260,8 @@ class TrueTypeZoneDeltasParser(ReturnsDict, BaseParser):
         return result
 
 
-class TrueTypeZonesParser(ReturnsDict, BaseParser):
-    def _parse(self) -> dict[str, list]:
+class TrueTypeZonesParser(BaseParser):
+    def _parse(self):
         stream = self.stream
         names = ("ttZonesT", "ttZonesB")
         result = {}

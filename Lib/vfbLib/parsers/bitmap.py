@@ -5,7 +5,7 @@ from fontTools.misc.textTools import num2binary
 # from math import log2
 # from struct import unpack
 from typing import Any
-from vfbLib.parsers.base import BaseParser, read_encoded_value, ReturnsDict, ReturnsList
+from vfbLib.parsers.base import BaseParser, read_encoded_value
 
 
 logger = logging.getLogger(__name__)
@@ -45,7 +45,7 @@ def pprint_bitmap(bitmap, invert=False) -> list[str]:
     return gfx
 
 
-class BaseBitmapParser(ReturnsDict, BaseParser):
+class BaseBitmapParser(BaseParser):
     def parse_bitmap_data(self, datalen) -> dict[str, Any]:
         bitmap: dict[str, Any] = {}
         if datalen < 2:
@@ -88,7 +88,7 @@ class BackgroundBitmapParser(BaseBitmapParser):
         return bitmap
 
 
-class GlyphBitmapParser(ReturnsList, BaseBitmapParser):
+class GlyphBitmapParser(BaseBitmapParser):
     def _parse(self) -> list[dict[str, Any]]:
         s = self.stream
         bitmaps: list[dict[str, Any]] = []

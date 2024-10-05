@@ -6,7 +6,7 @@ from fontTools.ttLib.tables.ttProgram import Program
 from io import BytesIO
 from struct import unpack
 from typing import Any
-from vfbLib.parsers.base import BaseParser, read_encoded_value, ReturnsDict, ReturnsList
+from vfbLib.parsers.base import BaseParser, read_encoded_value
 from vfbLib.parsers.guides import parse_guides
 from vfbLib.truetype import TT_COMMANDS
 from vfbLib.typing import (
@@ -54,7 +54,7 @@ def read_absolute_point(
         points[m].append((x_masters[m], y_masters[m]))
 
 
-class GlyphAnchorsParser(ReturnsList, BaseParser):
+class GlyphAnchorsParser(BaseParser):
     def _parse(self) -> list[MMAnchor]:
         stream = self.stream
         anchors = []
@@ -69,7 +69,7 @@ class GlyphAnchorsParser(ReturnsList, BaseParser):
         return anchors
 
 
-class GlyphAnchorsSuppParser(ReturnsList, BaseParser):
+class GlyphAnchorsSuppParser(BaseParser):
     def _parse(self) -> list:
         stream = self.stream
         anchors = []
@@ -81,7 +81,7 @@ class GlyphAnchorsSuppParser(ReturnsList, BaseParser):
         return anchors
 
 
-class GlyphGDEFParser(ReturnsDict, BaseParser):
+class GlyphGDEFParser(BaseParser):
     def _parse(self) -> GdefDict:
         stream = self.stream
         gdef: GdefDict = {}
@@ -137,7 +137,7 @@ class GlyphGDEFParser(ReturnsDict, BaseParser):
         return gdef
 
 
-class GlyphOriginParser(ReturnsDict, BaseParser):
+class GlyphOriginParser(BaseParser):
     def _parse(self) -> dict[str, Any]:
         stream = self.stream
         x = int.from_bytes(stream.read(2), signed=True, byteorder="little")
@@ -145,7 +145,7 @@ class GlyphOriginParser(ReturnsDict, BaseParser):
         return {"x": x, "y": y}
 
 
-class GlyphParser(ReturnsDict, BaseParser):
+class GlyphParser(BaseParser):
     def parse_guides(
         self, stream: BytesIO, glyphdata: GlyphData, num_masters=1
     ) -> None:
@@ -450,7 +450,7 @@ class GlyphParser(ReturnsDict, BaseParser):
         return dict(glyphdata)
 
 
-class GlyphUnicodeParser(ReturnsList, BaseParser):
+class GlyphUnicodeParser(BaseParser):
     def _parse(self) -> list:
         unicodes = []
         for _ in range(self.stream.getbuffer().nbytes // 2):
@@ -459,7 +459,7 @@ class GlyphUnicodeParser(ReturnsList, BaseParser):
         return unicodes
 
 
-class GlyphUnicodeSuppParser(ReturnsList, BaseParser):
+class GlyphUnicodeSuppParser(BaseParser):
     def _parse(self) -> list:
         unicodes = []
         for _ in range(self.stream.getbuffer().nbytes // 4):
@@ -468,7 +468,7 @@ class GlyphUnicodeSuppParser(ReturnsList, BaseParser):
         return unicodes
 
 
-class LinkParser(ReturnsDict, BaseParser):
+class LinkParser(BaseParser):
     def _parse(self) -> dict[str, Any]:
         s = self.stream
         links = LinkDict(x=[], y=[])

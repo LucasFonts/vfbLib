@@ -1,12 +1,12 @@
 import logging
 
-from vfbLib.parsers.base import BaseParser, ReturnsDict
+from vfbLib.parsers.base import BaseParser
 
 
 logger = logging.getLogger(__name__)
 
 
-class PostScriptInfoParser(ReturnsDict, BaseParser):
+class PostScriptInfoParser(BaseParser):
     """
     A parser that reads data as a double-size float.
     """

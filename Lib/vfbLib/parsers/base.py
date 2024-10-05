@@ -25,7 +25,6 @@ class BaseParser:
     """
 
     encoding = "cp1252"
-    expected_decompiled_type = str
     master_count: int | None = None
     stream: BytesIO = BytesIO()
     ttStemsV_count: int | None = None
@@ -44,16 +43,6 @@ class BaseParser:
         self.ttStemsV_count = ttStemsV_count
         self.ttStemsH_count = ttStemsH_count
         return self._parse()
-        # decompiled = self._parse()
-        # if not isinstance(decompiled, self.expected_decompiled_type):
-        #     logger.error(
-        #         f"Expected '{__class__.__name__}' to return an instance of "
-        #         f"{self.expected_decompiled_type.__name__}, got "
-        #         f"{type(decompiled).__name__} instead."
-        #     )
-        #     raise TypeError
-
-        # return decompiled
 
     def _parse(self) -> Any:
         return hexStr(self.stream.read())
@@ -104,27 +93,7 @@ class BaseParser:
         return int.from_bytes(stream.read(uint32), byteorder="little", signed=False)
 
 
-class ReturnsDict:
-    expected_decompiled_type = dict
-
-
-class ReturnsFloat:
-    expected_decompiled_type = float
-
-
-class ReturnsInt:
-    expected_decompiled_type = int
-
-
-class ReturnsList:
-    expected_decompiled_type = list
-
-
-class ReturnsTuple:
-    expected_decompiled_type = tuple
-
-
-class EncodedKeyValuesParser(ReturnsList, BaseParser):
+class EncodedKeyValuesParser(BaseParser):
     __end__ = 0x64
 
     def _parse(self) -> list[dict[int, int]]:
@@ -144,7 +113,7 @@ class EncodedKeyValuesParser1742(EncodedKeyValuesParser):
     __end__ = 0x00
 
 
-class EncodedValueParser(ReturnsInt, BaseParser):
+class EncodedValueParser(BaseParser):
     """
     A parser that reads data as Yuri's optimized encoded value (1 value).
     """
@@ -155,7 +124,7 @@ class EncodedValueParser(ReturnsInt, BaseParser):
         return value
 
 
-class EncodedValueListParser(ReturnsList, BaseParser):
+class EncodedValueListParser(BaseParser):
     """
     A parser that reads data as Yuri's optimized encoded values.
     """
@@ -171,7 +140,7 @@ class EncodedValueListParser(ReturnsList, BaseParser):
                 return values
 
 
-class EncodedValueListWithCountParser(ReturnsDict, BaseParser):
+class EncodedValueListWithCountParser(BaseParser):
     """
     A parser that reads data as Yuri's optimized encoded values. The list of values is
     preceded by a count value that specifies how many values should be read.
@@ -186,7 +155,7 @@ class EncodedValueListWithCountParser(ReturnsDict, BaseParser):
         return values
 
 
-class GaspParser(ReturnsList, BaseParser):
+class GaspParser(BaseParser):
     """
     A parser that reads data as an array representing Gasp table values.
     """
@@ -205,14 +174,14 @@ class GaspParser(ReturnsList, BaseParser):
         ]
 
 
-class GlyphEncodingParser(ReturnsTuple, BaseParser):
+class GlyphEncodingParser(BaseParser):
     def _parse(self):
         gid = int.from_bytes(self.stream.read(2), byteorder="little")
         nam = self.stream.read().decode("cp1252")
         return gid, nam
 
 
-class OpenTypeClassFlagsParser(ReturnsDict, BaseParser):
+class OpenTypeClassFlagsParser(BaseParser):
     def _parse(self) -> ClassFlagDict:
         class_flags: ClassFlagDict = {}
         num_classes = read_encoded_value(self.stream)
