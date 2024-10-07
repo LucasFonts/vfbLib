@@ -206,7 +206,7 @@ class InstructionsCompiler(BaseCompiler):
 
 
 class OutlinesCompiler(BaseStreamCompiler):
-    def compile(self, data: Any, num_masters: int = 0) -> tuple[bytes, int]:
+    def compile(self, data: Any, num_masters: int) -> tuple[bytes, int]:
         self.num_masters = num_masters
         self.stream = BytesIO()
         num_values = self._compile(data)
