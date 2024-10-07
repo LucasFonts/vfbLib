@@ -7,43 +7,9 @@ from vfbLib.compilers.value import write_encoded_value, write_value_5
 # Compilers for VFB entries
 
 
-class BaseCompiler:
-    """
-    Base class to compile vfb data.
-    """
-
-    def compile(self, data: Any, master_count: int = 0) -> bytes:
-        """
-        Compile the JSON-like main data structure and return the compiled binary data.
-
-        Args:
-            data (Any): The main data structure.
-            master_count (int, optional): The number of masters. Defaults to 0.
-
-        Returns:
-            bytes: The compiled binary data.
-        """
-        self.master_count = master_count
+class BaseStreamCompiler:
+    def __init__(self) -> None:
         self.stream = BytesIO()
-        self._compile(data)
-        return self.stream.getvalue()
-
-    def _compile(self, data: Any) -> None:
-        raise NotImplementedError
-
-    @classmethod
-    def merge(cls, masters_data: list[Any], data: Any) -> None:
-        """
-        Merge the data of additional masters into the main data structure. This operates
-        on the uncompiled JSON-like data structure.
-
-        Args:
-            masters_data (List[Any]): The additional masters data as a list with one
-                entry per master.
-            data (Any): The main data structure.
-        """
-        # Must be implemented for compilers that need it, e.g. the GlyphCompiler.
-        pass
 
     def write_bytes(self, value: bytes) -> None:
         """
@@ -89,3 +55,42 @@ class BaseCompiler:
         """
         encoded = pack(">H", value)
         self.stream.write(encoded)
+
+
+class BaseCompiler(BaseStreamCompiler):
+    """
+    Base class to compile vfb data.
+    """
+
+    def compile(self, data: Any, master_count: int = 0) -> bytes:
+        """
+        Compile the JSON-like main data structure and return the compiled binary data.
+
+        Args:
+            data (Any): The main data structure.
+            master_count (int, optional): The number of masters. Defaults to 0.
+
+        Returns:
+            bytes: The compiled binary data.
+        """
+        self.master_count = master_count
+        self.stream = BytesIO()
+        self._compile(data)
+        return self.stream.getvalue()
+
+    def _compile(self, data: Any) -> None:
+        raise NotImplementedError
+
+    @classmethod
+    def merge(cls, masters_data: list[Any], data: Any) -> None:
+        """
+        Merge the data of additional masters into the main data structure. This operates
+        on the uncompiled JSON-like data structure.
+
+        Args:
+            masters_data (List[Any]): The additional masters data as a list with one
+                entry per master.
+            data (Any): The main data structure.
+        """
+        # Must be implemented for compilers that need it, e.g. the GlyphCompiler.
+        pass
