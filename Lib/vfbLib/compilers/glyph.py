@@ -3,7 +3,7 @@ from math import radians, tan
 from struct import pack
 from typing import Any
 from vfbLib import GLYPH_CONSTANT
-from vfbLib.compilers.base import BaseCompiler
+from vfbLib.compilers.base import BaseCompiler, BaseStreamCompiler
 from vfbLib.parsers.glyph import PathCommand
 from vfbLib.truetype import TT_COMMAND_CONSTANTS, TT_COMMANDS
 
@@ -205,10 +205,9 @@ class InstructionsCompiler(BaseCompiler):
             self.write_encoded_value(0)
 
 
-class OutlinesCompiler(BaseCompiler):
+class OutlinesCompiler(BaseStreamCompiler):
     def compile(self, data: Any, num_masters: int) -> tuple[bytes, int]:
         self.num_masters = num_masters
-        assert not hasattr(self, "stream")
         self.stream = BytesIO()
         num_values = self._compile(data)
         return self.stream.getvalue(), num_values
