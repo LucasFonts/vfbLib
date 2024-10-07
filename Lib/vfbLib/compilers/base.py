@@ -8,6 +8,12 @@ from vfbLib.compilers.value import write_encoded_value, write_value_5
 
 
 class BaseStreamCompiler:
+    """
+    Base compiler class that writes values to the output stream.
+    This is the parent class for the general BaseCompiler, from which all other
+    compilers inherit, but it may be subclasses directly if more flexibility is needed.
+    """
+
     def __init__(self) -> None:
         self.stream = BytesIO()
 
