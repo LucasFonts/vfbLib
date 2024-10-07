@@ -9,7 +9,7 @@ from struct import pack
 from typing import TYPE_CHECKING, Any
 
 # from vfbLib.reader import FALLBACK_PARSER
-from vfbLib.compilers import BaseCompiler
+from vfbLib.compilers.base import BaseCompiler
 from vfbLib.constants import parser_classes
 from vfbLib.parsers.base import BaseParser
 
