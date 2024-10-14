@@ -7054,31 +7054,31 @@
                     "115": 0
                 },
                 {
-                    "16": 0
+                    "opentype_name_records": 0
                 },
                 {
-                    "17": 0
+                    "codepage_for_cmap_1_0": 0
                 },
                 {
-                    "18": 1
+                    "dont_ignore_unicode_indexes": 1
                 },
                 {
                     "19": 64
                 },
                 {
-                    "20": 7
+                    "autohinting_options": 7
                 },
                 {
-                    "21": 1
+                    "export_hinted_truetype_font": 1
                 },
                 {
-                    "22": 0
+                    "autohint_unhinted_glyphs": 0
                 },
                 {
-                    "23": 1
+                    "keep_existing_truetype_instructioons": 1
                 },
                 {
-                    "24": 1
+                    "export_visual_truetype_hints": 1
                 },
                 {
                     "25": 1
@@ -7090,13 +7090,13 @@
                     "27": 0
                 },
                 {
-                    "28": 0
+                    "export_embedded_bitmaps": 0
                 },
                 {
-                    "29": 1
+                    "copy_hdmx_data_from_base_to_composite_glyph": 1
                 },
                 {
-                    "30": 0
+                    "dont_automatically_reorder_glyphs": 0
                 },
                 {
                     "44": 1
@@ -7150,7 +7150,7 @@
                     "45": 1
                 },
                 {
-                    "46": 1
+                    "export_kern_table": 1
                 },
                 {
                     "38": 1
