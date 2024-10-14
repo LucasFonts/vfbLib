@@ -13,6 +13,7 @@ from vfbLib.parsers.base import (
 )
 from vfbLib.parsers.bitmap import BackgroundBitmapParser, GlyphBitmapParser
 from vfbLib.parsers.cmap import CustomCmapParser
+from vfbLib.parsers.fl3 import FL3Type1410Parser
 from vfbLib.parsers.glyph import (
     GlyphAnchorsParser,
     GlyphAnchorsSuppParser,
@@ -141,7 +142,7 @@ parser_classes = {
     1279: ("hhea_descender", SignedIntParser, None),
     1294: ("Global Guides", GlobalGuidesParser, None),
     1296: ("Global Guide Properties", GuidePropertiesParser, None),
-    1410: ("1410", BaseParser, None),
+    1410: ("1410", FL3Type1410Parser, None),
     1500: ("Encoding", GlyphEncodingParser, None),
     1501: ("Encoding Mac", GlyphEncodingParser, None),
     1502: ("1502", IntParser, None),
