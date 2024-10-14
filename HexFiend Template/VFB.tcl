@@ -117,6 +117,7 @@ set infoEntries [dict create \
     2016 "Font User Data" \
     2017 "Glyph Note" \
     2018 "Glyph GDEF Data" \
+    2019 "Glyph Sketch" \
     2020 "Glyph Anchors Supplemental" \
     2021 "Unicode Ranges" \
     2022 "Export PCLT Table" \

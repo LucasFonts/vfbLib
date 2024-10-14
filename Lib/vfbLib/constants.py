@@ -180,6 +180,7 @@ parser_classes = {
     2016: ("Font User Data", StringParser, None),
     2017: ("Glyph Note", StringParser, None),
     2018: ("Glyph GDEF Data", GlyphGDEFParser, None),
+    2019: ("Glyph Sketch", BaseParser, None),
     2020: ("Glyph Anchors Supplemental", GlyphAnchorsSuppParser, None),
     2021: ("Unicode Ranges", IntParser, None),
     2022: ("Export PCLT Table", IntParser, None),
