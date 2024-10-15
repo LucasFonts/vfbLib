@@ -61,7 +61,7 @@ class UfoKerning:
 
     def _reverse_key_glyph_dict(
         self, key_glyphs: dict[str, str]
-    ) -> dict[tuple[int, str], str]:
+    ) -> dict[tuple[int, str] | None, str]:
         """
         Rebuild the key glyphs dict (group_name: key_ glyph_name) into a reverse dict by
         kerning group side and key glyph to group name.
