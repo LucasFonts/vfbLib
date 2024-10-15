@@ -53,6 +53,6 @@ class VfbHeader:
         return self.data
 
     def read(self, stream: BufferedReader) -> None:
-        self.decompiled, self.size = self.parser().parse(stream)
+        self.decompiled, self.size = self.parser(stream).parse()
         stream.seek(0)
         self.data = stream.read(self.size)
