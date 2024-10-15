@@ -54,7 +54,8 @@ class VfbHeader:
 
     def read(self, stream: BufferedReader) -> None:
         self.decompiled, self.size = self.parser(stream).parse()
-        stream.seek(0)
+
         # XXX: Do we need to store the original data?
         #      Yes, as long as we don't compile the header.
+        stream.seek(0)
         self.data = stream.read(self.size)
