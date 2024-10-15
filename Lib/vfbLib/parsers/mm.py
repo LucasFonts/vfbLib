@@ -1,25 +1,22 @@
 import logging
 
 from typing import Any
-from vfbLib.parsers.base import BaseParser, read_encoded_value
+from vfbLib.parsers.base import BaseParser
 
 
 logger = logging.getLogger(__name__)
 
 
 class AnisotropicInterpolationsParser(BaseParser):
-    def _parse(self) -> list[int]:
+    def _parse(self) -> list[list[tuple[int, int]]]:
         # The graph used for anisotropic interpolation maps, for all axes.
         assert self.stream is not None
         values = []
         while True:
             axis_values = []
             try:
-                n = read_encoded_value(self.stream)
-                axis_values = [
-                    (read_encoded_value(self.stream), read_encoded_value(self.stream))
-                    for _ in range(n)
-                ]
+                n = self.read_value()
+                axis_values = [(self.read_value(), self.read_value()) for _ in range(n)]
                 values.append(axis_values)
             except EOFError:
                 return values
@@ -63,13 +60,12 @@ class MasterLocationParser(BaseParser):
 class PrimaryInstancesParser(BaseParser):
     def _parse(self) -> list[dict[str, Any]]:
         assert self.stream is not None
-        stream = self.stream
         instances = []
-        num_instances = read_encoded_value(stream)
+        num_instances = self.read_value()
         for _ in range(num_instances):
-            name_length = read_encoded_value(stream)
-            name = stream.read(name_length).decode("cp1252")
-            values = [read_encoded_value(stream) / 10000 for _ in range(4)]
+            name_length = self.read_value()
+            name = self.read_str(name_length)
+            values = [self.read_value() / 10000 for _ in range(4)]
             instances.append({"name": name, "values": values})
 
         return instances

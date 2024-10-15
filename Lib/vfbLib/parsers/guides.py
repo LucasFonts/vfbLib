@@ -5,11 +5,13 @@ import logging
 from typing import TYPE_CHECKING, Literal
 from collections.abc import Sequence
 from math import atan2, degrees
-from vfbLib.parsers.base import BaseParser, read_encoded_value
-from vfbLib.typing import Guide, GuideDict, GuideProperty
+from vfbLib.parsers.base import BaseParser
+from vfbLib.typing import Guide, GuideProperty
+from vfbLib.value import read_value
 
 if TYPE_CHECKING:
     from io import BytesIO
+    from vfbLib.typing import GuideDict
 
 
 logger = logging.getLogger(__name__)
@@ -25,12 +27,12 @@ def parse_guides(stream: BytesIO, num_masters: int, name: str) -> GuideDict:
         "v": [[] for _ in range(num_masters)],
     }
     for d in DIRECTIONS:
-        num_guides = read_encoded_value(stream)
+        num_guides = read_value(stream)
         for _ in range(num_guides):
             for m in range(num_masters):
                 try:
-                    pos = read_encoded_value(stream)
-                    angle = degrees(atan2(read_encoded_value(stream), 10000))
+                    pos = read_value(stream)
+                    angle = degrees(atan2(read_value(stream), 10000))
                     guides[d][m].append(Guide(pos=pos, angle=angle))
                 except ValueError:
                     logger.error(f"Missing {d} guideline data ({name})")
@@ -49,26 +51,24 @@ class GlobalGuidesParser(BaseParser):
 
 class GuidePropertiesParser(BaseParser):
     def _parse(self) -> list:
-        stream = self.stream
         guides = []
         for _ in range(2):
             while True:
-                index = read_encoded_value(stream)
+                index = self.read_value()
                 if index == 0:
                     break
 
                 g = GuideProperty(index=index)
 
-                color = read_encoded_value(stream)
+                color = self.read_value()
                 if color > -1:
                     g["color"] = "#" + hex(color & ~0xFF00000000)[2:]
 
-                name_length = read_encoded_value(stream)
+                name_length = self.read_value()
                 if name_length > 0:
                     name = self.stream.read(name_length).decode("cp1252")
                     g["name"] = name
 
                 guides.append(g)
 
-        assert stream.read() == b""
         return guides

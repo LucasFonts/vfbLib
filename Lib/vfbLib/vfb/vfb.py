@@ -13,6 +13,7 @@ from vfbLib.vfb.info import VfbInfo
 
 if TYPE_CHECKING:
     from io import BufferedReader
+    from vfbLib.typing import VfbDict
 
 
 logger = logging.getLogger(__name__)
@@ -54,7 +55,7 @@ class Vfb:
 
         # cu2qu accesses the info and lib ...
         self.info = VfbInfo(vfb=self)
-        self.lib = {}
+        self.lib: dict[str, Any] = {}
 
         self.master_index = 0
         self.num_masters: int = 0
@@ -65,26 +66,26 @@ class Vfb:
         self.any_errors = False
         self.read()
 
-    def as_dict(self) -> dict[str, dict[str, Any]]:
+    def as_dict(self) -> VfbDict:
         """
         Return the Vfb structure as Dict, e.g. for saving as JSON. The dict has the keys
         "header" and "entries".
         """
-        d = {}
+        d: VfbDict = {"header": {}, "entries": []}
         if self.header is not None:
             d["header"] = self.header.as_dict()
         if self.entries:
             d["entries"] = [e.as_dict() for e in self.entries]
         return d
 
-    def clear(self):
+    def clear(self) -> None:
         """
         Clear any data that may have been read before.
         """
         self.header: VfbHeader | None = None
         self.entries: list[VfbEntry] = []
 
-    def _decompile_glyphs(self):
+    def _decompile_glyphs(self) -> None:
         for entry in self.entries:
             if entry.key == "Glyph":
                 glyph = VfbGlyph(entry, self)
@@ -211,6 +212,8 @@ class Vfb:
             for entry in self.entries:
                 if entry.modified:
                     entry.compile()
+
+                assert entry.data is not None
                 vfb.write(entry.header)
                 vfb.write(entry.data)
             # File end marker

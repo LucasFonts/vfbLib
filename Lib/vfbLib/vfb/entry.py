@@ -8,10 +8,9 @@ from io import BytesIO
 from struct import pack
 from typing import TYPE_CHECKING, Any
 
-# from vfbLib.reader import FALLBACK_PARSER
 from vfbLib.compilers.base import BaseCompiler
 from vfbLib.constants import parser_classes
-from vfbLib.parsers.base import BaseParser
+from vfbLib.parsers.base import BaseParser, StreamReader
 
 if TYPE_CHECKING:
     from io import BufferedReader
@@ -24,7 +23,7 @@ logger = logging.getLogger(__name__)
 FALLBACK_PARSER = BaseParser
 
 
-class VfbEntry(BaseParser):
+class VfbEntry(StreamReader):
     def __init__(
         self,
         parent: Vfb,
@@ -56,6 +55,13 @@ class VfbEntry(BaseParser):
         Returns:
             bytes: The data of the current entry header.
         """
+        if self.id is None:
+            logger.error(
+                "You need to set VfbEntry.id before accessing its header, "
+                "usually by reading the entry from the input stream."
+            )
+            raise ValueError
+
         header = BytesIO()
         if self.size > 0xFFFF:
             entry_id = self.id | 0x8000
@@ -75,6 +81,13 @@ class VfbEntry(BaseParser):
         Returns:
             int: The size of the current compiled data.
         """
+        if self.data is None:
+            logger.error(
+                "You need to set VfbEntry.data before accessing its size, "
+                "usually by reading the entry from the input stream."
+            )
+            raise ValueError
+
         return len(self.data)
 
     @property

@@ -41,5 +41,4 @@ class PostScriptInfoParser(BaseParser):
         values["descender"] = self.read_int32()
         values["x_height"] = self.read_int32()
         values["cap_height"] = self.read_int32()
-        assert self.stream.read() == b""
         return values

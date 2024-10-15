@@ -4,7 +4,7 @@ from argparse import ArgumentParser
 from fontTools.misc.textTools import deHexStr, hexStr
 from io import BytesIO
 from vfbLib.compilers.value import write_encoded_value
-from vfbLib.parsers.value import read_encoded_value
+from vfbLib.parsers.value import read_value
 from vfbLib.version import build_date
 
 
@@ -51,7 +51,7 @@ def yuri():
             stream = BytesIO(data)
             while True:
                 try:
-                    print(read_encoded_value(stream, args.signed))
+                    print(read_value(stream, args.signed))
                 except EOFError:
                     break
 

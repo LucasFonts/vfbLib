@@ -15,5 +15,5 @@ class FL3Type1410Parser(BaseParser):
     def _parse(self) -> list[int]:
         values = []
         for _ in range(5):
-            values.append(self.read_int16(self.stream))
+            values.append(self.read_int16())
         return values

@@ -124,3 +124,8 @@ class GlyphData(TypedDict):
 class MaskData(GlyphData):
     num: int
     reserved0: NotRequired[int]
+
+
+class VfbDict(TypedDict):
+    header: dict[str, Any]
+    entries: list[dict[str, Any]]

@@ -1,7 +1,6 @@
 import logging
 
 from vfbLib.parsers.base import BaseParser
-from vfbLib.parsers.value import read_encoded_value
 
 
 logger = logging.getLogger(__name__)
@@ -13,18 +12,18 @@ class CustomCmapParser(BaseParser):
     """
 
     def _parse(self):
-        count = read_encoded_value(self.stream)  # number of cmap records, not values
+        count = self.read_value()  # number of cmap records, not values
         values = {"values": []}
         for _ in range(count):
             cmap = {
-                "language_id": read_encoded_value(self.stream),
-                "platform_id": read_encoded_value(self.stream),
-                "encoding_id": read_encoded_value(self.stream),
-                "format": read_encoded_value(self.stream),
-                "option": read_encoded_value(self.stream),
+                "language_id": self.read_value(),
+                "platform_id": self.read_value(),
+                "encoding_id": self.read_value(),
+                "format": self.read_value(),
+                "option": self.read_value(),
                 "records": [],
             }
-            num_encodings = read_encoded_value(self.stream)
+            num_encodings = self.read_value()
             if num_encodings > 0:
                 cmap["records"] = [self.read_uint8() for _ in range(num_encodings)]
             values["values"].append(cmap)

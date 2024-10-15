@@ -1,6 +1,6 @@
 import logging
 
-from vfbLib.parsers.base import BaseParser, read_encoded_value
+from vfbLib.parsers.base import BaseParser
 
 
 logger = logging.getLogger(__name__)
@@ -8,16 +8,15 @@ logger = logging.getLogger(__name__)
 
 class NameRecordsParser(BaseParser):
     def _parse(self):
-        stream = self.stream
-        num = read_encoded_value(stream)
+        num = self.read_value()
         result = []
         for _ in range(num):
-            nameID = read_encoded_value(stream)
-            platID = read_encoded_value(stream)
-            encID = read_encoded_value(stream)
-            langID = read_encoded_value(stream)
-            name_length = read_encoded_value(stream)
-            name_codes = [read_encoded_value(stream) for _ in range(name_length)]
+            nameID = self.read_value()
+            platID = self.read_value()
+            encID = self.read_value()
+            langID = self.read_value()
+            name_length = self.read_value()
+            name_codes = [self.read_value() for _ in range(name_length)]
             name = ""
             for c in name_codes:
                 try:
@@ -31,7 +30,6 @@ class NameRecordsParser(BaseParser):
                 name += char
             result.append([nameID, platID, encID, langID, name])
 
-        assert stream.read() == b""
         return result
 
 

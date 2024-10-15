@@ -423,7 +423,7 @@ class VfbToUfoBuilder:
             elif name == "Encoding":  # 1500
                 pass
             elif name == "Master Count":  # 1503
-                self.master_count = data
+                self.master_count: int = data
             elif name == "Master Name":  # 1504
                 self.masters.append(data)
             elif name == "Master Location":  # 1505
@@ -448,8 +448,8 @@ class VfbToUfoBuilder:
             elif name == "Anisotropic Interpolation Mappings":  # 1523
                 # TODO: Can we properly output this to designspace?
                 for axis in data:
-                    for a, b in axis:
-                        if a != b:
+                    for src, tgt in axis:
+                        if src != tgt:
                             maps = {
                                 self.axes[i].name: data[i]
                                 for i in range(self.axis_count)

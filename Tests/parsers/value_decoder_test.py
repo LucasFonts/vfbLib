@@ -4,23 +4,23 @@ from fontTools.misc.textTools import deHexStr, hexStr
 from io import BytesIO
 from unittest import TestCase
 
-from vfbLib.parsers.value import read_encoded_value
+from vfbLib.parsers.value import read_value
 
 
 class ValueDecoderTest(TestCase):
     def expect(self, encoded, decoded):
         data = deHexStr(encoded)
-        assert read_encoded_value(BytesIO(data)) == decoded
+        assert read_value(BytesIO(data)) == decoded
 
     def test_0x00(self):
         illegal = deHexStr("00")
         with pytest.raises(EOFError):
-            read_encoded_value(BytesIO(illegal))
+            read_value(BytesIO(illegal))
 
     def test_0x19(self):
         illegal = deHexStr("19")
         with pytest.raises(ValueError):
-            read_encoded_value(BytesIO(illegal))
+            read_value(BytesIO(illegal))
 
     def test_0x20(self):
         self.expect("20", -107)

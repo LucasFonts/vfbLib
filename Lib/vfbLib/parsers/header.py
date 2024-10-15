@@ -2,17 +2,17 @@ import logging
 
 from io import BufferedReader
 from typing import Any
-from vfbLib.parsers.base import read_encoded_value, uint8, uint16
+from vfbLib.parsers.base import read_value, uint8, uint16
 
 
 logger = logging.getLogger(__name__)
 
 
 class VfbHeaderParser:
-    stream: BufferedReader | None = None
+    def __init__(self, stream: BufferedReader) -> None:
+        self.stream: BufferedReader = stream
 
-    def parse(self, stream: BufferedReader) -> tuple[dict[str, Any], int]:
-        self.stream = stream
+    def parse(self) -> tuple[dict[str, Any], int]:
         header: dict[str, Any] = {}
         header["header0"] = self.read_uint8()
         header["filetype"] = self.stream.read(5).decode("cp1252")
@@ -29,7 +29,7 @@ class VfbHeaderParser:
             header["header8"] = self.read_uint16()
             for i in range(9, 12):
                 key = self.read_uint8()
-                val = read_encoded_value(stream)
+                val = self.read_value()
                 header[f"header{i}"] = {key: val}
             header["header12"] = self.read_uint8()
             header["header13"] = self.read_uint16()
@@ -44,11 +44,12 @@ class VfbHeaderParser:
         return header, datasize
 
     def read_uint8(self) -> int:
-        assert self.stream is not None
         return int.from_bytes(self.stream.read(uint8), byteorder="little", signed=False)
 
     def read_uint16(self) -> int:
-        assert self.stream is not None
         return int.from_bytes(
             self.stream.read(uint16), byteorder="little", signed=False
         )
+
+    def read_value(self):
+        return read_value(self.stream)

@@ -1,8 +1,13 @@
-from io import BufferedReader, BytesIO
+from __future__ import annotations
+
 from struct import unpack
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from io import BufferedReader, BytesIO
 
 
-def read_encoded_value(stream: BufferedReader | BytesIO, signed=True) -> int:
+def read_value(stream: BufferedReader | BytesIO, signed=True) -> int:
     val = int.from_bytes(stream.read(1), byteorder="little")
     if val == 0:
         raise EOFError

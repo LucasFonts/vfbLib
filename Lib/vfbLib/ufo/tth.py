@@ -74,7 +74,7 @@ def transform_stem_rounds(data: dict[str, int], name: str) -> dict[str, int]:
     Returns:
         dict[str, int]: The transformed stem rounding dict.
     """
-    d = {}
+    d: dict[str, int] = {}
     for k, v in data.items():
         key = str(v)
         val = int(k)

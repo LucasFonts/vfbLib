@@ -5,7 +5,7 @@ from fontTools.misc.textTools import num2binary
 # from math import log2
 # from struct import unpack
 from typing import Any
-from vfbLib.parsers.base import BaseParser, read_encoded_value
+from vfbLib.parsers.base import BaseParser
 
 
 logger = logging.getLogger(__name__)
@@ -75,34 +75,30 @@ class BaseBitmapParser(BaseParser):
 
 class BackgroundBitmapParser(BaseBitmapParser):
     def _parse(self) -> dict[str, Any]:
-        s = self.stream
         bitmap: dict[str, Any] = {}
-        bitmap["origin"] = (read_encoded_value(s), read_encoded_value(s))
-        bitmap["size_units"] = (read_encoded_value(s), read_encoded_value(s))
-        bitmap["size_pixels"] = (read_encoded_value(s), read_encoded_value(s))
-        datalen = read_encoded_value(s)
+        bitmap["origin"] = (self.read_value(), self.read_value())
+        bitmap["size_units"] = (self.read_value(), self.read_value())
+        bitmap["size_pixels"] = (self.read_value(), self.read_value())
+        datalen = self.read_value()
         bitmap["len"] = datalen
         bitmap["data"] = self.parse_bitmap_data(datalen)
         # bitmap["preview"] = pprint_bitmap(bitmap)
-        assert s.read() == b""
         return bitmap
 
 
 class GlyphBitmapParser(BaseBitmapParser):
     def _parse(self) -> list[dict[str, Any]]:
-        s = self.stream
         bitmaps: list[dict[str, Any]] = []
-        num_bitmaps = read_encoded_value(s)
+        num_bitmaps = self.read_value()
         for _ in range(num_bitmaps):
             bitmap: dict[str, Any] = {}
-            bitmap["ppm"] = read_encoded_value(s)
-            bitmap["origin"] = (read_encoded_value(s), read_encoded_value(s))
-            bitmap["adv"] = (read_encoded_value(s), read_encoded_value(s))
-            bitmap["size_pixels"] = (read_encoded_value(s), read_encoded_value(s))
-            datalen = read_encoded_value(s)
+            bitmap["ppm"] = self.read_value()
+            bitmap["origin"] = (self.read_value(), self.read_value())
+            bitmap["adv"] = (self.read_value(), self.read_value())
+            bitmap["size_pixels"] = (self.read_value(), self.read_value())
+            datalen = self.read_value()
             bitmap["len"] = datalen
             bitmap["data"] = self.parse_bitmap_data(datalen)
             # bitmap["preview"] = pprint_bitmap(bitmap, invert=True)
             bitmaps.append(bitmap)
-        assert s.read() == b""
         return bitmaps
