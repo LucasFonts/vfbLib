@@ -10,7 +10,6 @@ logger = logging.getLogger(__name__)
 class AnisotropicInterpolationsParser(BaseParser):
     def _parse(self) -> list[list[tuple[int, int]]]:
         # The graph used for anisotropic interpolation maps, for all axes.
-        assert self.stream is not None
         values = []
         while True:
             axis_values = []
@@ -28,7 +27,6 @@ class AxisMappingsCountParser(BaseParser):
         # or not.
         # 0300 0000  0000 0000  0000 0000  0000 0000
         # -> [3, 0, 0, 0]
-        assert self.stream is not None
         return [self.read_uint32() for _ in range(4)]
 
 
@@ -38,7 +36,6 @@ class AxisMappingsParser(BaseParser):
         # Look at "Axis Mappings Count" to find out which mappings are used in each
         # axis.
         # The trailing unused fields may contain junk and must be ignored.
-        assert self.stream is not None
         mappings = []
         for _ in range(self.stream.getbuffer().nbytes // 16):
             src_tgt = self.read_doubles(2)
@@ -50,7 +47,6 @@ class AxisMappingsParser(BaseParser):
 class MasterLocationParser(BaseParser):
     def _parse(self) -> tuple[int, tuple[Any]]:
         # The location on all 4 axes for this master
-        assert self.stream is not None
         # FIXME: Might also be 2 uint16:
         master_index = self.read_uint32()
         flags = self.read_doubles(4)
@@ -59,7 +55,6 @@ class MasterLocationParser(BaseParser):
 
 class PrimaryInstancesParser(BaseParser):
     def _parse(self) -> list[dict[str, Any]]:
-        assert self.stream is not None
         instances = []
         num_instances = self.read_value()
         for _ in range(num_instances):
