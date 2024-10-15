@@ -18,7 +18,7 @@ class VfbHeader:
         # The original or compiled binary data
         self.data: bytes | None = None
         # The decompiled data
-        self.decompiled = None
+        self.decompiled: dict[str, Any] | None = None
         # Has the data been modified, i.e. it needs recompilation
         self.modified = False
         # The parser which can convert data to decompiled
