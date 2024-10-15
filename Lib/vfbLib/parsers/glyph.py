@@ -492,3 +492,13 @@ class MaskParser(GlyphParser):
         # From here, the mask is equal to the outlines
         self.parse_outlines(s, maskdata)
         return dict(maskdata)
+
+
+class GlyphSketchParser(BaseParser):
+    def _parse(self) -> list[tuple[int, int, int]]:
+        s = self.stream
+        num = read_encoded_value(s)
+        return [
+            (read_encoded_value(s), read_encoded_value(s), read_encoded_value(s))
+            for _ in range(num)
+        ]
