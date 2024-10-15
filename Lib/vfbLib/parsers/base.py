@@ -21,6 +21,12 @@ uint32 = 4
 
 
 class StreamReader:
+    """
+    Base class that reads values from the input stream.
+    This is the parent class for the general BaseParser, from which all other
+    parsers inherit, but it may be subclassed directly if more flexibility is needed.
+    """
+
     encoding = "cp1252"
     stream: BufferedReader | BytesIO = BytesIO()
 
