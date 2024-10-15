@@ -140,9 +140,8 @@ class GlyphGDEFParser(BaseParser):
 
 class GlyphOriginParser(BaseParser):
     def _parse(self) -> dict[str, Any]:
-        stream = self.stream
-        x = int.from_bytes(stream.read(2), signed=True, byteorder="little")
-        y = int.from_bytes(stream.read(2), signed=True, byteorder="little")
+        x = self.read_int16()
+        y = self.read_int16()
         return {"x": x, "y": y}
 
 

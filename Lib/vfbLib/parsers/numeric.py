@@ -13,7 +13,7 @@ class DoubleParser(BaseParser):
     """
 
     def _parse(self):
-        return unpack("d", self.stream.read(8))[0]
+        return self.read_double()
 
 
 class FloatListParser(BaseParser):
@@ -47,7 +47,7 @@ class IntParser(BaseParser):
     """
 
     def _parse(self):
-        return int.from_bytes(self.stream.read(), byteorder="little", signed=False)
+        return self.read_uint16()
 
 
 class IntListParser(BaseParser):
@@ -85,4 +85,4 @@ class SignedIntParser(BaseParser):
     """
 
     def _parse(self):
-        return int.from_bytes(self.stream.read(), byteorder="little", signed=True)
+        return self.read_int16()

@@ -184,7 +184,7 @@ class GaspParser(BaseParser):
 
 class GlyphEncodingParser(BaseParser):
     def _parse(self):
-        gid = int.from_bytes(self.stream.read(2), byteorder="little")
+        gid = self.read_uint16()
         nam = self.stream.read().decode("cp1252")
         return gid, nam
 
