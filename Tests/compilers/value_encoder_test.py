@@ -2,18 +2,18 @@ from fontTools.misc.textTools import deHexStr, hexStr
 from io import BytesIO
 from unittest import TestCase
 
-from vfbLib.compilers.value import write_encoded_value, write_value_5
+from vfbLib.compilers.value import write_value, write_value_long
 
 
 class ValueEncoderTest(TestCase):
     def expect(self, encoded, decoded, signed=True):
         data = BytesIO()
-        write_encoded_value(decoded, data, signed)
+        write_value(decoded, data, signed)
         assert hexStr(data.getvalue()) == encoded
 
     def expect_unoptimized(self, encoded, decoded, signed=True):
         data = BytesIO()
-        write_value_5(decoded, data, signed)
+        write_value_long(decoded, data, signed)
         assert hexStr(data.getvalue()) == encoded
 
     def test_0x20(self):

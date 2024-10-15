@@ -3,14 +3,14 @@ from __future__ import annotations
 from argparse import ArgumentParser
 from fontTools.misc.textTools import deHexStr, hexStr
 from io import BytesIO
-from vfbLib.compilers.value import write_encoded_value
+from vfbLib.compilers.value import write_value
 from vfbLib.parsers.value import read_value
 from vfbLib.version import build_date
 
 
 def yuri():
     parser = ArgumentParser(
-        description=(f"vfbtool\nCopyright (c) 2023 by LucasFonts\nBuild {build_date}")
+        description=(f"vfbtool\nCopyright (c) 2024 by LucasFonts\nBuild {build_date}")
     )
     parser.add_argument(
         "-e",
@@ -44,7 +44,7 @@ def yuri():
         if args.encode:
             stream = BytesIO()
             for value in args.hexstring:
-                write_encoded_value(int(value), stream, args.signed)
+                write_value(int(value), stream, args.signed)
             print(hexStr(stream.getvalue()))
         else:
             data = deHexStr("".join(args.hexstring))

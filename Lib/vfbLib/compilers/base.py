@@ -1,21 +1,26 @@
+from __future__ import annotations
+
 from io import BytesIO
 from struct import pack
-from typing import Any
-from vfbLib.compilers.value import write_encoded_value, write_value_5
+from typing import TYPE_CHECKING, Any
+from vfbLib.compilers.value import write_value, write_value_long
+
+if TYPE_CHECKING:
+    from io import BufferedWriter
 
 
 # Compilers for VFB entries
 
 
-class BaseStreamCompiler:
+class StreamWriter:
     """
     Base compiler class that writes values to the output stream.
     This is the parent class for the general BaseCompiler, from which all other
-    compilers inherit, but it may be subclasses directly if more flexibility is needed.
+    compilers inherit, but it may be subclassed directly if more flexibility is needed.
     """
 
-    def __init__(self) -> None:
-        self.stream = BytesIO()
+    encoding = "cp1252"
+    stream: BufferedWriter | BytesIO = BytesIO()
 
     def write_bytes(self, value: bytes) -> None:
         """
@@ -26,20 +31,20 @@ class BaseStreamCompiler:
         """
         self.stream.write(value)
 
-    def write_encoded_value(self, value: int, shortest=True) -> None:
+    def write_value(self, value: int, shortest=True) -> None:
         """
         Encode and write an int value to the stream. Optionally don't apply the length
         encoding optimization.
 
         Args:
             value (int): The value to write to the stream.
-            shortest (bool, optional): Whether to write in the shortest possible
-                notation. Defaults to True.
+            shortest (bool, optional): Whether to write the shortest possible
+                representation. Defaults to True.
         """
         if shortest:
-            write_encoded_value(value, self.stream)
+            write_value(value, self.stream)
         else:
-            write_value_5(value, self.stream)
+            write_value_long(value, self.stream)
 
     def write_float(self, value: float, fmt: str = "d") -> None:
         """
@@ -63,7 +68,7 @@ class BaseStreamCompiler:
         self.stream.write(encoded)
 
 
-class BaseCompiler(BaseStreamCompiler):
+class BaseCompiler(StreamWriter):
     """
     Base class to compile vfb data.
     """

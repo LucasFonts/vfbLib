@@ -3,7 +3,7 @@ from math import radians, tan
 from struct import pack
 from typing import Any
 from vfbLib import GLYPH_CONSTANT
-from vfbLib.compilers.base import BaseCompiler, BaseStreamCompiler
+from vfbLib.compilers.base import BaseCompiler, StreamWriter
 from vfbLib.parsers.glyph import PathCommand
 from vfbLib.truetype import TT_COMMAND_CONSTANTS, TT_COMMANDS
 
@@ -58,12 +58,12 @@ class GlyphCompiler(BaseCompiler):
             return
 
         self.write_uint1(5)
-        self.write_encoded_value(len(components))
+        self.write_value(len(components))
         for component in components:
-            self.write_encoded_value(component["gid"])
+            self.write_value(component["gid"])
             for i in range(self.num_masters):
-                self.write_encoded_value(component["offsetX"][i])
-                self.write_encoded_value(component["offsetY"][i])
+                self.write_value(component["offsetX"][i])
+                self.write_value(component["offsetY"][i])
                 self.write_float(component["scaleX"][i])
                 self.write_float(component["scaleY"][i])
 
@@ -75,7 +75,7 @@ class GlyphCompiler(BaseCompiler):
         glyph_name = name.encode("cp1252")
         glyph_name_length = len(glyph_name)
         self.write_uint1(1)
-        self.write_encoded_value(glyph_name_length)
+        self.write_value(glyph_name_length)
         self.write_bytes(glyph_name)
         logger.debug(f"Compiling glyph '{name}'")
 
@@ -89,16 +89,16 @@ class GlyphCompiler(BaseCompiler):
         for direction in ("h", "v"):
             direction_guides = guides.get(direction)
             if direction_guides is None:
-                self.write_encoded_value(0)
+                self.write_value(0)
                 continue
 
-            self.write_encoded_value(len(direction_guides[0]))  # first master
+            self.write_value(len(direction_guides[0]))  # first master
             for m in range(self.num_masters):
                 for guide in direction_guides[m]:
                     pos = guide["pos"]
                     angle = round(tan(radians(guide["angle"])) * 10000)
-                    self.write_encoded_value(pos)
-                    self.write_encoded_value(angle)
+                    self.write_value(pos)
+                    self.write_value(angle)
 
     def _compile_hints(self, data):
         # PostScript hints
@@ -108,23 +108,23 @@ class GlyphCompiler(BaseCompiler):
         self.write_uint1(3)
         for direction in ("h", "v"):
             if direction_hints := hints.get(direction):
-                self.write_encoded_value(len(direction_hints))
+                self.write_value(len(direction_hints))
                 for mm_hint in direction_hints:
                     for i in range(self.num_masters):
                         hint = mm_hint[i]
-                        self.write_encoded_value(hint["pos"])
-                        self.write_encoded_value(hint["width"])
+                        self.write_value(hint["pos"])
+                        self.write_value(hint["width"])
             else:
-                self.write_encoded_value(0)
+                self.write_value(0)
 
         if not (hintmasks := hints.get("hintmasks")):  # noqa: F841
-            self.write_encoded_value(0)
+            self.write_value(0)
             return
 
         # FIXME: Implement writing of hintmasks
-        # self.write_encoded_value(len(hintmasks))
-        self.write_encoded_value(0)
-        logger.warning("Compilation of hint masks is not supported.")
+        # self.write_value(len(hintmasks))
+        self.write_value(0)
+        logger.warning("Compilation of hint masks is not supported, they are dropped.")
 
     def _compile_instructions(self, data):
         # TrueType instructions
@@ -133,7 +133,7 @@ class GlyphCompiler(BaseCompiler):
 
         self.write_uint1(0x0A)
         instructions = InstructionsCompiler().compile(tth)
-        self.write_encoded_value(len(instructions))
+        self.write_value(len(instructions))
         self.stream.write(instructions)
 
     def _compile_kerning(self, data):
@@ -142,11 +142,11 @@ class GlyphCompiler(BaseCompiler):
             return
 
         self.write_uint1(6)
-        self.write_encoded_value(len(kerning))
+        self.write_value(len(kerning))
         for gid, values in kerning.items():
-            self.write_encoded_value(gid)
+            self.write_value(gid)
             for value in values:
-                self.write_encoded_value(value)
+                self.write_value(value)
 
     def _compile_metrics(self, data):
         # Metrics
@@ -156,23 +156,23 @@ class GlyphCompiler(BaseCompiler):
         self.write_uint1(2)
         for i in range(self.num_masters):
             x, y = metrics[i]
-            self.write_encoded_value(x)
-            self.write_encoded_value(y)
+            self.write_value(x)
+            self.write_value(y)
 
     def _compile_outlines(self, data):
         # Outlines
         # A minimal outlines structure is always written:
         self.write_uint1(8)
-        self.write_encoded_value(self.num_masters)  # Number of masters
+        self.write_value(self.num_masters)  # Number of masters
 
         if not (nodes := data.get("nodes")):
             # 0 nodes with 0 values
-            self.write_encoded_value(0)
-            self.write_encoded_value(0)
+            self.write_value(0)
+            self.write_value(0)
             return
 
         outlines, num_values = OutlinesCompiler().compile(nodes, self.num_masters)
-        self.write_encoded_value(num_values)
+        self.write_value(num_values)
         self.stream.write(outlines)
 
     def _compile(self, data: Any) -> None:
@@ -194,18 +194,18 @@ class GlyphCompiler(BaseCompiler):
 
 class InstructionsCompiler(BaseCompiler):
     def _compile(self, data: Any) -> None:
-        self.write_encoded_value(len(data))
+        self.write_value(len(data))
         for cmd in data:
             command_id = TT_COMMAND_CONSTANTS[cmd["cmd"]]
             self.write_uint1(command_id)
             params = cmd["params"]
             for param_name in TT_COMMANDS[command_id]["params"]:
-                self.write_encoded_value(params[param_name])
+                self.write_value(params[param_name])
         for _ in range(3):
-            self.write_encoded_value(0)
+            self.write_value(0)
 
 
-class OutlinesCompiler(BaseStreamCompiler):
+class OutlinesCompiler(StreamWriter):
     def compile(self, data: Any, num_masters: int) -> tuple[bytes, int]:
         self.num_masters = num_masters
         self.stream = BytesIO()
@@ -213,7 +213,7 @@ class OutlinesCompiler(BaseStreamCompiler):
         return self.stream.getvalue(), num_values
 
     def _compile(self, data: Any) -> int:
-        self.write_encoded_value(len(data))  # Number of nodes, may be 0
+        self.write_value(len(data))  # Number of nodes, may be 0
         num_values = 0
         ref_coords = [[0, 0] for _ in range(self.num_masters)]
         for node in data:
@@ -225,8 +225,8 @@ class OutlinesCompiler(BaseStreamCompiler):
                     x, y = node["points"][i][j]
                     refx, refy = ref_coords[i]
                     # Coordinates are written relatively to the previous coords
-                    self.write_encoded_value(x - refx)
-                    self.write_encoded_value(y - refy)
+                    self.write_value(x - refx)
+                    self.write_value(y - refy)
                     num_values += 2
                     ref_coords[i] = [x, y]
         return 2 * num_values
