@@ -67,7 +67,7 @@ class BaseParser(StreamReader):
     Base class to parse data from a vfb file
     """
 
-    master_count: int = 1
+    master_count: int = 0
     stream: BytesIO = BytesIO()
     ttStemsV_count: int | None = None
     ttStemsH_count: int | None = None
@@ -76,7 +76,7 @@ class BaseParser(StreamReader):
         self,
         stream: BytesIO,
         size: int,
-        master_count: int = 1,
+        master_count: int = 0,
         ttStemsV_count: int | None = None,
         ttStemsH_count: int | None = None,
     ):
