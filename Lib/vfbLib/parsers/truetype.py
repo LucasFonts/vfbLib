@@ -19,19 +19,18 @@ class TrueTypeInfoParser(BaseParser):
             logger.error(f"Duplicate key in TrueType Info: {key} in {d}")
             raise KeyError
 
-    def read_key_value_pairs_encoded(
-        self,
-        stream: BytesIO,
-        num: int,
-        target: list,
-        key_names: dict[int, str] | None = None,
-    ):
-        if key_names is None:
-            key_names = {}
-        for _ in range(num):
-            k = self.read_uint8(stream)
-            v = read_encoded_value(stream)
-            target.append({key_names.get(k, str(k)): v})
+    # def read_key_value_pairs_encoded(
+    #     self,
+    #     num: int,
+    #     target: list,
+    #     key_names: dict[int, str] | None = None,
+    # ):
+    #     if key_names is None:
+    #         key_names = {}
+    #     for _ in range(num):
+    #         k = self.read_uint8()
+    #         v = self.read_value()
+    #         target.append({key_names.get(k, str(k)): v})
 
     def _parse(self):
         info_names = {
