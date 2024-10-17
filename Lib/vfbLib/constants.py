@@ -10,7 +10,7 @@ from vfbLib.parsers.base import (
     GaspParser,
     GlyphEncodingParser,
     OpenTypeKerningClassFlagsParser,
-    OpenTypeMetricsClassFlagsParser
+    OpenTypeMetricsClassFlagsParser,
 )
 from vfbLib.parsers.bitmap import BackgroundBitmapParser, GlyphBitmapParser
 from vfbLib.parsers.cmap import CustomCmapParser
