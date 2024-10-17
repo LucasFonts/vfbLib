@@ -50,14 +50,14 @@ class GlyphCompiler(BaseCompiler):
         logger.warning("Compiling imported binary data is not supported.")
         return
 
-        self.write_uint1(9)
+        self.write_uint8(9)
 
     def _compile_components(self, data):
         # Components
         if not (components := data.get("components")):
             return
 
-        self.write_uint1(5)
+        self.write_uint8(5)
         self.write_value(len(components))
         for component in components:
             self.write_value(component["gid"])
@@ -74,7 +74,7 @@ class GlyphCompiler(BaseCompiler):
 
         glyph_name = name.encode("cp1252")
         glyph_name_length = len(glyph_name)
-        self.write_uint1(1)
+        self.write_uint8(1)
         self.write_value(glyph_name_length)
         self.write_bytes(glyph_name)
         logger.debug(f"Compiling glyph '{name}'")
@@ -85,7 +85,7 @@ class GlyphCompiler(BaseCompiler):
         if not (guides := data.get("guides")):
             return
 
-        self.write_uint1(4)
+        self.write_uint8(4)
         for direction in ("h", "v"):
             direction_guides = guides.get(direction)
             if direction_guides is None:
@@ -105,7 +105,7 @@ class GlyphCompiler(BaseCompiler):
         if not (hints := data.get("hints")):
             return
 
-        self.write_uint1(3)
+        self.write_uint8(3)
         for direction in ("h", "v"):
             if direction_hints := hints.get(direction):
                 self.write_value(len(direction_hints))
@@ -131,7 +131,7 @@ class GlyphCompiler(BaseCompiler):
         if not (tth := data.get("tth")):
             return
 
-        self.write_uint1(0x0A)
+        self.write_uint8(0x0A)
         instructions = InstructionsCompiler().compile(tth)
         self.write_value(len(instructions))
         self.stream.write(instructions)
@@ -141,7 +141,7 @@ class GlyphCompiler(BaseCompiler):
         if not (kerning := data.get("kerning")):
             return
 
-        self.write_uint1(6)
+        self.write_uint8(6)
         self.write_value(len(kerning))
         for gid, values in kerning.items():
             self.write_value(gid)
@@ -153,7 +153,7 @@ class GlyphCompiler(BaseCompiler):
         if not (metrics := data.get("metrics")):
             return
 
-        self.write_uint1(2)
+        self.write_uint8(2)
         for i in range(self.num_masters):
             x, y = metrics[i]
             self.write_value(x)
@@ -162,7 +162,7 @@ class GlyphCompiler(BaseCompiler):
     def _compile_outlines(self, data):
         # Outlines
         # A minimal outlines structure is always written:
-        self.write_uint1(8)
+        self.write_uint8(8)
         self.write_value(self.num_masters)  # Number of masters
 
         if not (nodes := data.get("nodes")):
@@ -189,7 +189,7 @@ class GlyphCompiler(BaseCompiler):
         self._compile_kerning(data)
         self._compile_binary(data)
         self._compile_instructions(data)
-        self.write_uint1(15)  # End of glyph
+        self.write_uint8(15)  # End of glyph
 
 
 class InstructionsCompiler(BaseCompiler):
@@ -197,7 +197,7 @@ class InstructionsCompiler(BaseCompiler):
         self.write_value(len(data))
         for cmd in data:
             command_id = TT_COMMAND_CONSTANTS[cmd["cmd"]]
-            self.write_uint1(command_id)
+            self.write_uint8(command_id)
             params = cmd["params"]
             for param_name in TT_COMMANDS[command_id]["params"]:
                 self.write_value(params[param_name])
@@ -218,7 +218,7 @@ class OutlinesCompiler(StreamWriter):
         ref_coords = [[0, 0] for _ in range(self.num_masters)]
         for node in data:
             type_flags = node.get("flags", 0) * 16 + PathCommand[node["type"]].value
-            self.write_uint1(type_flags)
+            self.write_uint8(type_flags)
             num_values += 1
             for j in range(len(node["points"][0])):
                 for i in range(self.num_masters):

@@ -60,22 +60,15 @@ class StreamWriter:
     def write_int32(self, value: int) -> None:
         raise NotImplementedError
 
-    def write_str(self, value: str) -> None:
+    def write_str(self, value: str, pad: int = 0) -> None:
+        # XXX: Pad with 0 bytes to given length
         self.stream.write(value.encode(self.encoding))
-
-    def write_uint1(self, value: int) -> None:
-        """
-        Write a 1-byte unsigned value to the stream.
-        """
-        encoded = pack(">B", value)
-        self.stream.write(encoded)
 
     def write_uint8(self, value: int) -> None:
         """
         Write a uint8 value to the stream.
         """
-        encoded = pack(">H", value)
-        self.stream.write(encoded)
+        self.stream.write(value.to_bytes(uint8, byteorder="little", signed=False))
 
     def write_uint16(self, value: int) -> None:
         self.stream.write(value.to_bytes(uint16, byteorder="little", signed=False))

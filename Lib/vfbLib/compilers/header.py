@@ -18,7 +18,7 @@ class VfbHeaderCompiler(StreamWriter):
         return self.stream.getvalue()
 
     def _compile(self, data: Any) -> None:
-        self.write_uint1(data["header0"])
+        self.write_uint8(data["header0"])
         self.write_str(data["filetype"])
         self.write_uint16(data["header1"])
         self.write_uint16(data["header2"])
