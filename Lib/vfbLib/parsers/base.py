@@ -6,6 +6,7 @@ from fontTools.misc.textTools import hexStr
 from io import BytesIO
 from struct import unpack
 from typing import TYPE_CHECKING, Any
+from vfbLib.helpers import uint8, uint16, uint32
 from vfbLib.parsers.value import read_doubles, read_value, read_floats
 
 if TYPE_CHECKING:
@@ -14,10 +15,6 @@ if TYPE_CHECKING:
 
 
 logger = logging.getLogger(__name__)
-
-uint8 = 1
-uint16 = 2
-uint32 = 4
 
 
 class StreamReader:
@@ -41,6 +38,9 @@ class StreamReader:
 
     def read_floats(self, num):
         return read_floats(num, self.stream)
+
+    def read_int8(self) -> int:
+        return int.from_bytes(self.stream.read(uint8), byteorder="little", signed=True)
 
     def read_int16(self) -> int:
         return int.from_bytes(self.stream.read(uint16), byteorder="little", signed=True)

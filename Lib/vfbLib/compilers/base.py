@@ -4,6 +4,7 @@ from io import BytesIO
 from struct import pack
 from typing import TYPE_CHECKING, Any
 from vfbLib.compilers.value import write_value, write_value_long
+from vfbLib.helpers import uint8, uint16  # , uint32
 
 if TYPE_CHECKING:
     from io import BufferedWriter
@@ -31,20 +32,16 @@ class StreamWriter:
         """
         self.stream.write(value)
 
-    def write_value(self, value: int, shortest=True) -> None:
-        """
-        Encode and write an int value to the stream. Optionally don't apply the length
-        encoding optimization.
+    def write_double(self, value: float) -> None:
+        raise NotImplementedError
+
+    def write_doubles(self, values: list[float]) -> None:
+        """Write several doubles to the stream.
 
         Args:
-            value (int): The value to write to the stream.
-            shortest (bool, optional): Whether to write the shortest possible
-                representation. Defaults to True.
+            values (list[float]): _description_
         """
-        if shortest:
-            write_value(value, self.stream)
-        else:
-            write_value_long(value, self.stream)
+        raise NotImplementedError
 
     def write_float(self, value: float, fmt: str = "d") -> None:
         """
@@ -52,6 +49,18 @@ class StreamWriter:
         """
         encoded = pack(fmt, value)
         self.stream.write(encoded)
+
+    def write_floats(self, values: list[float]) -> None:
+        raise NotImplementedError
+
+    def write_int16(self, value: int) -> None:
+        raise NotImplementedError
+
+    def write_int32(self, value: int) -> None:
+        raise NotImplementedError
+
+    def write_str(self, value: str) -> None:
+        self.stream.write(value.encode(self.encoding))
 
     def write_uint1(self, value: int) -> None:
         """
@@ -66,6 +75,27 @@ class StreamWriter:
         """
         encoded = pack(">H", value)
         self.stream.write(encoded)
+
+    def write_uint16(self, value: int) -> None:
+        self.stream.write(value.to_bytes(uint16, byteorder="little", signed=False))
+
+    def write_uint32(self, value: int) -> None:
+        raise NotImplementedError
+
+    def write_value(self, value: int, shortest=True) -> None:
+        """
+        Encode and write an int value to the stream. Optionally don't apply the length
+        encoding optimization.
+
+        Args:
+            value (int): The value to write to the stream.
+            shortest (bool, optional): Whether to write the shortest possible
+                representation. Defaults to True.
+        """
+        if shortest:
+            write_value(value, self.stream)
+        else:
+            write_value_long(value, self.stream)
 
 
 class BaseCompiler(StreamWriter):
