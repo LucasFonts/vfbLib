@@ -126,10 +126,11 @@ class VfbGlyph:
         """
         Return a point pen to draw into the VFB glyph.
         """
+        # FIXME: Add test!!!
         if self.entry.decompiled is None:
             if self.entry.data is None:
                 # Make an empty glyph
-                self.empty(self._parent.num_masters)
+                self.empty()
             else:
                 self.decompile()
         return VfbGlyphPointPen(self, self._parent)
@@ -222,10 +223,11 @@ class VfbGlyphMaster:
         """
         Return a point pen to draw into the VFB glyph.
         """
+        # FIXME: Add test!!!
         if self.entry.decompiled is None:
             if self.entry.data is None:
                 # Make an empty glyph
-                self.empty(self.glyph._parent.num_masters)
+                self.glyph.empty()
             else:
-                self.decompile()
+                self.entry.decompile()
         return VfbGlyphPointPen(self, self.glyph._parent)
