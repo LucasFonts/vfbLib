@@ -191,6 +191,9 @@ class VfbEntry(StreamReader):
         """
         Compile the entry. The result is stored in VfbEntry.data.
         """
+        if not self.modified:
+            return
+
         if self.compiler is None:
             logger.error(f"Compiling '{self.key}' is not supported yet.")
             return

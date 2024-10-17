@@ -204,15 +204,13 @@ class Vfb:
             raise ValueError
 
         with open(out_path, "wb") as vfb:
-            if self.header.modified:
-                self.header.compile()
-            assert self.header.data
+            self.header.compile()
+            assert self.header.data is not None
+            print(self.header.data)
             vfb.write(self.header.data)
 
             for entry in self.entries:
-                if entry.modified:
-                    entry.compile()
-
+                entry.compile()
                 assert entry.data is not None
                 vfb.write(entry.header)
                 vfb.write(entry.data)

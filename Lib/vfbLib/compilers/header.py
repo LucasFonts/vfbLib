@@ -12,11 +12,8 @@ logger = logging.getLogger(__name__)
 class VfbHeaderCompiler(StreamWriter):
     encoding = "cp1252"
 
-    def __init__(self, stream: BytesIO) -> None:
-        self.stream: BytesIO = stream
-
     def compile(self, data: Any) -> bytes:
-        self.stream = BytesIO()  # XXX: Needed?
+        self.stream = BytesIO()
         self._compile(data)
         return self.stream.getvalue()
 

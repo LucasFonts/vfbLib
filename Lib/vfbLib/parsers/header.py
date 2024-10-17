@@ -13,7 +13,7 @@ class VfbHeaderParser:
     def __init__(self, stream: BufferedReader) -> None:
         self.stream: BufferedReader = stream
 
-    def parse(self) -> tuple[dict[str, Any], int]:
+    def parse(self) -> dict[str, Any]:
         header: dict[str, Any] = {}
         header["header0"] = self.read_uint8()
         header["filetype"] = self.stream.read(5).decode("cp1252")
@@ -39,10 +39,7 @@ class VfbHeaderParser:
             del header["header7"]
         header["header14"] = self.read_uint16()
 
-        # Get the size of the original binary data
-        datasize = self.stream.tell()
-
-        return header, datasize
+        return header
 
     def read_uint8(self) -> int:
         return int.from_bytes(self.stream.read(uint8), byteorder="little", signed=False)

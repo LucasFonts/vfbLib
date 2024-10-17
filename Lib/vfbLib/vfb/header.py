@@ -4,6 +4,7 @@ import logging
 
 from fontTools.misc.textTools import hexStr
 from typing import TYPE_CHECKING, Any
+from vfbLib.compilers.header import VfbHeaderCompiler
 from vfbLib.parsers.header import VfbHeaderParser
 
 if TYPE_CHECKING:
@@ -16,42 +17,43 @@ logger = logging.getLogger(__name__)
 class VfbHeader:
     def __init__(self) -> None:
         # The original or compiled binary data
-        self.data: bytes | None = None
+        self._data: bytes | None = None
         # The decompiled data
         self.decompiled: dict[str, Any] | None = None
         # Has the data been modified, i.e. it needs recompilation
         self.modified = False
         # The parser which can convert data to decompiled
         self.parser = VfbHeaderParser
-        # The size of the compiled data
-        self.size = 0
+        # The compiler which can convert the decompiled representation to bytes
+        self.compiler = VfbHeaderCompiler
 
     def as_dict(self) -> dict[str, Any]:
-        d = {
-            "size": self.size,
-            "decompiled": self.decompiled,
-            "modified": self.modified,
-            # "parser": self.parser.__name__,
-        }
-        if self.data:
+        d: dict[str, Any] = {"decompiled": self.decompiled}
+        if self.data is not None:
             d["data"] = hexStr(self.data)
         return d
 
-    def compile(self) -> bytes:
-        logger.error("Compiling the VFB header is not supported yet.")
+    @property
+    def data(self) -> bytes | None:
+        return self._data
 
-        if self.data:
-            self.size = len(self.data)
-        else:
-            self.size = 0
+    @data.setter
+    def data(self, value: bytes | None) -> None:
+        if value != self._data:
+            # New compiled data, we should remove the decompiled representation
+            self.decompiled = None
+        self._data = value
 
+    def compile(self) -> None:
+        """
+        Compile the header. The result is stored in VfbHeader.data.
+        """
+        # XXX: Why do we need to always compile?
+        # if not self.modified:
+        #     return
+
+        self._data = self.compiler().compile(self.decompiled)
         self.modified = False
 
-        if self.data is None:
-            return b""
-
-        return self.data
-
     def read(self, stream: BufferedReader) -> None:
-        self.decompiled, self.size = self.parser(stream).parse()
-        self.data = None
+        self.decompiled = self.parser(stream).parse()
