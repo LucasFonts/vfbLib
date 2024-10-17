@@ -1,4 +1,4 @@
-from fontTools.misc.textTools import deHexStr, hexStr
+from fontTools.misc.textTools import hexStr
 from io import BytesIO
 from unittest import TestCase
 from vfbLib.compilers.header import VfbHeaderCompiler
