@@ -94,7 +94,11 @@ class BaseParser(StreamReader):
         decompiled = self._parse()
 
         # Make sure the parser consumed all of the data
-        assert self.stream.read() == b""
+        remainder = self.stream.read()
+        if remainder != b"":
+            logger.error(f"Parser {self.__class__.__name__} did not consume all bytes.")
+            logger.error(f"Remainder: {remainder!r}")
+            raise AssertionError
 
         return decompiled
 
