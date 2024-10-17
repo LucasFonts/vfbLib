@@ -37,7 +37,7 @@ class VfbEntry(StreamReader):
         # Temporary data for additional master, must be merged when compiling
         self.temp_masters: list[list] | None = None
         # The numeric and human-readable key of the entry
-        self.id = None
+        self.id: int | None = None
         self.key = None
         # Has the data been modified, i.e. it needs recompilation
         self._modified = False
