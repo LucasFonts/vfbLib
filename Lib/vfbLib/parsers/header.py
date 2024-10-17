@@ -1,5 +1,6 @@
 import logging
 
+from fontTools.misc.textTools import hexStr
 from io import BufferedReader
 from typing import Any
 from vfbLib.parsers.base import read_value, uint8, uint16
@@ -18,7 +19,7 @@ class VfbHeaderParser:
         header["filetype"] = self.stream.read(5).decode("cp1252")
         header["header1"] = self.read_uint16()
         header["header2"] = self.read_uint16()
-        header["reserved"] = str(self.stream.read(34))
+        header["reserved"] = hexStr(self.stream.read(34).decode("ascii"))
         header["header3"] = self.read_uint16()
         header["header4"] = self.read_uint16()
         header["header5"] = self.read_uint16()
