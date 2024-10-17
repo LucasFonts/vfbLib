@@ -50,6 +50,24 @@ class IntParser(BaseParser):
         return self.read_uint16()
 
 
+# class Int32Parser(BaseParser):
+#     """
+#     A parser that reads data as UInt32.
+#     """
+
+#     def _parse(self):
+#         return self.read_uint32()
+
+
+class Int64Parser(BaseParser):
+    """
+    A parser that reads data as UInt32.
+    """
+
+    def _parse(self):
+        return int.from_bytes(self.stream.read(64), byteorder="little", signed=False)
+
+
 class IntListParser(BaseParser):
     """
     A parser that reads data as a list of UInt16.
@@ -81,8 +99,18 @@ class PanoseParser(BaseParser):
 
 class SignedIntParser(BaseParser):
     """
-    A parser that reads data as signed Int16.
+    A parser that reads data as signed int16.
     """
 
     def _parse(self):
         return self.read_int16()
+
+
+class SignedInt32Parser(BaseParser):
+    """
+    A parser that reads data as signed int32.
+    """
+
+    def _parse(self):
+        # return int.from_bytes(self.stream.read(), byteorder="little", signed=True)
+        return self.read_int32()

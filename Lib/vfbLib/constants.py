@@ -42,9 +42,11 @@ from vfbLib.parsers.numeric import (
     DoubleParser,
     # FloatListParser,
     IntParser,
+    Int64Parser,
     IntListParser,
     PanoseParser,
     SignedIntParser,
+    SignedInt32Parser,
 )
 from vfbLib.parsers.options import ExportOptionsParser, OpenTypeExportOptionsParser
 from vfbLib.parsers.pclt import PcltParser
@@ -83,7 +85,7 @@ parser_classes = {
     1037: ("copyright", StringParser, None),
     1038: ("description", StringParser, None),
     1039: ("manufacturer", StringParser, None),
-    1044: ("Type 1 Unique ID", SignedIntParser, None),
+    1044: ("Type 1 Unique ID", SignedInt32Parser, None),
     1046: ("version full", StringParser, None),
     1047: ("Slant Angle", DoubleParser, None),
     1048: ("weight", SignedIntParser, None),  # Weight Class
@@ -184,7 +186,7 @@ parser_classes = {
     2018: ("Glyph GDEF Data", GlyphGDEFParser, None),
     2019: ("Glyph Sketch", GlyphSketchParser, None),
     2020: ("Glyph Anchors Supplemental", GlyphAnchorsSuppParser, None),
-    2021: ("Unicode Ranges", IntParser, None),
+    2021: ("Unicode Ranges", Int64Parser, None),
     2022: ("Export PCLT Table", IntParser, None),
     2023: ("2023", EncodedValueListParser, None),  # Glyph
     2024: ("OpenType Metrics Class Flags", OpenTypeClassFlagsParser, None),
