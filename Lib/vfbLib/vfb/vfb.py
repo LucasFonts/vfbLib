@@ -168,12 +168,16 @@ class Vfb:
                 if entry.key == "Master Count":
                     entry.decompile()
                     if entry.decompiled is not None:
+                        if TYPE_CHECKING:
+                            assert isinstance(entry.decompiled, int)
                         self.num_masters = entry.decompiled
                         entry.decompiled = None
 
                 elif entry.key == "TrueType Stems":
                     entry.decompile()
                     if entry.decompiled is not None:
+                        if TYPE_CHECKING:
+                            assert isinstance(entry.decompiled, dict)
                         self.ttStemsV_count = len(entry.decompiled.get("ttStemsV", []))
                         self.ttStemsH_count = len(entry.decompiled.get("ttStemsH", []))
                         entry.decompiled = None

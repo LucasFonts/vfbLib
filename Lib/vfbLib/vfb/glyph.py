@@ -33,7 +33,10 @@ class VfbGlyph:
     # UFO/cu2qu compatibility
 
     @cached_property
-    def name(self) -> str:
+    def name(self) -> str | None:
+        if self._glyph is None:
+            return None
+
         return self._glyph.name
 
     def clearContours(self):
