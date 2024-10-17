@@ -47,6 +47,7 @@ from vfbLib.parsers.numeric import (
     SignedIntParser,
 )
 from vfbLib.parsers.options import ExportOptionsParser, OpenTypeExportOptionsParser
+from vfbLib.parsers.pclt import PcltParser
 from vfbLib.parsers.ps import PostScriptInfoParser
 from vfbLib.parsers.text import (
     NameRecordsParser,
@@ -115,7 +116,7 @@ parser_classes = {
     1133: ("Type 1 XUIDs", IntListParser, None),
     1134: ("Type 1 XUIDs Count", IntParser, None),
     1135: ("upm", IntParser, None),
-    1136: ("PCLT Table", EncodedValueListParser, None),
+    1136: ("PCLT Table", PcltParser, None),
     1137: ("tsn", StringParser, None),
     1138: ("Name Records", NameRecordsParser, None),
     1139: ("OT Mac Name", StringParser, None),
