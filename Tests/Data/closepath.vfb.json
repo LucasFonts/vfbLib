@@ -1,12 +1,11 @@
 {
     "header": {
-        "size": 71,
         "decompiled": {
             "header0": 26,
             "filetype": "WLF10",
             "header1": 3,
             "header2": 44,
-            "reserved": "b'\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00'",
+            "reserved": "00000000000000000000000000000000000000000000000000000000000000000000",
             "header3": 1,
             "header4": 0,
             "header5": 4,
@@ -25,10 +24,7 @@
             "header12": 0,
             "header13": 262,
             "header14": 0
-        },
-        "modified": false,
-        "parser": "VfbHeaderParser",
-        "data": "1a574c46313003002c000000000000000000000000000000000000000000000000000000000000000000000001000000040000000a000b00018c02ff05020280038b0006010000"
+        }
     },
     "entries": [
         {
@@ -2280,15 +2276,30 @@
         },
         {
             "key": "PCLT Table",
-            "decompiled": [
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0
-            ]
+            "decompiled": {
+                "font_number": 0,
+                "pitch": 0,
+                "x_height": 0,
+                "style": 0,
+                "type_family": 0,
+                "cap_height": 0,
+                "symbol_set": 0,
+                "typeface": "\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000",
+                "character_complement": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                "file_name": "\u0000\u0000\u0000\u0000\u0000\u0000",
+                "stroke_weight": 0,
+                "width_type": 0,
+                "serif_style": 0
+            }
         },
         {
             "key": "Export PCLT Table",
