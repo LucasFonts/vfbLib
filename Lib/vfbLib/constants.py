@@ -9,7 +9,8 @@ from vfbLib.parsers.base import (
     EncodedKeyValuesParser1742,
     GaspParser,
     GlyphEncodingParser,
-    OpenTypeClassFlagsParser,
+    OpenTypeKerningClassFlagsParser,
+    OpenTypeMetricsClassFlagsParser
 )
 from vfbLib.parsers.bitmap import BackgroundBitmapParser, GlyphBitmapParser
 from vfbLib.parsers.cmap import CustomCmapParser
@@ -189,9 +190,9 @@ parser_classes = {
     2021: ("Unicode Ranges", Int64Parser, None),
     2022: ("Export PCLT Table", IntParser, None),
     2023: ("2023", EncodedValueListParser, None),  # Glyph
-    2024: ("OpenType Metrics Class Flags", OpenTypeClassFlagsParser, None),
+    2024: ("OpenType Metrics Class Flags", OpenTypeMetricsClassFlagsParser, None),
     2025: ("fontNote", StringParser, None),
-    2026: ("OpenType Kerning Class Flags", OpenTypeClassFlagsParser, None),
+    2026: ("OpenType Kerning Class Flags", OpenTypeKerningClassFlagsParser, None),
     2027: ("Glyph Origin", GlyphOriginParser, None),
     2028: ("2028", EncodedValueListParser, None),  # MM, proportional to num of masters
     2029: ("Glyph Anchors MM", GlyphAnchorsParser, None),  # MM-compatible

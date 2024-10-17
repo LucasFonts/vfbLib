@@ -1,5 +1,3 @@
-from fontTools.misc.textTools import deHexStr
-from io import BytesIO
 from unittest import TestCase
 from vfbLib.parsers.numeric import (
     IntParser,
@@ -8,11 +6,7 @@ from vfbLib.parsers.numeric import (
     SignedIntParser,
     SignedInt32Parser,
 )
-
-
-def expect(parser, encoded, decoded):
-    data = deHexStr(encoded)
-    assert parser().parse(BytesIO(data), len(data)) == decoded
+from vfbLib.testhelpers import expect
 
 
 class IntParserTest(TestCase):

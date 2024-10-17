@@ -11,7 +11,7 @@ from vfbLib.parsers.value import read_doubles, read_value, read_floats
 
 if TYPE_CHECKING:
     from io import BufferedReader
-    from vfbLib.typing import ClassFlagDict
+    from vfbLib.typing import KerningClassFlagDict, MetricsClassFlagDict
 
 
 logger = logging.getLogger(__name__)
@@ -199,9 +199,9 @@ class GlyphEncodingParser(BaseParser):
         return gid, nam
 
 
-class OpenTypeClassFlagsParser(BaseParser):
-    def _parse(self) -> ClassFlagDict:
-        class_flags: ClassFlagDict = {}
+class OpenTypeKerningClassFlagsParser(BaseParser):
+    def _parse(self) -> KerningClassFlagDict:
+        class_flags: KerningClassFlagDict = {}
         num_classes = self.read_value()
         for _ in range(num_classes):
             n = self.read_value()
@@ -209,4 +209,18 @@ class OpenTypeClassFlagsParser(BaseParser):
             flag1 = self.read_value()
             flag2 = self.read_value()
             class_flags[name] = (flag1, flag2)
+        return class_flags
+
+
+class OpenTypeMetricsClassFlagsParser(BaseParser):
+    def _parse(self) -> MetricsClassFlagDict:
+        class_flags: MetricsClassFlagDict = {}
+        num_classes = self.read_value()
+        for _ in range(num_classes):
+            n = self.read_value()
+            name = self.read_str(n)
+            flag1 = self.read_value()
+            flag2 = self.read_value()
+            flag3 = self.read_value()
+            class_flags[name] = (flag1, flag2, flag3)
         return class_flags

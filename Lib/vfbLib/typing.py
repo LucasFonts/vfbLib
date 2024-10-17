@@ -18,7 +18,9 @@ class Anchor(TypedDict):
     y1: NotRequired[int]
 
 
-ClassFlagDict = dict[str, tuple[int, int]]
+KerningClassFlagDict = dict[str, tuple[int, int]]
+
+MetricsClassFlagDict = dict[str, tuple[int, int, int]]
 
 
 class Component(TypedDict):
