@@ -1,5 +1,4 @@
 from fontTools.misc.textTools import hexStr
-from io import BytesIO
 from unittest import TestCase
 from vfbLib.compilers.header import VfbHeaderCompiler
 
@@ -68,13 +67,11 @@ header_522_hex = (
 
 class VfbHeaderCompilerTest(TestCase):
     def test_compilation_504(self):
-        stream = BytesIO()
-        c = VfbHeaderCompiler(stream=stream)
+        c = VfbHeaderCompiler()
         b = c.compile(header_504)
         assert hexStr(b) == header_504_hex
 
     def test_compilation_522(self):
-        stream = BytesIO()
-        c = VfbHeaderCompiler(stream=stream)
+        c = VfbHeaderCompiler()
         b = c.compile(header_522)
         assert hexStr(b) == header_522_hex
