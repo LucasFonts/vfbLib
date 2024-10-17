@@ -143,7 +143,10 @@ class VfbGlyphMaster:
         self._glyph = None
 
     @cached_property
-    def name(self) -> str:
+    def name(self) -> str | None:
+        if self._glyph is None:
+            return None
+
         return self._glyph.name
 
     def _copy_to_ufo_glyph(self, master_index):
