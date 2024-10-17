@@ -191,6 +191,7 @@ class VfbEntry(StreamReader):
         """
         Compile the entry. The result is stored in VfbEntry.data.
         """
+        # XXX: Solve this more elegantly:
         if not self.modified:
             return
 

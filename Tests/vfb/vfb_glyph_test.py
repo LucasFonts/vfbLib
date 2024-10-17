@@ -291,7 +291,7 @@ class VfbGlyphTest(TestCase):
         g = VfbGlyph(VfbEntry(vfb), vfb)
         g.entry.decompiled = glyph_dict_q
         g._copy_to_ufo_glyph()
-        g.target_master = 0
+        g.master_index = 0
         pen = RecordingPointPen()
         g.drawPoints(pen)
         assert pen.value == [
@@ -394,7 +394,7 @@ class VfbGlyphTest(TestCase):
         g = VfbGlyph(VfbEntry(vfb), vfb)
         g.entry.decompiled = glyph_dict_q
         g._copy_to_ufo_glyph()
-        g.target_master = 0
+        g.master_index = 0
         pen = RecordingPen()
         g.draw(pen)
         assert pen.value == [
@@ -425,7 +425,7 @@ class VfbGlyphTest(TestCase):
         g = VfbGlyph(VfbEntry(vfb), vfb)
         g.entry.decompiled = glyph_dict_c
         g._copy_to_ufo_glyph()
-        g.target_master = 0
+        g.master_index = 0
         pen = RecordingPointPen()
         g.drawPoints(pen)
         assert pen.value == [
@@ -481,7 +481,7 @@ class VfbGlyphTest(TestCase):
         g = VfbGlyph(VfbEntry(vfb), vfb)
         g.entry.decompiled = glyph_dict_c
         g._copy_to_ufo_glyph()
-        g.target_master = 0
+        g.master_index = 0
         pen = RecordingPen()
         g.draw(pen)
         assert pen.value == [
@@ -547,6 +547,7 @@ class VfbGlyphTest(TestCase):
         pen.addPoint(pt=(200, 200), segmentType="line", smooth=False)
         pen.addPoint(pt=(100, 150), segmentType="line", smooth=False)
         pen.endPath()
+        g.entry.modified = True  # XXX: Hack
         g.entry.compile()
         assert (
             hexStr(g.entry.data)
@@ -572,6 +573,7 @@ class VfbGlyphTest(TestCase):
             "01090701018c61088ca38f00efef01ef8b018bef01275902f9d58b0f"
         )
         expected.decompile()
+        g.entry.modified = True  # XXX: Hack
         g.entry.compile()
         g.entry.clear_decompiled()
         g.entry.decompile()
@@ -629,7 +631,8 @@ class VfbGlyphTest(TestCase):
         pen.addPoint((151, 51), "line", False, None)
         pen.endPath()
         assert g.entry.decompiled["nodes"] == glyph_nodes_q_1m
-        g.entry.compile()
+        g.entry.modified = True
+        g.entry.compile()  # XXX: Hack
         g.entry.clear_decompiled()
         g.entry.decompile()
         assert g.entry.decompiled["nodes"] == glyph_nodes_q_1m
