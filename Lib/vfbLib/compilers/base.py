@@ -20,8 +20,9 @@ class StreamWriter:
     compilers inherit, but it may be subclassed directly if more flexibility is needed.
     """
 
-    encoding = "cp1252"
-    stream: BufferedWriter | BytesIO = BytesIO()
+    def __init__(self) -> None:
+        self.encoding = "cp1252"
+        self.stream: BufferedWriter | BytesIO = BytesIO()
 
     def write_bytes(self, value: bytes) -> None:
         """
