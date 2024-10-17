@@ -37,7 +37,7 @@ from vfbLib.ufo.vfb2ufo import TT_GLYPH_LIB_KEY, TT_LIB_KEY
 
 if TYPE_CHECKING:
     from fontTools.designspaceLib import DiscreteAxisDescriptor
-    from vfbLib.typing import Anchor, ClassFlagDict, GuidePropertyList
+    from vfbLib.typing import Anchor, KerningClassFlagDict, GuidePropertyList
     from vfbLib.ufo.typing import UfoGroups, UfoMMKerning
     from vfbLib.vfb.vfb import Vfb
 
@@ -70,7 +70,7 @@ class VfbToUfoBuilder:
         self.groups: UfoGroups = {}
         self.guide_properties: GuidePropertyList = []
         self.info = VfbToUfoInfo()
-        self.kerning_class_flags: ClassFlagDict = {}
+        self.kerning_class_flags: KerningClassFlagDict = {}
         self.num_blue_values = 0
         self.num_other_blues = 0
         self.num_family_blues = 0

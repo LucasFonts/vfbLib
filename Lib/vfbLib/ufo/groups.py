@@ -5,7 +5,7 @@ import logging
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from vfbLib.typing import ClassFlagDict
+    from vfbLib.typing import KerningClassFlagDict
     from vfbLib.ufo.typing import UfoGroups
 
 
@@ -14,7 +14,7 @@ logger = logging.getLogger(__name__)
 
 def transform_groups(
     orig_groups: UfoGroups,
-    kerning_class_flags: ClassFlagDict,
+    kerning_class_flags: KerningClassFlagDict,
     glyphOrder: list[str],
     skip_missing_group_glyphs: bool = False,
 ) -> tuple[UfoGroups, list[str], dict[str, str]]:
