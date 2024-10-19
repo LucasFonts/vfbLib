@@ -53,6 +53,7 @@ class VfbToUfoBuilder:
         base64=False,
         pshints=True,
         add_kerning_groups=False,
+        move_groups=True,
     ) -> None:
         """Serialize the JSON structure to UFO(s)
 
@@ -65,6 +66,8 @@ class VfbToUfoBuilder:
             pshints (bool, optional): Include PostScript hinting. Defaults to True.
             add_kerning_groups (bool, optional): Add kerning groups to `features.fea`.
                 Defaults to False.
+            move_groups (bool, optional): Move non-kerning groups from `groups.plist` to
+                `features.fea`. Defaults to True.
         """
         self.axes: list[AxisDescriptor | DiscreteAxisDescriptor] = []
         self.axis_count = 0
@@ -73,6 +76,7 @@ class VfbToUfoBuilder:
         self.encode_data_base64 = base64
         self.include_ps_hints = pshints
         self.add_kerning_groups_to_fea = add_kerning_groups
+        self.move_groups_to_fea = move_groups
 
         self.features_classes = ""
         self.features_code = ""
@@ -692,15 +696,26 @@ class VfbToUfoBuilder:
 
         self.ufo_features = Features()
         # Also add non-kerning classes to the feature code
+        move_groups = set()
         for name, glyphs in ufo_groups.items():
             if (
                 name.startswith(".")
                 or not self.add_kerning_groups_to_fea
                 and name.startswith("public.kern")
+                or not self.move_groups_to_fea
             ):
                 continue
 
             self.ufo_features.text += f"@{name} = [{' '.join(glyphs)}];\n"
+            move_groups.add(name)
+
+        if self.move_groups_to_fea:
+            # Remove groups that were added to the feature code from the groups dict
+            for name in move_groups:
+                try:
+                    del self.ufo_groups[name]
+                except KeyError:
+                    logger.warning(f"Trying to remove non-existing group: {name}")
 
         if self.features_code:
             self.ufo_features.text += f"\n\n{self.features_code}"

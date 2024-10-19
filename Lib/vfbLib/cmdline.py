@@ -103,6 +103,13 @@ def vfb2ufo():
         help="force overwrite",
     )
     parser.add_argument(
+        "-g",
+        "--keep-groups",
+        action="store_true",
+        default=False,
+        help="don't move non-kerning groups from groups.plist to feature code",
+    )
+    parser.add_argument(
         "-k",
         "--add-kerning-groups",
         action="store_true",
@@ -196,6 +203,7 @@ def vfb2ufo():
             base64=args.base64,
             pshints=not args.no_postscript_hints,
             add_kerning_groups=args.add_kerning_groups,
+            move_groups=not args.keep_groups,
         )
         builder.write(
             out_path,
