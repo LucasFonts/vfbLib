@@ -72,7 +72,7 @@ class VfbToUfoBuilder:
         self.minimal = minimal
         self.encode_data_base64 = base64
         self.include_ps_hints = pshints
-        self.add_kerning_groups = add_kerning_groups
+        self.add_kerning_groups_to_fea = add_kerning_groups
 
         self.features_classes = ""
         self.features_code = ""
@@ -695,7 +695,7 @@ class VfbToUfoBuilder:
         for name, glyphs in ufo_groups.items():
             if (
                 name.startswith(".")
-                or not self.add_kerning_groups
+                or not self.add_kerning_groups_to_fea
                 and name.startswith("public.kern")
             ):
                 continue
