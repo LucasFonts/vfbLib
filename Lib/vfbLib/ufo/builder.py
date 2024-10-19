@@ -54,8 +54,17 @@ class VfbToUfoBuilder:
         pshints=True,
         add_kerning_groups=False,
     ) -> None:
-        """
-        Serialize the JSON structure to UFO(s)
+        """Serialize the JSON structure to UFO(s)
+
+        Args:
+            vfb (Vfb): The `vfbLib.vfb.vfb.Vfb` to convert to UFO
+            minimal (bool, optional): Convert only data necessary to generate font.
+                Defaults to False.
+            base64 (bool, optional): Store lib data in base64 encoding. Defaults to
+                False.
+            pshints (bool, optional): Include PostScript hinting. Defaults to True.
+            add_kerning_groups (bool, optional): Add kerning groups to `features.fea`.
+                Defaults to False.
         """
         self.axes: list[AxisDescriptor | DiscreteAxisDescriptor] = []
         self.axis_count = 0
