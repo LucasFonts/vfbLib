@@ -210,7 +210,6 @@ class Vfb:
         with open(out_path, "wb") as vfb:
             self.header.compile()
             assert self.header.data is not None
-            print(self.header.data)
             vfb.write(self.header.data)
 
             for entry in self.entries:
