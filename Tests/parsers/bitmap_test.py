@@ -1,5 +1,3 @@
-from fontTools.misc.textTools import deHexStr, hexStr
-from io import BytesIO
 from unittest import TestCase
 from vfbLib.parsers.bitmap import pprint_bitmap
 

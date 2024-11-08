@@ -6,30 +6,47 @@ from vfbLib.parsers.numeric import (
     SignedIntParser,
     SignedInt32Parser,
 )
-from vfbLib.testhelpers import expect
 
 
 class IntParserTest(TestCase):
     def test_unicode_ranges(self):
-        expect(IntParser, "3200", 50)
+        data = "3200"
+        expected = 50
+        result = IntParser().parse_hex(data)
+        assert result == expected
 
 
 class Int64ParserTest(TestCase):
     def test_unicode_ranges(self):
-        expect(Int64Parser, "00000000000000000000000000000000", 0)
+        data = "00000000000000000000000000000000"
+        expected = 0
+        result = Int64Parser().parse_hex(data)
+        assert result == expected
 
 
 class SignedIntParserTest(TestCase):
     def test_minus_one(self):
-        expect(SignedIntParser, "ffff", -1)
+        data = "ffff"
+        expected = -1
+        result = SignedIntParser().parse_hex(data)
+        assert result == expected
 
     def test_hhea_ascender(self):
-        expect(SignedIntParser, "ee02", 750)
+        data = "ee02"
+        expected = 750
+        result = SignedIntParser().parse_hex(data)
+        assert result == expected
 
     def test_hhea_descender(self):
-        expect(SignedIntParser, "06ff", -250)
+        data = "06ff"
+        expected = -250
+        result = SignedIntParser().parse_hex(data)
+        assert result == expected
 
 
 class SignedInt32ParserTest(TestCase):
     def test_minus_one(self):
-        expect(SignedInt32Parser, "ffffffff", -1)
+        data = "ffffffff"
+        expected = -1
+        result = SignedInt32Parser().parse_hex(data)
+        assert result == expected

@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import logging
 
-from fontTools.misc.textTools import hexStr
+from fontTools.misc.textTools import deHexStr, hexStr
 from io import BytesIO
 from struct import unpack
 from typing import TYPE_CHECKING, Any
@@ -121,6 +121,16 @@ class BaseParser(StreamReader):
             raise AssertionError
 
         return decompiled
+
+    def parse_hex(self, hexstr: str):
+        """
+        Parse the data given in hex string format, e.g. "8c 8d 89 8b". Used for testing.
+
+        Args:
+            hexstr (str): The data
+        """
+        data = deHexStr(hexstr)
+        return self.parse(BytesIO(data), len(data))
 
     def _parse(self) -> Any:
         """

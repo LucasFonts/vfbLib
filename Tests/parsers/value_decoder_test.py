@@ -1,6 +1,6 @@
 import pytest
 
-from fontTools.misc.textTools import deHexStr, hexStr
+from fontTools.misc.textTools import deHexStr
 from io import BytesIO
 from unittest import TestCase
 
