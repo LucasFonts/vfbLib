@@ -2990,8 +2990,7 @@
                         }
                     ]
                 }
-            },
-            "compiler": "GlyphCompiler"
+            }
         },
         {
             "key": "Links",
@@ -3392,8 +3391,7 @@
                         }
                     ]
                 }
-            },
-            "compiler": "GlyphCompiler"
+            }
         },
         {
             "key": "Links",
@@ -3679,8 +3677,7 @@
                         }
                     ]
                 }
-            },
-            "compiler": "GlyphCompiler"
+            }
         },
         {
             "key": "Links",
@@ -3828,8 +3825,7 @@
                         ]
                     ]
                 }
-            },
-            "compiler": "GlyphCompiler"
+            }
         },
         {
             "key": "Links",

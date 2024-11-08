@@ -2682,8 +2682,7 @@
                         0
                     ]
                 ]
-            },
-            "compiler": "GlyphCompiler"
+            }
         },
         {
             "key": "2023",
@@ -3095,8 +3094,7 @@
                         []
                     ]
                 }
-            },
-            "compiler": "GlyphCompiler"
+            }
         },
         {
             "key": "2023",

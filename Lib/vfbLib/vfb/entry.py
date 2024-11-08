@@ -164,12 +164,8 @@ class VfbEntry(StreamReader):
             if self.decompiled is None:
                 d["size"] = self.size
                 d["data"] = hexStr(self.data)
-                if self.parser is not None:
-                    d["parser"] = self.parser.__name__
             else:
                 d["decompiled"] = self.decompiled
-                if self.compiler is not None:
-                    d["compiler"] = self.compiler.__name__
                 if self.modified:
                     d["modified"] = True
         else:

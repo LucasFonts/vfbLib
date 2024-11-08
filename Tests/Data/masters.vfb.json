@@ -2627,7 +2627,7 @@
         },
         {
             "key": "Master Name",
-            "decompiled": "Wt0 Wd0"
+            "decompiled": "Wt0 Wd0 "
         },
         {
             "key": "Master Location",
@@ -2643,7 +2643,7 @@
         },
         {
             "key": "Master Name",
-            "decompiled": "Wt1 Wd0"
+            "decompiled": "Wt1 Wd0 "
         },
         {
             "key": "Master Location",
@@ -2659,7 +2659,7 @@
         },
         {
             "key": "Master Name",
-            "decompiled": "Wt0 Wd1"
+            "decompiled": "Wt0 Wd1 "
         },
         {
             "key": "Master Location",
@@ -2675,7 +2675,7 @@
         },
         {
             "key": "Master Name",
-            "decompiled": "Wt1 Wd1"
+            "decompiled": "Wt1 Wd1 "
         },
         {
             "key": "Master Location",
@@ -3468,8 +3468,7 @@
                         -41
                     ]
                 }
-            },
-            "compiler": "GlyphCompiler"
+            }
         },
         {
             "key": "2023",
@@ -3770,8 +3769,7 @@
                         -42
                     ]
                 }
-            },
-            "compiler": "GlyphCompiler"
+            }
         },
         {
             "key": "Background Bitmap",
