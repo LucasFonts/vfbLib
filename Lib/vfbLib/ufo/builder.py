@@ -133,14 +133,18 @@ class VfbToUfoBuilder:
             # Jump to the next 10 axis mappings
             data = data[10:]
 
-    def add_ot_class(self, data: dict[str, list[str] | str]) -> None:
-        if "name" not in data:
+    def add_ot_class(self, data: str) -> None:
+        if ":" not in data:
             logger.warning(f"Malformed OT class definition, skipping: {data}")
             return
 
-        name = data["name"]
-        if not isinstance(name, str):
-            raise TypeError(f"OT class name must be a string: {name} ({type(name)})")
+        name, contents = data.split(":")
+
+        glyphs = []
+        for glyph in contents.split(" "):
+            glyph = glyph.strip()
+            if glyph:
+                glyphs.append(glyph)
 
         is_kerning = name.startswith("_")
 
@@ -148,7 +152,7 @@ class VfbToUfoBuilder:
             logger.warning(f"Duplicate OT class name, skipping: {name}")
             return
 
-        glyphs_list = data["glyphs"]
+        glyphs_list = glyphs
         if is_kerning:
             # Reorganize glyphs so that the "keyglyph" is first
             glyphs: list[str] = [g.strip() for g in glyphs_list if not g.endswith("'")]
@@ -695,15 +699,18 @@ class VfbToUfoBuilder:
             self.lib["com.lucasfonts.vfblib.groupKeyGlyphs"] = key_glyphs
 
         self.ufo_features = Features()
+
         # Also add non-kerning classes to the feature code
         move_groups = set()
         for name, glyphs in ufo_groups.items():
-            if (
-                name.startswith(".")
-                or not self.add_kerning_groups_to_fea
-                and name.startswith("public.kern")
-                or not self.move_groups_to_fea
-            ):
+            if name.startswith("public.kern") and not self.add_kerning_groups_to_fea:
+                # Kerning group
+                continue
+            if name.startswith("."):
+                # Metrics group
+                continue
+            if not name.startswith("public.kern") and not self.move_groups_to_fea:
+                # OT group
                 continue
 
             self.ufo_features.text += f"@{name} = [{' '.join(glyphs)}];\n"

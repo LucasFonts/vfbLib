@@ -55,7 +55,6 @@ from vfbLib.parsers.pclt import PcltParser
 from vfbLib.parsers.ps import PostScriptInfoParser
 from vfbLib.parsers.text import (
     NameRecordsParser,
-    OpenTypeClassParser,
     OpenTypeStringParser,
     StringParser,
 )
@@ -143,7 +142,7 @@ parser_classes = {
     1274: ("Zone Stop PPEM", IntParser, None),
     1275: ("Code Stop PPEM", IntParser, None),
     1276: ("openTypeFeatures", OpenTypeStringParser, None),
-    1277: ("OpenType Class", OpenTypeClassParser, None),
+    1277: ("OpenType Class", StringParser, StringCompiler),
     1278: ("hhea_ascender", SignedIntParser, None),
     1279: ("hhea_descender", SignedIntParser, None),
     1294: ("Global Guides", GlobalGuidesParser, None),

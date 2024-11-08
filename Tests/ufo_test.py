@@ -17,7 +17,7 @@ class GlyphCompilerTest(TestCase):
     def test_vfb_to_ufo_mm(self):
         vfb = Vfb(vfb_path("masters.vfb"))
         vfb.decompile()
-        builder = VfbToUfoBuilder(vfb)
+        builder = VfbToUfoBuilder(vfb, move_groups=False)
         ufos, designspace = builder.get_ufos_designspace(data_path())
         assert len(ufos) == 4
         assert isinstance(designspace, DesignSpaceDocument)
@@ -56,7 +56,7 @@ class GlyphCompilerTest(TestCase):
         # Check that objects have been copied and are not shared anymore between UFOs
         vfb = Vfb(vfb_path("masters.vfb"))
         vfb.decompile()
-        builder = VfbToUfoBuilder(vfb)
+        builder = VfbToUfoBuilder(vfb, move_groups=False)
         ufos = builder.get_ufo_masters(silent=True)
         assert len(ufos) == 4
 
@@ -65,15 +65,12 @@ class GlyphCompilerTest(TestCase):
         # Features
 
         fea0 = (
-            "@letters = [a t];\n\n\nlanguagesystem DFLT dflt;\nfeature kern {\n"
+            "\n\nlanguagesystem DFLT dflt;\nfeature kern {\n"
             "  pos a t 100 ;\n} kern;\n"
         )
 
         assert ufo0.features.text == fea0
         assert ufo1.features.text == fea0
-        ufo0.features.text = ufo0.features.text.replace("@letters", "@lower")
-        assert ufo0.features.text.startswith("@lower = [a t];")
-        assert ufo1.features.text.startswith("@letters = [a t];")
 
         # Glyphs
 

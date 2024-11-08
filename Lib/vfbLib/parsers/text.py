@@ -33,29 +33,6 @@ class NameRecordsParser(BaseParser):
         return result
 
 
-class OpenTypeClassParser(BaseParser):
-    """
-    A parser that reads data as strings and returns it formatted to represent an
-    OpenType class
-    """
-
-    def _parse(self) -> dict[str, list[str] | str]:
-        s = self.read_str_all()
-        if ":" not in s:
-            logger.warning(f"Malformed OpenType class: {s}")
-            return {"str": s, "err": "PARSE_ERROR"}
-            # raise ValueError
-
-        name, contents = s.split(":")
-
-        glyphs = []
-        for glyph in contents.split(" "):
-            glyph = glyph.strip()
-            if glyph:
-                glyphs.append(glyph)
-        return {"name": name, "glyphs": glyphs}
-
-
 class OpenTypeStringParser(BaseParser):
     """
     A parser that reads data as a strings and returns it as a list.
