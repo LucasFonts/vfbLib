@@ -94,7 +94,7 @@ class PanoseParser(BaseParser):
     """
 
     def _parse(self):
-        return unpack("<10b", self.stream.read())
+        return list(unpack("<10b", self.stream.read()))
 
 
 class SignedIntParser(BaseParser):
