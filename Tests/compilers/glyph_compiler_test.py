@@ -5,8 +5,7 @@ from vfbLib.compilers.glyph import GlyphCompiler
 from vfbLib.parsers.glyph import GlyphParser
 
 
-composite_2_masters_binary = deHexStr(
-    """
+composite_2_masters_binary = """
 01 09 07 01
 01    94 41 64 69 65 72 65 73 69 73
 08    8D 8B 8B
@@ -31,7 +30,6 @@ composite_2_masters_binary = deHexStr(
       FA2B FB0B 2C
 0F
 """
-)
 
 composite_2_masters_json = {
     "components": [
@@ -97,8 +95,7 @@ components_2_masters_json = {
     ]
 }
 
-empty_glyph_binary = deHexStr(
-    """
+empty_glyph_binary = """
 01 09 07 01
 01    90
       2E 6E 75 6C 6C
@@ -108,7 +105,6 @@ empty_glyph_binary = deHexStr(
 03    8B 8B 8B
 0F
 """
-)
 
 empty_glyph_json = {
     "name": ".null",
@@ -117,8 +113,7 @@ empty_glyph_json = {
     "metrics": [(0, 0), (0, 0)],
 }
 
-long_binary = deHexStr(
-    """
+long_binary = """
 01 09 07 01
 01    98
       4C 61 74 69 6E 43 61 70 69 74 61 6C 73
@@ -129,16 +124,13 @@ long_binary = deHexStr(
       04 79 82 79 83
       04 5C 7F 5E 82
       01 708B708B04678B578B0454A648A70467BE63C00479D47BD4018BBA8BB8048BB88BBC049CD9A3DB04B1C4B9C304C6ACCFA901B48BB88B04A08BA28B04B383B584019D84998601816A7229047A93828E046793768F01798B808B046D8B7C8B04606F758004705B7C72047F4C8463018B678B6F048B3A8B5304C231A55B01C48BA88B04A18B998B04B095A28F019A93969000F7B85DF7A521016DF17EC901FB2A8B2A8B016D257F4D01648BFB0D8B01F70DF826E7F82601BB8BF7538B01F70EFC26E7FC2600FB18F7C5FB4DF79504869B89990485A787A701879B899C018B8B8A8B04887D8A7A04846E876F01867C887D0158FB42762401F7188BC68B00F732FB19F74FFB2E018BF8268BF825049D8CA58D04B28BD48D019D8BB38B04CA8BDB8B04C64DD546018B568B45048B6E8B6704795C7354046A696065045B795178016C8B698B04848B898B047C8B868B01848C898B018BFB358BFB0A008BF7558BF76704928A8D8A049B8A918A01948B8F8B04B88B998B04B5BC99A6018BB68BA3048BB68BA20461B97EA9015E8B7B8B04858B898B04798B878B01838A868B00FD23F722FDA7F75C018BF8268BF82601B18BF7118B018BFC068BFBC201F7108BE18B018B6B8B2700F7B18BF7958B016DF17EC901FB2A8B2A8B016D257F4D01648BFB0D8B01F70DF826E7F82601BB8BF7538B01F70EFC26E7FC2600FB18F7C5FB4DF79504869B89990485A787A701879B899C018B8B8A8B04887D8A7A04846E876F01867C887D0158FB42762401F7188BC68B00F764F781F7D5F729018BFC068BFBC301658BFB118B018BF8068BF7C301268B4A8B018BAB8BEE01F7848BF7948B018B6B8B2800F7AAFC06F769FBC301FB19F7AF55F75304839C869F047CAE83B40183A189A2018A8B898B048C668D68048DFB0A8D55018B388B6E018BFB0B8BFB3101668BFB028B018BF8268BF82601C08BF74B8B01F718FBB0B5FB2804937D9177049B63935C0192798D7A018C8B8D8B048AA18A9D048AC989AD048AD08AAA048BD08BA5018BA98B94018BF38BF70601B08BF7018B018BFC268BFC2602FF0000048A8BFF000004E78B038B8B8B0F"""
-)
 
-glyph_guides_binary = deHexStr(
-    """
+glyph_guides_binary = """
 04    8C
       F93A 8B
       8C
       F715 8B
 """
-)
 
 glyph_guides_json = {
     "guides": {
@@ -147,7 +139,7 @@ glyph_guides_json = {
     }
 }
 
-angled_glyph_guides_binary = deHexStr("04 8C F8C7 F849 8C F7E5 FF00000943")
+angled_glyph_guides_binary = "04 8C F8C7 F849 8C F7E5 FF00000943"
 
 angled_glyph_guides_json = {
     "guides": {
@@ -157,8 +149,7 @@ angled_glyph_guides_json = {
 }
 
 
-psglyph_1master = deHexStr(
-    """
+psglyph_1master = """
 01 09 07 01
 01    8C 64
 08    8C F87E B2
@@ -208,7 +199,6 @@ psglyph_1master = deHexStr(
       8B
 0F
 """
-)
 
 psglyph_1master_nodes = deHexStr(
     """
@@ -314,8 +304,7 @@ psglyph_1master_expected = {
 }
 # fmt: on
 
-ttglyph_2_masters_binary = deHexStr(
-    """
+ttglyph_2_masters_binary = """
 01 09 07 01
 01    8C 6F
 08    8D F784 A3
@@ -366,7 +355,6 @@ ttglyph_2_masters_binary = deHexStr(
       04 8E A0 8B 8A
       8B 8B 8B
 0F"""
-)
 
 ttglyph_2_masters_json = {
     "kerning": {
@@ -469,68 +457,60 @@ class PartCompiler(GlyphCompiler):
 class GlyphCompilerTest(TestCase):
     def test_empty_2masters_roundtrip(self):
         # Decompile
-        dec = GlyphParser().parse(
-            BytesIO(empty_glyph_binary), len(empty_glyph_binary), 2
-        )
+        dec = GlyphParser().parse_hex(empty_glyph_binary, 2)
         assert dec == empty_glyph_json
 
         # Compile
-        compiled = GlyphCompiler().compile(dec, 2)
-        # print(hexStr(compiled))
+        compiled = GlyphCompiler().compile_hex(dec, 2)
         # ... and parse again
-        cde = GlyphParser().parse(BytesIO(compiled), len(compiled), 2)
+        cde = GlyphParser().parse_hex(compiled, 2)
         assert dec == cde
 
     def test_long_roundtrip(self):
         # Decompile
-        dec = GlyphParser().parse(BytesIO(long_binary), len(long_binary), 2)
+        dec = GlyphParser().parse_hex(long_binary, 2)
         # assert dec == {}
 
         # Compile
-        compiled = GlyphCompiler().compile(dec, 2)
+        compiled = GlyphCompiler().compile_hex(dec, 2)
         # print(hexStr(compiled))
         # ... and parse again
-        cde = GlyphParser().parse(BytesIO(compiled), len(compiled), 2)
+        cde = GlyphParser().parse_hex(compiled, 2)
         assert dec == cde
 
     def test_psglyph_1master_roundtrip(self):
         # Decompile
-        dec = GlyphParser().parse(BytesIO(psglyph_1master), len(psglyph_1master), 1)
+        dec = GlyphParser().parse_hex(psglyph_1master, 1)
         assert dec == psglyph_1master_expected
 
         # Compile
-        compiled = GlyphCompiler().compile(dec, 1)
+        compiled = GlyphCompiler().compile_hex(dec, 1)
         # print(hexStr(compiled))
         # ... and parse again
-        cde = GlyphParser().parse(BytesIO(compiled), len(compiled), 1)
+        cde = GlyphParser().parse_hex(compiled, 1)
         assert dec == cde
 
     def test_truetype_2_masters_roundtrip(self):
         # Decompile
-        dec = GlyphParser().parse(
-            BytesIO(ttglyph_2_masters_binary), len(ttglyph_2_masters_binary)
-        )
+        dec = GlyphParser().parse_hex(ttglyph_2_masters_binary)
         assert dec == ttglyph_2_masters_json
 
         # Compile
-        compiled = GlyphCompiler().compile(dec, 2)
+        compiled = GlyphCompiler().compile_hex(dec, 2)
         # print(hexStr(compiled))
         # ... and parse again
-        cde = GlyphParser().parse(BytesIO(compiled), len(compiled), 2)
+        cde = GlyphParser().parse_hex(compiled, 2)
         assert dec == cde
 
     def test_composite_2_masters_roundtrip(self):
         # Decompile
-        dec = GlyphParser().parse(
-            BytesIO(composite_2_masters_binary), len(composite_2_masters_binary), 2
-        )
+        dec = GlyphParser().parse_hex(composite_2_masters_binary, 2)
         assert dec == composite_2_masters_json
 
         # Compile
-        compiled = GlyphCompiler().compile(dec, 2)
-        # print(hexStr(compiled))
+        compiled = GlyphCompiler().compile_hex(dec, 2)
         # ... and parse again
-        cde = GlyphParser().parse(BytesIO(compiled), len(compiled), 2)
+        cde = GlyphParser().parse_hex(compiled, 2)
         assert dec == cde
 
     def test_components_2_masters(self):
@@ -541,11 +521,11 @@ class GlyphCompilerTest(TestCase):
 
     def test_guides_1_master(self):
         data = PartCompiler()._compile(glyph_guides_json, 1, "_compile_guides")
-        assert hexStr(data) == hexStr(glyph_guides_binary)
+        assert hexStr(data) == hexStr(deHexStr(glyph_guides_binary))
 
     def test_guides_angled_1_master(self):
         data = PartCompiler()._compile(angled_glyph_guides_json, 1, "_compile_guides")
-        assert hexStr(data) == hexStr(angled_glyph_guides_binary)
+        assert hexStr(data) == hexStr(deHexStr(angled_glyph_guides_binary))
 
     def test_hints_1(self):
         data = PartCompiler()._compile(psglyph_1master_expected, 1, "_compile_hints")

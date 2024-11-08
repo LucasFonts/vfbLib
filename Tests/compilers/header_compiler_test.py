@@ -67,11 +67,9 @@ header_522_hex = (
 
 class VfbHeaderCompilerTest(TestCase):
     def test_compilation_504(self):
-        c = VfbHeaderCompiler()
-        b = c.compile(header_504)
+        b = VfbHeaderCompiler().compile(header_504)
         assert hexStr(b) == header_504_hex
 
     def test_compilation_522(self):
-        c = VfbHeaderCompiler()
-        b = c.compile(header_522)
+        b = VfbHeaderCompiler().compile(header_522)
         assert hexStr(b) == header_522_hex
