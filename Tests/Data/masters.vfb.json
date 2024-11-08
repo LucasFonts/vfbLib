@@ -2355,56 +2355,27 @@
         },
         {
             "key": "OpenType Class",
-            "decompiled": {
-                "name": "_a_LEFT",
-                "glyphs": [
-                    "a'"
-                ]
-            }
+            "decompiled": "_a_LEFT: a'"
         },
         {
             "key": "OpenType Class",
-            "decompiled": {
-                "name": "_a_RIGHT",
-                "glyphs": [
-                    "a'"
-                ]
-            }
+            "decompiled": "_a_RIGHT: a'"
         },
         {
             "key": "OpenType Class",
-            "decompiled": {
-                "name": "_t",
-                "glyphs": [
-                    "t'"
-                ]
-            }
+            "decompiled": "_t: t'"
         },
         {
             "key": "OpenType Class",
-            "decompiled": {
-                "name": "_empty",
-                "glyphs": []
-            }
+            "decompiled": "_empty: "
         },
         {
             "key": "OpenType Class",
-            "decompiled": {
-                "name": ".mtrx5",
-                "glyphs": [
-                    "a"
-                ]
-            }
+            "decompiled": ".mtrx5: a"
         },
         {
             "key": "OpenType Class",
-            "decompiled": {
-                "name": "letters",
-                "glyphs": [
-                    "a",
-                    "t"
-                ]
-            }
+            "decompiled": "letters: a t"
         },
         {
             "key": "513",
