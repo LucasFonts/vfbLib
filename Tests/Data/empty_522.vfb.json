@@ -2698,21 +2698,13 @@
             }
         },
         {
-            "key": "1742",
-            "decompiled": [
-                {
-                    "1": 0
-                },
-                {
-                    "2": 152
-                },
-                {
-                    "3": 82
-                },
-                {
-                    "4": 1
-                }
-            ]
+            "key": "Mapping Mode",
+            "decompiled": {
+                "mapping_mode": "names_or_index",
+                "2": 152,
+                "3": 82,
+                "mapping_id": 1
+            }
         }
     ]
 }

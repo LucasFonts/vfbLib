@@ -159,8 +159,44 @@ class EncodedKeyValuesParser(BaseParser):
         return values
 
 
-class EncodedKeyValuesParser1742(EncodedKeyValuesParser):
+class MappingModeParser(BaseParser):
     __end__ = 0x00
+    modes = {
+        0: "names_or_index",
+        1: "unicode_ranges",
+        3: "codepages",
+    }
+
+    def _parse(self) -> dict[str, str | int]:
+        value: dict[str, str | int] = {}
+        while True:
+            key = self.read_uint8()
+            if key == self.__end__:
+                break
+
+            v = self.read_value()
+
+            if key == 1:
+                value["mapping_mode"] = self.modes.get(v, str(v))
+            elif key == 2:
+                value["2"] = v
+            elif key == 3:
+                value["3"] = v
+            elif key == 4:
+                # encoding id:
+                #   in mapping_mode 0:
+                #      -1: glyph index mode
+                #       0: imported encoding
+                #       n: encoding id
+                #   in mapping_mode 1:
+                #      index into unicode_ranges from uranges.dat
+                #   in mapping mode 3:
+                #      index into codepages sorted by group, then name (?)
+                value["mapping_id"] = v
+            else:
+                raise KeyError
+
+        return value
 
 
 class EncodedValueParser(BaseParser):
