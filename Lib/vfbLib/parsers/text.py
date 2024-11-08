@@ -89,4 +89,4 @@ class StringParser(BaseParser):
     """
 
     def _parse(self):
-        return self.stream.read().decode(self.encoding).strip("\u0000 ")
+        return self.read_str_all()

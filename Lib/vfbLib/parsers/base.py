@@ -49,7 +49,27 @@ class StreamReader:
         return int.from_bytes(self.stream.read(uint32), byteorder="little", signed=True)
 
     def read_str(self, size: int) -> str:
+        """
+        Return a string of the specified `size` from the current stream with the current
+        encoding
+
+        Args:
+            size (int): The size in bytes to be converted to a string
+
+        Returns:
+            str: The string
+        """
         return self.stream.read(size).decode(self.encoding)
+
+    def read_str_all(self) -> str:
+        """
+        Return the remaining bytes of the current stream as a string with the current
+        encoding.
+
+        Returns:
+            str: The string
+        """
+        return self.stream.read().decode(self.encoding)
 
     def read_uint8(self) -> int:
         return int.from_bytes(self.stream.read(uint8), byteorder="little", signed=False)
