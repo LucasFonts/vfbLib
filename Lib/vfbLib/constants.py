@@ -149,7 +149,7 @@ parser_classes = {
     1296: ("Global Guide Properties", GuidePropertiesParser, None),
     1410: ("1410", FL3Type1410Parser, None),
     1500: ("Encoding", GlyphEncodingParser, None),
-    1501: ("Encoding Mac", GlyphEncodingParser, None),
+    1501: ("Encoding Imported", GlyphEncodingParser, None),
     1502: ("1502", IntParser, None),
     1503: ("Master Count", IntParser, None),
     1504: ("Master Name", StringParser, StringCompiler),
