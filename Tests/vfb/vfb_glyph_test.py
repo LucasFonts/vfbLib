@@ -638,4 +638,9 @@ class VfbGlyphTest(TestCase):
         assert g.entry.decompiled["nodes"] == glyph_nodes_q_1m
 
     def test_getPointPenMM(self):
+        # FIXME
+        pass
+
+    def test_getPointPen_empty(self):
+        # FIXME
         pass
