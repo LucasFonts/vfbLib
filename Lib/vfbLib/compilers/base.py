@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from fontTools.misc.textTools import hexStr
 from io import BytesIO
 from struct import pack
 from typing import TYPE_CHECKING, Any
@@ -112,6 +113,21 @@ class BaseCompiler(StreamWriter):
         self.stream = BytesIO()
         self._compile(data)
         return self.stream.getvalue()
+
+    def compile_hex(self, data: Any, master_count: int = 0) -> str:
+        """
+        Compile the data given into a hex string format, e.g. "8c 8d 89 8b". Used for
+        testing.
+
+        Args:
+            data (Any): The input data
+            master_count (int, optional): Number of masters. Defaults to 0.
+
+        Returns:
+            str: The hex string
+        """
+        b = self.compile(data, master_count)
+        return hexStr(b)
 
     def _compile(self, data: Any) -> None:
         raise NotImplementedError
