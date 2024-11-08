@@ -40,7 +40,7 @@ class OpenTypeClassParser(BaseParser):
     """
 
     def _parse(self) -> dict[str, list[str] | str]:
-        s = self.stream.read().decode(self.encoding).strip("\u0000 ")
+        s = self.read_str_all()
         if ":" not in s:
             logger.warning(f"Malformed OpenType class: {s}")
             return {"str": s, "err": "PARSE_ERROR"}
@@ -62,7 +62,7 @@ class OpenTypeStringParser(BaseParser):
     """
 
     def _parse(self) -> list[str]:
-        s = self.stream.read().decode(self.encoding).strip("\u0000 ")
+        s = self.read_str_all()
         # Filter more than 2 consecutive empty lines
         lines = []
         c = 0
