@@ -37,7 +37,7 @@ class VfbEntry(StreamReader):
         # Temporary data for additional master, must be merged when compiling
         self.temp_masters: list[list] | None = None
         # The numeric and human-readable key of the entry
-        self.id: int | None = None
+        self.id = None
         self.key = None
         # Has the data been modified, i.e. it needs recompilation
         self._modified = False
@@ -91,6 +91,22 @@ class VfbEntry(StreamReader):
         return len(self.data)
 
     @property
+    def id(self) -> int | None:
+        return self._id
+
+    @id.setter
+    def id(self, value: int | None) -> None:
+        if value is None:
+            self.compiler = None
+            self.parser = None
+        else:
+            self._id = value
+            self.key, self.parser, self.compiler = parser_classes.get(
+                value, (str(self.id), FALLBACK_PARSER, None)
+            )
+            self.parser.encoding = self.vfb.encoding
+
+    @property
     def modified(self) -> bool:
         return self._modified
 
@@ -124,20 +140,12 @@ class VfbEntry(StreamReader):
 
         # # Value is False, no change
 
-    def _read_entry(
-        self,
-    ) -> tuple[str, type[BaseParser], type[BaseCompiler] | None, int]:
+    def _read_entry(self) -> int:
         """
-        Read an entry from the stream and return its key, specialized parser
-        class, and data size.
+        Read an entry from the stream and return its data size.
         """
-        self.id = self.read_uint16()
-        entry_info = parser_classes.get(
-            self.id & ~0x8000, (str(self.id), FALLBACK_PARSER, None)
-        )
-        key, parser_class, compiler_class = entry_info
-
-        parser_class.encoding = self.vfb.encoding
+        raw_id = self.read_uint16()
+        self.id = raw_id & ~0x8000
 
         if self.id == 5:
             # File end marker?
@@ -147,14 +155,14 @@ class VfbEntry(StreamReader):
                 self.read_uint16()
                 raise EOFError
 
-        if self.id & 0x8000:
+        if raw_id & 0x8000:
             # Uses uint32 for data length
             num_bytes = self.read_uint32()
         else:
             # Uses uint16 for data length
             num_bytes = self.read_uint16()
 
-        return key, parser_class, compiler_class, num_bytes
+        return num_bytes
 
     def as_dict(self, minimize=True) -> dict[str, Any]:
         d: dict[str, Any] = {
@@ -259,7 +267,7 @@ class VfbEntry(StreamReader):
         Read the entry from the stream without decompiling the data.
         """
         self.stream = stream
-        self.key, self.parser, self.compiler, size = self._read_entry()
+        size = self._read_entry()
         if self.key == "1410":
             # FIXME: Special FL3 stuff?
             if size != 4:
