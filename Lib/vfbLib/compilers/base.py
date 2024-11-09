@@ -145,3 +145,10 @@ class BaseCompiler(StreamWriter):
         """
         # Must be implemented for compilers that need it, e.g. the GlyphCompiler.
         pass
+
+
+class GlyphEncodingCompiler(BaseCompiler):
+    def _compile(self, data: Any) -> None:
+        gid, name = data
+        self.write_uint16(gid)
+        self.write_str(name)  # XXX: Does it have to be cp1252?

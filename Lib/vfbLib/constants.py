@@ -1,3 +1,4 @@
+from vfbLib.compilers.base import GlyphEncodingCompiler
 from vfbLib.compilers.glyph import GlyphCompiler
 from vfbLib.compilers.text import StringCompiler
 
@@ -148,8 +149,8 @@ parser_classes = {
     1294: ("Global Guides", GlobalGuidesParser, None),
     1296: ("Global Guide Properties", GuidePropertiesParser, None),
     1410: ("1410", FL3Type1410Parser, None),
-    1500: ("Encoding", GlyphEncodingParser, None),
-    1501: ("Encoding Imported", GlyphEncodingParser, None),
+    1500: ("Encoding", GlyphEncodingParser, GlyphEncodingCompiler),
+    1501: ("Encoding Imported", GlyphEncodingParser, GlyphEncodingCompiler),
     1502: ("1502", IntParser, None),
     1503: ("Master Count", IntParser, None),
     1504: ("Master Name", StringParser, StringCompiler),
