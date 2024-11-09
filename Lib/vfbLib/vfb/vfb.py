@@ -31,7 +31,7 @@ class Vfb:
 
     def __init__(
         self,
-        vfb_path: Path,
+        vfb_path: Path | None = None,
         timing=True,
         minimal=False,
         drop_keys: set[str] | None = None,
@@ -64,7 +64,11 @@ class Vfb:
 
         # Track decompile errors
         self.any_errors = False
-        self.read()
+        if self.vfb_path:
+            self.read()
+        else:
+            self.header = VfbHeader()
+            self.entries = []
 
     def as_dict(self) -> VfbDict:
         """
@@ -197,6 +201,9 @@ class Vfb:
         Read data from the file at vfb_path, without decompiling
         """
         self.clear()
+        if self.vfb_path is None:
+            return
+
         with open(self.vfb_path, "rb") as vfb:
             self.read_stream(vfb)
 
