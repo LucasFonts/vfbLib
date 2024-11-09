@@ -29,7 +29,10 @@ class VfbEntry(StreamReader):
         parent: Vfb,
         parser: type[BaseParser] | None = None,
         compiler: type[BaseCompiler] | None = None,
+        eid: int | None = None,
     ) -> None:
+        # The parent object, Vfb
+        self.vfb = parent
         # The original or compiled binary data
         self.data: bytes | None = None
         # The decompiled data
@@ -37,16 +40,17 @@ class VfbEntry(StreamReader):
         # Temporary data for additional master, must be merged when compiling
         self.temp_masters: list[list] | None = None
         # The numeric and human-readable key of the entry
-        self.id = None
+        self.id = eid
         self.key = None
         # Has the data been modified, i.e. it needs recompilation
         self._modified = False
         # The parser which can convert data to decompiled
-        self.parser = parser
+        # self.parser = parser
         # The compiler which can convert the decompiled to compiled data
-        self.compiler = compiler
-        # The parent object, Vfb
-        self.vfb = parent
+        # self.compiler = compiler
+
+    def __repr__(self) -> str:
+        return f"<VfbEntry {self.id}, parser: {self.parser}, compiler: {self.compiler}>"
 
     @cached_property
     def header(self) -> bytes:
