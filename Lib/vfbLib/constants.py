@@ -72,9 +72,9 @@ from vfbLib.parsers.truetype import (
 
 # fmt: off
 parser_classes = {
-    257: ("257", BaseParser, None),
+    257: ("257", StringParser, StringCompiler),
     513: ("513", BaseParser, None),
-    518: ("518", BaseParser, None),
+    518: ("518", StringParser, StringCompiler),
     527: ("527", BaseParser, None),
     1024: ("sgn", StringParser, StringCompiler),
     1025: ("ffn", StringParser, StringCompiler),
