@@ -31,7 +31,7 @@ class VfbHeaderParser:
             for i in range(9, 12):
                 key = self.read_uint8()
                 val = self.read_value()
-                header[f"header{i}"] = {key: val}
+                header[f"header{i}"] = {str(key): val}
             header["header12"] = self.read_uint8()
             header["header13"] = self.read_uint16()
         else:

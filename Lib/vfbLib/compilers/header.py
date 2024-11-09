@@ -34,7 +34,7 @@ class VfbHeaderCompiler(StreamWriter):
             d = data[f"header{i}"]
             assert len(d) == 1
             k, v = tuple(d.items())[0]
-            self.write_uint8(k)
+            self.write_uint8(int(k))
             self.write_value(v)
         self.write_uint8(data["header12"])
         self.write_uint16(data["header13"])
