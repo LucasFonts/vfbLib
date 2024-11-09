@@ -33,7 +33,7 @@ class VfbEntry(StreamReader):
         # The original or compiled binary data
         self.data: bytes | None = None
         # The decompiled data
-        self.decompiled: dict[str, Any] | int | list[Any] | str | None = None
+        self._decompiled: dict[str, Any] | int | list[Any] | str | None = None
         # Temporary data for additional master, must be merged when compiling
         self.temp_masters: list[list] | None = None
         # The numeric and human-readable key of the entry
@@ -89,6 +89,17 @@ class VfbEntry(StreamReader):
             raise ValueError
 
         return len(self.data)
+
+    @property
+    def decompiled(self) -> dict[str, Any] | int | list[Any] | str | None:
+        return self._decompiled
+
+    @decompiled.setter
+    def decompiled(self, value: dict[str, Any] | int | list[Any] | str | None) -> None:
+        self.modified = True
+        # Don't do this:
+        # self.data = None
+        self._decompiled = value
 
     @property
     def id(self) -> int | None:
