@@ -1,7 +1,6 @@
 from unittest import TestCase
 from vfbLib.parsers.text import (
     NameRecordsParser,
-    OpenTypeClassParser,
     OpenTypeStringParser,
     StringParser,
 )
