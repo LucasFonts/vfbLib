@@ -41,7 +41,7 @@ class DoubleListParser(FloatListParser):
     __fmt__ = "d"
 
 
-class IntParser(BaseParser):
+class Int16Parser(BaseParser):
     """
     A parser that reads data as UInt16.
     """
