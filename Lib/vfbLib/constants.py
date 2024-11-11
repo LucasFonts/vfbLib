@@ -49,7 +49,7 @@ from vfbLib.parsers.numeric import (
     Int64Parser,
     IntListParser,
     PanoseParser,
-    SignedIntParser,
+    SignedInt16Parser,
     SignedInt32Parser,
 )
 from vfbLib.parsers.options import ExportOptionsParser, OpenTypeExportOptionsParser
@@ -82,7 +82,7 @@ parser_classes = {
     1027: ("tfn", StringParser, StringCompiler),
     1028: ("weight_name", StringParser, StringCompiler),
     1029: ("Italic Angle", DoubleParser, None),
-    1030: ("underlinePosition", SignedIntParser, None),
+    1030: ("underlinePosition", SignedInt16Parser, None),
     1031: ("underlineThickness", Int16Parser, Int16Compiler),
     1034: ("Monospaced", Int16Parser, Int16Compiler),
     1037: ("copyright", StringParser, StringCompiler),
@@ -91,7 +91,7 @@ parser_classes = {
     1044: ("Type 1 Unique ID", SignedInt32Parser, None),
     1046: ("version full", StringParser, StringCompiler),
     1047: ("Slant Angle", DoubleParser, None),
-    1048: ("weight", SignedIntParser, None),  # Weight Class
+    1048: ("weight", SignedInt16Parser, None),  # Weight Class
     1054: ("MS Character Set", Int16Parser, Int16Compiler),
     1056: ("Menu Name", StringParser, StringCompiler),
     1057: ("PCL ID", Int16Parser, Int16Compiler),
@@ -145,8 +145,8 @@ parser_classes = {
     1275: ("Code Stop PPEM", Int16Parser, Int16Compiler),
     1276: ("openTypeFeatures", OpenTypeStringParser, None),
     1277: ("OpenType Class", StringParser, StringCompiler),
-    1278: ("hhea_ascender", SignedIntParser, None),
-    1279: ("hhea_descender", SignedIntParser, None),
+    1278: ("hhea_ascender", SignedInt16Parser, None),
+    1279: ("hhea_descender", SignedInt16Parser, None),
     1294: ("Global Guides", GlobalGuidesParser, None),
     1296: ("Global Guide Properties", GuidePropertiesParser, None),
     1410: ("1410", FL3Type1410Parser, None),

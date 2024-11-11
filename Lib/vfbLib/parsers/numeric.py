@@ -97,7 +97,7 @@ class PanoseParser(BaseParser):
         return list(unpack("<10b", self.stream.read()))
 
 
-class SignedIntParser(BaseParser):
+class SignedInt16Parser(BaseParser):
     """
     A parser that reads data as signed int16.
     """
