@@ -1,6 +1,6 @@
 appdirs==1.4.4
 attrs==24.2.0
-fonttools==4.54.1
+fonttools==4.55.0
 fs==2.4.16
 setuptools==75.5.0
 six==1.16.0
