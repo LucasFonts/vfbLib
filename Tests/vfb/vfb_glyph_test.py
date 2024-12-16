@@ -520,7 +520,6 @@ class VfbGlyphTest(TestCase):
         # Get a point pen and draw into the vfb glyph
         vfb = Vfb(empty_vfb_path)
         g = VfbGlyph(VfbEntry(vfb, parser=GlyphParser, compiler=GlyphCompiler), vfb)
-        g.empty()
         pen = g.getPointPen()
         pen.beginPath()
         pen.addPoint(pt=(100, 100), segmentType="line", smooth=False)
@@ -539,7 +538,6 @@ class VfbGlyphTest(TestCase):
         # Get a point pen and draw into the vfb glyph
         vfb = Vfb(empty_vfb_path)
         g = VfbGlyph(VfbEntry(vfb, parser=GlyphParser, compiler=GlyphCompiler), vfb)
-        g.empty()
         g.entry.decompiled["name"] = "a"
         g.entry.decompiled["metrics"] = [(833, 0)]
         pen = g.getPointPen()
@@ -559,7 +557,6 @@ class VfbGlyphTest(TestCase):
         # Get a point pen and draw into the vfb glyph
         vfb = Vfb(empty_vfb_path)
         g = VfbGlyph(VfbEntry(vfb, parser=GlyphParser, compiler=GlyphCompiler), vfb)
-        g.empty()
         g.entry.decompiled["name"] = "a"
         g.entry.decompiled["metrics"] = [(833, 0)]
         pen = g.getPointPen()
@@ -583,7 +580,6 @@ class VfbGlyphTest(TestCase):
         # Get a point pen and draw into the vfb glyph
         vfb = Vfb(empty_vfb_path)
         g = VfbGlyph(VfbEntry(vfb, parser=GlyphParser, compiler=GlyphCompiler), vfb)
-        g.empty()
         pen = g.getPointPen()
         pen.beginPath()
         pen.addPoint((92, 0), "line", False, None)
