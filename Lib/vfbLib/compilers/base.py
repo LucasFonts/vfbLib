@@ -1,9 +1,11 @@
 from __future__ import annotations
 
-from fontTools.misc.textTools import hexStr
 from io import BytesIO
 from struct import pack
 from typing import TYPE_CHECKING, Any
+
+from fontTools.misc.textTools import hexStr
+
 from vfbLib.compilers.value import write_value, write_value_long
 from vfbLib.helpers import uint8, uint16  # , uint32
 

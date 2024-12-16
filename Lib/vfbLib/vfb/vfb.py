@@ -1,18 +1,19 @@
 from __future__ import annotations
 
 import logging
-
+from collections.abc import Iterable
 from pathlib import Path
 from time import time
 from typing import TYPE_CHECKING, Any
-from collections.abc import Iterable
-from vfbLib.vfb.glyph import VfbGlyph, VfbGlyphMaster
+
 from vfbLib.vfb.entry import VfbEntry
+from vfbLib.vfb.glyph import VfbGlyph, VfbGlyphMaster
 from vfbLib.vfb.header import VfbHeader
 from vfbLib.vfb.info import VfbInfo
 
 if TYPE_CHECKING:
     from io import BufferedReader
+
     from vfbLib.typing import VfbDict
 
 

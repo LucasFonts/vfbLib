@@ -1,23 +1,25 @@
 from __future__ import annotations
 
 import logging
+from functools import cached_property
+from typing import TYPE_CHECKING
 
 from fontTools.pens.pointPen import (
     AbstractPointPen,
     PointToSegmentPen,
     SegmentToPointPen,
 )
-from functools import cached_property
-from typing import TYPE_CHECKING
+
+from vfbLib.templates.glyph import get_empty_glyph
 from vfbLib.ufo.glyph import VfbToUfoGlyph
 from vfbLib.ufo.paths import UfoMasterGlyph
-from vfbLib.templates.glyph import get_empty_glyph
 from vfbLib.vfb.pens import VfbGlyphPointPen
 
 if TYPE_CHECKING:
     from fontTools.pens.basePen import AbstractPen
-    from vfbLib.vfb.vfb import Vfb, VfbMaster
+
     from vfbLib.vfb.entry import VfbEntry
+    from vfbLib.vfb.vfb import Vfb, VfbMaster
 
 
 logger = logging.getLogger(__name__)
