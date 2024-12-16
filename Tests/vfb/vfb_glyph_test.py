@@ -1,12 +1,14 @@
-from fontTools.misc.textTools import deHexStr, hexStr
-from fontTools.pens.recordingPen import RecordingPen, RecordingPointPen
 from pathlib import Path
 from unittest import TestCase
+
+from fontTools.misc.textTools import deHexStr, hexStr
+from fontTools.pens.recordingPen import RecordingPen, RecordingPointPen
+
 from vfbLib.compilers.glyph import GlyphCompiler
 from vfbLib.parsers.glyph import GlyphParser
-from vfbLib.vfb.vfb import Vfb
 from vfbLib.vfb.entry import VfbEntry
 from vfbLib.vfb.glyph import VfbGlyph
+from vfbLib.vfb.vfb import Vfb
 
 empty_vfb_path = Path(__file__).parent.parent / "Data" / "empty_522.vfb"
 
@@ -547,7 +549,6 @@ class VfbGlyphTest(TestCase):
         pen.addPoint(pt=(200, 200), segmentType="line", smooth=False)
         pen.addPoint(pt=(100, 150), segmentType="line", smooth=False)
         pen.endPath()
-        g.entry.modified = True  # XXX: Hack
         g.entry.compile()
         assert (
             hexStr(g.entry.data)
@@ -573,9 +574,7 @@ class VfbGlyphTest(TestCase):
             "01090701018c61088ca38f00efef01ef8b018bef01275902f9d58b0f"
         )
         expected.decompile()
-        g.entry.modified = True  # XXX: Hack
         g.entry.compile()
-        g.entry.clear_decompiled()
         g.entry.decompile()
         # print(g.entry.decompiled)
         assert expected.decompiled == g.entry.decompiled
@@ -631,9 +630,7 @@ class VfbGlyphTest(TestCase):
         pen.addPoint((151, 51), "line", False, None)
         pen.endPath()
         assert g.entry.decompiled["nodes"] == glyph_nodes_q_1m
-        g.entry.modified = True
         g.entry.compile()  # XXX: Hack
-        g.entry.clear_decompiled()
         g.entry.decompile()
         assert g.entry.decompiled["nodes"] == glyph_nodes_q_1m
 
