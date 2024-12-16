@@ -1,6 +1,8 @@
 from __future__ import annotations
 
+import hashlib
 import logging
+import pickle
 from functools import cached_property
 from io import BytesIO
 from struct import pack
@@ -35,7 +37,7 @@ class VfbEntry(StreamReader):
         # The parent object, Vfb
         self.vfb = parent
         # The original or compiled binary data
-        self.data: bytes | None = None
+        self.data = None
         # The decompiled data
         self._decompiled: dict[str, Any] | int | list[Any] | str | None = None
         # Temporary data for additional master, must be merged when compiling
@@ -49,6 +51,8 @@ class VfbEntry(StreamReader):
         self.parser = parser
         # The compiler which can convert the decompiled to compiled data
         self.compiler = compiler
+        # The hash of the initial decompiled data is used to detect modifications
+        self.store_hash()
 
     def __repr__(self) -> str:
         return f"<VfbEntry {self.id}, parser: {self.parser}, compiler: {self.compiler}>"
@@ -96,14 +100,25 @@ class VfbEntry(StreamReader):
         return len(self.data)
 
     @property
+    def current_hash(self) -> bytes | None:
+        m = hashlib.sha256()
+        m.update(pickle.dumps(self.decompiled))
+        return m.digest()
+
+    @property
+    def data(self) -> bytes | None:
+        return self._data
+
+    @data.setter
+    def data(self, value: bytes | None) -> None:
+        self._data = value
+
+    @property
     def decompiled(self) -> dict[str, Any] | int | list[Any] | str | None:
         return self._decompiled
 
     @decompiled.setter
     def decompiled(self, value: dict[str, Any] | int | list[Any] | str | None) -> None:
-        self.modified = True
-        # Don't do this:
-        # self.data = None
         self._decompiled = value
 
     @property
@@ -112,11 +127,11 @@ class VfbEntry(StreamReader):
 
     @id.setter
     def id(self, value: int | None) -> None:
+        self._id = value
         if value is None:
             self.compiler = None
             self.parser = None
         else:
-            self._id = value
             self.key, self.parser, self.compiler = parser_classes.get(
                 value, (str(self.id), FALLBACK_PARSER, None)
             )
@@ -124,37 +139,9 @@ class VfbEntry(StreamReader):
 
     @property
     def modified(self) -> bool:
-        return self._modified
-
-    @modified.setter
-    def modified(self, value) -> None:
-        self._modified = value
-        if self._modified:
-            try:
-                delattr(self, "size")
-            except AttributeError:
-                pass
-        else:
-            self.size
-        # Optimized version?
-        # if value:
-        #     if self._modified:
-        #         # Value has not changed from True
-        #         return
-
-        #     # Value has changed from False to True, invalidate caches
-        #     try:
-        #         delattr(self, "size")
-        #     except AttributeError:
-        #         pass
-        #     return
-
-        # if self._modified:
-        #     # Value changes from True to False
-        #     self._modified = False
-        #     return
-
-        # # Value is False, no change
+        if self.hash is None:
+            return True
+        return self.current_hash != self.hash
 
     def _read_entry(self) -> int:
         """
@@ -190,8 +177,6 @@ class VfbEntry(StreamReader):
                 d["data"] = hexStr(self.data)
             else:
                 d["decompiled"] = self.decompiled
-                if self.modified:
-                    d["modified"] = True
         else:
             d["size"] = self.size
             d["data"] = hexStr(self.data)
@@ -204,15 +189,15 @@ class VfbEntry(StreamReader):
                 d["modified"] = True
         return d
 
-    def clear_decompiled(self) -> None:
-        self.decompiled = None
-
-    def compile(self) -> None:
+    def compile(self, force=False) -> None:
         """
         Compile the entry. The result is stored in VfbEntry.data.
         """
-        # XXX: Solve this more elegantly:
-        if not self.modified:
+        if not (self.modified or force):
+            logger.info(
+                "    Skipping entry compilation because it has not been modified: "
+                f"'{self.key}'"
+            )
             return
 
         if self.compiler is None:
@@ -224,7 +209,7 @@ class VfbEntry(StreamReader):
         self.data = self.compiler().compile(
             self.decompiled, master_count=self.vfb.num_masters
         )
-        self.modified = False
+        self.store_hash()
 
     def decompile(self) -> None:
         """
@@ -232,12 +217,7 @@ class VfbEntry(StreamReader):
         """
         if self.decompiled is not None:
             # Already decompiled
-            logger.error(
-                f"Entry is already decompiled: {self.key}. If you really want to "
-                "decompile again, clear the decompiled data beforehand using "
-                "`clear_decompiled()`."
-            )
-            raise ValueError
+            logger.warning(f"Decompiling already decompiled entry: {self.key}.")
 
         if self.parser is None:
             raise ValueError
@@ -260,6 +240,9 @@ class VfbEntry(StreamReader):
             self.error = "ERROR"  # TODO: Include traceback
             self.vfb.any_errors |= True
             # raise
+        self.hash = None
+        if self.decompiled is not None:
+            self.store_hash()
 
     def merge_masters_data(self) -> None:
         """
@@ -287,7 +270,13 @@ class VfbEntry(StreamReader):
         if self.key == "1410":
             # FIXME: Special FL3 stuff?
             if size != 4:
-                print(f"Entry 1410 with size {size}")
+                logger.warning(f"Entry 1410 with size {size}")
             self.data = self.stream.read(10)
         else:
             self.data = self.stream.read(size)
+
+    def store_hash(self) -> None:
+        """
+        Store a hash of the decompiled data. Can be used to track any changes.
+        """
+        self.hash = self.current_hash

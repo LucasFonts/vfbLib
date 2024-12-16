@@ -176,7 +176,6 @@ class Vfb:
                         if TYPE_CHECKING:
                             assert isinstance(entry.decompiled, int)
                         self.num_masters = entry.decompiled
-                        entry.decompiled = None
 
                 elif entry.key == "TrueType Stems":
                     entry.decompile()
@@ -185,7 +184,6 @@ class Vfb:
                             assert isinstance(entry.decompiled, dict)
                         self.ttStemsV_count = len(entry.decompiled.get("ttStemsV", []))
                         self.ttStemsH_count = len(entry.decompiled.get("ttStemsH", []))
-                        entry.decompiled = None
 
                 if entry.key not in self.drop_keys:
                     self.entries.append(entry)

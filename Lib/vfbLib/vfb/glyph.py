@@ -47,7 +47,6 @@ class VfbGlyph:
         except KeyError:
             pass
         self.entry.decompiled["nodes"] = []
-        self.entry.modified = True
 
     # Native methods
 
@@ -197,7 +196,6 @@ class VfbGlyphMaster:
         except KeyError:
             pass
         target["nodes"] = []
-        self.entry.modified = True
 
     def drawPoints(self, pen: AbstractPointPen) -> None:
         """
