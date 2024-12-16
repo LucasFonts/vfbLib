@@ -1,12 +1,12 @@
 from __future__ import annotations
 
 import logging
-
-from fontTools.misc.textTools import hexStr
 from functools import cached_property
 from io import BytesIO
 from struct import pack
 from typing import TYPE_CHECKING, Any
+
+from fontTools.misc.textTools import hexStr
 
 from vfbLib.compilers.base import BaseCompiler
 from vfbLib.constants import parser_classes
@@ -14,6 +14,7 @@ from vfbLib.parsers.base import BaseParser, StreamReader
 
 if TYPE_CHECKING:
     from io import BufferedReader
+
     from vfbLib.vfb.vfb import Vfb
 
 
