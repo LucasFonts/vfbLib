@@ -46,9 +46,9 @@ class VfbEntry(StreamReader):
         # Has the data been modified, i.e. it needs recompilation
         self._modified = False
         # The parser which can convert data to decompiled
-        # self.parser = parser
+        self.parser = parser
         # The compiler which can convert the decompiled to compiled data
-        # self.compiler = compiler
+        self.compiler = compiler
 
     def __repr__(self) -> str:
         return f"<VfbEntry {self.id}, parser: {self.parser}, compiler: {self.compiler}>"
