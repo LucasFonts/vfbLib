@@ -195,7 +195,7 @@ class VfbEntry(StreamReader):
         Compile the entry. The result is stored in VfbEntry.data.
         """
         if not (self.modified or force):
-            logger.info(
+            logger.debug(
                 "    Skipping entry compilation because it has not been modified: "
                 f"'{self.key}'"
             )
