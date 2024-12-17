@@ -71,6 +71,15 @@ class Vfb:
             self.header = VfbHeader()
             self.entries = []
 
+    def add_entry(self, entry: VfbEntry) -> None:
+        """Add an entry to the Vfb. Also sets the parent of the entry to the Vfb.
+
+        Args:
+            entry (VfbEntry): The VfbEntry to be added to Vfb.entries.
+        """
+        entry.vfb = self
+        self.entries.append(entry)
+
     def as_dict(self) -> VfbDict:
         """
         Return the Vfb structure as Dict, e.g. for saving as JSON. The dict has the keys
