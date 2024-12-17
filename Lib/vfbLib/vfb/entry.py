@@ -83,7 +83,7 @@ class VfbEntry(StreamReader):
             header.write(pack("<H", self.size))
         return header.getvalue()
 
-    @cached_property
+    @property
     def size(self) -> int:
         """The size of the compiled data.
 
