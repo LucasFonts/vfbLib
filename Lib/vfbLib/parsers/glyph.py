@@ -1,15 +1,15 @@
 from __future__ import annotations
 
 import logging
-
 from enum import Enum
-from fontTools.misc.textTools import hexStr  # , num2binary
-from fontTools.ttLib.tables.ttProgram import Program
 from struct import unpack
 from typing import TYPE_CHECKING, Any
+
+from fontTools.misc.textTools import hexStr  # , num2binary
+from fontTools.ttLib.tables.ttProgram import Program
+
 from vfbLib.parsers.base import BaseParser
 from vfbLib.parsers.guides import parse_guides
-from vfbLib.value import read_value
 from vfbLib.truetype import TT_COMMANDS
 from vfbLib.typing import (
     Anchor,
@@ -25,6 +25,7 @@ from vfbLib.typing import (
     MMNode,
     Point,
 )
+from vfbLib.value import read_value
 
 if TYPE_CHECKING:
     from io import BytesIO
