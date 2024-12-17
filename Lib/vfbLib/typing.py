@@ -70,7 +70,7 @@ class Hint(TypedDict):
 class HintDict(TypedDict):
     h: list[list[Hint]]
     v: list[list[Hint]]
-    hintmasks: NotRequired[list[dict[str, int]]]
+    hintmasks: NotRequired[list[tuple[str, int]]]
 
 
 HintTuple = tuple[str, int, int]
