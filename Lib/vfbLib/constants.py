@@ -1,4 +1,5 @@
 from vfbLib.compilers.base import GlyphEncodingCompiler
+from vfbLib.compilers.binary import BinaryTableCompiler
 from vfbLib.compilers.glyph import GlyphCompiler
 from vfbLib.compilers.numeric import Int16Compiler
 from vfbLib.compilers.text import StringCompiler
@@ -174,7 +175,7 @@ parser_classes = {
     2011: ("2011", BaseParser, None),
     2012: ("Mark Color", Int16Parser, Int16Compiler),
     2013: ("Glyph Bitmaps", GlyphBitmapParser, None),
-    2014: ("Binary Table", BinaryTableParser, None),
+    2014: ("Binary Table", BinaryTableParser, BinaryTableCompiler),
     2015: ("Glyph User Data", StringParser, StringCompiler),
     2016: ("Font User Data", StringParser, StringCompiler),
     2017: ("Glyph Note", StringParser, StringCompiler),
