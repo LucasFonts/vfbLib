@@ -2,10 +2,9 @@
 #     # NotRequired is only available in Python 3.11+
 #     from typing import NotRequired, TypedDict
 # except ImportError:
-from typing_extensions import NotRequired, TypedDict
-
 from typing import Any, Literal
 
+from typing_extensions import NotRequired, TypedDict
 
 Point = tuple[int, int]
 
