@@ -7,7 +7,7 @@ from vfbLib.compilers.base import BaseCompiler
 
 class OpenTypeStringCompiler(BaseCompiler):
     """
-    A compiler that compiles string data that represents OpenType feature code
+    A compiler that compiles string data that represents OpenType feature code.
     """
 
     def _compile(self, data: Any) -> None:
