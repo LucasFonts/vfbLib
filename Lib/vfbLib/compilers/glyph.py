@@ -101,8 +101,11 @@ class GlyphCompiler(BaseCompiler):
 
     def _compile_hints(self, data):
         # PostScript hints
-        if not (hints := data.get("hints")):
-            return
+        # To minimize diffs, we always write out hint, but it is not necessary
+        hints = data.get("hints", {})
+        # We could skip empty hinting:
+        # if not (hints := data.get("hints")):
+        #     return
 
         self.write_uint8(3)
         for direction in ("h", "v"):
@@ -120,10 +123,15 @@ class GlyphCompiler(BaseCompiler):
             self.write_value(0)
             return
 
-        # FIXME: Implement writing of hintmasks
-        # self.write_value(len(hintmasks))
-        self.write_value(0)
-        logger.warning("Compilation of hint masks is not supported, they are dropped.")
+        self.write_value(len(hintmasks))
+        for k, v in hintmasks:
+            key = {
+                "h": 0x01,
+                "v": 0x02,
+                "r": 0xFF,
+            }[k]
+            self.write_uint8(key)
+            self.write_value(v)
 
     def _compile_instructions(self, data):
         # TrueType instructions
