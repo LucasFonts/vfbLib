@@ -17,6 +17,7 @@ from vfbLib.parsers.base import BaseParser, StreamReader
 if TYPE_CHECKING:
     from io import BufferedReader
 
+    from vfbLib.typing import EntryDecompiled
     from vfbLib.vfb.vfb import Vfb
 
 
@@ -39,7 +40,7 @@ class VfbEntry(StreamReader):
         # The original or compiled binary data
         self.data = None
         # The decompiled data
-        self._decompiled: dict[str, Any] | int | list[Any] | str | None = None
+        self._decompiled: EntryDecompiled = None
         # Temporary data for additional master, must be merged when compiling
         self.temp_masters: list[list] | None = None
         # The numeric and human-readable key of the entry
@@ -114,11 +115,11 @@ class VfbEntry(StreamReader):
         self._data = value
 
     @property
-    def decompiled(self) -> dict[str, Any] | int | list[Any] | str | None:
+    def decompiled(self) -> EntryDecompiled:
         return self._decompiled
 
     @decompiled.setter
-    def decompiled(self, value: dict[str, Any] | int | list[Any] | str | None) -> None:
+    def decompiled(self, value: EntryDecompiled) -> None:
         self._decompiled = value
 
     @property

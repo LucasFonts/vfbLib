@@ -30,6 +30,9 @@ class Component(TypedDict):
     scaleY: list[float]
 
 
+EntryDecompiled = dict[str, Any] | int | list[Any] | str | tuple[int, str] | None
+
+
 GaspList = list[dict[str, int]]
 
 
