@@ -1,14 +1,13 @@
+import logging
 from io import BytesIO
 from math import radians, tan
 from struct import pack
 from typing import Any
+
 from vfbLib import GLYPH_CONSTANT
 from vfbLib.compilers.base import BaseCompiler, StreamWriter
 from vfbLib.parsers.glyph import PathCommand
 from vfbLib.truetype import TT_COMMAND_CONSTANTS, TT_COMMANDS
-
-import logging
-
 
 logger = logging.getLogger(__name__)
 
