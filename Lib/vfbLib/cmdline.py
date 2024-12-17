@@ -1,13 +1,12 @@
 import codecs
 import json
 import logging
-
 from argparse import ArgumentParser
 from pathlib import Path
+
 from vfbLib.ufo.builder import VfbToUfoBuilder
 from vfbLib.version import build_date
 from vfbLib.vfb.vfb import Vfb
-
 
 logger = logging.getLogger(__name__)
 

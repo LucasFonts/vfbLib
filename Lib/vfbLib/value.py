@@ -1,8 +1,10 @@
 from __future__ import annotations
 
 from argparse import ArgumentParser
-from fontTools.misc.textTools import deHexStr, hexStr
 from io import BytesIO
+
+from fontTools.misc.textTools import deHexStr, hexStr
+
 from vfbLib.compilers.value import write_value
 from vfbLib.parsers.value import read_value
 from vfbLib.version import build_date

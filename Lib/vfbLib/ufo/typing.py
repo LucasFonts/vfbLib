@@ -2,9 +2,10 @@
 #     # NotRequired is only available in Python 3.11+
 #     from typing import NotRequired, TypedDict
 # except ImportError:
+from typing import Optional
+
 from typing_extensions import NotRequired, TypedDict
 
-from typing import Optional
 from vfbLib.typing import HintTuple
 
 

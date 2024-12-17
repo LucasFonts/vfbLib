@@ -1,16 +1,17 @@
 from __future__ import annotations
 
 import logging
-
-from typing import TYPE_CHECKING, Literal
 from collections.abc import Sequence
 from math import atan2, degrees
+from typing import TYPE_CHECKING, Literal
+
 from vfbLib.parsers.base import BaseParser
 from vfbLib.typing import Guide, GuideProperty
 from vfbLib.value import read_value
 
 if TYPE_CHECKING:
     from io import BytesIO
+
     from vfbLib.typing import GuideDict
 
 

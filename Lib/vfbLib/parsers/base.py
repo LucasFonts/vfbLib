@@ -1,16 +1,18 @@
 from __future__ import annotations
 
 import logging
-
-from fontTools.misc.textTools import deHexStr, hexStr
 from io import BytesIO
 from struct import unpack
 from typing import TYPE_CHECKING, Any
+
+from fontTools.misc.textTools import deHexStr, hexStr
+
 from vfbLib.helpers import uint8, uint16, uint32
-from vfbLib.parsers.value import read_doubles, read_value, read_floats
+from vfbLib.parsers.value import read_doubles, read_floats, read_value
 
 if TYPE_CHECKING:
     from io import BufferedReader
+
     from vfbLib.typing import KerningClassFlagDict, MetricsClassFlagDict
 
 

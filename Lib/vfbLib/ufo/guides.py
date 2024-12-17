@@ -1,15 +1,12 @@
 from __future__ import annotations
 
 import logging
-
 from typing import TYPE_CHECKING
+
 from vfbLib.ufo.typing import UfoGuide
 
 if TYPE_CHECKING:
-    from vfbLib.typing import (
-        GuideDict,
-        GuidePropertyList,
-    )
+    from vfbLib.typing import GuideDict, GuidePropertyList
 
 
 logger = logging.getLogger(__name__)

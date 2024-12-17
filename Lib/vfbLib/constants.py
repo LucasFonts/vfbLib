@@ -2,19 +2,17 @@ from vfbLib.compilers.base import GlyphEncodingCompiler
 from vfbLib.compilers.glyph import GlyphCompiler
 from vfbLib.compilers.numeric import Int16Compiler
 from vfbLib.compilers.text import StringCompiler
-
-from vfbLib.parsers.base import (
+from vfbLib.parsers.base import (  # EncodedValueParser,; EncodedKeyValuesParser,
     BaseParser,
-    # EncodedValueParser,
     EncodedValueListParser,
     EncodedValueListWithCountParser,
-    # EncodedKeyValuesParser,
-    MappingModeParser,
     GaspParser,
     GlyphEncodingParser,
+    MappingModeParser,
     OpenTypeKerningClassFlagsParser,
     OpenTypeMetricsClassFlagsParser,
 )
+from vfbLib.parsers.binary import BinaryTableParser
 from vfbLib.parsers.bitmap import BackgroundBitmapParser, GlyphBitmapParser
 from vfbLib.parsers.cmap import CustomCmapParser
 from vfbLib.parsers.fl3 import FL3Type1410Parser
@@ -30,10 +28,7 @@ from vfbLib.parsers.glyph import (
     LinkParser,
     MaskParser,
 )
-from vfbLib.parsers.guides import (
-    GlobalGuidesParser,
-    GuidePropertiesParser,
-)
+from vfbLib.parsers.guides import GlobalGuidesParser, GuidePropertiesParser
 from vfbLib.parsers.mm import (
     AnisotropicInterpolationsParser,
     AxisMappingsCountParser,
@@ -41,10 +36,9 @@ from vfbLib.parsers.mm import (
     MasterLocationParser,
     PrimaryInstancesParser,
 )
-from vfbLib.parsers.numeric import (
+from vfbLib.parsers.numeric import (  # FloatListParser,
     DoubleListParser,
     DoubleParser,
-    # FloatListParser,
     Int16Parser,
     Int64Parser,
     IntListParser,
@@ -55,20 +49,15 @@ from vfbLib.parsers.numeric import (
 from vfbLib.parsers.options import ExportOptionsParser, OpenTypeExportOptionsParser
 from vfbLib.parsers.pclt import PcltParser
 from vfbLib.parsers.ps import PostScriptInfoParser
-from vfbLib.parsers.text import (
-    NameRecordsParser,
-    OpenTypeStringParser,
-    StringParser,
-)
+from vfbLib.parsers.text import NameRecordsParser, OpenTypeStringParser, StringParser
 from vfbLib.parsers.truetype import (
     TrueTypeInfoParser,
-    TrueTypeStemPpemsParser,
     TrueTypeStemPpems1Parser,
+    TrueTypeStemPpemsParser,
     TrueTypeStemsParser,
     TrueTypeZoneDeltasParser,
     TrueTypeZonesParser,
 )
-
 
 # fmt: off
 parser_classes = {

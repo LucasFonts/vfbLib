@@ -2,7 +2,6 @@ import logging
 
 from vfbLib.parsers.base import BaseParser
 
-
 logger = logging.getLogger(__name__)
 
 

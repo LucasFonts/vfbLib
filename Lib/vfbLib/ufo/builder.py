@@ -1,19 +1,20 @@
 from __future__ import annotations
 
 import logging
-
 from copy import deepcopy
+from pathlib import Path
+from typing import TYPE_CHECKING, Any
+
 from fontTools.designspaceLib import (
     AxisDescriptor,
     AxisLabelDescriptor,
     DesignSpaceDocument,
 )
 from fontTools.ufoLib import UFOFileStructure
-from pathlib import Path
-from typing import TYPE_CHECKING, Any
-from ufoLib2.objects.font import Font
 from ufoLib2.objects.features import Features
+from ufoLib2.objects.font import Font
 from ufonormalizer import normalizeUFO
+
 from vfbLib.constants import ignore_minimal
 from vfbLib.ufo.designspace import get_ds_location
 from vfbLib.ufo.features import rename_kern_classes_in_feature_code
@@ -37,7 +38,8 @@ from vfbLib.ufo.vfb2ufo import TT_GLYPH_LIB_KEY, TT_LIB_KEY
 
 if TYPE_CHECKING:
     from fontTools.designspaceLib import DiscreteAxisDescriptor
-    from vfbLib.typing import Anchor, KerningClassFlagDict, GuidePropertyList
+
+    from vfbLib.typing import Anchor, GuidePropertyList, KerningClassFlagDict
     from vfbLib.ufo.typing import UfoGroups, UfoMMKerning
     from vfbLib.vfb.vfb import Vfb
 

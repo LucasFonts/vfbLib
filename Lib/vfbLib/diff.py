@@ -1,13 +1,12 @@
 import codecs
 import json
 import logging
-
 from argparse import ArgumentParser
-from difflib import unified_diff, HtmlDiff
+from difflib import HtmlDiff, unified_diff
 from pathlib import Path
-from vfbLib.vfb.vfb import Vfb
-from vfbLib.version import build_date
 
+from vfbLib.version import build_date
+from vfbLib.vfb.vfb import Vfb
 
 logger = logging.getLogger(__name__)
 

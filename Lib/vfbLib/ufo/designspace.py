@@ -3,10 +3,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from fontTools.designspaceLib import (
-        AxisDescriptor,
-        DiscreteAxisDescriptor,
-    )
+    from fontTools.designspaceLib import AxisDescriptor, DiscreteAxisDescriptor
 
 
 def get_ds_location(

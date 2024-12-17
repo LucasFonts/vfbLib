@@ -1,8 +1,7 @@
 import logging
-
 from typing import Any
-from vfbLib.parsers.base import BaseParser
 
+from vfbLib.parsers.base import BaseParser
 
 logger = logging.getLogger(__name__)
 

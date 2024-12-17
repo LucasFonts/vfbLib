@@ -1,9 +1,10 @@
 from __future__ import annotations
 
 import logging
+from typing import TYPE_CHECKING, Any
 
 from fontTools.misc.textTools import hexStr
-from typing import TYPE_CHECKING, Any
+
 from vfbLib.compilers.header import VfbHeaderCompiler
 from vfbLib.parsers.header import VfbHeaderParser
 

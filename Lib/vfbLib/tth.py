@@ -1,18 +1,16 @@
 import codecs
 import json
 import logging
-
 from argparse import ArgumentParser
 from copy import deepcopy
 from pathlib import Path
+from sys import exit
+from typing import Any
+
 from vfbLib.ufo.glyph import IndexVfbToUfoGlyph
 from vfbLib.ufo.tth import TTGlyphHints, transform_stem_rounds
 from vfbLib.version import build_date
 from vfbLib.vfb.vfb import Vfb
-from sys import exit
-
-from typing import Any
-
 
 logger = logging.getLogger(__name__)
 

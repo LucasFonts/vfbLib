@@ -1,8 +1,8 @@
 from __future__ import annotations
 
 import logging
-
 from typing import TYPE_CHECKING, Any
+
 from vfbLib.ufo.glyph import VfbToUfoGlyph
 from vfbLib.ufo.vfb2ufo import (
     TT_GLYPH_LIB_KEY,

@@ -1,10 +1,10 @@
 import logging
-
-from fontTools.misc.textTools import deHexStr
 from io import BytesIO
 from typing import Any
-from vfbLib.compilers.base import StreamWriter
 
+from fontTools.misc.textTools import deHexStr
+
+from vfbLib.compilers.base import StreamWriter
 
 logger = logging.getLogger(__name__)
 

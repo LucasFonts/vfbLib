@@ -1,10 +1,10 @@
 from __future__ import annotations
 
 import logging
-
 from base64 import b64encode
 from copy import deepcopy
-from typing import Any, TYPE_CHECKING
+from typing import TYPE_CHECKING, Any
+
 from vfbLib.ufo.guides import apply_guide_properties, get_master_guides
 from vfbLib.ufo.pshints import build_ps_glyph_hints, get_master_hints
 from vfbLib.ufo.tth import set_tth_lib
@@ -12,6 +12,7 @@ from vfbLib.ufo.vfb2ufo import TT_GLYPH_LIB_KEY
 
 if TYPE_CHECKING:
     from fontTools.pens.pointPen import AbstractPointPen
+
     from vfbLib.typing import Anchor
     from vfbLib.ufo.glyph import VfbToUfoGlyph
     from vfbLib.ufo.typing import UfoComponent, UfoContour

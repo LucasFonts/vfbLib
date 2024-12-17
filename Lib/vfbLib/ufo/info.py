@@ -1,14 +1,14 @@
 from __future__ import annotations
 
 import logging
-
 from functools import cached_property
 from typing import TYPE_CHECKING
+
 from ufoLib2.objects.info import Info, WidthClass
+
 from vfbLib.helpers import binaryToIntList
 from vfbLib.ufo.time import convert_timestamp
 from vfbLib.ufo.typing import TUfoGaspRecDict
-
 
 if TYPE_CHECKING:
     from vfbLib.typing import GaspList

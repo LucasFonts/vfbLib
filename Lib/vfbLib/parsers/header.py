@@ -1,10 +1,10 @@
 import logging
-
-from fontTools.misc.textTools import hexStr
 from io import BufferedReader
 from typing import Any
-from vfbLib.parsers.base import read_value, uint8, uint16
 
+from fontTools.misc.textTools import hexStr
+
+from vfbLib.parsers.base import read_value, uint8, uint16
 
 logger = logging.getLogger(__name__)
 

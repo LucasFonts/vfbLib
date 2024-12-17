@@ -1,12 +1,12 @@
 import logging
 
-from fontTools.misc.textTools import num2binary
-
 # from math import log2
 # from struct import unpack
 from typing import Any
-from vfbLib.parsers.base import BaseParser
 
+from fontTools.misc.textTools import num2binary
+
+from vfbLib.parsers.base import BaseParser
 
 logger = logging.getLogger(__name__)
 

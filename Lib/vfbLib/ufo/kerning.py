@@ -1,8 +1,8 @@
 from __future__ import annotations
 
 import logging
-
 from typing import TYPE_CHECKING
+
 from vfbLib.ufo.groups import build_glyph_to_group_maps
 
 if TYPE_CHECKING:

@@ -3,7 +3,6 @@ import logging
 from vfbLib.helpers import binaryToIntList
 from vfbLib.parsers.base import BaseParser
 
-
 logger = logging.getLogger(__name__)
 
 

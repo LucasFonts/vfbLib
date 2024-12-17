@@ -1,8 +1,7 @@
 import logging
-
-from vfbLib.parsers.base import BaseParser
 from struct import unpack
 
+from vfbLib.parsers.base import BaseParser
 
 logger = logging.getLogger(__name__)
 
