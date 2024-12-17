@@ -2,7 +2,7 @@ from vfbLib.compilers.base import GlyphEncodingCompiler
 from vfbLib.compilers.binary import BinaryTableCompiler
 from vfbLib.compilers.glyph import GlyphCompiler
 from vfbLib.compilers.numeric import Int16Compiler
-from vfbLib.compilers.text import StringCompiler
+from vfbLib.compilers.text import OpenTypeStringCompiler, StringCompiler
 from vfbLib.parsers.base import (  # EncodedValueParser,; EncodedKeyValuesParser,
     BaseParser,
     EncodedValueListParser,
@@ -136,7 +136,7 @@ parser_classes = {
     1273: ("TrueType Zone Deltas", TrueTypeZoneDeltasParser, None),
     1274: ("Zone Stop PPEM", Int16Parser, Int16Compiler),
     1275: ("Code Stop PPEM", Int16Parser, Int16Compiler),
-    1276: ("openTypeFeatures", OpenTypeStringParser, None),
+    1276: ("openTypeFeatures", OpenTypeStringParser, OpenTypeStringCompiler),
     1277: ("OpenType Class", StringParser, StringCompiler),
     1278: ("hhea_ascender", SignedInt16Parser, None),
     1279: ("hhea_descender", SignedInt16Parser, None),
