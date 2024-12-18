@@ -62,143 +62,166 @@ from vfbLib.parsers.truetype import (
 
 # fmt: off
 parser_classes = {
-    257: ("257", StringParser, StringCompiler),
-    513: ("513", BaseParser, None),
-    518: ("518", StringParser, StringCompiler),
-    527: ("527", BaseParser, None),
-    1024: ("sgn", StringParser, StringCompiler),
-    1025: ("ffn", StringParser, StringCompiler),
-    1026: ("psn", StringParser, StringCompiler),
-    1027: ("tfn", StringParser, StringCompiler),
-    1028: ("weight_name", StringParser, StringCompiler),
-    1029: ("Italic Angle", DoubleParser, None),
-    1030: ("underlinePosition", SignedInt16Parser, None),
-    1031: ("underlineThickness", Int16Parser, Int16Compiler),
-    1034: ("Monospaced", Int16Parser, Int16Compiler),
-    1037: ("copyright", StringParser, StringCompiler),
-    1038: ("description", StringParser, StringCompiler),
-    1039: ("manufacturer", StringParser, StringCompiler),
-    1044: ("Type 1 Unique ID", SignedInt32Parser, None),
-    1046: ("version full", StringParser, StringCompiler),
-    1047: ("Slant Angle", DoubleParser, None),
-    1048: ("weight", SignedInt16Parser, None),  # Weight Class
-    1054: ("MS Character Set", Int16Parser, Int16Compiler),
-    1056: ("Menu Name", StringParser, StringCompiler),
-    1057: ("PCL ID", Int16Parser, Int16Compiler),
-    1058: ("VP ID", Int16Parser, Int16Compiler),
-    1059: ("1059", BaseParser, None),
-    1060: ("MS ID", Int16Parser, Int16Compiler),
-    1061: ("trademark", StringParser, StringCompiler),
-    1062: ("designer", StringParser, StringCompiler),
-    1063: ("designerURL", StringParser, StringCompiler),
-    1064: ("manufacturerURL", StringParser, StringCompiler),
-    1065: ("width_name", StringParser, StringCompiler),
-    1066: ("Default Glyph", StringParser, StringCompiler),
-    1068: ("1068", EncodedValueListWithCountParser, None),
-    1069: ("License", StringParser, StringCompiler),
-    1070: ("License URL", StringParser, StringCompiler),
-    1090: ("FOND Family ID", Int16Parser, Int16Compiler),
-    1092: ("FOND Name", StringParser, StringCompiler),
-    1093: ("1093", BaseParser, None),
-    1118: ("panose", PanoseParser, None),
-    1121: ("vendorID", StringParser, StringCompiler),
-    1127: ("Style Name", StringParser, StringCompiler),
-    1128: ("version", StringParser, StringCompiler),
-    1129: ("UniqueID", StringParser, StringCompiler),
-    1130: ("versionMajor", Int16Parser, Int16Compiler),
-    1131: ("versionMinor", Int16Parser, Int16Compiler),
-    1132: ("year", Int16Parser, Int16Compiler),
-    1133: ("Type 1 XUIDs", IntListParser, None),
-    1134: ("Type 1 XUIDs Count", Int16Parser, Int16Compiler),
-    1135: ("upm", Int16Parser, Int16Compiler),
-    1136: ("PCLT Table", PcltParser, None),
-    1137: ("tsn", StringParser, StringCompiler),
-    1138: ("Name Records", NameRecordsParser, None),
-    1139: ("OT Mac Name", StringParser, StringCompiler),
-    1140: ("1140", BaseParser, None),
-    1141: ("Custom CMAPs", CustomCmapParser, None),
-    1247: ("Primary Instance Locations", DoubleListParser, None),
-    1250: ("Glyph Unicode", GlyphUnicodeParser, None),
-    1253: ("Glyph Unicode Non-BMP", GlyphUnicodeSuppParser, None),
-    1254: ("Primary Instances", PrimaryInstancesParser, None),
-    1255: ("TrueType Zones", TrueTypeZonesParser, None),
-    1261: ("Binary cvt Table", BaseParser, None),
-    1262: ("Binary prep Table", BaseParser, None),
-    1263: ("Binary fpgm Table", BaseParser, None),
-    1264: ("TrueType Info", TrueTypeInfoParser, None),
-    1265: ("Gasp Ranges", GaspParser, None),
-    1267: ("Selection", Int16Parser, Int16Compiler),
-    1268: ("TrueType Stem PPEMs", TrueTypeStemPpemsParser, None),
-    1269: ("TrueType Stems", TrueTypeStemsParser, None),
-    1270: ("hhea_line_gap", Int16Parser, Int16Compiler),
-    1271: ("1271", EncodedValueListParser, None),
-    1272: ("Pixel Snap", Int16Parser, Int16Compiler),
-    1273: ("TrueType Zone Deltas", TrueTypeZoneDeltasParser, None),
-    1274: ("Zone Stop PPEM", Int16Parser, Int16Compiler),
-    1275: ("Code Stop PPEM", Int16Parser, Int16Compiler),
-    1276: ("openTypeFeatures", OpenTypeStringParser, OpenTypeStringCompiler),
-    1277: ("OpenType Class", StringParser, StringCompiler),
-    1278: ("hhea_ascender", SignedInt16Parser, None),
-    1279: ("hhea_descender", SignedInt16Parser, None),
-    1294: ("Global Guides", GlobalGuidesParser, None),
-    1296: ("Global Guide Properties", GuidePropertiesParser, None),
-    1410: ("1410", FL3Type1410Parser, None),
+    # Sorted by appearance in the VFB
     1500: ("Encoding", GlyphEncodingParser, GlyphEncodingCompiler),
     1501: ("Encoding Imported", GlyphEncodingParser, GlyphEncodingCompiler),
     1502: ("1502", Int16Parser, Int16Compiler),
+    518: ("518", StringParser, StringCompiler),
+    257: ("257", StringParser, StringCompiler),
+    1026: ("font_name", StringParser, StringCompiler),  # psn
     1503: ("Master Count", Int16Parser, Int16Compiler),
-    1504: ("Master Name", StringParser, StringCompiler),
-    1505: ("Master Location", MasterLocationParser, None),
+    # Maybe font.weight_vector, but checking in FL yields <WeightVector parent:>
+    1517: ("Default Weight Vector", DoubleListParser, None),  # Default Weight Vector
+    1044: ("unique_id", SignedInt32Parser, None),  # Type 1 Unique ID
+    1046: ("version", StringParser, StringCompiler),  # version full
+    1038: ("notice", StringParser, StringCompiler),  # description
+    1025: ("full_name", StringParser, StringCompiler),  # ffn
+    1027: ("family_name", StringParser, StringCompiler),  # tfn
+    1024: ("pref_family_name", StringParser, StringCompiler),  # sgn
+    1056: ("menu_name", StringParser, StringCompiler),  # Menu Name
+    1092: ("apple_name", StringParser, StringCompiler),  # FOND Name
+    1028: ("weight", StringParser, StringCompiler),  # weight_name
+    1065: ("width", StringParser, StringCompiler),  # width_name
+    # Is license/url not in Python API?
+    1069: ("License", StringParser, StringCompiler),
+    1070: ("License URL", StringParser, StringCompiler),
+    1037: ("copyright", StringParser, StringCompiler),  # OK!
+    1061: ("trademark", StringParser, StringCompiler),  # OK!
+    1062: ("designer", StringParser, StringCompiler),  # OK!
+    1063: ("designer_url", StringParser, StringCompiler),  # designerURL
+    1064: ("vendor_url", StringParser, StringCompiler),  # manufacturerURL
+    1039: ("source", StringParser, StringCompiler),  # manufacturer, "created by"
+    1034: ("is_fixed_pitch", Int16Parser, Int16Compiler),  # Monospaced
+    1048: ("weight_code", SignedInt16Parser, None),  # Weight Class
+    1029: ("italic_angle", DoubleParser, None),  # Italic Angle
+    1047: ("slant_angle", DoubleParser, None),  # Slant Angle
+    1030: ("underline_position", SignedInt16Parser, None),  # underlinePosition
+    1031: ("underline_thickness", Int16Parser, Int16Compiler),  # underlineThickness
+    1054: ("ms_charset", Int16Parser, Int16Compiler),  # MS Character Set
+    1118: ("panose", PanoseParser, None),  # OK!
+    1128: ("tt_version", StringParser, StringCompiler),  # version
+    1129: ("tt_u_id", StringParser, StringCompiler),  # UniqueID
+    1127: ("style_name", StringParser, StringCompiler),  # Style Name
+    1137: ("pref_style_name", StringParser, StringCompiler),  # tsn
+    1139: ("mac_compatible", StringParser, StringCompiler),  # OT Mac Name
+    1140: ("1140", BaseParser, None),
+    1121: ("vendor", StringParser, StringCompiler),  # vendorID
+    1133: ("x_u_id", IntListParser, None),  # Type 1 XUIDs
+    1134: ("x_u_id_num", Int16Parser, Int16Compiler),  # Type 1 XUIDs Count
+    1132: ("year", Int16Parser, Int16Compiler),  # OK!
+    1130: ("version_major", Int16Parser, Int16Compiler),  # versionMajor
+    1131: ("version_minor", Int16Parser, Int16Compiler),  # versionMinor
+    1135: ("upm", Int16Parser, Int16Compiler),  # OK!
+    1090: ("fond_id", Int16Parser, Int16Compiler),  # FOND Family ID
+    1093: ("1093", BaseParser, None),
+    1068: ("1068", EncodedValueListWithCountParser, None),
+    1530: ("blue_values_num", Int16Parser, Int16Compiler),  # Blue Values Count
+    1531: ("other_blues_num", Int16Parser, Int16Compiler),  # Other Blues Count
+    1532: ("family_blues_num", Int16Parser, Int16Compiler),  # Family Blues Count
+    1533: ("family_other_blues_num", Int16Parser, Int16Compiler),  # Family Other Blues Count  # noqa: E501
+    1534: ("stem_snap_h_num", Int16Parser, Int16Compiler),  # StemSnapH Count
+    1535: ("stem_snap_v_num", Int16Parser, Int16Compiler),  # StemSnapV Count
+    1267: ("font_style", Int16Parser, Int16Compiler),  # Selection
+    1057: ("pcl_id", Int16Parser, Int16Compiler),  # PCL ID
+    1058: ("vp_id", Int16Parser, Int16Compiler),  # VP ID
+    1060: ("ms_id", Int16Parser, Int16Compiler),  # MS ID
+    1059: ("1059", BaseParser, None),
+    1261: ("Binary cvt Table", BaseParser, None),
+    1262: ("Binary prep Table", BaseParser, None),
+    1263: ("Binary fpgm Table", BaseParser, None),
+    # Goes to font.ttinfo
+    1265: ("gasp", GaspParser, None),  # Gasp Ranges
+    1264: ("ttinfo", TrueTypeInfoParser, None),  # TrueType Info
+    1271: ("1271", EncodedValueListParser, None),
+    # Goes to font.ttinfo:
+    1270: ("hhea_line_gap", Int16Parser, Int16Compiler),  # OK!
+    1278: ("hhea_ascender", SignedInt16Parser, None),  # OK!
+    1279: ("hhea_descender", SignedInt16Parser, None),  # OK!
+    # hstem_data and vstem_data:
+    1268: ("TrueType Stem PPEMs", TrueTypeStemPpemsParser, None),
+    1524: ("TrueType Stem PPEMs 1", TrueTypeStemPpems1Parser, None),
+    1269: ("TrueType Stems", TrueTypeStemsParser, None),
+    1255: ("TrueType Zones", TrueTypeZonesParser, None),
+    # FIXME: should be a list in Python API:
+    2021: ("unicoderanges", Int64Parser, None),  # Unicode Ranges
+    1272: ("Pixel Snap", Int16Parser, Int16Compiler),
+    1274: ("Zone Stop PPEM", Int16Parser, Int16Compiler),
+    1275: ("Code Stop PPEM", Int16Parser, Int16Compiler),
+    1604: ("1604", Int16Parser, Int16Compiler),  # Binary import? e.g. 255
+    2032: ("2032", Int16Parser, Int16Compiler),  # Binary import? e.g. 300
+    1273: ("TrueType Zone Deltas", TrueTypeZoneDeltasParser, None),
+    1138: ("Name Records", NameRecordsParser, None),
+    1141: ("Custom CMAPs", CustomCmapParser, None),
+    1136: ("PCLT Table", PcltParser, None),
+    2022: ("Export PCLT Table", Int16Parser, Int16Compiler),
+    2025: ("note", StringParser, StringCompiler),  # fontNote
+    2030: ("2030", BaseParser, None),
+    # customdata may also come after Binary Table
+    2016: ("customdata", StringParser, StringCompiler),  # Font User Data
+    # Repeat for each binary table:
+    # truetypetables: TrueTypeTable
+    2014: ("TrueTypeTable", BinaryTableParser, BinaryTableCompiler),  # Binary Table
+    2026: ("OpenType Kerning Class Flags", OpenTypeKerningClassFlagsParser, None),
+    1276: ("features", OpenTypeStringParser, OpenTypeStringCompiler),  # openTypeFeatures
+    # Repeat for each OpenType class:
+    # font.classes
+    1277: ("OpenType Class", StringParser, StringCompiler),  # OpenType Class
+    513: ("513", BaseParser, None),
+    271: ("271", BaseParser, None),
     1513: ("Axis Count", Int16Parser, Int16Compiler),
     1514: ("Axis Name", StringParser, StringCompiler),
+    1523: ("Anisotropic Interpolation Mappings", AnisotropicInterpolationsParser, None),
     1515: ("Axis Mappings Count", AxisMappingsCountParser, None),
     1516: ("Axis Mappings", AxisMappingsParser, None),
-    1517: ("Default Weight Vector", DoubleListParser, None),  # Interp. coeffs for all masters  # noqa: E501
-    1523: ("Anisotropic Interpolation Mappings", AnisotropicInterpolationsParser, None),
-    1524: ("TrueType Stem PPEMs 1", TrueTypeStemPpems1Parser, None),
-    1530: ("Blue Values Count", Int16Parser, Int16Compiler),
-    1531: ("Other Blues Count", Int16Parser, Int16Compiler),
-    1532: ("Family Blues Count", Int16Parser, Int16Compiler),
-    1533: ("Family Other Blues Count", Int16Parser, Int16Compiler),
-    1534: ("StemSnapH Count", Int16Parser, Int16Compiler),
-    1535: ("StemSnapV Count", Int16Parser, Int16Compiler),
+    # Repeat the next two for each master:
+    1504: ("Master Name", StringParser, StringCompiler),
+    1505: ("Master Location", MasterLocationParser, None),
+    1247: ("Primary Instance Locations", DoubleListParser, None),
+    1254: ("Primary Instances", PrimaryInstancesParser, None),
+    # Repeat PostScript Info for each master:
     1536: ("PostScript Info", PostScriptInfoParser, None),
-    1604: ("1604", Int16Parser, Int16Compiler),
-    1742: ("Mapping Mode", MappingModeParser, None),
-    1743: ("OpenType Export Options", OpenTypeExportOptionsParser, None),
-    1744: ("Export Options", ExportOptionsParser, None),
+    527: ("527", BaseParser, None),
+    1294: ("Global Guides", GlobalGuidesParser, None),
+    1296: ("Global Guide Properties", GuidePropertiesParser, None),
+    1066: ("default_character", StringParser, StringCompiler),  # Default Glyph
+    # Begin: Repeat for each glyph
     2001: ("Glyph", GlyphParser, GlyphCompiler),
-    2007: ("Background Bitmap", BackgroundBitmapParser, None),
     2008: ("Links", LinkParser, None),
-    2009: ("Mask", MaskParser, None),
-    2010: ("2010", BaseParser, None),
-    2011: ("2011", BaseParser, None),
-    2012: ("Mark Color", Int16Parser, Int16Compiler),
-    2013: ("Glyph Bitmaps", GlyphBitmapParser, None),
-    2014: ("Binary Table", BinaryTableParser, BinaryTableCompiler),
-    2015: ("Glyph User Data", StringParser, StringCompiler),
-    2016: ("Font User Data", StringParser, StringCompiler),
-    2017: ("Glyph Note", StringParser, StringCompiler),
-    2018: ("Glyph GDEF Data", GlyphGDEFParser, None),
-    2019: ("Glyph Sketch", GlyphSketchParser, None),
-    2020: ("Glyph Anchors Supplemental", GlyphAnchorsSuppParser, None),
-    2021: ("Unicode Ranges", Int64Parser, None),
-    2022: ("Export PCLT Table", Int16Parser, Int16Compiler),
+    2007: ("Background Bitmap", BackgroundBitmapParser, None),
     2023: ("2023", EncodedValueListParser, None),  # Glyph
-    2024: ("OpenType Metrics Class Flags", OpenTypeMetricsClassFlagsParser, None),
-    2025: ("fontNote", StringParser, StringCompiler),
-    2026: ("OpenType Kerning Class Flags", OpenTypeKerningClassFlagsParser, None),
-    2027: ("Glyph Origin", GlyphOriginParser, None),
+    2010: ("2010", BaseParser, None),
+    2009: ("Mask", MaskParser, None),
+    2011: ("2011", BaseParser, None),
+    # Mask width?:
     2028: ("2028", EncodedValueListParser, None),  # MM, proportional to num of masters
+    2027: ("Glyph Origin", GlyphOriginParser, None),
+    1250: ("Glyph Unicode", GlyphUnicodeParser, None),
+    1253: ("Glyph Unicode Non-BMP", GlyphUnicodeSuppParser, None),
+    2012: ("Mark Color", Int16Parser, Int16Compiler),
+    2015: ("customdata", StringParser, StringCompiler),  # Glyph User Data
+    2017: ("note", StringParser, StringCompiler),  # Glyph Note
+    2018: ("Glyph GDEF Data", GlyphGDEFParser, None),
+    2020: ("Glyph Anchors Supplemental", GlyphAnchorsSuppParser, None),
     2029: ("Glyph Anchors MM", GlyphAnchorsParser, None),  # MM-compatible
     2031: ("Glyph Guide Properties", GuidePropertiesParser, None),
-    2032: ("2032", Int16Parser, Int16Compiler),
+    # End: Repeat for each glyph
+    1743: ("OpenType Export Options", OpenTypeExportOptionsParser, None),
+    1744: ("Export Options", ExportOptionsParser, None),
+    1742: ("Mapping Mode", MappingModeParser, None),
+
+    # Not seen in FontNames.vfb:
+    1410: ("1410", FL3Type1410Parser, None),
+    2013: ("Glyph Bitmaps", GlyphBitmapParser, None),
+    2019: ("Glyph Sketch", GlyphSketchParser, None),
+    2024: ("OpenType Metrics Class Flags", OpenTypeMetricsClassFlagsParser, None),
 }
 # fmt: on
 
 # Make sure the human-readable keys are unique
 all_classes = [key for key, _, _ in parser_classes.values()]
-assert len(set(all_classes)) == len(all_classes)
+assert len(set(all_classes)) == len(
+    all_classes
+), f"Duplicate keys in classes: {sorted(all_classes)}"
 
 entry_ids = {v[0]: k for k, v in parser_classes.items()}
 
