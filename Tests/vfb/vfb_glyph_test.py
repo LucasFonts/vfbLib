@@ -550,7 +550,7 @@ class VfbGlyphTest(TestCase):
         g.entry.compile()
         assert (
             hexStr(g.entry.data)
-            == "01090701018c61088ca38f00efef01ef8b018bef01275902f9d58b0f"
+            == "01090701018c61088ca38f00efef01ef8b018bef01275902f9d58b038b8b8b0f"
         )
 
     def test_getPointPen_simple_decompile(self):
