@@ -1,4 +1,4 @@
-v0.8.0
+v0.8.1
 
 - Add vfb2tth command for TrueType hinting export
 - Don't read VFB if no path has been passed
@@ -19,6 +19,7 @@ Parser changes:
 - Fix: Kerning and metrics class flags are stored slightly differently
 - Store header reserved field as hexStr
 - Change name of IntParser to Int16Parser, add compiler
+- Add Binary table parser
 
 Compiler changes:
 
@@ -30,8 +31,10 @@ Compiler changes:
 - Fix modification detection
 - Init glyph with empty structure
 - Implement compiling hint masks
+- Compile binary table
+- Compile OpenType features
 
 Breaking changes:
 
-- Don't be too clever on OpenType class parsing
+- Store OpenType classes as strings
 - Store hintmasks as tuples
