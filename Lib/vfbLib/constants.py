@@ -64,14 +64,13 @@ from vfbLib.parsers.truetype import (
 parser_classes = {
     # Sorted by appearance in the VFB
     1500: ("Encoding", GlyphEncodingParser, GlyphEncodingCompiler),
-    1501: ("Encoding Imported", GlyphEncodingParser, GlyphEncodingCompiler),
+    1501: ("Encoding Default", GlyphEncodingParser, GlyphEncodingCompiler),
     1502: ("1502", Int16Parser, Int16Compiler),
     518: ("518", StringParser, StringCompiler),
     257: ("257", StringParser, StringCompiler),
     1026: ("font_name", StringParser, StringCompiler),  # psn
     1503: ("Master Count", Int16Parser, Int16Compiler),
-    # Maybe font.weight_vector, but checking in FL yields <WeightVector parent:>
-    1517: ("Default Weight Vector", DoubleListParser, None),  # Default Weight Vector
+    1517: ("weight_vector", DoubleListParser, None),  # Default Weight Vector, one value per master
     1044: ("unique_id", SignedInt32Parser, None),  # Type 1 Unique ID
     1046: ("version", StringParser, StringCompiler),  # version full
     1038: ("notice", StringParser, StringCompiler),  # description
@@ -161,6 +160,7 @@ parser_classes = {
     # Repeat for each binary table:
     # truetypetables: TrueTypeTable
     2014: ("TrueTypeTable", BinaryTableParser, BinaryTableCompiler),  # Binary Table
+    2024: ("OpenType Metrics Class Flags", OpenTypeMetricsClassFlagsParser, None),
     2026: ("OpenType Kerning Class Flags", OpenTypeKerningClassFlagsParser, None),
     1276: ("features", OpenTypeStringParser, OpenTypeStringCompiler),  # openTypeFeatures
     # Repeat for each OpenType class:
@@ -186,20 +186,24 @@ parser_classes = {
     1066: ("default_character", StringParser, StringCompiler),  # Default Glyph
     # Begin: Repeat for each glyph
     2001: ("Glyph", GlyphParser, GlyphCompiler),
+    # Glyph.hlinks and Glyph.vlinks:
     2008: ("Links", LinkParser, None),
-    2007: ("Background Bitmap", BackgroundBitmapParser, None),
-    2023: ("2023", EncodedValueListParser, None),  # Glyph
+    2007: ("image", BackgroundBitmapParser, None),  # Background Bitmap
+    2013: ("Glyph Bitmaps", GlyphBitmapParser, None),
+    2023: ("2023", EncodedValueListParser, None),  # 1 encoded value per master
+    2019: ("Glyph Sketch", GlyphSketchParser, None),
     2010: ("2010", BaseParser, None),
-    2009: ("Mask", MaskParser, None),
+    2009: ("mask", MaskParser, None),  # Mask
+    # Mask width master 1?: Two ints or one long int?
     2011: ("2011", BaseParser, None),
-    # Mask width?:
+    # Mask width master 2?:
     2028: ("2028", EncodedValueListParser, None),  # MM, proportional to num of masters
     2027: ("Glyph Origin", GlyphOriginParser, None),
-    1250: ("Glyph Unicode", GlyphUnicodeParser, None),
+    1250: ("unicodes", GlyphUnicodeParser, None),  # Glyph Unicode
     1253: ("Glyph Unicode Non-BMP", GlyphUnicodeSuppParser, None),
-    2012: ("Mark Color", Int16Parser, Int16Compiler),
-    2015: ("customdata", StringParser, StringCompiler),  # Glyph User Data
-    2017: ("note", StringParser, StringCompiler),  # Glyph Note
+    2012: ("mark", Int16Parser, Int16Compiler),  # Mark Color
+    2015: ("glyph.customdata", StringParser, StringCompiler),  # Glyph User Data
+    2017: ("glyph.note", StringParser, StringCompiler),  # Glyph Note
     2018: ("Glyph GDEF Data", GlyphGDEFParser, None),
     2020: ("Glyph Anchors Supplemental", GlyphAnchorsSuppParser, None),
     2029: ("Glyph Anchors MM", GlyphAnchorsParser, None),  # MM-compatible
@@ -211,9 +215,6 @@ parser_classes = {
 
     # Not seen in FontNames.vfb:
     1410: ("1410", FL3Type1410Parser, None),
-    2013: ("Glyph Bitmaps", GlyphBitmapParser, None),
-    2019: ("Glyph Sketch", GlyphSketchParser, None),
-    2024: ("OpenType Metrics Class Flags", OpenTypeMetricsClassFlagsParser, None),
 }
 # fmt: on
 
