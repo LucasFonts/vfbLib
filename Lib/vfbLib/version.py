@@ -1,2 +1,2 @@
-version = "0.8.0"
-build_date = "2024-12-18"
+version = "0.9.0"
+build_date = "2025-01-03"
