@@ -102,6 +102,29 @@ options:
 ```
 
 
+### vfb2tth
+
+Export the TrueType hinting from a VFB in a custom format, either as JSON (default), TOML, or YAML.
+
+```bash
+$ vfb2tth MyFile.vfb
+```
+
+```
+usage: vfb2tth [-h] [-f FORMAT] [-p PATH] inputpath
+
+vfb2tth Converter Copyright (c) 2024 by LucasFonts
+
+positional arguments:
+  inputpath            input file path (.vfb)
+
+options:
+  -h, --help           show this help message and exit
+  -f, --format FORMAT  The output format: json (default), toml, or yaml
+  -p, --path PATH      output folder
+```
+
+
 ### vfbcu2qu
 
 Convert a VFB file to quadratic using the `cu2qu` library.
