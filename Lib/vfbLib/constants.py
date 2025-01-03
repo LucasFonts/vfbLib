@@ -149,7 +149,7 @@ parser_classes = {
     1604: ("1604", Int16Parser, Int16Compiler),  # Binary import? e.g. 255
     2032: ("2032", Int16Parser, Int16Compiler),  # Binary import? e.g. 300
     1273: ("TrueType Zone Deltas", TrueTypeZoneDeltasParser, None),
-    1138: ("Name Records", NameRecordsParser, None),
+    1138: ("fontnames", NameRecordsParser, None),  # Name Records
     1141: ("Custom CMAPs", CustomCmapParser, None),
     1136: ("PCLT Table", PcltParser, None),
     2022: ("Export PCLT Table", Int16Parser, Int16Compiler),
