@@ -1,11 +1,9 @@
-import codecs
 import orjson
 import logging
 from argparse import ArgumentParser
 from pathlib import Path
 
 from vfbLib.ufo.builder import VfbToUfoBuilder
-from vfbLib.version import build_date
 from vfbLib.vfb.vfb import Vfb
 
 logger = logging.getLogger(__name__)
@@ -13,9 +11,7 @@ logger = logging.getLogger(__name__)
 
 def vfb2json():
     parser = ArgumentParser(
-        description=(
-            f"VFB2JSON Converter\nCopyright (c) 2024 by LucasFonts\nBuild {build_date}"
-        )
+        description="vfb2json Converter\nCopyright (c) 2024 by LucasFonts"
     )
     parser.add_argument(
         "-d",
@@ -88,9 +84,7 @@ def vfb2json():
 
 def vfb2ufo():
     parser = ArgumentParser(
-        description=(
-            f"VFB3UFO Converter\nCopyright (c) 2024 by LucasFonts\nBuild {build_date}"
-        )
+        description="vfb3ufo Converter\nCopyright (c) 2024 by LucasFonts"
     )
     parser.add_argument(
         "-p",

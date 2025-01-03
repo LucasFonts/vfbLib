@@ -9,7 +9,6 @@ from typing import Any
 
 from vfbLib.ufo.glyph import IndexVfbToUfoGlyph
 from vfbLib.ufo.tth import TTGlyphHints, transform_stem_rounds
-from vfbLib.version import build_date
 from vfbLib.vfb.vfb import Vfb
 
 logger = logging.getLogger(__name__)
@@ -17,9 +16,7 @@ logger = logging.getLogger(__name__)
 
 def vfb2tth():
     parser = ArgumentParser(
-        description=(
-            f"VFB2TTH Converter\nCopyright (c) 2024 by LucasFonts\nBuild {build_date}"
-        )
+        description="vfb2tth Converter\nCopyright (c) 2024 by LucasFonts"
     )
     parser.add_argument(
         "-f",
@@ -92,7 +89,7 @@ def extract_truetype_hinting(vfb: Vfb) -> dict[str, Any]:
     stem_round: dict[str, dict] = {"ttStemsV": {}, "ttStemsH": {}}
     for entry in vfb.entries:
         key = entry.key
-        if key == "Gasp Ranges":
+        if key == "gasp":
             entry.decompile()
             assert isinstance(entry.decompiled, list)
             font["gasp"] = {
