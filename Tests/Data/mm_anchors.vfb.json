@@ -4,26 +4,65 @@
             "header0": 26,
             "filetype": "WLF10",
             "header1": 3,
-            "header2": 44,
-            "reserved": "00000000000000000000000000000000000000000000000000000000000000000000",
-            "header3": 1,
-            "header4": 0,
-            "header5": 4,
-            "header6": 0,
-            "header7": 10,
-            "header8": 11,
-            "header9": {
-                "1": 1
-            },
-            "header10": {
-                "2": 84017792
-            },
-            "header11": {
+            "chunk1": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                4,
+                0,
+                0,
+                0,
+                10,
+                0
+            ],
+            "creator": {
+                "1": 1,
+                "2": [
+                    5,
+                    2,
+                    2,
+                    128
+                ],
                 "3": 0
             },
-            "header12": 0,
-            "header13": 262,
-            "header14": 0
+            "end0": 6,
+            "end1": 1,
+            "end2": 0
         }
     },
     "entries": [
@@ -1832,7 +1871,7 @@
             "decompiled": ""
         },
         {
-            "key": "psn",
+            "key": "font_name",
             "decompiled": ""
         },
         {
@@ -1840,50 +1879,50 @@
             "decompiled": 2
         },
         {
-            "key": "Default Weight Vector",
+            "key": "weight_vector",
             "decompiled": [
                 1.0,
                 0.0
             ]
         },
         {
-            "key": "Type 1 Unique ID",
+            "key": "unique_id",
             "decompiled": -1
         },
         {
-            "key": "version full",
+            "key": "version",
             "decompiled": ""
         },
         {
-            "key": "description",
+            "key": "notice",
             "decompiled": ""
         },
         {
-            "key": "ffn",
+            "key": "full_name",
             "decompiled": ""
         },
         {
-            "key": "tfn",
+            "key": "family_name",
             "decompiled": ""
         },
         {
-            "key": "sgn",
+            "key": "pref_family_name",
             "decompiled": ""
         },
         {
-            "key": "Menu Name",
+            "key": "menu_name",
             "decompiled": ""
         },
         {
-            "key": "FOND Name",
+            "key": "apple_name",
             "decompiled": ""
         },
         {
-            "key": "weight_name",
+            "key": "weight",
             "decompiled": "All"
         },
         {
-            "key": "width_name",
+            "key": "width",
             "decompiled": "Normal"
         },
         {
@@ -1907,43 +1946,43 @@
             "decompiled": ""
         },
         {
-            "key": "designerURL",
+            "key": "designer_url",
             "decompiled": ""
         },
         {
-            "key": "manufacturerURL",
+            "key": "vendor_url",
             "decompiled": ""
         },
         {
-            "key": "manufacturer",
+            "key": "source",
             "decompiled": ""
         },
         {
-            "key": "Monospaced",
+            "key": "is_fixed_pitch",
             "decompiled": 0
         },
         {
-            "key": "weight",
+            "key": "weight_code",
             "decompiled": 0
         },
         {
-            "key": "Italic Angle",
+            "key": "italic_angle",
             "decompiled": 0.0
         },
         {
-            "key": "Slant Angle",
+            "key": "slant_angle",
             "decompiled": 0.0
         },
         {
-            "key": "underlinePosition",
+            "key": "underline_position",
             "decompiled": -100
         },
         {
-            "key": "underlineThickness",
+            "key": "underline_thickness",
             "decompiled": 50
         },
         {
-            "key": "MS Character Set",
+            "key": "ms_charset",
             "decompiled": 0
         },
         {
@@ -1962,23 +2001,23 @@
             ]
         },
         {
-            "key": "version",
+            "key": "tt_version",
             "decompiled": ""
         },
         {
-            "key": "UniqueID",
+            "key": "tt_u_id",
             "decompiled": ""
         },
         {
-            "key": "Style Name",
+            "key": "style_name",
             "decompiled": ""
         },
         {
-            "key": "tsn",
+            "key": "pref_style_name",
             "decompiled": ""
         },
         {
-            "key": "OT Mac Name",
+            "key": "mac_compatible",
             "decompiled": ""
         },
         {
@@ -1986,11 +2025,11 @@
             "decompiled": ""
         },
         {
-            "key": "vendorID",
+            "key": "vendor",
             "decompiled": "iact"
         },
         {
-            "key": "Type 1 XUIDs",
+            "key": "x_u_id",
             "decompiled": [
                 0,
                 0,
@@ -2015,7 +2054,7 @@
             ]
         },
         {
-            "key": "Type 1 XUIDs Count",
+            "key": "x_u_id_num",
             "decompiled": 0
         },
         {
@@ -2023,11 +2062,11 @@
             "decompiled": 0
         },
         {
-            "key": "versionMajor",
+            "key": "version_major",
             "decompiled": 1
         },
         {
-            "key": "versionMinor",
+            "key": "version_minor",
             "decompiled": 0
         },
         {
@@ -2035,7 +2074,7 @@
             "decompiled": 1000
         },
         {
-            "key": "FOND Family ID",
+            "key": "fond_id",
             "decompiled": 128
         },
         {
@@ -2049,35 +2088,35 @@
             }
         },
         {
-            "key": "Blue Values Count",
+            "key": "blue_values_num",
             "decompiled": 0
         },
         {
-            "key": "Other Blues Count",
+            "key": "other_blues_num",
             "decompiled": 0
         },
         {
-            "key": "Family Blues Count",
+            "key": "family_blues_num",
             "decompiled": 0
         },
         {
-            "key": "Family Other Blues Count",
+            "key": "family_other_blues_num",
             "decompiled": 0
         },
         {
-            "key": "StemSnapH Count",
+            "key": "stem_snap_h_num",
             "decompiled": 0
         },
         {
-            "key": "StemSnapV Count",
+            "key": "stem_snap_v_num",
             "decompiled": 0
         },
         {
-            "key": "Selection",
+            "key": "font_style",
             "decompiled": 64
         },
         {
-            "key": "MS ID",
+            "key": "ms_id",
             "decompiled": 0
         },
         {
@@ -2085,7 +2124,7 @@
             "decompiled": "203955"
         },
         {
-            "key": "TrueType Info",
+            "key": "ttinfo",
             "decompiled": {
                 "0x33": 0,
                 "0x34": 0,
@@ -2238,7 +2277,7 @@
             }
         },
         {
-            "key": "Unicode Ranges",
+            "key": "unicoderanges",
             "decompiled": 0
         },
         {
@@ -2266,7 +2305,7 @@
             "decompiled": {}
         },
         {
-            "key": "Name Records",
+            "key": "fontnames",
             "decompiled": []
         },
         {
@@ -2802,7 +2841,7 @@
             }
         },
         {
-            "key": "Background Bitmap",
+            "key": "image",
             "decompiled": {
                 "origin": [
                     -166,
@@ -3097,7 +3136,7 @@
             }
         },
         {
-            "key": "Glyph Unicode",
+            "key": "unicodes",
             "decompiled": [
                 97
             ]
@@ -3178,7 +3217,7 @@
             }
         },
         {
-            "key": "Glyph Unicode",
+            "key": "unicodes",
             "decompiled": [
                 769
             ]
