@@ -17,7 +17,6 @@ class VfbHeaderParser(StreamReader):
         header["filetype"] = self.read_str(5)
         header["header1"] = self.read_uint16()
         size = self.read_uint16()
-        header["chunk1_size"] = size
         chunk1 = []
         for _ in range(size):
             chunk1.append(self.read_uint8())
