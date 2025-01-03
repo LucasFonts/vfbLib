@@ -385,24 +385,24 @@ class VfbToUfoBuilder:
 
             if name == "header":
                 pass
-            elif name == "sgn":  # 1024
+            elif name == "pref_family_name":  # 1024
                 self.info.familyName = data
                 self.info.openTypeNamePreferredFamilyName = data
-            elif name == "Monospaced":  # 1034
+            elif name == "is_fixed_pitch":  # 1034
                 self.info.set_fixed_pitch(data)
-            elif name == "version full":
+            elif name == "version":  # 1046
                 pass
-            elif name == "weight":  # 1048
+            elif name == "weight_code":  # 1048
                 self.info.set_weight_class(data)
-            elif name == "Style Name":  # 1127
+            elif name == "style_name":  # 1127
                 self.info.postscriptWeightName = data  # FIXME: Does not contain Italic
-            elif name == "Type 1 XUIDs":  # 1133
+            elif name == "x_u_id":  # 1133
                 pass
-            elif name == "tsn":  # 1137
+            elif name == "pref_style_name":  # 1137
                 self.info.set_style_name(data)
-            elif name == "Name Records":  # 1138
+            elif name == "fontnames":  # 1138
                 self.info.set_name_records(data)
-            elif name == "Glyph Unicode":  # 1250
+            elif name == "unicodes":  # 1250
                 assert self.current_glyph is not None
                 self.current_glyph.unicodes.extend(data)
             elif name == "Glyph Unicode Non-BMP":  # 1253
@@ -415,9 +415,9 @@ class VfbToUfoBuilder:
                 self.set_tt_zones(data)
             elif name == "TrueType Info":  # 1264
                 self.info.set_tt_info(data)
-            elif name == "Gasp Ranges":  # 1265
+            elif name == "gasp":  # 1265
                 self.info.set_tt_gasp(data)
-            elif name == "Selection":  # 1267
+            elif name == "font_style":  # 1267
                 self.info.set_selection(data)
             elif name == "TrueType Stem PPEMs":  # 1268
                 self.set_tt_stem_ppms(data)
@@ -431,7 +431,7 @@ class VfbToUfoBuilder:
                 self.set_tt_zone_stop(data)
             elif name == "Code Stop PPEM":  # 1275
                 self.set_tt_code_stop(data)
-            elif name == "openTypeFeatures":  # 1276
+            elif name == "features":  # 1276
                 self.set_feature_code(data)
             elif name == "OpenType Class":  # 1277
                 self.add_ot_class(data)
@@ -482,17 +482,17 @@ class VfbToUfoBuilder:
                             break
             elif name == "TrueType Stem PPEMs 1":  # 1524
                 self.set_tt_stem_ppms_1(data)
-            elif name == "Blue Values Count":  # 1530
+            elif name == "blue_values_num":  # 1530
                 self.num_blue_values = data
-            elif name == "Other Blues Count":  # 1531
+            elif name == "other_blues_num":  # 1531
                 self.num_other_blues = data
-            elif name == "Family Blues Count":  # 1532
+            elif name == "family_blues_num":  # 1532
                 self.num_family_blues = data
-            elif name == "Family Other Blues Count":  # 1533
+            elif name == "family_other_blues_num":  # 1533
                 self.num_family_other_blues = data
-            elif name == "StemSnapH Count":  # 1534
+            elif name == "stem_snap_h_num":  # 1534
                 self.num_stem_snap_h = data
-            elif name == "StemSnapV Count":  # 1535
+            elif name == "stem_snap_v_num":  # 1535
                 self.num_stem_snap_v = data
             elif name == "PostScript Info":  # 1536
                 self.masters_ps_info.append(data)
@@ -521,21 +521,21 @@ class VfbToUfoBuilder:
             elif name == "Links":  # 2008
                 assert self.current_glyph is not None
                 self.current_glyph.links = data
-            elif name == "Mask":  # 2009
+            elif name == "mask":  # 2009
                 pass
             elif name == "2010":
                 pass
-            elif name == "2011":
+            elif name == "2011":  # Mask width master 1?
                 pass
-            elif name == "Mark Color":  # 2012
+            elif name == "mark":  # 2012
                 assert self.current_glyph is not None
                 self.current_glyph.set_mark(data)
-            elif name == "Glyph User Data":  # 2015
+            elif name == "glyph.customdata":  # 2015
                 assert self.current_glyph is not None
                 self.current_glyph.lib["com.fontlab.v5.userData"] = data
-            elif name == "Font User Data":  # 2016
+            elif name == "customdata":  # 2016
                 self.lib["com.fontlab.v5.userData"] = data
-            elif name == "Glyph Note":  # 2017
+            elif name == "glyph.note":  # 2017
                 assert self.current_glyph is not None
                 self.current_glyph.note = data
             elif name == "Glyph GDEF Data":  # 2018
@@ -552,13 +552,13 @@ class VfbToUfoBuilder:
                         self.current_glyph.anchors.append(a)
             elif name == "Glyph Anchors Supplemental":  # 2020
                 pass
-            elif name == "Unicode Ranges":  # 2021
+            elif name == "unicoderanges":  # 2021
                 self.info.set_unicode_ranges(data)
             elif name == "2023":
                 pass
             elif name == "OpenType Metrics Class Flags":  # 2024
                 self.lib["com.fontlab.v5.metricsClassFlags"] = data
-            elif name == "fontNote":  # 2025
+            elif name == "note":  # 2025
                 self.info.note = data
             elif name == "OpenType Kerning Class Flags":  # 2026
                 self.kerning_class_flags = data
