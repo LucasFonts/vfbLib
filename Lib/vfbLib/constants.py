@@ -91,7 +91,7 @@ parser_classes = {
     1064: ("vendor_url", StringParser, StringCompiler),  # manufacturerURL
     1039: ("source", StringParser, StringCompiler),  # manufacturer, "created by"
     1034: ("is_fixed_pitch", Int16Parser, Int16Compiler),  # Monospaced
-    1048: ("weight_code", SignedInt16Parser, None),  # Weight Class
+    1048: ("weight_code", SignedInt16Parser, None),  # Weight Class, was: weight
     1029: ("italic_angle", DoubleParser, None),  # Italic Angle
     1047: ("slant_angle", DoubleParser, None),  # Slant Angle
     1030: ("underline_position", SignedInt16Parser, None),  # underlinePosition
