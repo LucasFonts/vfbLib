@@ -38,4 +38,4 @@ See the [description](DESCRIPTION.md) of the command line scripts.
 
 ## Copyright
 
-© 2022-2024 by [LucasFonts GmbH](https://www.lucasfonts.com/), Berlin
+© 2022-2025 by [LucasFonts GmbH](https://www.lucasfonts.com/), Berlin
