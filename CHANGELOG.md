@@ -8,15 +8,15 @@
 
 Parser changes:
 
-- Change the internal VfbHeader format
+- Change the internal `VfbHeader` format
 
 Compiler changes:
 
-- Support the new internal VfbHeader format
+- Support the new internal `VfbHeader` format
 
 Breaking changes:
 
-- Breaking change: Modify many VfbEntry names to better match the FLS5 Python API
+- Modify many `VfbEntry` names to better match the FLS5 Python API attribute names
 
 ## v0.8.1
 
