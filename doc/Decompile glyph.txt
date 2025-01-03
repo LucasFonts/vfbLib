@@ -1,0 +1,46 @@
+01 09 07 01 
+01 #name
+   92 [7]
+   75 6e 69 30 31 38 34 [uni0184]
+08 #outlines
+   8d [2] f7 de ac
+   00 f7 33 f9 37 f7 88 f9 37
+   01 8b fb b1 8b fb 6d
+   04 8b 8b 8b 8b
+   04 c7 8d ab 8c
+   01 b4 8b 9e 8b
+   04 dd 8b e9 8b
+   04 f5 59 f7 13 5a
+   04 be 36 cb 2a
+   01 8b 56 8b 42
+   04 8b 4b 8b 3b
+   04 4e 2e 37 fb 01
+   04 fb 05 59 fb 1f 53
+   01 3d 8b 37 8b
+   04 6a 8b 6a 8b
+   04 4a 8c 3f 8d
+   04 5f 8d 41 8e
+   01 8b 8b 6b 8d
+   01 8b f8 d6 8b f8 5b
+   01 6d da 4b f7 37
+   01 ba 9d f7 17 c2
+   00 b0 fb dc f7 0b fc 07
+   01 8b fb c4 8b fb 2d
+   04 8b 8b 8b 8b
+   04 c3 89 a3 8a
+   01 af 8b 9c 8b
+   04 ef 8b ba 8b
+   04 e8 e0 bc b1
+   01 8b d2 8b b6
+   04 8b ce 8b b0
+   04 33 df 5a b1
+   01 24 8b 5c 8b
+   04 64 8b 7e 8b
+   04 54 8a 6f 89
+02 #metrics
+   f8b0 8b f8ec 8b
+03 #ps hints
+   8b 8b 8b
+04 #guides
+   8d 8d
+0f #end of glyph
