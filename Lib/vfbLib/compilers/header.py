@@ -21,21 +21,34 @@ class VfbHeaderCompiler(StreamWriter):
         self.write_uint8(data["header0"])
         self.write_str(data["filetype"])
         self.write_uint16(data["header1"])
-        self.write_uint16(data["header2"])
-        self.write_bytes(deHexStr(data["reserved"]))
-        self.write_uint16(data["header3"])
-        self.write_uint16(data["header4"])
-        self.write_uint16(data["header5"])
-        self.write_uint16(data["header6"])
-        self.write_uint16(data["header7"])
-        # > FL3 additions
-        self.write_uint16(data["header8"])
-        for i in range(9, 12):
-            d = data[f"header{i}"]
-            assert len(d) == 1
-            k, v = tuple(d.items())[0]
-            self.write_uint8(int(k))
-            self.write_value(v)
-        self.write_uint8(data["header12"])
-        self.write_uint16(data["header13"])
-        self.write_uint16(data["header14"])
+
+        # Compile chunk1 separately so we can store its size
+        sw = StreamWriter()
+        sw.stream = BytesIO()
+        for value in data["chunk1"]:
+            sw.write_uint8(value)
+        chunk1 = sw.stream.getvalue()
+        self.write_uint16(len(chunk1))
+        self.write_bytes(chunk1)
+        if data["chunk1"][-2:] == [10, 0]:
+            # FL4+ additions over FL3
+            # Compile the app_info chunk separately so we can store its size
+            sw = StreamWriter()
+            sw.stream = BytesIO()
+            for k, v in data["creator"]:
+                sw.write_uint8(int(k))
+                if int(k) == 2:
+                    # app version
+                    sw.write_uint8(0xFF)
+                    for version in v:
+                        sw.write_uint8(version)
+                else:
+                    sw.write_value(v)
+            sw.write_uint8(0)  # stop marker of the key-value dict
+            app_info = sw.stream.getvalue()
+            self.write_uint16(len(app_info))
+            self.write_bytes(app_info)
+            # In the older header, this is already at the end of chunk1:
+            self.write_uint8(6)
+            self.write_uint8(1)
+        self.write_uint16(0)
