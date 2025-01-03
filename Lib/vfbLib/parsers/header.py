@@ -46,6 +46,17 @@ class VfbHeaderParser(StreamReader):
             # Two bytes follow that are at the end of chunk1 in the older format
             header["end0"] = self.read_uint8()  # 6
             header["end1"] = self.read_uint8()  # 1
+        else:
+            # TODO: Just upgrade the header to the newer format?
+            # chunk1[-2:] = [10, 0]
+            # header["creator"] = {
+            #     "1": 1,
+            #     "2": [5, 2, 2, 128],
+            #     "3": 0,
+            # }
+            # header["end0"] = 6
+            # header["end1"] = 1
+            pass
         # The common 0 word at the end of the header
         header["end2"] = self.read_uint16()
 
