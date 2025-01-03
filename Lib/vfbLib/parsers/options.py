@@ -50,7 +50,7 @@ class OpenTypeExportOptionsParser(EncodedKeyValuesParser):
             #   bit 14 - "add_link_to_rsb"
             21: "export_hinted_truetype_font",
             22: "autohint_unhinted_glyphs",
-            23: "keep_existing_truetype_instructioons",
+            23: "keep_existing_truetype_instructions",
             24: "export_visual_truetype_hints",
             28: "export_embedded_bitmaps",
             29: "copy_hdmx_data_from_base_to_composite_glyph",
