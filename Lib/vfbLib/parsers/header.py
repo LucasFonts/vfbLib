@@ -38,7 +38,7 @@ class VfbHeaderParser(StreamReader):
                     app_version = []
                     for i in (24, 16, 8, 0):
                         # Extract the bytes from the number again
-                        app_version.append(value >> i & 0xff)
+                        app_version.append(value >> i & 0xFF)
                     app_info[str(key)] = app_version
                 else:
                     app_info[str(key)] = value
