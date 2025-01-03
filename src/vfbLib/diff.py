@@ -5,16 +5,13 @@ from argparse import ArgumentParser
 from difflib import HtmlDiff, unified_diff
 from pathlib import Path
 
-from vfbLib.version import build_date
 from vfbLib.vfb.vfb import Vfb
 
 logger = logging.getLogger(__name__)
 
 
 def diffvfb():
-    parser = ArgumentParser(
-        description=(f"diffvfb\nCopyright (c) 2024 by LucasFonts\nBuild {build_date}")
-    )
+    parser = ArgumentParser(description="diffvfb\nCopyright (c) 2024 by LucasFonts")
     parser.add_argument(
         "--html",
         type=str,
