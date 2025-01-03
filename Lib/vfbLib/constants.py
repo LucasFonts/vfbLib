@@ -228,10 +228,10 @@ entry_ids = {v[0]: k for k, v in parser_classes.items()}
 
 ignore_minimal = [
     "Background Bitmap",
-    "fontNote",
+    "note",
     "Global Guides",
     "Glyph Bitmaps",
     "Glyph Guide Properties",
-    "Mark Color",
-    "Mask",
+    "mark",
+    "mask",
 ]
