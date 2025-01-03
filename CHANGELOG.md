@@ -1,4 +1,24 @@
-v0.8.1
+# Change Log
+
+## v0.9.0
+
+- Use `orjson` instead of `json` for much faster serialization
+- Use `pyproject.toml` for everything, remove `setup.py`/`setup.cfg`
+- Use `setuptools-scm` instead of manually setting the version
+
+Parser changes:
+
+- Change the internal VfbHeader format
+
+Compiler changes:
+
+- Support the new internal VfbHeader format
+
+Breaking changes:
+
+- Breaking change: Modify many VfbEntry names to better match the FLS5 Python API
+
+## v0.8.1
 
 - Add vfb2tth command for TrueType hinting export
 - Don't read VFB if no path has been passed
