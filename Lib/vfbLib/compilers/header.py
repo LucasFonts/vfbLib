@@ -35,7 +35,7 @@ class VfbHeaderCompiler(StreamWriter):
             # Compile the app_info chunk separately so we can store its size
             sw = StreamWriter()
             sw.stream = BytesIO()
-            for k, v in data["creator"]:
+            for k, v in data["creator"].items():
                 sw.write_uint8(int(k))
                 if int(k) == 2:
                     # app version
