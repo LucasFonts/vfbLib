@@ -70,7 +70,7 @@ parser_classes = {
     257: ("257", StringParser, StringCompiler),
     1026: ("font_name", StringParser, StringCompiler),  # psn
     1503: ("Master Count", Int16Parser, Int16Compiler),
-    1517: ("weight_vector", DoubleListParser, None),  # Default Weight Vector, one value per master
+    1517: ("weight_vector", DoubleListParser, None),  # Default Weight Vector, one value per master # noqa: E501
     1044: ("unique_id", SignedInt32Parser, None),  # Type 1 Unique ID
     1046: ("version", StringParser, StringCompiler),  # version full
     1038: ("notice", StringParser, StringCompiler),  # description
@@ -162,7 +162,7 @@ parser_classes = {
     2014: ("TrueTypeTable", BinaryTableParser, BinaryTableCompiler),  # Binary Table
     2024: ("OpenType Metrics Class Flags", OpenTypeMetricsClassFlagsParser, None),
     2026: ("OpenType Kerning Class Flags", OpenTypeKerningClassFlagsParser, None),
-    1276: ("features", OpenTypeStringParser, OpenTypeStringCompiler),  # openTypeFeatures
+    1276: ("features", OpenTypeStringParser, OpenTypeStringCompiler),  # openTypeFeatures # noqa: E501
     # Repeat for each OpenType class:
     # font.classes
     1277: ("OpenType Class", StringParser, StringCompiler),  # OpenType Class
