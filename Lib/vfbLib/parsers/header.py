@@ -1,53 +1,53 @@
 import logging
-from io import BufferedReader
+from io import BufferedReader, BytesIO
 from typing import Any
 
-from fontTools.misc.textTools import hexStr
-
-from vfbLib.parsers.base import read_value, uint8, uint16
+from vfbLib.parsers.base import StreamReader
 
 logger = logging.getLogger(__name__)
 
 
-class VfbHeaderParser:
+class VfbHeaderParser(StreamReader):
     def __init__(self, stream: BufferedReader) -> None:
         self.stream: BufferedReader = stream
 
     def parse(self) -> dict[str, Any]:
         header: dict[str, Any] = {}
         header["header0"] = self.read_uint8()
-        header["filetype"] = self.stream.read(5).decode("cp1252")
+        header["filetype"] = self.read_str(5)
         header["header1"] = self.read_uint16()
-        header["header2"] = self.read_uint16()
-        header["reserved"] = hexStr(self.stream.read(34).decode("ascii"))
-        header["header3"] = self.read_uint16()
-        header["header4"] = self.read_uint16()
-        header["header5"] = self.read_uint16()
-        header["header6"] = self.read_uint16()
-        header["header7"] = self.read_uint16()
-        if header["header7"] == 10:
-            # FL5 additions over FL3
-            header["header8"] = self.read_uint16()
-            for i in range(9, 12):
-                key = self.read_uint8()
-                val = self.read_value()
-                header[f"header{i}"] = {str(key): val}
-            header["header12"] = self.read_uint8()
-            header["header13"] = self.read_uint16()
-        else:
-            header["header13"] = header["header7"]
-            del header["header7"]
-        header["header14"] = self.read_uint16()
+        size = self.read_uint16()
+        header["chunk1_size"] = size
+        chunk1 = []
+        for _ in range(size):
+            chunk1.append(self.read_uint8())
+        header["chunk1"] = chunk1
+        if chunk1[-2:] == [10, 0]:
+            # FL4+ additions over FL3
+            size = self.read_uint16()
+            fl4_chunk = self.stream.read(size)
+            sr = StreamReader()
+            sr.stream = BytesIO(fl4_chunk)
+            app_info = {}
+            while True:
+                key = sr.read_uint8()
+                if key == 0:
+                    break
+                value = sr.read_value()
+                if key == 2:
+                    # app version
+                    app_version = []
+                    for i in (24, 16, 8, 0):
+                        # Extract the bytes from the number again
+                        app_version.append(value >> i & 0xff)
+                    app_info[str(key)] = app_version
+                else:
+                    app_info[str(key)] = value
+            header["creator"] = app_info
+            # Two bytes follow that are at the end of chunk1 in the older format
+            header["end0"] = self.read_uint8()  # 6
+            header["end1"] = self.read_uint8()  # 1
+        # The common 0 word at the end of the header
+        header["end2"] = self.read_uint16()
 
         return header
-
-    def read_uint8(self) -> int:
-        return int.from_bytes(self.stream.read(uint8), byteorder="little", signed=False)
-
-    def read_uint16(self) -> int:
-        return int.from_bytes(
-            self.stream.read(uint16), byteorder="little", signed=False
-        )
-
-    def read_value(self):
-        return read_value(self.stream)
