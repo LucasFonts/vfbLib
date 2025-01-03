@@ -2,8 +2,6 @@ import logging
 from io import BytesIO
 from typing import Any
 
-from fontTools.misc.textTools import deHexStr
-
 from vfbLib.compilers.base import StreamWriter
 
 logger = logging.getLogger(__name__)
