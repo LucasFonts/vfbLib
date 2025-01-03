@@ -44,7 +44,7 @@ not be overwritten unless you specify the `-fo` option.
 vfb3ufo -h
 usage: vfb3ufo [-h] [-p PATH] [-fo] [-k] [-ttx] [-64] [-s] [-nops] [-z] [-m] [-u] inputpath [outputpath]
 
-VFB3UFO Converter Copyright (c) 2023 by LucasFonts Build 2024-01-10
+vfb3ufo Converter Copyright (c) 2023 by LucasFonts
 
 positional arguments:
   inputpath             input file path (.vfb)
@@ -88,7 +88,7 @@ We expect this to be mostly used for debugging purposes.
 vfb2json -h
 usage: vfb2json [-h] [-d] [--header] [-m] [-p PATH] inputpath
 
-VFB2JSON Converter Copyright (c) 2023 by LucasFonts Build 2023-07-18
+vfb2json Converter Copyright (c) 2023 by LucasFonts
 
 positional arguments:
   inputpath             input file path (.vfb)
@@ -115,7 +115,7 @@ will convert the file and save it with the suffix `.qu.vfb` in the same director
 ```
 usage: vfbcu2qu [-h] [-p PATH] [-fo] [-m MAX_ERR_EM] inputpath [outputpath]
 
-VFB Cubic to Quadratic Converter Copyright (c) 2023 by LucasFonts Build 2023-07-18
+VFB Cubic to Quadratic Converter Copyright (c) 2023 by LucasFonts
 
 positional arguments:
   inputpath             input file path (.vfb)
@@ -138,7 +138,7 @@ Generate a diff of two VFB files, either in unified diff or HTML format.
 ```
 usage: vfbdiff [-h] [--html HTML] file1 file2
 
-vfbdiff Copyright (c) 2023 by LucasFonts Build 2023-07-18
+vfbdiff Copyright (c) 2023 by LucasFonts
 
 positional arguments:
   file1        First input file path (.vfb)
