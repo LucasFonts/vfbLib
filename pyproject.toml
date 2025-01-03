@@ -1,7 +1,84 @@
-[tool.black]
-line-length = 88
-target-version = ["py310"]
+[project]
+name = "vfbLib"
+dynamic = ["version"]
+description = "Tools for converting FontLab Studio 5 (VFB) files."
+keywords = ["vfb", "vfbLib", "fonttools"]
+
+readme = "README.md"
+license = { file = "LICENSE" }
+
+authors = [{ name = "Jens Kutílek", email = "webmail@kutilek.de" }]
+classifiers = [
+    "Environment :: Console",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+]
+
+requires-python = ">=3.10"
+dependencies = [
+    "fonttools[ufo] >= 4.45.1",
+    "orjson >= 3.10.13, < 4",
+    "typing_extensions >= 4.8.0",
+    "ufonormalizer >= 0.6.1",
+    "ufoLib2 >= 0.16.0",
+]
+
+[project.optional-dependencies]
+toml = ["tomli-w >= 1.0.0"]
+yaml = ["pyyaml >= 6.0.2"]
+all = ["vfbLib[toml]", "vfbLib[yaml]"]
+
+dev = [
+    "build",                # packaging build frontend
+    "wheel",                # build system (also downloaded during build)
+    "setuptools-scm[toml]", # git tags-based versioning (also downloaded during build)
+]
+
+doc = [
+    "sphinx>=7", # documentation generator
+]
+
+[project.urls]
+"Homepage" = "https://github.com/LucasFonts/vfbLib"
+"Documentation" = "https://vfblib.readthedocs.io/en/latest/"
+"Bug Tracker" = "https://github.com/LucasFonts/vfbLib/issues"
+"Changelog" = "https://github.com/LucasFonts/vfbLib/blob/main/CHANGELOG.md"
+
+[project.scripts]
+vfb2json = "vfbLib.cmdline:vfb2json"
+vfb2tth = "vfbLib.tth:vfb2tth"
+vfb3ufo = "vfbLib.cmdline:vfb2ufo"
+vfbcu2qu = "vfbLib.cu2qu:vfbcu2qu"
+vfbdiff = "vfbLib.diff:diffvfb"
+# yuri = vfbLib.value:yuri
 
 [build-system]
-requires = ["setuptools>=45", "wheel"]
+requires = ["setuptools>=45", "setuptools-scm[toml]>=6.2", "wheel"]
 build-backend = "setuptools.build_meta"
+
+[tool.setuptools.package-data]
+"vfbLib" = ["py.typed"] # PEP 561
+
+[tool.setuptools_scm]
+version_scheme = "no-guess-dev"
+write_to = "src/vfbLib/_version.py"
+
+[tool.pylint.main]
+py-version = "3.10"
+ignore-paths = ["src/vfbLib/_version.py"]
+# extension-pkg-allow-list = ["pycurl"]
+
+[tool.pylint.format]
+expected-line-ending-format = "LF"
+max-line-length = 88
+
+[tool.black]
+exclude = '[\\/]_version\.py$'
+line-length = 88
+target-version = ["py310"]
