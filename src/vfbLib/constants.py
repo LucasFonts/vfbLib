@@ -37,15 +37,15 @@ from vfbLib.parsers.mm import (
     MasterLocationParser,
     PrimaryInstancesParser,
 )
-from vfbLib.parsers.numeric import (  # FloatListParser,
+from vfbLib.parsers.numeric import (
     DoubleListParser,
     DoubleParser,
     Int16Parser,
-    Int64Parser,
     IntListParser,
     PanoseParser,
     SignedInt16Parser,
     SignedInt32Parser,
+    UnicodeRangesParser,
 )
 from vfbLib.parsers.options import ExportOptionsParser, OpenTypeExportOptionsParser
 from vfbLib.parsers.pclt import PcltParser
@@ -143,8 +143,8 @@ parser_classes = {
     1524: ("TrueType Stem PPEMs 1", TrueTypeStemPpems1Parser, None),
     1269: ("TrueType Stems", TrueTypeStemsParser, None),
     1255: ("TrueType Zones", TrueTypeZonesParser, None),
-    # FIXME: should be a list in Python API:
-    2021: ("unicoderanges", Int64Parser, None),  # Unicode Ranges
+    # Goes to font:
+    2021: ("unicoderanges", UnicodeRangesParser, None),  # Unicode Ranges
     1272: ("Pixel Snap", Int16Parser, Int16Compiler),
     1274: ("Zone Stop PPEM", Int16Parser, Int16Compiler),
     1275: ("Code Stop PPEM", Int16Parser, Int16Compiler),

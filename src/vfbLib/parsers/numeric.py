@@ -1,6 +1,7 @@
 import logging
 from struct import unpack
 
+from vfbLib.helpers import binaryToIntList
 from vfbLib.parsers.base import BaseParser
 
 logger = logging.getLogger(__name__)
@@ -58,13 +59,13 @@ class Int16Parser(BaseParser):
 #         return self.read_uint32()
 
 
-class Int64Parser(BaseParser):
-    """
-    A parser that reads data as UInt32.
-    """
+# class Int64Parser(BaseParser):
+#     """
+#     A parser that reads data as UInt64.
+#     """
 
-    def _parse(self):
-        return int.from_bytes(self.stream.read(64), byteorder="little", signed=False)
+#     def _parse(self):
+#         return int.from_bytes(self.stream.read(64), byteorder="little", signed=False)
 
 
 class IntListParser(BaseParser):
@@ -113,3 +114,13 @@ class SignedInt32Parser(BaseParser):
     def _parse(self):
         # return int.from_bytes(self.stream.read(), byteorder="little", signed=True)
         return self.read_int32()
+
+
+class UnicodeRangesParser(BaseParser):
+    """
+    A parser that reads data as uint64 and returns it as a list of bit numbers.
+    """
+
+    def _parse(self):
+        result = int.from_bytes(self.stream.read(64), byteorder="little", signed=False)
+        return binaryToIntList(result)
