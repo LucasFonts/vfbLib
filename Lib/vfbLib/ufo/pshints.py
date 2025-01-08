@@ -44,9 +44,9 @@ def build_ps_glyph_hints(
     if mmglyph.hintmasks:
         for mask in mmglyph.hintmasks:
             for d in ("h", "v"):
-                if d in mask:
+                dd, hint_index = mask
+                if d == dd:
                     master_direction_hints = master_hints[d]
-                    hint_index = mask[d]
                     if hint_index < len(master_direction_hints):
                         hint: HintTuple | str = master_direction_hints[hint_index]
                         hint_set["stems"].append(hint)
@@ -55,14 +55,14 @@ def build_ps_glyph_hints(
                             f"Hint mask '{d}' with index {hint_index} found in glyph "
                             f"{glyph.name}, but hint list is empty."
                         )
-            if "r" in mask:
+            if mask[0] == "r":
                 hint_set["pointTag"] = mmglyph.get_point_label(
                     index=int(hint_set["pointTag"]),
                     code="PSHintReplacement",
                     start_count=0,
                 )
                 hint_sets.append(hint_set)
-                node_index = mask["r"]
+                node_index = mask[1]
                 # FIXME: What do negative values mean?
                 if node_index < 0:
                     node_index = abs(node_index) - 1
