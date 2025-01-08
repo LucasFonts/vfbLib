@@ -71,7 +71,7 @@ def vfb2tth():
                     data,
                     f,
                     ensure_ascii=False,
-                    indent=4,
+                    indent=2,
                     sort_keys=True,
                 )
         if vfb.any_errors:
