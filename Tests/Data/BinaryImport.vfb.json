@@ -2171,41 +2171,45 @@
     {
       "key": "ttinfo",
       "decompiled": {
-        "0x33": 2,
-        "0x34": 2,
-        "0x35": 22,
-        "0x36": 6,
-        "0x37": 0,
-        "0x38": 100,
-        "tt_font_info_settings": [
-          "0",
-          "1",
-          "2",
-          "3",
-          "13",
-          "use_custom_tt_values",
-          "create_vdmx"
-        ],
-        "units_per_em": 1024,
-        "0x3b": 0,
-        "lowest_rec_ppem": 7,
-        "timestamp": 3816546078,
+        "max_zones": 2,
+        "max_twilight_points": 2,
+        "max_storage": 22,
+        "max_function_defs": 6,
+        "max_instruction_defs": 0,
+        "max_stack_elements": 100,
+        "head_flags": {
+          "flags": [
+            0,
+            1,
+            2,
+            3,
+            13
+          ],
+          "options": [
+            "use_custom_tt_values",
+            "create_vdmx"
+          ]
+        },
+        "head_units_per_em": 1024,
+        "head_mac_style": 0,
+        "head_lowest_rec_ppem": 7,
+        "head_creation": 3816546078,
         "0x57": 0,
-        "font_direction_hint": 2,
-        "weight_class": 400,
-        "width_class": 5,
-        "embedding": 0,
-        "subscript_x_size": 717,
-        "subscript_y_size": 666,
-        "subscript_x_offset": 0,
-        "subscript_y_offset": 143,
-        "superscript_x_size": 717,
-        "superscript_y_size": 666,
-        "superscript_x_offset": 0,
-        "superscript_y_offset": 488,
-        "strikeout_size": 100,
-        "strikeout_position": 256,
-        "ibm_classification": 0,
+        "head_font_direction_hint": 2,
+        "os2_us_weight_class": 400,
+        "os2_us_width_class": 5,
+        "os2_fs_type": 0,
+        "os2_y_subscript_x_size": 717,
+        "os2_y_subscript_y_size": 666,
+        "os2_y_subscript_x_offset": 0,
+        "os2_y_subscript_y_offset": 143,
+        "os2_y_superscript_x_size": 717,
+        "os2_y_superscript_y_size": 666,
+        "os2_y_superscript_x_offset": 0,
+        "os2_y_superscript_y_offset": 488,
+        "os2_y_strikeout_size": 100,
+        "os2_y_strikeout_position": 256,
+        "os2_s_family_class": 0,
         "OpenTypeOS2Panose": [
           3,
           5,
@@ -2218,12 +2222,12 @@
           0,
           4
         ],
-        "OpenTypeOS2TypoAscender": 750,
-        "OpenTypeOS2TypoDescender": -274,
-        "OpenTypeOS2TypoLineGap": 220,
-        "0x50": 192,
-        "OpenTypeOS2WinAscent": 820,
-        "OpenTypeOS2WinDescent": 424,
+        "os2_s_typo_ascender": 750,
+        "os2_s_typo_descender": -274,
+        "os2_s_typo_line_gap": 220,
+        "os2_fs_selection": 192,
+        "os2_us_win_ascent": 820,
+        "os2_us_win_descent": 424,
         "Average Width": -505,
         "Hdmx PPMs 1": [
           9,
@@ -2275,17 +2279,15 @@
           67,
           75
         ],
-        "Codepages": [
-          1,
-          0
-        ]
+        "Codepages": {
+          "os2_ul_code_page_range1": 1,
+          "os2_ul_code_page_range2": 0
+        }
       }
     },
     {
-      "key": "1271",
-      "decompiled": [
-        0
-      ]
+      "key": "vdmx",
+      "decompiled": []
     },
     {
       "key": "hhea_line_gap",
@@ -2329,7 +2331,12 @@
     },
     {
       "key": "unicoderanges",
-      "decompiled": 536870979
+      "decompiled": [
+        0,
+        1,
+        6,
+        29
+      ]
     },
     {
       "key": "Pixel Snap",

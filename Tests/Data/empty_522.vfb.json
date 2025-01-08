@@ -2125,17 +2125,20 @@
     {
       "key": "ttinfo",
       "decompiled": {
-        "0x33": 0,
-        "0x34": 0,
-        "0x35": 0,
-        "0x36": 0,
-        "0x37": 0,
-        "0x38": 0,
-        "tt_font_info_settings": [
-          "create_vdmx"
-        ],
+        "max_zones": 0,
+        "max_twilight_points": 0,
+        "max_storage": 0,
+        "max_function_defs": 0,
+        "max_instruction_defs": 0,
+        "max_stack_elements": 0,
+        "head_flags": {
+          "flags": [],
+          "options": [
+            "create_vdmx"
+          ]
+        },
         "head_units_per_em": 1000,
-        "0x3b": 0,
+        "head_mac_style": 0,
         "head_lowest_rec_ppem": 9,
         "head_creation": 3818744439,
         "0x57": 0,
@@ -2169,7 +2172,7 @@
         "os2_s_typo_ascender": 750,
         "os2_s_typo_descender": -250,
         "os2_s_typo_line_gap": 0,
-        "0x50": 0,
+        "os2_fs_selection": 0,
         "os2_us_win_ascent": 0,
         "os2_us_win_descent": 0,
         "Average Width": 0,
@@ -2223,17 +2226,15 @@
           67,
           75
         ],
-        "Codepages": [
-          0,
-          0
-        ]
+        "Codepages": {
+          "os2_ul_code_page_range1": 0,
+          "os2_ul_code_page_range2": 0
+        }
       }
     },
     {
-      "key": "1271",
-      "decompiled": [
-        0
-      ]
+      "key": "vdmx",
+      "decompiled": []
     },
     {
       "key": "hhea_line_gap",
@@ -2277,7 +2278,7 @@
     },
     {
       "key": "unicoderanges",
-      "decompiled": 0
+      "decompiled": []
     },
     {
       "key": "Pixel Snap",

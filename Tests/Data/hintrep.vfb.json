@@ -2125,35 +2125,38 @@
     {
       "key": "ttinfo",
       "decompiled": {
-        "0x33": 0,
-        "0x34": 0,
-        "0x35": 0,
-        "0x36": 0,
-        "0x37": 0,
-        "0x38": 0,
-        "tt_font_info_settings": [
-          "create_vdmx"
-        ],
-        "units_per_em": 1000,
-        "0x3b": 0,
-        "lowest_rec_ppem": 9,
-        "timestamp": 3753184080,
+        "max_zones": 0,
+        "max_twilight_points": 0,
+        "max_storage": 0,
+        "max_function_defs": 0,
+        "max_instruction_defs": 0,
+        "max_stack_elements": 0,
+        "head_flags": {
+          "flags": [],
+          "options": [
+            "create_vdmx"
+          ]
+        },
+        "head_units_per_em": 1000,
+        "head_mac_style": 0,
+        "head_lowest_rec_ppem": 9,
+        "head_creation": 3753184080,
         "0x57": 0,
-        "font_direction_hint": 2,
-        "weight_class": 400,
-        "width_class": 5,
-        "embedding": 4,
-        "subscript_x_size": 700,
-        "subscript_y_size": 650,
-        "subscript_x_offset": 0,
-        "subscript_y_offset": 140,
-        "superscript_x_size": 700,
-        "superscript_y_size": 650,
-        "superscript_x_offset": 0,
-        "superscript_y_offset": 477,
-        "strikeout_size": 50,
-        "strikeout_position": 250,
-        "ibm_classification": 0,
+        "head_font_direction_hint": 2,
+        "os2_us_weight_class": 400,
+        "os2_us_width_class": 5,
+        "os2_fs_type": 4,
+        "os2_y_subscript_x_size": 700,
+        "os2_y_subscript_y_size": 650,
+        "os2_y_subscript_x_offset": 0,
+        "os2_y_subscript_y_offset": 140,
+        "os2_y_superscript_x_size": 700,
+        "os2_y_superscript_y_size": 650,
+        "os2_y_superscript_x_offset": 0,
+        "os2_y_superscript_y_offset": 477,
+        "os2_y_strikeout_size": 50,
+        "os2_y_strikeout_position": 250,
+        "os2_s_family_class": 0,
         "OpenTypeOS2Panose": [
           0,
           0,
@@ -2166,12 +2169,12 @@
           0,
           0
         ],
-        "OpenTypeOS2TypoAscender": 750,
-        "OpenTypeOS2TypoDescender": -250,
-        "OpenTypeOS2TypoLineGap": 0,
-        "0x50": 0,
-        "OpenTypeOS2WinAscent": 0,
-        "OpenTypeOS2WinDescent": 0,
+        "os2_s_typo_ascender": 750,
+        "os2_s_typo_descender": -250,
+        "os2_s_typo_line_gap": 0,
+        "os2_fs_selection": 0,
+        "os2_us_win_ascent": 0,
+        "os2_us_win_descent": 0,
         "Average Width": 0,
         "Hdmx PPMs 1": [
           9,
@@ -2223,17 +2226,15 @@
           67,
           75
         ],
-        "Codepages": [
-          0,
-          0
-        ]
+        "Codepages": {
+          "os2_ul_code_page_range1": 0,
+          "os2_ul_code_page_range2": 0
+        }
       }
     },
     {
-      "key": "1271",
-      "decompiled": [
-        0
-      ]
+      "key": "vdmx",
+      "decompiled": []
     },
     {
       "key": "hhea_line_gap",
@@ -2327,7 +2328,7 @@
     },
     {
       "key": "unicoderanges",
-      "decompiled": 0
+      "decompiled": []
     },
     {
       "key": "Pixel Snap",
