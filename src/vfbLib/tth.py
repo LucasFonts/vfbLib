@@ -100,7 +100,7 @@ def extract_truetype_hinting(vfb: Vfb) -> dict[str, Any]:
         elif key == "TrueType Info":
             entry.decompile()
             assert isinstance(entry.decompiled, dict)
-            for k in ("lowest_rec_ppem", "units_per_em"):
+            for k in ("head_lowest_rec_ppem", "head_units_per_em"):
                 if k in entry.decompiled:
                     font[k] = entry.decompiled[k]
 

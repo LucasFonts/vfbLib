@@ -261,14 +261,14 @@ class VfbToUfoInfo(Info):
             if isinstance(v, int):
                 if k in self.mapping_int:
                     setattr(self, self.mapping_int[k], v)
-                elif k == "timestamp":
+                elif k == "head_creation":
                     self.set_created_timestamp(v)
-                elif k == "font_direction_hint":
+                elif k == "head_font_direction_hint":
                     # self.info.openTypeOS2Type = binaryToIntList(v)
                     pass
-                elif k == "embedding":
+                elif k == "os2_fs_type":
                     self.openTypeOS2Type = binaryToIntList(v)
-                elif k == "ibm_classification":
+                elif k == "os2_s_family_class":
                     c = v >> 8
                     s = v & ~(c << 8)
                     self.openTypeOS2FamilyClass = [c, s]

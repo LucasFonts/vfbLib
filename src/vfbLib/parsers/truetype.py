@@ -20,44 +20,45 @@ class TrueTypeInfoParser(BaseParser):
 
     def _parse(self):
         info_names = {
-            0x33: "0x33",
-            0x34: "0x34",
-            0x35: "0x35",
-            0x36: "0x36",
-            0x37: "0x37",
-            0x38: "0x38",
-            0x39: "tt_font_info_settings",  # 0 = false, 65536 = true
-            0x3A: "units_per_em",  # duplicate
-            0x3B: "0x3b",
-            0x3C: "lowest_rec_ppem",
-            0x3D: "font_direction_hint",
-            0x3E: "weight_class",  # duplicate
-            0x3F: "width_class",  # duplicate
-            0x40: "embedding",
-            0x41: "subscript_x_size",
-            0x42: "subscript_y_size",
-            0x43: "subscript_x_offset",
-            0x44: "subscript_y_offset",
-            0x45: "superscript_x_size",
-            0x46: "superscript_y_size",
-            0x47: "superscript_x_offset",
-            0x48: "superscript_y_offset",
-            0x49: "strikeout_size",
-            0x4A: "strikeout_position",
-            0x4B: "ibm_classification",  # ibm_classification + subclass
+            0x33: "max_zones",
+            0x34: "max_twilight_points",
+            0x35: "max_storage",
+            0x36: "max_function_defs",
+            0x37: "max_instruction_defs",
+            0x38: "max_stack_elements",
+            0x39: "head_flags",  # tt_font_info_settings with head flags combined
+            0x3A: "head_units_per_em",  # units_per_em, duplicate
+            0x3B: "head_mac_style",
+            0x3C: "head_lowest_rec_ppem",  # lowest_rec_ppem
+            0x56: "head_creation",  # timestamp
+            0x57: "0x57",  # TODO: head_modification (not in API)?
+            0x3D: "head_font_direction_hint",  # font_direction_hint
+            0x3E: "os2_us_weight_class",  # weight_class, duplicate
+            0x3F: "os2_us_width_class",  # width_class, duplicate
+            0x40: "os2_fs_type",  # embedding
+            0x41: "os2_y_subscript_x_size",  # subscript_x_size
+            0x42: "os2_y_subscript_y_size",  # subscript_y_size
+            0x43: "os2_y_subscript_x_offset",  # subscript_x_offset
+            0x44: "os2_y_subscript_y_offset",  # subscript_y_offset
+            0x45: "os2_y_superscript_x_size",  # superscript_x_size
+            0x46: "os2_y_superscript_y_size",  # superscript_y_size
+            0x47: "os2_y_superscript_x_offset",  # superscript_x_offset
+            0x48: "os2_y_superscript_y_offset",  # superscript_y_offset
+            0x49: "os2_y_strikeout_size",  # strikeout_size
+            0x4A: "os2_y_strikeout_position",  # strikeout_position
+            0x4B: "os2_s_family_class",  # ibm_classification + subclass
             0x4C: "OpenTypeOS2Panose",
-            0x4D: "OpenTypeOS2TypoAscender",
-            0x4E: "OpenTypeOS2TypoDescender",
-            0x4F: "OpenTypeOS2TypoLineGap",
-            0x50: "0x50",
-            0x51: "OpenTypeOS2WinAscent",
-            0x52: "OpenTypeOS2WinDescent",
-            0x53: "Hdmx PPMs 1",
-            0x54: "Codepages",
-            0x56: "timestamp",
-            0x57: "0x57",
-            0x58: "Hdmx PPMs 2",
+            0x4D: "os2_s_typo_ascender",  # OpenTypeOS2TypoAscender
+            0x4E: "os2_s_typo_descender",  # OpenTypeOS2TypoDescender
+            0x4F: "os2_s_typo_line_gap",  # OpenTypeOS2TypoLineGap
+            0x50: "os2_fs_selection",
+            0x51: "os2_us_win_ascent",  # OpenTypeOS2WinAscent
+            0x52: "os2_us_win_descent",  # OpenTypeOS2WinDescent
             0x5C: "Average Width",
+            0x53: "Hdmx PPMs 1",
+            0x58: "Hdmx PPMs 2",
+            # os2_ul_code_page_range1, os2_ul_code_page_range2:
+            0x54: "Codepages",
         }
         info = {}
 
@@ -75,15 +76,21 @@ class TrueTypeInfoParser(BaseParser):
                 info[dk] = self.read_value()
 
             elif k == 0x39:
-                # Options
+                # Options and head flags
                 self.assert_unique(info, dk)
-                bits = binaryToIntList(self.read_value())
+                all_bits = self.read_value()
+                flags = binaryToIntList(all_bits & 0xFFFF)
+                options = binaryToIntList(all_bits >> 16)
+
                 settings = {
-                    16: "use_custom_tt_values",
-                    17: "create_vdmx",
-                    18: "add_null_cr_space",
+                    0: "use_custom_tt_values",
+                    1: "create_vdmx",
+                    2: "add_null_cr_space",
                 }
-                info[dk] = [settings.get(i, str(i)) for i in bits]
+                info[dk] = {
+                    "flags": flags,
+                    "options": [settings.get(i, i) for i in options],
+                }
 
             elif k in (0x3A, 0x3B, 0x3C, 0x3D, 0x3E, 0x3F):
                 self.assert_unique(info, bk)
@@ -122,10 +129,12 @@ class TrueTypeInfoParser(BaseParser):
             elif k == 0x54:
                 # Codepages
                 self.assert_unique(info, dk)
-                info[dk] = [
-                    self.read_value(signed=False),
-                    self.read_value(signed=False),
-                ]
+                range1 = self.read_value(signed=False)
+                range2 = self.read_value(signed=False)
+                info[dk] = {
+                    "os2_ul_code_page_range1": binaryToIntList(range1),
+                    "os2_ul_code_page_range2": binaryToIntList(range2),
+                }
 
             elif k == 0x56:
                 # Timestamp, unsigned
@@ -258,5 +267,19 @@ class TrueTypeZonesParser(BaseParser):
                     }
                 )
             result[names[i]] = side
+
+        return result
+
+
+class VdmxParser(BaseParser):
+    def _parse(self):
+        result = []
+        num_records = self.read_value()
+        for _ in range(num_records):
+            rec = {}
+            rec["pelHeight"] = self.read_value()
+            rec["max"] = self.read_value()
+            rec["min"] = self.read_value()
+            result.append(rec)
 
         return result

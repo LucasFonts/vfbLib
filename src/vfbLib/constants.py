@@ -58,6 +58,7 @@ from vfbLib.parsers.truetype import (
     TrueTypeStemsParser,
     TrueTypeZoneDeltasParser,
     TrueTypeZonesParser,
+    VdmxParser,
 )
 
 # fmt: off
@@ -128,10 +129,11 @@ parser_classes = {
     1261: ("Binary cvt Table", BaseParser, None),
     1262: ("Binary prep Table", BaseParser, None),
     1263: ("Binary fpgm Table", BaseParser, None),
-    # Goes to font.ttinfo
+    # Goes to font.ttinfo:
     1265: ("gasp", GaspParser, None),  # Gasp Ranges
     1264: ("ttinfo", TrueTypeInfoParser, None),  # TrueType Info
-    1271: ("1271", EncodedValueListParser, None),
+    # Goes to font.ttinfo:
+    1271: ("vdmx", VdmxParser, None),
     # Goes to font.ttinfo:
     1270: ("hhea_line_gap", Int16Parser, Int16Compiler),  # OK!
     1278: ("hhea_ascender", SignedInt16Parser, None),  # OK!
