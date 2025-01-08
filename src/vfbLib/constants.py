@@ -64,8 +64,8 @@ from vfbLib.parsers.truetype import (
 # fmt: off
 parser_classes = {
     # Sorted by appearance in the VFB
-    1500: ("Encoding", GlyphEncodingParser, GlyphEncodingCompiler),
     1501: ("Encoding Default", GlyphEncodingParser, GlyphEncodingCompiler),
+    1500: ("Encoding", GlyphEncodingParser, GlyphEncodingCompiler),
     1502: ("1502", Int16Parser, Int16Compiler),
     518: ("518", StringParser, StringCompiler),
     257: ("257", StringParser, StringCompiler),
@@ -82,9 +82,11 @@ parser_classes = {
     1092: ("apple_name", StringParser, StringCompiler),  # FOND Name
     1028: ("weight", StringParser, StringCompiler),  # weight_name
     1065: ("width", StringParser, StringCompiler),  # width_name
+
     # Is license/url not in Python API?
     1069: ("License", StringParser, StringCompiler),
     1070: ("License URL", StringParser, StringCompiler),
+
     1037: ("copyright", StringParser, StringCompiler),  # OK!
     1061: ("trademark", StringParser, StringCompiler),  # OK!
     1062: ("designer", StringParser, StringCompiler),  # OK!
@@ -129,6 +131,7 @@ parser_classes = {
     1261: ("Binary cvt Table", BaseParser, None),
     1262: ("Binary prep Table", BaseParser, None),
     1263: ("Binary fpgm Table", BaseParser, None),
+
     # Goes to font.ttinfo:
     1265: ("gasp", GaspParser, None),  # Gasp Ranges
     1264: ("ttinfo", TrueTypeInfoParser, None),  # TrueType Info
@@ -141,33 +144,39 @@ parser_classes = {
     # hstem_data and vstem_data:
     1268: ("TrueType Stem PPEMs", TrueTypeStemPpemsParser, None),
     1524: ("TrueType Stem PPEMs 1", TrueTypeStemPpems1Parser, None),
+    # Probably in font.ttinfo, but not accessible through API:
     1269: ("TrueType Stems", TrueTypeStemsParser, None),
     1255: ("TrueType Zones", TrueTypeZonesParser, None),
     # Goes to font:
     2021: ("unicoderanges", UnicodeRangesParser, None),  # Unicode Ranges
+    # Probably in font.ttinfo, but not accessible through API:
     1272: ("Pixel Snap", Int16Parser, Int16Compiler),
     1274: ("Zone Stop PPEM", Int16Parser, Int16Compiler),
     1275: ("Code Stop PPEM", Int16Parser, Int16Compiler),
     1604: ("1604", Int16Parser, Int16Compiler),  # Binary import? e.g. 255
     2032: ("2032", Int16Parser, Int16Compiler),  # Binary import? e.g. 300
     1273: ("TrueType Zone Deltas", TrueTypeZoneDeltasParser, None),
+    # Goes to font again:
     1138: ("fontnames", NameRecordsParser, None),  # Name Records
     1141: ("Custom CMAPs", CustomCmapParser, None),
     1136: ("PCLT Table", PcltParser, None),
     2022: ("Export PCLT Table", Int16Parser, Int16Compiler),
     2025: ("note", StringParser, StringCompiler),  # fontNote
     2030: ("2030", BaseParser, None),
-    # customdata may also come after Binary Table
     2016: ("customdata", StringParser, StringCompiler),  # Font User Data
+    2024: ("OpenType Metrics Class Flags", OpenTypeMetricsClassFlagsParser, None),
+    2026: ("OpenType Kerning Class Flags", OpenTypeKerningClassFlagsParser, None),
+
     # Repeat for each binary table:
     # truetypetables: TrueTypeTable
     2014: ("TrueTypeTable", BinaryTableParser, BinaryTableCompiler),  # Binary Table
-    2024: ("OpenType Metrics Class Flags", OpenTypeMetricsClassFlagsParser, None),
-    2026: ("OpenType Kerning Class Flags", OpenTypeKerningClassFlagsParser, None),
+
     1276: ("features", OpenTypeStringParser, OpenTypeStringCompiler),  # openTypeFeatures # noqa: E501
+
     # Repeat for each OpenType class:
     # font.classes
     1277: ("OpenType Class", StringParser, StringCompiler),  # OpenType Class
+
     513: ("513", BaseParser, None),
     271: ("271", BaseParser, None),
     1513: ("Axis Count", Int16Parser, Int16Compiler),
@@ -175,17 +184,22 @@ parser_classes = {
     1523: ("Anisotropic Interpolation Mappings", AnisotropicInterpolationsParser, None),
     1515: ("Axis Mappings Count", AxisMappingsCountParser, None),
     1516: ("Axis Mappings", AxisMappingsParser, None),
+
     # Repeat the next two for each master:
     1504: ("Master Name", StringParser, StringCompiler),
     1505: ("Master Location", MasterLocationParser, None),
+
     1247: ("Primary Instance Locations", DoubleListParser, None),
     1254: ("Primary Instances", PrimaryInstancesParser, None),
+
     # Repeat PostScript Info for each master:
     1536: ("PostScript Info", PostScriptInfoParser, None),
+
     527: ("527", BaseParser, None),
     1294: ("Global Guides", GlobalGuidesParser, None),
     1296: ("Global Guide Properties", GuidePropertiesParser, None),
     1066: ("default_character", StringParser, StringCompiler),  # Default Glyph
+
     # Begin: Repeat for each glyph
     2001: ("Glyph", GlyphParser, GlyphCompiler),
     # Glyph.hlinks and Glyph.vlinks:
@@ -211,6 +225,7 @@ parser_classes = {
     2029: ("Glyph Anchors MM", GlyphAnchorsParser, None),  # MM-compatible
     2031: ("Glyph Guide Properties", GuidePropertiesParser, None),
     # End: Repeat for each glyph
+
     1743: ("OpenType Export Options", OpenTypeExportOptionsParser, None),
     1744: ("Export Options", ExportOptionsParser, None),
     1742: ("Mapping Mode", MappingModeParser, None),
