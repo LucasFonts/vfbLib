@@ -413,7 +413,7 @@ class VfbToUfoBuilder:
             elif name == "TrueType Zones":  # 1255
                 # TODO: TrueType stuff could be separated
                 self.set_tt_zones(data)
-            elif name == "TrueType Info":  # 1264
+            elif name == "ttinfo":  # 1264
                 self.info.set_tt_info(data)
             elif name == "gasp":  # 1265
                 self.info.set_tt_gasp(data)
@@ -516,7 +516,7 @@ class VfbToUfoBuilder:
                             self.glyph_masters[name] = self.current_glyph
                             self.glyphOrder.append(name)
                 self.build_mm_glyph(data)
-            elif name == "Background Bitmap":  # 2007
+            elif name == "image":  # 2007
                 self.set_glyph_background(data)
             elif name == "Links":  # 2008
                 assert self.current_glyph is not None

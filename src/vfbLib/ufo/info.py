@@ -117,66 +117,72 @@ class VfbToUfoInfo(Info):
     def build_mapping(self):
         self.mapping = {
             # "sgn": "openTypeNamePreferredFamilyName",  # below
-            "Menu Name": "styleMapFamilyName",
-            "ffn": "postscriptFullName",
-            "psn": "postscriptFontName",
-            "tfn": "styleMapFamilyName",
-            "weight_name": "weightName",
-            "Italic Angle": "italicAngle",
-            "underlinePosition": "postscriptUnderlinePosition",
-            "underlineThickness": "postscriptUnderlineThickness",
-            # "Monospaced": "postscriptIsFixedPitch",  # below
+            "menu_name": "styleMapFamilyName",
+            "full_name": "postscriptFullName",
+            "font_name": "postscriptFontName",
+            "family_name": "styleMapFamilyName",
+            "weight": "weightName",
+            "italic_angle": "italicAngle",
+            "underline_position": "postscriptUnderlinePosition",
+            "underline_thickness": "postscriptUnderlineThickness",
+            # "is_fixed_pitch": "postscriptIsFixedPitch",  # below
             "copyright": "copyright",
             "description": "openTypeNameDescription",
-            "manufacturer": "openTypeNameManufacturer",
-            "Type 1 Unique ID": "postscriptUniqueID",
-            # weight (class), below
+            "source": "openTypeNameManufacturer",
+            "unique_id": "postscriptUniqueID",
+            # weight_code, below
             "trademark": "trademark",
             "designer": "openTypeNameDesigner",
-            "designerURL": "openTypeNameDesignerURL",
-            "manufacturerURL": "openTypeNameManufacturerURL",
-            "width_name": "widthName",
-            # Default glyph
+            "designer_url": "openTypeNameDesignerURL",
+            "vendor_url": "openTypeNameManufacturerURL",
+            "width": "widthName",
             "License": "openTypeNameLicense",
             "License URL": "openTypeNameLicenseURL",
-            "FOND Family ID": "macintoshFONDFamilyID",
-            "FOND Name": "macintoshFONDName",
+            "fond_id": "macintoshFONDFamilyID",
+            "apple_name": "macintoshFONDName",
             "panose": "openTypeOS2Panose",
-            "vendorID": "openTypeOS2VendorID",
-            "UniqueID": "openTypeNameUniqueID",
-            "version": "openTypeNameVersion",
-            "versionMajor": "versionMajor",
-            "versionMinor": "versionMinor",
+            "vendor": "openTypeOS2VendorID",
+            "tt_u_id": "openTypeNameUniqueID",
+            "tt_version": "openTypeNameVersion",
+            "version_major": "versionMajor",
+            "version_minor": "versionMinor",
             "year": "year",
             "upm": "unitsPerEm",
-            # "tsn": "openTypeNamePreferredSubfamilyName",  # below
+            # "pref_style_name": "openTypeNamePreferredSubfamilyName",  # below
             "hhea_ascender": "openTypeHheaAscender",
             "hhea_descender": "openTypeHheaDescender",
             "hhea_line_gap": "openTypeHheaLineGap",
-            "fontNote": "note",
-            "Default Glyph": "postscriptDefaultCharacter",
+            "note": "note",
+            "default_character": "postscriptDefaultCharacter",
         }
         # Integer values from TTInfo
         self.mapping_int = {
-            # "units_per_em": "unitsPerEm",  # duplicate
-            # "weight_class": "openTypeOS2WeightClass",  # duplicate
-            "width_class": "openTypeOS2WidthClass",
-            "lowest_rec_ppem": "openTypeHeadLowestRecPPEM",
-            "subscript_x_size": "openTypeOS2SubscriptXSize",
-            "subscript_y_size": "openTypeOS2SubscriptYSize",
-            "subscript_x_offset": "openTypeOS2SubscriptXOffset",
-            "subscript_y_offset": "openTypeOS2SubscriptYOffset",
-            "superscript_x_size": "openTypeOS2SuperscriptXSize",
-            "superscript_y_size": "openTypeOS2SuperscriptYSize",
-            "superscript_x_offset": "openTypeOS2SuperscriptXOffset",
-            "superscript_y_offset": "openTypeOS2SuperscriptYOffset",
-            "strikeout_size": "openTypeOS2StrikeoutSize",
-            "strikeout_position": "openTypeOS2StrikeoutPosition",
-            "OpenTypeOS2TypoAscender": "openTypeOS2TypoAscender",
-            "OpenTypeOS2TypoDescender": "openTypeOS2TypoDescender",
-            "OpenTypeOS2TypoLineGap": "openTypeOS2TypoLineGap",
-            "OpenTypeOS2WinAscent": "openTypeOS2WinAscent",
-            "OpenTypeOS2WinDescent": "openTypeOS2WinDescent",
+            # "max_zones": ,
+            # "max_twilight_points": "",
+            # "max_storage": "",
+            # "max_function_defs": "",
+            # "max_instruction_defs": "",
+            # "max_stack_elements": "",
+            # "head_flags": "", # below
+            # "head_units_per_em": "unitsPerEm",  # duplicate
+            # "os2_us_weight_class": "openTypeOS2WeightClass",  # duplicate
+            "os2_us_width_class": "openTypeOS2WidthClass",
+            "head_lowest_rec_ppem": "openTypeHeadLowestRecPPEM",
+            "os2_y_subscript_x_size": "openTypeOS2SubscriptXSize",
+            "os2_y_subscript_y_size": "openTypeOS2SubscriptYSize",
+            "os2_y_subscript_x_offset": "openTypeOS2SubscriptXOffset",
+            "os2_y_subscript_y_offset": "openTypeOS2SubscriptYOffset",
+            "os2_y_superscript_x_size": "openTypeOS2SuperscriptXSize",
+            "os2_y_superscript_y_size": "openTypeOS2SuperscriptYSize",
+            "os2_y_superscript_x_offset": "openTypeOS2SuperscriptXOffset",
+            "os2_y_superscript_y_offset": "openTypeOS2SuperscriptYOffset",
+            "os2_y_strikeout_size": "openTypeOS2StrikeoutSize",
+            "os2_y_strikeout_position": "openTypeOS2StrikeoutPosition",
+            "os2_s_typo_ascender": "openTypeOS2TypoAscender",
+            "os2_s_typo_descender": "openTypeOS2TypoDescender",
+            "os2_s_typo_line_gap": "openTypeOS2TypoLineGap",
+            "os2_us_win_ascent": "openTypeOS2WinAscent",
+            "os2_us_win_descent": "openTypeOS2WinDescent",
         }
 
     def fix_underline_position(self):
@@ -275,18 +281,18 @@ class VfbToUfoInfo(Info):
                 else:
                     logger.info(f"Unhandled integer value in UFO info: {k, v}")
             elif isinstance(v, list):
+                if k == "head_flags":
+                    self.openTypeHeadFlags = v.get("head_flags", [])
                 if k == "OpenTypeOS2Panose":
                     # Duplicate?
                     # if v != self.info.openTypeOS2Panose:
                     #     print("Contradictory PANOSE values")
                     #     print(self.info.openTypeOS2Panose, "vs.", v)
                     pass
-                elif k == "Codepages":
-                    cp1, cp2 = v
-                    assert isinstance(cp1, int)
-                    assert isinstance(cp2, int)
-                    ranges = binaryToIntList(cp1)
-                    for cp in binaryToIntList(cp2):
+            elif isinstance(v, dict):
+                if k == "Codepages":
+                    ranges = binaryToIntList(v.get("os2_ul_code_page_range1", 0))
+                    for cp in binaryToIntList(v.get("os2_ul_code_page_range2", 0)):
                         ranges.append(cp + 32)
                     if ranges:
                         self.openTypeOS2CodePageRanges = ranges
