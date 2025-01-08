@@ -553,7 +553,7 @@ class VfbToUfoBuilder:
             elif name == "Glyph Anchors Supplemental":  # 2020
                 pass
             elif name == "unicoderanges":  # 2021
-                self.info.set_unicode_ranges(data)
+                self.info.openTypeOS2UnicodeRanges = data
             elif name == "2023":
                 pass
             elif name == "OpenType Metrics Class Flags":  # 2024

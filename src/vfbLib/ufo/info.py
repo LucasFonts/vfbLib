@@ -295,8 +295,5 @@ class VfbToUfoInfo(Info):
             else:
                 raise TypeError
 
-    def set_unicode_ranges(self, data: int) -> None:
-        self.openTypeOS2UnicodeRanges = binaryToIntList(data)
-
     def set_weight_class(self, data: int) -> None:
         self.openTypeOS2WeightClass = min(max(1, data), 1000)
