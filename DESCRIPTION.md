@@ -42,9 +42,9 @@ not be overwritten unless you specify the `-fo` option.
 
 ```
 vfb3ufo -h
-usage: vfb3ufo [-h] [-p PATH] [-fo] [-k] [-ttx] [-64] [-s] [-nops] [-z] [-m] [-u] inputpath [outputpath]
+usage: vfb3ufo [-h] [-p PATH] [-fo] [-g] [-k] [-ttx] [-64] [-s] [-nops] [-z] [-m] [-u] inputpath [outputpath]
 
-vfb3ufo Converter Copyright (c) 2023 by LucasFonts
+vfb3ufo Converter Copyright (c) 2024 by LucasFonts
 
 positional arguments:
   inputpath             input file path (.vfb)
@@ -52,9 +52,10 @@ positional arguments:
 
 options:
   -h, --help            show this help message and exit
-  -p PATH, --path PATH  output folder
+  -p, --path PATH       output folder
   -fo, --force-overwrite
                         force overwrite
+  -g, --keep-groups     don't move non-kerning groups from groups.plist to feature code
   -k, --add-kerning-groups
                         add kerning groups to feature code
   -64, --base64         write GLIF lib 'data' section using base64 (recommended)
@@ -66,7 +67,7 @@ options:
   -u, --unicode-strings
                         interpret name table strings as Unicode instead of Windows-1252
 
-Not yet implemented options:
+Not implemented options:
 
   -ttx, --ttx           convert binary OpenType Layout data using TTX-like format
 ```
