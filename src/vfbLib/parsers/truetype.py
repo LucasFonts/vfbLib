@@ -132,8 +132,8 @@ class TrueTypeInfoParser(BaseParser):
                 range1 = self.read_value(signed=False)
                 range2 = self.read_value(signed=False)
                 info[dk] = {
-                    "os2_ul_code_page_range1": binaryToIntList(range1),
-                    "os2_ul_code_page_range2": binaryToIntList(range2),
+                    "os2_ul_code_page_range1": range1,
+                    "os2_ul_code_page_range2": range2,
                 }
 
             elif k == 0x56:
