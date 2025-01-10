@@ -5,6 +5,7 @@
 - Use `orjson` instead of `json` for much faster serialization
 - Use `pyproject.toml` for everything, remove `setup.py`/`setup.cfg`
 - Use `setuptools-scm` instead of manually setting the version
+- Fix hintmask conversion in UFO builder (broken since v0.8.0)
 
 Parser changes:
 
