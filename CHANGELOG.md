@@ -1,3 +1,8 @@
+v0.8.2
+
+- Fix hintmask conversion in UFO builder (broken since v0.8.0)
+
+v0.8.0
 # Change Log
 
 ## v0.9.0

@@ -71,7 +71,7 @@ class StreamReader:
         Returns:
             str: The string
         """
-        return self.stream.read().decode(self.encoding)
+        return self.stream.read().decode(self.encoding).strip("\u0000 ")
 
     def read_uint8(self) -> int:
         return int.from_bytes(self.stream.read(uint8), byteorder="little", signed=False)
