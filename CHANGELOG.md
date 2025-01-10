@@ -1,4 +1,8 @@
-v0.8.1
+v0.8.2
+
+- Fix hintmask conversion in UFO builder (broken since v0.8.0)
+
+v0.8.0
 
 - Add vfb2tth command for TrueType hinting export
 - Don't read VFB if no path has been passed
