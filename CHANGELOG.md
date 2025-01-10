@@ -1,8 +1,3 @@
-v0.8.2
-
-- Fix hintmask conversion in UFO builder (broken since v0.8.0)
-
-v0.8.0
 # Change Log
 
 ## v0.9.0
@@ -10,7 +5,6 @@ v0.8.0
 - Use `orjson` instead of `json` for much faster serialization
 - Use `pyproject.toml` for everything, remove `setup.py`/`setup.cfg`
 - Use `setuptools-scm` instead of manually setting the version
-- Fix hintmask conversion in UFO builder (broken since v0.8.0)
 
 Parser changes:
 
@@ -23,6 +17,10 @@ Compiler changes:
 Breaking changes:
 
 - Modify many `VfbEntry` names to better match the FLS5 Python API attribute names
+
+## v0.8.2
+
+- Fix hintmask conversion in UFO builder (broken since v0.8.0)
 
 ## v0.8.1
 
