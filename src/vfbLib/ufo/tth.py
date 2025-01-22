@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import logging
+from html import escape as html_escape
 from typing import TYPE_CHECKING, Any
 
 from vfbLib.ufo.glyph import VfbToUfoGlyph
@@ -58,7 +59,7 @@ def tt_cmd_dict_to_xml(tt_dict: dict[str, Any]) -> str:
                 val = str(tt_dict[attr]).lower()
             else:
                 val = tt_dict[attr]
-            cmd += f' {attr}="{val}"'
+            cmd += f' {attr}="{html_escape(str(val))}"'
     cmd += "/>"
     return cmd
 
