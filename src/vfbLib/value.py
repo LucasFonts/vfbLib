@@ -7,13 +7,10 @@ from fontTools.misc.textTools import deHexStr, hexStr
 
 from vfbLib.compilers.value import write_value
 from vfbLib.parsers.value import read_value
-from vfbLib.version import build_date
 
 
 def yuri():
-    parser = ArgumentParser(
-        description=(f"vfbtool\nCopyright (c) 2024 by LucasFonts\nBuild {build_date}")
-    )
+    parser = ArgumentParser(description=("vfbtool\nCopyright (c) 2024 by LucasFonts"))
     parser.add_argument(
         "-e",
         "--encode",

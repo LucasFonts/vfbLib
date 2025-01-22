@@ -3,15 +3,13 @@ from pathlib import Path
 
 from fontTools.cu2qu.ufo import font_to_quadratic, fonts_to_quadratic
 
-from vfbLib.version import build_date
 from vfbLib.vfb.vfb import Vfb
 
 
 def vfbcu2qu():
     parser = ArgumentParser(
         description=(
-            "VFB Cubic to Quadratic Converter\nCopyright (c) 2023 by LucasFonts\n"
-            f"Build {build_date}"
+            "VFB Cubic to Quadratic Converter\nCopyright (c) 2023 by LucasFonts"
         )
     )
     parser.add_argument(
