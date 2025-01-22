@@ -1,8 +1,9 @@
 import codecs
-import json
 import logging
 from argparse import ArgumentParser
 from pathlib import Path
+
+import orjson
 
 from vfbLib.ufo.builder import VfbToUfoBuilder
 from vfbLib.version import build_date
@@ -75,8 +76,13 @@ def vfb2json():
             out_path = (Path(args.path[0]) / vfb_path.name).with_suffix(suffix)
         else:
             out_path = vfb_path.with_suffix(suffix)
-        with codecs.open(str(out_path), "wb", "utf-8") as f:
-            json.dump(vfb.as_dict(), f, ensure_ascii=False, indent=4)
+        with open(str(out_path), "wb") as f:
+            f.write(
+                orjson.dumps(
+                    vfb.as_dict(),
+                    option=orjson.OPT_INDENT_2 | orjson.OPT_NON_STR_KEYS,
+                )
+            )
     else:
         parser.print_help()
 
