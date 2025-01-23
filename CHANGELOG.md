@@ -2,10 +2,6 @@
 
 ## v0.9.0
 
-- Use `orjson` instead of `json` for much faster serialization
-- Use `pyproject.toml` for everything, remove `setup.py`/`setup.cfg`
-- Use `setuptools-scm` instead of manually setting the version
-
 Parser changes:
 
 - Change the internal `VfbHeader` format
@@ -18,14 +14,13 @@ Breaking changes:
 
 - Modify many `VfbEntry` names to better match the FLS5 Python API attribute names
 
-## v0.8.2
-v0.8.3
+## v0.8.3
 
 - HTML-escape XML attributes in glyph program
 - Use `orjson` for faster JSON export
 - Move to modern Python packaging (`pyproject.toml`)
 
-v0.8.2
+## v0.8.2
 
 - Fix hintmask conversion in UFO builder (broken since v0.8.0)
 
