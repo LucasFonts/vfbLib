@@ -1,11 +1,12 @@
 import codecs
-import json
 import logging
 from argparse import ArgumentParser
 from copy import deepcopy
 from pathlib import Path
 from sys import exit
 from typing import Any
+
+import orjson
 
 from vfbLib.ufo.glyph import IndexVfbToUfoGlyph
 from vfbLib.ufo.tth import TTGlyphHints, transform_stem_rounds
@@ -66,14 +67,16 @@ def vfb2tth():
             with codecs.open(str(out_path), "wb", "utf-8") as f:
                 yaml.dump(data, f, sort_keys=True, indent=2)
         else:
-            with codecs.open(str(out_path), "wb", "utf-8") as f:
-                json.dump(
-                    data,
-                    f,
-                    ensure_ascii=False,
-                    indent=2,
-                    sort_keys=True,
+            with open(str(out_path), "wb") as f:
+                f.write(
+                    orjson.dumps(
+                        data,
+                        option=orjson.OPT_INDENT_2
+                        | orjson.OPT_NON_STR_KEYS
+                        | orjson.OPT_SORT_KEYS,
+                    )
                 )
+
         if vfb.any_errors:
             exit("There were decompilation errors.")
     else:

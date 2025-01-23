@@ -1,9 +1,10 @@
 import codecs
-import json
 import logging
 from argparse import ArgumentParser
 from difflib import HtmlDiff, unified_diff
 from pathlib import Path
+
+import orjson
 
 from vfbLib.vfb.vfb import Vfb
 
@@ -43,12 +44,23 @@ def diffvfb():
     vfb2.read()
     vfb1.decompile()
     vfb2.decompile()
-    vfb1_str = json.dumps(vfb1.as_dict(), ensure_ascii=False, indent=4).splitlines()
-    vfb2_str = json.dumps(vfb2.as_dict(), ensure_ascii=False, indent=4).splitlines()
+    vfb1_str = orjson.dumps(
+        vfb1.as_dict(),
+        option=orjson.OPT_INDENT_2 | orjson.OPT_NON_STR_KEYS | orjson.OPT_SORT_KEYS,
+    ).splitlines()
+    vfb2_str = orjson.dumps(
+        vfb2.as_dict(),
+        option=orjson.OPT_INDENT_2 | orjson.OPT_NON_STR_KEYS | orjson.OPT_SORT_KEYS,
+    ).splitlines()
     if args.html:
         html_diff = HtmlDiff()
         html = html_diff.make_file(
-            vfb1_str, vfb2_str, str(vfb1_path), str(vfb2_path), context=True, numlines=5
+            str(vfb1_str),
+            str(vfb2_str),
+            str(vfb1_path),
+            str(vfb2_path),
+            context=True,
+            numlines=5,
         )
         with codecs.open(args.html, "wb", "utf-8") as f:
             f.write(html)

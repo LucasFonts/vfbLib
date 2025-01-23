@@ -19,6 +19,13 @@ Breaking changes:
 - Modify many `VfbEntry` names to better match the FLS5 Python API attribute names
 
 ## v0.8.2
+v0.8.3
+
+- HTML-escape XML attributes in glyph program
+- Use `orjson` for faster JSON export
+- Move to modern Python packaging (`pyproject.toml`)
+
+v0.8.2
 
 - Fix hintmask conversion in UFO builder (broken since v0.8.0)
 
