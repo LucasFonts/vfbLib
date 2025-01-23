@@ -1,6 +1,7 @@
 font:
   codeppm: 0
-  lowest_rec_ppem: 9
+  head_lowest_rec_ppem: 9
+  head_units_per_em: 1000
   stems:
     'X: 1':
       horizontal: false
@@ -42,6 +43,5 @@ font:
         '40': 6
       width: 140
   stemsnaplimit: 68
-  units_per_em: 1000
   zoneppm: 48
 glyphs: {}
