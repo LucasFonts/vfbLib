@@ -1,59 +1,59 @@
 {
-    "font": {
-        "codeppm": 0,
-        "lowest_rec_ppem": 9,
-        "stems": {
-            "X: 1": {
-                "horizontal": false,
-                "round": {
-                    "0": 1,
-                    "15": 2,
-                    "25": 3,
-                    "35": 4,
-                    "45": 5,
-                    "55": 6
-                },
-                "width": 100
-            },
-            "X: 2": {
-                "horizontal": false,
-                "round": {
-                    "1": 1,
-                    "13": 2,
-                    "21": 3,
-                    "30": 4,
-                    "38": 5,
-                    "46": 6
-                },
-                "width": 120
-            },
-            "Y: 1": {
-                "horizontal": true,
-                "round": {
-                    "12": 2,
-                    "2": 1,
-                    "20": 3,
-                    "27": 4,
-                    "35": 5,
-                    "43": 6
-                },
-                "width": 130
-            },
-            "Y: 2": {
-                "horizontal": true,
-                "round": {
-                    "11": 2,
-                    "18": 3,
-                    "25": 4,
-                    "33": 5,
-                    "40": 6
-                },
-                "width": 140
-            }
+  "font": {
+    "codeppm": 0,
+    "lowest_rec_ppem": 9,
+    "stems": {
+      "X: 1": {
+        "horizontal": false,
+        "round": {
+          "0": 1,
+          "15": 2,
+          "25": 3,
+          "35": 4,
+          "45": 5,
+          "55": 6
         },
-        "stemsnaplimit": 68,
-        "units_per_em": 1000,
-        "zoneppm": 48
+        "width": 100
+      },
+      "X: 2": {
+        "horizontal": false,
+        "round": {
+          "1": 1,
+          "13": 2,
+          "21": 3,
+          "30": 4,
+          "38": 5,
+          "46": 6
+        },
+        "width": 120
+      },
+      "Y: 1": {
+        "horizontal": true,
+        "round": {
+          "12": 2,
+          "2": 1,
+          "20": 3,
+          "27": 4,
+          "35": 5,
+          "43": 6
+        },
+        "width": 130
+      },
+      "Y: 2": {
+        "horizontal": true,
+        "round": {
+          "11": 2,
+          "18": 3,
+          "25": 4,
+          "33": 5,
+          "40": 6
+        },
+        "width": 140
+      }
     },
-    "glyphs": {}
+    "stemsnaplimit": 68,
+    "units_per_em": 1000,
+    "zoneppm": 48
+  },
+  "glyphs": {}
 }
