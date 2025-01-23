@@ -427,9 +427,9 @@ class VfbToUfoBuilder:
                 self.set_tt_pixel_snap(data)
             elif name == "TrueType Zone Deltas":  # 1273
                 self.set_tt_zone_deltas(data)
-            elif name == "Zone Stop PPEM":  # 1274
+            elif name == "zoneppm":  # 1274
                 self.set_tt_zone_stop(data)
-            elif name == "Code Stop PPEM":  # 1275
+            elif name == "codeppm":  # 1275
                 self.set_tt_code_stop(data)
             elif name == "features":  # 1276
                 self.set_feature_code(data)
