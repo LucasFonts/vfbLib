@@ -423,7 +423,7 @@ class VfbToUfoBuilder:
                 self.set_tt_stem_ppms(data)
             elif name == "TrueType Stems":  # 1269
                 self.set_tt_stems(data)
-            elif name == "Pixel Snap":  # 1272
+            elif name == "stemsnaplimit":  # 1272
                 self.set_tt_pixel_snap(data)
             elif name == "TrueType Zone Deltas":  # 1273
                 self.set_tt_zone_deltas(data)

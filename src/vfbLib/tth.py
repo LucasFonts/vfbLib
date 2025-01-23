@@ -128,7 +128,7 @@ def extract_truetype_hinting(vfb: Vfb) -> dict[str, Any]:
             assert isinstance(entry.decompiled, dict)
             extract_tt_zones(entry.decompiled, font, zone_names)
 
-        elif key == "Pixel Snap":
+        elif key == "stemsnaplimit":
             entry.decompile()
             assert isinstance(entry.decompiled, int)
             font["stemsnaplimit"] = entry.decompiled

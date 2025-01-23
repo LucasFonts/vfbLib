@@ -150,7 +150,7 @@ parser_classes = {
     # Goes to font:
     2021: ("unicoderanges", UnicodeRangesParser, None),  # Unicode Ranges
     # Probably in font.ttinfo, but not accessible through API:
-    1272: ("Pixel Snap", Int16Parser, Int16Compiler),
+    1272: ("stemsnaplimit", Int16Parser, Int16Compiler),  # Pixel Snap
     1274: ("zoneppm", Int16Parser, Int16Compiler),  # Zone Stop PPEM
     1275: ("codeppm", Int16Parser, Int16Compiler),  # Code Stop PPEM
     1604: ("1604", Int16Parser, Int16Compiler),  # Binary import? e.g. 255
