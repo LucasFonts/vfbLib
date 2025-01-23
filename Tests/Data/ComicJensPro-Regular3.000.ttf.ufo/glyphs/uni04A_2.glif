@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="uni04A2" format="2">
+	<unicode hex="04A2"/>
+	<advance width="604"/>
+	<outline>
+		<component base="H"/>
+		<component base="cyrdescender" xOffset="432"/>
+	</outline>
+</glyph>

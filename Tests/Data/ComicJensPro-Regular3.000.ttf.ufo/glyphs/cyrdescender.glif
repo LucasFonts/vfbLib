@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="cyrdescender" format="2">
+	<advance width="223"/>
+	<outline>
+		<contour>
+			<point x="56" y="12" type="qcurve"/>
+			<point x="38" y="16"/>
+			<point x="17" y="41"/>
+			<point x="17" y="62" type="qcurve"/>
+			<point x="17" y="81"/>
+			<point x="45" y="110"/>
+			<point x="69" y="110" type="qcurve"/>
+			<point x="100" y="110"/>
+			<point x="137" y="90"/>
+			<point x="157" y="53"/>
+			<point x="163" y="-2"/>
+			<point x="163" y="-36" type="qcurve"/>
+			<point x="163" y="-65"/>
+			<point x="159" y="-124"/>
+			<point x="156" y="-152" type="qcurve"/>
+			<point x="153" y="-178"/>
+			<point x="122" y="-202"/>
+			<point x="105" y="-202" type="qcurve"/>
+			<point x="86" y="-202"/>
+			<point x="56" y="-173"/>
+			<point x="56" y="-144" type="qcurve"/>
+			<point x="56" y="-121"/>
+			<point x="63" y="-70"/>
+			<point x="63" y="-45" type="qcurve"/>
+			<point x="63" y="-15"/>
+		</contour>
+	</outline>
+</glyph>

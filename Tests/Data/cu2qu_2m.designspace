@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<designspace format="5.0">
+  <axes>
+    <axis tag="wght" name="Weight" minimum="200" maximum="900" default="200">
+      <map input="200" output="0"/>
+      <map input="300" output="77"/>
+      <map input="400" output="169"/>
+      <map input="500" output="285"/>
+      <map input="600" output="415"/>
+      <map input="700" output="577"/>
+      <map input="800" output="769"/>
+      <map input="900" output="1000"/>
+      <labels>
+        <label uservalue="500" name="Plain 500 wt"/>
+        <label uservalue="200" name="ExtraLight 200 wt"/>
+        <label uservalue="300" name="Light 300 wt"/>
+        <label uservalue="400" name="SemiLight 400 wt"/>
+        <label uservalue="600" name="SemiBold 600 wt"/>
+        <label uservalue="700" name="Bold 700 wt"/>
+        <label uservalue="800" name="ExtraBold 800 wt"/>
+        <label uservalue="900" name="Black 900 wt"/>
+        <label uservalue="469" name="Office 469 wt"/>
+        <label uservalue="737" name="Office 737 wt"/>
+      </labels>
+    </axis>
+  </axes>
+  <sources>
+    <source filename="cu2qu_2m.ufo" name="Wt0" familyname="TheSans MM773" stylename="Master 0">
+      <location>
+        <dimension name="Weight" xvalue="0"/>
+      </location>
+    </source>
+    <source filename="cu2qu_2m-1.ufo" name="Wt1" familyname="TheSans MM773" stylename="Master 1">
+      <location>
+        <dimension name="Weight" xvalue="1000"/>
+      </location>
+    </source>
+  </sources>
+  <instances>
+    <instance name="instance_0" familyname="TheSans MM773" stylename="Plain 500 wt" filename="instance_ufo/TheSans MM773-Plain 500 wt.ufo" stylemapfamilyname="TheSans MM773 Plain 500 wt" stylemapstylename="regular">
+      <location>
+        <dimension name="Weight" uservalue="500"/>
+      </location>
+    </instance>
+    <instance name="instance_1" familyname="TheSans MM773" stylename="ExtraLight 200 wt" filename="instance_ufo/TheSans MM773-ExtraLight 200 wt.ufo" stylemapfamilyname="TheSans MM773 ExtraLight 200 wt" stylemapstylename="regular">
+      <location>
+        <dimension name="Weight" uservalue="200"/>
+      </location>
+    </instance>
+    <instance name="instance_2" familyname="TheSans MM773" stylename="Light 300 wt" filename="instance_ufo/TheSans MM773-Light 300 wt.ufo" stylemapfamilyname="TheSans MM773 Light 300 wt" stylemapstylename="regular">
+      <location>
+        <dimension name="Weight" uservalue="300"/>
+      </location>
+    </instance>
+    <instance name="instance_3" familyname="TheSans MM773" stylename="SemiLight 400 wt" filename="instance_ufo/TheSans MM773-SemiLight 400 wt.ufo" stylemapfamilyname="TheSans MM773 SemiLight 400 wt" stylemapstylename="regular">
+      <location>
+        <dimension name="Weight" uservalue="400"/>
+      </location>
+    </instance>
+    <instance name="instance_4" familyname="TheSans MM773" stylename="SemiBold 600 wt" filename="instance_ufo/TheSans MM773-SemiBold 600 wt.ufo" stylemapfamilyname="TheSans MM773 SemiBold 600 wt" stylemapstylename="regular">
+      <location>
+        <dimension name="Weight" uservalue="600"/>
+      </location>
+    </instance>
+    <instance name="instance_5" familyname="TheSans MM773" stylename="Bold 700 wt" filename="instance_ufo/TheSans MM773-Bold 700 wt.ufo" stylemapfamilyname="TheSans MM773 Bold 700 wt" stylemapstylename="regular">
+      <location>
+        <dimension name="Weight" uservalue="700"/>
+      </location>
+    </instance>
+    <instance name="instance_6" familyname="TheSans MM773" stylename="ExtraBold 800 wt" filename="instance_ufo/TheSans MM773-ExtraBold 800 wt.ufo" stylemapfamilyname="TheSans MM773 ExtraBold 800 wt" stylemapstylename="regular">
+      <location>
+        <dimension name="Weight" uservalue="800"/>
+      </location>
+    </instance>
+    <instance name="instance_7" familyname="TheSans MM773" stylename="Black 900 wt" filename="instance_ufo/TheSans MM773-Black 900 wt.ufo" stylemapfamilyname="TheSans MM773 Black 900 wt" stylemapstylename="regular">
+      <location>
+        <dimension name="Weight" uservalue="900"/>
+      </location>
+    </instance>
+    <instance name="instance_8" familyname="TheSans MM773" stylename="Office 469 wt" filename="instance_ufo/TheSans MM773-Office 469 wt.ufo" stylemapfamilyname="TheSans MM773 Office 469 wt" stylemapstylename="regular">
+      <location>
+        <dimension name="Weight" uservalue="469"/>
+      </location>
+    </instance>
+    <instance name="instance_9" familyname="TheSans MM773" stylename="Office 737 wt" filename="instance_ufo/TheSans MM773-Office 737 wt.ufo" stylemapfamilyname="TheSans MM773 Office 737 wt" stylemapstylename="regular">
+      <location>
+        <dimension name="Weight" uservalue="737"/>
+      </location>
+    </instance>
+  </instances>
+</designspace>

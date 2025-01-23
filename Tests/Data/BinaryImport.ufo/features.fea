@@ -1,0 +1,16 @@
+
+
+languagesystem DFLT dflt;
+languagesystem latn dflt;
+
+
+feature mark { # Mark Positioning
+ # DEFAULT
+#    mark uni0307 396 520;
+#    pos b mark uni0307 180 725;
+#    pos uni1E03 mark uni0307 180 725;
+ script latn; # Latin
+#    mark uni0307 396 520;
+#    pos b mark uni0307 180 725;
+#    pos uni1E03 mark uni0307 180 725;
+} mark;

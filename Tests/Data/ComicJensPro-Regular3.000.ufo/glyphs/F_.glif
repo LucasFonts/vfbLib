@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="F" format="2">
+	<unicode hex="0046"/>
+	<advance width="625"/>
+	<outline>
+		<contour>
+			<point x="159" y="-14" type="qcurve"/>
+			<point x="136" y="-14"/>
+			<point x="107" y="17"/>
+			<point x="106" y="44" type="qcurve"/>
+			<point x="105" y="89"/>
+			<point x="107" y="222"/>
+			<point x="112" y="380"/>
+			<point x="120" y="555"/>
+			<point x="125" y="642" type="qcurve"/>
+			<point x="117" y="642"/>
+			<point x="105" y="643"/>
+			<point x="100" y="644" type="qcurve"/>
+			<point x="75" y="646"/>
+			<point x="52" y="676"/>
+			<point x="55" y="709"/>
+			<point x="85" y="735"/>
+			<point x="112" y="734" type="qcurve"/>
+			<point x="222" y="729"/>
+			<point x="423" y="731"/>
+			<point x="527" y="734" type="qcurve"/>
+			<point x="566" y="735"/>
+			<point x="597" y="707"/>
+			<point x="597" y="684" type="qcurve"/>
+			<point x="597" y="665"/>
+			<point x="571" y="640"/>
+			<point x="544" y="638" type="qcurve"/>
+			<point x="515" y="636"/>
+			<point x="439" y="635"/>
+			<point x="355" y="635"/>
+			<point x="267" y="636"/>
+			<point x="227" y="637" type="qcurve"/>
+			<point x="224" y="578"/>
+			<point x="218" y="462"/>
+			<point x="216" y="405" type="qcurve"/>
+			<point x="245" y="406"/>
+			<point x="306" y="408"/>
+			<point x="362" y="409"/>
+			<point x="410" y="409"/>
+			<point x="425" y="409" type="qcurve"/>
+			<point x="487" y="406"/>
+			<point x="487" y="359" type="qcurve"/>
+			<point x="487" y="336"/>
+			<point x="456" y="309"/>
+			<point x="425" y="309" type="qcurve"/>
+			<point x="416" y="309"/>
+			<point x="370" y="310"/>
+			<point x="311" y="311"/>
+			<point x="244" y="311"/>
+			<point x="213" y="311" type="qcurve"/>
+			<point x="211" y="230"/>
+			<point x="209" y="96"/>
+			<point x="210" y="51" type="qcurve"/>
+			<point x="211" y="21"/>
+			<point x="184" y="-14"/>
+		</contour>
+	</outline>
+	<anchor name="mark0" x="338" y="725"/>
+	<anchor name="mark1" x="162" y="5"/>
+	<anchor name="mark2" x="0" y="0"/>
+</glyph>

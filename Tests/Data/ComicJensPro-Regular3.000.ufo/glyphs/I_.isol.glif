@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="I.isol" format="2">
+	<advance width="446"/>
+	<outline>
+		<contour>
+			<point x="112" y="631" type="line"/>
+			<point x="86" y="631"/>
+			<point x="53" y="659"/>
+			<point x="53" y="681" type="qcurve"/>
+			<point x="53" y="701"/>
+			<point x="82" y="731"/>
+			<point x="108" y="731" type="qcurve"/>
+			<point x="322" y="731" type="line"/>
+			<point x="352" y="731"/>
+			<point x="381" y="701"/>
+			<point x="381" y="681" type="qcurve"/>
+			<point x="381" y="663"/>
+			<point x="353" y="631"/>
+			<point x="323" y="631" type="qcurve"/>
+			<point x="262" y="631" type="line"/>
+			<point x="262" y="567"/>
+			<point x="263" y="440"/>
+			<point x="263" y="376" type="qcurve"/>
+			<point x="263" y="302"/>
+			<point x="257" y="157"/>
+			<point x="257" y="84" type="qcurve"/>
+			<point x="279" y="85"/>
+			<point x="323" y="85"/>
+			<point x="344" y="85" type="qcurve"/>
+			<point x="370" y="85"/>
+			<point x="402" y="56"/>
+			<point x="402" y="35" type="qcurve"/>
+			<point x="402" y="15"/>
+			<point x="373" y="-15"/>
+			<point x="338" y="-15" type="qcurve"/>
+			<point x="275" y="-15"/>
+			<point x="144" y="-20"/>
+			<point x="94" y="-20" type="qcurve"/>
+			<point x="69" y="-20"/>
+			<point x="42" y="13"/>
+			<point x="42" y="30" type="qcurve"/>
+			<point x="42" y="38"/>
+			<point x="47" y="55"/>
+			<point x="61" y="70"/>
+			<point x="84" y="80"/>
+			<point x="101" y="80" type="qcurve"/>
+			<point x="157" y="80" type="line"/>
+			<point x="157" y="155"/>
+			<point x="164" y="306"/>
+			<point x="164" y="382" type="qcurve"/>
+			<point x="164" y="445"/>
+			<point x="162" y="568"/>
+			<point x="162" y="631" type="qcurve"/>
+		</contour>
+	</outline>
+	<anchor name="mark0" x="211" y="714"/>
+	<anchor name="mark1" x="205" y="0"/>
+	<anchor name="mark2" x="0" y="0"/>
+</glyph>

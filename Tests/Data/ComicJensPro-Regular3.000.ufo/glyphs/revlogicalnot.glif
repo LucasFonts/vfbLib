@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="revlogicalnot" format="2">
+	<unicode hex="2310"/>
+	<advance width="595"/>
+	<outline>
+		<contour>
+			<point x="158" y="235" type="qcurve"/>
+			<point x="154" y="209"/>
+			<point x="124" y="185"/>
+			<point x="107" y="185" type="qcurve"/>
+			<point x="91" y="185"/>
+			<point x="72" y="198"/>
+			<point x="61" y="229"/>
+			<point x="57" y="282"/>
+			<point x="57" y="321" type="qcurve"/>
+			<point x="57" y="353"/>
+			<point x="64" y="416"/>
+			<point x="75" y="442" type="qcurve"/>
+			<point x="84" y="454"/>
+			<point x="100" y="464"/>
+			<point x="115" y="468" type="qcurve"/>
+			<point x="172" y="476"/>
+			<point x="289" y="481"/>
+			<point x="349" y="481" type="qcurve"/>
+			<point x="393" y="481"/>
+			<point x="467" y="480"/>
+			<point x="510" y="480" type="qcurve"/>
+			<point x="537" y="477"/>
+			<point x="564" y="447"/>
+			<point x="564" y="430" type="qcurve"/>
+			<point x="564" y="413"/>
+			<point x="537" y="382"/>
+			<point x="510" y="380" type="qcurve"/>
+			<point x="431" y="380"/>
+			<point x="252" y="377"/>
+			<point x="161" y="372" type="qcurve"/>
+			<point x="159" y="338"/>
+			<point x="158" y="270"/>
+		</contour>
+	</outline>
+</glyph>

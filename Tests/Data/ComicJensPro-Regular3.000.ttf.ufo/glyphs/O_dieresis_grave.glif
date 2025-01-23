@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="Odieresis_grave" format="2">
+	<advance width="744"/>
+	<outline>
+		<component base="gravecomb.case" xOffset="678" yOffset="185"/>
+	</outline>
+</glyph>

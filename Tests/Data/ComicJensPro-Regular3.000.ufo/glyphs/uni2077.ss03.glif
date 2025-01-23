@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="uni2077.ss03" format="2">
+	<advance width="402"/>
+	<outline>
+		<contour>
+			<point x="98" y="678" type="qcurve"/>
+			<point x="96" y="678"/>
+			<point x="89" y="677"/>
+			<point x="87" y="677" type="qcurve"/>
+			<point x="65" y="677"/>
+			<point x="38" y="705"/>
+			<point x="38" y="724" type="qcurve"/>
+			<point x="38" y="743"/>
+			<point x="72" y="780"/>
+			<point x="110" y="780" type="qcurve"/>
+			<point x="132" y="780"/>
+			<point x="175" y="774"/>
+			<point x="192" y="774" type="qcurve"/>
+			<point x="203" y="774"/>
+			<point x="225" y="775"/>
+			<point x="236" y="775" type="qcurve"/>
+			<point x="287" y="775"/>
+			<point x="331" y="735"/>
+			<point x="331" y="704" type="qcurve"/>
+			<point x="331" y="688"/>
+			<point x="322" y="657"/>
+			<point x="316" y="643" type="qcurve"/>
+			<point x="303" y="613"/>
+			<point x="271" y="556"/>
+			<point x="240" y="498"/>
+			<point x="214" y="438"/>
+			<point x="207" y="406" type="qcurve"/>
+			<point x="197" y="389"/>
+			<point x="171" y="372"/>
+			<point x="157" y="372" type="qcurve"/>
+			<point x="139" y="372"/>
+			<point x="110" y="402"/>
+			<point x="110" y="430" type="qcurve"/>
+			<point x="117" y="461"/>
+			<point x="146" y="524"/>
+			<point x="179" y="586"/>
+			<point x="211" y="646"/>
+			<point x="221" y="674" type="qcurve"/>
+			<point x="197" y="674" type="line"/>
+			<point x="174" y="674"/>
+			<point x="121" y="678"/>
+		</contour>
+	</outline>
+</glyph>

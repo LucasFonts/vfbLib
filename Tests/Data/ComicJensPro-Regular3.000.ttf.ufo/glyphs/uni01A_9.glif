@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="uni01A9" format="2">
+	<unicode hex="01A9"/>
+	<advance width="590"/>
+	<outline>
+		<component base="Sigma"/>
+	</outline>
+	<anchor name="mark0" x="291" y="712"/>
+	<anchor name="mark1" x="288" y="0"/>
+	<anchor name="mark2" x="0" y="0"/>
+</glyph>

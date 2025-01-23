@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="SF010000" format="2">
+	<unicode hex="250C"/>
+	<advance width="768"/>
+	<outline>
+		<contour>
+			<point x="764" y="288" type="line"/>
+			<point x="789" y="286"/>
+			<point x="818" y="257"/>
+			<point x="818" y="238" type="qcurve"/>
+			<point x="818" y="218"/>
+			<point x="788" y="190"/>
+			<point x="764" y="188" type="qcurve"/>
+			<point x="434" y="188" type="line"/>
+			<point x="434" y="-274" type="line"/>
+			<point x="430" y="-298"/>
+			<point x="402" y="-324"/>
+			<point x="384" y="-324" type="qcurve"/>
+			<point x="363" y="-324"/>
+			<point x="335" y="-292"/>
+			<point x="335" y="-266" type="qcurve"/>
+			<point x="335" y="230" type="line"/>
+			<point x="335" y="254"/>
+			<point x="356" y="282"/>
+			<point x="380" y="288" type="qcurve"/>
+		</contour>
+	</outline>
+</glyph>

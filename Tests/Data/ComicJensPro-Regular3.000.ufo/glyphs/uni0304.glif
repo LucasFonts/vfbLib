@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="uni0304" format="2">
+	<unicode hex="0304"/>
+	<advance width="1"/>
+	<outline>
+		<contour>
+			<point x="-368" y="624" type="qcurve"/>
+			<point x="-376" y="620"/>
+			<point x="-390" y="618"/>
+			<point x="-396" y="618" type="qcurve"/>
+			<point x="-418" y="618"/>
+			<point x="-445" y="645"/>
+			<point x="-445" y="664" type="qcurve"/>
+			<point x="-445" y="688"/>
+			<point x="-407" y="717"/>
+			<point x="-349" y="732"/>
+			<point x="-281" y="737"/>
+			<point x="-252" y="737" type="qcurve"/>
+			<point x="-214" y="737"/>
+			<point x="-140" y="733"/>
+			<point x="-108" y="733" type="qcurve"/>
+			<point x="-81" y="730"/>
+			<point x="-54" y="700"/>
+			<point x="-54" y="683" type="qcurve"/>
+			<point x="-54" y="666"/>
+			<point x="-81" y="635"/>
+			<point x="-108" y="633" type="qcurve"/>
+			<point x="-130" y="633"/>
+			<point x="-207" y="637"/>
+			<point x="-249" y="637" type="qcurve"/>
+			<point x="-285" y="637"/>
+			<point x="-350" y="632"/>
+		</contour>
+	</outline>
+	<anchor name="_mark0" x="-256" y="520"/>
+</glyph>

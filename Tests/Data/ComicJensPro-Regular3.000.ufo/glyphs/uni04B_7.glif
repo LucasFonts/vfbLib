@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="uni04B7" format="2">
+	<unicode hex="04B7"/>
+	<advance width="551"/>
+	<outline>
+		<component base="afii10089"/>
+		<component base="cyrdescender" xOffset="353" yOffset="-34"/>
+	</outline>
+</glyph>
