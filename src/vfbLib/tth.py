@@ -3,6 +3,7 @@ import logging
 from argparse import ArgumentParser
 from copy import deepcopy
 from pathlib import Path
+from pprint import pprint
 from sys import exit
 from typing import Any
 
@@ -100,7 +101,7 @@ def extract_truetype_hinting(vfb: Vfb) -> dict[str, Any]:
                 for gasp_range in entry.decompiled
             }
 
-        elif key == "TrueType Info":
+        elif key == "ttinfo":
             entry.decompile()
             assert isinstance(entry.decompiled, dict)
             for k in ("head_lowest_rec_ppem", "head_units_per_em"):
