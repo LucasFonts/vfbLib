@@ -1,4 +1,4 @@
-vfbLib.compilers
+﻿vfbLib.compilers
 ================
 
 .. automodule:: vfbLib.compilers

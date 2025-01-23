@@ -1,4 +1,4 @@
-vfbLib.helpers
+﻿vfbLib.helpers
 ==============
 
 .. automodule:: vfbLib.helpers

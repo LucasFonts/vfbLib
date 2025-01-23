@@ -1,4 +1,4 @@
-vfbLib.parsers
+﻿vfbLib.parsers
 ==============
 
 .. automodule:: vfbLib.parsers

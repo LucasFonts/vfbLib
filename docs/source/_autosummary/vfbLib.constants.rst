@@ -1,4 +1,4 @@
-vfbLib.constants
+﻿vfbLib.constants
 ================
 
 .. automodule:: vfbLib.constants

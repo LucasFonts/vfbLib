@@ -1,4 +1,4 @@
-vfbLib.diff
+﻿vfbLib.diff
 ===========
 
 .. automodule:: vfbLib.diff

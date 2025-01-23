@@ -1,4 +1,4 @@
-vfbLib.typing
+﻿vfbLib.typing
 =============
 
 .. automodule:: vfbLib.typing

@@ -1,4 +1,4 @@
-vfbLib.templates
+﻿vfbLib.templates
 ================
 
 .. automodule:: vfbLib.templates

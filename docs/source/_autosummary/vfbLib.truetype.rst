@@ -1,4 +1,4 @@
-vfbLib.truetype
+﻿vfbLib.truetype
 ===============
 
 .. automodule:: vfbLib.truetype

@@ -1,4 +1,4 @@
-vfbLib.vfb
+﻿vfbLib.vfb
 ==========
 
 .. automodule:: vfbLib.vfb

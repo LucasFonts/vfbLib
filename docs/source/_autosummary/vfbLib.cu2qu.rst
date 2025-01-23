@@ -1,4 +1,4 @@
-vfbLib.cu2qu
+﻿vfbLib.cu2qu
 ============
 
 .. automodule:: vfbLib.cu2qu

@@ -1,4 +1,4 @@
-vfbLib.ufo
+﻿vfbLib.ufo
 ==========
 
 .. automodule:: vfbLib.ufo
