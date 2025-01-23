@@ -127,7 +127,7 @@ class VfbToUfoInfo(Info):
             "underline_thickness": "postscriptUnderlineThickness",
             # "is_fixed_pitch": "postscriptIsFixedPitch",  # below
             "copyright": "copyright",
-            "description": "openTypeNameDescription",
+            "notice": "openTypeNameDescription",
             "source": "openTypeNameManufacturer",
             "unique_id": "postscriptUniqueID",
             # weight_code, below

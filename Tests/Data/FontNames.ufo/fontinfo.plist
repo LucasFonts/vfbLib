@@ -38,7 +38,7 @@
 		<key>openTypeHheaLineGap</key>
 		<integer>9</integer>
 		<key>openTypeNameDescription</key>
-		<string></string>
+		<string>NoticeDescriptions</string>
 		<key>openTypeNameDesigner</key>
 		<string>Designer</string>
 		<key>openTypeNameDesignerURL</key>
