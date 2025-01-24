@@ -56,7 +56,10 @@ class VfbEntry(StreamReader):
         self.store_hash()
 
     def __repr__(self) -> str:
-        return f"<VfbEntry {self.id}, parser: {self.parser}, compiler: {self.compiler}>"
+        return (
+            f"<VfbEntry {self.id} ({self.key}), parser: {self.parser}, "
+            f"compiler: {self.compiler}>"
+        )
 
     @cached_property
     def header(self) -> bytes:
@@ -226,7 +229,12 @@ class VfbEntry(StreamReader):
         """
         if self.decompiled is not None:
             # Already decompiled
-            logger.warning(f"Decompiling already decompiled entry: {self.key}.")
+            if self.modified:
+                logger.warning(
+                    f"Decompiling a modified entry again: {self.key}."
+                    " This will overwrite any modifications in the decompiled data."
+                )
+                # raise RuntimeError
 
         if self.parser is None:
             raise ValueError
