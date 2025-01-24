@@ -68,8 +68,8 @@ class Vfb:
         if self.vfb_path:
             self.read()
         else:
-            self.header = VfbHeader()
-            self.entries = []
+            self.header: VfbHeader = VfbHeader()
+            self.entries: list[VfbEntry] = []
 
     def add_entry(self, entry: VfbEntry) -> None:
         """Add an entry to the Vfb. Also sets the parent of the entry to the Vfb.
@@ -96,8 +96,8 @@ class Vfb:
         """
         Clear any data that may have been read before.
         """
-        self.header: VfbHeader | None = None
-        self.entries: list[VfbEntry] = []
+        self.header = VfbHeader()
+        self.entries = []
 
     def _decompile_glyphs(self) -> None:
         for entry in self.entries:
