@@ -23,7 +23,7 @@ def read_value(stream: BufferedReader | BytesIO, signed=True) -> int:
             value.
 
     Returns:
-        int: _description_
+        int: The decoded value.
     """
     val = int.from_bytes(stream.read(1), byteorder="little")
     if val == 0:
