@@ -11,6 +11,10 @@ def read_value(stream: BufferedReader | BytesIO, signed=True) -> int:
     """
     Read an encoded value from the stream, decode it to integer and return it.
 
+    The storage format in the stream of the "encoded value" is the same as described in
+    the Type 1 specification, p. 48, "Charstring Number Encoding"
+    <https://adobe-type-tools.github.io/font-tech-notes/pdfs/T1_SPEC.pdf>.
+
     Args:
         stream (BufferedReader | BytesIO): The input stream.
         signed (bool, optional): Whether to interpret the value as a signed integer.
@@ -49,7 +53,8 @@ def read_value(stream: BufferedReader | BytesIO, signed=True) -> int:
         return -0x100 * val + 0xFA94 - val2
 
     elif val == 0xFF:
-        # 4-byte integer follows
+        # 32 bit integer follows
+        # FIXME: The Type1 spec says that it is always a signed int.
         decoded = int.from_bytes(stream.read(4), byteorder="big", signed=signed)
         return decoded
 
