@@ -190,6 +190,14 @@ class VfbEntry(StreamReader):
                 d["modified"] = True
         return d
 
+    def clean(self) -> None:
+        """
+        Reset the entry to its original, un-decompiled state.
+        """
+        self.decompiled = None
+        self.hash = None
+        self.store_hash()
+
     def compile(self, force=False) -> None:
         """
         Compile the entry. The result is stored in VfbEntry.data.
