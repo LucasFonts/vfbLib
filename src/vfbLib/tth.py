@@ -91,8 +91,8 @@ def vfb2tth():
 def extract_truetype_hinting(vfb: Vfb) -> dict[str, Any]:
     """
     Collect the relevant entries from the VFB and extract the hinting information by
-    calling a specialized function for each data type. The hinting information is returned
-    as a dict which can be serialized in the desired format.
+    calling a specialized function for each data type. The hinting information is
+    returned as a dict which can be serialized in the desired format.
 
     Args:
         vfb (Vfb): The input VFB.

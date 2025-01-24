@@ -158,7 +158,8 @@ class StreamReader:
         Return an encoded integer value from the stream.
 
         Args:
-            signed (bool, optional): Whether the value is interpreted as a signed value. Defaults to True.
+            signed (bool, optional): Whether the value is interpreted as a signed value.
+            Defaults to True.
 
         Returns:
             int: The integer
