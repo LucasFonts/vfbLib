@@ -10,6 +10,12 @@ from vfbLib.parsers.value import read_value
 
 
 def yuri():
+    """
+    Command line interface for encoding or decoding the value format used in the VFB.
+
+    The encoded format is identical to the one used in Type 1 font charstring number
+    encoding.
+    """
     parser = ArgumentParser(description="vfbtool\nCopyright (c) 2024 by LucasFonts")
     parser.add_argument(
         "-e",
