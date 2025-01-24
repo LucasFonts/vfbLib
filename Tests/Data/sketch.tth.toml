@@ -5,4 +5,9 @@ stemsnaplimit = 68
 zoneppm = 48
 codeppm = 0
 
+[font.gasp]
+8 = 2
+16 = 1
+65535 = 3
+
 [glyphs]

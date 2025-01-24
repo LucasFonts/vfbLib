@@ -1,8 +1,13 @@
 [font]
 head_lowest_rec_ppem = 9
-head_units_per_em = 1000
+head_units_per_em = 1024
 stemsnaplimit = 68
 zoneppm = 48
 codeppm = 0
+
+[font.gasp]
+9 = 2
+47 = 3
+65535 = 2
 
 [glyphs]

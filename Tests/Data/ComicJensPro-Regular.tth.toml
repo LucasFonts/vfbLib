@@ -1,6 +1,6 @@
 [font]
-lowest_rec_ppem = 9
-units_per_em = 1024
+head_lowest_rec_ppem = 9
+head_units_per_em = 1024
 stemsnaplimit = 68
 zoneppm = 48
 codeppm = 0
