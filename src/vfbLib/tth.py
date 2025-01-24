@@ -3,7 +3,6 @@ import logging
 from argparse import ArgumentParser
 from copy import deepcopy
 from pathlib import Path
-from pprint import pprint
 from sys import exit
 from typing import Any
 
@@ -17,6 +16,10 @@ logger = logging.getLogger(__name__)
 
 
 def vfb2tth():
+    """
+    The command line interface for exporting TrueType hinting in FontLab's high-level
+    format to JSON, TOML, or YAML.
+    """
     parser = ArgumentParser(
         description="vfb2tth Converter\nCopyright (c) 2024 by LucasFonts"
     )
@@ -86,6 +89,17 @@ def vfb2tth():
 
 
 def extract_truetype_hinting(vfb: Vfb) -> dict[str, Any]:
+    """
+    Collect the relevant entries from the VFB and extract the hinting information by
+    calling a specialized function for each data type. The hinting information is returned
+    as a dict which can be serialized in the desired format.
+
+    Args:
+        vfb (Vfb): The input VFB.
+
+    Returns:
+        dict[str, Any]: The extracted TrueType hinting information.
+    """
     font: dict[str, Any] = {}
     glyphs: dict[str, list[dict]] = {}
     zone_names: dict[str, dict] = {"ttZonesT": {}, "ttZonesB": {}}
@@ -162,6 +176,15 @@ def extract_truetype_hinting(vfb: Vfb) -> dict[str, Any]:
 def extract_glyph_hints(
     data: dict, target: dict, font_hints: dict, zone_names: dict
 ) -> None:
+    """
+    Extract the glyph hints from the supplied decompiled glyph entry `data`.
+
+    Args:
+        data (dict): The decompiled glyph entry data.
+        target (dict): The dict to which to add the extracted glyph hints.
+        font_hints (dict): Font-level hinting data. Used to map stem indices to names.
+        zone_names (dict): Zone hinting data. Used to map zone indices to names.
+    """
     if tth := data.get("tth"):
         ttg = TTGlyphHints(
             IndexVfbToUfoGlyph(),
@@ -174,6 +197,14 @@ def extract_glyph_hints(
 
 
 def extract_tt_stem_ppem_1(data: dict, target: dict) -> None:
+    """
+    Extract the stem pixel width information for 1 pixel from the supplied decompiled
+    TrueType stem ppem1 `data`.
+
+    Args:
+        data (dict): The decompiled entry data.
+        target (dict): The dict to which to add the extracted information.
+    """
     for direction in ("ttStemsV", "ttStemsH"):
         if direction in data:
             direction_data = data[direction]
@@ -183,6 +214,14 @@ def extract_tt_stem_ppem_1(data: dict, target: dict) -> None:
 
 
 def extract_tt_stem_ppems(data: dict, target: dict) -> None:
+    """
+    Extract the stem pixel width information for 2–6 pixels from the supplied decompiled
+    TrueType stem ppem `data`.
+
+    Args:
+        data (dict): The decompiled entry data.
+        target (dict): The dict to which to add the extracted information.
+    """
     for direction in ("ttStemsV", "ttStemsH"):
         if direction in data:
             direction_data = data[direction]
@@ -191,6 +230,13 @@ def extract_tt_stem_ppems(data: dict, target: dict) -> None:
 
 
 def extract_tt_stems(data: dict, target: dict) -> None:
+    """
+    Extract the stem information from the supplied decompiled TrueType stem `data`.
+
+    Args:
+        data (dict): The decompiled entry data.
+        target (dict): The dict to which to add the extracted information.
+    """
     target["stems"] = {"ttStemsV": [], "ttStemsH": []}
     stem_names = set()
     for direction in ("ttStemsV", "ttStemsH"):
@@ -215,10 +261,26 @@ def extract_tt_stems(data: dict, target: dict) -> None:
 
 
 def extract_tt_zone_deltas(data: dict, target: dict):
+    """
+    Extract the zone delta information from the supplied decompiled TrueType zone deltas
+    `data`.
+
+    Args:
+        data (dict): The decompiled entry data.
+        target (dict): The dict to which to add the extracted information.
+    """
     target["zone_deltas"] = deepcopy(data)
 
 
 def extract_tt_zones(data: dict, target: dict, zone_names: dict) -> None:
+    """
+    Extract the zone information from the supplied decompiled TrueType zone `data`.
+
+    Args:
+        data (dict): The decompiled entry data.
+        target (dict): The dict to which to add the extracted information.
+        zone_names (dict): The dict to which the zone names will be added.
+    """
     target["zones"] = {"ttZonesT": [], "ttZonesB": []}
     zone_names_global = set()
     for side in ("ttZonesT", "ttZonesB"):
@@ -243,8 +305,15 @@ def extract_tt_zones(data: dict, target: dict, zone_names: dict) -> None:
             )
 
 
-def merge_stem_information(data, font):
-    # Merge stem information
+def merge_stem_information(data: dict, font: dict) -> None:
+    """
+    Merge stem information from various fields in the `data` dict into the font dict in
+    the structure expected by the export format.
+
+    Args:
+        data (dict): The input dict.
+        font (dict): The output dict.
+    """
     stems_dict = {}
     for direction in ("ttStemsV", "ttStemsH"):
         if direction in data:
@@ -265,8 +334,14 @@ def merge_stem_information(data, font):
         del font["stems"]
 
 
-def merge_zone_information(font):
-    # Merge zone information
+def merge_zone_information(font: dict) -> None:
+    """
+    Merge zone information from various fields into the structure expected by the export
+    format.
+
+    Args:
+        font (dict): _description_
+    """
     all_zones = []
     for side in ("ttZonesB", "ttZonesT"):
         for zone in font["zones"].get(side, []):
