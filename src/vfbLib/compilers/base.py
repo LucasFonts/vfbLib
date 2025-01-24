@@ -40,16 +40,21 @@ class StreamWriter:
         raise NotImplementedError
 
     def write_doubles(self, values: list[float]) -> None:
-        """Write several doubles to the stream.
+        """
+        Write several double-precision floats to the stream.
 
         Args:
-            values (list[float]): _description_
+            values (list[float]): The sequence of double-precision floats to write.
         """
         raise NotImplementedError
 
     def write_float(self, value: float, fmt: str = "d") -> None:
         """
         Write a float value to the stream.
+
+        Args:
+            value (float): The float value to write.
+            fmt (str, optional): The format string. Defaults to "d".
         """
         encoded = pack(fmt, value)
         self.stream.write(encoded)
@@ -70,10 +75,19 @@ class StreamWriter:
     def write_uint8(self, value: int) -> None:
         """
         Write a uint8 value to the stream.
+
+        Args:
+            value (int): The integer to write.
         """
         self.stream.write(value.to_bytes(uint8, byteorder="little", signed=False))
 
     def write_uint16(self, value: int) -> None:
+        """
+        Write a uint16 value to the stream.
+
+        Args:
+            value (int): The integer to write.
+        """
         self.stream.write(value.to_bytes(uint16, byteorder="little", signed=False))
 
     def write_uint32(self, value: int) -> None:
@@ -103,6 +117,9 @@ class BaseCompiler(StreamWriter):
     def compile(self, data: Any, master_count: int = 0) -> bytes:
         """
         Compile the JSON-like main data structure and return the compiled binary data.
+
+        The actual compilation is done by calling the `_compile` method, which must be
+        implemented for all specialized compiler subclasses.
 
         Args:
             data (Any): The main data structure.
@@ -151,6 +168,12 @@ class BaseCompiler(StreamWriter):
 
 class GlyphEncodingCompiler(BaseCompiler):
     def _compile(self, data: Any) -> None:
+        """
+        Compile the data into the format used by a glyph encoding entry.
+
+        Args:
+            data (tuple[int, str]): A tuple containing the glyph ID and the glyph name.
+        """
         gid, name = data
         self.write_uint16(gid)
         self.write_str(name)  # XXX: Does it have to be cp1252?
