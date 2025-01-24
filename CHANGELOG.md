@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.9.1
+
+- Fix error in `vfbcu2qu` introduced in the previous release.
+
 ## v0.9.0
 
 Parser changes:
