@@ -8,6 +8,23 @@ if TYPE_CHECKING:
 
 
 def read_value(stream: BufferedReader | BytesIO, signed=True) -> int:
+    """
+    Read an encoded value from the stream, decode it to integer and return it.
+
+    Args:
+        stream (BufferedReader | BytesIO): The input stream.
+        signed (bool, optional): Whether to interpret the value as a signed integer.
+            Defaults to True.
+
+    Raises:
+        EOFError: When a 0 byte is encountered while reading the stream.
+        ValueError: When the byte that was read from the stream is < 0x20.
+        ValueError: When the byte that was read from the stream has any other undefined
+            value.
+
+    Returns:
+        int: _description_
+    """
     val = int.from_bytes(stream.read(1), byteorder="little")
     if val == 0:
         raise EOFError
@@ -39,11 +56,29 @@ def read_value(stream: BufferedReader | BytesIO, signed=True) -> int:
     raise ValueError
 
 
-def read_doubles(num, stream):
-    # Read a number of doubles from the stream and return them
+def read_doubles(num: int, stream: BufferedReader | BytesIO) -> tuple[float]:
+    """
+    Read a number `num` of double-precision floats from the stream and return them.
+
+    Args:
+        num (int): The number of values to be read.
+        stream (BufferedReader | BytesIO): The input stream.
+
+    Returns:
+        tuple[float]: The tuple of double-precision floats.
+    """
     return unpack(num * "d", stream.read(num * 8))
 
 
-def read_floats(num, stream):
-    # Read a number of floats from the stream and return them
+def read_floats(num: int, stream: BufferedReader | BytesIO) -> tuple[float]:
+    """
+    Read a number `num` of floats from the stream and return them.
+
+    Args:
+        num (int): The number of values to be read.
+        stream (BufferedReader | BytesIO): The input stream.
+
+    Returns:
+        tuple[float]: The tuple of floats.
+    """
     return unpack(num * "f", stream.read(num * 4))

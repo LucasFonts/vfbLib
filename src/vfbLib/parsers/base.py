@@ -22,32 +22,81 @@ logger = logging.getLogger(__name__)
 class StreamReader:
     """
     Base class that reads values from the input stream.
-    This is the parent class for the general BaseParser, from which all other
-    parsers inherit, but it may be subclassed directly if more flexibility is needed.
+
+    This is the parent class for the general BaseParser, from which all other parsers
+    inherit, but it may be subclassed directly if more flexibility is needed.
     """
 
     encoding = "cp1252"
     stream: BufferedReader | BytesIO = BytesIO()
 
-    def read_double(self):
+    def read_double(self) -> float:
+        """
+        Return a double-precision float from the stream.
+
+        Returns:
+            float: The float
+        """
         return read_doubles(1, self.stream)[0]
 
-    def read_doubles(self, num):
+    def read_doubles(self, num) -> tuple[float]:
+        """
+        Return a tuple of `num` double-precision floats from the stream.
+
+        Args:
+            num (int): The number of double-precision floats to read from the stream
+
+        Returns:
+            tuple[float]: The tuple of floats
+        """
         return read_doubles(num, self.stream)
 
-    def read_float(self):
+    def read_float(self) -> float:
+        """
+        Return a float from the stream.
+
+        Returns:
+            float: The float
+        """
         return read_floats(1, self.stream)[0]
 
-    def read_floats(self, num):
+    def read_floats(self, num: int) -> tuple[float]:
+        """
+        Return a tuple of `num` floats from the stream.
+
+        Args:
+            num (int): The number of floats to read from the stream
+
+        Returns:
+            tuple[float]: The tuple of floats
+        """
         return read_floats(num, self.stream)
 
     def read_int8(self) -> int:
+        """
+        Return a signed 8-bit integer from the stream.
+
+        Returns:
+            int: The integer
+        """
         return int.from_bytes(self.stream.read(uint8), byteorder="little", signed=True)
 
     def read_int16(self) -> int:
+        """
+        Return a signed 16-bit integer from the stream.
+
+        Returns:
+            int: The integer
+        """
         return int.from_bytes(self.stream.read(uint16), byteorder="little", signed=True)
 
     def read_int32(self) -> int:
+        """
+        Return a signed 32-bit integer from the stream.
+
+        Returns:
+            int: The integer
+        """
         return int.from_bytes(self.stream.read(uint32), byteorder="little", signed=True)
 
     def read_str(self, size: int) -> str:
@@ -66,7 +115,7 @@ class StreamReader:
     def read_str_all(self) -> str:
         """
         Return the remaining bytes of the current stream as a string with the current
-        encoding.
+        encoding. Null bytes and whitespace are stripped from the string.
 
         Returns:
             str: The string
@@ -74,19 +123,46 @@ class StreamReader:
         return self.stream.read().decode(self.encoding).strip("\u0000 ")
 
     def read_uint8(self) -> int:
+        """
+        Return an unsigned 8-bit integer from the stream.
+
+        Returns:
+            int: The integer
+        """
         return int.from_bytes(self.stream.read(uint8), byteorder="little", signed=False)
 
     def read_uint16(self) -> int:
+        """
+        Return an unsigned 16-bit integer from the stream.
+
+        Returns:
+            int: The integer
+        """
         return int.from_bytes(
             self.stream.read(uint16), byteorder="little", signed=False
         )
 
     def read_uint32(self) -> int:
+        """
+        Return an unsigned 32-bit integer from the stream.
+
+        Returns:
+            int: The integer
+        """
         return int.from_bytes(
             self.stream.read(uint32), byteorder="little", signed=False
         )
 
-    def read_value(self, signed: bool = True):
+    def read_value(self, signed: bool = True) -> int:
+        """
+        Return an encoded integer value from the stream.
+
+        Args:
+            signed (bool, optional): Whether the value is interpreted as a signed value. Defaults to True.
+
+        Returns:
+            int: The integer
+        """
         return read_value(self.stream, signed=signed)
 
 
@@ -107,7 +183,34 @@ class BaseParser(StreamReader):
         master_count: int = 0,
         ttStemsV_count: int | None = None,
         ttStemsH_count: int | None = None,
-    ):
+    ) -> Any:
+        """
+        Prepare the parsing of the stream, then call the specialized parser and return
+        the decompiled VFB entry structure.
+
+        The specialized parsing is done by calling the `_parse` method, which must be
+        implemented for all entry parser sublasses.
+
+        Args:
+            stream (BytesIO): The stream to read from.
+            size (int): The number of bytes that will be read from the input stream and
+                parsed.
+            master_count (int, optional): The number of masters in the font. This is
+                needed for some multiple-master-enabled VFB parsers. Defaults to 0.
+            ttStemsV_count (int | None, optional): The number of TrueType hinting stems
+                in the vertical hint direction, This is needed for some
+                TrueType-hinting-related parsers. Defaults to None.
+            ttStemsH_count (int | None, optional): The number of TrueType hinting stems
+                in the horizontal hint direction, This is needed for some
+                TrueType-hinting-related parsers. Defaults to None.
+
+        Raises:
+            AssertionError: If bytes remain in the stream after the parsing finished.
+
+        Returns:
+            Any: The parsed structure. The type depends on the specific entry that is
+            being parsed.
+        """
         self.stream = BytesIO(stream.read(size))
         self.master_count = master_count
         self.ttStemsV_count = ttStemsV_count
@@ -149,6 +252,13 @@ class EncodedKeyValuesParser(BaseParser):
     __end__ = 0x64
 
     def _parse(self) -> list[dict[int, int]]:
+        """
+        Parse and return the entry as a list of key-value-dictionaries. Both keys and
+        values in the dictionary are integers.
+
+        Returns:
+            list[dict[int, int]]: The list of key-value dictionaries.
+        """
         values = []
         while True:
             key = self.read_uint8()
