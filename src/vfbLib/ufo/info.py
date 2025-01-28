@@ -117,7 +117,6 @@ class VfbToUfoInfo(Info):
     def build_mapping(self):
         self.mapping = {
             # "sgn": "openTypeNamePreferredFamilyName",  # below
-            "menu_name": "styleMapFamilyName",
             "full_name": "postscriptFullName",
             "font_name": "postscriptFontName",
             "family_name": "styleMapFamilyName",
