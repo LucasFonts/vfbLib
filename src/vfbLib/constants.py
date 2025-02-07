@@ -143,9 +143,10 @@ parser_classes = {
     1279: ("hhea_descender", SignedInt16Parser, None),  # OK!
     # hstem_data and vstem_data:
     1268: ("TrueType Stem PPEMs", TrueTypeStemPpemsParser, None),
-    1524: ("TrueType Stem PPEMs 1", TrueTypeStemPpems1Parser, None),
     # Probably in font.ttinfo, but not accessible through API:
     1269: ("TrueType Stems", TrueTypeStemsParser, None),
+    1524: ("TrueType Stem PPEMs 1", TrueTypeStemPpems1Parser, None),
+    # Probably in font.ttinfo, but not accessible through API:
     1255: ("TrueType Zones", TrueTypeZonesParser, None),
     # Goes to font:
     2021: ("unicoderanges", UnicodeRangesParser, None),  # Unicode Ranges
