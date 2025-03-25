@@ -2,7 +2,7 @@ appdirs==1.4.4
 attrs==25.3.0
 fonttools==4.56.0
 fs==2.4.16
-setuptools==76.0.0
+setuptools==77.0.3
 six==1.17.0
 tomli_w==1.2.0
 typing_extensions==4.12.2
