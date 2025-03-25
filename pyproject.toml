@@ -5,7 +5,7 @@ description = "Tools for converting FontLab Studio 5 (VFB) files."
 keywords = ["vfb", "vfbLib", "fonttools"]
 
 readme = "README.md"
-license = { file = "LICENSE" }
+license-files = ["LICENSE"]
 
 authors = [{ name = "Jens Kutílek", email = "webmail@kutilek.de" }]
 classifiers = [
