@@ -60,7 +60,7 @@ vfbdiff = "vfbLib.diff:diffvfb"
 # yuri = vfbLib.value:yuri
 
 [build-system]
-requires = ["setuptools>=45", "setuptools-scm[toml]>=6.2", "wheel"]
+requires = ["setuptools>=78.0.2", "setuptools-scm[toml]>=6.2", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools.package-data]
