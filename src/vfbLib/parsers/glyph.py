@@ -380,7 +380,7 @@ class GlyphParser(BaseParser):
                 glyph_name_length = self.read_value()
                 glyph_name = self.stream.read(glyph_name_length)
                 self.glyphdata["name"] = glyph_name.decode(self.encoding)
-                logger.debug(f"Glyph: {self.glyphdata['name']}")
+                # logger.debug(f"Glyph: {self.glyphdata['name']}")
                 self.name = self.glyphdata["name"]
 
             elif v == 0x02:
@@ -416,7 +416,7 @@ class GlyphParser(BaseParser):
                 self.parse_instructions()
 
             elif v == 0x0F:
-                logger.debug("Glyph done.")
+                # logger.debug("Glyph done.")
                 break
 
             else:
