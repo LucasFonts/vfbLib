@@ -37,7 +37,13 @@ class StreamWriter:
         self.stream.write(value)
 
     def write_double(self, value: float) -> None:
-        raise NotImplementedError
+        """
+        Write a double-precision float value to the stream.
+
+        Args:
+            value (float): The float value to write.
+        """
+        self.write_float(value, "d")
 
     def write_doubles(self, values: list[float]) -> None:
         """
@@ -46,7 +52,8 @@ class StreamWriter:
         Args:
             values (list[float]): The sequence of double-precision floats to write.
         """
-        raise NotImplementedError
+        for f in values:
+            self.write_double(f)
 
     def write_float(self, value: float, fmt: str = "d") -> None:
         """
