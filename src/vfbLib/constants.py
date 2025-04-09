@@ -108,8 +108,8 @@ parser_classes = {
     1139: ("mac_compatible", StringParser, StringCompiler),  # OT Mac Name
     1140: ("1140", BaseParser, None),
     1121: ("vendor", StringParser, StringCompiler),  # vendorID
-    1133: ("x_u_id", IntListParser, None),  # Type 1 XUIDs
-    1134: ("x_u_id_num", Int16Parser, Int16Compiler),  # Type 1 XUIDs Count
+    1133: ("xuid", IntListParser, None),  # Type 1 XUIDs
+    1134: ("xuid_num", Int16Parser, Int16Compiler),  # Type 1 XUIDs Count
     1132: ("year", Int16Parser, Int16Compiler),  # OK!
     1130: ("version_major", Int16Parser, Int16Compiler),  # versionMajor
     1131: ("version_minor", Int16Parser, Int16Compiler),  # versionMinor

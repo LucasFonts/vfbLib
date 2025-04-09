@@ -396,7 +396,7 @@ class VfbToUfoBuilder:
                 self.info.set_weight_class(data)
             elif name == "style_name":  # 1127
                 self.info.postscriptWeightName = data  # FIXME: Does not contain Italic
-            elif name == "x_u_id":  # 1133
+            elif name == "xuid":  # 1133
                 pass
             elif name == "pref_style_name":  # 1137
                 self.info.set_style_name(data)
