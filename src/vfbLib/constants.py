@@ -13,6 +13,7 @@ from vfbLib.compilers.numeric import (
     PanoseCompiler,
     SignedInt16Compiler,
     SignedInt32Compiler,
+    UnicodeRangesCompiler,
 )
 from vfbLib.compilers.text import OpenTypeStringCompiler, StringCompiler
 from vfbLib.parsers.base import (  # EncodedValueParser,; EncodedKeyValuesParser,
@@ -161,7 +162,7 @@ parser_classes = {
     # Probably in font.ttinfo, but not accessible through API:
     1255: ("TrueType Zones", TrueTypeZonesParser, None),
     # Goes to font:
-    2021: ("unicoderanges", UnicodeRangesParser, None),  # Unicode Ranges
+    2021: ("unicoderanges", UnicodeRangesParser, UnicodeRangesCompiler),
     # Probably in font.ttinfo, but not accessible through API:
     1272: ("stemsnaplimit", Int16Parser, Int16Compiler),  # Pixel Snap
     1274: ("zoneppm", Int16Parser, Int16Compiler),  # Zone Stop PPEM
