@@ -63,11 +63,15 @@ class StreamWriter:
             value (float): The float value to write.
             fmt (str, optional): The format string. Defaults to "d".
         """
+        # XXX: Why "d" as default?
         encoded = pack(fmt, value)
         self.stream.write(encoded)
 
     def write_floats(self, values: list[float]) -> None:
+        # Untested
         raise NotImplementedError
+        for f in values:
+            self.write_float(f, "f")
 
     def write_int16(self, value: int) -> None:
         raise NotImplementedError
