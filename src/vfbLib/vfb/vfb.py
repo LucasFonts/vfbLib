@@ -230,13 +230,16 @@ class Vfb:
             vfb.write(self.header.data)
 
             for entry in self.entries:
-                entry.compile()
-                if entry.data is None:
+                success = entry.compile()
+                if not success:
                     raise NotImplementedError(
-                        f"Could not compile entry {entry.key}: {entry.decompiled}"
+                        f"Could not compile entry {entry.key} ({entry.id}): "
+                        f"{entry.decompiled}"
                     )
                 vfb.write(entry.header)
-                vfb.write(entry.data)
+                if entry.data is not None:
+                    # There may be entries without data
+                    vfb.write(entry.data)
             # File end marker
             vfb.write(b"\05\00\00\00\02\00\00\00")
 

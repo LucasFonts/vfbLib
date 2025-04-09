@@ -103,11 +103,7 @@ class VfbEntry(StreamReader):
             int: The size of the current compiled data.
         """
         if self.data is None:
-            logger.error(
-                "You need to set VfbEntry.data before accessing its size, "
-                "usually by reading the entry from the input stream."
-            )
-            raise ValueError
+            return 0
 
         return len(self.data)
 
@@ -217,30 +213,41 @@ class VfbEntry(StreamReader):
         self.hash = None
         self.store_hash()
 
-    def compile(self, force=False) -> None:
+    def compile(self, force: bool = False) -> bool:
         """
         Compile the entry. The result is stored in VfbEntry.data.
+
+        Args:
+            force (bool, optional): Force compilation even when data has not changed.
+                Defaults to False.
+
+        Returns:
+            bool: Whether compilation was successful.
         """
         if not (self.modified or force):
             logger.debug(
                 "    Skipping entry compilation because it has not been modified: "
                 f"'{self.key}'"
             )
-            return
+            return True
 
         if self.compiler is None:
             logger.error(
                 f"Compiling '{self.id}' is not supported yet in {self} "
                 f"Decompiled: {self.decompiled}"
             )
-            return
+            return False
 
         self.merge_masters_data()
 
         self.data = self.compiler().compile(
             self.decompiled, master_count=self.vfb.num_masters
         )
+
+        # TODO: Return False here if compilation has failed. How to tell?
+
         self.store_hash()
+        return True
 
     def decompile(self) -> None:
         """

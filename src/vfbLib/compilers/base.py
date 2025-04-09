@@ -79,8 +79,10 @@ class StreamWriter:
     def write_int32(self, value: int) -> None:
         raise NotImplementedError
 
-    def write_str(self, value: str, pad: int = 0) -> None:
+    def write_str(self, value: str | None, pad: int = 0) -> None:
         # XXX: Pad with 0 bytes to given length
+        if value is None:
+            value = ""
         self.stream.write(value.encode(self.encoding))
 
     def write_uint8(self, value: int) -> None:
