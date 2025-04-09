@@ -233,6 +233,9 @@ parser_classes = {
 
     # Not seen in FontNames.vfb:
     1410: ("1410", FL3Type1410Parser, None),
+
+    # File end
+    5: ("EOF", None, None),
 }
 # fmt: on
 
