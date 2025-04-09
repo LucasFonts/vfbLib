@@ -4,7 +4,7 @@ from io import BytesIO
 from struct import pack
 from typing import TYPE_CHECKING, Any
 
-from fontTools.misc.textTools import hexStr
+from fontTools.misc.textTools import deHexStr, hexStr
 
 from vfbLib.compilers.value import write_value, write_value_long
 from vfbLib.helpers import uint8, uint16  # , uint32
@@ -190,3 +190,17 @@ class GlyphEncodingCompiler(BaseCompiler):
         gid, name = data
         self.write_uint16(gid)
         self.write_str(name)  # XXX: Does it have to be cp1252?
+
+
+class HexStringCompiler(BaseCompiler):
+    def _compile(self, data: Any) -> None:
+        """
+        Compile the data given in hex string format to the stream as bytes.
+
+        This can be used as a fallback for unsupported entries as long as the hex data
+        is known, e.g. for end markers or constants.
+
+        Args:
+            data (Any): The hex string data, e.g. "203955".
+        """
+        self.write_bytes(deHexStr(data))
