@@ -231,7 +231,10 @@ class Vfb:
 
             for entry in self.entries:
                 entry.compile()
-                assert entry.data is not None
+                if entry.data is None:
+                    raise NotImplementedError(
+                        f"Could not compile entry {entry.key}: {entry.decompiled}"
+                    )
                 vfb.write(entry.header)
                 vfb.write(entry.data)
             # File end marker
