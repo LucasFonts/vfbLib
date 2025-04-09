@@ -82,3 +82,15 @@ class SignedInt32Compiler(BaseCompiler):
 
     def _compile(self, data: Any) -> None:
         self.write_int32(data)
+
+
+class UnicodeRangesCompiler(BaseCompiler):
+    """
+    A compiler that compiles the unicoderanges value into an uint64.
+    """
+
+    def _compile(self, data: list[int]) -> None:
+        value = 0
+        for b in data:
+            value += 2**b
+        self.write_bytes(value.to_bytes(16, byteorder="little", signed=False))
