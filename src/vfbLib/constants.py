@@ -1,7 +1,7 @@
 from vfbLib.compilers.base import GlyphEncodingCompiler
 from vfbLib.compilers.binary import BinaryTableCompiler
 from vfbLib.compilers.glyph import GlyphCompiler
-from vfbLib.compilers.numeric import Int16Compiler
+from vfbLib.compilers.numeric import DoubleListCompiler, Int16Compiler
 from vfbLib.compilers.text import OpenTypeStringCompiler, StringCompiler
 from vfbLib.parsers.base import (  # EncodedValueParser,; EncodedKeyValuesParser,
     BaseParser,
@@ -71,7 +71,7 @@ parser_classes = {
     257: ("257", StringParser, StringCompiler),
     1026: ("font_name", StringParser, StringCompiler),  # psn
     1503: ("Master Count", Int16Parser, Int16Compiler),
-    1517: ("weight_vector", DoubleListParser, None),  # Default Weight Vector, one value per master # noqa: E501
+    1517: ("weight_vector", DoubleListParser, DoubleListCompiler),  # Default Weight Vector, one value per master # noqa: E501
     1044: ("unique_id", SignedInt32Parser, None),  # Type 1 Unique ID
     1046: ("version", StringParser, StringCompiler),  # version full
     1038: ("notice", StringParser, StringCompiler),  # description
@@ -190,7 +190,7 @@ parser_classes = {
     1504: ("Master Name", StringParser, StringCompiler),
     1505: ("Master Location", MasterLocationParser, None),
 
-    1247: ("Primary Instance Locations", DoubleListParser, None),
+    1247: ("Primary Instance Locations", DoubleListParser, DoubleListCompiler),
     1254: ("Primary Instances", PrimaryInstancesParser, None),
 
     # Repeat PostScript Info for each master:
