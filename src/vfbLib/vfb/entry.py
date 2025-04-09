@@ -43,15 +43,23 @@ class VfbEntry(StreamReader):
         self._decompiled: EntryDecompiled = None
         # Temporary data for additional master, must be merged when compiling
         self.temp_masters: list[list] | None = None
-        # The numeric and human-readable key of the entry
+        self.parser = None
+        self.compiler = None
+        # The numeric and human-readable key of the entry, also sets parser & compiler
         self.id = eid
         self.key = None
         # Has the data been modified, i.e. it needs recompilation
         self._modified = False
-        # The parser which can convert data to decompiled
-        self.parser = parser
-        # The compiler which can convert the decompiled to compiled data
-        self.compiler = compiler
+        # The parser which can convert data to decompiled.
+        # Use the arg to override the parser looked up in the id setter only
+        if parser is not None:
+            logger.warning(f"Overriding parser {self.parser} with {parser}")
+            self.parser = parser
+        # The compiler which can convert the decompiled to compiled data.
+        # Use the arg to override the compiler looked up in the id setter only
+        if compiler is not None:
+            logger.warning(f"Overriding compiler {self.compiler} with {compiler}")
+            self.compiler = compiler
         # The hash of the initial decompiled data is used to detect modifications
         self.store_hash()
 
@@ -132,14 +140,22 @@ class VfbEntry(StreamReader):
     @id.setter
     def id(self, value: int | None) -> None:
         self._id = value
-        if value is None:
-            self.compiler = None
+        self.key = str(self._id)
+        self.compiler = None
+        if self._id is None:
             self.parser = None
         else:
-            self.key, self.parser, self.compiler = parser_classes.get(
-                value, (str(self.id), FALLBACK_PARSER, None)
-            )
-            self.parser.encoding = self.vfb.encoding
+            entry_info = parser_classes.get(self._id)
+            if entry_info is None:
+                logger.warning(f"Could not find entry info for ID {self._id}")
+                logger.warning(
+                    f"Falling back to parser {FALLBACK_PARSER} for ID {self._id}"
+                )
+                self.parser = FALLBACK_PARSER
+            else:
+                self.key, self.parser, self.compiler = entry_info
+                if self.parser is not None:
+                    self.parser.encoding = self.vfb.encoding
 
     @property
     def modified(self) -> bool:
