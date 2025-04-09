@@ -1,7 +1,19 @@
-from vfbLib.compilers.base import GlyphEncodingCompiler
+from vfbLib.compilers.base import (
+    EncodedValueListWithCountCompiler,
+    GlyphEncodingCompiler,
+    HexStringCompiler,
+)
 from vfbLib.compilers.binary import BinaryTableCompiler
 from vfbLib.compilers.glyph import GlyphCompiler
-from vfbLib.compilers.numeric import DoubleListCompiler, Int16Compiler
+from vfbLib.compilers.numeric import (
+    DoubleCompiler,
+    DoubleListCompiler,
+    Int16Compiler,
+    IntListCompiler,
+    PanoseCompiler,
+    SignedInt16Compiler,
+    SignedInt32Compiler,
+)
 from vfbLib.compilers.text import OpenTypeStringCompiler, StringCompiler
 from vfbLib.parsers.base import (  # EncodedValueParser,; EncodedKeyValuesParser,
     BaseParser,
@@ -72,7 +84,7 @@ parser_classes = {
     1026: ("font_name", StringParser, StringCompiler),  # psn
     1503: ("Master Count", Int16Parser, Int16Compiler),
     1517: ("weight_vector", DoubleListParser, DoubleListCompiler),  # Default Weight Vector, one value per master # noqa: E501
-    1044: ("unique_id", SignedInt32Parser, None),  # Type 1 Unique ID
+    1044: ("unique_id", SignedInt32Parser, SignedInt32Compiler),  # Type 1 Unique ID
     1046: ("version", StringParser, StringCompiler),  # version full
     1038: ("notice", StringParser, StringCompiler),  # description
     1025: ("full_name", StringParser, StringCompiler),  # ffn
@@ -90,33 +102,33 @@ parser_classes = {
     1037: ("copyright", StringParser, StringCompiler),  # OK!
     1061: ("trademark", StringParser, StringCompiler),  # OK!
     1062: ("designer", StringParser, StringCompiler),  # OK!
-    1063: ("designer_url", StringParser, StringCompiler),  # designerURL
-    1064: ("vendor_url", StringParser, StringCompiler),  # manufacturerURL
+    1063: ("designer_url", StringParser, StringCompiler),
+    1064: ("vendor_url", StringParser, StringCompiler),
     1039: ("source", StringParser, StringCompiler),  # manufacturer, "created by"
     1034: ("is_fixed_pitch", Int16Parser, Int16Compiler),  # Monospaced
-    1048: ("weight_code", SignedInt16Parser, None),  # Weight Class, was: weight
-    1029: ("italic_angle", DoubleParser, None),  # Italic Angle
-    1047: ("slant_angle", DoubleParser, None),  # Slant Angle
-    1030: ("underline_position", SignedInt16Parser, None),  # underlinePosition
-    1031: ("underline_thickness", Int16Parser, Int16Compiler),  # underlineThickness
+    1048: ("weight_code", SignedInt16Parser, SignedInt16Compiler),  # Weight Class
+    1029: ("italic_angle", DoubleParser, DoubleCompiler),  # Italic Angle
+    1047: ("slant_angle", DoubleParser, DoubleCompiler),  # Slant Angle
+    1030: ("underline_position", SignedInt16Parser, SignedInt16Compiler),
+    1031: ("underline_thickness", Int16Parser, Int16Compiler),
     1054: ("ms_charset", Int16Parser, Int16Compiler),  # MS Character Set
-    1118: ("panose", PanoseParser, None),  # OK!
+    1118: ("panose", PanoseParser, PanoseCompiler),  # OK!
     1128: ("tt_version", StringParser, StringCompiler),  # version
     1129: ("tt_u_id", StringParser, StringCompiler),  # UniqueID
     1127: ("style_name", StringParser, StringCompiler),  # Style Name
     1137: ("pref_style_name", StringParser, StringCompiler),  # tsn
     1139: ("mac_compatible", StringParser, StringCompiler),  # OT Mac Name
-    1140: ("1140", BaseParser, None),
+    1140: ("1140", BaseParser, HexStringCompiler),
     1121: ("vendor", StringParser, StringCompiler),  # vendorID
-    1133: ("xuid", IntListParser, None),  # Type 1 XUIDs
+    1133: ("xuid", IntListParser, IntListCompiler),  # Type 1 XUIDs
     1134: ("xuid_num", Int16Parser, Int16Compiler),  # Type 1 XUIDs Count
     1132: ("year", Int16Parser, Int16Compiler),  # OK!
     1130: ("version_major", Int16Parser, Int16Compiler),  # versionMajor
     1131: ("version_minor", Int16Parser, Int16Compiler),  # versionMinor
     1135: ("upm", Int16Parser, Int16Compiler),  # OK!
     1090: ("fond_id", Int16Parser, Int16Compiler),  # FOND Family ID
-    1093: ("1093", BaseParser, None),
-    1068: ("1068", EncodedValueListWithCountParser, None),
+    1093: ("1093", BaseParser, HexStringCompiler),
+    1068: ("1068", EncodedValueListWithCountParser, EncodedValueListWithCountCompiler),
     1530: ("blue_values_num", Int16Parser, Int16Compiler),  # Blue Values Count
     1531: ("other_blues_num", Int16Parser, Int16Compiler),  # Other Blues Count
     1532: ("family_blues_num", Int16Parser, Int16Compiler),  # Family Blues Count
@@ -127,7 +139,7 @@ parser_classes = {
     1057: ("pcl_id", Int16Parser, Int16Compiler),  # PCL ID
     1058: ("vp_id", Int16Parser, Int16Compiler),  # VP ID
     1060: ("ms_id", Int16Parser, Int16Compiler),  # MS ID
-    1059: ("1059", BaseParser, None),
+    1059: ("1059", BaseParser, HexStringCompiler),
     1261: ("Binary cvt Table", BaseParser, None),
     1262: ("Binary prep Table", BaseParser, None),
     1263: ("Binary fpgm Table", BaseParser, None),
@@ -139,8 +151,8 @@ parser_classes = {
     1271: ("vdmx", VdmxParser, None),
     # Goes to font.ttinfo:
     1270: ("hhea_line_gap", Int16Parser, Int16Compiler),  # OK!
-    1278: ("hhea_ascender", SignedInt16Parser, None),  # OK!
-    1279: ("hhea_descender", SignedInt16Parser, None),  # OK!
+    1278: ("hhea_ascender", SignedInt16Parser, SignedInt16Compiler),  # OK!
+    1279: ("hhea_descender", SignedInt16Parser, SignedInt16Compiler),  # OK!
     # hstem_data and vstem_data:
     1268: ("TrueType Stem PPEMs", TrueTypeStemPpemsParser, None),
     # Probably in font.ttinfo, but not accessible through API:
@@ -163,7 +175,7 @@ parser_classes = {
     1136: ("PCLT Table", PcltParser, None),
     2022: ("Export PCLT Table", Int16Parser, Int16Compiler),
     2025: ("note", StringParser, StringCompiler),  # fontNote
-    2030: ("2030", BaseParser, None),
+    2030: ("2030", BaseParser, HexStringCompiler),
     2016: ("customdata", StringParser, StringCompiler),  # Font User Data
     2024: ("OpenType Metrics Class Flags", OpenTypeMetricsClassFlagsParser, None),
     2026: ("OpenType Kerning Class Flags", OpenTypeKerningClassFlagsParser, None),

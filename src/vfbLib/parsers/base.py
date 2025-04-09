@@ -346,7 +346,7 @@ class EncodedValueListWithCountParser(BaseParser):
 
     def _parse(self) -> dict[str, list[int]]:
         count = self.read_value()
-        values: dict[str, list[int]] = {"values": []}
+        values: dict[str, list[int]] = {"values": []}  # TODO: We don't need the dict
         for _ in range(count):
             val = self.read_value()
             values["values"].append(val)

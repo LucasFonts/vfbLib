@@ -7,7 +7,7 @@ from typing import TYPE_CHECKING, Any
 from fontTools.misc.textTools import deHexStr, hexStr
 
 from vfbLib.compilers.value import write_value, write_value_long
-from vfbLib.helpers import uint8, uint16  # , uint32
+from vfbLib.helpers import uint8, uint16, uint32
 
 if TYPE_CHECKING:
     from io import BufferedWriter
@@ -74,10 +74,16 @@ class StreamWriter:
             self.write_float(f, "f")
 
     def write_int16(self, value: int) -> None:
-        raise NotImplementedError
+        """
+        Write a signed 16-bit integer to the stream.
+
+        Args:
+            value (int): The integer value to write.
+        """
+        self.stream.write(value.to_bytes(uint16, byteorder="little", signed=True))
 
     def write_int32(self, value: int) -> None:
-        raise NotImplementedError
+        self.stream.write(value.to_bytes(uint32, byteorder="little", signed=True))
 
     def write_str(self, value: str | None, pad: int = 0) -> None:
         # XXX: Pad with 0 bytes to given length
@@ -179,6 +185,14 @@ class BaseCompiler(StreamWriter):
         pass
 
 
+class EncodedValueListWithCountCompiler(BaseCompiler):
+    def _compile(self, data: Any) -> None:
+        values = data["values"]  # TODO: We don't need the dict
+        self.write_value(len(values))
+        for value in values:
+            self.write_value(value)
+
+
 class GlyphEncodingCompiler(BaseCompiler):
     def _compile(self, data: Any) -> None:
         """
@@ -193,7 +207,7 @@ class GlyphEncodingCompiler(BaseCompiler):
 
 
 class HexStringCompiler(BaseCompiler):
-    def _compile(self, data: Any) -> None:
+    def _compile(self, data: str | None) -> None:
         """
         Compile the data given in hex string format to the stream as bytes.
 
@@ -201,6 +215,9 @@ class HexStringCompiler(BaseCompiler):
         is known, e.g. for end markers or constants.
 
         Args:
-            data (Any): The hex string data, e.g. "203955".
+            data (str | None): The hex string data, e.g. "203955", or None.
         """
+        if not data:
+            return
+
         self.write_bytes(deHexStr(data))
