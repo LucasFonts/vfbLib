@@ -4,7 +4,7 @@ uint16 = 2
 uint32 = 4
 
 
-def binaryToIntList(value: int, start: int = 0):
+def binaryToIntList(value: int, start: int = 0) -> list[int]:
     intList = []
     counter = start
     while value:
