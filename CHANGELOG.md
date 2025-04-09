@@ -1,5 +1,20 @@
 # Change Log
 
+## 0.9.2
+
+- Update dependencies
+- Fix duplicate UFO info key mapping for `styleMapFamilyName`
+- Fix deprecated entry in `pyproject.toml`
+- Remove debug logging for glyph names
+- Improve error message for entries with no compiler
+- VfbEntry: Improve init and id setter logic
+- Better message if an entry could not be decompiled
+
+Breaking changes:
+
+- Rename entries `x_u_id` to `xuid`, `x_u_id_num` to `xuid_num` to match FLS5 Python API
+
+
 ## 0.9.1
 
 - Fix error in `vfbcu2qu` introduced in the previous release.
