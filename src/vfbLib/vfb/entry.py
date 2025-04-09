@@ -213,7 +213,10 @@ class VfbEntry(StreamReader):
             return
 
         if self.compiler is None:
-            logger.error(f"Compiling '{self.key}' is not supported yet.")
+            logger.error(
+                f"Compiling '{self.id}' is not supported yet in {self} "
+                f"Decompiled: {self.decompiled}"
+            )
             return
 
         self.merge_masters_data()
