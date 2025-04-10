@@ -4,6 +4,7 @@ from pathlib import Path
 
 import orjson
 
+from vfbLib.json import save_vfb_json
 from vfbLib.ufo.builder import VfbToUfoBuilder
 from vfbLib.vfb.vfb import Vfb
 
@@ -59,26 +60,15 @@ def vfb2json():
         vfb_path = Path(args.inputpath[0])
         print(parser.description)
         print(f"Reading file {vfb_path} ...")
-        vfb = Vfb(
+        save_vfb_json(
             vfb_path,
+            out_path=args.path[0] if args.path else None,
             only_header=args.header,
             minimal=args.minimal,
             unicode_strings=args.unicode_strings,
+            no_decompile=args.no_decompile,
         )
-        if not args.no_decompile:
-            vfb.decompile()
-        suffix = ".vfb.json"
-        if args.path:
-            out_path = (Path(args.path[0]) / vfb_path.name).with_suffix(suffix)
-        else:
-            out_path = vfb_path.with_suffix(suffix)
-        with open(str(out_path), "wb") as f:
-            f.write(
-                orjson.dumps(
-                    vfb.as_dict(),
-                    option=orjson.OPT_INDENT_2 | orjson.OPT_NON_STR_KEYS,
-                )
-            )
+
     else:
         parser.print_help()
 
