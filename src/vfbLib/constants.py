@@ -140,7 +140,7 @@ parser_classes = {
     1057: ("pcl_id", Int16Parser, Int16Compiler),  # PCL ID
     1058: ("vp_id", Int16Parser, Int16Compiler),  # VP ID
     1060: ("ms_id", Int16Parser, Int16Compiler),  # MS ID
-    1059: ("1059", BaseParser, HexStringCompiler),
+    1059: ("pcl_chars_set", StringParser, StringCompiler),
     1261: ("Binary cvt Table", BaseParser, None),
     1262: ("Binary prep Table", BaseParser, None),
     1263: ("Binary fpgm Table", BaseParser, None),
