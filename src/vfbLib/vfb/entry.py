@@ -110,7 +110,14 @@ class VfbEntry(StreamReader):
     @property
     def current_hash(self) -> bytes | None:
         m = hashlib.sha256()
-        m.update(pickle.dumps(self.decompiled))
+        try:
+            m.update(pickle.dumps(self.decompiled))
+        except TypeError:
+            logger.error("Can not update hash because of unpickleable type:")
+            logger.error(self)
+            logger.error(type(self.decompiled))
+            logger.error(self.decompiled)
+            raise
         return m.digest()
 
     @property
