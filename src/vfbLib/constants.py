@@ -230,6 +230,7 @@ parser_classes = {
     2028: ("2028", EncodedValueListParser, None),  # MM, proportional to num of masters
     2027: ("Glyph Origin", GlyphOriginParser, None),
     1250: ("unicodes", GlyphUnicodeParser, None),  # Glyph Unicode
+    2034: ("2034", StringParser, StringCompiler),
     1253: ("Glyph Unicode Non-BMP", GlyphUnicodeSuppParser, None),
     2012: ("mark", Int16Parser, Int16Compiler),  # Mark Color
     2015: ("glyph.customdata", StringParser, StringCompiler),  # Glyph User Data
