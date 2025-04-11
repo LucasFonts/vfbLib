@@ -177,17 +177,15 @@ class GlyphParser(BaseParser):
                 imported["endpoints"] = [self.read_value() for _ in range(num_contours)]
                 num_nodes = self.read_value()
                 nodes = []
-                # logger.debug(f"Parsing {num_nodes} nodes...")
                 x = 0
                 y = 0
-                for i in range(num_nodes):
+                for _ in range(num_nodes):
                     x += self.read_value()
                     y += self.read_value()
                     byte = self.read_uint8()
                     flags = byte >> 4
                     cmd = byte & 0x0F
                     node = (hex(cmd), hex(flags), x, y)
-                    # logger.debug(f"    {i}: {node}")
                     nodes.append(node)
                 if nodes:
                     imported["nodes"] = nodes
