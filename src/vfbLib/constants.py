@@ -261,11 +261,12 @@ entry_ids = {v[0]: k for k, v in parser_classes.items()}
 
 # Those entries are ignored in minimal mode:
 ignore_minimal = [
-    "note",
     "Global Guides",
     "Glyph Bitmaps",
     "Glyph Guide Properties",
+    "glyph.note",
     "image",
     "mark",
     "mask",
+    "note",
 ]
