@@ -39,7 +39,7 @@ class StreamReader:
         """
         return self.read_doubles(1)[0]
 
-    def read_doubles(self, num) -> tuple[float]:
+    def read_doubles(self, num) -> tuple[float, ...]:
         """
         Return a tuple of `num` double-precision floats from the stream.
 

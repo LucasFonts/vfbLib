@@ -63,8 +63,8 @@ class GlyphCompiler(BaseCompiler):
             for i in range(self.num_masters):
                 self.write_value(component["offsetX"][i])
                 self.write_value(component["offsetY"][i])
-                self.write_float(component["scaleX"][i])
-                self.write_float(component["scaleY"][i])
+                self.write_double(component["scaleX"][i])
+                self.write_double(component["scaleY"][i])
 
     def _compile_glyph_name(self, data):
         # Glyph name
