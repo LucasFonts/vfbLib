@@ -7,7 +7,7 @@ from typing import TYPE_CHECKING, Any
 
 from fontTools.misc.textTools import deHexStr, hexStr
 
-from vfbLib.helpers import uint8, uint16, uint32, double_size
+from vfbLib.helpers import int8_size, int16_size, int32_size, double_size
 from vfbLib.parsers.value import read_value
 
 if TYPE_CHECKING:
@@ -58,7 +58,9 @@ class StreamReader:
         Returns:
             int: The integer
         """
-        return int.from_bytes(self.stream.read(uint8), byteorder="little", signed=True)
+        return int.from_bytes(
+            self.stream.read(int8_size), byteorder="little", signed=True
+        )
 
     def read_int16(self) -> int:
         """
@@ -67,7 +69,9 @@ class StreamReader:
         Returns:
             int: The integer
         """
-        return int.from_bytes(self.stream.read(uint16), byteorder="little", signed=True)
+        return int.from_bytes(
+            self.stream.read(int16_size), byteorder="little", signed=True
+        )
 
     def read_int32(self) -> int:
         """
@@ -76,7 +80,9 @@ class StreamReader:
         Returns:
             int: The integer
         """
-        return int.from_bytes(self.stream.read(uint32), byteorder="little", signed=True)
+        return int.from_bytes(
+            self.stream.read(int32_size), byteorder="little", signed=True
+        )
 
     def read_str(self, size: int) -> str:
         """
@@ -108,7 +114,9 @@ class StreamReader:
         Returns:
             int: The integer
         """
-        return int.from_bytes(self.stream.read(uint8), byteorder="little", signed=False)
+        return int.from_bytes(
+            self.stream.read(int8_size), byteorder="little", signed=False
+        )
 
     def read_uint16(self) -> int:
         """
@@ -118,7 +126,7 @@ class StreamReader:
             int: The integer
         """
         return int.from_bytes(
-            self.stream.read(uint16), byteorder="little", signed=False
+            self.stream.read(int16_size), byteorder="little", signed=False
         )
 
     def read_uint32(self) -> int:
@@ -129,7 +137,7 @@ class StreamReader:
             int: The integer
         """
         return int.from_bytes(
-            self.stream.read(uint32), byteorder="little", signed=False
+            self.stream.read(int32_size), byteorder="little", signed=False
         )
 
     def read_value(self, signed: bool = True) -> int:

@@ -7,7 +7,7 @@ from typing import TYPE_CHECKING, Any
 from fontTools.misc.textTools import deHexStr, hexStr
 
 from vfbLib.compilers.value import write_value, write_value_long
-from vfbLib.helpers import uint8, uint16, uint32
+from vfbLib.helpers import int8_size, int16_size, int32_size
 
 if TYPE_CHECKING:
     from io import BufferedWriter
@@ -62,10 +62,16 @@ class StreamWriter:
         Args:
             value (int): The integer value to write.
         """
-        self.stream.write(value.to_bytes(uint16, byteorder="little", signed=True))
+        self.stream.write(value.to_bytes(int16_size, byteorder="little", signed=True))
 
     def write_int32(self, value: int) -> None:
-        self.stream.write(value.to_bytes(uint32, byteorder="little", signed=True))
+        """
+        Write a signed 32-bit integer to the stream.
+
+        Args:
+            value (int): The integer value to write.
+        """
+        self.stream.write(value.to_bytes(int32_size, byteorder="little", signed=True))
 
     def write_str(self, value: str | None, pad: int = 0) -> None:
         # XXX: Pad with 0 bytes to given length
@@ -80,7 +86,7 @@ class StreamWriter:
         Args:
             value (int): The integer to write.
         """
-        self.stream.write(value.to_bytes(uint8, byteorder="little", signed=False))
+        self.stream.write(value.to_bytes(int8_size, byteorder="little", signed=False))
 
     def write_uint16(self, value: int) -> None:
         """
@@ -89,7 +95,7 @@ class StreamWriter:
         Args:
             value (int): The integer to write.
         """
-        self.stream.write(value.to_bytes(uint16, byteorder="little", signed=False))
+        self.stream.write(value.to_bytes(int16_size, byteorder="little", signed=False))
 
     def write_uint32(self, value: int) -> None:
         raise NotImplementedError
