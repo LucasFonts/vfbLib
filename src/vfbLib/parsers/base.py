@@ -49,27 +49,6 @@ class StreamReader:
         Returns:
             tuple[float]: The tuple of floats
         """
-
-    # def read_float(self) -> float:
-    #     """
-    #     Return a float from the stream.
-
-    #     Returns:
-    #         float: The float
-    #     """
-    #     return read_floats(1, self.stream)[0]
-
-    # def read_floats(self, num: int) -> tuple[float]:
-    #     """
-    #     Return a tuple of `num` floats from the stream.
-
-    #     Args:
-    #         num (int): The number of floats to read from the stream
-
-    #     Returns:
-    #         tuple[float]: The tuple of floats
-    #     """
-    #     return read_floats(num, self.stream)
         return unpack(num * "d", self.stream.read(num * double_size))
 
     def read_int8(self) -> int:

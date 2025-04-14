@@ -58,15 +58,3 @@ def read_value(stream: BufferedReader | BytesIO, signed=True) -> int:
         return decoded
 
     raise ValueError
-# def read_floats(num: int, stream: BufferedReader | BytesIO) -> tuple[float]:
-#     """
-#     Read a number `num` of floats from the stream and return them.
-
-#     Args:
-#         num (int): The number of values to be read.
-#         stream (BufferedReader | BytesIO): The input stream.
-
-#     Returns:
-#         tuple[float]: The tuple of floats.
-#     """
-#     return unpack(num * "f", stream.read(num * 4))
