@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-from struct import unpack
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
@@ -59,20 +58,6 @@ def read_value(stream: BufferedReader | BytesIO, signed=True) -> int:
         return decoded
 
     raise ValueError
-
-
-def read_doubles(num: int, stream: BufferedReader | BytesIO) -> tuple[float]:
-    """
-    Read a number `num` of double-precision floats from the stream and return them.
-
-    Args:
-        num (int): The number of values to be read.
-        stream (BufferedReader | BytesIO): The input stream.
-
-    Returns:
-        tuple[float]: The tuple of double-precision floats.
-    """
-    return unpack(num * "d", stream.read(num * 8))
 # def read_floats(num: int, stream: BufferedReader | BytesIO) -> tuple[float]:
 #     """
 #     Read a number `num` of floats from the stream and return them.

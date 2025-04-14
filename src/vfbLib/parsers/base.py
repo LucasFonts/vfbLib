@@ -7,8 +7,8 @@ from typing import TYPE_CHECKING, Any
 
 from fontTools.misc.textTools import deHexStr, hexStr
 
-from vfbLib.helpers import uint8, uint16, uint32
-from vfbLib.parsers.value import read_doubles, read_floats, read_value
+from vfbLib.helpers import uint8, uint16, uint32, double_size
+from vfbLib.parsers.value import read_value
 
 if TYPE_CHECKING:
     from io import BufferedReader
@@ -37,7 +37,7 @@ class StreamReader:
         Returns:
             float: The float
         """
-        return read_doubles(1, self.stream)[0]
+        return self.read_doubles(1)[0]
 
     def read_doubles(self, num) -> tuple[float]:
         """
@@ -49,7 +49,6 @@ class StreamReader:
         Returns:
             tuple[float]: The tuple of floats
         """
-        return read_doubles(num, self.stream)
 
     # def read_float(self) -> float:
     #     """
@@ -71,6 +70,7 @@ class StreamReader:
     #         tuple[float]: The tuple of floats
     #     """
     #     return read_floats(num, self.stream)
+        return unpack(num * "d", self.stream.read(num * double_size))
 
     def read_int8(self) -> int:
         """
