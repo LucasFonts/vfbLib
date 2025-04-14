@@ -43,7 +43,7 @@ class StreamWriter:
         Args:
             value (float): The float value to write.
         """
-        self.write_float(value, "d")
+        self.stream.write(pack("d", value))
 
     def write_doubles(self, values: list[float]) -> None:
         """
@@ -54,24 +54,6 @@ class StreamWriter:
         """
         for f in values:
             self.write_double(f)
-
-    def write_float(self, value: float, fmt: str = "d") -> None:
-        """
-        Write a float value to the stream.
-
-        Args:
-            value (float): The float value to write.
-            fmt (str, optional): The format string. Defaults to "d".
-        """
-        # XXX: Why "d" as default?
-        encoded = pack(fmt, value)
-        self.stream.write(encoded)
-
-    def write_floats(self, values: list[float]) -> None:
-        # Untested
-        raise NotImplementedError
-        for f in values:
-            self.write_float(f, "f")
 
     def write_int16(self, value: int) -> None:
         """
