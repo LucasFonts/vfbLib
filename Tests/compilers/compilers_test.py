@@ -1,5 +1,3 @@
-import struct
-
 # from fontTools.misc.textTools import deHexStr, hexStr
 # from io import BytesIO
 from pytest import raises
