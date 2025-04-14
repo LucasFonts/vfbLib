@@ -141,9 +141,9 @@ parser_classes = {
     1058: ("vp_id", Int16Parser, Int16Compiler),
     1060: ("ms_id", Int16Parser, Int16Compiler),
     1059: ("pcl_chars_set", StringParser, StringCompiler),
-    1261: ("Binary cvt Table", BaseParser, None),
-    1262: ("Binary prep Table", BaseParser, None),
-    1263: ("Binary fpgm Table", BaseParser, None),
+    1261: ("Binary cvt Table", BaseParser, HexStringCompiler),
+    1262: ("Binary prep Table", BaseParser, HexStringCompiler),
+    1263: ("Binary fpgm Table", BaseParser, HexStringCompiler),
 
     # Goes to font.ttinfo:
     1265: ("gasp", GaspParser, None),  # Gasp Ranges
