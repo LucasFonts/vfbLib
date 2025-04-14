@@ -4,10 +4,8 @@ from io import BytesIO
 from struct import pack
 from typing import TYPE_CHECKING, Any
 
-from fontTools.misc.textTools import deHexStr, hexStr
-
 from vfbLib.compilers.value import write_value, write_value_long
-from vfbLib.helpers import int8_size, int16_size, int32_size
+from vfbLib.helpers import int8_size, int16_size, int32_size, deHexStr, hexStr
 
 if TYPE_CHECKING:
     from io import BufferedWriter

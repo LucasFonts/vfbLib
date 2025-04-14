@@ -14,3 +14,11 @@ def binaryToIntList(value: int, start: int = 0) -> list[int]:
         value >>= 1
         counter += 1
     return intList
+
+
+def deHexStr(hexstr: str) -> bytes:
+    return bytes.fromhex(hexstr)
+
+
+def hexStr(b: bytes) -> str:
+    return bytes.hex(b)

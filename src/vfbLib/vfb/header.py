@@ -3,9 +3,8 @@ from __future__ import annotations
 import logging
 from typing import TYPE_CHECKING, Any
 
-from fontTools.misc.textTools import hexStr
-
 from vfbLib.compilers.header import VfbHeaderCompiler
+from vfbLib.helpers import hexStr
 from vfbLib.parsers.header import VfbHeaderParser
 
 if TYPE_CHECKING:
