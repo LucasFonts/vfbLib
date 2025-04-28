@@ -2,8 +2,7 @@ from __future__ import annotations
 
 import logging
 
-from fontTools.misc.textTools import hexStr
-
+from vfbLib.helpers import hexStr
 from vfbLib.parsers.base import BaseParser
 
 logger = logging.getLogger(__name__)

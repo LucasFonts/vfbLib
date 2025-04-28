@@ -2,8 +2,6 @@ import logging
 from argparse import ArgumentParser
 from pathlib import Path
 
-import orjson
-
 from vfbLib.json import save_vfb_json
 from vfbLib.ufo.builder import VfbToUfoBuilder
 from vfbLib.vfb.vfb import Vfb

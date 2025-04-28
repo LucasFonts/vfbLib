@@ -3,9 +3,8 @@ from __future__ import annotations
 from argparse import ArgumentParser
 from io import BytesIO
 
-from fontTools.misc.textTools import deHexStr, hexStr
-
 from vfbLib.compilers.value import write_value
+from vfbLib.helpers import deHexStr, hexStr
 from vfbLib.parsers.value import read_value
 
 

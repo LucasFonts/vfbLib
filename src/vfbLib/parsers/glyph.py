@@ -5,9 +5,9 @@ from enum import Enum
 from struct import unpack
 from typing import TYPE_CHECKING, Any
 
-from fontTools.misc.textTools import hexStr  # , num2binary
 from fontTools.ttLib.tables.ttProgram import Program
 
+from vfbLib.helpers import hexStr
 from vfbLib.parsers.base import BaseParser
 from vfbLib.parsers.guides import parse_guides
 from vfbLib.truetype import TT_COMMANDS

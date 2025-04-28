@@ -6,15 +6,6 @@ from typing import Any
 from vfbLib.compilers.base import BaseCompiler
 
 
-class FloatListCompiler(BaseCompiler):
-    """
-    A compiler that compiles a list of floats.
-    """
-
-    def _compile(self, data: Any) -> None:
-        self.write_floats(data)
-
-
 class DoubleCompiler(BaseCompiler):
     """
     A compiler that compiles double-precision float data.
@@ -24,7 +15,7 @@ class DoubleCompiler(BaseCompiler):
         self.write_double(data)
 
 
-class DoubleListCompiler(FloatListCompiler):
+class DoubleListCompiler(BaseCompiler):
     """
     A compiler that compiles a list of doubles.
     """

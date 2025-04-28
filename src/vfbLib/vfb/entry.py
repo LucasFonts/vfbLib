@@ -8,10 +8,9 @@ from io import BytesIO
 from struct import pack
 from typing import TYPE_CHECKING, Any
 
-from fontTools.misc.textTools import hexStr
-
 from vfbLib.compilers.base import BaseCompiler
 from vfbLib.constants import parser_classes
+from vfbLib.helpers import hexStr
 from vfbLib.parsers.base import BaseParser, StreamReader
 
 if TYPE_CHECKING:

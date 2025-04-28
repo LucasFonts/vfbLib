@@ -2,9 +2,8 @@ from __future__ import annotations
 
 from typing import Any
 
-from fontTools.misc.textTools import deHexStr
-
 from vfbLib.compilers.base import BaseCompiler
+from vfbLib.helpers import deHexStr
 
 
 class BinaryTableCompiler(BaseCompiler):

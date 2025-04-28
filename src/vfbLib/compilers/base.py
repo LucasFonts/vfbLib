@@ -4,10 +4,8 @@ from io import BytesIO
 from struct import pack
 from typing import TYPE_CHECKING, Any
 
-from fontTools.misc.textTools import deHexStr, hexStr
-
 from vfbLib.compilers.value import write_value, write_value_long
-from vfbLib.helpers import uint8, uint16, uint32
+from vfbLib.helpers import int8_size, int16_size, int32_size, deHexStr, hexStr
 
 if TYPE_CHECKING:
     from io import BufferedWriter
@@ -43,7 +41,7 @@ class StreamWriter:
         Args:
             value (float): The float value to write.
         """
-        self.write_float(value, "d")
+        self.stream.write(pack("d", value))
 
     def write_doubles(self, values: list[float]) -> None:
         """
@@ -55,24 +53,6 @@ class StreamWriter:
         for f in values:
             self.write_double(f)
 
-    def write_float(self, value: float, fmt: str = "d") -> None:
-        """
-        Write a float value to the stream.
-
-        Args:
-            value (float): The float value to write.
-            fmt (str, optional): The format string. Defaults to "d".
-        """
-        # XXX: Why "d" as default?
-        encoded = pack(fmt, value)
-        self.stream.write(encoded)
-
-    def write_floats(self, values: list[float]) -> None:
-        # Untested
-        raise NotImplementedError
-        for f in values:
-            self.write_float(f, "f")
-
     def write_int16(self, value: int) -> None:
         """
         Write a signed 16-bit integer to the stream.
@@ -80,10 +60,16 @@ class StreamWriter:
         Args:
             value (int): The integer value to write.
         """
-        self.stream.write(value.to_bytes(uint16, byteorder="little", signed=True))
+        self.stream.write(value.to_bytes(int16_size, byteorder="little", signed=True))
 
     def write_int32(self, value: int) -> None:
-        self.stream.write(value.to_bytes(uint32, byteorder="little", signed=True))
+        """
+        Write a signed 32-bit integer to the stream.
+
+        Args:
+            value (int): The integer value to write.
+        """
+        self.stream.write(value.to_bytes(int32_size, byteorder="little", signed=True))
 
     def write_str(self, value: str | None, pad: int = 0) -> None:
         # XXX: Pad with 0 bytes to given length
@@ -98,7 +84,7 @@ class StreamWriter:
         Args:
             value (int): The integer to write.
         """
-        self.stream.write(value.to_bytes(uint8, byteorder="little", signed=False))
+        self.stream.write(value.to_bytes(int8_size, byteorder="little", signed=False))
 
     def write_uint16(self, value: int) -> None:
         """
@@ -107,7 +93,7 @@ class StreamWriter:
         Args:
             value (int): The integer to write.
         """
-        self.stream.write(value.to_bytes(uint16, byteorder="little", signed=False))
+        self.stream.write(value.to_bytes(int16_size, byteorder="little", signed=False))
 
     def write_uint32(self, value: int) -> None:
         raise NotImplementedError
