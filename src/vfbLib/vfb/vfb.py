@@ -260,6 +260,10 @@ class VfbMaster:
         return self.vfb.getGlyphMaster(key, self.master_index)
 
     @property
+    def glyph_order(self) -> list[str]:
+        return self.vfb.glyph_order
+
+    @property
     def info(self) -> VfbInfo:
         return self.vfb.info
 
@@ -269,5 +273,6 @@ class VfbMaster:
     def keys(self) -> Iterable[str]:
         return self.vfb.keys()
 
+    @property
     def num_masters(self) -> int:
         return self.vfb.num_masters
