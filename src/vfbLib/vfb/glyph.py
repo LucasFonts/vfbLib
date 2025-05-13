@@ -61,10 +61,10 @@ class VfbGlyph:
 
         return self.entry.decompiled["name"]
 
-    def empty(self):
+    def empty(self) -> None:
         self.entry.decompiled = get_empty_glyph(self._parent.num_masters)
 
-    def _copy_to_ufo_glyph(self):
+    def _copy_to_ufo_glyph(self) -> None:
         """
         Copy minimal data to the VfbToUfoGlyph. Only data that is necessary for the pen
         methods is copied.
