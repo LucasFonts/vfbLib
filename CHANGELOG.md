@@ -1,5 +1,31 @@
 # Change Log
 
+## 0.9.3
+
+Parser changes:
+
+- Add new entry `pcl_chars_set` (1059)
+- Add entry 2034, String
+- Remove unused read_float
+- Handle read_double right in StreamReader
+- Rename and use size constants (6502088)
+- Use our own hexStr/deHexStr
+
+Compiler changes:
+
+- Implement writing double-precision floats
+- Support compiling entries without data
+- Add HexStringCompiler for fallbacks
+- Add more numeric compilers
+- Add compiler for UnicodeRanges
+- Improve hash update error
+- Handle json export in a separate file
+- Write kerning gid as int (comes in as str from json)
+- Use HexStringCompiler for binary tables
+- Remove write_float(s) from compiler
+- Use our own hexStr/deHexStr
+
+
 ## 0.9.2
 
 - Update dependencies
