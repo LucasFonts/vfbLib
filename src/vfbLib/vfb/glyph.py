@@ -31,7 +31,7 @@ class VfbGlyph:
         self._parent = parent
         self._glyph: UfoMasterGlyph | None = None
         self.master_index = 0
-        # self.empty()  # Will lead to double decompilation warnings
+        self.empty()
 
     # UFO/cu2qu compatibility
 
@@ -63,6 +63,7 @@ class VfbGlyph:
 
     def empty(self) -> None:
         self.entry.decompiled = get_empty_glyph(self._parent.num_masters)
+        self.entry.store_hash()
 
     def _copy_to_ufo_glyph(self) -> None:
         """
