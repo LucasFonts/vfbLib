@@ -156,7 +156,7 @@ class Vfb:
             self._decompile_glyphs()
         return self._glyphs.keys()
 
-    def read_stream(self, stream: BufferedReader):
+    def read_stream(self, stream: BufferedReader) -> None:
         """
         Lazily read and parse the vfb stream, i.e. parse the header, but only read the
         binary data of other entries.
@@ -206,7 +206,7 @@ class Vfb:
                 f"{round((end - start) * 1000)} ms."
             )
 
-    def read(self):
+    def read(self) -> None:
         """
         Read data from the file at vfb_path, without decompiling
         """
