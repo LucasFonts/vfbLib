@@ -115,8 +115,8 @@ parser_classes = {
     1031: ("underline_thickness", Int16Parser, Int16Compiler),
     1054: ("ms_charset", Int16Parser, Int16Compiler),
     1118: ("panose", PanoseParser, PanoseCompiler),
-    1128: ("tt_version", StringParser, StringCompiler),  # version
-    1129: ("tt_u_id", StringParser, StringCompiler),  # UniqueID
+    1128: ("tt_version", StringParser, StringCompiler),
+    1129: ("tt_u_id", StringParser, StringCompiler),
     1127: ("style_name", StringParser, StringCompiler),
     1137: ("pref_style_name", StringParser, StringCompiler),
     1139: ("mac_compatible", StringParser, StringCompiler),  # OT Mac Name
