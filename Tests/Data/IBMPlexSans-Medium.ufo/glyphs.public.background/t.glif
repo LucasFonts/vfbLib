@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="t" format="2">
+	<advance width="365"/>
+	<outline>
+		<contour>
+			<point x="222" y="0" type="line"/>
+			<point x="165" y="0"/>
+			<point x="107" y="59"/>
+			<point x="107" y="113" type="qcurve"/>
+			<point x="107" y="431" type="line"/>
+			<point x="26" y="431" type="line"/>
+			<point x="26" y="520" type="line"/>
+			<point x="70" y="520" type="line"/>
+			<point x="97" y="520"/>
+			<point x="118" y="544"/>
+			<point x="118" y="571" type="qcurve"/>
+			<point x="118" y="662" type="line"/>
+			<point x="216" y="662" type="line"/>
+			<point x="216" y="520" type="line"/>
+			<point x="325" y="520" type="line"/>
+			<point x="325" y="431" type="line"/>
+			<point x="216" y="431" type="line"/>
+			<point x="216" y="89" type="line"/>
+			<point x="317" y="89" type="line"/>
+			<point x="317" y="0" type="line"/>
+		</contour>
+	</outline>
+</glyph>

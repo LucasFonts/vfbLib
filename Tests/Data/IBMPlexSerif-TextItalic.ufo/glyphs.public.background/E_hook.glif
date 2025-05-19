@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="Ehook" format="2">
+	<advance width="599"/>
+	<outline>
+		<contour>
+			<point x="-21" y="0" type="line"/>
+			<point x="481" y="0" type="line"/>
+			<point x="526" y="182" type="line"/>
+			<point x="450" y="182" type="line"/>
+			<point x="416" y="49" type="line"/>
+			<point x="159" y="49" type="line"/>
+			<point x="231" y="336" type="line"/>
+			<point x="405" y="336" type="line"/>
+			<point x="385" y="257" type="line"/>
+			<point x="439" y="257" type="line"/>
+			<point x="491" y="464" type="line"/>
+			<point x="437" y="464" type="line"/>
+			<point x="417" y="385" type="line"/>
+			<point x="243" y="385" type="line"/>
+			<point x="309" y="649" type="line"/>
+			<point x="556" y="649" type="line"/>
+			<point x="526" y="527" type="line"/>
+			<point x="602" y="527" type="line"/>
+			<point x="645" y="698" type="line"/>
+			<point x="153" y="698" type="line"/>
+			<point x="142" y="653" type="line"/>
+			<point x="212" y="653" type="line"/>
+			<point x="60" y="45" type="line"/>
+			<point x="-10" y="45" type="line"/>
+		</contour>
+		<contour>
+			<point x="437" y="747" type="line"/>
+			<point x="469" y="780" type="line" smooth="yes"/>
+			<point x="507" y="821"/>
+			<point x="540" y="856"/>
+			<point x="540" y="888" type="curve" smooth="yes"/>
+			<point x="540" y="916"/>
+			<point x="519" y="935"/>
+			<point x="481" y="935" type="curve" smooth="yes"/>
+			<point x="382" y="935" type="line"/>
+			<point x="366" y="872" type="line"/>
+			<point x="483" y="872" type="line"/>
+			<point x="407" y="760" type="line"/>
+		</contour>
+	</outline>
+</glyph>

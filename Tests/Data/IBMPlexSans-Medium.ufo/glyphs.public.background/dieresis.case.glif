@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="dieresis.case" format="2">
+	<advance width="600"/>
+	<outline>
+		<contour>
+			<point x="200" y="776" type="qcurve"/>
+			<point x="166" y="776"/>
+			<point x="137" y="807"/>
+			<point x="137" y="830" type="qcurve"/>
+			<point x="137" y="848" type="line"/>
+			<point x="137" y="871"/>
+			<point x="166" y="902"/>
+			<point x="200" y="902" type="qcurve"/>
+			<point x="234" y="902"/>
+			<point x="263" y="871"/>
+			<point x="263" y="848" type="qcurve"/>
+			<point x="263" y="830" type="line"/>
+			<point x="263" y="807"/>
+			<point x="234" y="776"/>
+		</contour>
+		<contour>
+			<point x="400" y="776" type="qcurve"/>
+			<point x="366" y="776"/>
+			<point x="337" y="807"/>
+			<point x="337" y="830" type="qcurve"/>
+			<point x="337" y="848" type="line"/>
+			<point x="337" y="871"/>
+			<point x="366" y="902"/>
+			<point x="400" y="902" type="qcurve"/>
+			<point x="434" y="902"/>
+			<point x="463" y="871"/>
+			<point x="463" y="848" type="qcurve"/>
+			<point x="463" y="830" type="line"/>
+			<point x="463" y="807"/>
+			<point x="434" y="776"/>
+		</contour>
+	</outline>
+</glyph>

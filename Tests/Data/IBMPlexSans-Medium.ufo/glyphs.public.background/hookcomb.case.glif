@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="hookcomb.case" format="2">
+	<outline>
+		<contour>
+			<point x="-99" y="947" type="line"/>
+			<point x="24" y="947" type="line"/>
+			<point x="70" y="947"/>
+			<point x="106" y="910"/>
+			<point x="106" y="884" type="qcurve"/>
+			<point x="106" y="859"/>
+			<point x="78" y="801"/>
+			<point x="54" y="771" type="qcurve"/>
+			<point x="28" y="740" type="line"/>
+			<point x="-30" y="768" type="line"/>
+			<point x="20" y="867" type="line"/>
+			<point x="-99" y="867" type="line"/>
+		</contour>
+	</outline>
+</glyph>

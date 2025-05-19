@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="underscoredbl" format="2">
+	<advance width="-46"/>
+	<outline>
+		<contour>
+			<point x="-4" y="-227" type="curve"/>
+			<point x="140" y="-224"/>
+			<point x="283" y="-210"/>
+			<point x="427" y="-207" type="curve"/>
+			<point x="499" y="-200"/>
+			<point x="499" y="-114"/>
+			<point x="427" y="-107" type="curve"/>
+			<point x="283" y="-110"/>
+			<point x="140" y="-124"/>
+			<point x="-4" y="-127" type="curve"/>
+			<point x="-63" y="-142"/>
+			<point x="-63" y="-212"/>
+		</contour>
+	</outline>
+</glyph>

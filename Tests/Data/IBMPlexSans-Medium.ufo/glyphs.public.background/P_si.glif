@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="Psi" format="2">
+	<advance width="811"/>
+	<outline>
+		<contour>
+			<point x="349" y="191" type="line"/>
+			<point x="215" y="191"/>
+			<point x="67" y="331"/>
+			<point x="67" y="468" type="qcurve"/>
+			<point x="67" y="698" type="line"/>
+			<point x="180" y="698" type="line"/>
+			<point x="180" y="468" type="line"/>
+			<point x="180" y="417"/>
+			<point x="205" y="347"/>
+			<point x="250" y="304"/>
+			<point x="312" y="285"/>
+			<point x="349" y="285" type="qcurve"/>
+			<point x="349" y="698" type="line"/>
+			<point x="462" y="698" type="line"/>
+			<point x="462" y="285" type="line"/>
+			<point x="499" y="285"/>
+			<point x="561" y="304"/>
+			<point x="606" y="347"/>
+			<point x="631" y="417"/>
+			<point x="631" y="468" type="qcurve"/>
+			<point x="631" y="698" type="line"/>
+			<point x="744" y="698" type="line"/>
+			<point x="744" y="468" type="line"/>
+			<point x="744" y="331"/>
+			<point x="596" y="191"/>
+			<point x="462" y="191" type="qcurve"/>
+			<point x="462" y="0" type="line"/>
+			<point x="349" y="0" type="line"/>
+		</contour>
+	</outline>
+</glyph>

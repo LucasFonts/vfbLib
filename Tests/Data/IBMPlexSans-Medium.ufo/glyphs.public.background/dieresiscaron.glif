@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="dieresiscaron" format="2">
+	<outline>
+		<contour>
+			<point x="-49" y="739" type="line"/>
+			<point x="-174" y="878" type="line"/>
+			<point x="-121" y="923" type="line"/>
+			<point x="0" y="814" type="line"/>
+			<point x="121" y="923" type="line"/>
+			<point x="174" y="878" type="line"/>
+			<point x="49" y="739" type="line"/>
+		</contour>
+		<contour>
+			<point x="-104" y="593" type="qcurve"/>
+			<point x="-138" y="593"/>
+			<point x="-166" y="623"/>
+			<point x="-166" y="646" type="qcurve"/>
+			<point x="-166" y="663" type="line"/>
+			<point x="-166" y="686"/>
+			<point x="-138" y="716"/>
+			<point x="-104" y="716" type="qcurve"/>
+			<point x="-70" y="716"/>
+			<point x="-42" y="686"/>
+			<point x="-42" y="663" type="qcurve"/>
+			<point x="-42" y="646" type="line"/>
+			<point x="-42" y="623"/>
+			<point x="-70" y="593"/>
+		</contour>
+		<contour>
+			<point x="104" y="593" type="qcurve"/>
+			<point x="70" y="593"/>
+			<point x="42" y="623"/>
+			<point x="42" y="646" type="qcurve"/>
+			<point x="42" y="663" type="line"/>
+			<point x="42" y="686"/>
+			<point x="70" y="716"/>
+			<point x="104" y="716" type="qcurve"/>
+			<point x="138" y="716"/>
+			<point x="166" y="686"/>
+			<point x="166" y="663" type="qcurve"/>
+			<point x="166" y="646" type="line"/>
+			<point x="166" y="623"/>
+			<point x="138" y="593"/>
+		</contour>
+	</outline>
+</glyph>

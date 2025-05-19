@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="revlogicalnot" format="2">
+	<advance width="616"/>
+	<outline>
+		<contour>
+			<point x="155" y="235" type="curve"/>
+			<point x="155" y="281"/>
+			<point x="155" y="327"/>
+			<point x="158" y="372" type="curve"/>
+			<point x="278" y="379"/>
+			<point x="399" y="380"/>
+			<point x="519" y="380" type="curve"/>
+			<point x="555" y="383"/>
+			<point x="573" y="407"/>
+			<point x="573" y="430" type="curve" smooth="yes"/>
+			<point x="573" y="453"/>
+			<point x="555" y="476"/>
+			<point x="519" y="480" type="curve"/>
+			<point x="462" y="480"/>
+			<point x="404" y="481"/>
+			<point x="346" y="481" type="curve" smooth="yes"/>
+			<point x="267" y="481"/>
+			<point x="188" y="479"/>
+			<point x="112" y="468" type="curve"/>
+			<point x="92" y="463"/>
+			<point x="84" y="458"/>
+			<point x="72" y="442" type="curve"/>
+			<point x="57" y="407"/>
+			<point x="54" y="363"/>
+			<point x="54" y="321" type="curve" smooth="yes"/>
+			<point x="54" y="242"/>
+			<point x="52" y="185"/>
+			<point x="104" y="185" type="curve" smooth="yes"/>
+			<point x="127" y="185"/>
+			<point x="150" y="201"/>
+		</contour>
+	</outline>
+</glyph>

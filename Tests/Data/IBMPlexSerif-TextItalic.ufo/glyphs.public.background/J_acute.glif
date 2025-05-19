@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="Jacute" format="2">
+	<advance width="442"/>
+	<outline>
+		<contour>
+			<point x="105" y="-12" type="curve" smooth="yes"/>
+			<point x="216" y="-12"/>
+			<point x="286" y="41"/>
+			<point x="314" y="153" type="curve" smooth="yes"/>
+			<point x="439" y="653" type="line"/>
+			<point x="509" y="653" type="line"/>
+			<point x="520" y="698" type="line"/>
+			<point x="262" y="698" type="line"/>
+			<point x="251" y="653" type="line"/>
+			<point x="341" y="653" type="line"/>
+			<point x="216" y="153" type="line" smooth="yes"/>
+			<point x="197" y="73"/>
+			<point x="159" y="32"/>
+			<point x="96" y="32" type="curve" smooth="yes"/>
+			<point x="81" y="32"/>
+			<point x="67" y="36"/>
+			<point x="60" y="39" type="curve"/>
+			<point x="60" y="42" type="line"/>
+			<point x="87" y="54"/>
+			<point x="97" y="77"/>
+			<point x="97" y="95" type="curve" smooth="yes"/>
+			<point x="97" y="126"/>
+			<point x="75" y="148"/>
+			<point x="41" y="148" type="curve" smooth="yes"/>
+			<point x="1" y="148"/>
+			<point x="-23" y="117"/>
+			<point x="-23" y="78" type="curve" smooth="yes"/>
+			<point x="-23" y="30"/>
+			<point x="15" y="-12"/>
+		</contour>
+		<contour>
+			<point x="397" y="759" type="line"/>
+			<point x="551" y="911" type="line"/>
+			<point x="474" y="950" type="line"/>
+			<point x="368" y="774" type="line"/>
+		</contour>
+	</outline>
+</glyph>

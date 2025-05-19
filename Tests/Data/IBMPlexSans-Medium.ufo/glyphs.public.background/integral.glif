@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="integral" format="2">
+	<advance width="437"/>
+	<outline>
+		<contour>
+			<point x="44" y="-111" type="line"/>
+			<point x="164" y="-111" type="line"/>
+			<point x="164" y="609" type="line"/>
+			<point x="164" y="668"/>
+			<point x="228" y="740"/>
+			<point x="296" y="740" type="qcurve"/>
+			<point x="393" y="740" type="line"/>
+			<point x="393" y="651" type="line"/>
+			<point x="273" y="651" type="line"/>
+			<point x="273" y="-69" type="line"/>
+			<point x="273" y="-128"/>
+			<point x="209" y="-200"/>
+			<point x="141" y="-200" type="qcurve"/>
+			<point x="44" y="-200" type="line"/>
+		</contour>
+	</outline>
+</glyph>

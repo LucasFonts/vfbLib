@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="nineinferior" format="2">
+	<advance width="358"/>
+	<outline>
+		<contour>
+			<point x="324" y="229" type="qcurve"/>
+			<point x="324" y="190"/>
+			<point x="299" y="121"/>
+			<point x="258" y="62"/>
+			<point x="207" y="16"/>
+			<point x="182" y="0" type="qcurve"/>
+			<point x="73" y="0" type="line"/>
+			<point x="145" y="48"/>
+			<point x="229" y="131"/>
+			<point x="241" y="185" type="qcurve"/>
+			<point x="236" y="186" type="line"/>
+			<point x="225" y="165"/>
+			<point x="185" y="131"/>
+			<point x="147" y="131" type="qcurve"/>
+			<point x="96" y="131"/>
+			<point x="30" y="193"/>
+			<point x="30" y="246" type="qcurve"/>
+			<point x="30" y="303"/>
+			<point x="110" y="375"/>
+			<point x="177" y="375" type="qcurve"/>
+			<point x="248" y="375"/>
+			<point x="324" y="296"/>
+		</contour>
+		<contour>
+			<point x="177" y="190" type="qcurve"/>
+			<point x="207" y="190"/>
+			<point x="242" y="220"/>
+			<point x="242" y="249" type="qcurve"/>
+			<point x="242" y="256" type="line"/>
+			<point x="242" y="285"/>
+			<point x="207" y="315"/>
+			<point x="177" y="315" type="qcurve"/>
+			<point x="147" y="315"/>
+			<point x="112" y="285"/>
+			<point x="112" y="256" type="qcurve"/>
+			<point x="112" y="249" type="line"/>
+			<point x="112" y="220"/>
+			<point x="147" y="190"/>
+		</contour>
+	</outline>
+</glyph>

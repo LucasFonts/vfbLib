@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="peso" format="2">
+	<advance width="657"/>
+	<outline>
+		<contour>
+			<point x="220" y="0" type="line"/>
+			<point x="107" y="0" type="line"/>
+			<point x="107" y="323" type="line"/>
+			<point x="24" y="323" type="line"/>
+			<point x="24" y="396" type="line"/>
+			<point x="107" y="396" type="line"/>
+			<point x="107" y="479" type="line"/>
+			<point x="24" y="479" type="line"/>
+			<point x="24" y="552" type="line"/>
+			<point x="107" y="552" type="line"/>
+			<point x="107" y="698" type="line"/>
+			<point x="360" y="698" type="line"/>
+			<point x="509" y="698"/>
+			<point x="546" y="552" type="qcurve"/>
+			<point x="640" y="552" type="line"/>
+			<point x="640" y="479" type="line"/>
+			<point x="556" y="479" type="line"/>
+			<point x="557" y="469"/>
+			<point x="558" y="449"/>
+			<point x="558" y="438" type="qcurve"/>
+			<point x="558" y="427"/>
+			<point x="557" y="406"/>
+			<point x="556" y="396" type="qcurve"/>
+			<point x="640" y="396" type="line"/>
+			<point x="640" y="323" type="line"/>
+			<point x="544" y="323" type="line"/>
+			<point x="525" y="251"/>
+			<point x="433" y="175"/>
+			<point x="360" y="175" type="qcurve"/>
+			<point x="220" y="175" type="line"/>
+		</contour>
+		<contour>
+			<point x="220" y="548" type="line"/>
+			<point x="440" y="548" type="line"/>
+			<point x="431" y="577"/>
+			<point x="386" y="613"/>
+			<point x="352" y="613" type="qcurve"/>
+			<point x="220" y="613" type="line"/>
+		</contour>
+		<contour>
+			<point x="446" y="392" type="line"/>
+			<point x="446" y="483" type="line"/>
+			<point x="220" y="483" type="line"/>
+			<point x="220" y="392" type="line"/>
+		</contour>
+		<contour>
+			<point x="352" y="260" type="line"/>
+			<point x="387" y="260"/>
+			<point x="433" y="296"/>
+			<point x="441" y="327" type="qcurve"/>
+			<point x="220" y="327" type="line"/>
+			<point x="220" y="260" type="line"/>
+		</contour>
+	</outline>
+</glyph>

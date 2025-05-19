@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="brevehook.case" format="2">
+	<outline>
+		<contour>
+			<point x="-107" y="1077" type="line"/>
+			<point x="5" y="1077" type="line"/>
+			<point x="52" y="1077"/>
+			<point x="87" y="1040"/>
+			<point x="87" y="1015" type="qcurve"/>
+			<point x="87" y="989"/>
+			<point x="57" y="931"/>
+			<point x="33" y="901" type="qcurve"/>
+			<point x="8" y="870" type="line"/>
+			<point x="-46" y="897" type="line"/>
+			<point x="7" y="1001" type="line"/>
+			<point x="-107" y="1001" type="line"/>
+		</contour>
+		<contour>
+			<point x="0" y="746" type="qcurve"/>
+			<point x="-41" y="746"/>
+			<point x="-99" y="771"/>
+			<point x="-139" y="811"/>
+			<point x="-164" y="858"/>
+			<point x="-172" y="881" type="qcurve"/>
+			<point x="-114" y="914" type="line"/>
+			<point x="-93" y="880" type="line"/>
+			<point x="-75" y="851"/>
+			<point x="-32" y="823"/>
+			<point x="0" y="823" type="qcurve"/>
+			<point x="32" y="823"/>
+			<point x="75" y="851"/>
+			<point x="93" y="880" type="qcurve"/>
+			<point x="114" y="914" type="line"/>
+			<point x="172" y="881" type="line"/>
+			<point x="164" y="858"/>
+			<point x="139" y="811"/>
+			<point x="99" y="771"/>
+			<point x="41" y="746"/>
+		</contour>
+	</outline>
+</glyph>

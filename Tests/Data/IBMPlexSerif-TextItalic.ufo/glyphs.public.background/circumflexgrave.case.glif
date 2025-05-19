@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="circumflexgrave.case" format="2">
+	<outline>
+		<contour>
+			<point x="-115" y="747" type="line"/>
+			<point x="33" y="850" type="line"/>
+			<point x="130" y="747" type="line"/>
+			<point x="157" y="761" type="line"/>
+			<point x="77" y="920" type="line"/>
+			<point x="14" y="920" type="line"/>
+			<point x="-139" y="765" type="line"/>
+		</contour>
+		<contour>
+			<point x="-96" y="876" type="line"/>
+			<point x="-66" y="886" type="line"/>
+			<point x="-100" y="1063" type="line"/>
+			<point x="-178" y="1034" type="line"/>
+		</contour>
+	</outline>
+</glyph>
