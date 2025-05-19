@@ -156,7 +156,7 @@ class Vfb:
             self._decompile_glyphs()
         return self._glyphs.keys()
 
-    def read_stream(self, stream: BufferedReader):
+    def read_stream(self, stream: BufferedReader) -> None:
         """
         Lazily read and parse the vfb stream, i.e. parse the header, but only read the
         binary data of other entries.
@@ -206,7 +206,7 @@ class Vfb:
                 f"{round((end - start) * 1000)} ms."
             )
 
-    def read(self):
+    def read(self) -> None:
         """
         Read data from the file at vfb_path, without decompiling
         """
@@ -261,6 +261,10 @@ class VfbMaster:
         return self.vfb.getGlyphMaster(key, self.master_index)
 
     @property
+    def glyph_order(self) -> list[str]:
+        return self.vfb.glyph_order
+
+    @property
     def info(self) -> VfbInfo:
         return self.vfb.info
 
@@ -270,5 +274,6 @@ class VfbMaster:
     def keys(self) -> Iterable[str]:
         return self.vfb.keys()
 
+    @property
     def num_masters(self) -> int:
         return self.vfb.num_masters
