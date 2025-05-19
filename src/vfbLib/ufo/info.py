@@ -288,8 +288,6 @@ class VfbToUfoInfo(Info):
                 else:
                     logger.info(f"Unhandled integer value in UFO info: {k, v}")
             elif isinstance(v, list):
-                if k == "head_flags":
-                    self.openTypeHeadFlags = v.get("head_flags", [])
                 if k == "OpenTypeOS2Panose":
                     # Duplicate?
                     # if v != self.info.openTypeOS2Panose:
@@ -299,7 +297,9 @@ class VfbToUfoInfo(Info):
                 else:
                     logger.info(f"Unhandled list value in UFO info: {k, v}")
             elif isinstance(v, dict):
-                if k == "Codepages":
+                if k == "head_flags":
+                    self.openTypeHeadFlags = v.get("flags", [])
+                elif k == "Codepages":
                     ranges = binaryToIntList(v.get("os2_ul_code_page_range1", 0))
                     for cp in binaryToIntList(v.get("os2_ul_code_page_range2", 0)):
                         ranges.append(cp + 32)
