@@ -67,6 +67,7 @@ from vfbLib.parsers.text import NameRecordsParser, OpenTypeStringParser, StringP
 from vfbLib.parsers.truetype import (
     TrueTypeInfoParser,
     TrueTypeStemPpems1Parser,
+    TrueTypeStemPpems23Parser,
     TrueTypeStemPpemsParser,
     TrueTypeStemsParser,
     TrueTypeZoneDeltasParser,
@@ -155,6 +156,7 @@ parser_classes = {
     1278: ("hhea_ascender", SignedInt16Parser, SignedInt16Compiler),
     1279: ("hhea_descender", SignedInt16Parser, SignedInt16Compiler),
     # hstem_data and vstem_data:
+    1266: ("TrueType Stem PPEMs 2 And 3", TrueTypeStemPpems23Parser, None),
     1268: ("TrueType Stem PPEMs", TrueTypeStemPpemsParser, None),
     # Probably in font.ttinfo, but not accessible through API:
     1269: ("TrueType Stems", TrueTypeStemsParser, None),

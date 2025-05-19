@@ -227,6 +227,31 @@ class TrueTypeStemPpems1Parser(BaseParser):
         return result
 
 
+class TrueTypeStemPpems23Parser(BaseParser):
+    # PPEM 2 and 3 for each stem are stored in a separate entry ... sometimes!?
+    def _parse(self):
+        names = ("ttStemsV", "ttStemsH")
+        result = {}
+        for i in range(2):
+            direction = []
+            num_stems = self.read_value()
+            if num_stems is None:
+                raise ValueError
+
+            for j in range(num_stems):
+                ppm2 = self.read_value()
+                ppm3 = self.read_value()
+                direction.append(
+                    {
+                        "stem": j,
+                        "round": {"2": ppm2, "3": ppm3},
+                    }
+                )
+            result[names[i]] = direction
+
+        return result
+
+
 class TrueTypeZoneDeltasParser(BaseParser):
     def _parse(self):
         num_deltas = self.read_value()
