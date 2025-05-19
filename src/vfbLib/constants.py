@@ -213,6 +213,7 @@ parser_classes = {
     527: ("527", BaseParser, None),
     1294: ("Global Guides", GlobalGuidesParser, None),
     1296: ("Global Guide Properties", GuidePropertiesParser, None),
+    1295: ("Global Mask", BaseParser, None),
     1066: ("default_character", StringParser, StringCompiler),
 
     # Begin: Repeat for each glyph
@@ -265,6 +266,7 @@ entry_ids = {v[0]: k for k, v in parser_classes.items()}
 # Those entries are ignored in minimal mode:
 ignore_minimal = [
     "Global Guides",
+    "Global Mask",
     "Glyph Bitmaps",
     "Glyph Guide Properties",
     "glyph.note",
