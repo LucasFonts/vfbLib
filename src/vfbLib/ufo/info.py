@@ -274,7 +274,7 @@ class VfbToUfoInfo(Info):
             )
         self.openTypeGaspRangeRecords = gasp
 
-    def set_tt_info(self, data: dict[str, int | list[int] | list[str]]):
+    def set_tt_info(self, data: dict[str, int | list[int] | list[str]]) -> None:
         instructions = {}
         for k, v in data.items():
             if isinstance(v, int):
