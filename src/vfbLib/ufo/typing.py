@@ -79,6 +79,6 @@ class UfoHintSet(TypedDict):
 
 
 class UfoHintingV2(TypedDict):
-    flexList: NotRequired[list]
+    flexList: NotRequired[list[str]]
     hintSetList: NotRequired[list[UfoHintSet]]
     id: NotRequired[str]
