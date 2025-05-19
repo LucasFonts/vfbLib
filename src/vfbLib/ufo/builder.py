@@ -72,7 +72,7 @@ class VfbToUfoBuilder:
                 `features.fea`. Defaults to True.
         """
         self.axes: list[AxisDescriptor | DiscreteAxisDescriptor] = []
-        self.axis_count = 0
+        self.axis_count: int = 0
         self.vfb = vfb
         self.minimal = minimal
         self.encode_data_base64 = base64
@@ -584,7 +584,19 @@ class VfbToUfoBuilder:
         self.build_tt_zones_lib()
         if not self.lib[TT_LIB_KEY]:
             del self.lib[TT_LIB_KEY]
+        self.fix_masters_count()
         self.info.fix_underline_position()
+
+    def fix_masters_count(self) -> None:
+        # Sometimes no master name seems to be stored in the VFB. We need to add
+        # synthetic names in this case.
+        if self.axis_count == 0:
+            masters_count = 1
+        else:
+            masters_count = self.axis_count**2
+        if len(self.masters) < masters_count:
+            additional = [f"m{n}" for n in range(len(self.masters), masters_count)]
+            self.masters.extend(additional)
 
     def get_master_info(self, master_index: int = 0) -> VfbToUfoInfo:
         master_info = deepcopy(self.info)
