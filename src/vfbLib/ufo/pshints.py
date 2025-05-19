@@ -36,8 +36,110 @@ def build_ps_glyph_hints(
 ) -> None:
     # Set the master-specific hints from data to the glyph lib
     # Use the format defined in UFO3, not what FL does.
-    # https://github.com/adobe-type-tools/psautohint/blob/master/python/psautohint/ufoFont.py
     # https://unifiedfontobject.org/versions/ufo3/glyphs/glif/#publicpostscripthints
+
+    # Quote from
+    # https://github.com/adobe-type-tools/psautohint/blob/master/python/psautohint/ufoFont.py
+    """
+        A <dict> element in the hintSetList array identifies a specific point by its
+    name, and describes a new set of stem hints which should be applied before the
+    specific point.
+
+    A <string> element in the flexList identifies a specific point by its name.
+    The point is the first point of a curve. The presence of the element is a
+    processing suggestion, that the curve and its successor curve should be
+    converted to a flex operator.
+
+    One challenge in applying the hintSetList and flexList elements is that in
+    the GLIF format, there is no explicit start and end operator: the first path
+    operator is both the end and the start of the path. I have chosen to convert
+    this to T1 by taking the first path operator, and making it a move-to. I then
+    also use it as the last path operator. An exception is a line-to; in T1, this
+    is omitted, as it is implied by the need to close the path. Hence, if a hintset
+    references the first operator, there is a potential ambiguity: should it be
+    applied before the T1 move-to, or before the final T1 path operator? The logic
+    here applies it before the move-to only.
+    <glyph>
+    ...
+        <lib>
+            <dict>
+                <key><com.adobe.type.autohint></key>
+                <dict>
+                    <key>id</key>
+                    <string> <fingerprint for glyph> </string>
+                    <key>hintSetList</key>
+                    <array>
+                        <dict>
+                        <key>pointTag</key>
+                        <string> <point name> </string>
+                        <key>stems</key>
+                        <array>
+                            <string>hstem <position value> <width value></string>*
+                            <string>vstem <position value> <width value></string>*
+                            <string>hstem3 <position value 0>...<position value 5>
+                            </string>*
+                            <string>vstem3 <position value 0>...<position value 5>
+                            </string>*
+                        </array>
+                        </dict>*
+                    </array>
+
+                    <key>flexList</key>*
+                    <array>
+                        <string><point name></string>+
+                    </array>
+                </dict>
+            </dict>
+        </lib>
+    </glyph>
+
+    Example from "B" in SourceCodePro-Regular
+    <key><com.adobe.type.autohint><key>
+    <dict>
+        <key>id</key>
+        <string>64bf4987f05ced2a50195f971cd924984047eb1d79c8c43e6a0054f59cc85dea23
+        a49deb20946a4ea84840534363f7a13cca31a81b1e7e33c832185173369086</string>
+        <key>hintSetList</key>
+        <array>
+            <dict>
+                <key>pointTag</key>
+                <string>hintSet0000</string>
+                <key>stems</key>
+                <array>
+                    <string>hstem 338 28</string>
+                    <string>hstem 632 28</string>
+                    <string>hstem 100 32</string>
+                    <string>hstem 496 32</string>
+                </array>
+            </dict>
+            <dict>
+                <key>pointTag</key>
+                <string>hintSet0005</string>
+                <key>stems</key>
+                <array>
+                    <string>hstem 0 28</string>
+                    <string>hstem 338 28</string>
+                    <string>hstem 632 28</string>
+                    <string>hstem 100 32</string>
+                    <string>hstem 454 32</string>
+                    <string>hstem 496 32</string>
+                </array>
+            </dict>
+            <dict>
+                <key>pointTag</key>
+                <string>hintSet0016</string>
+                <key>stems</key>
+                <array>
+                    <string>hstem 0 28</string>
+                    <string>hstem 338 28</string>
+                    <string>hstem 632 28</string>
+                    <string>hstem 100 32</string>
+                    <string>hstem 496 32</string>
+                </array>
+            </dict>
+        </array>
+    <dict>
+    """
     hint_sets = []
     stems: list[str | HintTuple] = []
     hint_set: UfoHintSet = UfoHintSet(pointTag="0", stems=stems)
@@ -102,6 +204,7 @@ def build_ps_glyph_hints(
         if not hasattr(glyph, "lib"):
             glyph.lib = {}
         glyph.lib[PS_GLYPH_LIB_KEY] = {
+            "formatVersion": "1",
             # "id": "FIXME",
             "hintSetList": hint_sets,
             # "flexList": [],
