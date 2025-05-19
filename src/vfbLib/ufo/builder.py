@@ -523,7 +523,8 @@ class VfbToUfoBuilder:
                 assert self.current_glyph is not None
                 self.current_glyph.links = data
             elif name == "mask":  # 2009
-                pass
+                assert self.current_glyph is not None
+                self.current_glyph.set_mask(data)
             elif name == "2010":
                 pass
             elif name == "mask.metrics":  # 2011
@@ -706,7 +707,8 @@ class VfbToUfoBuilder:
 
             # Handle mask layer
             mask_ufo_glyph = mask.newGlyph(name)
-            mask_width, mask_height = mm_glyph.mm_mask_metrics[index]
+            pen = mask_ufo_glyph.getPointPen()
+            master_glyph.drawPointsMask(pen)
             mask_width, mask_height = master_glyph.mask_metrics
             mask_ufo_glyph.width = mask_width
             mask_ufo_glyph.height = mask_height

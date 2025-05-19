@@ -37,6 +37,7 @@ class VfbToUfoGlyph:
         self.mm_hints: HintDict = {"h": [], "v": []}
         self.mm_metrics: list[tuple[int, int]] = []
         self.mm_nodes: list[MMNode] = []
+        self.mm_mask_nodes: list[MMNode] = []
         self.mm_mask_metrics: list[list[int]] = []
         self.name: str | None = None
         self.note: str | None = None
@@ -107,6 +108,9 @@ class VfbToUfoGlyph:
         self.lib["public.markColor"] = "%0.4f,%0.4f,%0.4f,1" % hls_to_rgb(
             h=hue / 255, l=0.8, s=0.76
         )
+
+    def set_mask(self, data) -> None:
+        self.mm_mask_nodes = data.get("nodes", [])
 
     def __eq__(self, other) -> bool:
         if len(self.mm_components) == len(other.mm_components):
