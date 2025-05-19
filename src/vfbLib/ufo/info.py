@@ -18,6 +18,16 @@ if TYPE_CHECKING:
 logger = logging.getLogger(__name__)
 
 
+# maxp_keys = {
+#     "max_zones": "maxZones",
+#     "max_twilight_points": "maxTwilightPoints",
+#     "max_storage": "maxStorage",
+#     "max_function_defs": "maxFunctionDefs",
+#     "max_instruction_defs": "maxInstructionDefs",
+#     "max_stack_elements": "maxStackElements",
+# }
+
+
 class VfbToUfoInfo(Info):
     def __init__(self) -> None:
         super().__init__()
@@ -289,18 +299,10 @@ class VfbToUfoInfo(Info):
                     # Duplicate, set from a separate entry (font_style)
                     # self.openTypeOS2Selection = binaryToIntList(v)
                     pass
-                elif k == "max_zones":
-                    instructions["maxZones"] = v
-                elif k == "max_twilight_points":
-                    instructions["maxTwilightPoints"] = v
-                elif k == "max_storage":
-                    instructions["maxStorage"] = v
-                elif k == "max_function_defs":
-                    instructions["maxFunctionDefs"] = v
-                elif k == "max_instruction_defs":
-                    instructions["maxInstructionDefs"] = v
-                elif k == "max_stack_elements":
-                    instructions["maxStackElements"] = v
+                    # We could also set maxp here, but the values are useless on their
+                    # own:
+                    # elif k in maxp_keys:
+                    # instructions[maxp_keys[k]] = v
                 else:
                     logger.info(f"Unhandled integer value in UFO info: {k, v}")
             elif isinstance(v, list):
