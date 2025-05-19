@@ -41,6 +41,8 @@ from vfbLib.parsers.glyph import (
     GlyphUnicodeParser,
     GlyphUnicodeSuppParser,
     LinkParser,
+    MaskMetricsMMParser,
+    MaskMetricsParser,
     MaskParser,
 )
 from vfbLib.parsers.guides import GlobalGuidesParser, GuidePropertiesParser
@@ -227,10 +229,8 @@ parser_classes = {
     2019: ("Glyph Sketch", GlyphSketchParser, None),
     2010: ("2010", BaseParser, None),
     2009: ("mask", MaskParser, None),
-    # Mask width master 1?: Two ints or one long int?
-    2011: ("2011", BaseParser, None),
-    # Mask width master 2?:
-    2028: ("2028", EncodedValueListParser, None),  # MM, proportional to num of masters
+    2011: ("mask.metrics", MaskMetricsParser, None),  # Single master mask metrics
+    2028: ("mask.metrics_mm", MaskMetricsMMParser, None),  # Mask metrics master 2 to 16
     2027: ("Glyph Origin", GlyphOriginParser, None),
     1250: ("unicodes", GlyphUnicodeParser, None),  # Glyph Unicode
     2034: ("2034", StringParser, StringCompiler),

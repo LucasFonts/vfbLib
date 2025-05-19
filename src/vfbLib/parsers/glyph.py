@@ -474,6 +474,25 @@ class GlobalMaskParser(GlyphParser):
         return dict(maskdata)
 
 
+class MaskMetricsParser(BaseParser):
+    # advance width/height for master 0
+    def _parse(self) -> list[int]:
+        x = self.read_int16()
+        y = self.read_int16()
+        return [x, y]
+
+
+class MaskMetricsMMParser(BaseParser):
+    # advance width/height for master 1 to 15
+    def _parse(self) -> list[list[int]]:
+        values = []
+        for _ in range(self.master_count - 1):
+            x = self.read_value()
+            y = self.read_value()
+            values.append([x, y])
+        return values
+
+
 class GlyphSketchParser(BaseParser):
     def _parse(self) -> list[tuple[int, int, int]]:
         num = self.read_value()
