@@ -104,7 +104,7 @@ class VfbToUfoGlyph:
         self.point_labels[index] = label
         return label
 
-    def set_mark(self, hue):
+    def set_mark(self, hue) -> None:
         self.lib["public.markColor"] = "%0.4f,%0.4f,%0.4f,1" % hls_to_rgb(
             h=hue / 255, l=0.8, s=0.76
         )
