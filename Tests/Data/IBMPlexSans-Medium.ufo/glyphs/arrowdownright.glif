@@ -25,6 +25,8 @@
 		<dict>
 			<key>com.adobe.type.autohint.v2</key>
 			<dict>
+				<key>formatVersion</key>
+				<string>1</string>
 				<key>hintSetList</key>
 				<array>
 					<dict>
