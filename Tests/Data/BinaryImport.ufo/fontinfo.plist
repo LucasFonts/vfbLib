@@ -48,6 +48,11 @@
 		<string>2024/12/09 00:41:18</string>
 		<key>openTypeHeadFlags</key>
 		<array>
+			<integer>0</integer>
+			<integer>1</integer>
+			<integer>2</integer>
+			<integer>3</integer>
+			<integer>13</integer>
 		</array>
 		<key>openTypeHeadLowestRecPPEM</key>
 		<integer>7</integer>

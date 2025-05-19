@@ -166,7 +166,7 @@
 		<key>postscriptWeightName</key>
 		<string>StyleName</string>
 		<key>styleMapFamilyName</key>
-		<string>MenuName</string>
+		<string>FamilyName</string>
 		<key>styleMapStyleName</key>
 		<string>regular</string>
 		<key>styleName</key>
