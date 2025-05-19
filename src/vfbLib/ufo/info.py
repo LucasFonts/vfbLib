@@ -296,6 +296,8 @@ class VfbToUfoInfo(Info):
                     #     print("Contradictory PANOSE values")
                     #     print(self.info.openTypeOS2Panose, "vs.", v)
                     pass
+                else:
+                    logger.info(f"Unhandled list value in UFO info: {k, v}")
             elif isinstance(v, dict):
                 if k == "Codepages":
                     ranges = binaryToIntList(v.get("os2_ul_code_page_range1", 0))
@@ -304,7 +306,7 @@ class VfbToUfoInfo(Info):
                     if ranges:
                         self.openTypeOS2CodePageRanges = ranges
                 else:
-                    logger.info(f"Unhandled list value in UFO info: {k, v}")
+                    logger.info(f"Unhandled dict value in UFO info: {k, v}")
             else:
                 raise TypeError
 
