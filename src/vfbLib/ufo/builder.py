@@ -732,6 +732,7 @@ class VfbToUfoBuilder:
             self.ufo_features.text += f"\n\n{self.features_code}"
 
         ufo_masters = []
+        logger.info(f"Extracting {len(self.masters)} master UFOs...")
         for i in range(len(self.masters)):
             ufo_masters.append(self.get_ufo_master(i, silent))
         return ufo_masters
@@ -745,6 +746,10 @@ class VfbToUfoBuilder:
         master. In other cases, the second element of the returned tuple is None.
         """
         ufo_masters = self.get_ufo_masters(silent)
+        if not ufo_masters:
+            logger.error("Could not extract any UFO masters.")
+            raise ValueError
+
         ds: DesignSpaceDocument | None = None
         if self.axes:
             ds = self.get_designspace(out_path)
