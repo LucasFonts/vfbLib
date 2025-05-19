@@ -13,7 +13,7 @@ from fontTools.designspaceLib import (
 from fontTools.ufoLib import UFOFileStructure
 from ufoLib2.objects.features import Features
 from ufoLib2.objects.font import Font
-from ufoLib2.objects.layer import Layer
+from ufoLib2.objects.glyph import Glyph
 from ufonormalizer import normalizeUFO
 
 from vfbLib.constants import ignore_minimal
@@ -681,9 +681,7 @@ class VfbToUfoBuilder:
             lib=self.lib,
         )
 
-        if not self.minimal:
-            # Include "mask" as background layer
-            mask = ufo.layers.newLayer("public.background")
+        mask_glyphs: list[Glyph] = []
 
         # Add the glyphs
         for name, mm_glyph in self.glyph_masters.items():
@@ -708,12 +706,24 @@ class VfbToUfoBuilder:
                 continue
 
             # Handle mask layer
-            mask_ufo_glyph = mask.newGlyph(name)
+            mask_ufo_glyph = Glyph(name)
             pen = mask_ufo_glyph.getPointPen()
             master_glyph.drawPointsMask(pen)
             mask_width, mask_height = master_glyph.mask_metrics
             mask_ufo_glyph.width = mask_width
             mask_ufo_glyph.height = mask_height
+
+            if mask_ufo_glyph.contours:
+                # Only include mask glyphs with contours. There is bogus width
+                # information in empty mask glyphs in the VFB.
+                mask_glyphs.append(mask_ufo_glyph)
+
+        if mask_glyphs:
+            # Include "mask" as background layer
+            mask = ufo.layers.newLayer("public.background")
+            # Add the non-empty mask glyphs
+            for mask_glyph in mask_glyphs:
+                mask.addGlyph(mask_glyph)
 
         return ufo
 
