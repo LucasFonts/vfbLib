@@ -467,6 +467,13 @@ class MaskParser(GlyphParser):
         return dict(maskdata)
 
 
+class GlobalMaskParser(GlyphParser):
+    def _parse(self) -> dict[str, Any]:
+        maskdata = GlyphData()
+        self.parse_outlines(maskdata)
+        return dict(maskdata)
+
+
 class GlyphSketchParser(BaseParser):
     def _parse(self) -> list[tuple[int, int, int]]:
         num = self.read_value()
