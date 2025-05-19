@@ -44,6 +44,8 @@ class UfoMasterGlyph:
         self.rename_points: dict[str, str] = {}
         self.tth_commands: list[dict[str, str | bool]] = []
 
+        self.mask_metrics: list[int] = [0, 0]
+
     @property
     def name(self) -> str | None:
         return self.mm_glyph.name
@@ -61,6 +63,8 @@ class UfoMasterGlyph:
         if include_ps_hints:
             self._extract_master_ps_hints()
         self._extract_master_tt_hints()
+        if not minimal:
+            self._extract_master_mask_metrics()
         self._extract_master_contours()
         self._finalize_point_labels(include_ps_hints)
         self._extract_master_anchors()
@@ -172,6 +176,9 @@ class UfoMasterGlyph:
                 self.components.append(
                     (self.glyph_order[c["gid"]], (xx, 0, 0, yy, dx, dy))
                 )
+
+    def _extract_master_mask_metrics(self) -> None:
+        self.mask_metrics = self.mm_glyph.mm_mask_metrics[self.master_index]
 
     def _extract_master_guides(self) -> None:
         if self.mm_glyph.mm_guides is None:

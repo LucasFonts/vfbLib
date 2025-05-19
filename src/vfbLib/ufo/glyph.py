@@ -37,6 +37,7 @@ class VfbToUfoGlyph:
         self.mm_hints: HintDict = {"h": [], "v": []}
         self.mm_metrics: list[tuple[int, int]] = []
         self.mm_nodes: list[MMNode] = []
+        self.mm_mask_metrics: list[list[int]] = []
         self.name: str | None = None
         self.note: str | None = None
         self.point_labels: dict[int, str] = {}

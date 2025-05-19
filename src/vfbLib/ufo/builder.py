@@ -13,6 +13,7 @@ from fontTools.designspaceLib import (
 from fontTools.ufoLib import UFOFileStructure
 from ufoLib2.objects.features import Features
 from ufoLib2.objects.font import Font
+from ufoLib2.objects.layer import Layer
 from ufonormalizer import normalizeUFO
 
 from vfbLib.constants import ignore_minimal
@@ -525,8 +526,9 @@ class VfbToUfoBuilder:
                 pass
             elif name == "2010":
                 pass
-            elif name == "2011":  # Mask width master 1?
-                pass
+            elif name == "mask.metrics":  # 2011
+                assert self.current_glyph is not None
+                self.current_glyph.mm_mask_metrics.append(data)
             elif name == "mark":  # 2012
                 assert self.current_glyph is not None
                 self.current_glyph.set_mark(data)
@@ -564,6 +566,9 @@ class VfbToUfoBuilder:
                 self.kerning_class_flags = data
             elif name == "Glyph Origin":  # 2027
                 pass
+            elif name == "mask.metrics_mm":  # 2028
+                assert self.current_glyph is not None
+                self.current_glyph.mm_mask_metrics.extend(data)
             elif name == "Glyph Anchors MM":  # 2029
                 assert self.current_glyph is not None
                 self.current_glyph.mm_anchors = data
@@ -673,6 +678,10 @@ class VfbToUfoBuilder:
             lib=self.lib,
         )
 
+        if not self.minimal:
+            # Include "mask" as background layer
+            mask = ufo.layers.newLayer("public.background")
+
         # Add the glyphs
         for name, mm_glyph in self.glyph_masters.items():
             logger.debug(f"    {name}, {type(name)}, {mm_glyph}")
@@ -691,6 +700,16 @@ class VfbToUfoBuilder:
             ufo_glyph.lib = master_glyph.lib
             ufo_glyph.width = master_glyph.width
             ufo_glyph.unicodes = master_glyph.unicodes
+
+            if self.minimal:
+                continue
+
+            # Handle mask layer
+            mask_ufo_glyph = mask.newGlyph(name)
+            mask_width, mask_height = mm_glyph.mm_mask_metrics[index]
+            mask_width, mask_height = master_glyph.mask_metrics
+            mask_ufo_glyph.width = mask_width
+            mask_ufo_glyph.height = mask_height
 
         return ufo
 
