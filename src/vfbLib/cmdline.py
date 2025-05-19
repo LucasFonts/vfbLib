@@ -132,6 +132,13 @@ def vfb2ufo():
         help="Don't output PostScript hinting",
     )
     parser.add_argument(
+        "-v",
+        "--verbose",
+        action="store_true",
+        default=False,
+        help="Print debugging output",
+    )
+    parser.add_argument(
         "-z",
         "--zip",
         action="store_true",
@@ -167,6 +174,8 @@ def vfb2ufo():
     args = parser.parse_args()
     if args:
         vfb_path = Path(args.inputpath[0])
+        if args.verbose:
+            logging.basicConfig(level=logging.DEBUG)
         if not args.silent:
             print(parser.description)
             print(f"Reading file {vfb_path} ...")
