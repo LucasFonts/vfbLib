@@ -277,6 +277,14 @@ class VfbToUfoInfo(Info):
                     c = v >> 8
                     s = v & ~(c << 8)
                     self.openTypeOS2FamilyClass = [c, s]
+                elif k == "os2_us_weight_class":
+                    # Duplicate, we set it from a separate entry (weight_code)
+                    # self.openTypeOS2WeightClass = v
+                    pass
+                elif k == "os2_fs_selection":
+                    # Duplicate, set from a separate entry (font_style)
+                    # self.openTypeOS2Selection = binaryToIntList(v)
+                    pass
                 else:
                     logger.info(f"Unhandled integer value in UFO info: {k, v}")
             elif isinstance(v, list):
