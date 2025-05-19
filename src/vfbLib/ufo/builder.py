@@ -699,6 +699,8 @@ class VfbToUfoBuilder:
             self.lib["public.groupOrder"] = group_order
         if key_glyphs:
             self.lib["com.lucasfonts.vfblib.groupKeyGlyphs"] = key_glyphs
+        if self.info.lib:
+            self.lib.update(self.info.lib)
 
         self.ufo_features = Features()
 

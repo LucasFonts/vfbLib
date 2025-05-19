@@ -78,6 +78,9 @@ class VfbToUfoInfo(Info):
         self.openTypeOS2WinDescent = 0
         self.openTypeOS2CodePageRanges: list[int] = []
 
+        # Some lib values are gathered here, they are added to the UFO lib in builder
+        self.lib = {}
+
         self.build_mapping()
 
     @cached_property
@@ -262,6 +265,7 @@ class VfbToUfoInfo(Info):
         self.openTypeGaspRangeRecords = gasp
 
     def set_tt_info(self, data: dict[str, int | list[int] | list[str]]):
+        instructions = {}
         for k, v in data.items():
             if isinstance(v, int):
                 if k in self.mapping_int:
@@ -285,6 +289,18 @@ class VfbToUfoInfo(Info):
                     # Duplicate, set from a separate entry (font_style)
                     # self.openTypeOS2Selection = binaryToIntList(v)
                     pass
+                elif k == "max_zones":
+                    instructions["maxZones"] = v
+                elif k == "max_twilight_points":
+                    instructions["maxTwilightPoints"] = v
+                elif k == "max_storage":
+                    instructions["maxStorage"] = v
+                elif k == "max_function_defs":
+                    instructions["maxFunctionDefs"] = v
+                elif k == "max_instruction_defs":
+                    instructions["maxInstructionDefs"] = v
+                elif k == "max_stack_elements":
+                    instructions["maxStackElements"] = v
                 else:
                     logger.info(f"Unhandled integer value in UFO info: {k, v}")
             elif isinstance(v, list):
@@ -309,6 +325,11 @@ class VfbToUfoInfo(Info):
                     logger.info(f"Unhandled dict value in UFO info: {k, v}")
             else:
                 raise TypeError
+        if instructions:
+            if any(instructions.values()):
+                # Prepare UFO-level lib entry for TrueType values
+                instructions["formatVersion"] = "1"
+                self.lib = {"public.truetype.instructions": instructions}
 
     def set_weight_class(self, data: int) -> None:
         self.openTypeOS2WeightClass = min(max(1, data), 1000)
