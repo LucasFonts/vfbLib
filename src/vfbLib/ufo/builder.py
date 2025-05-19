@@ -529,7 +529,8 @@ class VfbToUfoBuilder:
                 pass
             elif name == "mask.metrics":  # 2011
                 assert self.current_glyph is not None
-                self.current_glyph.mm_mask_metrics.append(data)
+                w, h = data
+                self.current_glyph.mm_mask_metrics.append((w, h))
             elif name == "mark":  # 2012
                 assert self.current_glyph is not None
                 self.current_glyph.set_mark(data)
@@ -569,7 +570,8 @@ class VfbToUfoBuilder:
                 pass
             elif name == "mask.metrics_mm":  # 2028
                 assert self.current_glyph is not None
-                self.current_glyph.mm_mask_metrics.extend(data)
+                for w, h in data:
+                    self.current_glyph.mm_mask_metrics.append((w, h))
             elif name == "Glyph Anchors MM":  # 2029
                 assert self.current_glyph is not None
                 self.current_glyph.mm_anchors = data

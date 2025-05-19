@@ -38,7 +38,7 @@ class VfbToUfoGlyph:
         self.mm_metrics: list[tuple[int, int]] = []
         self.mm_nodes: list[MMNode] = []
         self.mm_mask_nodes: list[MMNode] = []
-        self.mm_mask_metrics: list[list[int]] = []
+        self.mm_mask_metrics: list[tuple[int, int]] = []
         self.name: str | None = None
         self.note: str | None = None
         self.point_labels: dict[int, str] = {}

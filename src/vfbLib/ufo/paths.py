@@ -60,7 +60,7 @@ class UfoMasterGlyph:
         self.tth_commands: list[dict[str, str | bool]] = []
 
         self.mask_contours: list[UfoContour] = []
-        self.mask_metrics: list[int] = [0, 0]
+        self.mask_metrics: tuple[int, int] = (0, 0)
 
     @property
     def name(self) -> str | None:
@@ -213,7 +213,17 @@ class UfoMasterGlyph:
                 )
 
     def _extract_master_mask_metrics(self) -> None:
-        self.mask_metrics = self.mm_glyph.mm_mask_metrics[self.master_index]
+        if not self.mm_glyph.mm_mask_metrics:
+            # No separate mask metrics
+            self.mask_metrics = self.mm_glyph.mm_metrics[self.master_index]
+        else:
+            if self.master_index > len(self.mm_glyph.mm_mask_metrics) - 1:
+                logger.error(
+                    f"Too few mask metrics, requested master index: {self.master_index}"
+                )
+                logger.error(self.mm_glyph.mm_mask_metrics)
+                raise ValueError
+            self.mask_metrics = self.mm_glyph.mm_mask_metrics[self.master_index]
 
     def _extract_master_guides(self) -> None:
         if self.mm_glyph.mm_guides is None:
