@@ -1,5 +1,22 @@
 # Change Log
 
+## 0.9.4
+
+Parser changes:
+
+- Add entry 1266 (TrueType Stem PPMs 2 and 3)
+- Add entry 1295 (Global Mask)
+- Add entry 2011, 2028 (Mask Metrics)
+
+UFO:
+
+- Export FL mask layer as background layer in UFO
+- Add verbose output option (`-v/--verbose`) to vfb3ufo
+- Fix export of head flags
+- Improve logging, throw an error if no UFO could be extracted
+- Synthesize master names if they are not present in the VFB
+
+
 ## 0.9.3
 
 Parser changes:
