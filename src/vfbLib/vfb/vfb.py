@@ -232,10 +232,11 @@ class Vfb:
             for entry in self.entries:
                 success = entry.compile()
                 if not success:
-                    raise NotImplementedError(
+                    logger.warning(
                         f"Could not compile entry {entry.key} ({entry.id}): "
                         f"{entry.decompiled}"
                     )
+                    # raise NotImplementedError
                 vfb.write(entry.header)
                 if entry.data is not None:
                     # There may be entries without data
