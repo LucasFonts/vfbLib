@@ -100,6 +100,7 @@ class Vfb:
         self.entries = []
 
     def _decompile_glyphs(self) -> None:
+        name = None
         for entry in self.entries:
             if entry.key == "Glyph":
                 glyph = VfbGlyph(entry, self)
@@ -113,6 +114,14 @@ class Vfb:
                     name = f"{name}#{i}"
                 self._glyphs[name] = glyph
                 self.glyph_order.append(name)
+            elif entry.key == "Links":
+                # We need to store the links of the glyph for converting links to
+                # PS hints before writing charstrings
+                entry.decompile()
+                if name is None:
+                    logger.error("Links entry without preceding glyph entry")
+                else:
+                    self._glyphs[name].links_entry = entry
 
     def __contains__(self, key: str) -> bool:
         if not self._glyphs:
