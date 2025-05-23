@@ -27,7 +27,7 @@ class VfbToUfoGlyph:
         self.builder = builder
         self.anchors: list[Anchor] = []
         self.guide_properties: GuidePropertyList = []
-        self.hintmasks: list[dict[str, int]] = []
+        self.hintmasks: list[tuple[str, int]] = []
         self.labels: dict[str, int] = {}
         self.lib: dict[str, Any] = {}
         self.links: LinkDict = {}
