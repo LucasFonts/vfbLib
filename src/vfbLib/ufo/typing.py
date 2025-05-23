@@ -73,9 +73,14 @@ class UfoGuide(TypedDict):
     y: int
 
 
+class HintSet(TypedDict):
+    pointTag: str
+    stems: list[HintTuple]
+
+
 class UfoHintSet(TypedDict):
     pointTag: str
-    stems: list[str | HintTuple]
+    stems: list[str]
 
 
 class UfoHintingV2(TypedDict):
