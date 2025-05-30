@@ -252,7 +252,6 @@ def get_master_hints(
             d = "v" if axis == "x" else "h"
             # Don't normalize those values, the above code already did that
             hint = (f"{d}stem", pos, width)
-            # hint = normalize_hint((f"{d}stem", pos, width))
             hints[d].append(hint)
 
     return hints
