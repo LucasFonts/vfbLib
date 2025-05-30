@@ -63,6 +63,8 @@ class Vfb:
         self.ttStemsV_count: int = 0
         self.ttStemsH_count: int = 0
 
+        self.ps_hinting_options: VfbEntry | None = None
+
         # Track decompile errors
         self.any_errors = False
         if self.vfb_path:
@@ -122,6 +124,19 @@ class Vfb:
                     logger.error("Links entry without preceding glyph entry")
                 else:
                     self._glyphs[name].links_entry = entry
+            elif entry.key == "Glyph Hinting Options":
+                # We need this to decide if we should generate hstem3/vstem3 hints
+                entry.decompile()
+                if name is None:
+                    logger.error(
+                        "Glyph Hinting Options entry without preceding glyph entry"
+                    )
+                else:
+                    self._glyphs[name].ps_hinting_options = entry
+            elif entry.key == "PostScript Hinting Options":
+                # We need this to decide if we should generate flex hints
+                entry.decompile()
+                self.ps_hinting_options = entry
 
     def __contains__(self, key: str) -> bool:
         if not self._glyphs:

@@ -28,7 +28,11 @@ logger = logging.getLogger(__name__)
 class VfbGlyph:
     def __init__(self, entry: VfbEntry, parent: Vfb | VfbMaster) -> None:
         self.entry = entry
+
+        # Related entries that we need when generating fonts
         self.links_entry: VfbEntry | None = None
+        self.ps_hinting_options: VfbEntry | None = None
+
         self._parent = parent
         self._glyph: UfoMasterGlyph | None = None
         self.master_index = 0
