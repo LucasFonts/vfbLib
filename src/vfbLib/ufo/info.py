@@ -62,12 +62,14 @@ class VfbToUfoInfo(Info):
         self.openTypeOS2WeightClass = 400
         self.openTypeOS2WidthClass = WidthClass(5)
         self.postscriptBlueValues: list[int] = []
+        self.postscriptDefaultWidthX: int | None = None
         self.postscriptFamilyBlues: list[int] = []
         self.postscriptFamilyOtherBlues: list[int] = []
         self.postscriptFontName = "Untitled-Regular"
         self.postscriptForceBold = False
         self.postscriptFullName = "Untitled Regular"
         self.postscriptIsFixedPitch = False
+        self.postscriptNominalWidthX: int | None = None
         self.postscriptOtherBlues: list[int] = []
         self.postscriptStemSnapH: list[int] | None = None
         self.postscriptStemSnapV: list[int] | None = None
@@ -195,6 +197,7 @@ class VfbToUfoInfo(Info):
             "os2_s_typo_line_gap": "openTypeOS2TypoLineGap",
             "os2_us_win_ascent": "openTypeOS2WinAscent",
             "os2_us_win_descent": "openTypeOS2WinDescent",
+            "Average Width": "postscriptNominalWidthX",
         }
 
     def fix_underline_position(self):
