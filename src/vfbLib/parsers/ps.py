@@ -1,5 +1,6 @@
 import logging
 
+from vfbLib.helpers import binaryToIntList
 from vfbLib.parsers.base import BaseParser
 
 logger = logging.getLogger(__name__)
@@ -41,3 +42,45 @@ class PostScriptInfoParser(BaseParser):
         values["x_height"] = self.read_int32()
         values["cap_height"] = self.read_int32()
         return values
+
+
+class PostScriptGlobalHintingOptionsParser(BaseParser):
+    """
+    A parser that reads data as a bitfield describing a glyph's PostScript hinting
+    options.
+    """
+
+    def _parse(self):
+        bits = set(binaryToIntList(self.read_uint16()))
+        d = {}
+        for k, bit in (
+            ("generate_flex", 0),  # Automatically generate Flex hints in T1 and OT
+        ):
+            if bit in bits:
+                bits.discard(bit)
+                d[k] = 1
+
+        d["other"] = sorted(bits)
+        return d
+
+
+class PostScriptGlyphHintingOptionsParser(BaseParser):
+    """
+    A parser that reads data as a bitfield describing a glyph's PostScript hinting
+    options.
+    """
+
+    def _parse(self):
+        bits = set(binaryToIntList(self.read_uint32()))
+        d = {}
+        for k, bit in (
+            ("hint_replacement", 29),  # Hint Replacement
+            ("horizontal_3_stem", 30),  # Generate horizontal 3-stem
+            ("vertical_3_stem", 31),  # Generate vertical 3-stem
+        ):
+            if bit in bits:
+                bits.discard(bit)
+                d[k] = 1
+
+        d["other"] = sorted(bits)
+        return d
