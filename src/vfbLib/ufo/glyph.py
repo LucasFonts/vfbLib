@@ -42,6 +42,7 @@ class VfbToUfoGlyph:
         self.name: str | None = None
         self.note: str | None = None
         self.point_labels: dict[int, str] = {}
+        self.ps_hinting_options = dict[str, int | list[int]]
         self.rename_points: dict[str, str]
         self.tt_glyph_hints: TTGlyphHints | None = None
         self.tth_commands: list[dict[str, str | bool]] = []
