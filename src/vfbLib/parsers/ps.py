@@ -7,7 +7,7 @@ logger = logging.getLogger(__name__)
 
 class PostScriptInfoParser(BaseParser):
     """
-    A parser that reads data as a double-size float.
+    A parser that reads data into a dict of PostScript font info.
     """
 
     def _parse(self):
