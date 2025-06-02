@@ -193,14 +193,25 @@ def build_ps_glyph_hints(
             hint_sets = [hint_set]
 
     # Reformat stems from sortable tuples to str required by UFO spec
-    ufo_hint_sets = []
+    ufo_hint_sets = {}
     for hint_set in hint_sets:
-        ufo_hint_sets.append(
-            UfoHintSet(
-                pointTag=hint_set["pointTag"],
-                stems=[f"{h[0]} {h[1]} {h[2]}" for h in sorted(set(hint_set["stems"]))],
-            )
+        point_tag = hint_set["pointTag"]
+        ufo_hint_set = UfoHintSet(
+            pointTag=point_tag,
+            stems=[f"{h[0]} {h[1]} {h[2]}" for h in sorted(set(hint_set["stems"]))],
         )
+        if ufo_hint_set["stems"]:
+            # Only add if the set has stems
+            if ufo_hint_set["pointTag"] in ufo_hint_sets:
+                # Warn about duplicate hint sets per point, but use the last one
+                logger.warning(
+                    f"Duplicate hint sets for point '{point_tag}' "
+                    f"in glyph '{glyph.name}':"
+                )
+                logger.warning(f"    Old: {ufo_hint_sets[point_tag]}")
+                logger.warning(f"    New: {ufo_hint_set}")
+                logger.warning("    Using the new hint set.")
+            ufo_hint_sets[point_tag] = ufo_hint_set
 
     if ufo_hint_sets:
         if not hasattr(glyph, "lib"):
@@ -208,7 +219,7 @@ def build_ps_glyph_hints(
         glyph.lib[PS_GLYPH_LIB_KEY] = {
             "formatVersion": "1",
             # "id": "FIXME",
-            "hintSetList": ufo_hint_sets,
+            "hintSetList": list(ufo_hint_sets.values()),
             # "flexList": [],
         }
 
