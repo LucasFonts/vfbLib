@@ -136,7 +136,7 @@ parser_classes = {
     1131: ("version_minor", Int16Parser, Int16Compiler),
     1135: ("upm", Int16Parser, Int16Compiler),
     1090: ("fond_id", Int16Parser, Int16Compiler),
-    1093: ("PostScript Hinting Options", PostScriptGlobalHintingOptionsParser, HexStringCompiler),
+    1093: ("PostScript Hinting Options", PostScriptGlobalHintingOptionsParser, HexStringCompiler),  # noqa: E501
     1068: ("1068", EncodedValueListWithCountParser, EncodedValueListWithCountCompiler),
     1530: ("blue_values_num", Int16Parser, Int16Compiler),
     1531: ("other_blues_num", Int16Parser, Int16Compiler),
