@@ -101,6 +101,91 @@ class VfbGlyph:
         )
         self._glyph.build()
 
+    def resolve_hint_sets(self) -> dict[int, list[HintTuple]]:
+        hint_sets = {}
+        hints = self.resolve_hints()
+        hints_entry = self.entry.decompiled.get("hints", {})
+        hintmasks = hints_entry.get("hintmasks", [])
+        if hintmasks:
+            set_index = 0
+            set_hints = []
+            for kind, index in hintmasks:
+                if kind == "r":
+                    if set_hints:
+                        if set_index in hint_sets:
+                            logger.warning(f"Duplicate hint sets for node {set_index}")
+                        hint_sets[set_index] = set_hints
+                    set_index = index
+                    set_hints = []
+                else:
+                    set_hints.append(hints[kind][index])
+            if set_hints:
+                # TODO: Filter out any consecutive identical hintmasks
+                hint_sets[set_index] = set_hints
+        else:
+            # All in one hint set
+            hint_sets[0] = hints["h"] + hints["v"]
+        return hint_sets
+
+    def resolve_hints(self) -> dict[str, list[HintTuple]]:
+        hints: dict[str, list[HintTuple]] = {"h": [], "v": []}
+
+        mm_hints = self.entry.decompiled.get("hints", {"h": [], "v": []})
+
+        # Hints
+        for d in "hv":
+            direction_hints = mm_hints[d]
+            for mm_hint in direction_hints:
+                hint = mm_hint[self.master_index]
+                hint = normalize_hint_dict(hint, f"{d}stem")
+                hints[d].append(hint)
+
+        # Links
+        links = self.resolve_links()
+        for d in ("h", "v"):
+            hints[d].extend(links[d])
+
+        return hints
+
+    def resolve_links(self) -> dict[str, list[HintTuple]]:
+        # Convert the links to hints
+
+        hints = {"h": [], "v": []}
+
+        if self.links_entry is None:
+            return hints
+
+        links = self.links_entry.decompiled
+        assert isinstance(links, dict)
+        if not (links["x"] or links["y"]):
+            return hints
+
+        mm_nodes = self.entry.decompiled.get("nodes", [])
+
+        # Do the actual conversion
+        for i, axis in enumerate("xy"):
+            direction_links = links[axis]
+            for link in direction_links:
+                isrc, itgt = link  # indices of source and target node
+                src = mm_nodes[isrc]
+                src_pos = src["points"][self.master_index][0][i]
+                pos = src_pos
+                if itgt == -1:  # Bottom ghost
+                    width = -21
+                    pos = src_pos - width
+                elif itgt == -2:  # Top ghost
+                    width = -20
+                else:
+                    tgt = mm_nodes[itgt]
+                    tgt_pos = tgt["points"][self.master_index][0][i]
+                    width = tgt_pos - src_pos
+
+                d = "v" if axis == "x" else "h"
+                # Don't normalize those values, the above code already did that
+                hint = (f"{d}stem", pos, width)
+                hints[d].append(hint)
+        return hints
+
     def draw(self, pen) -> None:
         """
         Draw the VFB glyph onto a segment pen.
