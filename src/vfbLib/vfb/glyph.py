@@ -13,11 +13,13 @@ from fontTools.pens.pointPen import (
 from vfbLib.templates.glyph import get_empty_glyph
 from vfbLib.ufo.glyph import VfbToUfoGlyph
 from vfbLib.ufo.paths import UfoMasterGlyph
+from vfbLib.ufo.pshints import normalize_hint_dict
 from vfbLib.vfb.pens import VfbGlyphPointPen
 
 if TYPE_CHECKING:
     from fontTools.pens.basePen import AbstractPen
 
+    from vfbLib.typing import HintTuple
     from vfbLib.vfb.entry import VfbEntry
     from vfbLib.vfb.vfb import Vfb, VfbMaster
 
