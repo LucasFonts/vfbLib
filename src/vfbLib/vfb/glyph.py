@@ -208,6 +208,51 @@ class VfbGlyph:
 
         return self._glyph.drawPoints(pen)
 
+    def drawPointsDirect(
+        self,
+        pen: AbstractPointPen,
+    ) -> None:
+        # Should replace the drawPoints method
+        # and use self._parent.master_index
+        if self.entry.decompiled is None:
+            raise ValueError
+
+        glyph = self.entry.decompiled
+
+        in_path = False
+        in_qcurve = False
+
+        for n in glyph.get("nodes", []):
+            node_type = n.get("type")
+            if node_type == "move":
+                if in_qcurve:
+                    pen.addPoint(n["points"][self.master_index][0], "qcurve")
+                    in_qcurve = False
+                if in_path:
+                    pen.endPath()
+                pen.beginPath()
+                in_path = True
+                pen.addPoint(n["points"][self.master_index][0], "move")
+            elif node_type == "line":
+                if in_qcurve:
+                    pen.addPoint(n["points"][self.master_index][0], "qcurve")
+                    in_qcurve = False
+                else:
+                    pen.addPoint(n["points"][self.master_index][0], "line")
+            elif node_type == "curve":
+                pt3, pt1, pt2 = n["points"][self.master_index]
+                pen.addPoint(pt1, None)
+                pen.addPoint(pt2, None)
+                pen.addPoint(pt3, "curve")
+            elif node_type == "qcurve":
+                if not in_qcurve:
+                    in_qcurve = True
+                pen.addPoint(n["points"][self.master_index][0], None)
+            else:
+                raise ValueError(f"Unknown node type: '{node_type}'")
+        if in_path:
+            pen.endPath()
+
     def getPen(self) -> AbstractPen:
         """
         Return a segment pen to draw into the VFB glyph.
