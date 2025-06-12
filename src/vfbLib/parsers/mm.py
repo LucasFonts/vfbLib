@@ -37,19 +37,22 @@ class AxisMappingsParser(BaseParser):
         # The trailing unused fields may contain junk and must be ignored.
         mappings = []
         for _ in range(self.stream.getbuffer().nbytes // 16):
-            src_tgt = self.read_doubles(2)
-            mappings.append(src_tgt)
+            src = self.read_double()
+            tgt = self.read_double()
+            mappings.append((src, tgt))
 
         return mappings
 
 
 class MasterLocationParser(BaseParser):
-    def _parse(self) -> tuple[int, tuple[Any]]:
+    def _parse(self) -> tuple[int, tuple[float, float, float, float]]:
         # The location on all 4 axes for this master
-        # FIXME: Might also be 2 uint16:
         master_index = self.read_uint32()
-        flags = self.read_doubles(4)
-        return master_index, flags
+        a1 = self.read_double()
+        a2 = self.read_double()
+        a3 = self.read_double()
+        a4 = self.read_double()
+        return master_index, (a1, a2, a3, a4)
 
 
 class PrimaryInstancesParser(BaseParser):
