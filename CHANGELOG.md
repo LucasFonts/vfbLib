@@ -1,5 +1,26 @@
 # Change Log
 
+## 0.9.5
+
+Parser changes:
+
+- Add entry 1093 (global PostScript Hinting Options)
+- Add entry 2010 (Glyph Hinting Options)
+
+UFO:
+
+- Store `postscriptDefaultWidthX` and `postscriptNominalWidthX`
+- Warn about duplicate hint sets per point
+
+Other:
+
+- Store "links" in `VfbGlyph`
+- Store global/glyph PS hinting options when decompiling glyphs
+- Use separate `HintSet` and `UfoHintSet` types
+- Add methods to handle hints and hint sets, links to hints to `VfbGlyph`
+- Improve `VfbGlyph.draw()` (don't go through UFO conversion)
+
+
 ## 0.9.4
 
 Parser changes:

@@ -19,11 +19,7 @@ this situation.
 - Anchors are preserved in composite glyphs
 - PostScript hinting is written correctly, but to the Adobe lib key
 - TrueType hinting is supported in composite glyphs
-- Supports more UFO font info attributes:
-  - `openTypeGaspRangeRecords`
-  - `openTypeHeadLowestRecPPEM`
-  - `openTypeNameRecords`
-  - `openTypeOS2WeightClass` is written correctly
+- Supports more UFO font info attributes
 
 
 ## Command Line Script Usage
@@ -62,6 +58,7 @@ options:
   -s, --silent          no display (silent mode)
   -nops, --no-postscript-hints
                         Don't output PostScript hinting
+  -v, --verbose         Print debugging output
   -z, --zip             write UFOZ (compressed UFO)
   -m, --minimal         parse only minimal amount of data, drop missing glyphs from groups, etc.
   -u, --unicode-strings
@@ -100,6 +97,8 @@ options:
   --header              only read the VFB header, not the actual data
   -m, --minimal         parse only minimal amount of data
   -p PATH, --path PATH  output folder
+  -u, --unicode-strings
+                        interpret name table strings as Unicode instead of Windows-1252
 ```
 
 
