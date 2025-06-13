@@ -4,11 +4,7 @@ import logging
 from functools import cached_property
 from typing import TYPE_CHECKING
 
-from fontTools.pens.pointPen import (
-    AbstractPointPen,
-    PointToSegmentPen,
-    SegmentToPointPen,
-)
+from fontTools.pens.pointPen import AbstractPointPen, SegmentToPointPen
 
 from vfbLib.templates.glyph import get_empty_glyph
 from vfbLib.ufo.glyph import VfbToUfoGlyph
