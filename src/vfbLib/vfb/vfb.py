@@ -301,3 +301,7 @@ class VfbMaster:
     @property
     def num_masters(self) -> int:
         return self.vfb.num_masters
+
+    @property
+    def ps_hinting_options(self) -> VfbEntry | None:
+        return self.vfb.ps_hinting_options
