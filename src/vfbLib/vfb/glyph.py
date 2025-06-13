@@ -188,12 +188,76 @@ class VfbGlyph:
                 hints[d].append(hint)
         return hints
 
-    def draw(self, pen) -> None:
+    def draw(self, pen: AbstractPen) -> None:
         """
-        Draw the VFB glyph onto a segment pen.
+        Draw the VFB glyph onto a segment pen. Uses the object's `master_index` property
+        to determine which master is drawn.
         """
-        sp = PointToSegmentPen(pen, outputImpliedClosingLine=False)
-        self.drawPoints(sp)
+        if self.entry.decompiled is None:
+            raise ValueError
+
+        glyph = self.entry.decompiled
+
+        path_is_open = False
+        in_path = False
+        in_qcurve = False
+        qcurve = []
+
+        for n in glyph.get("nodes", []):
+            node_type = n.get("type")
+            flags = n.get("flags", 0)
+            pt = n["points"][self.master_index][0]
+            if node_type == "move":
+                if in_qcurve:
+                    qcurve.append(pt)
+                    pen.qCurveTo(*qcurve)
+                if in_path:
+                    if path_is_open:
+                        pen.endPath()
+                    else:
+                        pen.closePath()
+                    in_path = False
+                in_qcurve = False
+                qcurve = []
+                pen.moveTo(pt)
+                in_path = True
+                path_is_open = bool(flags & 8)
+
+            elif node_type == "line":
+                if in_qcurve:
+                    qcurve.append(pt)
+                    pen.qCurveTo(*qcurve)
+                    in_qcurve = False
+                    qcurve = []
+                else:
+                    pen.lineTo(pt)
+            elif node_type == "curve":
+                # FIXME: What about mixed curve/qcurve?
+                pt, c1, c2 = n["points"][self.master_index]
+                pen.curveTo(c1, c2, pt)
+            elif node_type == "qcurve":
+                if not in_qcurve:
+                    in_qcurve = True
+                qcurve.append(pt)
+            else:
+                raise ValueError(f"Unknown node type: '{node_type}'")
+        if in_path:
+            if path_is_open:
+                pen.endPath()
+            else:
+                pen.closePath()
+
+        for c in glyph.get("components", []):
+            baseGlyphName = self._parent.glyph_order[c["gid"]]
+            transformation = (
+                c["scaleX"][self.master_index],
+                0,
+                0,
+                c["scaleY"][self.master_index],
+                c["offsetX"][self.master_index],
+                c["offsetY"][self.master_index],
+            )
+            pen.addComponent(baseGlyphName, transformation)
 
     def drawPoints(self, pen: AbstractPointPen) -> None:
         """
@@ -210,12 +274,11 @@ class VfbGlyph:
 
         return self._glyph.drawPoints(pen)
 
-    def drawPointsDirect(
-        self,
-        pen: AbstractPointPen,
-    ) -> None:
-        # Should replace the drawPoints method
-        # and use self._parent.master_index
+    def drawPointsDirect(self, pen: AbstractPointPen) -> None:
+        """
+        Draw the VFB glyph onto a segment pen. Uses the object's `master_index` property
+        to determine which master is drawn.
+        """
         if self.entry.decompiled is None:
             raise ValueError
 
@@ -254,6 +317,18 @@ class VfbGlyph:
                 raise ValueError(f"Unknown node type: '{node_type}'")
         if in_path:
             pen.endPath()
+
+        for c in glyph.get("components", []):
+            baseGlyphName = self._parent.glyph_order[c["gid"]]
+            transformation = (
+                c["scaleX"][self.master_index],
+                0,
+                0,
+                c["scaleY"][self.master_index],
+                c["offsetX"][self.master_index],
+                c["offsetY"][self.master_index],
+            )
+            pen.addComponent(baseGlyphName, transformation)
 
     def getPen(self) -> AbstractPen:
         """

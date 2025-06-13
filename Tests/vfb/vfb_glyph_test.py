@@ -292,8 +292,6 @@ class VfbGlyphTest(TestCase):
         vfb = Vfb(empty_vfb_path)
         g = VfbGlyph(VfbEntry(vfb), vfb)
         g.entry.decompiled = glyph_dict_q
-        g._copy_to_ufo_glyph()
-        g.master_index = 0
         pen = RecordingPointPen()
         g.drawPoints(pen)
         assert pen.value == [
@@ -395,8 +393,6 @@ class VfbGlyphTest(TestCase):
         vfb = Vfb(empty_vfb_path)
         g = VfbGlyph(VfbEntry(vfb), vfb)
         g.entry.decompiled = glyph_dict_q
-        g._copy_to_ufo_glyph()
-        g.master_index = 0
         pen = RecordingPen()
         g.draw(pen)
         assert pen.value == [
@@ -426,8 +422,6 @@ class VfbGlyphTest(TestCase):
         vfb = Vfb(empty_vfb_path)
         g = VfbGlyph(VfbEntry(vfb), vfb)
         g.entry.decompiled = glyph_dict_c
-        g._copy_to_ufo_glyph()
-        g.master_index = 0
         pen = RecordingPointPen()
         g.drawPoints(pen)
         assert pen.value == [
@@ -482,8 +476,6 @@ class VfbGlyphTest(TestCase):
         vfb = Vfb(empty_vfb_path)
         g = VfbGlyph(VfbEntry(vfb), vfb)
         g.entry.decompiled = glyph_dict_c
-        g._copy_to_ufo_glyph()
-        g.master_index = 0
         pen = RecordingPen()
         g.draw(pen)
         assert pen.value == [
