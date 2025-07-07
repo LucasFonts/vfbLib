@@ -16,6 +16,7 @@ from vfbLib.compilers.numeric import (
     UnicodeRangesCompiler,
 )
 from vfbLib.compilers.text import OpenTypeStringCompiler, StringCompiler
+from vfbLib.compilers.truetype import TrueTypeZoneDeltasCompiler, TrueTypeZonesCompiler
 from vfbLib.parsers.base import (  # EncodedValueParser,; EncodedKeyValuesParser,
     BaseParser,
     EncodedValueListParser,
@@ -169,7 +170,7 @@ parser_classes = {
     1269: ("TrueType Stems", TrueTypeStemsParser, None),
     1524: ("TrueType Stem PPEMs 1", TrueTypeStemPpems1Parser, None),
     # Probably in font.ttinfo, but not accessible through API:
-    1255: ("TrueType Zones", TrueTypeZonesParser, None),
+    1255: ("TrueType Zones", TrueTypeZonesParser, TrueTypeZonesCompiler),
     # Goes to font:
     2021: ("unicoderanges", UnicodeRangesParser, UnicodeRangesCompiler),
     # Probably in font.ttinfo, but not accessible through API:
@@ -178,7 +179,7 @@ parser_classes = {
     1275: ("codeppm", Int16Parser, Int16Compiler),  # Code Stop PPEM
     1604: ("1604", Int16Parser, Int16Compiler),  # Binary import? e.g. 255
     2032: ("2032", Int16Parser, Int16Compiler),  # Binary import? e.g. 300
-    1273: ("TrueType Zone Deltas", TrueTypeZoneDeltasParser, None),
+    1273: ("TrueType Zone Deltas", TrueTypeZoneDeltasParser, TrueTypeZoneDeltasCompiler),
     # Goes to font again:
     1138: ("fontnames", NameRecordsParser, None),
     1141: ("Custom CMAPs", CustomCmapParser, None),
