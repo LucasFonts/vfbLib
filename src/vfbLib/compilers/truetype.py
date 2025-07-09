@@ -28,7 +28,12 @@ class TrueTypeZoneDeltasCompiler(BaseCompiler):
     """
 
     def _compile(self, data: Any) -> None:
-        deltas = [(zone_index, ppm, shift) for zone_index, (ppm, shift) in data.items()]
+        deltas = []
+        for zone_index, spec in data.items():
+            zone_index = int(zone_index)
+            for ppm, shift in spec.items():
+                deltas.append((zone_index, int(ppm), shift))
+        deltas.sort()
         self.write_value(len(deltas))
         for zone_index, ppm, shift in deltas:
             self.write_value(zone_index)
