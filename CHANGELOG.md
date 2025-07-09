@@ -5,7 +5,7 @@
 Compiler changes:
 
 - Support entry 1255 (TrueType Zones)
-- Support entry 1273 (TrueType Zones)
+- Support entry 1273 (TrueType Zone Deltas)
 
 ## 0.9.5
 
