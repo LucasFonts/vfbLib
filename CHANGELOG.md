@@ -1,5 +1,12 @@
 # Change Log
 
+## 0.9.6
+
+Compiler changes:
+
+- Support entry 1255 (TrueType Zones)
+- Support entry 1273 (TrueType Zones)
+
 ## 0.9.5
 
 Parser changes:
