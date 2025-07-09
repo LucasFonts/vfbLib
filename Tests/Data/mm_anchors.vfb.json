@@ -2078,8 +2078,10 @@
       "decompiled": 128
     },
     {
-      "key": "1093",
-      "decompiled": "0000"
+      "key": "PostScript Hinting Options",
+      "decompiled": {
+        "other": []
+      }
     },
     {
       "key": "1068",
@@ -3126,8 +3128,14 @@
       ]
     },
     {
-      "key": "2010",
-      "decompiled": "040000c0"
+      "key": "Glyph Hinting Options",
+      "decompiled": {
+        "horizontal_3_stem": 1,
+        "vertical_3_stem": 1,
+        "other": [
+          2
+        ]
+      }
     },
     {
       "key": "Glyph Origin",
@@ -3207,8 +3215,14 @@
       ]
     },
     {
-      "key": "2010",
-      "decompiled": "040000c0"
+      "key": "Glyph Hinting Options",
+      "decompiled": {
+        "horizontal_3_stem": 1,
+        "vertical_3_stem": 1,
+        "other": [
+          2
+        ]
+      }
     },
     {
       "key": "Glyph Origin",

@@ -2080,8 +2080,10 @@
       "decompiled": 128
     },
     {
-      "key": "1093",
-      "decompiled": "0000"
+      "key": "PostScript Hinting Options",
+      "decompiled": {
+        "other": []
+      }
     },
     {
       "key": "1068",
@@ -4340,8 +4342,16 @@
       ]
     },
     {
-      "key": "2010",
-      "decompiled": "040000cc"
+      "key": "Glyph Hinting Options",
+      "decompiled": {
+        "horizontal_3_stem": 1,
+        "vertical_3_stem": 1,
+        "other": [
+          2,
+          26,
+          27
+        ]
+      }
     },
     {
       "key": "mask",

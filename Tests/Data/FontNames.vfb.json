@@ -2077,8 +2077,10 @@
       "decompiled": 128
     },
     {
-      "key": "1093",
-      "decompiled": "0000"
+      "key": "PostScript Hinting Options",
+      "decompiled": {
+        "other": []
+      }
     },
     {
       "key": "1068",

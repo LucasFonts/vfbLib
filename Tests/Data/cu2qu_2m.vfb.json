@@ -3870,8 +3870,10 @@
       "decompiled": 0
     },
     {
-      "key": "1093",
-      "decompiled": "0000"
+      "key": "PostScript Hinting Options",
+      "decompiled": {
+        "other": []
+      }
     },
     {
       "key": "1068",
@@ -5617,8 +5619,16 @@
       ]
     },
     {
-      "key": "2010",
-      "decompiled": "040000cc"
+      "key": "Glyph Hinting Options",
+      "decompiled": {
+        "horizontal_3_stem": 1,
+        "vertical_3_stem": 1,
+        "other": [
+          2,
+          26,
+          27
+        ]
+      }
     },
     {
       "key": "mask",
@@ -6520,8 +6530,18 @@
       ]
     },
     {
-      "key": "2010",
-      "decompiled": "cc00002c"
+      "key": "Glyph Hinting Options",
+      "decompiled": {
+        "hint_replacement": 1,
+        "other": [
+          2,
+          3,
+          6,
+          7,
+          26,
+          27
+        ]
+      }
     },
     {
       "key": "mask",
@@ -7065,8 +7085,14 @@
       ]
     },
     {
-      "key": "2010",
-      "decompiled": "040000c0"
+      "key": "Glyph Hinting Options",
+      "decompiled": {
+        "horizontal_3_stem": 1,
+        "vertical_3_stem": 1,
+        "other": [
+          2
+        ]
+      }
     },
     {
       "key": "Glyph Origin",
