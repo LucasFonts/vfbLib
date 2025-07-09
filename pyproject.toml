@@ -23,8 +23,8 @@ classifiers = [
 requires-python = ">=3.10"
 dependencies = [
     "fonttools[ufo] >= 4.45.1",
-    "orjson >= 3.10.13, < 4",
-    "typing_extensions >= 4.8.0",
+    "orjson >= 3.10.18, < 4",
+    "typing_extensions >= 4.14.1",
     "ufonormalizer >= 0.6.1",
     "ufoLib2 >= 0.16.0",
 ]
@@ -34,10 +34,16 @@ toml = ["tomli-w >= 1.0.0"]
 yaml = ["pyyaml >= 6.0.2"]
 all = ["vfbLib[toml]", "vfbLib[yaml]"]
 
+test = [
+    "mypy",
+    "types-pyyaml",
+]
+
 dev = [
     "build",                # packaging build frontend
     "wheel",                # build system (also downloaded during build)
     "setuptools-scm[toml]", # git tags-based versioning (also downloaded during build)
+    "types-pyyaml",
 ]
 
 doc = [
@@ -83,3 +89,6 @@ max-line-length = 88
 exclude = '[\\/]_version\.py$'
 line-length = 88
 target-version = ["py310"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["vfbLib"]
