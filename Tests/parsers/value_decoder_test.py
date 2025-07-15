@@ -1,8 +1,8 @@
-import pytest
-
-from fontTools.misc.textTools import deHexStr
 from io import BytesIO
 from unittest import TestCase
+
+import pytest
+from fontTools.misc.textTools import deHexStr
 
 from vfbLib.parsers.value import read_value
 

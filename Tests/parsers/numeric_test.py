@@ -1,4 +1,5 @@
 from unittest import TestCase
+
 from vfbLib.parsers.numeric import (
     Int16Parser,
     # Int32Parser,

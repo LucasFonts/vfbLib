@@ -3,7 +3,6 @@ from unittest import TestCase
 from vfbLib.ufo.glyph import VfbToUfoGlyph
 from vfbLib.ufo.paths import UfoMasterGlyph
 
-
 # "a"
 open_path = [
     {"type": "move", "flags": 11, "points": [[[92, 365]]]},

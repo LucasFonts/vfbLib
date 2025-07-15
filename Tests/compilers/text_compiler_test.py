@@ -1,9 +1,9 @@
-from fontTools.misc.textTools import deHexStr, hexStr
 from unittest import TestCase
+
+from fontTools.misc.textTools import deHexStr, hexStr
 
 from vfbLib.compilers.text import StringCompiler
 from vfbLib.parsers.text import StringParser
-
 
 expected_regular = hexStr(deHexStr("52 65 67 75 6C 61 72"))
 expected_space = hexStr(deHexStr("57 74 30 20 57 64 31 20"))

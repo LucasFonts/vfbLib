@@ -1,6 +1,8 @@
-from fontTools.designspaceLib import DesignSpaceDocument
 from pathlib import Path
 from unittest import TestCase
+
+from fontTools.designspaceLib import DesignSpaceDocument
+
 from vfbLib.ufo.builder import VfbToUfoBuilder
 from vfbLib.vfb.vfb import Vfb
 
@@ -65,8 +67,7 @@ class GlyphCompilerTest(TestCase):
         # Features
 
         fea0 = (
-            "\n\nlanguagesystem DFLT dflt;\nfeature kern {\n"
-            "  pos a t 100 ;\n} kern;\n"
+            "\n\nlanguagesystem DFLT dflt;\nfeature kern {\n  pos a t 100 ;\n} kern;\n"
         )
 
         assert ufo0.features.text == fea0

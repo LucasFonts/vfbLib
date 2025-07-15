@@ -1,6 +1,7 @@
-from fontTools.misc.textTools import deHexStr, hexStr
 from io import BytesIO
 from unittest import TestCase
+
+from fontTools.misc.textTools import hexStr
 
 from vfbLib.compilers.value import write_value, write_value_long
 

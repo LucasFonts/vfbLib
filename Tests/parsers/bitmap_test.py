@@ -1,6 +1,6 @@
 from unittest import TestCase
-from vfbLib.parsers.bitmap import pprint_bitmap
 
+from vfbLib.parsers.bitmap import pprint_bitmap
 
 bitmaps = [
     {

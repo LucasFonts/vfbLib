@@ -1,6 +1,6 @@
+from pathlib import Path
 from unittest import TestCase
 
-from pathlib import Path
 from vfbLib.ufo.builder import VfbToUfoBuilder
 
 
