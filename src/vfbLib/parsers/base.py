@@ -6,12 +6,12 @@ from struct import unpack
 from typing import TYPE_CHECKING, Any
 
 from vfbLib.helpers import (
+    deHexStr,
+    double_size,
+    hexStr,
     int8_size,
     int16_size,
     int32_size,
-    double_size,
-    deHexStr,
-    hexStr,
 )
 from vfbLib.parsers.value import read_value
 

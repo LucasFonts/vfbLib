@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from typing import TYPE_CHECKING
+
 from vfbLib.helpers import int8_size, int32_size
 
 if TYPE_CHECKING:
