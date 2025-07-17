@@ -32,7 +32,9 @@ class VfbGlyphPointPen(AbstractPointPen):
                 self.glyph.entry.temp_masters = [[] * self.glyphSet.num_masters]
             self.target = self.glyph.entry.temp_masters[self.glyph.master_index]
 
-    def beginPath(self) -> None:
+    def beginPath(
+        self, identifier: str | None = None, **kwargs: dict[str, Any]
+    ) -> None:
         self.currentPath = []
 
     def endPath(self) -> None:
@@ -50,10 +52,11 @@ class VfbGlyphPointPen(AbstractPointPen):
 
     def addPoint(
         self,
-        pt: tuple[int, int],
+        pt: tuple[float, float],
         segmentType: str | None = None,
         smooth: bool = False,
         name: str | None = None,
+        identifier: str | None = None,
         **kwargs: dict[str, Any],
     ) -> None:
         assert self.currentPath is not None
