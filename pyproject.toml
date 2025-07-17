@@ -35,13 +35,19 @@ yaml = ["pyyaml >= 6.0.2"]
 all = ["vfbLib[toml]", "vfbLib[yaml]"]
 
 test = [
-    "mypy",
+    "flake8",
+    # "mypy",
+    "pytest",
+    "ruff",
     "types-pyyaml",
 ]
 
 dev = [
     "build",                # packaging build frontend
+    "flake8",
+    "mypy",
     "wheel",                # build system (also downloaded during build)
+    "ruff",
     "setuptools-scm[toml]", # git tags-based versioning (also downloaded during build)
     "types-pyyaml",
 ]
