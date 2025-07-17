@@ -32,8 +32,9 @@ class StreamReader:
     inherit, but it may be subclassed directly if more flexibility is needed.
     """
 
-    encoding = "cp1252"
-    stream: BufferedReader | BytesIO = BytesIO()
+    def __init__(self) -> None:
+        self.encoding = "cp1252"
+        self.stream: BufferedReader | BytesIO = BytesIO()
 
     def read_double(self) -> float:
         """
@@ -164,10 +165,12 @@ class BaseParser(StreamReader):
     Base class to parse data from a vfb file
     """
 
-    master_count: int = 0
-    stream: BytesIO = BytesIO()
-    ttStemsV_count: int | None = None
-    ttStemsH_count: int | None = None
+    def __init__(self) -> None:
+        self.encoding = "cp1252"
+        self.master_count: int = 0
+        self.stream: BytesIO = BytesIO()
+        self.ttStemsV_count: int | None = None
+        self.ttStemsH_count: int | None = None
 
     def parse(
         self,
