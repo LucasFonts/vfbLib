@@ -1,9 +1,6 @@
 from unittest import TestCase
+
 from vfbLib.tth import (
-    extract_glyph_hints,
-    extract_truetype_hinting,
-    extract_tt_stem_ppem_1,
-    extract_tt_stem_ppems,
     extract_tt_stems,
     extract_tt_zones,
 )

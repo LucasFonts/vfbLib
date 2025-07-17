@@ -1,8 +1,10 @@
 # from fontTools.misc.textTools import deHexStr, hexStr
 # from io import BytesIO
-from pytest import raises
 from unittest import TestCase
-from vfbLib.compilers.base import StreamWriter, BaseCompiler
+
+from pytest import raises
+
+from vfbLib.compilers.base import StreamWriter
 
 
 class StreamWriterTest(TestCase):

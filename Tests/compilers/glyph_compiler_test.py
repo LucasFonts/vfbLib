@@ -1,9 +1,10 @@
-from fontTools.misc.textTools import deHexStr, hexStr
 from io import BytesIO
 from unittest import TestCase
+
+from fontTools.misc.textTools import deHexStr, hexStr
+
 from vfbLib.compilers.glyph import GlyphCompiler
 from vfbLib.parsers.glyph import GlyphParser
-
 
 composite_2_masters_binary = """
 01 09 07 01

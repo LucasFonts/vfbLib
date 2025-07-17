@@ -5,7 +5,7 @@ from struct import pack
 from typing import TYPE_CHECKING, Any
 
 from vfbLib.compilers.value import write_value, write_value_long
-from vfbLib.helpers import int8_size, int16_size, int32_size, deHexStr, hexStr
+from vfbLib.helpers import deHexStr, hexStr, int8_size, int16_size, int32_size
 
 if TYPE_CHECKING:
     from io import BufferedWriter

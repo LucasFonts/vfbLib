@@ -1,5 +1,7 @@
-from fontTools.misc.textTools import hexStr
 from unittest import TestCase
+
+from fontTools.misc.textTools import hexStr
+
 from vfbLib.compilers.header import VfbHeaderCompiler
 
 header_504 = {

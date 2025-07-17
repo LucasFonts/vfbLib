@@ -2,7 +2,6 @@ from unittest import TestCase
 
 from vfbLib.ufo.pshints import update_adobe_hinting
 
-
 ps_hints_empty = """  <hintSetList>
   </hintSetList>"""
 

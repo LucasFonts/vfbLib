@@ -1,4 +1,5 @@
 from pathlib import Path
+
 from vfbLib.vfb.vfb import Vfb
 
 size(1000, 1000)
