@@ -6,6 +6,13 @@ from vfbLib.parsers.base import BaseParser
 logger = logging.getLogger(__name__)
 
 
+settings = {
+    0: "use_custom_tt_values",
+    1: "create_vdmx",
+    2: "add_null_cr_space",
+}
+
+
 class TrueTypeInfoParser(BaseParser):
     """
     A parser that reads data as "TrueType Info" values.
@@ -81,12 +88,6 @@ class TrueTypeInfoParser(BaseParser):
                 all_bits = self.read_value()
                 flags = binaryToIntList(all_bits & 0xFFFF)
                 options = binaryToIntList(all_bits >> 16)
-
-                settings = {
-                    0: "use_custom_tt_values",
-                    1: "create_vdmx",
-                    2: "add_null_cr_space",
-                }
                 info[dk] = {
                     "flags": flags,
                     "options": [settings.get(i, i) for i in options],
