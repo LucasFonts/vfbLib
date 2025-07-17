@@ -9,7 +9,8 @@ logger = logging.getLogger(__name__)
 
 class VfbHeaderParser(StreamReader):
     def __init__(self, stream: BufferedReader) -> None:
-        self.stream: BufferedReader = stream
+        self.encoding = "cp1252"
+        self.stream: BufferedReader = stream  # type: ignore
 
     def parse(self) -> dict[str, Any]:
         header: dict[str, Any] = {}
