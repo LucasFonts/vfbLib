@@ -2,8 +2,6 @@
 #     # NotRequired is only available in Python 3.11+
 #     from typing import NotRequired, TypedDict
 # except ImportError:
-from typing import Optional
-
 from typing_extensions import NotRequired, TypedDict
 
 from vfbLib.typing import HintTuple
@@ -22,7 +20,7 @@ UfoComponent = tuple[str, tuple[float, float, float, float, int, int]]
 UfoGroups = dict[str, list[str]]  # name, glyphs
 UfoMasterKerning = dict[tuple[str, str], int]  # Lstr, Rstr, value
 UfoMMKerning = dict[tuple[str, int], list[int]]  # Lstr, Rid, master values
-UfoSegment = tuple[Optional[str], bool, Optional[str], UfoPoint]
+UfoSegment = tuple[str | None, bool, str | None, UfoPoint]
 UfoContour = list[UfoSegment]
 TUfoTTZonesDict = dict[str, TUfoTTZoneDict]
 
