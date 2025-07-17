@@ -207,7 +207,7 @@ class BaseParser(StreamReader):
             Any: The parsed structure. The type depends on the specific entry that is
             being parsed.
         """
-        self.stream = BytesIO(stream.read(size))
+        self.stream = BytesIO(stream.read(size))  # type: ignore
         self.master_count = master_count
         self.ttStemsV_count = ttStemsV_count
         self.ttStemsH_count = ttStemsH_count
