@@ -30,7 +30,7 @@ class VfbToUfoGlyph:
         self.hintmasks: list[tuple[str, int]] = []
         self.labels: dict[str, int] = {}
         self.lib: dict[str, Any] = {}
-        self.links: LinkDict = {}
+        self.links: LinkDict = LinkDict(x=[], y=[])
         self.mm_anchors: list[Any] | None = None
         self.mm_components: list[Any] = []
         self.mm_guides: GuideDict | None = None

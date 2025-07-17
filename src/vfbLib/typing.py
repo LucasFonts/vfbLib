@@ -85,8 +85,8 @@ class Instruction(TypedDict):
 
 
 class LinkDict(TypedDict):
-    x: NotRequired[list[tuple[int, int]]]
-    y: NotRequired[list[tuple[int, int]]]
+    x: list[tuple[int, int]]
+    y: list[tuple[int, int]]
 
 
 class MMAnchor(TypedDict):

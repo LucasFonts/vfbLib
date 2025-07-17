@@ -451,7 +451,7 @@ class LinkParser(BaseParser):
             for _ in range(num):
                 src = self.read_value()
                 tgt = self.read_value()
-                links["yx"[i]].append([src, tgt])
+                links[("y", "x")[i]].append((src, tgt))
         return dict(links)
 
 
