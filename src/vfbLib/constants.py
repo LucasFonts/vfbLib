@@ -150,12 +150,12 @@ parser_classes = {
     1058: ("vp_id", Int16Parser, Int16Compiler),
     1060: ("ms_id", Int16Parser, Int16Compiler),
     1059: ("pcl_chars_set", StringParser, StringCompiler),
+
+    # Goes to font.ttinfo:
     1261: ("Binary cvt Table", BaseParser, HexStringCompiler),
     1262: ("Binary prep Table", BaseParser, HexStringCompiler),
     1263: ("Binary fpgm Table", BaseParser, HexStringCompiler),
-
-    # Goes to font.ttinfo:
-    1265: ("gasp", GaspParser, None),  # Gasp Ranges
+    1265: ("gasp", GaspParser, None),
     1264: ("ttinfo", TrueTypeInfoParser, None),
     # Goes to font.ttinfo:
     1271: ("vdmx", VdmxParser, None),
