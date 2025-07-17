@@ -15,7 +15,11 @@ from vfbLib.compilers.numeric import (
     SignedInt32Compiler,
     UnicodeRangesCompiler,
 )
-from vfbLib.compilers.text import OpenTypeStringCompiler, StringCompiler
+from vfbLib.compilers.text import (
+    NameRecordsCompiler,
+    OpenTypeStringCompiler,
+    StringCompiler,
+)
 from vfbLib.compilers.truetype import TrueTypeZoneDeltasCompiler, TrueTypeZonesCompiler
 from vfbLib.parsers.base import (  # EncodedValueParser,; EncodedKeyValuesParser,
     BaseParser,
@@ -181,7 +185,7 @@ parser_classes = {
     2032: ("2032", Int16Parser, Int16Compiler),  # Binary import? e.g. 300
     1273: ("TrueType Zone Deltas", TrueTypeZoneDeltasParser, TrueTypeZoneDeltasCompiler),  # noqa: E501
     # Goes to font again:
-    1138: ("fontnames", NameRecordsParser, None),
+    1138: ("fontnames", NameRecordsParser, NameRecordsCompiler),
     1141: ("Custom CMAPs", CustomCmapParser, None),
     1136: ("PCLT Table", PcltParser, None),
     2022: ("Export PCLT Table", Int16Parser, Int16Compiler),
