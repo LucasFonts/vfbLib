@@ -96,6 +96,19 @@ class TrueTypeInfoCompiler(BaseCompiler):
         self.write_uint8(0x32)  # End marker
 
 
+class TrueTypeStemsCompiler(BaseCompiler):
+    def _compile(self, data: Any) -> None:
+        for direction in ("ttStemsV", "ttStemsH"):
+            stems = data[direction]
+            self.write_value(len(stems))
+            for stem in stems:
+                self.write_value(stem["value"])  # width
+                stem_name = stem["name"].encode(self.encoding)
+                self.write_uint8(len(stem_name))
+                self.write_bytes(stem_name)
+                self.write_value(stem["round"]["6"])
+
+
 class TrueTypeZonesCompiler(BaseCompiler):
     """
     A compiler that compiles TrueType hinting "alignment zones" data

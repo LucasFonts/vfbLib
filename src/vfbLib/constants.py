@@ -28,6 +28,7 @@ from vfbLib.compilers.text import (
 from vfbLib.compilers.truetype import (
     GaspCompiler,
     TrueTypeInfoCompiler,
+    TrueTypeStemsCompiler,
     TrueTypeZoneDeltasCompiler,
     TrueTypeZonesCompiler,
     VdmxCompiler,
@@ -181,8 +182,8 @@ parser_classes = {
     1266: ("TrueType Stem PPEMs 2 And 3", TrueTypeStemPpems23Parser, None),
     1268: ("TrueType Stem PPEMs", TrueTypeStemPpemsParser, None),
     # Probably in font.ttinfo, but not accessible through API:
-    1269: ("TrueType Stems", TrueTypeStemsParser, None),
     1524: ("TrueType Stem PPEMs 1", TrueTypeStemPpems1Parser, None),
+    1269: ("TrueType Stems", TrueTypeStemsParser, TrueTypeStemsCompiler),
     # Probably in font.ttinfo, but not accessible through API:
     1255: ("TrueType Zones", TrueTypeZonesParser, TrueTypeZonesCompiler),
 

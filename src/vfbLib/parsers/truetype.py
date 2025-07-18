@@ -166,7 +166,7 @@ class TrueTypeStemsParser(BaseParser):
             for _ in range(num_stems):
                 width = self.read_value()
                 stem_name_length = self.read_uint8()
-                stem_name = self.stream.read(stem_name_length).decode("cp1252")
+                stem_name = self.stream.read(stem_name_length).decode(self.encoding)
                 ppm6 = self.read_value()
 
                 direction.append(

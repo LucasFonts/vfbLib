@@ -5,6 +5,7 @@ from fontTools.misc.textTools import deHexStr, hexStr
 from vfbLib.compilers.truetype import (
     GaspCompiler,
     TrueTypeInfoCompiler,
+    TrueTypeStemsCompiler,
     TrueTypeZoneDeltasCompiler,
     TrueTypeZonesCompiler,
     VdmxCompiler,
@@ -199,6 +200,55 @@ class TrueTypeInfoCompilerTest(TestCase):
             }
         )
         assert result == exp_info
+
+
+class TrueTypeStemsCompilerTest(TestCase):
+    def test_plex_sans(self):
+        raw_stems = {
+            "ttStemsV": [
+                {"value": 77, "name": "currency_stroke", "round": {"6": 72}},
+                {"value": 84, "name": "currency_white", "round": {"6": 66}},
+                {"value": 83, "name": "diacritics_thick", "round": {"6": 67}},
+                {"value": 61, "name": "diacritics_thin", "round": {"6": 91}},
+                {"value": 79, "name": "g_eye", "round": {"6": 70}},
+                {"value": 91, "name": "lc-hstem", "round": {"6": 60}},
+                {"value": 70, "name": "lc-mid", "round": {"6": 79}},
+                {"value": 108, "name": "logo_ce", "round": {"6": 51}},
+                {"value": 75, "name": "logo_fcc", "round": {"6": 74}},
+                {"value": 50, "name": "ord_mid", "round": {"6": 110}},
+                {"value": 40, "name": "registered", "round": {"6": 138}},
+                {"value": 140, "name": "spur", "round": {"6": 40}},
+                {"value": 62, "name": "sup-hstem", "round": {"6": 89}},
+                {"value": 100, "name": "uc-hstem", "round": {"6": 56}},
+                {"value": 152, "name": "tosf_descender", "round": {"6": 37}},
+            ],
+            "ttStemsH": [
+                {"value": 109, "name": "X: 109", "round": {"6": 51}},
+                {"value": 91, "name": "X: 91", "round": {"6": 61}},
+            ],
+        }
+        expected_stems = (
+            "9a"  # 15
+            "d80f63757272656e63795f7374726f6b65d3"
+            "df0e63757272656e63795f7768697465cd"
+            "de10646961637269746963735f746869636bce"
+            "c80f646961637269746963735f7468696ee6"
+            "da05675f657965d1"
+            "e6086c632d687374656dc7"
+            "d1066c632d6d6964da"
+            "f700076c6f676f5f6365be"
+            "d6086c6f676f5f666363d5"
+            "bd076f72645f6d6964f702"
+            # 40
+            "b30a72656769737465726564f71e"
+            "f7200473707572b3"
+            "c9097375702d687374656de4"
+            "ef0875632d687374656dc3"
+            "f72c0e746f73665f64657363656e646572b08d"
+            "f70106583a20313039bee605583a203931c8"
+        )
+        result = TrueTypeStemsCompiler().compile_hex(raw_stems)
+        assert result == expected_stems
 
 
 class TrueTypeZoneDeltasCompilerTest(TestCase):
