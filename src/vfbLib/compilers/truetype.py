@@ -123,3 +123,12 @@ class TrueTypeZoneDeltasCompiler(BaseCompiler):
             self.write_value(zone_index)
             self.write_value(ppm)
             self.write_value(shift)
+
+
+class VdmxCompiler(BaseCompiler):
+    def _compile(self, data: Any) -> None:
+        self.write_value(len(data))
+        for rec in data:
+            self.write_value(rec["pelHeight"])
+            self.write_value(rec["max"])
+            self.write_value(rec["min"])

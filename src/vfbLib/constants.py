@@ -29,6 +29,7 @@ from vfbLib.compilers.truetype import (
     TrueTypeInfoCompiler,
     TrueTypeZoneDeltasCompiler,
     TrueTypeZonesCompiler,
+    VdmxCompiler,
 )
 from vfbLib.parsers.base import (  # EncodedValueParser,; EncodedKeyValuesParser,
     BaseParser,
@@ -171,7 +172,7 @@ parser_classes = {
     1265: ("gasp", GaspParser, None),
     1264: ("ttinfo", TrueTypeInfoParser, TrueTypeInfoCompiler),
     # Goes to font.ttinfo:
-    1271: ("vdmx", VdmxParser, None),
+    1271: ("vdmx", VdmxParser, VdmxCompiler),
     1270: ("hhea_line_gap", Int16Parser, Int16Compiler),
     1278: ("hhea_ascender", SignedInt16Parser, SignedInt16Compiler),
     1279: ("hhea_descender", SignedInt16Parser, SignedInt16Compiler),
