@@ -5,6 +5,9 @@ from fontTools.misc.textTools import deHexStr, hexStr
 from vfbLib.compilers.truetype import (
     GaspCompiler,
     TrueTypeInfoCompiler,
+    TrueTypeStemPpems1Compiler,
+    TrueTypeStemPpems23Compiler,
+    TrueTypeStemPpemsCompiler,
     TrueTypeStemsCompiler,
     TrueTypeZoneDeltasCompiler,
     TrueTypeZonesCompiler,
@@ -200,6 +203,111 @@ class TrueTypeInfoCompilerTest(TestCase):
             }
         )
         assert result == exp_info
+
+
+class TrueTypeStemPpems1CompilerTest(TestCase):
+    def test_plex_sans(self):
+        raw_stem_ppms = {
+            "ttStemsV": [
+                {"stem": 0, "round": {"1": 0}},
+                {"stem": 1, "round": {"1": 0}},
+                {"stem": 2, "round": {"1": 0}},
+                {"stem": 3, "round": {"1": 0}},
+                {"stem": 4, "round": {"1": 0}},
+                {"stem": 5, "round": {"1": 0}},
+                {"stem": 6, "round": {"1": 0}},
+                {"stem": 7, "round": {"1": 0}},
+                {"stem": 8, "round": {"1": 0}},
+                {"stem": 9, "round": {"1": 0}},
+                {"stem": 10, "round": {"1": 0}},
+                {"stem": 11, "round": {"1": 0}},
+                {"stem": 12, "round": {"1": 0}},
+                {"stem": 13, "round": {"1": 0}},
+                {"stem": 14, "round": {"1": 0}},
+            ],
+            "ttStemsH": [
+                {"stem": 0, "round": {"1": 0}},
+                {"stem": 1, "round": {"1": 0}},
+            ],
+        }
+        expected_stem_ppms = "8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b"
+        result = TrueTypeStemPpems1Compiler().compile_hex(raw_stem_ppms)
+        assert result == expected_stem_ppms
+
+
+class TrueTypeStemPpems23CompilerTest(TestCase):
+    def test_plex_sans(self):
+        raw_stem_ppms = {
+            "ttStemsV": [
+                {"stem": 0, "round": {"2": 14, "3": 21}},
+                {"stem": 1, "round": {"2": 21, "3": 43}},
+                {"stem": 2, "round": {"2": 21, "3": 31}},
+                {"stem": 3, "round": {"2": 21, "3": 31}},
+                {"stem": 4, "round": {"2": 21, "3": 31}},
+                {"stem": 5, "round": {"2": 21, "3": 31}},
+                {"stem": 6, "round": {"2": 16, "3": 26}},
+            ],
+            "ttStemsH": [
+                {"stem": 0, "round": {"2": 19, "3": 21}},
+                {"stem": 1, "round": {"2": 19, "3": 31}},
+                {"stem": 2, "round": {"2": 19, "3": 31}},
+                {"stem": 3, "round": {"2": 19, "3": 31}},
+                {"stem": 4, "round": {"2": 19, "3": 31}},
+                {"stem": 5, "round": {"2": 19, "3": 31}},
+            ],
+        }
+        expected_stem_ppms = (
+            "92"  # 7
+            "99a0"
+            "a0b6"
+            "a0aa"
+            "a0aa"
+            "a0aa"
+            "a0aa"
+            "9ba5"
+            "91"  # 6
+            "9ea0"
+            "9eaa"
+            "9eaa"
+            "9eaa"
+            "9eaa"
+            "9eaa"
+        )
+        result = TrueTypeStemPpems23Compiler().compile_hex(raw_stem_ppms)
+        assert result == expected_stem_ppms
+
+
+class TrueTypeStemPpemsCompilerTest(TestCase):
+    def test_plex_sans(self):
+        raw_stem_ppms = {
+            "ttStemsV": [
+                {"stem": 0, "round": {"2": 21, "3": 35, "4": 46, "5": 59}},
+                {"stem": 1, "round": {"2": 21, "3": 35, "4": 42, "5": 54}},
+                {"stem": 2, "round": {"2": 17, "3": 31, "4": 43, "5": 55}},
+                {"stem": 3, "round": {"2": 25, "3": 41, "4": 58, "5": 74}},
+                {"stem": 4, "round": {"2": 17, "3": 28, "4": 45, "5": 57}},
+                {"stem": 5, "round": {"2": 17, "3": 27, "4": 37, "5": 50}},
+                {"stem": 6, "round": {"2": 19, "3": 35, "4": 50, "5": 65}},
+                {"stem": 7, "round": {"2": 14, "3": 24, "4": 33, "5": 42}},
+                {"stem": 8, "round": {"2": 20, "3": 34, "4": 47, "5": 60}},
+                {"stem": 9, "round": {"2": 30, "3": 50, "4": 70, "5": 90}},
+                {"stem": 10, "round": {"2": 38, "3": 63, "4": 88, "5": 113}},
+                {"stem": 11, "round": {"2": 10, "3": 17, "4": 24, "5": 32}},
+                {"stem": 12, "round": {"2": 27, "3": 41, "4": 57, "5": 73}},
+                {"stem": 13, "round": {"2": 17, "3": 27, "4": 37, "5": 50}},
+                {"stem": 14, "round": {"2": 10, "3": 17, "4": 24, "5": 30}},
+            ],
+            "ttStemsH": [
+                {"stem": 0, "round": {"2": 14, "3": 23, "4": 33, "5": 42}},
+                {"stem": 1, "round": {"2": 17, "3": 28, "4": 39, "5": 50}},
+            ],
+        }
+        expected_stem_ppms = (
+            "9a"  # 15
+            "a0aeb9c6a0aeb5c19caab6c2a4b4c5d59ca7b8c49ca6b0bd9eaebdcc99a3acb59fadbac7a9bdd1e5b1cae3f705959ca3aba6b4c4d49ca6b0bd959ca3a98d99a2acb59ca7b2bd"
+        )
+        result = TrueTypeStemPpemsCompiler().compile_hex(raw_stem_ppms)
+        assert result == expected_stem_ppms
 
 
 class TrueTypeStemsCompilerTest(TestCase):

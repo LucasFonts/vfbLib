@@ -96,6 +96,34 @@ class TrueTypeInfoCompiler(BaseCompiler):
         self.write_uint8(0x32)  # End marker
 
 
+class TrueTypeStemPpems1Compiler(BaseCompiler):
+    def _compile(self, data: Any) -> None:
+        for direction in ("ttStemsV", "ttStemsH"):
+            stems = data[direction]
+            for stem in stems:
+                self.write_value(stem["round"]["1"])
+
+
+class TrueTypeStemPpems23Compiler(BaseCompiler):
+    def _compile(self, data: Any) -> None:
+        for direction in ("ttStemsV", "ttStemsH"):
+            stems = data[direction]
+            self.write_value(len(stems))
+            for stem in stems:
+                for k in ("2", "3"):
+                    self.write_value(stem["round"][k])
+
+
+class TrueTypeStemPpemsCompiler(BaseCompiler):
+    def _compile(self, data: Any) -> None:
+        for direction in ("ttStemsV", "ttStemsH"):
+            stems = data[direction]
+            self.write_value(len(stems))
+            for stem in stems:
+                for k in range(2, 6):
+                    self.write_value(stem["round"][str(k)])
+
+
 class TrueTypeStemsCompiler(BaseCompiler):
     def _compile(self, data: Any) -> None:
         for direction in ("ttStemsV", "ttStemsH"):
