@@ -136,11 +136,11 @@ parser_classes = {
     1129: ("tt_u_id", StringParser, StringCompiler),
     1127: ("style_name", StringParser, StringCompiler),
     1137: ("pref_style_name", StringParser, StringCompiler),
-    1139: ("mac_compatible", StringParser, StringCompiler),  # OT Mac Name
+    1139: ("mac_compatible", StringParser, StringCompiler),
     1140: ("1140", BaseParser, HexStringCompiler),
-    1121: ("vendor", StringParser, StringCompiler),  # vendorID
-    1133: ("xuid", IntListParser, IntListCompiler),  # Type 1 XUIDs
-    1134: ("xuid_num", Int16Parser, Int16Compiler),  # Type 1 XUIDs Count
+    1121: ("vendor", StringParser, StringCompiler),
+    1133: ("xuid", IntListParser, IntListCompiler),
+    1134: ("xuid_num", Int16Parser, Int16Compiler),
     1132: ("year", Int16Parser, Int16Compiler),
     1130: ("version_major", Int16Parser, Int16Compiler),
     1131: ("version_minor", Int16Parser, Int16Compiler),
@@ -168,11 +168,10 @@ parser_classes = {
     1264: ("ttinfo", TrueTypeInfoParser, None),
     # Goes to font.ttinfo:
     1271: ("vdmx", VdmxParser, None),
-    # Goes to font.ttinfo:
     1270: ("hhea_line_gap", Int16Parser, Int16Compiler),
     1278: ("hhea_ascender", SignedInt16Parser, SignedInt16Compiler),
     1279: ("hhea_descender", SignedInt16Parser, SignedInt16Compiler),
-    # hstem_data and vstem_data:
+    # hstem_data and vstem_data, goes to font.ttinfo:
     1266: ("TrueType Stem PPEMs 2 And 3", TrueTypeStemPpems23Parser, None),
     1268: ("TrueType Stem PPEMs", TrueTypeStemPpemsParser, None),
     # Probably in font.ttinfo, but not accessible through API:
@@ -180,15 +179,18 @@ parser_classes = {
     1524: ("TrueType Stem PPEMs 1", TrueTypeStemPpems1Parser, None),
     # Probably in font.ttinfo, but not accessible through API:
     1255: ("TrueType Zones", TrueTypeZonesParser, TrueTypeZonesCompiler),
+
     # Goes to font:
     2021: ("unicoderanges", UnicodeRangesParser, UnicodeRangesCompiler),
+
     # Probably in font.ttinfo, but not accessible through API:
     1272: ("stemsnaplimit", Int16Parser, Int16Compiler),  # Pixel Snap
     1274: ("zoneppm", Int16Parser, Int16Compiler),  # Zone Stop PPEM
     1275: ("codeppm", Int16Parser, Int16Compiler),  # Code Stop PPEM
     1604: ("1604", Int16Parser, Int16Compiler),  # Binary import? e.g. 255
     2032: ("2032", Int16Parser, Int16Compiler),  # Binary import? e.g. 300
-    1273: ("TrueType Zone Deltas", TrueTypeZoneDeltasParser, TrueTypeZoneDeltasCompiler),  # noqa: E501
+    1273: ("TrueType Zone Deltas", TrueTypeZoneDeltasParser, TrueTypeZoneDeltasCompiler),
+
     # Goes to font again:
     1138: ("fontnames", NameRecordsParser, NameRecordsCompiler),
     1141: ("Custom CMAPs", CustomCmapParser, None),
