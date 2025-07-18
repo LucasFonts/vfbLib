@@ -3,6 +3,90 @@ from __future__ import annotations
 from typing import Any
 
 from vfbLib.compilers.base import BaseCompiler
+from vfbLib.helpers import intListToBinary
+from vfbLib.parsers.truetype import info_names, settings
+
+
+def convert_flags_options_to_int(data: dict[str, dict[str, list[int]]]) -> int:
+    value = 0
+    head_flags_options = data["head_flags"]
+    assert isinstance(head_flags_options, dict)
+    flags_list: list[int] = head_flags_options.get("flags", [])
+    value = intListToBinary(flags_list)
+    options: tuple[str]
+    if options := tuple(head_flags_options.get("options", [])):
+        option_bits = []
+        for k, v in settings.items():
+            if v in options:
+                option_bits.append(k)
+
+        value += intListToBinary(option_bits) << 16
+    return value
+
+
+class TrueTypeInfoCompiler(BaseCompiler):
+    def _compile(self, data: Any) -> None:
+        for k in (0x33, 0x34, 0x35, 0x36, 0x37, 0x38):
+            self.write_uint8(k)
+            self.write_value(data[info_names[k]])
+
+        # Convert combined flags and options dict back to a single int
+        head_flags_options = convert_flags_options_to_int(data)
+        self.write_uint8(0x39)
+        self.write_value(head_flags_options)
+
+        for k in (
+            0x3A,
+            0x3B,
+            0x3C,
+            0x56,
+            0x57,
+            0x3D,
+            0x3E,
+            0x3F,
+            0x40,
+            0x41,
+            0x42,
+            0x43,
+            0x44,
+            0x45,
+            0x46,
+            0x47,
+            0x48,
+            0x49,
+            0x4A,
+            0x4B,
+        ):
+            self.write_uint8(k)
+            self.write_value(data[info_names[k]])
+
+        # PANOSE
+        values = data[info_names[0x4C]]
+        assert len(values) == 10
+        self.write_uint8(0x4C)
+        for value in values:
+            self.write_uint8(value)
+
+        for k in (0x4D, 0x4E, 0x4F, 0x50, 0x51, 0x52, 0x5C):
+            self.write_uint8(k)
+            self.write_value(data[info_names[k]])
+
+        # HDMX 1 and 2
+        for k in (0x53, 0x58):
+            values = data[info_names[k]]
+            self.write_uint8(k)
+            self.write_value(len(values))
+            for value in values:
+                self.write_uint8(value)
+
+        # Codepages
+        cp_dict = data[info_names[0x54]]
+        self.write_uint8(0x54)
+        for ck in ("os2_ul_code_page_range1", "os2_ul_code_page_range2"):
+            value = cp_dict[ck]
+            self.write_value(value)
+
+        self.write_uint8(0x32)  # End marker
 
 
 class TrueTypeZonesCompiler(BaseCompiler):
