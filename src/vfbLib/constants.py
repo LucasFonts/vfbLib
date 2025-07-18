@@ -26,6 +26,7 @@ from vfbLib.compilers.text import (
     StringCompiler,
 )
 from vfbLib.compilers.truetype import (
+    GaspCompiler,
     TrueTypeInfoCompiler,
     TrueTypeZoneDeltasCompiler,
     TrueTypeZonesCompiler,
@@ -35,7 +36,7 @@ from vfbLib.parsers.base import (  # EncodedValueParser,; EncodedKeyValuesParser
     BaseParser,
     EncodedValueListParser,
     EncodedValueListWithCountParser,
-    GaspParser,
+    GaspParser,  # TODO: Should move to parsers.truetype
     GlyphEncodingParser,
     MappingModeParser,
     OpenTypeKerningClassFlagsParser,
@@ -169,7 +170,7 @@ parser_classes = {
     1261: ("cvt", BaseParser, HexStringCompiler),  # Binary cvt Table
     1262: ("prep", BaseParser, HexStringCompiler),  # Binary prep Table
     1263: ("fpgm", BaseParser, HexStringCompiler),  # Binary fpgm Table
-    1265: ("gasp", GaspParser, None),
+    1265: ("gasp", GaspParser, GaspCompiler),
     1264: ("ttinfo", TrueTypeInfoParser, TrueTypeInfoCompiler),
     # Goes to font.ttinfo:
     1271: ("vdmx", VdmxParser, VdmxCompiler),

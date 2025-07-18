@@ -3,6 +3,7 @@ from unittest import TestCase
 from fontTools.misc.textTools import deHexStr, hexStr
 
 from vfbLib.compilers.truetype import (
+    GaspCompiler,
     TrueTypeInfoCompiler,
     TrueTypeZoneDeltasCompiler,
     TrueTypeZonesCompiler,
@@ -42,6 +43,26 @@ zones = {
         {"position": 330, "value": 6, "name": "sup_bot"},
     ],
 }
+
+
+class GaspCompilerTest(TestCase):
+    def test(self):
+        expected_gasp = (
+            # 8 10
+            "08000a00"
+            # 120 15
+            "78000f00"
+            # 65535 10
+            "ffff0a00"
+        )
+        result = GaspCompiler().compile_hex(
+            [
+                {"maxPpem": 8, "flags": 10},
+                {"maxPpem": 120, "flags": 15},
+                {"maxPpem": 65535, "flags": 10},
+            ]
+        )
+        assert result == expected_gasp
 
 
 class TrueTypeInfoCompilerTest(TestCase):

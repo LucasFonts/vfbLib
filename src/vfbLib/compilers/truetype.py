@@ -24,6 +24,13 @@ def convert_flags_options_to_int(data: dict[str, dict[str, list[int]]]) -> int:
     return value
 
 
+class GaspCompiler(BaseCompiler):
+    def _compile(self, data: Any) -> None:
+        for rec in data:
+            self.write_uint16(rec["maxPpem"])
+            self.write_uint16(rec["flags"])
+
+
 class TrueTypeInfoCompiler(BaseCompiler):
     def _compile(self, data: Any) -> None:
         for k in (0x33, 0x34, 0x35, 0x36, 0x37, 0x38):
