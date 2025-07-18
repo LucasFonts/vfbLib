@@ -150,7 +150,7 @@ parser_classes = {
     1131: ("version_minor", Int16Parser, Int16Compiler),
     1135: ("upm", Int16Parser, Int16Compiler),
     1090: ("fond_id", Int16Parser, Int16Compiler),
-    1093: ("PostScript Hinting Options", PostScriptGlobalHintingOptionsParser, PostScriptGlobalHintingOptionsCompiler),
+    1093: ("PostScript Hinting Options", PostScriptGlobalHintingOptionsParser, PostScriptGlobalHintingOptionsCompiler),  # noqa: E501
     1068: ("1068", EncodedValueListWithCountParser, EncodedValueListWithCountCompiler),
     1530: ("blue_values_num", Int16Parser, Int16Compiler),
     1531: ("other_blues_num", Int16Parser, Int16Compiler),
@@ -193,7 +193,7 @@ parser_classes = {
     1275: ("codeppm", Int16Parser, Int16Compiler),  # Code Stop PPEM
     1604: ("1604", Int16Parser, Int16Compiler),  # Binary import? e.g. 255
     2032: ("2032", Int16Parser, Int16Compiler),  # Binary import? e.g. 300
-    1273: ("TrueType Zone Deltas", TrueTypeZoneDeltasParser, TrueTypeZoneDeltasCompiler),
+    1273: ("TrueType Zone Deltas", TrueTypeZoneDeltasParser, TrueTypeZoneDeltasCompiler),  # noqa: E501
 
     # Goes to font again:
     1138: ("fontnames", NameRecordsParser, NameRecordsCompiler),
@@ -247,7 +247,7 @@ parser_classes = {
     2013: ("Glyph Bitmaps", GlyphBitmapParser, None),
     2023: ("2023", EncodedValueListParser, None),  # 1 encoded value per master
     2019: ("Glyph Sketch", GlyphSketchParser, None),
-    2010: ("Glyph Hinting Options", PostScriptGlyphHintingOptionsParser, PostScriptGlyphHintingOptionsCompiler),
+    2010: ("Glyph Hinting Options", PostScriptGlyphHintingOptionsParser, PostScriptGlyphHintingOptionsCompiler),  # noqa: E501
     2009: ("mask", MaskParser, None),
     2011: ("mask.metrics", MaskMetricsParser, None),  # Single master mask metrics
     2028: ("mask.metrics_mm", MaskMetricsMMParser, None),  # Mask metrics master 2 to 16
