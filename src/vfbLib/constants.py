@@ -211,8 +211,8 @@ parser_classes = {
     # Repeat for each OpenType class:
     1277: ("OpenType Class", StringParser, StringCompiler),  # Font.classes
 
-    513: ("513", BaseParser, None),
-    271: ("271", BaseParser, None),
+    513: ("513", BaseParser, HexStringCompiler),
+    271: ("271", BaseParser, HexStringCompiler),
     1513: ("Axis Count", Int16Parser, Int16Compiler),
     1514: ("Axis Name", StringParser, StringCompiler),
     1523: ("Anisotropic Interpolation Mappings", AnisotropicInterpolationsParser, None),
@@ -229,7 +229,7 @@ parser_classes = {
     # Repeat PostScript Info for each master:
     1536: ("PostScript Info", PostScriptInfoParser, PostScriptInfoCompiler),
 
-    527: ("527", BaseParser, None),
+    527: ("527", BaseParser, HexStringCompiler),
     1294: ("Global Guides", GlobalGuidesParser, None),
     1296: ("Global Guide Properties", GuidePropertiesParser, None),
     1295: ("Global Mask", GlobalMaskParser, None),
