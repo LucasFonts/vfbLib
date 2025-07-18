@@ -96,7 +96,13 @@ class StreamWriter:
         self.stream.write(value.to_bytes(int16_size, byteorder="little", signed=False))
 
     def write_uint32(self, value: int) -> None:
-        raise NotImplementedError
+        """
+        Write an unsigned 32-bit integer to the stream.
+
+        Args:
+            value (int): The integer value to write.
+        """
+        self.stream.write(value.to_bytes(int32_size, byteorder="little", signed=False))
 
     def write_value(self, value: int, shortest=True) -> None:
         """

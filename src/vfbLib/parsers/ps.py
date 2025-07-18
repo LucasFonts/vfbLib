@@ -6,6 +6,17 @@ from vfbLib.parsers.base import BaseParser
 logger = logging.getLogger(__name__)
 
 
+global_options = (
+    ("generate_flex", 0),  # Automatically generate Flex hints in T1 and OT
+)
+
+glyph_options = (
+    ("hint_replacement", 29),  # Hint Replacement
+    ("horizontal_3_stem", 30),  # Generate horizontal 3-stem
+    ("vertical_3_stem", 31),  # Generate vertical 3-stem
+)
+
+
 class PostScriptInfoParser(BaseParser):
     """
     A parser that reads data into a dict of PostScript font info.
@@ -53,9 +64,7 @@ class PostScriptGlobalHintingOptionsParser(BaseParser):
     def _parse(self):
         bits = set(binaryToIntList(self.read_uint16()))
         d = {}
-        for k, bit in (
-            ("generate_flex", 0),  # Automatically generate Flex hints in T1 and OT
-        ):
+        for k, bit in global_options:
             if bit in bits:
                 bits.discard(bit)
                 d[k] = 1
@@ -73,11 +82,7 @@ class PostScriptGlyphHintingOptionsParser(BaseParser):
     def _parse(self):
         bits = set(binaryToIntList(self.read_uint32()))
         d = {}
-        for k, bit in (
-            ("hint_replacement", 29),  # Hint Replacement
-            ("horizontal_3_stem", 30),  # Generate horizontal 3-stem
-            ("vertical_3_stem", 31),  # Generate vertical 3-stem
-        ):
+        for k, bit in glyph_options:
             if bit in bits:
                 bits.discard(bit)
                 d[k] = 1

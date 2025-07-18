@@ -15,6 +15,11 @@ from vfbLib.compilers.numeric import (
     SignedInt32Compiler,
     UnicodeRangesCompiler,
 )
+from vfbLib.compilers.ps import (
+    PostScriptGlobalHintingOptionsCompiler,
+    PostScriptGlyphHintingOptionsCompiler,
+    PostScriptInfoCompiler,
+)
 from vfbLib.compilers.text import (
     NameRecordsCompiler,
     OpenTypeStringCompiler,
@@ -141,7 +146,7 @@ parser_classes = {
     1131: ("version_minor", Int16Parser, Int16Compiler),
     1135: ("upm", Int16Parser, Int16Compiler),
     1090: ("fond_id", Int16Parser, Int16Compiler),
-    1093: ("PostScript Hinting Options", PostScriptGlobalHintingOptionsParser, None),  # noqa: E501
+    1093: ("PostScript Hinting Options", PostScriptGlobalHintingOptionsParser, PostScriptGlobalHintingOptionsCompiler),
     1068: ("1068", EncodedValueListWithCountParser, EncodedValueListWithCountCompiler),
     1530: ("blue_values_num", Int16Parser, Int16Compiler),
     1531: ("other_blues_num", Int16Parser, Int16Compiler),
@@ -220,7 +225,7 @@ parser_classes = {
     1254: ("Primary Instances", PrimaryInstancesParser, None),
 
     # Repeat PostScript Info for each master:
-    1536: ("PostScript Info", PostScriptInfoParser, None),
+    1536: ("PostScript Info", PostScriptInfoParser, PostScriptInfoCompiler),
 
     527: ("527", BaseParser, None),
     1294: ("Global Guides", GlobalGuidesParser, None),
@@ -236,7 +241,7 @@ parser_classes = {
     2013: ("Glyph Bitmaps", GlyphBitmapParser, None),
     2023: ("2023", EncodedValueListParser, None),  # 1 encoded value per master
     2019: ("Glyph Sketch", GlyphSketchParser, None),
-    2010: ("Glyph Hinting Options", PostScriptGlyphHintingOptionsParser, None),
+    2010: ("Glyph Hinting Options", PostScriptGlyphHintingOptionsParser, PostScriptGlyphHintingOptionsCompiler),
     2009: ("mask", MaskParser, None),
     2011: ("mask.metrics", MaskMetricsParser, None),  # Single master mask metrics
     2028: ("mask.metrics_mm", MaskMetricsMMParser, None),  # Mask metrics master 2 to 16
