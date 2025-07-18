@@ -161,9 +161,9 @@ parser_classes = {
     1059: ("pcl_chars_set", StringParser, StringCompiler),
 
     # Goes to font.ttinfo:
-    1261: ("Binary cvt Table", BaseParser, HexStringCompiler),
-    1262: ("Binary prep Table", BaseParser, HexStringCompiler),
-    1263: ("Binary fpgm Table", BaseParser, HexStringCompiler),
+    1261: ("cvt", BaseParser, HexStringCompiler),  # Binary cvt Table
+    1262: ("prep", BaseParser, HexStringCompiler),  # Binary prep Table
+    1263: ("fpgm", BaseParser, HexStringCompiler),  # Binary fpgm Table
     1265: ("gasp", GaspParser, None),
     1264: ("ttinfo", TrueTypeInfoParser, None),
     # Goes to font.ttinfo:
