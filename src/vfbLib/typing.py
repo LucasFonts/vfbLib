@@ -88,7 +88,9 @@ class GuidePropertyDict(TypedDict):
     name: NotRequired[str]
 
 
-GuidePropertyList = list[GuidePropertyDict]
+class GuidePropertiesDict(TypedDict):
+    h: list[GuidePropertyDict]
+    v: list[GuidePropertyDict]
 
 
 class HintDict(TypedDict):

@@ -6,7 +6,7 @@ from math import atan2, degrees
 from typing import TYPE_CHECKING, Literal
 
 from vfbLib.parsers.base import BaseParser
-from vfbLib.typing import GuideDict, GuidePropertyDict
+from vfbLib.typing import GuideDict, GuidePropertiesDict, GuidePropertyDict
 from vfbLib.value import read_value
 
 if TYPE_CHECKING:
@@ -51,9 +51,9 @@ class GlobalGuidesParser(BaseParser):
 
 
 class GuidePropertiesParser(BaseParser):
-    def _parse(self) -> list:
-        guides = []
-        for _ in range(2):
+    def _parse(self) -> GuidePropertiesDict:
+        guides = GuidePropertiesDict(h=[], v=[])
+        for k in ("h", "v"):
             while True:
                 index = self.read_value()
                 if index == 0:
@@ -61,15 +61,15 @@ class GuidePropertiesParser(BaseParser):
 
                 g = GuidePropertyDict(index=index)
 
-                color = self.read_value()
-                if color > -1:
-                    g["color"] = "#" + hex(color & ~0xFF00000000)[2:]
+                color_raw = self.read_value()
+                if color_raw > -1:
+                    color_bgr = "%06x" % color_raw
+                    g["color"] = f"#{color_bgr[4:]}{color_bgr[2:4]}{color_bgr[:2]}"
 
-                name_length = self.read_value()
-                if name_length > 0:
-                    name = self.stream.read(name_length).decode("cp1252")
+                name = self.read_str_with_len()
+                if name:
                     g["name"] = name
 
-                guides.append(g)
+                guides[k].append(g)
 
         return guides
