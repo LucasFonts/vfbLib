@@ -8,7 +8,7 @@ logger = logging.getLogger(__name__)
 
 
 class NameRecordsParser(BaseParser):
-    def _parse(self):
+    def _parse(self) -> list[list[int | str]]:
         num = self.read_value()
         result = []
         for _ in range(num):
