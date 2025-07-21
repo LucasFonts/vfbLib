@@ -169,7 +169,6 @@ class NameRecordsCompilerTest(TestCase):
 
 expected_regular = hexStr(deHexStr("52 65 67 75 6C 61 72"))
 expected_space = hexStr(deHexStr("57 74 30 20 57 64 31 20"))
-expected_nospace = hexStr(deHexStr("57 74 30 20 57 64 31"))
 
 
 class StringCompilerTest(TestCase):
@@ -185,4 +184,4 @@ class StringCompilerTest(TestCase):
         dec = StringParser().parse_hex(expected_space)
         assert dec == "Wt0 Wd1 "  # Trailing space does not get stripped
         cde = StringCompiler().compile_hex(dec)
-        assert cde == expected_nospace
+        assert cde == expected_space
