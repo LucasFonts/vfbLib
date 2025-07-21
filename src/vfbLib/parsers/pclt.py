@@ -13,7 +13,7 @@ class PcltParser(BaseParser):
     """
 
     def _parse(self) -> dict[str, list[int] | int | str]:
-        values = {}
+        values: dict[str, list[int] | int | str] = {}
 
         # https://learn.microsoft.com/de-de/typography/opentype/spec/pclt#fontnumber
         values["font_number"] = self.read_value(signed=False)

@@ -16,6 +16,7 @@ from vfbLib.compilers.numeric import (
     SignedInt32Compiler,
     UnicodeRangesCompiler,
 )
+from vfbLib.compilers.pclt import PcltCompiler
 from vfbLib.compilers.ps import (
     PostScriptGlobalHintingOptionsCompiler,
     PostScriptGlyphHintingOptionsCompiler,
@@ -205,8 +206,8 @@ parser_classes = {
 
     # Goes to font again:
     1138: ("fontnames", NameRecordsParser, NameRecordsCompiler),
-    1136: ("PCLT Table", PcltParser, None),
     1141: ("Custom CMAPs", CustomCmapParser, CustomCmapCompiler),
+    1136: ("PCLT Table", PcltParser, PcltCompiler),
     2022: ("Export PCLT Table", Int16Parser, Int16Compiler),
     2025: ("note", StringParser, StringCompiler),
     2030: ("2030", BaseParser, HexStringCompiler),
