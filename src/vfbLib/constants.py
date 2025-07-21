@@ -6,6 +6,13 @@ from vfbLib.compilers.base import (
 from vfbLib.compilers.binary import BinaryTableCompiler
 from vfbLib.compilers.cmap import CustomCmapCompiler
 from vfbLib.compilers.glyph import GlyphCompiler
+from vfbLib.compilers.mm import (
+    AnisotropicInterpolationsCompiler,
+    AxisMappingsCompiler,
+    AxisMappingsCountCompiler,
+    MasterLocationCompiler,
+    PrimaryInstancesCompiler,
+)
 from vfbLib.compilers.numeric import (
     DoubleCompiler,
     DoubleListCompiler,
@@ -228,16 +235,16 @@ parser_classes = {
     271: ("271", BaseParser, HexStringCompiler),
     1513: ("Axis Count", Int16Parser, Int16Compiler),
     1514: ("Axis Name", StringParser, StringCompiler),
-    1523: ("Anisotropic Interpolation Mappings", AnisotropicInterpolationsParser, None),
-    1515: ("Axis Mappings Count", AxisMappingsCountParser, None),
-    1516: ("Axis Mappings", AxisMappingsParser, None),
+    1523: ("Anisotropic Interpolation Mappings", AnisotropicInterpolationsParser, AnisotropicInterpolationsCompiler),  # noqa: E501
+    1515: ("Axis Mappings Count", AxisMappingsCountParser, AxisMappingsCountCompiler),
+    1516: ("Axis Mappings", AxisMappingsParser, AxisMappingsCompiler),
 
     # Repeat the next two for each master:
     1504: ("Master Name", StringParser, StringCompiler),
-    1505: ("Master Location", MasterLocationParser, None),
+    1505: ("Master Location", MasterLocationParser, MasterLocationCompiler),
 
     1247: ("Primary Instance Locations", DoubleListParser, DoubleListCompiler),
-    1254: ("Primary Instances", PrimaryInstancesParser, None),
+    1254: ("Primary Instances", PrimaryInstancesParser, PrimaryInstancesCompiler),
 
     # Repeat PostScript Info for each master:
     1536: ("PostScript Info", PostScriptInfoParser, PostScriptInfoCompiler),

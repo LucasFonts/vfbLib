@@ -87,6 +87,20 @@ class StreamWriter:
             enc += b"\00" * (pad - len(enc))
         self.stream.write(enc)
 
+    def write_str_with_len(self, value: str | None) -> None:
+        """
+        Write the length of a string to the stream, then the string itself. The string
+        is encoded with `StreamWriter.encoding`.
+
+        Args:
+            value (str | None): The string to write.
+        """
+        if value is None:
+            value = ""
+        enc = value.encode(self.encoding)
+        self.write_value(len(enc))
+        self.stream.write(enc)
+
     def write_uint8(self, value: int) -> None:
         """
         Write a uint8 value to the stream.

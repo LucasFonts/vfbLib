@@ -150,8 +150,7 @@ class TrueTypeZonesCompiler(BaseCompiler):
                 self.write_value(zone["position"])
                 self.write_value(zone["value"])
                 name = zone["name"]
-                self.write_value(len(name))
-                self.write_str(name)
+                self.write_str_with_len(name)
 
 
 class TrueTypeZoneDeltasCompiler(BaseCompiler):
