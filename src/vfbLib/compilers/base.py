@@ -73,7 +73,8 @@ class StreamWriter:
 
     def write_str(self, value: str | None, pad: int = 0) -> None:
         """
-        Write a string to the stream. The string is encoded with `StreamWriter.encoding`.
+        Write a string to the stream. The string is encoded with
+        `StreamWriter.encoding`.
 
         Args:
             value (str | None): The string to write.

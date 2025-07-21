@@ -193,11 +193,11 @@ parser_classes = {
     1278: ("hhea_ascender", SignedInt16Parser, SignedInt16Compiler),
     1279: ("hhea_descender", SignedInt16Parser, SignedInt16Compiler),
     # hstem_data and vstem_data, goes to font.ttinfo:
-    1266: ("TrueType Stem PPEMs 2 And 3", TrueTypeStemPpems23Parser, TrueTypeStemPpems23Compiler),
+    1266: ("TrueType Stem PPEMs 2 And 3", TrueTypeStemPpems23Parser, TrueTypeStemPpems23Compiler),  # noqa: E501
     1268: ("TrueType Stem PPEMs", TrueTypeStemPpemsParser, TrueTypeStemPpemsCompiler),
     # Probably in font.ttinfo, but not accessible through API:
     1269: ("TrueType Stems", TrueTypeStemsParser, TrueTypeStemsCompiler),
-    1524: ("TrueType Stem PPEMs 1", TrueTypeStemPpems1Parser, TrueTypeStemPpems1Compiler),
+    1524: ("TrueType Stem PPEMs 1", TrueTypeStemPpems1Parser, TrueTypeStemPpems1Compiler),  # noqa: E501
     # Probably in font.ttinfo, but not accessible through API:
     1255: ("TrueType Zones", TrueTypeZonesParser, TrueTypeZonesCompiler),
 
