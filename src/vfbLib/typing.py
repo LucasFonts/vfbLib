@@ -82,13 +82,13 @@ class MMGuidesDict(TypedDict):
     v: list[GuideList]
 
 
-class GuideProperty(TypedDict):
+class GuidePropertyDict(TypedDict):
     color: NotRequired[str]
     index: int
     name: NotRequired[str]
 
 
-GuidePropertyList = list[GuideProperty]
+GuidePropertyList = list[GuidePropertyDict]
 
 
 class Hint(TypedDict):

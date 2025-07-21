@@ -6,7 +6,7 @@ from math import atan2, degrees
 from typing import TYPE_CHECKING, Literal
 
 from vfbLib.parsers.base import BaseParser
-from vfbLib.typing import GuideDict, GuideProperty
+from vfbLib.typing import GuideDict, GuidePropertyDict
 from vfbLib.value import read_value
 
 if TYPE_CHECKING:
@@ -59,7 +59,7 @@ class GuidePropertiesParser(BaseParser):
                 if index == 0:
                     break
 
-                g = GuideProperty(index=index)
+                g = GuidePropertyDict(index=index)
 
                 color = self.read_value()
                 if color > -1:
