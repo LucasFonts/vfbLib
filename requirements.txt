@@ -10,7 +10,7 @@ pycodestyle==2.14.0
 pyflakes==3.4.0
 pygments==2.19.2
 pytest==8.4.1
-ruff==0.12.3
+ruff==0.12.4
 typing-extensions==4.14.1
 ufolib2==0.18.1
 ufonormalizer==0.6.2
