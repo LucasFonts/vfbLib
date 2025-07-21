@@ -60,8 +60,7 @@ class PrimaryInstancesParser(BaseParser):
         instances = []
         num_instances = self.read_value()
         for _ in range(num_instances):
-            name_length = self.read_value()
-            name = self.read_str(name_length)
+            name = self.read_str_with_len()
             values = [self.read_value() / 10000 for _ in range(4)]
             instances.append({"name": name, "values": values})
 

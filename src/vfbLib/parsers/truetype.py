@@ -271,10 +271,7 @@ class TrueTypeZonesParser(BaseParser):
             for _ in range(num_zones):
                 position = self.read_value()
                 width = self.read_value()
-                logger.debug(f"    pos: {position}, width: {width}")
-                name_length = self.read_value()
-                logger.debug(f"Name of length {name_length} follows")
-                zone_name = self.read_str(name_length)
+                zone_name = self.read_str_with_len()
                 side.append(TTZoneDict(position=position, value=width, name=zone_name))
 
             result[names[i]] = side

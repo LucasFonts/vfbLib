@@ -103,11 +103,7 @@ class GlyphGDEFParser(BaseParser):
         num_anchors = self.read_value()
         anchors = []
         for _ in range(num_anchors):
-            anchor_name_length = self.read_value()
-            name = None
-            if anchor_name_length > 0:
-                name = self.read_str(anchor_name_length)
-
+            name = self.read_str_with_len()
             x = self.read_value()
             x1 = self.read_value()
             y = self.read_value()
@@ -375,10 +371,8 @@ class GlyphParser(BaseParser):
 
             if v == 0x01:
                 # Glyph name
-                glyph_name_length = self.read_value()
-                glyph_name = self.stream.read(glyph_name_length)
-                self.glyphdata["name"] = glyph_name.decode(self.encoding)
-                # logger.debug(f"Glyph: {self.glyphdata['name']}")
+                glyph_name = self.read_str_with_len()
+                self.glyphdata["name"] = glyph_name
                 self.name = self.glyphdata["name"]
 
             elif v == 0x02:
