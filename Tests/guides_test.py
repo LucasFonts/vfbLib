@@ -57,6 +57,16 @@ bin_partial = (
 )
 
 
+class GuidePropertiesCompilerTest(TestCase):
+    def test_full(self):
+        result = GuidePropertiesCompiler().compile_hex(raw_full)
+        assert result == bin_full
+
+    def test_partial(self):
+        result = GuidePropertiesCompiler().compile_hex(raw_partial)
+        assert result == bin_partial
+
+
 class GuidePropertiesParserTest(TestCase):
     def test_full(self):
         result = GuidePropertiesParser().parse_hex(bin_full)

@@ -6,6 +6,7 @@ from vfbLib.compilers.base import (
 from vfbLib.compilers.binary import BinaryTableCompiler
 from vfbLib.compilers.cmap import CustomCmapCompiler
 from vfbLib.compilers.glyph import GlyphCompiler
+from vfbLib.compilers.guides import GuidePropertiesCompiler, GuidesCompiler
 from vfbLib.compilers.mm import (
     AnisotropicInterpolationsCompiler,
     AxisMappingsCompiler,
@@ -250,8 +251,8 @@ parser_classes = {
     1536: ("PostScript Info", PostScriptInfoParser, PostScriptInfoCompiler),
 
     527: ("527", BaseParser, HexStringCompiler),
-    1294: ("Global Guides", GlobalGuidesParser, None),
-    1296: ("Global Guide Properties", GuidePropertiesParser, None),
+    1294: ("Global Guides", GlobalGuidesParser, GuidesCompiler),
+    1296: ("Global Guide Properties", GuidePropertiesParser, GuidePropertiesCompiler),
     1295: ("Global Mask", GlobalMaskParser, None),
     1066: ("default_character", StringParser, StringCompiler),
 
@@ -277,7 +278,7 @@ parser_classes = {
     2018: ("Glyph GDEF Data", GlyphGDEFParser, None),
     2020: ("Glyph Anchors Supplemental", GlyphAnchorsSuppParser, None),
     2029: ("Glyph Anchors MM", GlyphAnchorsParser, None),  # MM-compatible
-    2031: ("Glyph Guide Properties", GuidePropertiesParser, None),
+    2031: ("Glyph Guide Properties", GuidePropertiesParser, GuidePropertiesCompiler),
     # End: Repeat for each glyph
 
     1743: ("OpenType Export Options", OpenTypeExportOptionsParser, None),
