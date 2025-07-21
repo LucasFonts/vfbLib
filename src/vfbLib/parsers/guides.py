@@ -6,7 +6,7 @@ from math import atan2, degrees
 from typing import TYPE_CHECKING, Literal
 
 from vfbLib.parsers.base import BaseParser
-from vfbLib.typing import Guide, GuideProperty
+from vfbLib.typing import GuideDict, GuideProperty
 from vfbLib.value import read_value
 
 if TYPE_CHECKING:
@@ -34,7 +34,7 @@ def parse_guides(stream: BytesIO, num_masters: int, name: str) -> MMGuidesDict:
                 try:
                     pos = read_value(stream)
                     angle = degrees(atan2(read_value(stream), 10000))
-                    guides[d][m].append(Guide(pos=pos, angle=angle))
+                    guides[d][m].append(GuideDict(pos=pos, angle=angle))
                 except ValueError:
                     logger.error(f"Missing {d} guideline data ({name})")
                     raise

@@ -69,12 +69,12 @@ class GdefDict(TypedDict):
     unknown: NotRequired[list[int]]
 
 
-class Guide(TypedDict):
+class GuideDict(TypedDict):
     angle: float | int
     pos: int
 
 
-GuideList = list[Guide]
+GuideList = list[GuideDict]
 
 
 class MMGuidesDict(TypedDict):
