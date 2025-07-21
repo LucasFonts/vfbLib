@@ -25,6 +25,7 @@ from vfbLib.compilers.text import (
     NameRecordsCompiler,
     OpenTypeStringCompiler,
     StringCompiler,
+    VendorIdCompiler,
 )
 from vfbLib.compilers.truetype import (
     GaspCompiler,
@@ -149,7 +150,7 @@ parser_classes = {
     1137: ("pref_style_name", StringParser, StringCompiler),
     1139: ("mac_compatible", StringParser, StringCompiler),
     1140: ("1140", BaseParser, HexStringCompiler),
-    1121: ("vendor", StringParser, StringCompiler),
+    1121: ("vendor", StringParser, VendorIdCompiler),
     1133: ("xuid", IntListParser, IntListCompiler),
     1134: ("xuid_num", Int16Parser, Int16Compiler),
     1132: ("year", Int16Parser, Int16Compiler),

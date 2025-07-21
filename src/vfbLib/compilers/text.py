@@ -41,3 +41,12 @@ class StringCompiler(BaseCompiler):
 
     def _compile(self, data: Any) -> None:
         self.write_str(data)
+
+
+class VendorIdCompiler(BaseCompiler):
+    """
+    A compiler that compiles string data, padded to 4 bytes.
+    """
+
+    def _compile(self, data: Any) -> None:
+        self.write_str(data, pad=4)
