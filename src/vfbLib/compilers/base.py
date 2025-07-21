@@ -128,7 +128,7 @@ class StreamWriter:
         """
         self.stream.write(value.to_bytes(int32_size, byteorder="little", signed=False))
 
-    def write_value(self, value: int, shortest=True) -> None:
+    def write_value(self, value: int, shortest=True, signed: bool = True) -> None:
         """
         Encode and write an int value to the stream. Optionally don't apply the length
         encoding optimization.
@@ -139,9 +139,9 @@ class StreamWriter:
                 representation. Defaults to True.
         """
         if shortest:
-            write_value(value, self.stream)
+            write_value(value, self.stream, signed)
         else:
-            write_value_long(value, self.stream)
+            write_value_long(value, self.stream, signed)
 
 
 class BaseCompiler(StreamWriter):

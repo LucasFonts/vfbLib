@@ -5,8 +5,8 @@ from vfbLib.compilers.base import BaseCompiler
 
 class PcltCompiler(BaseCompiler):
     def _compile(self, data: dict[str, list[int] | int | str]) -> None:
+        self.write_value(data["font_number"], signed=False)
         for k in (
-            "font_number",
             "pitch",
             "x_height",
             "style",

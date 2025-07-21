@@ -46,7 +46,16 @@ class TrueTypeInfoCompiler(BaseCompiler):
             0x3A,
             0x3B,
             0x3C,
-            0x56,
+        ):
+            self.write_uint8(k)
+            self.write_value(data[info_names[k]])
+
+        # Timestamp
+
+        self.write_uint8(0x56)
+        self.write_value(data[info_names[0x56]], signed=False)
+
+        for k in (
             0x57,
             0x3D,
             0x3E,
@@ -91,7 +100,7 @@ class TrueTypeInfoCompiler(BaseCompiler):
         self.write_uint8(0x54)
         for ck in ("os2_ul_code_page_range1", "os2_ul_code_page_range2"):
             value = cp_dict[ck]
-            self.write_value(value)
+            self.write_value(value, signed=False)
 
         self.write_uint8(0x32)  # End marker
 
