@@ -18,7 +18,7 @@ info_names = {
     0x3B: "head_mac_style",
     0x3C: "head_lowest_rec_ppem",  # lowest_rec_ppem
     0x56: "head_creation",  # timestamp
-    0x57: "0x57",  # TODO: head_modification (not in API)?
+    0x57: "_unknown_0x57",  # TODO: head_modification (not in API)?
     0x3D: "head_font_direction_hint",  # font_direction_hint
     0x3E: "os2_us_weight_class",  # weight_class, duplicate
     0x3F: "os2_us_width_class",  # width_class, duplicate
@@ -55,6 +55,15 @@ settings = {
 }
 
 
+def convert_int_to_flags_options(value: int) -> dict:
+    flags = binaryToIntList(value & 0xFFFF)
+    options = binaryToIntList(value >> 16)
+    return {
+        "flags": flags,
+        "options": [settings.get(i, i) for i in options],
+    }
+
+
 class TrueTypeInfoParser(BaseParser):
     """
     A parser that reads data as "TrueType Info" values.
@@ -86,13 +95,7 @@ class TrueTypeInfoParser(BaseParser):
             elif k == 0x39:
                 # Options and head flags
                 self.assert_unique(info, dk)
-                all_bits = self.read_value()
-                flags = binaryToIntList(all_bits & 0xFFFF)
-                options = binaryToIntList(all_bits >> 16)
-                info[dk] = {
-                    "flags": flags,
-                    "options": [settings.get(i, i) for i in options],
-                }
+                info[dk] = convert_int_to_flags_options(self.read_value())
 
             elif k in (0x3A, 0x3B, 0x3C, 0x3D, 0x3E, 0x3F):
                 self.assert_unique(info, bk)
