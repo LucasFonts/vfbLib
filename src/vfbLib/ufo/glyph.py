@@ -8,7 +8,7 @@ from vfbLib.typing import LinkDict
 from vfbLib.ufo.vfb2ufo import vfb2ufo_label_codes
 
 if TYPE_CHECKING:
-    from vfbLib.typing import Anchor, GuideDict, GuidePropertyList, HintDict, MMNode
+    from vfbLib.typing import Anchor, GuidePropertyList, HintDict, MMGuidesDict, MMNode
     from vfbLib.ufo.builder import VfbToUfoBuilder
     from vfbLib.ufo.tth import TTGlyphHints
 
@@ -27,7 +27,7 @@ class VfbToUfoGlyph:
         self.links: LinkDict = LinkDict(x=[], y=[])
         self.mm_anchors: list[Any] | None = None
         self.mm_components: list[Any] = []
-        self.mm_guides: GuideDict | None = None
+        self.mm_guides: MMGuidesDict | None = None
         self.mm_hints: HintDict = {"h": [], "v": []}
         self.mm_metrics: list[tuple[int, int]] = []
         self.mm_nodes: list[MMNode] = []

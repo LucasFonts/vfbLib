@@ -77,7 +77,7 @@ class Guide(TypedDict):
 GuideList = list[Guide]
 
 
-class GuideDict(TypedDict):
+class MMGuidesDict(TypedDict):
     h: list[GuideList]
     v: list[GuideList]
 
@@ -188,7 +188,7 @@ class TTZonesDict(TypedDict):
 class GlyphData(TypedDict):
     components: NotRequired[list[Component]]
     # constants: NotRequired[Tuple[Any, ...]]
-    guides: NotRequired[GuideDict]
+    guides: NotRequired[MMGuidesDict]
     hints: NotRequired[HintDict]
     imported: NotRequired[Any]  # FIXME
     kerning: NotRequired[dict[int, list[int]]]

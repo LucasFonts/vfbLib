@@ -6,13 +6,13 @@ from typing import TYPE_CHECKING
 from vfbLib.ufo.typing import UfoGuide
 
 if TYPE_CHECKING:
-    from vfbLib.typing import GuideDict, GuidePropertyList
+    from vfbLib.typing import GuidePropertyList, MMGuidesDict
 
 
 logger = logging.getLogger(__name__)
 
 
-def get_master_guides(mm_guides: GuideDict, master_index: int) -> list[UfoGuide]:
+def get_master_guides(mm_guides: MMGuidesDict, master_index: int) -> list[UfoGuide]:
     # Concatenate guidlines for both directions and extract coords for
     # master_index
     guides = []

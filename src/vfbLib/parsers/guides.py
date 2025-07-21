@@ -12,7 +12,7 @@ from vfbLib.value import read_value
 if TYPE_CHECKING:
     from io import BytesIO
 
-    from vfbLib.typing import GuideDict
+    from vfbLib.typing import MMGuidesDict
 
 
 logger = logging.getLogger(__name__)
@@ -21,9 +21,9 @@ logger = logging.getLogger(__name__)
 DIRECTIONS: Sequence[Literal["h", "v"]] = ("h", "v")
 
 
-def parse_guides(stream: BytesIO, num_masters: int, name: str) -> GuideDict:
+def parse_guides(stream: BytesIO, num_masters: int, name: str) -> MMGuidesDict:
     # Common parser for glyph and global guides
-    guides: GuideDict = {
+    guides: MMGuidesDict = {
         "h": [[] for _ in range(num_masters)],
         "v": [[] for _ in range(num_masters)],
     }
@@ -43,7 +43,7 @@ def parse_guides(stream: BytesIO, num_masters: int, name: str) -> GuideDict:
 
 
 class GlobalGuidesParser(BaseParser):
-    def _parse(self) -> GuideDict:
+    def _parse(self) -> MMGuidesDict:
         assert self.master_count is not None
         guides = parse_guides(self.stream, self.master_count, "global")
         assert self.stream.read() == b""
