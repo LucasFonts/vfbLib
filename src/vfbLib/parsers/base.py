@@ -93,7 +93,7 @@ class StreamReader:
     def read_str(self, size: int) -> str:
         """
         Return a string of the specified `size` from the current stream with the current
-        encoding
+        encoding.
 
         Args:
             size (int): The size in bytes to be converted to a string
@@ -101,7 +101,20 @@ class StreamReader:
         Returns:
             str: The string
         """
+        if size == 0:
+            return ""
         return self.stream.read(size).decode(self.encoding)
+
+    def read_str_with_len(self) -> str:
+        """
+        Read the length of a string from the current stream, then the string itself, and
+        return the string.
+
+        Returns:
+            str: The string
+        """
+        size = self.read_value(signed=False)
+        return self.read_str(size)
 
     def read_str_all(self) -> str:
         """
