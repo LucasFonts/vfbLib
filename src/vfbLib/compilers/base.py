@@ -72,10 +72,20 @@ class StreamWriter:
         self.stream.write(value.to_bytes(int32_size, byteorder="little", signed=True))
 
     def write_str(self, value: str | None, pad: int = 0) -> None:
-        # XXX: Pad with 0 bytes to given length
+        """
+        Write a string to the stream. The string is encoded with `StreamWriter.encoding`.
+
+        Args:
+            value (str | None): The string to write.
+            pad (int, optional): Pad the string to the given length with null bytes.
+                Defaults to 0.
+        """
         if value is None:
             value = ""
-        self.stream.write(value.encode(self.encoding))
+        enc = value.encode(self.encoding)
+        if len(enc) < pad:
+            enc += b"\00" * (pad - len(enc))
+        self.stream.write(enc)
 
     def write_uint8(self, value: int) -> None:
         """
