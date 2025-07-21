@@ -91,15 +91,9 @@ class GuidePropertyDict(TypedDict):
 GuidePropertyList = list[GuidePropertyDict]
 
 
-class Hint(TypedDict):
+class HintDict(TypedDict):
     pos: int
     width: int
-
-
-class HintDict(TypedDict):
-    h: list[list[Hint]]
-    v: list[list[Hint]]
-    hintmasks: NotRequired[list[tuple[str, int]]]
 
 
 HintTuple = tuple[str, int, int]
@@ -121,8 +115,9 @@ class MMAnchor(TypedDict):
 
 
 class MMHintsDict(TypedDict):
-    h: list[list[Hint]]
-    v: list[list[Hint]]
+    h: list[list[HintDict]]
+    v: list[list[HintDict]]
+    hintmasks: NotRequired[list[tuple[str, int]]]
 
 
 class MMNode(TypedDict):
@@ -189,7 +184,7 @@ class GlyphData(TypedDict):
     components: NotRequired[list[Component]]
     # constants: NotRequired[Tuple[Any, ...]]
     guides: NotRequired[MMGuidesDict]
-    hints: NotRequired[HintDict]
+    hints: NotRequired[MMHintsDict]
     imported: NotRequired[Any]  # FIXME
     kerning: NotRequired[dict[int, list[int]]]
     metrics: NotRequired[list[Point]]

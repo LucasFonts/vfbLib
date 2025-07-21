@@ -16,12 +16,12 @@ from vfbLib.typing import (
     Component,
     GdefDict,
     GlyphData,
-    Hint,
     HintDict,
     Instruction,
     LinkDict,
     MaskData,
     MMAnchor,
+    MMHintsDict,
     MMNode,
     Point,
 )
@@ -224,7 +224,7 @@ class GlyphParser(BaseParser):
         self.glyphdata["components"] = components
 
     def parse_hints(self) -> None:
-        hints = HintDict(v=[], h=[])
+        hints = MMHintsDict(v=[], h=[])
         for d in ("h", "v"):
             num_hints = self.read_value()
             for _ in range(num_hints):
@@ -232,7 +232,7 @@ class GlyphParser(BaseParser):
                 for _ in range(self.master_count):
                     pos = self.read_value()
                     width = self.read_value()
-                    master_hints.append(Hint(pos=pos, width=width))
+                    master_hints.append(HintDict(pos=pos, width=width))
                 hints[d].append(master_hints)
 
         num_hintmasks = self.read_value()

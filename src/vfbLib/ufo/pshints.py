@@ -8,7 +8,7 @@ from vfbLib.ufo.typing import HintSet, UfoHintingV2, UfoHintSet
 from vfbLib.ufo.vfb2ufo import PS_GLYPH_LIB_KEY
 
 if TYPE_CHECKING:
-    from vfbLib.typing import Hint, HintTuple
+    from vfbLib.typing import HintDict, HintTuple
     from vfbLib.ufo.glyph import VfbToUfoGlyph
     from vfbLib.ufo.paths import UfoMasterGlyph
 
@@ -25,7 +25,7 @@ def normalize_hint(hint: tuple[str, int, int]):
     return (direction, pos, width)
 
 
-def normalize_hint_dict(hint: Hint, name: str = "dummy"):
+def normalize_hint_dict(hint: HintDict, name: str = "dummy"):
     return normalize_hint((name, hint["pos"], hint["width"]))
 
 
