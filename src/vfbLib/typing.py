@@ -119,6 +119,31 @@ class TTCommandDict(TypedDict):
     params: list[str]
 
 
+class TTStemDict(TypedDict):
+    name: NotRequired[str]
+    round: dict[str, int]
+    stem: NotRequired[int]
+    value: NotRequired[int]
+
+
+class TTStemsDict(TypedDict):
+    ttStemsV: list[TTStemDict]
+    ttStemsH: list[TTStemDict]
+
+
+class TTZoneDict(TypedDict):
+    deltas: NotRequired[dict[int, int]]
+    name: str
+    position: int
+    top: NotRequired[bool]
+    value: int
+
+
+class TTZonesDict(TypedDict):
+    ttZonesT: list[TTZoneDict]
+    ttZonesB: list[TTZoneDict]
+
+
 class GlyphData(TypedDict):
     components: NotRequired[list[Component]]
     # constants: NotRequired[Tuple[Any, ...]]

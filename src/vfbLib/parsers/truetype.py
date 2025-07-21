@@ -2,6 +2,7 @@ import logging
 
 from vfbLib.helpers import binaryToIntList
 from vfbLib.parsers.base import BaseParser
+from vfbLib.typing import TTStemDict, TTStemsDict, TTZoneDict, TTZonesDict
 
 logger = logging.getLogger(__name__)
 
@@ -162,7 +163,7 @@ class TrueTypeInfoParser(BaseParser):
 class TrueTypeStemsParser(BaseParser):
     def _parse(self):
         names = ("ttStemsV", "ttStemsH")
-        result = {}
+        result = TTStemsDict(ttStemsV=[], ttStemsH=[])
         for i in range(2):
             direction = []
             num_stems = self.read_value()
@@ -173,12 +174,9 @@ class TrueTypeStemsParser(BaseParser):
                 ppm6 = self.read_value()
 
                 direction.append(
-                    {
-                        "value": width,
-                        "name": stem_name,
-                        "round": {"6": ppm6},
-                    }
+                    TTStemDict(value=width, name=stem_name, round={"6": ppm6})
                 )
+
             result[names[i]] = direction
 
         return result
@@ -187,7 +185,7 @@ class TrueTypeStemsParser(BaseParser):
 class TrueTypeStemPpemsParser(BaseParser):
     def _parse(self):
         names = ("ttStemsV", "ttStemsH")
-        result = {}
+        result = TTStemsDict(ttStemsV=[], ttStemsH=[])
         for i in range(2):
             direction = []
             num_stems = self.read_value()
@@ -197,12 +195,8 @@ class TrueTypeStemPpemsParser(BaseParser):
                     ppm = self.read_value()
                     d[str(k)] = ppm
 
-                direction.append(
-                    {
-                        "stem": j,
-                        "round": d.copy(),
-                    }
-                )
+                direction.append(TTStemDict(stem=j, round=d.copy()))
+
             result[names[i]] = direction
 
         return result
@@ -212,7 +206,7 @@ class TrueTypeStemPpems1Parser(BaseParser):
     # PPEM 1 for each stem is stored in a separate entry ...
     def _parse(self):
         names = ("ttStemsV", "ttStemsH")
-        result = {}
+        result = TTStemsDict(ttStemsV=[], ttStemsH=[])
         for i in range(2):
             direction = []
             num_stems = (self.ttStemsV_count, self.ttStemsH_count)[i]
@@ -221,12 +215,8 @@ class TrueTypeStemPpems1Parser(BaseParser):
 
             for j in range(num_stems):
                 ppm = self.read_value()
-                direction.append(
-                    {
-                        "stem": j,
-                        "round": {"1": ppm},
-                    }
-                )
+                direction.append(TTStemDict(stem=j, round={"1": ppm}))
+
             result[names[i]] = direction
 
         return result
@@ -236,7 +226,7 @@ class TrueTypeStemPpems23Parser(BaseParser):
     # PPEM 2 and 3 for each stem are stored in a separate entry ... sometimes!?
     def _parse(self):
         names = ("ttStemsV", "ttStemsH")
-        result = {}
+        result = TTStemsDict(ttStemsV=[], ttStemsH=[])
         for i in range(2):
             direction = []
             num_stems = self.read_value()
@@ -246,12 +236,8 @@ class TrueTypeStemPpems23Parser(BaseParser):
             for j in range(num_stems):
                 ppm2 = self.read_value()
                 ppm3 = self.read_value()
-                direction.append(
-                    {
-                        "stem": j,
-                        "round": {"2": ppm2, "3": ppm3},
-                    }
-                )
+                direction.append(TTStemDict(stem=j, round={"2": ppm2, "3": ppm3}))
+
             result[names[i]] = direction
 
         return result
@@ -277,7 +263,7 @@ class TrueTypeZoneDeltasParser(BaseParser):
 class TrueTypeZonesParser(BaseParser):
     def _parse(self):
         names = ("ttZonesT", "ttZonesB")
-        result = {}
+        result = TTZonesDict(ttZonesT=[], ttZonesB=[])
         for i in range(2):
             side = []
             num_zones = self.read_value()
@@ -289,13 +275,8 @@ class TrueTypeZonesParser(BaseParser):
                 name_length = self.read_value()
                 logger.debug(f"Name of length {name_length} follows")
                 zone_name = self.read_str(name_length)
-                side.append(
-                    {
-                        "position": position,
-                        "value": width,
-                        "name": zone_name,
-                    }
-                )
+                side.append(TTZoneDict(position=position, value=width, name=zone_name))
+
             result[names[i]] = side
 
         return result
