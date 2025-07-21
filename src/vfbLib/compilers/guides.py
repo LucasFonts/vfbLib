@@ -1,9 +1,10 @@
 from vfbLib.compilers.base import BaseCompiler
-from vfbLib.typing import GuideDict, GuidePropertiesDict, GuidePropertyDict
+from vfbLib.typing import GuideDict, GuidePropertiesDict
 
 
 class GuidesCompiler(BaseCompiler):
-    def _compile(self, data: GuideDict) -> None: ...
+    def _compile(self, data: GuideDict) -> None:
+        pass
 
 
 class GuidePropertiesCompiler(BaseCompiler):
