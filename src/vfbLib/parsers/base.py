@@ -106,12 +106,12 @@ class StreamReader:
     def read_str_all(self) -> str:
         """
         Return the remaining bytes of the current stream as a string with the current
-        encoding. Null bytes and whitespace are stripped from the string.
+        encoding.
 
         Returns:
             str: The string
         """
-        return self.stream.read().decode(self.encoding).strip("\u0000 ")
+        return self.stream.read().decode(self.encoding)
 
     def read_uint8(self) -> int:
         """
