@@ -122,7 +122,7 @@ class TrueTypeInfoCompilerTest(TestCase):
                 "head_mac_style": 0,
                 "head_lowest_rec_ppem": 9,
                 "head_creation": 1403233482,
-                "0x57": 0,
+                "_unknown_0x57": 0,
                 "head_font_direction_hint": 2,
                 "os2_us_weight_class": 400,
                 "os2_us_width_class": 5,
