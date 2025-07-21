@@ -30,6 +30,15 @@ class Component(TypedDict):
     scaleY: list[float]
 
 
+class CustomCmap(TypedDict):
+    language_id: int
+    platform_id: int
+    encoding_id: int
+    format: int
+    option: int
+    records: list[int]
+
+
 EntryDecompiled = dict[str, Any] | int | list[Any] | str | tuple[int, str] | None
 
 

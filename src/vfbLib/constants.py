@@ -4,6 +4,7 @@ from vfbLib.compilers.base import (
     HexStringCompiler,
 )
 from vfbLib.compilers.binary import BinaryTableCompiler
+from vfbLib.compilers.cmap import CustomCmapCompiler
 from vfbLib.compilers.glyph import GlyphCompiler
 from vfbLib.compilers.numeric import (
     DoubleCompiler,
@@ -203,8 +204,8 @@ parser_classes = {
 
     # Goes to font again:
     1138: ("fontnames", NameRecordsParser, NameRecordsCompiler),
-    1141: ("Custom CMAPs", CustomCmapParser, None),
     1136: ("PCLT Table", PcltParser, None),
+    1141: ("Custom CMAPs", CustomCmapParser, CustomCmapCompiler),
     2022: ("Export PCLT Table", Int16Parser, Int16Compiler),
     2025: ("note", StringParser, StringCompiler),
     2030: ("2030", BaseParser, HexStringCompiler),
