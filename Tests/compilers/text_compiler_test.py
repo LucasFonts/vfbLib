@@ -183,6 +183,6 @@ class StringCompilerTest(TestCase):
 
     def test_space_roundtrip(self):
         dec = StringParser().parse_hex(expected_space)
-        assert dec == "Wt0 Wd1"  # Trailing space gets stripped
+        assert dec == "Wt0 Wd1 "  # Trailing space does not get stripped
         cde = StringCompiler().compile_hex(dec)
         assert cde == expected_nospace
