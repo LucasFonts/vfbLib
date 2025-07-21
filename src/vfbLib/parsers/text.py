@@ -2,7 +2,7 @@ import logging
 from re import search
 
 from vfbLib.parsers.base import BaseParser
-from vfbLib.typing import FeatureDict, FeaturesDict
+from vfbLib.typing import FeaturesDict
 
 logger = logging.getLogger(__name__)
 
@@ -54,7 +54,7 @@ class OpenTypeStringParser(BaseParser):
             dict[str, list[dict]]: The feature code split into prefix and actual
                 features.
         """
-        fea: FeaturesDict = {"prefix": [], "features": []}
+        fea = FeaturesDict(prefix=[], features=[])
         prefix: list[str] = []
         feature: list[str] = []
         tag = ""
