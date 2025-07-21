@@ -22,6 +22,13 @@ KerningClassFlagDict = dict[str, tuple[int, int]]
 MetricsClassFlagDict = dict[str, tuple[int, int, int]]
 
 
+class BBoxDict(TypedDict):
+    xMin: int
+    yMin: int
+    xMax: int
+    yMax: int
+
+
 class Component(TypedDict):
     gid: int
     offsetX: list[int]
@@ -122,6 +129,30 @@ class MMNode(TypedDict):
     flags: int
     points: list[list[Point]]
     type: Literal["move", "line", "curve", "qcurve"]
+
+
+class PSInfoDict(TypedDict):
+    font_matrix: tuple[float, ...]
+    force_bold: int
+    blue_values: list[int]
+    other_blues: list[int]
+    family_blues: list[int]
+    family_other_blues: list[int]
+    blue_scale: float
+    blue_shift: int
+    blue_fuzz: int
+    std_hw: int
+    std_vw: int
+    stem_snap_h: list[int]
+    stem_snap_v: list[int]
+    bounding_box: BBoxDict
+    adv_width_min: int
+    adv_width_max: int
+    adv_width_avg: int
+    ascender: int
+    descender: int
+    x_height: int
+    cap_height: int
 
 
 class TTCommandDict(TypedDict):

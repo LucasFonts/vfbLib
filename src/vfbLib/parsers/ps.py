@@ -2,6 +2,7 @@ import logging
 
 from vfbLib.helpers import binaryToIntList
 from vfbLib.parsers.base import BaseParser
+from vfbLib.typing import BBoxDict, PSInfoDict
 
 logger = logging.getLogger(__name__)
 
@@ -22,8 +23,8 @@ class PostScriptInfoParser(BaseParser):
     A parser that reads data into a dict of PostScript font info.
     """
 
-    def _parse(self):
-        values = {}
+    def _parse(self) -> PSInfoDict:
+        values: PSInfoDict = {}
         values["font_matrix"] = self.read_doubles(6)
         values["force_bold"] = self.read_int32()
         values["blue_values"] = [self.read_int32() for _ in range(14)]
@@ -39,12 +40,8 @@ class PostScriptInfoParser(BaseParser):
         values["stem_snap_v"] = [self.read_uint32() for _ in range(12)]
         # The bounding box values only get updated during some actions, e.g.
         # going into PS hinting mode
-        values["bounding_box"] = dict(
-            zip(
-                ["xMin", "yMin", "xMax", "yMax"],
-                [self.read_int16() for _ in range(4)],
-            )
-        )
+        xMin, yMin, xMax, yMax = [self.read_int16() for _ in range(4)]
+        values["bounding_box"] = BBoxDict(xMin=xMin, yMin=yMin, xMax=xMax, yMax=yMax)
         values["adv_width_min"] = self.read_int32()
         values["adv_width_max"] = self.read_int32()
         values["adv_width_avg"] = self.read_int32()
