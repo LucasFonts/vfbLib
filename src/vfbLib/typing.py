@@ -42,6 +42,16 @@ class CustomCmap(TypedDict):
 EntryDecompiled = dict[str, Any] | int | list[Any] | str | tuple[int, str] | None
 
 
+class FeatureDict(TypedDict):
+    tag: str
+    code: list[str]
+
+
+class FeaturesDict(TypedDict):
+    prefix: list[str]
+    features: list[FeatureDict]
+
+
 GaspList = list[dict[str, int]]
 
 
