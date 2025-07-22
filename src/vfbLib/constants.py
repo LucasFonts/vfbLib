@@ -8,7 +8,13 @@ from vfbLib.compilers.base import (
 )
 from vfbLib.compilers.binary import BinaryTableCompiler
 from vfbLib.compilers.cmap import CustomCmapCompiler
-from vfbLib.compilers.glyph import GlyphCompiler, LinksCompiler
+from vfbLib.compilers.glyph import (
+    GlyphCompiler,
+    GlyphOriginCompiler,
+    GlyphUnicodesCompiler,
+    GlyphUnicodesSuppCompiler,
+    LinksCompiler,
+)
 from vfbLib.compilers.guides import GuidePropertiesCompiler, GuidesCompiler
 from vfbLib.compilers.mm import (
     AnisotropicInterpolationsCompiler,
@@ -271,10 +277,10 @@ parser_classes = {
     2009: ("mask", MaskParser, None),
     2011: ("mask.metrics", MaskMetricsParser, None),  # Single master mask metrics
     2028: ("mask.metrics_mm", MaskMetricsMMParser, None),  # Mask metrics master 2 to 16
-    2027: ("Glyph Origin", GlyphOriginParser, None),
-    1250: ("unicodes", GlyphUnicodeParser, None),  # Glyph Unicode
+    2027: ("Glyph Origin", GlyphOriginParser, GlyphOriginCompiler),
+    1250: ("unicodes", GlyphUnicodeParser, GlyphUnicodesCompiler),  # Glyph Unicode
     2034: ("2034", StringParser, StringCompiler),
-    1253: ("Glyph Unicode Non-BMP", GlyphUnicodeSuppParser, None),
+    1253: ("Glyph Unicode Non-BMP", GlyphUnicodeSuppParser, GlyphUnicodesSuppCompiler),
     2012: ("mark", Int16Parser, Int16Compiler),  # Mark Color
     2015: ("glyph.customdata", StringParser, StringCompiler),
     2017: ("glyph.note", StringParser, StringCompiler),

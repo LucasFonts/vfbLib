@@ -203,6 +203,24 @@ class GlyphCompiler(BaseCompiler):
         self.write_uint8(15)  # End of glyph
 
 
+class GlyphOriginCompiler(BaseCompiler):
+    def _compile(self, data: Any) -> None:
+        self.write_int16(data["x"])
+        self.write_int16(data["y"])
+
+
+class GlyphUnicodesCompiler(BaseCompiler):
+    def _compile(self, data: Any) -> None:
+        for value in data:
+            self.write_uint16(value)
+
+
+class GlyphUnicodesSuppCompiler(BaseCompiler):
+    def _compile(self, data: Any) -> None:
+        for value in data:
+            self.write_uint32(value)
+
+
 class InstructionsCompiler(BaseCompiler):
     def _compile(self, data: Any) -> None:
         self.write_value(len(data))
