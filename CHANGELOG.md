@@ -1,5 +1,59 @@
 # Change Log
 
+## 0.9.6-dev
+
+Compiler changes:
+
+- Support entry 1093 (PostScript Hinting Options)
+- Support entry 1136 (PCLT Table)
+- Support entry 1138 (fontnames)
+- Support entry 1141 (Custom CMAPs)
+- Support entry 1250 (unicodes)
+- Support entry 1253 (Glyph Unicode Non-BMP)
+- Support entry 1254 (Primary Instances)
+- Support entry 1264 (ttinfo)
+- Support entry 1265 (gasp)
+- Support entry 1266 (TrueType Stem PPEMs 2 And 3)
+- Support entry 1268 (TrueType Stem PPEMs)
+- Support entry 1269 (TrueType Stems)
+- Support entry 1271 (vdmx)
+- Support entry 1294 (Global Guides)
+- Support entry 1296 (Global Guide Properties)
+- Support entry 1505 (Master Location)
+- Support entry 1515 (Axis Mappings Count)
+- Support entry 1516 (Axis Mappings)
+- Support entry 1523 (Anisotropic Interpolation Mappings)
+- Support entry 1524 (TrueType Stem PPEMs 1)
+- Support entry 1536 (PostScript Info)
+- Support entry 1742 (Mapping Mode)
+- Support entry 1743 (OpenType Export Options)
+- Support entry 1744 (Export Options)
+- Support entry 2008 (Links)
+- Support entry 2009 (mask)
+- Support entry 2010 (Glyph Hinting Options)
+- Support entry 2011 (mask.metrics)
+- Support entry 2023 (unknown)
+- Support entry 2027 (Glyph Origin)
+- Support entry 2028 (mask.metrics_mm)
+- Support entry 2031 (Glyph Guide Properties)
+- Compile "marker" entries (271, 513, 527) with HexStringCompiler
+- Compile 1121 (vendor) padded to 4 characters
+- Add option to pad a written string with null bytes
+- Support writing unsigned encoded values
+- Don't write empty glyph fields
+
+Parser changes:
+
+- Add `read_str_with_len` method
+- Don't strip spaces from strings
+
+Breaking changes:
+
+- Rename entries `"Binary cvt Table"` to `cvt`, `Binary prep Table` to `prep`, `Binary fpgm Table` to `fpgm` to match FLS5 Python API
+- Change decompiled format of `Custom CMAPs` from `dict` to `list`
+- Fix guide properties parsing (separate lists for h/v directions)
+
+
 ## 0.9.6
 
 Compiler changes:
