@@ -74,3 +74,5 @@ def apply_guide_properties(
                 guide["color"] = f"{r:0.4f},{g:0.4f},{b:0.4f},1"
             if "name" in prop:
                 guide["name"] = prop["name"]
+    for guide in guides:
+        del guide["_direction"]
