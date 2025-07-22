@@ -63,3 +63,51 @@ opentype_export_options = {
     30: "dont_automatically_reorder_glyphs",
     46: "export_kern_table",
 }
+
+ttinfo_names = {
+    0x33: "max_zones",
+    0x34: "max_twilight_points",
+    0x35: "max_storage",
+    0x36: "max_function_defs",
+    0x37: "max_instruction_defs",
+    0x38: "max_stack_elements",
+    0x39: "head_flags",  # tt_font_info_settings with head flags combined
+    0x3A: "head_units_per_em",  # units_per_em, duplicate
+    0x3B: "head_mac_style",
+    0x3C: "head_lowest_rec_ppem",  # lowest_rec_ppem
+    0x56: "head_creation",  # timestamp
+    0x57: "_unknown_0x57",  # TODO: head_modification (not in API)?
+    0x3D: "head_font_direction_hint",  # font_direction_hint
+    0x3E: "os2_us_weight_class",  # weight_class, duplicate
+    0x3F: "os2_us_width_class",  # width_class, duplicate
+    0x40: "os2_fs_type",  # embedding
+    0x41: "os2_y_subscript_x_size",  # subscript_x_size
+    0x42: "os2_y_subscript_y_size",  # subscript_y_size
+    0x43: "os2_y_subscript_x_offset",  # subscript_x_offset
+    0x44: "os2_y_subscript_y_offset",  # subscript_y_offset
+    0x45: "os2_y_superscript_x_size",  # superscript_x_size
+    0x46: "os2_y_superscript_y_size",  # superscript_y_size
+    0x47: "os2_y_superscript_x_offset",  # superscript_x_offset
+    0x48: "os2_y_superscript_y_offset",  # superscript_y_offset
+    0x49: "os2_y_strikeout_size",  # strikeout_size
+    0x4A: "os2_y_strikeout_position",  # strikeout_position
+    0x4B: "os2_s_family_class",  # ibm_classification + subclass
+    0x4C: "OpenTypeOS2Panose",
+    0x4D: "os2_s_typo_ascender",  # OpenTypeOS2TypoAscender
+    0x4E: "os2_s_typo_descender",  # OpenTypeOS2TypoDescender
+    0x4F: "os2_s_typo_line_gap",  # OpenTypeOS2TypoLineGap
+    0x50: "os2_fs_selection",
+    0x51: "os2_us_win_ascent",  # OpenTypeOS2WinAscent
+    0x52: "os2_us_win_descent",  # OpenTypeOS2WinDescent
+    0x5C: "Average Width",
+    0x53: "Hdmx PPMs 1",
+    0x58: "Hdmx PPMs 2",
+    # os2_ul_code_page_range1, os2_ul_code_page_range2:
+    0x54: "Codepages",
+}
+
+tt_settings = {
+    0: "use_custom_tt_values",
+    1: "create_vdmx",
+    2: "add_null_cr_space",
+}

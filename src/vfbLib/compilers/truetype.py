@@ -2,9 +2,9 @@ from __future__ import annotations
 
 from typing import Any
 
+from vfbLib import tt_settings, ttinfo_names
 from vfbLib.compilers.base import BaseCompiler
 from vfbLib.helpers import intListToBinary
-from vfbLib.parsers.truetype import info_names, settings
 
 
 def convert_flags_options_to_int(data: dict[str, dict[str, list[int]]]) -> int:
@@ -16,7 +16,7 @@ def convert_flags_options_to_int(data: dict[str, dict[str, list[int]]]) -> int:
     options: tuple[str]
     if options := tuple(head_flags_options.get("options", [])):
         option_bits = []
-        for k, v in settings.items():
+        for k, v in tt_settings.items():
             if v in options:
                 option_bits.append(k)
 
@@ -35,7 +35,7 @@ class TrueTypeInfoCompiler(BaseCompiler):
     def _compile(self, data: Any) -> None:
         for k in (0x33, 0x34, 0x35, 0x36, 0x37, 0x38):
             self.write_uint8(k)
-            self.write_value(data[info_names[k]])
+            self.write_value(data[ttinfo_names[k]])
 
         # Convert combined flags and options dict back to a single int
         head_flags_options = convert_flags_options_to_int(data)
@@ -48,12 +48,12 @@ class TrueTypeInfoCompiler(BaseCompiler):
             0x3C,
         ):
             self.write_uint8(k)
-            self.write_value(data[info_names[k]])
+            self.write_value(data[ttinfo_names[k]])
 
         # Timestamp
 
         self.write_uint8(0x56)
-        self.write_value(data[info_names[0x56]], signed=False)
+        self.write_value(data[ttinfo_names[0x56]], signed=False)
 
         for k in (
             0x57,
@@ -74,10 +74,10 @@ class TrueTypeInfoCompiler(BaseCompiler):
             0x4B,
         ):
             self.write_uint8(k)
-            self.write_value(data[info_names[k]])
+            self.write_value(data[ttinfo_names[k]])
 
         # PANOSE
-        values = data[info_names[0x4C]]
+        values = data[ttinfo_names[0x4C]]
         assert len(values) == 10
         self.write_uint8(0x4C)
         for value in values:
@@ -85,18 +85,18 @@ class TrueTypeInfoCompiler(BaseCompiler):
 
         for k in (0x4D, 0x4E, 0x4F, 0x50, 0x51, 0x52, 0x5C):
             self.write_uint8(k)
-            self.write_value(data[info_names[k]])
+            self.write_value(data[ttinfo_names[k]])
 
         # HDMX 1 and 2
         for k in (0x53, 0x58):
-            values = data[info_names[k]]
+            values = data[ttinfo_names[k]]
             self.write_uint8(k)
             self.write_value(len(values))
             for value in values:
                 self.write_uint8(value)
 
         # Codepages
-        cp_dict = data[info_names[0x54]]
+        cp_dict = data[ttinfo_names[0x54]]
         self.write_uint8(0x54)
         for ck in ("os2_ul_code_page_range1", "os2_ul_code_page_range2"):
             value = cp_dict[ck]
