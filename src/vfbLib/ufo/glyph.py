@@ -4,13 +4,12 @@ import logging
 from colorsys import hls_to_rgb
 from typing import TYPE_CHECKING, Any
 
-from vfbLib.typing import LinkDict
+from vfbLib.typing import GuidePropertiesDict, LinkDict
 from vfbLib.ufo.vfb2ufo import vfb2ufo_label_codes
 
 if TYPE_CHECKING:
     from vfbLib.typing import (
         Anchor,
-        GuidePropertiesDict,
         MMGuidesDict,
         MMHintsDict,
         MMNode,
