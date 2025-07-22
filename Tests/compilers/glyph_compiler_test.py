@@ -3,7 +3,7 @@ from unittest import TestCase
 
 from fontTools.misc.textTools import deHexStr, hexStr
 
-from vfbLib.compilers.glyph import GlyphCompiler
+from vfbLib.compilers.glyph import GlyphCompiler, LinksCompiler
 from vfbLib.parsers.glyph import GlyphParser
 
 composite_2_masters_binary = """
@@ -555,3 +555,22 @@ class GlyphCompilerTest(TestCase):
         data = PartCompiler()._compile(ttinstructions_json, 2, "_compile_instructions")
         assert hexStr(data) == hexStr(deHexStr(ttinstructions_binary))
         # assert len(data) == len(psglyph_1master_nodes)  # 285
+
+
+raw_links = {"x": [[7, 2], [9, 16]], "y": [[6, 3], [10, 15], [0, -1], [17, 8]]}
+bin_links = (
+    "8f"  # 4: y
+    "918e"
+    "959a"
+    "8b8a"
+    "9c93"
+    "8d"  # 2: x
+    "928d"
+    "949b"
+)
+
+
+class LinksCompilerTest(TestCase):
+    def test(self) -> None:
+        result = LinksCompiler().compile_hex(raw_links)
+        assert result == bin_links

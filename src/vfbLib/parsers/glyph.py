@@ -439,7 +439,7 @@ class GlyphUnicodeSuppParser(BaseParser):
 
 
 class LinkParser(BaseParser):
-    def _parse(self) -> dict[str, Any]:
+    def _parse(self) -> LinkDict:
         links = LinkDict(x=[], y=[])
         for i in range(2):
             num = self.read_value()
@@ -447,7 +447,7 @@ class LinkParser(BaseParser):
                 src = self.read_value()
                 tgt = self.read_value()
                 links[("y", "x")[i]].append((src, tgt))
-        return dict(links)
+        return links
 
 
 class MaskParser(GlyphParser):

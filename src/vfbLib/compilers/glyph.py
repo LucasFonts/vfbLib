@@ -10,6 +10,7 @@ from vfbLib import DIRECTIONS, GLYPH_CONSTANT
 from vfbLib.compilers.base import BaseCompiler, StreamWriter
 from vfbLib.parsers.glyph import PathCommand
 from vfbLib.truetype import TT_COMMAND_CONSTANTS, TT_COMMANDS
+from vfbLib.typing import LinkDict
 
 logger = logging.getLogger(__name__)
 
@@ -239,3 +240,13 @@ class OutlinesCompiler(StreamWriter):
                     num_values += 2
                     ref_coords[i] = [x, y]
         return 2 * num_values
+
+
+class LinksCompiler(BaseCompiler):
+    def _compile(self, data: LinkDict) -> None:
+        for direction in ("y", "x"):
+            dir_links = data[direction]
+            self.write_value(len(dir_links))
+            for p0, p1 in dir_links:
+                self.write_value(p0)
+                self.write_value(p1)

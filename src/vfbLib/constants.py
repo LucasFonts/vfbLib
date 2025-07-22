@@ -7,7 +7,7 @@ from vfbLib.compilers.base import (
 )
 from vfbLib.compilers.binary import BinaryTableCompiler
 from vfbLib.compilers.cmap import CustomCmapCompiler
-from vfbLib.compilers.glyph import GlyphCompiler
+from vfbLib.compilers.glyph import GlyphCompiler, LinksCompiler
 from vfbLib.compilers.guides import GuidePropertiesCompiler, GuidesCompiler
 from vfbLib.compilers.mm import (
     AnisotropicInterpolationsCompiler,
@@ -261,7 +261,7 @@ parser_classes = {
     # Begin: Repeat for each glyph
     2001: ("Glyph", GlyphParser, GlyphCompiler),
     # Glyph.hlinks and Glyph.vlinks:
-    2008: ("Links", LinkParser, None),
+    2008: ("Links", LinkParser, LinksCompiler),
     2007: ("image", BackgroundBitmapParser, None),  # Background Bitmap
     2013: ("Glyph Bitmaps", GlyphBitmapParser, None),
     2023: ("2023", EncodedValueListParser, None),  # 1 encoded value per master
