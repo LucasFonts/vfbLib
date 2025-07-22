@@ -51,6 +51,14 @@ def apply_guide_properties(
     for direction in DIRECTIONS:
         for prop in properties[direction]:
             guide_index = prop["index"] - 1  # index is 1-based
+            if guide_index >= len(direction_guides[direction]):
+                logger.warning(
+                    f"Skipping guide properties, guide is missing ({guide_index})."
+                )
+                logger.warning(prop)
+                logger.warning(direction_guides[direction])
+                continue
+
             guide = direction_guides[direction][guide_index]
             if "color" in prop:
                 color = prop["color"]
