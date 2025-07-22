@@ -88,6 +88,7 @@ class GlyphCompiler(BaseCompiler):
             return
 
         self.write_uint8(4)
+        # FIXME: Code is duplicated in GuidesCompiler
         for direction in DIRECTIONS:
             direction_guides = guides.get(direction)
             if direction_guides is None:
