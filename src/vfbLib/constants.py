@@ -279,12 +279,12 @@ parser_classes = {
     2008: ("Links", LinkParser, LinksCompiler),
     2007: ("image", BackgroundBitmapParser, None),  # Background Bitmap
     2013: ("Glyph Bitmaps", GlyphBitmapParser, None),
-    2023: ("2023", EncodedValueListParser, EncodedValueListCompiler),  # 1 encoded value per master
+    2023: ("2023", EncodedValueListParser, EncodedValueListCompiler),  # 1 encoded value per master  # noqa: E501
     2019: ("Glyph Sketch", GlyphSketchParser, None),
     2010: ("Glyph Hinting Options", PostScriptGlyphHintingOptionsParser, PostScriptGlyphHintingOptionsCompiler),  # noqa: E501
     2009: ("mask", MaskParser, MaskCompiler),
-    2011: ("mask.metrics", MaskMetricsParser, MaskMetricsCompiler),  # Single master mask metrics
-    2028: ("mask.metrics_mm", MaskMetricsMMParser, MaskMetricsMMCompiler),  # Mask metrics master 2 to 16
+    2011: ("mask.metrics", MaskMetricsParser, MaskMetricsCompiler),  # Single master mask metrics  # noqa: E501
+    2028: ("mask.metrics_mm", MaskMetricsMMParser, MaskMetricsMMCompiler),  # Mask metrics master 2 to 16  # noqa: E501
     2027: ("Glyph Origin", GlyphOriginParser, GlyphOriginCompiler),
     1250: ("unicodes", GlyphUnicodeParser, GlyphUnicodesCompiler),  # Glyph Unicode
     2034: ("2034", StringParser, StringCompiler),
@@ -298,7 +298,7 @@ parser_classes = {
     2031: ("Glyph Guide Properties", GuidePropertiesParser, GuidePropertiesCompiler),
     # End: Repeat for each glyph
 
-    1743: ("OpenType Export Options", OpenTypeExportOptionsParser, OpenTypeExportOptionsCompiler),
+    1743: ("OpenType Export Options", OpenTypeExportOptionsParser, OpenTypeExportOptionsCompiler),  # noqa: E501
     1744: ("Export Options", ExportOptionsParser, ExportOptionsCompiler),
     1742: ("Mapping Mode", MappingModeParser, MappingModeCompiler),
 
