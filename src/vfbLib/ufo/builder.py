@@ -17,6 +17,7 @@ from ufoLib2.objects.glyph import Glyph
 from ufonormalizer import normalizeUFO
 
 from vfbLib.constants import ignore_minimal
+from vfbLib.typing import GuidePropertiesDict
 from vfbLib.ufo.designspace import get_ds_location
 from vfbLib.ufo.features import rename_kern_classes_in_feature_code
 from vfbLib.ufo.glyph import VfbToUfoGlyph
@@ -40,7 +41,7 @@ from vfbLib.ufo.vfb2ufo import TT_GLYPH_LIB_KEY, TT_LIB_KEY
 if TYPE_CHECKING:
     from fontTools.designspaceLib import DiscreteAxisDescriptor
 
-    from vfbLib.typing import Anchor, GuidePropertyList, KerningClassFlagDict
+    from vfbLib.typing import Anchor, KerningClassFlagDict
     from vfbLib.ufo.typing import UfoGroups, UfoMMKerning
     from vfbLib.vfb.vfb import Vfb
 
@@ -84,7 +85,7 @@ class VfbToUfoBuilder:
         self.features_classes = ""
         self.features_code = ""
         self.groups: UfoGroups = {}
-        self.guide_properties: GuidePropertyList = []
+        self.guide_properties = GuidePropertiesDict(h=[], v=[])
         self.info = VfbToUfoInfo()
         self.kerning_class_flags: KerningClassFlagDict = {}
         self.num_blue_values = 0
