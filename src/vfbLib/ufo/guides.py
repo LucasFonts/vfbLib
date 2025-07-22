@@ -52,11 +52,11 @@ def apply_guide_properties(
         for prop in properties[direction]:
             guide_index = prop["index"] - 1  # index is 1-based
             if guide_index >= len(direction_guides[direction]):
-                logger.warning(
+                logger.info(
                     f"Skipping guide properties, guide is missing ({guide_index})."
                 )
-                logger.warning(prop)
-                logger.warning(direction_guides[direction])
+                logger.info(prop)
+                logger.info(f"{direction}: {direction_guides[direction]}")
                 continue
 
             guide = direction_guides[direction][guide_index]
