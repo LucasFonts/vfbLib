@@ -197,7 +197,7 @@ class VfbToUfoInfo(Info):
             "os2_s_typo_line_gap": "openTypeOS2TypoLineGap",
             "os2_us_win_ascent": "openTypeOS2WinAscent",
             "os2_us_win_descent": "openTypeOS2WinDescent",
-            "Average Width": "postscriptNominalWidthX",
+            # "Average Width": "postscriptNominalWidthX",
         }
 
     def fix_underline_position(self):
@@ -306,6 +306,9 @@ class VfbToUfoInfo(Info):
                     # own:
                     # elif k in maxp_keys:
                     # instructions[maxp_keys[k]] = v
+                elif k == "Average Width":
+                    if v != 0:
+                        self.postscriptNominalWidthX = abs(v)
                 else:
                     logger.info(f"Unhandled integer value in UFO info: {k, v}")
             elif isinstance(v, list):
