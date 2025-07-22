@@ -4,6 +4,7 @@ import logging
 import xml.etree.ElementTree as elementTree
 from typing import TYPE_CHECKING
 
+from vfbLib import DIRECTIONS
 from vfbLib.ufo.typing import HintSet, UfoHintingV2, UfoHintSet
 from vfbLib.ufo.vfb2ufo import PS_GLYPH_LIB_KEY
 
@@ -145,17 +146,17 @@ def build_ps_glyph_hints(
     hint_set: HintSet = HintSet(pointTag="0", stems=stems)
     if mmglyph.hintmasks:
         for mask in mmglyph.hintmasks:
-            for d in ("h", "v"):
+            for direction in DIRECTIONS:
                 dd, hint_index = mask
-                if d == dd:
-                    master_direction_hints = master_hints[d]
+                if direction == dd:
+                    master_direction_hints = master_hints[direction]
                     if hint_index < len(master_direction_hints):
                         hint: HintTuple = master_direction_hints[hint_index]
                         hint_set["stems"].append(hint)
                     else:
                         logger.debug(
-                            f"Hint mask '{d}' with index {hint_index} found in glyph "
-                            f"{glyph.name}, but hint list is empty."
+                            f"Hint mask '{direction}' with index {hint_index} found in "
+                            f"glyph {glyph.name}, but hint list is empty."
                         )
             if mask[0] == "r":
                 hint_set["pointTag"] = mmglyph.get_point_label(
@@ -181,8 +182,8 @@ def build_ps_glyph_hints(
             hint_sets.append(hint_set)
     else:
         # Only one hint set, always make a hint set with first point
-        for d in ("h", "v"):
-            for hint in master_hints[d]:
+        for direction in DIRECTIONS:
+            for hint in master_hints[direction]:
                 hint_set["stems"].append(hint)
         if hint_set["stems"]:
             hint_set["pointTag"] = mmglyph.get_point_label(
@@ -230,12 +231,12 @@ def get_master_hints(
     hints: dict[str, list[HintTuple]] = {"h": [], "v": []}
 
     # Hints
-    for d in "hv":
-        dh = mmglyph.mm_hints[d]
+    for direction in DIRECTIONS:
+        dh = mmglyph.mm_hints[direction]
         for mm_hints in dh:
             hint = mm_hints[master_index]
-            hint = normalize_hint_dict(hint, f"{d}stem")
-            hints[d].append(hint)
+            hint = normalize_hint_dict(hint, f"{direction}stem")
+            hints[direction].append(hint)
 
     # Links
     if not mmglyph.links:

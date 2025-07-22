@@ -6,6 +6,7 @@ from typing import TYPE_CHECKING
 
 from fontTools.pens.pointPen import AbstractPointPen, SegmentToPointPen
 
+from vfbLib import DIRECTIONS
 from vfbLib.templates.glyph import get_empty_glyph
 from vfbLib.ufo.glyph import VfbToUfoGlyph
 from vfbLib.ufo.paths import UfoMasterGlyph
@@ -131,17 +132,17 @@ class VfbGlyph:
         mm_hints = self.entry.decompiled.get("hints", {"h": [], "v": []})
 
         # Hints
-        for d in "hv":
-            direction_hints = mm_hints[d]
+        for direction in DIRECTIONS:
+            direction_hints = mm_hints[direction]
             for mm_hint in direction_hints:
                 hint = mm_hint[self.master_index]
-                hint = normalize_hint_dict(hint, f"{d}stem")
-                hints[d].append(hint)
+                hint = normalize_hint_dict(hint, f"{direction}stem")
+                hints[direction].append(hint)
 
         # Links
         links = self.resolve_links()
-        for d in ("h", "v"):
-            hints[d].extend(links[d])
+        for direction in DIRECTIONS:
+            hints[direction].extend(links[direction])
 
         return hints
 

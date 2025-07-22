@@ -1,3 +1,4 @@
+from vfbLib import DIRECTIONS
 from vfbLib.compilers.base import BaseCompiler
 from vfbLib.typing import GuideDict, GuidePropertiesDict
 
@@ -9,8 +10,8 @@ class GuidesCompiler(BaseCompiler):
 
 class GuidePropertiesCompiler(BaseCompiler):
     def _compile(self, data: GuidePropertiesDict) -> None:
-        for k in ("h", "v"):
-            dir_guides = data[k]
+        for direction in DIRECTIONS:
+            dir_guides = data[direction]
             for gpd in dir_guides:
                 self.write_value(gpd["index"])
                 if color_rgb := gpd.get("color"):

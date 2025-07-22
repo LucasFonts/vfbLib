@@ -4,7 +4,7 @@ from math import radians, tan
 from struct import pack
 from typing import Any
 
-from vfbLib import GLYPH_CONSTANT
+from vfbLib import DIRECTIONS, GLYPH_CONSTANT
 from vfbLib.compilers.base import BaseCompiler, StreamWriter
 from vfbLib.parsers.glyph import PathCommand
 from vfbLib.truetype import TT_COMMAND_CONSTANTS, TT_COMMANDS
@@ -85,7 +85,7 @@ class GlyphCompiler(BaseCompiler):
             return
 
         self.write_uint8(4)
-        for direction in ("h", "v"):
+        for direction in DIRECTIONS:
             direction_guides = guides.get(direction)
             if direction_guides is None:
                 self.write_value(0)
@@ -108,7 +108,7 @@ class GlyphCompiler(BaseCompiler):
         #     return
 
         self.write_uint8(3)
-        for direction in ("h", "v"):
+        for direction in DIRECTIONS:
             if direction_hints := hints.get(direction):
                 self.write_value(len(direction_hints))
                 for mm_hint in direction_hints:

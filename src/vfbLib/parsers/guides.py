@@ -1,10 +1,10 @@
 from __future__ import annotations
 
 import logging
-from collections.abc import Sequence
 from math import atan2, degrees
-from typing import TYPE_CHECKING, Literal
+from typing import TYPE_CHECKING
 
+from vfbLib import DIRECTIONS
 from vfbLib.parsers.base import BaseParser
 from vfbLib.typing import GuideDict, GuidePropertiesDict, GuidePropertyDict
 from vfbLib.value import read_value
@@ -18,25 +18,22 @@ if TYPE_CHECKING:
 logger = logging.getLogger(__name__)
 
 
-DIRECTIONS: Sequence[Literal["h", "v"]] = ("h", "v")
-
-
 def parse_guides(stream: BytesIO, num_masters: int, name: str) -> MMGuidesDict:
     # Common parser for glyph and global guides
     guides: MMGuidesDict = {
         "h": [[] for _ in range(num_masters)],
         "v": [[] for _ in range(num_masters)],
     }
-    for d in DIRECTIONS:
+    for direction in DIRECTIONS:
         num_guides = read_value(stream)
         for _ in range(num_guides):
             for m in range(num_masters):
                 try:
                     pos = read_value(stream)
                     angle = degrees(atan2(read_value(stream), 10000))
-                    guides[d][m].append(GuideDict(pos=pos, angle=angle))
+                    guides[direction][m].append(GuideDict(pos=pos, angle=angle))
                 except ValueError:
-                    logger.error(f"Missing {d} guideline data ({name})")
+                    logger.error(f"Missing {direction} guideline data ({name})")
                     raise
 
     return guides
@@ -53,7 +50,7 @@ class GlobalGuidesParser(BaseParser):
 class GuidePropertiesParser(BaseParser):
     def _parse(self) -> GuidePropertiesDict:
         guides = GuidePropertiesDict(h=[], v=[])
-        for k in ("h", "v"):
+        for direction in DIRECTIONS:
             while True:
                 index = self.read_value()
                 if index == 0:
@@ -70,6 +67,6 @@ class GuidePropertiesParser(BaseParser):
                 if name:
                     g["name"] = name
 
-                guides[k].append(g)
+                guides[direction].append(g)
 
         return guides

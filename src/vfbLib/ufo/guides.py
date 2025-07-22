@@ -3,6 +3,7 @@ from __future__ import annotations
 import logging
 from typing import TYPE_CHECKING
 
+from vfbLib import DIRECTIONS
 from vfbLib.ufo.typing import UfoGuide
 
 if TYPE_CHECKING:
@@ -16,16 +17,16 @@ def get_master_guides(mm_guides: MMGuidesDict, master_index: int) -> list[UfoGui
     # Concatenate guidlines for both directions and extract coords for
     # master_index
     guides = []
-    for d in ("h", "v"):
-        direction_mm_guides = mm_guides[d]
+    for direction in DIRECTIONS:
+        direction_mm_guides = mm_guides[direction]
         for master_guide in direction_mm_guides[master_index]:
             guide = UfoGuide(angle=0, x=0, y=0)
-            if d == "h":
+            if direction == "h":
                 guide["y"] = master_guide["pos"]
             else:
                 guide["x"] = master_guide["pos"]
             angle = master_guide["angle"]
-            if d == "v":
+            if direction == "v":
                 angle = 90 - angle
             if angle < 0:
                 angle += 360

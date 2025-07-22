@@ -7,6 +7,7 @@ from typing import TYPE_CHECKING, Any
 
 from fontTools.ttLib.tables.ttProgram import Program
 
+from vfbLib import DIRECTIONS
 from vfbLib.helpers import hexStr
 from vfbLib.parsers.base import BaseParser
 from vfbLib.parsers.guides import parse_guides
@@ -225,7 +226,7 @@ class GlyphParser(BaseParser):
 
     def parse_hints(self) -> None:
         hints = MMHintsDict(v=[], h=[])
-        for d in ("h", "v"):
+        for direction in DIRECTIONS:
             num_hints = self.read_value()
             for _ in range(num_hints):
                 master_hints = []
@@ -233,7 +234,7 @@ class GlyphParser(BaseParser):
                     pos = self.read_value()
                     width = self.read_value()
                     master_hints.append(HintDict(pos=pos, width=width))
-                hints[d].append(master_hints)
+                hints[direction].append(master_hints)
 
         num_hintmasks = self.read_value()
         if num_hintmasks > 0:
