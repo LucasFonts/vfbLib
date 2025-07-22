@@ -5,6 +5,7 @@ from io import BytesIO
 from struct import unpack
 from typing import TYPE_CHECKING, Any
 
+from vfbLib import mapping_modes
 from vfbLib.helpers import (
     deHexStr,
     double_size,
@@ -282,11 +283,6 @@ class EncodedKeyValuesParser(BaseParser):
 
 class MappingModeParser(BaseParser):
     __end__ = 0x00
-    modes = {
-        0: "names_or_index",
-        1: "unicode_ranges",
-        3: "codepages",
-    }
 
     def _parse(self) -> dict[str, str | int]:
         value: dict[str, str | int] = {}
@@ -298,7 +294,7 @@ class MappingModeParser(BaseParser):
             v = self.read_value()
 
             if key == 1:
-                value["mapping_mode"] = self.modes.get(v, str(v))
+                value["mapping_mode"] = mapping_modes.get(v, str(v))
             elif key == 2:
                 value["2"] = v
             elif key == 3:

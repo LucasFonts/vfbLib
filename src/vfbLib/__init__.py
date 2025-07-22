@@ -10,3 +10,9 @@ if TYPE_CHECKING:
 DIRECTIONS: Sequence[Literal["h", "v"]] = ("h", "v")
 
 GLYPH_CONSTANT = (1, 9, 7, 1)
+
+mapping_modes = {
+    0: "names_or_index",
+    1: "unicode_ranges",
+    3: "codepages",
+}

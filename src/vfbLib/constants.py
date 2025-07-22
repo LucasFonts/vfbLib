@@ -5,6 +5,7 @@ from vfbLib.compilers.base import (
     EncodedValueListWithCountCompiler,
     GlyphEncodingCompiler,
     HexStringCompiler,
+    MappingModeCompiler,
 )
 from vfbLib.compilers.binary import BinaryTableCompiler
 from vfbLib.compilers.cmap import CustomCmapCompiler
@@ -292,7 +293,7 @@ parser_classes = {
 
     1743: ("OpenType Export Options", OpenTypeExportOptionsParser, None),
     1744: ("Export Options", ExportOptionsParser, None),
-    1742: ("Mapping Mode", MappingModeParser, None),
+    1742: ("Mapping Mode", MappingModeParser, MappingModeCompiler),
 
     # Not seen in FontNames.vfb:
     1410: ("1410", FL3Type1410Parser, None),

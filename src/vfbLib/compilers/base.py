@@ -245,3 +245,24 @@ class HexStringCompiler(BaseCompiler):
             return
 
         self.write_bytes(deHexStr(data))
+
+
+mapping_modes = {
+    0: "names_or_index",
+    1: "unicode_ranges",
+    3: "codepages",
+}
+
+
+class MappingModeCompiler(BaseCompiler):
+    def _compile(self, data: dict[str, str | int]) -> None:
+        rev_map = {v: k for k, v in mapping_modes.items()}
+        self.write_uint8(1)
+        self.write_value(rev_map[data["mapping_mode"]])
+        self.write_uint8(2)
+        self.write_value(data["2"])
+        self.write_uint8(3)
+        self.write_value(data["3"])
+        self.write_uint8(4)
+        self.write_value(data["mapping_id"])
+        self.write_uint8(0)
