@@ -10,7 +10,7 @@ from vfbLib import DIRECTIONS, GLYPH_CONSTANT
 from vfbLib.compilers.base import BaseCompiler, StreamWriter
 from vfbLib.parsers.glyph import PathCommand
 from vfbLib.truetype import TT_COMMAND_CONSTANTS, TT_COMMANDS
-from vfbLib.typing import LinkDict
+from vfbLib.typing import LinkDict, MMGuidesDict
 
 logger = logging.getLogger(__name__)
 
@@ -85,7 +85,12 @@ class GlyphCompiler(BaseCompiler):
         # Guidelines
         # TODO: Reuse for global guides
         if not (guides := data.get("guides")):
-            return
+            # TODO: Do we always need to write the guides data?
+            # return
+            guides = MMGuidesDict(
+                h=[[] for _ in range(self.num_masters)],
+                v=[[] for _ in range(self.num_masters)],
+            )
 
         self.write_uint8(4)
         # FIXME: Code is duplicated in GuidesCompiler
@@ -140,6 +145,8 @@ class GlyphCompiler(BaseCompiler):
     def _compile_instructions(self, data):
         # TrueType instructions
         if not (tth := data.get("tth")):
+            self.write_uint8(0x0A)
+            self.write_value(0)
             return
 
         self.write_uint8(0x0A)
