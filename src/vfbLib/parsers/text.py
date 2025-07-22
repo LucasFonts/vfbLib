@@ -127,4 +127,4 @@ class StringParser(BaseParser):
     """
 
     def _parse(self):
-        return self.read_str_all()
+        return self.read_str_all().strip("\00")
