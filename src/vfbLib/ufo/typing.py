@@ -71,6 +71,7 @@ class UfoGuide(TypedDict):
     name: NotRequired[str]
     x: int
     y: int
+    _direction: NotRequired[str]
 
 
 class HintSet(TypedDict):

@@ -7,7 +7,7 @@ from vfbLib import DIRECTIONS
 from vfbLib.ufo.typing import UfoGuide
 
 if TYPE_CHECKING:
-    from vfbLib.typing import GuidePropertyList, MMGuidesDict
+    from vfbLib.typing import GuidePropertiesDict, MMGuidesDict
 
 
 logger = logging.getLogger(__name__)
@@ -20,7 +20,7 @@ def get_master_guides(mm_guides: MMGuidesDict, master_index: int) -> list[UfoGui
     for direction in DIRECTIONS:
         direction_mm_guides = mm_guides[direction]
         for master_guide in direction_mm_guides[master_index]:
-            guide = UfoGuide(angle=0, x=0, y=0)
+            guide = UfoGuide(angle=0, x=0, y=0, _direction=direction)
             if direction == "h":
                 guide["y"] = master_guide["pos"]
             else:
@@ -38,37 +38,31 @@ def get_master_guides(mm_guides: MMGuidesDict, master_index: int) -> list[UfoGui
 
 
 def apply_guide_properties(
-    guides: list[UfoGuide], properties: GuidePropertyList
+    guides: list[UfoGuide], properties: GuidePropertiesDict
 ) -> None:
     # Update the guides with names and colors from properties
-    num_guides = len(guides)
-    for prop in properties:
-        guide_index = prop["index"]
-        assert isinstance(guide_index, int)
-        target_guide_index = guide_index - 1  # index is 1-based
-        if target_guide_index >= num_guides:
-            pp = {k: v for k, v in prop.items() if k != "index"}
-            logger.warning(
-                "Captain, we lost a guide somewhere. "
-                f"Looked for index {target_guide_index}, but it is outside of "
-                f"guide array of length {num_guides}:\n{guides}\n"
-                f"Properties meant to be applied were:\n{pp}.\nSkipping properties."
-            )
-            continue
 
-        guide = guides[target_guide_index]
-        if "color" in prop:
-            color = prop["color"]
-            assert isinstance(color, str)
-            r = int(color[1:3], 16) / 0xFF
-            try:
-                g = int(color[3:5], 16) / 0xFF
-            except ValueError:
-                g = 0
-            try:
-                b = int(color[5:7], 16) / 0xFF
-            except ValueError:
-                b = 0
-            guide["color"] = f"{r:0.4f},{g:0.4f},{b:0.4f},1"
-        if "name" in prop:
-            guide["name"] = prop["name"]
+    # Split the guides into h and v again
+    direction_guides = {
+        "h": [g for g in guides if g["_direction"] == "h"],
+        "v": [g for g in guides if g["_direction"] == "v"],
+    }
+
+    for direction in DIRECTIONS:
+        for prop in properties[direction]:
+            guide_index = prop["index"] - 1  # index is 1-based
+            guide = direction_guides[direction][guide_index]
+            if "color" in prop:
+                color = prop["color"]
+                r = int(color[1:3], 16) / 0xFF
+                try:
+                    g = int(color[3:5], 16) / 0xFF
+                except ValueError:
+                    g = 0
+                try:
+                    b = int(color[5:7], 16) / 0xFF
+                except ValueError:
+                    b = 0
+                guide["color"] = f"{r:0.4f},{g:0.4f},{b:0.4f},1"
+            if "name" in prop:
+                guide["name"] = prop["name"]

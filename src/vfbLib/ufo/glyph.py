@@ -10,7 +10,7 @@ from vfbLib.ufo.vfb2ufo import vfb2ufo_label_codes
 if TYPE_CHECKING:
     from vfbLib.typing import (
         Anchor,
-        GuidePropertyList,
+        GuidePropertiesDict,
         MMGuidesDict,
         MMHintsDict,
         MMNode,
@@ -26,7 +26,7 @@ class VfbToUfoGlyph:
     def __init__(self, builder: VfbToUfoBuilder | None = None) -> None:
         self.builder = builder
         self.anchors: list[Anchor] = []
-        self.guide_properties: GuidePropertyList = []
+        self.guide_properties = GuidePropertiesDict(h=[], v=[])
         self.hintmasks: list[tuple[str, int]] = []
         self.labels: dict[str, int] = {}
         self.lib: dict[str, Any] = {}
