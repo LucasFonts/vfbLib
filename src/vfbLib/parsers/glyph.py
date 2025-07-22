@@ -471,24 +471,24 @@ class GlobalMaskParser(GlyphParser):
 
 class MaskMetricsParser(BaseParser):
     # advance width/height for master 0
-    def _parse(self) -> list[int]:
+    def _parse(self) -> tuple[int, int]:
         # FIXME: Normally, the values are little endian.
         # In some cases, the value seems to be saved as big endian, though
         # Maybe try to interpret the value as BE when it is negative and less than a
         # certain sensible value.
         x = self.read_int16()
         y = self.read_int16()
-        return [x, y]
+        return (x, y)
 
 
 class MaskMetricsMMParser(BaseParser):
     # advance width/height for master 1 to 15
-    def _parse(self) -> list[list[int]]:
+    def _parse(self) -> list[tuple[int, int]]:
         values = []
         for _ in range(self.master_count - 1):
             x = self.read_value()
             y = self.read_value()
-            values.append([x, y])
+            values.append((x, y))
         return values
 
 

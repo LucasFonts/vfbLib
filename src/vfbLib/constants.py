@@ -15,6 +15,8 @@ from vfbLib.compilers.glyph import (
     GlyphUnicodesCompiler,
     GlyphUnicodesSuppCompiler,
     LinksCompiler,
+    MaskMetricsCompiler,
+    MaskMetricsMMCompiler,
 )
 from vfbLib.compilers.guides import GuidePropertiesCompiler, GuidesCompiler
 from vfbLib.compilers.mm import (
@@ -280,8 +282,8 @@ parser_classes = {
     2019: ("Glyph Sketch", GlyphSketchParser, None),
     2010: ("Glyph Hinting Options", PostScriptGlyphHintingOptionsParser, PostScriptGlyphHintingOptionsCompiler),  # noqa: E501
     2009: ("mask", MaskParser, None),
-    2011: ("mask.metrics", MaskMetricsParser, None),  # Single master mask metrics
-    2028: ("mask.metrics_mm", MaskMetricsMMParser, None),  # Mask metrics master 2 to 16
+    2011: ("mask.metrics", MaskMetricsParser, MaskMetricsCompiler),  # Single master mask metrics
+    2028: ("mask.metrics_mm", MaskMetricsMMParser, MaskMetricsMMCompiler),  # Mask metrics master 2 to 16
     2027: ("Glyph Origin", GlyphOriginParser, GlyphOriginCompiler),
     1250: ("unicodes", GlyphUnicodeParser, GlyphUnicodesCompiler),  # Glyph Unicode
     2034: ("2034", StringParser, StringCompiler),

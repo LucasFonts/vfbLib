@@ -276,3 +276,18 @@ class LinksCompiler(BaseCompiler):
             for p0, p1 in dir_links:
                 self.write_value(p0)
                 self.write_value(p1)
+
+
+class MaskMetricsCompiler(BaseCompiler):
+    def _compile(self, data: tuple[int, int]) -> None:
+        x, y = data
+        self.write_int16(x)
+        self.write_int16(y)
+
+
+class MaskMetricsMMCompiler(BaseCompiler):
+    def _compile(self, data: list[tuple[int, int]]) -> None:
+        for value in data:
+            x, y = value
+            self.write_int16(x)
+            self.write_int16(y)
