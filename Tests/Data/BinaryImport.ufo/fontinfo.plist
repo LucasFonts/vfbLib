@@ -484,6 +484,8 @@
 		<string>Comic Jens Free Pro Regular</string>
 		<key>postscriptIsFixedPitch</key>
 		<false/>
+		<key>postscriptNominalWidthX</key>
+		<integer>505</integer>
 		<key>postscriptOtherBlues</key>
 		<array>
 		</array>

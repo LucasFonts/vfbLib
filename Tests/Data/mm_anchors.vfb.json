@@ -2123,7 +2123,7 @@
     },
     {
       "key": "pcl_chars_set",
-      "decompiled": "9U"
+      "decompiled": " 9U"
     },
     {
       "key": "ttinfo",
@@ -2144,7 +2144,7 @@
         "head_mac_style": 0,
         "head_lowest_rec_ppem": 9,
         "head_creation": 3809058445,
-        "0x57": 0,
+        "_unknown_0x57": 0,
         "head_font_direction_hint": 2,
         "os2_us_weight_class": 400,
         "os2_us_width_class": 5,
@@ -2313,9 +2313,7 @@
     },
     {
       "key": "Custom CMAPs",
-      "decompiled": {
-        "values": []
-      }
+      "decompiled": []
     },
     {
       "key": "PCLT Table",
@@ -2559,7 +2557,7 @@
     },
     {
       "key": "Master Name",
-      "decompiled": "Wt0"
+      "decompiled": "Wt0 "
     },
     {
       "key": "Master Location",
@@ -2575,7 +2573,7 @@
     },
     {
       "key": "Master Name",
-      "decompiled": "Wt1"
+      "decompiled": "Wt1 "
     },
     {
       "key": "Master Location",

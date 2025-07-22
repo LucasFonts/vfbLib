@@ -587,6 +587,8 @@
 		<string>Comic Jens Pro</string>
 		<key>postscriptIsFixedPitch</key>
 		<false/>
+		<key>postscriptNominalWidthX</key>
+		<integer>606</integer>
 		<key>postscriptOtherBlues</key>
 		<array>
 		</array>

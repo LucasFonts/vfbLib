@@ -3954,7 +3954,7 @@
         "head_mac_style": 0,
         "head_lowest_rec_ppem": 9,
         "head_creation": 3243592162,
-        "0x57": 0,
+        "_unknown_0x57": 0,
         "head_font_direction_hint": 2,
         "os2_us_weight_class": 400,
         "os2_us_width_class": 5,
@@ -4351,9 +4351,7 @@
     },
     {
       "key": "Custom CMAPs",
-      "decompiled": {
-        "values": []
-      }
+      "decompiled": []
     },
     {
       "key": "PCLT Table",
@@ -4605,7 +4603,7 @@
     },
     {
       "key": "Master Name",
-      "decompiled": "Wt0"
+      "decompiled": "Wt0 "
     },
     {
       "key": "Master Location",
@@ -4621,7 +4619,7 @@
     },
     {
       "key": "Master Name",
-      "decompiled": "Wt1"
+      "decompiled": "Wt1 "
     },
     {
       "key": "Master Location",
@@ -5190,88 +5188,91 @@
     },
     {
       "key": "Global Guide Properties",
-      "decompiled": [
-        {
-          "index": 1,
-          "name": "Top"
-        },
-        {
-          "index": 2,
-          "name": "Bottom"
-        },
-        {
-          "index": 3,
-          "color": "#ffff00",
-          "name": "Midline"
-        },
-        {
-          "index": 4,
-          "color": "#ff00",
-          "name": "SupAt"
-        },
-        {
-          "index": 5,
-          "color": "#ff00",
-          "name": "SupAb"
-        },
-        {
-          "index": 6,
-          "color": "#ff00",
-          "name": "SupXb"
-        },
-        {
-          "index": 7,
-          "color": "#ff00",
-          "name": "SupXt"
-        },
-        {
-          "index": 8,
-          "color": "#ff00",
-          "name": "SupMid"
-        },
-        {
-          "index": 9,
-          "color": "#ff00",
-          "name": "SupBt"
-        },
-        {
-          "index": 10,
-          "color": "#ff00",
-          "name": "SupBb"
-        },
-        {
-          "index": 11,
-          "color": "#ff00",
-          "name": "SupDt"
-        },
-        {
-          "index": 12,
-          "color": "#ff00",
-          "name": "SupDb"
-        },
-        {
-          "index": 14,
-          "color": "#c0ff",
-          "name": "PcapCy"
-        },
-        {
-          "index": 15,
-          "color": "#ff00",
-          "name": "CombCt"
-        },
-        {
-          "index": 17,
-          "name": "HighMid"
-        },
-        {
-          "index": 18,
-          "name": "SupFt"
-        },
-        {
-          "index": 19,
-          "name": "SupFb"
-        }
-      ]
+      "decompiled": {
+        "h": [
+          {
+            "index": 1,
+            "name": "Top"
+          },
+          {
+            "index": 2,
+            "name": "Bottom"
+          },
+          {
+            "index": 3,
+            "color": "#00ffff",
+            "name": "Midline"
+          },
+          {
+            "index": 4,
+            "color": "#00ff00",
+            "name": "SupAt"
+          },
+          {
+            "index": 5,
+            "color": "#00ff00",
+            "name": "SupAb"
+          },
+          {
+            "index": 6,
+            "color": "#00ff00",
+            "name": "SupXb"
+          },
+          {
+            "index": 7,
+            "color": "#00ff00",
+            "name": "SupXt"
+          },
+          {
+            "index": 8,
+            "color": "#00ff00",
+            "name": "SupMid"
+          },
+          {
+            "index": 9,
+            "color": "#00ff00",
+            "name": "SupBt"
+          },
+          {
+            "index": 10,
+            "color": "#00ff00",
+            "name": "SupBb"
+          },
+          {
+            "index": 11,
+            "color": "#00ff00",
+            "name": "SupDt"
+          },
+          {
+            "index": 12,
+            "color": "#00ff00",
+            "name": "SupDb"
+          },
+          {
+            "index": 14,
+            "color": "#ffc000",
+            "name": "PcapCy"
+          },
+          {
+            "index": 15,
+            "color": "#00ff00",
+            "name": "CombCt"
+          },
+          {
+            "index": 17,
+            "name": "HighMid"
+          },
+          {
+            "index": 18,
+            "name": "SupFt"
+          },
+          {
+            "index": 19,
+            "name": "SupFb"
+          }
+        ],
+        "v": []
+      }
     },
     {
       "key": "default_character",

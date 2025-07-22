@@ -52,17 +52,6 @@
 							<string>vstem 637 113</string>
 						</array>
 					</dict>
-					<dict>
-						<key>pointTag</key>
-						<string>hr00</string>
-						<key>stems</key>
-						<array>
-							<string>hstem 0 100</string>
-							<string>hstem 598 100</string>
-							<string>vstem 218 113</string>
-							<string>vstem 749 105</string>
-						</array>
-					</dict>
 				</array>
 			</dict>
 			<key>com.fontlab.ttprogram</key>
