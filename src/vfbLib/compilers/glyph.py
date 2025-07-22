@@ -10,7 +10,7 @@ from vfbLib import DIRECTIONS, GLYPH_CONSTANT
 from vfbLib.compilers.base import BaseCompiler, StreamWriter
 from vfbLib.parsers.glyph import PathCommand
 from vfbLib.truetype import TT_COMMAND_CONSTANTS, TT_COMMANDS
-from vfbLib.typing import LinkDict, MMGuidesDict
+from vfbLib.typing import LinkDict, MaskData
 
 logger = logging.getLogger(__name__)
 
@@ -177,10 +177,11 @@ class GlyphCompiler(BaseCompiler):
             self.write_value(x)
             self.write_value(y)
 
-    def _compile_outlines(self, data):
+    def compile_outlines(self, data, write_key=True):
         # Outlines
         # A minimal outlines structure is always written:
-        self.write_uint8(8)
+        if write_key:
+            self.write_uint8(8)
         self.write_value(self.num_masters)  # Number of masters
 
         if not (nodes := data.get("nodes")):
@@ -199,7 +200,7 @@ class GlyphCompiler(BaseCompiler):
         self.num_masters = data["num_masters"]
 
         self._compile_glyph_name(data)
-        self._compile_outlines(data)
+        self.compile_outlines(data)
         self._compile_metrics(data)
         self._compile_hints(data)
         self._compile_guides(data)
@@ -276,6 +277,15 @@ class LinksCompiler(BaseCompiler):
             for p0, p1 in dir_links:
                 self.write_value(p0)
                 self.write_value(p1)
+
+
+class MaskCompiler(GlyphCompiler):
+    def _compile(self, data: MaskData) -> None:
+        self.num_masters = data["num_masters"]
+        self.write_value(data["num"])
+        for i in range(data["num"]):
+            self.write_value(data[f"reserved{i}"])
+        self.compile_outlines(data, write_key=False)
 
 
 class MaskMetricsCompiler(BaseCompiler):

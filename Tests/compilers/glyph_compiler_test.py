@@ -3,7 +3,7 @@ from unittest import TestCase
 
 from fontTools.misc.textTools import deHexStr, hexStr
 
-from vfbLib.compilers.glyph import GlyphCompiler, LinksCompiler
+from vfbLib.compilers.glyph import GlyphCompiler, LinksCompiler, MaskCompiler
 from vfbLib.parsers.glyph import GlyphParser
 
 composite_2_masters_binary = """
@@ -547,7 +547,7 @@ class GlyphCompilerTest(TestCase):
         assert hexStr(data) == hexStr(deHexStr("01 8D 61 74"))
 
     def test_outlines_1_master(self):
-        data = PartCompiler()._compile(psglyph_1master_expected, 1, "_compile_outlines")
+        data = PartCompiler()._compile(psglyph_1master_expected, 1, "compile_outlines")
         assert hexStr(data) == hexStr(psglyph_1master_nodes)
         assert len(data) == len(psglyph_1master_nodes)  # 285
 
@@ -574,3 +574,164 @@ class LinksCompilerTest(TestCase):
     def test(self) -> None:
         result = LinksCompiler().compile_hex(raw_links)
         assert result == bin_links
+
+
+raw_mask_mm = {
+    "num": 2,
+    "reserved0": 100000000,
+    "reserved1": 0,
+    "num_masters": 2,
+    "nodes": [
+        {"type": "move", "flags": 0, "points": [[[419, 0]], [[459, 0]]]},
+        {
+            "type": "curve",
+            "flags": 1,
+            "points": [
+                [[417, 158], [418, 46], [417, 105]],
+                [[456, 126], [456, 40], [456, 87]],
+            ],
+        },
+        {"type": "line", "flags": 1, "points": [[[417, 329]], [[456, 327]]]},
+        {
+            "type": "curve",
+            "flags": 3,
+            "points": [
+                [[247, 505], [417, 433], [374, 505]],
+                [[251, 507], [456, 444], [407, 507]],
+            ],
+        },
+        {
+            "type": "curve",
+            "flags": 0,
+            "points": [
+                [[80, 460], [189, 505], [130, 488]],
+                [[66, 468], [191, 507], [122, 493]],
+            ],
+        },
+        {"type": "line", "flags": 0, "points": [[[97, 419]], [[95, 367]]]},
+        {
+            "type": "curve",
+            "flags": 3,
+            "points": [
+                [[241, 462], [143, 447], [195, 462]],
+                [[235, 403], [141, 390], [189, 403]],
+            ],
+        },
+        {
+            "type": "curve",
+            "flags": 1,
+            "points": [
+                [[364, 321], [335, 462], [364, 413]],
+                [[323, 326], [299, 403], [323, 377]],
+            ],
+        },
+        {"type": "line", "flags": 0, "points": [[[364, 287]], [[323, 308]]]},
+        {"type": "line", "flags": 0, "points": [[[345, 287]], [[315, 308]]]},
+        {
+            "type": "curve",
+            "flags": 3,
+            "points": [
+                [[55, 125], [149, 287], [55, 225]],
+                [[33, 138], [139, 308], [33, 252]],
+            ],
+        },
+        {
+            "type": "curve",
+            "flags": 3,
+            "points": [
+                [[202, -8], [55, 46], [114, -8]],
+                [[192, -10], [33, 51], [89, -10]],
+            ],
+        },
+        {
+            "type": "curve",
+            "flags": 0,
+            "points": [
+                [[369, 102], [285, -8], [344, 39]],
+                [[337, 72], [258, -10], [311, 20]],
+            ],
+        },
+        {"type": "line", "flags": 0, "points": [[[370, 102]], [[338, 72]]]},
+        {
+            "type": "curve",
+            "flags": 0,
+            "points": [
+                [[364, 0], [365, 72], [364, 42]],
+                [[333, 0], [334, 48], [333, 22]],
+            ],
+        },
+        {"type": "move", "flags": 1, "points": [[[364, 229]], [[323, 211]]]},
+        {
+            "type": "curve",
+            "flags": 3,
+            "points": [
+                [[206, 35], [364, 121], [301, 35]],
+                [[219, 95], [323, 149], [281, 95]],
+            ],
+        },
+        {
+            "type": "curve",
+            "flags": 3,
+            "points": [
+                [[110, 129], [146, 35], [110, 76]],
+                [[166, 147], [187, 95], [166, 116]],
+            ],
+        },
+        {
+            "type": "curve",
+            "flags": 0,
+            "points": [
+                [[343, 244], [110, 197], [162, 244]],
+                [[313, 219], [166, 189], [199, 219]],
+            ],
+        },
+        {"type": "line", "flags": 0, "points": [[[364, 244]], [[323, 219]]]},
+    ],
+}
+
+bin_mask_mm = (
+    "8d"  # 2
+    "ff05f5e1008b8df81c9f00f8378bf85f8b1389f73288f7128cfb048b358ac68bba118bf7748bf78433fb3ef744fb61f748f73e43f7614c60d35aca03fbba5efbe964f701b8f711b2507a467d016a4670fb1233f724b6f720af297c2d7ebf9abb9813f73dfb21f71a3e6ef72173d8a85aa371018bfb128b4601788b838b33fbb6fb36fbaefb3ee9f736f5f73e2d4d215333f727fb7df733fb9afb27c1fb33c8c655c34e03f793f702f78cdd37fb023c39c6bac0a901a5caa6bf03852586438cd38cbb8a6d8a71108bf74f81f75133fb32fb5623fb08f732e1f3c14c35615533fb53e9fb07bfaf2da05767b476a003f77df73cf727f2fb7d5cfb276dbfbaaca901f75e8bf7108b"
+)
+
+raw_mask_1m = {
+    "num": 1,
+    "reserved0": 100000000,
+    "num_masters": 1,
+    "nodes": [
+        {"type": "move", "flags": 0, "points": [[[32, 0]]]},
+        {"type": "line", "flags": 0, "points": [[[424, 0]]]},
+        {"type": "line", "flags": 0, "points": [[[424, 780]]]},
+        {"type": "line", "flags": 0, "points": [[[32, 780]]]},
+        {"type": "move", "flags": 0, "points": [[[81, 50]]]},
+        {"type": "line", "flags": 0, "points": [[[81, 730]]]},
+        {"type": "line", "flags": 0, "points": [[[376, 730]]]},
+        {"type": "line", "flags": 0, "points": [[[376, 50]]]},
+    ],
+}
+
+bin_mask_1m = (
+    "8c"  # 1
+    "ff05f5e100"  # 100000000
+    "8c"  # 1
+    "bb"  # 48
+    "93"  # 8
+    "00ab8b"  # move: 32 0
+    "01f81c8b"  # line: 392 0
+    "018bf9a0"  # line: 0 780
+    "01fc1c8b"  # line: -392 0
+    "00bcfd6e"  # move: 49 -730
+    "018bf93c"  # line: 0 680
+    "01f7bb8b"  # line: 295 0
+    "018bfd3c"  # line: 0 -680
+)
+
+
+class MaskCompilerTest(TestCase):
+    def test_1m(self) -> None:
+        result = MaskCompiler().compile_hex(raw_mask_1m)
+        assert result == bin_mask_1m
+
+    def test_mm(self) -> None:
+        result = MaskCompiler().compile_hex(raw_mask_mm)
+        assert result == bin_mask_mm
