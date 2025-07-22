@@ -7,7 +7,7 @@ from typing import TYPE_CHECKING, Any
 
 from fontTools.ttLib.tables.ttProgram import Program
 
-from vfbLib import DIRECTIONS
+from vfbLib import DIRECTIONS, replace_types
 from vfbLib.helpers import hexStr
 from vfbLib.parsers.base import BaseParser
 from vfbLib.parsers.guides import parse_guides
@@ -242,13 +242,7 @@ class GlyphParser(BaseParser):
             for _ in range(num_hintmasks):
                 k = self.read_uint8()
                 val = self.read_value()
-                key = {
-                    0x01: "h",  # hintmask for hstem
-                    0x02: "v",  # hintmask for vstem
-                    0xFF: "r",  # Replacement point
-                    # FIXME: This seems to be the node index of the replacement
-                    # point. But sometimes it is negative, why?
-                }[k]
+                key = replace_types[k]
                 hintmasks.append((key, val))
             if hintmasks:
                 hints["hintmasks"] = hintmasks

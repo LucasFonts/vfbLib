@@ -17,6 +17,14 @@ export_options = {
     2: "use_custom_cmap_encoding",
 }
 
+replace_types = {
+    0x01: "h",  # hintmask for hstem
+    0x02: "v",  # hintmask for vstem
+    0xFF: "r",  # Replacement point
+    # FIXME: This seems to be the node index of the replacement
+    # point. But sometimes it is negative, why?
+}
+
 mapping_modes = {
     0: "names_or_index",
     1: "unicode_ranges",
