@@ -281,10 +281,7 @@ def update_adobe_hinting(data) -> UfoHintingV2:
         # V1 data is stored as str, so if it is not a str, we have nothing to do
         return data
 
-    v2: UfoHintingV2 = {
-        # "flexList": [],
-        # "id": "",
-    }
+    v2 = UfoHintingV2()
     root = elementTree.fromstring(data)
     hintset: UfoHintSet | None = None
     hintSetList: list[UfoHintSet] = []
