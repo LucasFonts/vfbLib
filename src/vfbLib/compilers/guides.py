@@ -1,6 +1,12 @@
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
+
 from vfbLib import DIRECTIONS
 from vfbLib.compilers.base import BaseCompiler
-from vfbLib.typing import GuideDict, GuidePropertiesDict
+
+if TYPE_CHECKING:
+    from vfbLib.typing import GuideDict, GuidePropertiesDict
 
 
 class GuidesCompiler(BaseCompiler):

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from vfbLib.compilers.base import (
     EncodedValueListWithCountCompiler,
     GlyphEncodingCompiler,

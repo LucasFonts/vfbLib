@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import logging
 from io import BytesIO
 from math import radians, tan

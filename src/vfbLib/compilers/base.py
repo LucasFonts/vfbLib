@@ -2,13 +2,14 @@ from __future__ import annotations
 
 from io import BytesIO
 from struct import pack
-from typing import TYPE_CHECKING, Any
+from typing import TYPE_CHECKING
 
 from vfbLib.compilers.value import write_value, write_value_long
 from vfbLib.helpers import deHexStr, hexStr, int8_size, int16_size, int32_size
 
 if TYPE_CHECKING:
     from io import BufferedWriter
+    from typing import Any
 
 
 # Compilers for VFB entries

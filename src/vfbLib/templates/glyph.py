@@ -1,3 +1,6 @@
+from __future__ import annotations
+
+
 def get_empty_glyph(num_masters: int):
     return {
         "metrics": [(0, 0) for _ in range(num_masters)],
