@@ -86,11 +86,11 @@ class GlyphCompiler(BaseCompiler):
         # TODO: Reuse for global guides
         if not (guides := data.get("guides")):
             # TODO: Do we always need to write the guides data?
-            # return
-            guides = MMGuidesDict(
-                h=[[] for _ in range(self.num_masters)],
-                v=[[] for _ in range(self.num_masters)],
-            )
+            # guides = MMGuidesDict(
+            #     h=[[] for _ in range(self.num_masters)],
+            #     v=[[] for _ in range(self.num_masters)],
+            # )
+            return
 
         self.write_uint8(4)
         # FIXME: Code is duplicated in GuidesCompiler
@@ -113,8 +113,8 @@ class GlyphCompiler(BaseCompiler):
         # To minimize diffs, we always write out hint, but it is not necessary
         hints = data.get("hints", {})
         # We could skip empty hinting:
-        # if not (hints := data.get("hints")):
-        #     return
+        if not (hints := data.get("hints")):
+            return
 
         self.write_uint8(3)
         for direction in DIRECTIONS:
@@ -145,8 +145,8 @@ class GlyphCompiler(BaseCompiler):
     def _compile_instructions(self, data):
         # TrueType instructions
         if not (tth := data.get("tth")):
-            self.write_uint8(0x0A)
-            self.write_value(0)
+            # self.write_uint8(0x0A)
+            # self.write_value(0)
             return
 
         self.write_uint8(0x0A)
