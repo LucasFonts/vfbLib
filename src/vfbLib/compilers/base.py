@@ -203,6 +203,12 @@ class BaseCompiler(StreamWriter):
         pass
 
 
+class EncodedValueListCompiler(BaseCompiler):
+    def _compile(self, data: Any) -> None:
+        for value in data:
+            self.write_value(value)
+
+
 class EncodedValueListWithCountCompiler(BaseCompiler):
     def _compile(self, data: Any) -> None:
         values = data["values"]  # TODO: We don't need the dict

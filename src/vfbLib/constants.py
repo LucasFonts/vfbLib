@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from vfbLib.compilers.base import (
+    EncodedValueListCompiler,
     EncodedValueListWithCountCompiler,
     GlyphEncodingCompiler,
     HexStringCompiler,
@@ -264,7 +265,7 @@ parser_classes = {
     2008: ("Links", LinkParser, LinksCompiler),
     2007: ("image", BackgroundBitmapParser, None),  # Background Bitmap
     2013: ("Glyph Bitmaps", GlyphBitmapParser, None),
-    2023: ("2023", EncodedValueListParser, None),  # 1 encoded value per master
+    2023: ("2023", EncodedValueListParser, EncodedValueListCompiler),  # 1 encoded value per master
     2019: ("Glyph Sketch", GlyphSketchParser, None),
     2010: ("Glyph Hinting Options", PostScriptGlyphHintingOptionsParser, PostScriptGlyphHintingOptionsCompiler),  # noqa: E501
     2009: ("mask", MaskParser, None),
