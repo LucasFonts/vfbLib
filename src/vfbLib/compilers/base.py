@@ -11,6 +11,8 @@ if TYPE_CHECKING:
     from io import BufferedWriter
     from typing import Any
 
+    from vfbLib.typing import KerningClassFlagDict, MetricsClassFlagDict
+
 
 # Compilers for VFB entries
 
@@ -266,3 +268,24 @@ class MappingModeCompiler(BaseCompiler):
         self.write_uint8(4)
         self.write_value(data["mapping_id"])
         self.write_uint8(0)
+
+
+class OpenTypeKerningClassFlagsCompiler(BaseCompiler):
+    def _compile(self, data: KerningClassFlagDict) -> None:
+        self.write_value(len(data), signed=False)
+        for name, flags in data.items():
+            self.write_str_with_len(name)
+            flag1, flag2 = flags
+            self.write_value(flag1, signed=False)
+            self.write_value(flag2, signed=False)
+
+
+class OpenTypeMetricsClassFlagsCompiler(BaseCompiler):
+    def _compile(self, data: MetricsClassFlagDict) -> None:
+        self.write_value(len(data), signed=False)
+        for name, flags in data.items():
+            self.write_str_with_len(name)
+            flag1, flag2, flag3 = flags
+            self.write_value(flag1, signed=False)
+            self.write_value(flag2, signed=False)
+            self.write_value(flag3, signed=False)

@@ -6,6 +6,8 @@ from vfbLib.compilers.base import (
     GlyphEncodingCompiler,
     HexStringCompiler,
     MappingModeCompiler,
+    OpenTypeKerningClassFlagsCompiler,
+    OpenTypeMetricsClassFlagsCompiler,
 )
 from vfbLib.compilers.binary import BinaryTableCompiler
 from vfbLib.compilers.cmap import CustomCmapCompiler
@@ -240,8 +242,8 @@ parser_classes = {
     2025: ("note", StringParser, StringCompiler),
     2030: ("2030", BaseParser, HexStringCompiler),
     2016: ("customdata", StringParser, StringCompiler),
-    2024: ("OpenType Metrics Class Flags", OpenTypeMetricsClassFlagsParser, None),
-    2026: ("OpenType Kerning Class Flags", OpenTypeKerningClassFlagsParser, None),
+    2024: ("OpenType Metrics Class Flags", OpenTypeMetricsClassFlagsParser, OpenTypeMetricsClassFlagsCompiler),  # noqa: E501
+    2026: ("OpenType Kerning Class Flags", OpenTypeKerningClassFlagsParser, OpenTypeKerningClassFlagsCompiler),  # noqa: E501
 
     # Repeat for each binary table:
     # truetypetables: TrueTypeTable

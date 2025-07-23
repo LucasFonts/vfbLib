@@ -35,6 +35,8 @@ Compiler changes:
 - Support entry 2018 (Glyph GDEF Data)
 - Support entry 2020 (Glyph Anchors Supplemental)
 - Support entry 2023 (unknown)
+- Support entry 2024 (OpenType Metrics Class Flags)
+- Support entry 2026 (OpenType Kerning Class Flags)
 - Support entry 2027 (Glyph Origin)
 - Support entry 2028 (mask.metrics_mm)
 - Support entry 2029 (Glyph Anchors MM)
