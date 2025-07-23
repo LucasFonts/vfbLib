@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from vfbLib.helpers import binaryToIntList, deHexStr, hexStr, intListToBinary
+from vfbLib.helpers import binaryToIntList, intListToBinary
 
 
 class HelpersTest(TestCase):
