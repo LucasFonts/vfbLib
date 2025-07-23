@@ -10,7 +10,10 @@ from vfbLib.compilers.base import (
 from vfbLib.compilers.binary import BinaryTableCompiler
 from vfbLib.compilers.cmap import CustomCmapCompiler
 from vfbLib.compilers.glyph import (
+    GlyphAnchorsCompiler,
+    GlyphAnchorsSuppCompiler,
     GlyphCompiler,
+    GlyphGDEFCompiler,
     GlyphOriginCompiler,
     GlyphUnicodesCompiler,
     GlyphUnicodesSuppCompiler,
@@ -292,9 +295,9 @@ parser_classes = {
     2012: ("mark", Int16Parser, Int16Compiler),  # Mark Color
     2015: ("glyph.customdata", StringParser, StringCompiler),
     2017: ("glyph.note", StringParser, StringCompiler),
-    2018: ("Glyph GDEF Data", GlyphGDEFParser, None),
-    2020: ("Glyph Anchors Supplemental", GlyphAnchorsSuppParser, None),
-    2029: ("Glyph Anchors MM", GlyphAnchorsParser, None),  # MM-compatible
+    2018: ("Glyph GDEF Data", GlyphGDEFParser, GlyphGDEFCompiler),
+    2020: ("Glyph Anchors Supplemental", GlyphAnchorsSuppParser, GlyphAnchorsSuppCompiler),  # noqa: E501
+    2029: ("Glyph Anchors MM", GlyphAnchorsParser, GlyphAnchorsCompiler),  # MM-compatible  # noqa: E501
     2031: ("Glyph Guide Properties", GuidePropertiesParser, GuidePropertiesCompiler),
     # End: Repeat for each glyph
 

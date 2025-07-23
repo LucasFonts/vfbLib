@@ -90,7 +90,7 @@ class GlyphGDEFParser(BaseParser):
     def _parse(self) -> GdefDict:
         gdef: GdefDict = {}
         glyph_class = self.read_value()
-        glyph_class_name = gdef_class_names.get(glyph_class, "unassigned")
+        glyph_class_name = gdef_class_names[glyph_class]
         if glyph_class_name != "unassigned":
             gdef["glyph_class"] = glyph_class_name
 

@@ -32,9 +32,12 @@ Compiler changes:
 - Support entry 2009 (mask)
 - Support entry 2010 (Glyph Hinting Options)
 - Support entry 2011 (mask.metrics)
+- Support entry 2018 (Glyph GDEF Data)
+- Support entry 2020 (Glyph Anchors Supplemental)
 - Support entry 2023 (unknown)
 - Support entry 2027 (Glyph Origin)
 - Support entry 2028 (mask.metrics_mm)
+- Support entry 2029 (Glyph Anchors MM)
 - Support entry 2031 (Glyph Guide Properties)
 - Compile "marker" entries (271, 513, 527) with HexStringCompiler
 - Compile 1121 (vendor) padded to 4 characters

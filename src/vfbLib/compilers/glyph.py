@@ -4,15 +4,66 @@ import logging
 from io import BytesIO
 from math import radians, tan
 from struct import pack
-from typing import Any
+from typing import TYPE_CHECKING, Any
 
-from vfbLib import DIRECTIONS, GLYPH_CONSTANT
+from vfbLib import DIRECTIONS, GLYPH_CONSTANT, gdef_class_names
 from vfbLib.compilers.base import BaseCompiler, StreamWriter
 from vfbLib.parsers.glyph import PathCommand
 from vfbLib.truetype import TT_COMMAND_CONSTANTS, TT_COMMANDS
-from vfbLib.typing import LinkDict, MaskData
+
+if TYPE_CHECKING:
+    from vfbLib.typing import GdefDict, LinkDict, MaskData, MMAnchorDict
+
 
 logger = logging.getLogger(__name__)
+
+
+class GlyphAnchorsCompiler(BaseCompiler):
+    def _compile(self, data: list[MMAnchorDict]) -> None:
+        self.write_value(len(data), signed=False)
+        self.write_value(self.master_count, signed=False)
+        for anchor in data:
+            for i in range(self.master_count):
+                self.write_value(anchor["x"][i])
+                self.write_value(anchor["y"][i])
+
+
+class GlyphAnchorsSuppCompiler(BaseCompiler):
+    def _compile(self, data: list[dict[str, int]]) -> None:
+        self.write_value(len(data), signed=False)
+        for anchor in data:
+            self.write_value(anchor["hue"], signed=False)
+            self.write_value(anchor["reserved"], signed=False)
+
+
+class GlyphGDEFCompiler(BaseCompiler):
+    def _compile(self, data: GdefDict) -> None:
+        c = data.get("glyph_class", "unassigned")
+        if c is None:
+            gdef_class = 0
+        else:
+            gdef_class = gdef_class_names.index(c)
+        self.write_value(gdef_class, signed=False)
+
+        anchors = data.get("anchors", [])
+        self.write_value(len(anchors), signed=False)
+        for anchor in anchors:
+            self.write_str_with_len(anchor.get("name", ""))
+            self.write_value(anchor["x"])
+            self.write_value(anchor.get("x1", -1))
+            self.write_value(anchor["y"])
+            self.write_value(anchor.get("y1", -1))
+
+        carets = data.get("carets", [])
+        self.write_value(len(carets), signed=False)
+        for pos, xxx in carets:
+            self.write_value(pos)
+            self.write_value(xxx)
+
+        unknown = data.get("unknown", [])
+        self.write_value(len(unknown), signed=False)
+        for value in unknown:
+            self.write_value(value)
 
 
 class GlyphCompiler(BaseCompiler):

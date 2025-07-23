@@ -17,13 +17,13 @@ export_options = {
     2: "use_custom_cmap_encoding",
 }
 
-gdef_class_names = {
-    0: "unassigned",
-    1: "base",
-    2: "ligature",
-    3: "mark",
-    4: "component",
-}
+gdef_class_names = (
+    "unassigned",  # 0
+    "base",  # 1
+    "ligature",  # 2
+    "mark",  # 3
+    "component",  # 4
+)
 
 replace_types = {
     0x01: "h",  # hintmask for hstem
