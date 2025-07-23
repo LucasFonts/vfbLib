@@ -13,7 +13,7 @@ from vfbLib.ufo.vfb2ufo import TT_GLYPH_LIB_KEY
 if TYPE_CHECKING:
     from fontTools.pens.pointPen import AbstractPointPen
 
-    from vfbLib.typing import Anchor
+    from vfbLib.typing import AnchorDict
     from vfbLib.ufo.glyph import VfbToUfoGlyph
     from vfbLib.ufo.typing import UfoComponent, UfoContour
 
@@ -48,7 +48,7 @@ class UfoMasterGlyph:
         self.master_index = master_index
 
         self.lib: dict[str, Any] = {}
-        self.anchors: list[Anchor] = []
+        self.anchors: list[AnchorDict] = []
         self.guidelines: list = []
         self.unicodes: list[int] = []
         self.width: int = 0

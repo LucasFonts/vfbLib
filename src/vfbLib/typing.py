@@ -11,7 +11,7 @@ from typing_extensions import NotRequired, TypedDict
 Point = tuple[int, int]
 
 
-class Anchor(TypedDict):
+class AnchorDict(TypedDict):
     name: NotRequired[str]
     x: int
     x1: NotRequired[int]
@@ -65,7 +65,7 @@ GaspList = list[dict[str, int]]
 
 
 class GdefDict(TypedDict):
-    anchors: NotRequired[list[Anchor]]
+    anchors: NotRequired[list[AnchorDict]]
     carets: NotRequired[list[tuple[int, int]]]
     glyph_class: NotRequired[str]
     unknown: NotRequired[list[int]]
@@ -113,7 +113,7 @@ class LinkDict(TypedDict):
     y: list[tuple[int, int]]
 
 
-class MMAnchor(TypedDict):
+class MMAnchorDict(TypedDict):
     x: list[int]
     y: list[int]
 

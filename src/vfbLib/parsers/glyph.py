@@ -13,7 +13,7 @@ from vfbLib.parsers.base import BaseParser
 from vfbLib.parsers.guides import parse_guides
 from vfbLib.truetype import TT_COMMANDS
 from vfbLib.typing import (
-    Anchor,
+    AnchorDict,
     Component,
     GdefDict,
     GlyphData,
@@ -21,7 +21,7 @@ from vfbLib.typing import (
     Instruction,
     LinkDict,
     MaskData,
-    MMAnchor,
+    MMAnchorDict,
     MMHintsDict,
     MMNode,
     Point,
@@ -62,12 +62,12 @@ def read_absolute_point(
 
 
 class GlyphAnchorsParser(BaseParser):
-    def _parse(self) -> list[MMAnchor]:
+    def _parse(self) -> list[MMAnchorDict]:
         anchors = []
         num_anchors = self.read_value()
         num_masters = self.read_value()
         for _ in range(num_anchors):
-            anchor = MMAnchor(x=[], y=[])
+            anchor = MMAnchorDict(x=[], y=[])
             for _ in range(num_masters):
                 anchor["x"].append(self.read_value())
                 anchor["y"].append(self.read_value())
@@ -109,7 +109,7 @@ class GlyphGDEFParser(BaseParser):
             x1 = self.read_value()
             y = self.read_value()
             y1 = self.read_value()
-            anchor = Anchor(x=x, x1=x1, y=y, y1=y1)
+            anchor = AnchorDict(x=x, x1=x1, y=y, y1=y1)
             if name:
                 anchor["name"] = name
             anchors.append(anchor)

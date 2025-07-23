@@ -41,7 +41,7 @@ from vfbLib.ufo.vfb2ufo import TT_GLYPH_LIB_KEY, TT_LIB_KEY
 if TYPE_CHECKING:
     from fontTools.designspaceLib import DiscreteAxisDescriptor
 
-    from vfbLib.typing import Anchor, KerningClassFlagDict
+    from vfbLib.typing import AnchorDict, KerningClassFlagDict
     from vfbLib.ufo.typing import UfoGroups, UfoMMKerning
     from vfbLib.vfb.vfb import Vfb
 
@@ -548,7 +548,7 @@ class VfbToUfoBuilder:
                     assert self.current_glyph is not None
                     self.current_glyph.anchors = []
                     for anchor in data["anchors"]:
-                        a: Anchor = {
+                        a: AnchorDict = {
                             "x": anchor["x"],
                             "y": anchor["y"],
                         }
