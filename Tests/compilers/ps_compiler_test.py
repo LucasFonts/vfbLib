@@ -1,7 +1,5 @@
 from unittest import TestCase
 
-from fontTools.misc.textTools import deHexStr, hexStr
-
 from vfbLib.compilers.ps import (
     PostScriptGlobalHintingOptionsCompiler,
     PostScriptGlyphHintingOptionsCompiler,

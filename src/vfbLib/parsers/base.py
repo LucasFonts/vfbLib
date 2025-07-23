@@ -387,8 +387,7 @@ class OpenTypeKerningClassFlagsParser(BaseParser):
         class_flags: KerningClassFlagDict = {}
         num_classes = self.read_value()
         for _ in range(num_classes):
-            n = self.read_value()
-            name = self.read_str(n)
+            name = self.read_str_with_len()
             flag1 = self.read_value()
             flag2 = self.read_value()
             class_flags[name] = (flag1, flag2)
@@ -400,8 +399,7 @@ class OpenTypeMetricsClassFlagsParser(BaseParser):
         class_flags: MetricsClassFlagDict = {}
         num_classes = self.read_value()
         for _ in range(num_classes):
-            n = self.read_value()
-            name = self.read_str(n)
+            name = self.read_str_with_len()
             flag1 = self.read_value()
             flag2 = self.read_value()
             flag3 = self.read_value()
