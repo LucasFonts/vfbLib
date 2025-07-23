@@ -1,6 +1,6 @@
 # Change Log
 
-## 0.9.6-dev
+## 0.10.0
 
 Compiler changes:
 
