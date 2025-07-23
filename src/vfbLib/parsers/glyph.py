@@ -7,7 +7,7 @@ from typing import TYPE_CHECKING, Any
 
 from fontTools.ttLib.tables.ttProgram import Program
 
-from vfbLib import DIRECTIONS, replace_types
+from vfbLib import DIRECTIONS, gdef_class_names, replace_types
 from vfbLib.helpers import hexStr
 from vfbLib.parsers.base import BaseParser
 from vfbLib.parsers.guides import parse_guides
@@ -89,15 +89,8 @@ class GlyphAnchorsSuppParser(BaseParser):
 class GlyphGDEFParser(BaseParser):
     def _parse(self) -> GdefDict:
         gdef: GdefDict = {}
-        class_names = {
-            0: "unassigned",
-            1: "base",
-            2: "ligature",
-            3: "mark",
-            4: "component",
-        }
         glyph_class = self.read_value()
-        glyph_class_name = class_names.get(glyph_class, "unassigned")
+        glyph_class_name = gdef_class_names.get(glyph_class, "unassigned")
         if glyph_class_name != "unassigned":
             gdef["glyph_class"] = glyph_class_name
 

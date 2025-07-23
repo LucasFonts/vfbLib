@@ -17,6 +17,14 @@ export_options = {
     2: "use_custom_cmap_encoding",
 }
 
+gdef_class_names = {
+    0: "unassigned",
+    1: "base",
+    2: "ligature",
+    3: "mark",
+    4: "component",
+}
+
 replace_types = {
     0x01: "h",  # hintmask for hstem
     0x02: "v",  # hintmask for vstem
