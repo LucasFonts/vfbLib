@@ -316,16 +316,6 @@ class MappingModeParser(BaseParser):
         return value
 
 
-class EncodedValueParser(BaseParser):
-    """
-    A parser that reads data as Yuri's optimized encoded value (1 value).
-    """
-
-    def _parse(self) -> int:
-        value = self.read_value()
-        return value
-
-
 class EncodedValueListParser(BaseParser):
     """
     A parser that reads data as Yuri's optimized encoded values.

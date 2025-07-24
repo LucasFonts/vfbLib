@@ -69,7 +69,7 @@ from vfbLib.compilers.truetype import (
     TrueTypeZonesCompiler,
     VdmxCompiler,
 )
-from vfbLib.parsers.base import (  # EncodedValueParser,; EncodedKeyValuesParser,
+from vfbLib.parsers.base import (
     BaseParser,
     EncodedValueListParser,
     EncodedValueListWithCountParser,
