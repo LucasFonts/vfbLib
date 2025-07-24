@@ -350,5 +350,5 @@ class MaskMetricsMMCompiler(BaseCompiler):
     def _compile(self, data: list[tuple[int, int]]) -> None:
         for value in data:
             x, y = value
-            self.write_int16(x)
-            self.write_int16(y)
+            self.write_value(x)
+            self.write_value(y)
