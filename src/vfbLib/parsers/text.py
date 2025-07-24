@@ -88,6 +88,8 @@ class OpenTypeStringParser(BaseParser):
                         fea["features"].append({"tag": tag, "code": feature})
                         feature = []
                         tag = ""
+                else:
+                    fea["features"][-1]["code"].append(line)
 
         return fea
 
