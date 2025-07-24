@@ -9,7 +9,7 @@ from vfbLib.helpers import deHexStr, hexStr, int8_size, int16_size, int32_size
 
 if TYPE_CHECKING:
     from io import BufferedWriter
-    from typing import Any
+    from typing import Any, Iterable
 
     from vfbLib.typing import KerningClassFlagDict, MetricsClassFlagDict
 
@@ -46,12 +46,12 @@ class StreamWriter:
         """
         self.stream.write(pack("d", value))
 
-    def write_doubles(self, values: list[float]) -> None:
+    def write_doubles(self, values: Iterable[float]) -> None:
         """
         Write several double-precision floats to the stream.
 
         Args:
-            values (list[float]): The sequence of double-precision floats to write.
+            values (Iterable[float]): The sequence of double-precision floats to write.
         """
         for f in values:
             self.write_double(f)
@@ -191,13 +191,13 @@ class BaseCompiler(StreamWriter):
         raise NotImplementedError
 
     @classmethod
-    def merge(cls, masters_data: list[Any], data: Any) -> None:
+    def merge(cls, masters_data: Iterable[Any], data: Any) -> None:
         """
         Merge the data of additional masters into the main data structure. This operates
         on the uncompiled JSON-like data structure.
 
         Args:
-            masters_data (List[Any]): The additional masters data as a list with one
+            masters_data (Iterable[Any]): The additional masters data as a list with one
                 entry per master.
             data (Any): The main data structure.
         """
