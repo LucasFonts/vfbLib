@@ -1,5 +1,17 @@
 # Change Log
 
+## 0.10.1
+
+Compiler changes:
+
+- Fix `MaskMetricsMMCompiler`
+- Fix `PrimaryInstanceLocationsCompiler`
+
+Parser changes:
+
+- Move `GaspParser` from `base` to `truetype`
+
+
 ## 0.10.0
 
 Compiler changes:
