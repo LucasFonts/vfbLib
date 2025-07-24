@@ -1,11 +1,18 @@
 from __future__ import annotations
 
 import logging
+from struct import unpack
 
 from vfbLib import tt_settings, ttinfo_names
 from vfbLib.helpers import binaryToIntList
 from vfbLib.parsers.base import BaseParser
-from vfbLib.typing import TTStemDict, TTStemsDict, TTZoneDict, TTZonesDict
+from vfbLib.typing import (
+    GaspList,
+    TTStemDict,
+    TTStemsDict,
+    TTZoneDict,
+    TTZonesDict,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -17,6 +24,24 @@ def convert_int_to_flags_options(value: int) -> dict:
         "flags": flags,
         "options": [tt_settings.get(i, i) for i in options],
     }
+
+
+class GaspParser(BaseParser):
+    """
+    A parser that reads data as an array representing Gasp table values.
+    """
+
+    def _parse(self) -> GaspList:
+        data = self.stream.read()
+        gasp = unpack(f"<{len(data) // 2}H", data)
+        it = iter(gasp)
+        return [
+            {
+                "maxPpem": a,
+                "flags": b,
+            }
+            for a, b in zip(it, it)
+        ]
 
 
 class TrueTypeInfoParser(BaseParser):

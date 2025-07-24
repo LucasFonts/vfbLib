@@ -73,7 +73,6 @@ from vfbLib.parsers.base import (
     BaseParser,
     EncodedValueListParser,
     EncodedValueListWithCountParser,
-    GaspParser,  # TODO: Should move to parsers.truetype
     GlyphEncodingParser,
     MappingModeParser,
     OpenTypeKerningClassFlagsParser,
@@ -125,6 +124,7 @@ from vfbLib.parsers.ps import (
 )
 from vfbLib.parsers.text import NameRecordsParser, OpenTypeStringParser, StringParser
 from vfbLib.parsers.truetype import (
+    GaspParser,
     TrueTypeInfoParser,
     TrueTypeStemPpems1Parser,
     TrueTypeStemPpems23Parser,

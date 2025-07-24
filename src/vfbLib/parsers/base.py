@@ -347,24 +347,6 @@ class EncodedValueListWithCountParser(BaseParser):
         return values
 
 
-class GaspParser(BaseParser):
-    """
-    A parser that reads data as an array representing Gasp table values.
-    """
-
-    def _parse(self):
-        data = self.stream.read()
-        gasp = unpack(f"<{len(data) // 2}H", data)
-        it = iter(gasp)
-        return [
-            {
-                "maxPpem": a,
-                "flags": b,
-            }
-            for a, b in zip(it, it)
-        ]
-
-
 class GlyphEncodingParser(BaseParser):
     def _parse(self):
         gid = self.read_uint16()

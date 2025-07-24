@@ -61,7 +61,12 @@ class FeaturesDict(TypedDict):
     features: list[FeatureDict]
 
 
-GaspList = list[dict[str, int]]
+class GaspRangeDict(TypedDict):
+    maxPpem: int
+    flags: int
+
+
+GaspList = list[GaspRangeDict]
 
 
 class GdefDict(TypedDict):
