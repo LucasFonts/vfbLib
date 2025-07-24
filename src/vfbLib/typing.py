@@ -135,6 +135,11 @@ class MMNode(TypedDict):
     type: Literal["move", "line", "curve", "qcurve"]
 
 
+class PrimaryInstanceDict(TypedDict):
+    name: str
+    values: tuple[float, ...]
+
+
 class PSInfoDict(TypedDict):
     font_matrix: tuple[float, ...]
     force_bold: int
