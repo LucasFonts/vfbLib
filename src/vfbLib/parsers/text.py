@@ -71,10 +71,7 @@ class OpenTypeStringParser(BaseParser):
                     in_prefix = False
                     # Extract the feature tag of the first feature
                     tag = s.groups()[0]
-                    if "#" in line:
-                        _, comment = line.split("#", 1)
-                        feature.append(f"# {comment.strip()}")
-                    # feature.append(f"# {line}")
+                    feature.append(line)
                 else:
                     prefix.append(line)
             else:
@@ -84,18 +81,13 @@ class OpenTypeStringParser(BaseParser):
                     else:
                         # Extract the feature tag of the next feature
                         tag = s.groups()[0]
-                        if "#" in line:
-                            _, comment = line.split("#", 1)
-                            feature.append(f"# {comment.strip()}")
-                        # feature.append(f"# {line}")
+                        feature.append(line)
                 elif tag:
+                    feature.append(line)
                     if search(r"\s*\}\s*%s\s*;" % tag, line):
-                        # feature.append(f"# {line}")
                         fea["features"].append({"tag": tag, "code": feature})
                         feature = []
                         tag = ""
-                    else:
-                        feature.append(line)
 
         return fea
 
