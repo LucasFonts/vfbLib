@@ -92,8 +92,3 @@ class PshintsTest(TestCase):
     def test_2_hintsets(self):
         r = update_adobe_hinting(ps_hints)
         assert r == expected_2_hintsets
-
-
-if __name__ == "__main__":
-    t = PshintsTest()
-    t.test_2_hintsets()
