@@ -149,6 +149,17 @@ class StreamReader:
             self.stream.read(int16_size), byteorder="little", signed=False
         )
 
+    def read_uint16_be(self) -> int:
+        """
+        Return an unsigned 16-bit integer from the stream.
+
+        Returns:
+            int: The integer
+        """
+        return int.from_bytes(
+            self.stream.read(int16_size), byteorder="big", signed=False
+        )
+
     def read_uint32(self) -> int:
         """
         Return an unsigned 32-bit integer from the stream.
