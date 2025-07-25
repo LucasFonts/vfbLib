@@ -35,6 +35,7 @@ yaml = ["pyyaml >= 6.0.2"]
 all = ["vfbLib[toml]", "vfbLib[yaml]"]
 
 test = [
+    "coverage",
     "flake8",
     # "mypy",
     "pytest",
