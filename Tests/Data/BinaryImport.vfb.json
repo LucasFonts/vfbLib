@@ -3844,6 +3844,7 @@
             451,
             770
           ],
+          "num_contours": 10,
           "endpoints": [
             3,
             14,
@@ -5065,6 +5066,7 @@
             546,
             769
           ],
+          "num_contours": 2,
           "endpoints": [
             29,
             43
@@ -5560,6 +5562,7 @@
             546,
             769
           ],
+          "num_contours": -1,
           "endpoints": [],
           "instructions": [],
           "hdmx": []
@@ -5786,6 +5789,7 @@
             467,
             748
           ],
+          "num_contours": 1,
           "endpoints": [
             11
           ],
