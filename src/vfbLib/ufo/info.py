@@ -6,6 +6,7 @@ from typing import TYPE_CHECKING
 
 from ufoLib2.objects.info import Info, WidthClass
 
+from vfbLib.enum import F, T
 from vfbLib.helpers import binaryToIntList
 from vfbLib.ufo.time import convert_timestamp
 from vfbLib.ufo.typing import TUfoGaspRecDict
@@ -131,43 +132,43 @@ class VfbToUfoInfo(Info):
 
     def build_mapping(self):
         self.mapping = {
-            # "sgn": "openTypeNamePreferredFamilyName",  # below
-            "full_name": "postscriptFullName",
-            "font_name": "postscriptFontName",
-            "family_name": "styleMapFamilyName",
-            "weight": "weightName",
-            "italic_angle": "italicAngle",
-            "underline_position": "postscriptUnderlinePosition",
-            "underline_thickness": "postscriptUnderlineThickness",
-            # "is_fixed_pitch": "postscriptIsFixedPitch",  # below
-            "copyright": "copyright",
-            "notice": "openTypeNameDescription",
-            "source": "openTypeNameManufacturer",
-            "unique_id": "postscriptUniqueID",
-            # weight_code, below
-            "trademark": "trademark",
-            "designer": "openTypeNameDesigner",
-            "designer_url": "openTypeNameDesignerURL",
-            "vendor_url": "openTypeNameManufacturerURL",
-            "width": "widthName",
-            "License": "openTypeNameLicense",
-            "License URL": "openTypeNameLicenseURL",
-            "fond_id": "macintoshFONDFamilyID",
-            "apple_name": "macintoshFONDName",
-            "panose": "openTypeOS2Panose",
-            "vendor": "openTypeOS2VendorID",
-            "tt_u_id": "openTypeNameUniqueID",
-            "tt_version": "openTypeNameVersion",
-            "version_major": "versionMajor",
-            "version_minor": "versionMinor",
-            "year": "year",
-            "upm": "unitsPerEm",
-            # "pref_style_name": "openTypeNamePreferredSubfamilyName",  # below
-            "hhea_ascender": "openTypeHheaAscender",
-            "hhea_descender": "openTypeHheaDescender",
-            "hhea_line_gap": "openTypeHheaLineGap",
-            "note": "note",
-            "default_character": "postscriptDefaultCharacter",
+            # F.pref_family_name: "openTypeNamePreferredFamilyName",  # below
+            F.full_name: "postscriptFullName",
+            F.font_name: "postscriptFontName",
+            F.family_name: "styleMapFamilyName",
+            F.weight: "weightName",
+            F.italic_angle: "italicAngle",
+            F.underline_position: "postscriptUnderlinePosition",
+            F.underline_thickness: "postscriptUnderlineThickness",
+            # F.is_fixed_pitch: "postscriptIsFixedPitch",  # below
+            F.copyright: "copyright",
+            F.notice: "openTypeNameDescription",
+            F.source: "openTypeNameManufacturer",
+            F.unique_id: "postscriptUniqueID",
+            # F.weight_code, below
+            F.trademark: "trademark",
+            F.designer: "openTypeNameDesigner",
+            F.designer_url: "openTypeNameDesignerURL",
+            F.vendor_url: "openTypeNameManufacturerURL",
+            F.width: "widthName",
+            F.License: "openTypeNameLicense",
+            F.LicenseURL: "openTypeNameLicenseURL",
+            F.fond_id: "macintoshFONDFamilyID",
+            F.apple_name: "macintoshFONDName",
+            F.panose: "openTypeOS2Panose",
+            F.vendor: "openTypeOS2VendorID",
+            F.tt_u_id: "openTypeNameUniqueID",
+            F.tt_version: "openTypeNameVersion",
+            F.version_major: "versionMajor",
+            F.version_minor: "versionMinor",
+            F.year: "year",
+            F.upm: "unitsPerEm",
+            # F.pref_style_name: "openTypeNamePreferredSubfamilyName",  # below
+            T.hhea_ascender: "openTypeHheaAscender",
+            T.hhea_descender: "openTypeHheaDescender",
+            T.hhea_line_gap: "openTypeHheaLineGap",
+            F.note: "note",
+            F.default_character: "postscriptDefaultCharacter",
         }
         # Integer values from TTInfo
         self.mapping_int = {
