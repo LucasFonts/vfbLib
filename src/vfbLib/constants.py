@@ -14,6 +14,7 @@ from vfbLib.compilers.bitmap import BackgroundBitmapCompiler, GlyphBitmapsCompil
 from vfbLib.compilers.cmap import CustomCmapCompiler
 from vfbLib.compilers.fl3 import FL3Type1410Compiler
 from vfbLib.compilers.glyph import (
+    GlobalMaskCompiler,
     GlyphAnchorsCompiler,
     GlyphAnchorsSuppCompiler,
     GlyphCompiler,
@@ -278,7 +279,7 @@ parser_classes = {
     527: ("527", BaseParser, HexStringCompiler),
     1294: ("Global Guides", GlobalGuidesParser, GuidesCompiler),
     1296: ("Global Guide Properties", GuidePropertiesParser, GuidePropertiesCompiler),
-    1295: ("Global Mask", GlobalMaskParser, None),
+    1295: ("Global Mask", GlobalMaskParser, GlobalMaskCompiler),
     1066: ("default_character", StringParser, StringCompiler),
 
     # Begin: Repeat for each glyph

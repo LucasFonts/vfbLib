@@ -12,7 +12,7 @@ from vfbLib.parsers.glyph import PathCommand
 from vfbLib.truetype import TT_COMMAND_CONSTANTS, TT_COMMANDS
 
 if TYPE_CHECKING:
-    from vfbLib.typing import GdefDict, LinkDict, MaskData, MMAnchorDict
+    from vfbLib.typing import GdefDict, GlyphData, LinkDict, MaskData, MMAnchorDict
 
 
 logger = logging.getLogger(__name__)
@@ -345,6 +345,12 @@ class MaskCompiler(GlyphCompiler):
         self.write_value(data["num"])
         for i in range(data["num"]):
             self.write_value(data[f"reserved{i}"])
+        self.compile_outlines(data, write_key=False)
+
+
+class GlobalMaskCompiler(GlyphCompiler):
+    def _compile(self, data: GlyphData) -> None:
+        self.num_masters = data["num_masters"]
         self.compile_outlines(data, write_key=False)
 
 

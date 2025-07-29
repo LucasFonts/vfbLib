@@ -3,7 +3,12 @@ from unittest import TestCase
 
 from fontTools.misc.textTools import deHexStr, hexStr
 
-from vfbLib.compilers.glyph import GlyphCompiler, LinksCompiler, MaskCompiler
+from vfbLib.compilers.glyph import (
+    GlobalMaskCompiler,
+    GlyphCompiler,
+    LinksCompiler,
+    MaskCompiler,
+)
 from vfbLib.parsers.glyph import GlyphParser
 
 composite_2_masters_binary = """
@@ -735,3 +740,21 @@ class MaskCompilerTest(TestCase):
     def test_mm(self) -> None:
         result = MaskCompiler().compile_hex(raw_mask_mm)
         assert result == bin_mask_mm
+
+
+global_mask_raw = {
+    "num_masters": 1,
+    "nodes": [
+        {"type": "move", "flags": 0, "points": [[[400, 74]]]},
+        {"type": "line", "flags": 0, "points": [[[664, 262]]]},
+        {"type": "curve", "flags": 0, "points": [[[324, 503], [529, 413], [512, 591]]]},
+    ],
+}
+
+global_mask_bin = "8ca58e00f824d501f79cf75003fbe8f785f761317af746"
+
+
+class GlobalMaskCompilerTest(TestCase):
+    def test_1m(self) -> None:
+        result = GlobalMaskCompiler().compile_hex(global_mask_raw)
+        assert result == global_mask_bin
