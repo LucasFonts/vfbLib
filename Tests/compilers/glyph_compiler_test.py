@@ -561,6 +561,10 @@ class GlyphCompilerTest(TestCase):
         assert hexStr(data) == hexStr(deHexStr(ttinstructions_binary))
         # assert len(data) == len(psglyph_1master_nodes)  # 285
 
+    def test_imported_binary(self):
+        data = PartCompiler()._compile(imported_glyph_raw, 1, "_compile_binary")
+        assert hexStr(data) == hexStr(deHexStr(imported_glyph_bin))
+
 
 raw_links = {"x": [[7, 2], [9, 16]], "y": [[6, 3], [10, 15], [0, -1], [17, 8]]}
 bin_links = (
@@ -758,3 +762,291 @@ class GlobalMaskCompilerTest(TestCase):
     def test_1m(self) -> None:
         result = GlobalMaskCompiler().compile_hex(global_mask_raw)
         assert result == global_mask_bin
+
+
+imported_glyph_raw = {
+    "name": "a",
+    "num_masters": 1,
+    "nodes": [
+        {"type": "move", "flags": 0, "points": [[[168, -6]]]},
+        {"type": "qcurve", "flags": 0, "points": [[[94, -6]]]},
+        {"type": "qcurve", "flags": 0, "points": [[[19, 112]]]},
+        {"type": "line", "flags": 0, "points": [[[36, 232]]]},
+        {"type": "qcurve", "flags": 0, "points": [[[45, 295]]]},
+        {"type": "qcurve", "flags": 0, "points": [[[98, 396]]]},
+        {"type": "qcurve", "flags": 0, "points": [[[174, 468]]]},
+        {"type": "qcurve", "flags": 0, "points": [[[268, 507]]]},
+        {"type": "line", "flags": 0, "points": [[[319, 507]]]},
+        {"type": "qcurve", "flags": 0, "points": [[[366, 507]]]},
+        {"type": "qcurve", "flags": 0, "points": [[[430, 485]]]},
+        {"type": "line", "flags": 0, "points": [[[450, 470]]]},
+        {"type": "qcurve", "flags": 0, "points": [[[456, 465]]]},
+        {"type": "qcurve", "flags": 0, "points": [[[464, 456]]]},
+        {"type": "line", "flags": 0, "points": [[[467, 451]]]},
+        {"type": "qcurve", "flags": 0, "points": [[[479, 454]]]},
+        {"type": "qcurve", "flags": 0, "points": [[[504, 448]]]},
+        {"type": "qcurve", "flags": 0, "points": [[[523, 432]]]},
+        {"type": "qcurve", "flags": 0, "points": [[[533, 406]]]},
+        {"type": "line", "flags": 0, "points": [[[531, 388]]]},
+        {"type": "qcurve", "flags": 0, "points": [[[521, 310]]]},
+        {"type": "qcurve", "flags": 0, "points": [[[512, 204]]]},
+        {"type": "line", "flags": 0, "points": [[[512, 169]]]},
+        {"type": "qcurve", "flags": 0, "points": [[[512, 141]]]},
+        {"type": "qcurve", "flags": 0, "points": [[[520, 105]]]},
+        {"type": "qcurve", "flags": 0, "points": [[[533, 82]]]},
+        {"type": "qcurve", "flags": 0, "points": [[[549, 69]]]},
+        {"type": "line", "flags": 0, "points": [[[557, 65]]]},
+        {"type": "qcurve", "flags": 0, "points": [[[580, 51]]]},
+        {"type": "qcurve", "flags": 0, "points": [[[596, 22]]]},
+        {"type": "qcurve", "flags": 0, "points": [[[589, -4]]]},
+        {"type": "qcurve", "flags": 0, "points": [[[564, -20]]]},
+        {"type": "line", "flags": 0, "points": [[[546, -20]]]},
+        {"type": "qcurve", "flags": 0, "points": [[[508, -20]]]},
+        {"type": "qcurve", "flags": 0, "points": [[[442, 19]]]},
+        {"type": "line", "flags": 0, "points": [[[428, 67]]]},
+        {"type": "qcurve", "flags": 0, "points": [[[420, 91]]]},
+        {"type": "qcurve", "flags": 0, "points": [[[417, 152]]]},
+        {"type": "line", "flags": 0, "points": [[[422, 192]]]},
+        {"type": "qcurve", "flags": 0, "points": [[[400, 146]]]},
+        {"type": "line", "flags": 0, "points": [[[377, 115]]]},
+        {"type": "qcurve", "flags": 0, "points": [[[360, 92]]]},
+        {"type": "qcurve", "flags": 0, "points": [[[315, 48]]]},
+        {"type": "qcurve", "flags": 0, "points": [[[263, 14]]]},
+        {"type": "qcurve", "flags": 0, "points": [[[202, -6]]]},
+        {"type": "move", "flags": 0, "points": [[[328, 189]]]},
+        {"type": "qcurve", "flags": 0, "points": [[[356, 227]]]},
+        {"type": "qcurve", "flags": 0, "points": [[[408, 330]]]},
+        {"type": "line", "flags": 0, "points": [[[425, 395]]]},
+        {"type": "qcurve", "flags": 0, "points": [[[421, 396]]]},
+        {"type": "qcurve", "flags": 0, "points": [[[414, 398]]]},
+        {"type": "line", "flags": 0, "points": [[[410, 400]]]},
+        {"type": "qcurve", "flags": 0, "points": [[[389, 409]]]},
+        {"type": "qcurve", "flags": 0, "points": [[[348, 421]]]},
+        {"type": "line", "flags": 0, "points": [[[327, 421]]]},
+        {"type": "qcurve", "flags": 0, "points": [[[298, 421]]]},
+        {"type": "qcurve", "flags": 0, "points": [[[235, 395]]]},
+        {"type": "qcurve", "flags": 0, "points": [[[181, 341]]]},
+        {"type": "qcurve", "flags": 0, "points": [[[143, 258]]]},
+        {"type": "line", "flags": 0, "points": [[[139, 201]]]},
+        {"type": "qcurve", "flags": 0, "points": [[[134, 142]]]},
+        {"type": "qcurve", "flags": 0, "points": [[[157, 92]]]},
+        {"type": "line", "flags": 0, "points": [[[189, 92]]]},
+        {"type": "qcurve", "flags": 0, "points": [[[213, 92]]]},
+        {"type": "qcurve", "flags": 0, "points": [[[289, 135]]]},
+    ],
+    "metrics": [[617, 0]],
+    "imported": {
+        "width": 617,
+        "lsb": 19,
+        "unknown1": 0,
+        "unknown2": 0,
+        "unknown3": 1,
+        "bbox": [19, -20, 596, 507],
+        "endpoints": [44, 64],
+        "nodes": [
+            {"type": 7, "flags": 1, "point": [168, -6]},
+            {"type": 2, "flags": 2, "point": [94, -6]},
+            {"type": 6, "flags": 2, "point": [19, 112]},
+            {"type": 7, "flags": 3, "point": [36, 232]},
+            {"type": 14, "flags": 3, "point": [45, 295]},
+            {"type": 14, "flags": 3, "point": [98, 396]},
+            {"type": 14, "flags": 3, "point": [174, 468]},
+            {"type": 6, "flags": 3, "point": [268, 507]},
+            {"type": 3, "flags": 3, "point": [319, 507]},
+            {"type": 2, "flags": 3, "point": [366, 507]},
+            {"type": 6, "flags": 1, "point": [430, 485]},
+            {"type": 7, "flags": 1, "point": [450, 470]},
+            {"type": 14, "flags": 1, "point": [456, 465]},
+            {"type": 6, "flags": 1, "point": [464, 456]},
+            {"type": 7, "flags": 1, "point": [467, 451]},
+            {"type": 6, "flags": 3, "point": [479, 454]},
+            {"type": 14, "flags": 1, "point": [504, 448]},
+            {"type": 14, "flags": 1, "point": [523, 432]},
+            {"type": 6, "flags": 1, "point": [533, 406]},
+            {"type": 7, "flags": 0, "point": [531, 388]},
+            {"type": 14, "flags": 0, "point": [521, 310]},
+            {"type": 6, "flags": 0, "point": [512, 204]},
+            {"type": 5, "flags": 1, "point": [512, 169]},
+            {"type": 4, "flags": 1, "point": [512, 141]},
+            {"type": 14, "flags": 1, "point": [520, 105]},
+            {"type": 14, "flags": 1, "point": [533, 82]},
+            {"type": 6, "flags": 1, "point": [549, 69]},
+            {"type": 7, "flags": 1, "point": [557, 65]},
+            {"type": 14, "flags": 1, "point": [580, 51]},
+            {"type": 6, "flags": 1, "point": [596, 22]},
+            {"type": 14, "flags": 0, "point": [589, -4]},
+            {"type": 6, "flags": 0, "point": [564, -20]},
+            {"type": 3, "flags": 2, "point": [546, -20]},
+            {"type": 2, "flags": 2, "point": [508, -20]},
+            {"type": 6, "flags": 2, "point": [442, 19]},
+            {"type": 7, "flags": 2, "point": [428, 67]},
+            {"type": 14, "flags": 2, "point": [420, 91]},
+            {"type": 6, "flags": 2, "point": [417, 152]},
+            {"type": 7, "flags": 3, "point": [422, 192]},
+            {"type": 6, "flags": 0, "point": [400, 146]},
+            {"type": 7, "flags": 0, "point": [377, 115]},
+            {"type": 14, "flags": 0, "point": [360, 92]},
+            {"type": 14, "flags": 0, "point": [315, 48]},
+            {"type": 14, "flags": 0, "point": [263, 14]},
+            {"type": 6, "flags": 0, "point": [202, -6]},
+            {"type": 7, "flags": 3, "point": [328, 189]},
+            {"type": 14, "flags": 3, "point": [356, 227]},
+            {"type": 6, "flags": 3, "point": [408, 330]},
+            {"type": 7, "flags": 3, "point": [425, 395]},
+            {"type": 14, "flags": 2, "point": [421, 396]},
+            {"type": 6, "flags": 2, "point": [414, 398]},
+            {"type": 7, "flags": 2, "point": [410, 400]},
+            {"type": 14, "flags": 2, "point": [389, 409]},
+            {"type": 6, "flags": 2, "point": [348, 421]},
+            {"type": 3, "flags": 2, "point": [327, 421]},
+            {"type": 2, "flags": 2, "point": [298, 421]},
+            {"type": 14, "flags": 0, "point": [235, 395]},
+            {"type": 14, "flags": 0, "point": [181, 341]},
+            {"type": 6, "flags": 0, "point": [143, 258]},
+            {"type": 7, "flags": 0, "point": [139, 201]},
+            {"type": 6, "flags": 0, "point": [134, 142]},
+            {"type": 6, "flags": 1, "point": [157, 92]},
+            {"type": 3, "flags": 3, "point": [189, 92]},
+            {"type": 2, "flags": 3, "point": [213, 92]},
+            {"type": 6, "flags": 3, "point": [289, 135]},
+        ],
+        "instructions": [
+            "SVTCA[0]\t/* SetFPVectorToAxis */",
+            "PUSHW[ ]\t/* 1 value pushed */",
+            "0",
+            "RCVT[ ]\t/* ReadCVT */",
+            "IF[ ]\t/* If */",
+            "PUSHW[ ]\t/* 1 value pushed */",
+            "8",
+            "MDAP[1]\t/* MoveDirectAbsPt */",
+            "ELSE[ ]\t/* Else */",
+            "PUSHW[ ]\t/* 2 values pushed */",
+            "8",
+            "9",
+            "MIAP[0]\t/* MoveIndirectAbsPt */",
+            "EIF[ ]\t/* EndIf */",
+            "PUSHW[ ]\t/* 1 value pushed */",
+            "0",
+            "RCVT[ ]\t/* ReadCVT */",
+            "IF[ ]\t/* If */",
+            "PUSHW[ ]\t/* 1 value pushed */",
+            "0",
+            "MDAP[1]\t/* MoveDirectAbsPt */",
+            "ELSE[ ]\t/* Else */",
+            "PUSHW[ ]\t/* 2 values pushed */",
+            "0",
+            "5",
+            "MIAP[0]\t/* MoveIndirectAbsPt */",
+            "EIF[ ]\t/* EndIf */",
+            "PUSHW[ ]\t/* 1 value pushed */",
+            "0",
+            "RCVT[ ]\t/* ReadCVT */",
+            "IF[ ]\t/* If */",
+            "PUSHW[ ]\t/* 1 value pushed */",
+            "32",
+            "MDAP[1]\t/* MoveDirectAbsPt */",
+            "ELSE[ ]\t/* Else */",
+            "PUSHW[ ]\t/* 2 values pushed */",
+            "32",
+            "5",
+            "MIAP[0]\t/* MoveIndirectAbsPt */",
+            "EIF[ ]\t/* EndIf */",
+            "PUSHW[ ]\t/* 1 value pushed */",
+            "8",
+            "SRP0[ ]\t/* SetRefPoint0 */",
+            "PUSHW[ ]\t/* 2 values pushed */",
+            "54",
+            "1",
+            "MIRP[10100]\t/* MoveIndirectRelPt */",
+            "PUSHW[ ]\t/* 1 value pushed */",
+            "0",
+            "SRP0[ ]\t/* SetRefPoint0 */",
+            "PUSHW[ ]\t/* 2 values pushed */",
+            "62",
+            "1",
+            "MIRP[10100]\t/* MoveIndirectRelPt */",
+            "IUP[0]\t/* InterpolateUntPts */",
+            "IUP[1]\t/* InterpolateUntPts */",
+        ],
+        "hdmx": [
+            5,
+            6,
+            7,
+            7,
+            8,
+            9,
+            10,
+            10,
+            11,
+            13,
+            14,
+            16,
+            17,
+            19,
+            20,
+            22,
+            25,
+            28,
+            30,
+            33,
+            35,
+            40,
+            45,
+        ],
+    },
+}
+
+imported_glyph_bin = (
+    "0109070101"
+    "8c61"  # name: a
+    "088cf81acc00f73c8504418b0440f70a019cf70c0494ca04c0f004d7d304e9b201be8b04ba8b04cb75"
+    "019f7c049186049382018e8604978e04a485049e7b04957101897904813d048221018b68048b6f0493"
+    "67049874049b7e01938704a27d049b6e04847104727b01798b04658b0449b2017dbb0483a30488c801"
+    "90b304755d01746c047a74045e5f045769044e7700f712f75704a7b104bff2019ccc04878c04848d01"
+    "878d04769404629701768b046e8b044c7104555504653801875204865004a25901ab8b04a38b04d7b6"
+    "02f8fd8b"
+    "09"  # Imported binary
+    "29"  # metrics
+    "f8fd"  # 617: width
+    "9e"  # 19: lsb
+    "8b8b8c"  # unknown
+    "9e77f8e8f88f"  # 19, -20, 596, 507: bbox
+    "2a"  # Outlines
+    "8d"  # 2: num_contours
+    "b7cb"  # 44, 64: endpoints
+    "cc"  # 65: num_points
+    "f73c85"  # 168, -6: coordinates
+    "17"  # 23: flags
+    "418b"  # -74, 0: coordinates (rel.)
+    "22"  # 34: flags
+    "40 f70a 26"
+    "9c f70c 37"
+    "94 ca 3e"
+    "c0 f0 3e"
+    "d7 d3 3e"
+    "e9 b2 36"
+    "be 8b 33"
+    "ba 8b 32"
+    "cb 75 16"
+    "9f 7c 17"
+    "91 86 1e"
+    "93 82 16"
+    "8e 86 17"
+    "97 8e 36"
+    "a4 85 1e"
+    "9e 7b 1e"
+    "957116897907813d0e8221068b68158b6f1493671e98741e9b7e16938717a27d1e9"
+    "b6e1684710e727b06798b23658b2249b2267dbb2783a32e88c82690b337755d06746c077a740e5e5f0"
+    "e57690e4e7706f712f75737a7b13ebff2369ccc37878c2e848d26878d2776942e629726768b236e8b"
+    "224c710e55550e653806875207865006a25916ab8b33a38b32d7b636"
+    "2b"  # Instructions
+    "d5"  # 74 bytes follow
+    "00b800004558b800082f1bb9000800093e59b800004558b800002f1bb9000000"
+    "053e59b800004558b800202f1bb9002000053e59b8000810b900360001f4b800"
+    "0010b9003e0001f43031"
+    "2c"  # HDMX
+    "a2"  # 23 bytes follow
+    "0506070708090a0a0b0d0e1011131416191c1e2123282d"  # HDMX data
+    "28"  # end of imported binary data
+    "0f"  # end of glyph
+)

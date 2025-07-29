@@ -154,7 +154,7 @@ class GlyphParser(BaseParser):
 
             elif key == 0x29:
                 # Metrics
-                imported["width"] = self.read_value()
+                imported["width"] = self.read_value(signed=False)
                 imported["lsb"] = self.read_value()
                 imported["unknown1"] = self.read_value()
                 imported["unknown2"] = self.read_value()
@@ -163,27 +163,40 @@ class GlyphParser(BaseParser):
 
             elif key == 0x2A:
                 # Outlines
-                num_contours = self.read_value()
-                imported["endpoints"] = [self.read_value() for _ in range(num_contours)]
-                num_nodes = self.read_value()
+                num_contours = self.read_value(signed=False)
+                imported["endpoints"] = [
+                    self.read_value(signed=False) for _ in range(num_contours)
+                ]
+                num_nodes = self.read_value(signed=False)
                 nodes = []
                 x = 0
                 y = 0
                 for _ in range(num_nodes):
                     x += self.read_value()
                     y += self.read_value()
-                    byte = self.read_uint8()
-                    flags = byte >> 4
-                    cmd = byte & 0x0F
-                    node = (hex(cmd), hex(flags), x, y)
+                    flags = self.read_uint8()
+                    # flags = byte >> 4
+                    # cmd = byte & 0x0F
+                    # bin_flags = f"{flags:08b}"
+                    node = {
+                        "flags": flags,
+                        "on": int(bool(flags & 1)),
+                        # "x_short": int(bool(flags & 2)),
+                        # "y_short": int(bool(flags & 4)),
+                        # "repeat_flag": int(bool(flags & 8)),
+                        # "x_same": int(bool(flags & 16)),
+                        # "y_same": int(bool(flags & 32)),
+                        # "overlap": int(bool(flags & 64)),
+                        "point": (x, y),
+                    }
                     nodes.append(node)
                 if nodes:
                     imported["nodes"] = nodes
 
             elif key == 0x2B:
                 # Instructions
-                num_instructions = self.read_value()
-                instructions = self.stream.read(num_instructions)
+                num_bytes = self.read_value(signed=False)
+                instructions = self.stream.read(num_bytes)
                 p = Program()
                 p.fromBytecode(instructions)
                 imported["instructions"] = p.getAssembly()

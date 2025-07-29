@@ -6,6 +6,8 @@ from math import radians, tan
 from struct import pack
 from typing import TYPE_CHECKING, Any
 
+from fontTools.ttLib.tables.ttProgram import Program
+
 from vfbLib import DIRECTIONS, GLYPH_CONSTANT, gdef_class_names
 from vfbLib.compilers.base import BaseCompiler, StreamWriter
 from vfbLib.parsers.glyph import PathCommand
@@ -100,10 +102,52 @@ class GlyphCompiler(BaseCompiler):
         if not (imported := data.get("imported")):  # noqa: F841
             return
 
-        logger.warning("Compiling imported binary data is not supported.")
-        return
-
         self.write_uint8(9)
+
+        self.write_uint8(0x29)  # Metrics
+        self.write_value(imported["width"], signed=False)
+        self.write_value(imported["lsb"])
+        self.write_value(imported["unknown1"])
+        self.write_value(imported["unknown2"])
+        self.write_value(imported["unknown3"])
+        for value in imported["bbox"]:
+            self.write_value(value)
+            self.write_value(value)
+            self.write_value(value)
+            self.write_value(value)
+
+        if endpoints := imported.get("endpoints"):
+            self.write_uint8(0x2A)  # Outlines
+            self.write_value(len(endpoints), signed=False)  # num_contours
+            for endpoint in endpoints:
+                self.write_value(endpoint, signed=False)
+            nodes = imported["nodes"]
+            self.write_value(len(nodes), signed=False)  # num_nodes
+            x0 = 0
+            y0 = 0
+            for node in nodes:
+                x, y = node["point"]
+                self.write_value(x - x0)
+                self.write_value(y - y0)
+                x0 = x
+                y0 = y
+                self.write_uint8(node["flags"])
+
+        if instructions := imported.get("instructions"):
+            self.write_uint8(0x2B)  # TrueType instructions
+            p = Program()
+            p.fromAssembly(instructions)
+            bytecode = p.getBytecode()
+            self.write_value(len(bytecode), signed=False)  # num_bytes
+            self.write_bytes(bytecode)
+
+        if hdmx := imported.get("hdmx"):
+            self.write_uint8(0x2C)  # HDMX data
+            self.write_value(len(hdmx), signed=False)
+            for value in hdmx:
+                self.write_uint8(value)
+
+        self.write_uint8(0x28)  # end
 
     def _compile_components(self, data):
         # Components
