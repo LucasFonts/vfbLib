@@ -12,6 +12,7 @@ from vfbLib.compilers.base import (
 from vfbLib.compilers.binary import BinaryTableCompiler
 from vfbLib.compilers.bitmap import BackgroundBitmapCompiler, GlyphBitmapsCompiler
 from vfbLib.compilers.cmap import CustomCmapCompiler
+from vfbLib.compilers.fl3 import FL3Type1410Compiler
 from vfbLib.compilers.glyph import (
     GlyphAnchorsCompiler,
     GlyphAnchorsSuppCompiler,
@@ -310,7 +311,7 @@ parser_classes = {
     1742: ("Mapping Mode", MappingModeParser, MappingModeCompiler),
 
     # Not seen in FontNames.vfb:
-    1410: ("1410", FL3Type1410Parser, None),
+    1410: ("1410", FL3Type1410Parser, FL3Type1410Compiler),
 
     # File end
     5: ("EOF", None, None),
