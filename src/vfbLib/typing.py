@@ -24,6 +24,19 @@ KerningClassFlagDict = dict[str, tuple[int, int]]
 MetricsClassFlagDict = dict[str, tuple[int, int, int]]
 
 
+class BitmapDataDict(TypedDict):
+    flag: int
+    data: list[int]
+    preview: NotRequired[list[str]]
+
+
+class BackgroundImageDict(TypedDict):
+    origin: tuple[int, int]
+    size_units: tuple[int, int]
+    size_pixels: tuple[int, int]
+    bitmap: BitmapDataDict
+
+
 class BBoxDict(TypedDict):
     xMin: int
     yMin: int
@@ -74,6 +87,14 @@ class GdefDict(TypedDict):
     carets: NotRequired[list[tuple[int, int]]]
     glyph_class: NotRequired[str]
     unknown: NotRequired[list[int]]
+
+
+class GlyphBitmapDict(TypedDict):
+    ppm: int
+    origin: tuple[int, int]
+    adv: tuple[int, int]
+    size_pixels: tuple[int, int]
+    bitmap: BitmapDataDict
 
 
 class GuideDict(TypedDict):

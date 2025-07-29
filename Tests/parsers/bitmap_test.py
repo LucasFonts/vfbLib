@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from vfbLib.parsers.bitmap import BackgroundBitmapParser, GlyphBitmapParser
+from vfbLib.parsers.bitmap import BackgroundBitmapParser, GlyphBitmapsParser
 
 image_bin = (
     "fb3a"  # -166, origin x
@@ -622,7 +622,7 @@ glyph_raw = [
 # fmt: on
 
 
-class GlyphBitmapParserTest(TestCase):
+class GlyphBitmapsParserTest(TestCase):
     def test_1(self):
-        result = GlyphBitmapParser().parse_hex(glyph_bin)
+        result = GlyphBitmapsParser().parse_hex(glyph_bin)
         assert result == glyph_raw

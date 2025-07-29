@@ -4,15 +4,16 @@ import logging
 from typing import Any
 
 from vfbLib.parsers.base import BaseParser
+from vfbLib.typing import BackgroundImageDict, BitmapDataDict, GlyphBitmapDict
 
 logger = logging.getLogger(__name__)
 
 
 class BaseBitmapParser(BaseParser):
-    def parse_bitmap_data(
+    def _parse_bitmap_data(
         self, w: int, h: int, datalen: int, origin_top: bool = False
-    ) -> dict[str, Any]:
-        bitmap: dict[str, int | list[int] | list[str]] = {}
+    ) -> BitmapDataDict:
+        bitmap = BitmapDataDict(flag=0, data=[])
         pos = 0
         end_of_data = False
         bitmap["flag"] = self.read_uint8()
@@ -57,8 +58,13 @@ class BaseBitmapParser(BaseParser):
 
 
 class BackgroundBitmapParser(BaseBitmapParser):
-    def _parse(self) -> dict[str, Any]:
-        bitmap: dict[str, Any] = {}
+    def _parse(self) -> BackgroundImageDict:
+        bitmap = BackgroundImageDict(
+            origin=(0, 0),
+            size_units=(0, 0),
+            size_pixels=(0, 0),
+            bitmap=BitmapDataDict(flag=0, data=[]),
+        )
         bitmap["origin"] = (self.read_value(), self.read_value())
         bitmap["size_units"] = (
             self.read_value(signed=False),
@@ -67,18 +73,24 @@ class BackgroundBitmapParser(BaseBitmapParser):
         w = self.read_value(signed=False)
         h = self.read_value(signed=False)
         bitmap["size_pixels"] = (w, h)
-        datalen = self.read_value()
-        bitmap["len"] = datalen
-        bitmap["bitmap"] = self.parse_bitmap_data(w, h, datalen)
+        datalen = self.read_value(signed=False)
+        # bitmap["len"] = datalen
+        bitmap["bitmap"] = self._parse_bitmap_data(w, h, datalen)
         return bitmap
 
 
-class GlyphBitmapParser(BaseBitmapParser):
-    def _parse(self) -> list[dict[str, Any]]:
-        bitmaps: list[dict[str, Any]] = []
+class GlyphBitmapsParser(BaseBitmapParser):
+    def _parse(self) -> list[GlyphBitmapDict]:
+        bitmaps: list[GlyphBitmapDict] = []
         num_bitmaps = self.read_value(signed=False)
         for _ in range(num_bitmaps):
-            bitmap: dict[str, Any] = {}
+            bitmap = GlyphBitmapDict(
+                ppm=0,
+                origin=(0, 0),
+                adv=(0, 0),
+                size_pixels=(0, 0),
+                bitmap=BitmapDataDict(flag=0, data=[]),
+            )
             bitmap["ppm"] = self.read_value(signed=False)
             bitmap["origin"] = (self.read_value(), self.read_value())
             bitmap["adv"] = (
@@ -89,7 +101,7 @@ class GlyphBitmapParser(BaseBitmapParser):
             h = self.read_value(signed=False)
             bitmap["size_pixels"] = (w, h)
             datalen = self.read_value()
-            bitmap["len"] = datalen
-            bitmap["bitmap"] = self.parse_bitmap_data(w, h, datalen)
+            # bitmap["len"] = datalen
+            bitmap["bitmap"] = self._parse_bitmap_data(w, h, datalen)
             bitmaps.append(bitmap)
         return bitmaps
