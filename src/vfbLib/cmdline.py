@@ -58,6 +58,12 @@ def vfb2json():
     args = parser.parse_args()
     if args:
         vfb_path = Path(args.inputpath[0])
+        if not vfb_path.exists():
+            import sys
+
+            print(f"File not found: '{vfb_path}'", file=sys.stderr)
+            sys.exit(1)
+
         print(parser.description)
         print(f"Reading file {vfb_path} ...")
         save_vfb_json(
@@ -176,6 +182,12 @@ def vfb2ufo():
     args = parser.parse_args()
     if args:
         vfb_path = Path(args.inputpath[0])
+        if not vfb_path.exists():
+            import sys
+
+            print(f"File not found: '{vfb_path}'", file=sys.stderr)
+            sys.exit(1)
+
         if args.verbose:
             logging.basicConfig(level=logging.DEBUG)
         if not args.silent:
