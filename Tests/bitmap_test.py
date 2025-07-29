@@ -1,5 +1,6 @@
 from unittest import TestCase
 
+from vfbLib.compilers.bitmap import BackgroundBitmapCompiler, GlyphBitmapsCompiler
 from vfbLib.parsers.bitmap import BackgroundBitmapParser, GlyphBitmapsParser
 
 image_bin = (
@@ -69,7 +70,7 @@ image_dict = {
     "origin": (-166, -208),
     "size_units": (833, 791),
     "size_pixels": (24, 24),
-    "len": 97,
+    # "len": 97,
     "bitmap": {
         "flag": 7,  # 0000 0111
         "data": [
@@ -193,7 +194,7 @@ image_2_dict = {
     "origin": (-166, -208),
     "size_units": (833, 791),
     "size_pixels": (24, 24),
-    "len": 96,
+    # "len": 96,
     "bitmap": {
         "flag": 254,  # 1111 1110  15|14
         "data": [
@@ -283,6 +284,16 @@ image_2_dict = {
 # fmt: on
 
 
+class BackgroundBitmapCompilerTest(TestCase):
+    def test_1(self):
+        result = BackgroundBitmapCompiler().compile_hex(image_dict)
+        assert result == image_bin
+
+    def test_2(self):
+        result = BackgroundBitmapCompiler().compile_hex(image_2_dict)
+        assert result == image_2_bin
+
+
 class BackgroundBitmapParserTest(TestCase):
     def test_1(self):
         result = BackgroundBitmapParser().parse_hex(image_bin)
@@ -359,7 +370,7 @@ glyph_raw = [
         "origin": (0, -1),
         "adv": (8, 0),
         "size_pixels": (9, 10),
-        "len": 20,
+        # "len": 20,
         "bitmap": {
             "flag": 16,  # 0001 0000
             "data": [
@@ -393,7 +404,7 @@ glyph_raw = [
         "origin": (0, -1),
         "adv": (8, 0),
         "size_pixels": (8, 9),
-        "len": 18,
+        # "len": 18,
         "bitmap": {
             "flag": 14,  # 0000 1110
             "data": [
@@ -425,7 +436,7 @@ glyph_raw = [
         "origin": (0, -1),
         "adv": (7, 0),
         "size_pixels": (8, 9),
-        "len": 2,
+        # "len": 2,
         "bitmap": {
             "flag": 239,  # 1110 1111
             "data": [0],
@@ -447,7 +458,7 @@ glyph_raw = [
         "origin": (-1, -1),
         "adv": (5, 0),
         "size_pixels": (7, 7),
-        "len": 14,
+        # "len": 14,
         "bitmap": {
             "flag": 10,  # 0000 1010
             "data": [
@@ -475,7 +486,7 @@ glyph_raw = [
         "origin": (-1, -1),
         "adv": (6, 0),
         "size_pixels": (8, 8),
-        "len": 16,
+        # "len": 16,
         "bitmap": {
             "flag": 12,  # 0000 1100
             "data": [
@@ -505,7 +516,7 @@ glyph_raw = [
         "origin": (-1, -1),
         "adv": (4, 0),
         "size_pixels": (6, 6),
-        "len": 12,
+        # "len": 12,
         "bitmap": {
             "flag": 8,  # 0000 1000
             "data": [
@@ -531,7 +542,7 @@ glyph_raw = [
         "origin": (-1, -1),
         "adv": (5, 0),
         "size_pixels": (7, 7),
-        "len": 14,
+        # "len": 14,
         "bitmap": {
             "flag": 10,  # 0000 1010
             "data": [
@@ -559,7 +570,7 @@ glyph_raw = [
         "origin": (0, -1),
         "adv": (7, 0),
         "size_pixels": (7, 8),
-        "len": 16,
+        # "len": 16,
         "bitmap": {
             "flag": 12,  # 0000 1100
             "data": [
@@ -589,7 +600,7 @@ glyph_raw = [
         "origin": (0, -1),
         "adv": (9, 0),
         "size_pixels": (9, 10),
-        "len": 21,
+        # "len": 21,
         "bitmap": {
             "flag": 19,  # 0001 0011
             "data": [
@@ -622,7 +633,13 @@ glyph_raw = [
 # fmt: on
 
 
+class GlyphBitmapsCompilerTest(TestCase):
+    def test(self):
+        result = GlyphBitmapsCompiler().compile_hex(glyph_raw)
+        assert result == glyph_bin
+
+
 class GlyphBitmapsParserTest(TestCase):
-    def test_1(self):
+    def test(self):
         result = GlyphBitmapsParser().parse_hex(glyph_bin)
         assert result == glyph_raw

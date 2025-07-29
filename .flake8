@@ -5,4 +5,4 @@ max-line-length = 88
 max-complexity = 19
 exclude = .git, __pycache__, build, dist, .eggs, .tox
 per-file-ignores =
-    Tests/parsers/bitmap_test.py:E126, E131, E241
+    Tests/bitmap_test.py:E126, E131, E241
