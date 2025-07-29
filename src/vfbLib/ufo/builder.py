@@ -219,6 +219,8 @@ class VfbToUfoBuilder:
 
     def set_glyph_background(self, data: dict[str, Any]) -> None:
         assert self.current_glyph is not None
+        if "preview" in data["bitmap"]:
+            del data["bitmap"]["preview"]
         self.current_glyph.lib["com.fontlab.v5.background"] = data
 
     def set_tt_stem_ppms(self, data: TUfoStemPPMsDict) -> None:
