@@ -58,6 +58,7 @@ class VfbToUfoBuilder:
         pshints=True,
         add_kerning_groups=False,
         move_groups=True,
+        normalize=True,
     ) -> None:
         """Serialize the JSON structure to UFO(s)
 
@@ -81,6 +82,7 @@ class VfbToUfoBuilder:
         self.include_ps_hints = pshints
         self.add_kerning_groups_to_fea = add_kerning_groups
         self.move_groups_to_fea = move_groups
+        self.normalize_ufos = normalize
 
         self.features_classes = ""
         self.features_code = ""
@@ -810,7 +812,7 @@ class VfbToUfoBuilder:
         for index, ufo in enumerate(ufos):
             master_path = self.get_master_path(out_path, index)
             ufo.save(master_path, structure=strct, overwrite=overwrite)
-            if not ufoz:
+            if self.normalize_ufos and not ufoz:
                 normalizeUFO(
                     ufoPath=master_path, onlyModified=False, writeModTimes=False
                 )

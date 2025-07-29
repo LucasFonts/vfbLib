@@ -141,6 +141,13 @@ def vfb2ufo():
         help="no display (silent mode)",
     )
     parser.add_argument(
+        "-n",
+        "--no-normalize",
+        action="store_true",
+        default=False,
+        help="don't normalize the UFOs (faster)",
+    )
+    parser.add_argument(
         "-nops",
         "--no-postscript-hints",
         action="store_true",
@@ -222,6 +229,7 @@ def vfb2ufo():
             pshints=not args.no_postscript_hints,
             add_kerning_groups=args.add_kerning_groups,
             move_groups=not args.keep_groups,
+            normalize=not args.no_normalize,
         )
         builder.write(
             out_path,
