@@ -14,6 +14,7 @@ def save_vfb_json(
     minimal: bool = False,
     unicode_strings: bool = False,
     no_decompile: bool = False,
+    roundtrip: bool = False,
 ) -> None:
     vfb = Vfb(
         vfb_path,
@@ -21,8 +22,15 @@ def save_vfb_json(
         minimal=minimal,
         unicode_strings=unicode_strings,
     )
+    if roundtrip:
+        vfb.decompile()
+        for entry in vfb.entries:
+            entry.data = None
+            entry.compile(force=True)
+
     if not no_decompile:
         vfb.decompile()
+
     suffix = ".vfb.json"
     if out_path:
         out_path = (Path(out_path) / vfb_path.name).with_suffix(suffix)

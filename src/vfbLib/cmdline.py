@@ -43,6 +43,13 @@ def vfb2json():
         help="output folder",
     )
     parser.add_argument(
+        "-r",
+        "--roundtrip",
+        action="store_true",
+        default=False,
+        help="roundtrip data by decompiling and compiling again before saving",
+    )
+    parser.add_argument(
         "-u",
         "--unicode-strings",
         action="store_true",
@@ -73,6 +80,7 @@ def vfb2json():
             minimal=args.minimal,
             unicode_strings=args.unicode_strings,
             no_decompile=args.no_decompile,
+            roundtrip=args.roundtrip,
         )
 
     else:
