@@ -138,11 +138,12 @@ class GlyphCompiler(BaseCompiler):
             self.write_value(len(bytecode), signed=False)  # num_bytes
             self.write_bytes(bytecode)
 
-        if hdmx := imported.get("hdmx"):
-            self.write_uint8(0x2C)  # HDMX data
-            self.write_value(len(hdmx), signed=False)
-            for value in hdmx:
-                self.write_uint8(value)
+        # Apparently the HDMX entry always gets written, even if empty
+        hdmx = imported.get("hdmx", [])
+        self.write_uint8(0x2C)  # HDMX data
+        self.write_value(len(hdmx), signed=False)
+        for value in hdmx:
+            self.write_uint8(value)
 
         self.write_uint8(0x28)  # end
 
