@@ -2,6 +2,10 @@
 
 ## 0.10.1
 
+UFO changes:
+
+- Add `vfb3ufo` option `-n` to not normalize the UFO(s), which is much faster
+
 Compiler changes:
 
 - Fix `MaskMetricsMMCompiler`

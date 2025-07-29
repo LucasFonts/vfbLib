@@ -38,7 +38,7 @@ not be overwritten unless you specify the `-fo` option.
 
 ```
 vfb3ufo -h
-usage: vfb3ufo [-h] [-p PATH] [-fo] [-g] [-k] [-ttx] [-64] [-s] [-nops] [-v] [-z] [-m] [-u] inputpath [outputpath]
+uusage: vfb3ufo [-h] [-p PATH] [-fo] [-g] [-k] [-ttx] [-64] [-s] [-n] [-nops] [-v] [-z] [-m] [-u] inputpath [outputpath]
 
 vfb3ufo Converter Copyright (c) 2024 by LucasFonts
 
@@ -56,6 +56,7 @@ options:
                         add kerning groups to feature code
   -64, --base64         write GLIF lib 'data' section using base64
   -s, --silent          no display (silent mode)
+  -n, --no-normalize    don't normalize the UFOs (faster)
   -nops, --no-postscript-hints
                         Don't output PostScript hinting
   -v, --verbose         Print debugging output
