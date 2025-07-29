@@ -51,6 +51,8 @@ class BaseBitmapParser(BaseParser):
             bitmap["preview"] = [r for r in reversed(rows)]
         else:
             bitmap["preview"] = rows
+        # for row in rows:
+        #     print(row)
         return bitmap
 
 
