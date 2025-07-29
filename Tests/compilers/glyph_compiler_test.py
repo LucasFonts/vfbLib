@@ -776,6 +776,7 @@ imported_glyph_raw = {
         "unknown2": 0,
         "unknown3": 1,
         "bbox": [19, -20, 596, 507],
+        "num_contours": 2,
         "endpoints": [44, 64],
         "nodes": [
             {"flags": 23, "on": 1, "point": [168, -6]},
@@ -1001,8 +1002,8 @@ glyph_roundtripped_bin = (
     "8b8b8c"  # unknown
     "ca5ef8b6f995"  # bbox
     "2a"  # outlines
-    "8a"  # -1: num_endpoints # was missing
-    "8b"  # 0: num_contours
+    "8a"  # -1: num_contours
+    "8b"  # 0: num_endpoint
     "2b"  # instructions
     "8b"  # num_bytes
     "2c"  # HDMX
@@ -1033,6 +1034,7 @@ glyph_roundtripped_raw = {
         "unknown2": 0,
         "unknown3": 1,
         "bbox": [63, -45, 546, 769],
+        "num_contours": -1,
         "endpoints": [],
         "instructions": [],
         "hdmx": [],

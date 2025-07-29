@@ -163,7 +163,8 @@ class GlyphParser(BaseParser):
 
             elif key == 0x2A:
                 # Outlines
-                num_contours = self.read_value()  # -1 for none!
+                num_contours = self.read_value()  # -1 for composite
+                imported["num_contours"] = num_contours
                 imported["endpoints"] = [
                     self.read_value(signed=False) for _ in range(num_contours)
                 ]

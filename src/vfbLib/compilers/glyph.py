@@ -115,14 +115,17 @@ class GlyphCompiler(BaseCompiler):
 
         # Outlines
 
-        endpoints = imported.get("endpoints", [])
         self.write_uint8(0x2A)
-        if endpoints:
-            self.write_value(len(endpoints))  # num_contours
-            for endpoint in endpoints:
-                self.write_value(endpoint, signed=False)
-        else:
-            self.write_value(-1)
+        num_contours = imported["num_contours"]  # -1 for composite, so we don't count
+        self.write_value(num_contours)
+        endpoints = imported.get("endpoints", [])
+        if len(endpoints) != num_contours:
+            logger.warning(
+                f"Imported binary glyph: Number of contours ({num_contours}) doesn't "
+                f"match length of endpoints array ({len(endpoints)})"
+            )
+        for endpoint in endpoints:
+            self.write_value(endpoint, signed=False)
         nodes = imported.get("nodes", [])
         self.write_value(len(nodes), signed=False)  # num_nodes
         x0 = 0
