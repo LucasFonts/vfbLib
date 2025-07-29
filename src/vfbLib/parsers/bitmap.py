@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import logging
-from typing import Any
 
 from vfbLib.parsers.base import BaseParser
 from vfbLib.typing import BackgroundImageDict, BitmapDataDict, GlyphBitmapDict
