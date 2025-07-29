@@ -10,7 +10,12 @@ logger = logging.getLogger(__name__)
 
 class BaseBitmapParser(BaseParser):
     def _parse_bitmap_data(
-        self, w: int, h: int, datalen: int, origin_top: bool = False
+        self,
+        w: int,
+        h: int,
+        datalen: int,
+        origin_top: bool = False,
+        preview: bool = True,
     ) -> BitmapDataDict:
         bitmap = BitmapDataDict(flag=0, data=[])
         pos = 0
@@ -47,12 +52,13 @@ class BaseBitmapParser(BaseParser):
                         rows.append(empty_row)
                 break
         bitmap["data"] = data
-        if origin_top:
-            bitmap["preview"] = [r for r in reversed(rows)]
-        else:
-            bitmap["preview"] = rows
-        # for row in rows:
-        #     print(row)
+        if preview:
+            if origin_top:
+                bitmap["preview"] = [r for r in reversed(rows)]
+            else:
+                bitmap["preview"] = rows
+            # for row in rows:
+            #     print(row)
         return bitmap
 
 
