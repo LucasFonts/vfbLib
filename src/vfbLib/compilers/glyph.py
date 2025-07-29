@@ -112,9 +112,6 @@ class GlyphCompiler(BaseCompiler):
         self.write_value(imported["unknown3"])
         for value in imported["bbox"]:
             self.write_value(value)
-            self.write_value(value)
-            self.write_value(value)
-            self.write_value(value)
 
         if endpoints := imported.get("endpoints"):
             self.write_uint8(0x2A)  # Outlines
