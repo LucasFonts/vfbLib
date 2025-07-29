@@ -62,34 +62,31 @@ class OpenTypeStringParser(BaseParser):
         tag = ""
         in_prefix = True
         for line in data:
-            if in_prefix:
-                if s := search(r"\s*feature\s*([a-z0-9]{4})\s*", line):
-                    # The first feature ...
-                    # Flush the prefix
-                    if prefix:
-                        fea["prefix"].extend(prefix)
-                    in_prefix = False
-                    # Extract the feature tag of the first feature
-                    tag = s.groups()[0]
-                    feature.append(line)
-                else:
-                    prefix.append(line)
+            if "#" in line:
+                code, _ = line.split("#", 1)
             else:
-                if s := search(r"\s*feature\s*([a-z0-9]{4})\s*", line):
-                    if tag == "aalt":
-                        feature.append(line)
-                    else:
-                        # Extract the feature tag of the next feature
-                        tag = s.groups()[0]
-                        feature.append(line)
-                elif tag:
-                    feature.append(line)
-                    if search(r"\s*\}\s*%s\s*;" % tag, line):
-                        fea["features"].append({"tag": tag, "code": feature})
-                        feature = []
-                        tag = ""
+                code = line
+
+            if s := search(r"\s*feature\s*([a-z0-9]{4})\s*\{", code):
+                # New feature
+
+                if in_prefix:
+                    # Flush the prefix code
+                    fea["prefix"] = prefix
+                    in_prefix = False
                 else:
-                    fea["features"][-1]["code"].append(line)
+                    # Flush the previous feature
+                    fea["features"].append({"tag": tag, "code": feature})
+
+                tag = s.groups()[0]
+                feature = [line]
+            elif in_prefix:
+                prefix.append(line)
+            else:
+                feature.append(line)
+
+        # Flush the last feature
+        fea["features"].append({"tag": tag, "code": feature})
 
         return fea
 
