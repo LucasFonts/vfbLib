@@ -10,7 +10,7 @@ GLYPH_CONSTANT = (1, 9, 7, 1)
 
 export_options = {
     0: "use_custom_opentype_export_options",
-    # 1: "use_default_opentype_export_options",
+    1: "use_default_opentype_export_options",  # FIXME: Correct?
     2: "use_custom_cmap_encoding",
 }
 
