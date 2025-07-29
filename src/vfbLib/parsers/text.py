@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 
 
 class NameRecordsParser(BaseParser):
-    def _parse(self) -> list[list[int | str]]:
+    def _parse(self) -> list[tuple[int, int, int, int, str]]:
         num = self.read_value()
         result = []
         for _ in range(num):
@@ -31,7 +31,7 @@ class NameRecordsParser(BaseParser):
                 except ValueError:
                     char = "\ufeff"
                 name += char
-            result.append([nameID, platID, encID, langID, name])
+            result.append((nameID, platID, encID, langID, name))
 
         return result
 
