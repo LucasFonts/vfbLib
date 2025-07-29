@@ -865,8 +865,8 @@ class VfbToUfoBuilder:
         for i in range(len(self.primary_instances)):
             p = self.primary_instances[i]
             loc = p["values"]
-            if not isinstance(loc, list):
-                raise TypeError
+            if not (isinstance(loc, list) or isinstance(loc, tuple)):
+                raise TypeError(f"Expected list or tuple, got {type(loc)}")
 
             style_name = p["name"]
             # FIXME: Support anisotropic interpolation
