@@ -38,7 +38,7 @@ not be overwritten unless you specify the `-fo` option.
 
 ```
 vfb3ufo -h
-usage: vfb3ufo [-h] [-p PATH] [-fo] [-g] [-k] [-ttx] [-64] [-s] [-nops] [-z] [-m] [-u] inputpath [outputpath]
+usage: vfb3ufo [-h] [-p PATH] [-fo] [-g] [-k] [-ttx] [-64] [-s] [-nops] [-v] [-z] [-m] [-u] inputpath [outputpath]
 
 vfb3ufo Converter Copyright (c) 2024 by LucasFonts
 
@@ -54,7 +54,7 @@ options:
   -g, --keep-groups     don't move non-kerning groups from groups.plist to feature code
   -k, --add-kerning-groups
                         add kerning groups to feature code
-  -64, --base64         write GLIF lib 'data' section using base64 (recommended)
+  -64, --base64         write GLIF lib 'data' section using base64
   -s, --silent          no display (silent mode)
   -nops, --no-postscript-hints
                         Don't output PostScript hinting
@@ -64,7 +64,7 @@ options:
   -u, --unicode-strings
                         interpret name table strings as Unicode instead of Windows-1252
 
-Not implemented options:
+Options not implemented here, but present in the original vfb2ufo:
 
   -ttx, --ttx           convert binary OpenType Layout data using TTX-like format
 ```
@@ -84,9 +84,9 @@ We expect this to be mostly used for debugging purposes.
 
 ```
 vfb2json -h
-usage: vfb2json [-h] [-d] [--header] [-m] [-p PATH] inputpath
+usage: vfb2json [-h] [-d] [--header] [-m] [-p PATH] [-r] [-u] inputpath
 
-vfb2json Converter Copyright (c) 2023 by LucasFonts
+vfb2json Converter Copyright (c) 2024 by LucasFonts
 
 positional arguments:
   inputpath             input file path (.vfb)
@@ -96,7 +96,8 @@ options:
   -d, --no-decompile    don't decompile data, output binary in JSON
   --header              only read the VFB header, not the actual data
   -m, --minimal         parse only minimal amount of data
-  -p PATH, --path PATH  output folder
+  -p, --path PATH       output folder
+  -r, --roundtrip       roundtrip data by decompiling and compiling again before saving
   -u, --unicode-strings
                         interpret name table strings as Unicode instead of Windows-1252
 ```
@@ -136,6 +137,7 @@ $ vfbcu2qu MyFile.vfb
 will convert the file and save it with the suffix `.qu.vfb` in the same directory.
 
 ```
+vfbcu2qu -h
 usage: vfbcu2qu [-h] [-p PATH] [-fo] [-m MAX_ERR_EM] inputpath [outputpath]
 
 VFB Cubic to Quadratic Converter Copyright (c) 2023 by LucasFonts
@@ -146,10 +148,10 @@ positional arguments:
 
 options:
   -h, --help            show this help message and exit
-  -p PATH, --path PATH  output folder
+  -p, --path PATH       output folder
   -fo, --force-overwrite
                         force overwrite
-  -m MAX_ERR_EM, --max-err-em MAX_ERR_EM
+  -m, --max-err-em MAX_ERR_EM
                         Maximum allowed error, relative to the font's units per em. Default is 0.001.
 ```
 
@@ -159,9 +161,10 @@ options:
 Generate a diff of two VFB files, either in unified diff or HTML format.
 
 ```
+vfbdiff -h
 usage: vfbdiff [-h] [--html HTML] file1 file2
 
-vfbdiff Copyright (c) 2023 by LucasFonts
+vfbdiff Copyright (c) 2024 by LucasFonts
 
 positional arguments:
   file1        First input file path (.vfb)

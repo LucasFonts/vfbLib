@@ -6,10 +6,21 @@ Compiler changes:
 
 - Fix `MaskMetricsMMCompiler`
 - Fix `PrimaryInstanceLocationsCompiler`
+- Support entry 1295 (Global Mask)
+- Support entry 1410 (FL3 info)
+- Support entry 2007 (image)
+- Support entry 2013 (Glyph Bitmaps)
+- Support entry 2019 (Glyph Sketch)
+- Support compiling imported binary data in glyphs
 
 Parser changes:
 
 - Move `GaspParser` from `base` to `truetype`
+
+Breaking changes:
+
+- Change bitmap format
+
 
 
 ## 0.10.0

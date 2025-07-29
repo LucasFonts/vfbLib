@@ -14,7 +14,7 @@ logger = logging.getLogger(__name__)
 
 
 def diffvfb():
-    parser = ArgumentParser(description="diffvfb\nCopyright (c) 2024 by LucasFonts")
+    parser = ArgumentParser(description="vfbdiff\nCopyright (c) 2024 by LucasFonts")
     parser.add_argument(
         "--html",
         type=str,

@@ -131,7 +131,7 @@ def vfb2ufo():
         "--base64",
         action="store_true",
         default=False,
-        help="write GLIF lib 'data' section using base64 (recommended)",
+        help="write GLIF lib 'data' section using base64",
     )
     parser.add_argument(
         "-s",

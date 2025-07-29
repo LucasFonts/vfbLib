@@ -43,7 +43,7 @@ def vfbcu2qu():
         "--max-err-em",
         type=float,
         nargs=1,
-        help="Maximum allowed error, relative to the font's units per em.",
+        help="Maximum allowed error, relative to the font's units per em. Default is 0.001.",
     )
     args = parser.parse_args()
     if args:
