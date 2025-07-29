@@ -268,6 +268,15 @@ class GlyphOriginCompiler(BaseCompiler):
         self.write_int16(data["y"])
 
 
+class GlyphSketchCompiler(BaseCompiler):
+    def _compile(self, data: list[tuple[int, int, int]]) -> None:
+        self.write_value(len(data), signed=False)
+        for a, b, c in data:
+            self.write_value(a)
+            self.write_value(b)
+            self.write_value(c)
+
+
 class GlyphUnicodesCompiler(BaseCompiler):
     def _compile(self, data: Any) -> None:
         for value in data:

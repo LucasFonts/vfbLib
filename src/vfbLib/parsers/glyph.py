@@ -407,6 +407,15 @@ class GlyphParser(BaseParser):
         return dict(self.glyphdata)
 
 
+class GlyphSketchParser(BaseParser):
+    def _parse(self) -> list[tuple[int, int, int]]:
+        num = self.read_value(signed=False)
+        return [
+            (self.read_value(), self.read_value(), self.read_value())
+            for _ in range(num)
+        ]
+
+
 class GlyphUnicodeParser(BaseParser):
     def _parse(self) -> list:
         unicodes = []
@@ -477,12 +486,3 @@ class MaskMetricsMMParser(BaseParser):
             y = self.read_value()
             values.append((x, y))
         return values
-
-
-class GlyphSketchParser(BaseParser):
-    def _parse(self) -> list[tuple[int, int, int]]:
-        num = self.read_value()
-        return [
-            (self.read_value(), self.read_value(), self.read_value())
-            for _ in range(num)
-        ]

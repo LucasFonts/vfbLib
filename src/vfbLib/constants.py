@@ -18,6 +18,7 @@ from vfbLib.compilers.glyph import (
     GlyphCompiler,
     GlyphGDEFCompiler,
     GlyphOriginCompiler,
+    GlyphSketchCompiler,
     GlyphUnicodesCompiler,
     GlyphUnicodesSuppCompiler,
     LinksCompiler,
@@ -286,7 +287,7 @@ parser_classes = {
     2007: ("image", BackgroundBitmapParser, BackgroundBitmapCompiler),
     2013: ("Glyph Bitmaps", GlyphBitmapsParser, GlyphBitmapsCompiler),
     2023: ("2023", EncodedValueListParser, EncodedValueListCompiler),  # 1 encoded value per master  # noqa: E501
-    2019: ("Glyph Sketch", GlyphSketchParser, None),
+    2019: ("Glyph Sketch", GlyphSketchParser, GlyphSketchCompiler),
     2010: ("Glyph Hinting Options", PostScriptGlyphHintingOptionsParser, PostScriptGlyphHintingOptionsCompiler),  # noqa: E501
     2009: ("mask", MaskParser, MaskCompiler),
     2011: ("mask.metrics", MaskMetricsParser, MaskMetricsCompiler),  # Single master mask metrics  # noqa: E501
