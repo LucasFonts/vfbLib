@@ -191,13 +191,13 @@ class BaseCompiler(StreamWriter):
         raise NotImplementedError
 
     @classmethod
-    def merge(cls, masters_data: Iterable[Any], data: Any) -> None:
+    def merge(cls, masters_data: list[Any], data: Any) -> None:
         """
         Merge the data of additional masters into the main data structure. This operates
         on the uncompiled JSON-like data structure.
 
         Args:
-            masters_data (Iterable[Any]): The additional masters data as a list with one
+            masters_data (list[Any]): The additional masters data as a list with one
                 entry per master.
             data (Any): The main data structure.
         """
