@@ -565,6 +565,10 @@ class GlyphCompilerTest(TestCase):
         data = PartCompiler()._compile(imported_glyph_raw, 1, "_compile_binary")
         assert hexStr(data) == hexStr(deHexStr(imported_glyph_bin))
 
+    def test_imported_binary_no_nodes(self):
+        result = GlyphCompiler().compile_hex(glyph_roundtripped_raw)
+        assert result == glyph_roundtripped_bin
+
 
 raw_links = {"x": [[7, 2], [9, 16]], "y": [[6, 3], [10, 15], [0, -1], [17, 8]]}
 bin_links = (
@@ -971,3 +975,66 @@ imported_glyph_bin = (
     "0506070708090a0a0b0d0e1011131416191c1e2123282d"  # HDMX data
     "28"  # end of imported binary data
 )
+
+glyph_roundtripped_bin = (
+    "01090701"
+    "01"  # name
+    "92"  # 7: name length
+    "756e6931453033"  # name
+    "08"  # outlines
+    "8c"  # 1: masters count
+    "8b8b"  # 0 0
+    "02"  # metrics
+    "f8d98b"
+    "05"  # components
+    "8d"  # 2: num_components
+    "8d"  # 2: GID of base glyph
+    "8b8b"  # 0, 0: offset
+    "000000000000f03f000000000000f03f"  # 1.0, 1.0: scale
+    "8f"  # 4: GID
+    "747f"  # offset
+    "000000000000f03f000000000000f03f"  # scale
+    "09"  # imported binary
+    "29"  # metrics
+    "f8d9"  # width
+    "ca"  # lsb
+    "8b8b8c"  # unknown
+    "ca5ef8b6f995"  # bbox
+    "2a"  # outlines
+    "8a"  # -1: num_endpoints # was missing
+    "8b"  # 0: num_contours
+    "2b"  # instructions
+    "8b"  # num_bytes
+    "2c"  # HDMX
+    "8b"  # num_bytes
+    "28"
+    "0f"
+)
+
+glyph_roundtripped_raw = {
+    "name": "uni1E03",
+    "num_masters": 1,
+    "nodes": [],
+    "metrics": [[581, 0]],
+    "components": [
+        {"gid": 2, "offsetX": [0], "offsetY": [0], "scaleX": [1.0], "scaleY": [1.0]},
+        {
+            "gid": 4,
+            "offsetX": [-23],
+            "offsetY": [-12],
+            "scaleX": [1.0],
+            "scaleY": [1.0],
+        },
+    ],
+    "imported": {
+        "width": 581,
+        "lsb": 63,
+        "unknown1": 0,
+        "unknown2": 0,
+        "unknown3": 1,
+        "bbox": [63, -45, 546, 769],
+        "endpoints": [],
+        "instructions": [],
+        "hdmx": [],
+    },
+}

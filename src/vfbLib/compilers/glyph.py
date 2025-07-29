@@ -113,34 +113,45 @@ class GlyphCompiler(BaseCompiler):
         for value in imported["bbox"]:
             self.write_value(value)
 
-        if endpoints := imported.get("endpoints"):
-            self.write_uint8(0x2A)  # Outlines
-            self.write_value(len(endpoints), signed=False)  # num_contours
+        # Outlines
+
+        endpoints = imported.get("endpoints", [])
+        self.write_uint8(0x2A)
+        if endpoints:
+            self.write_value(len(endpoints))  # num_contours
             for endpoint in endpoints:
                 self.write_value(endpoint, signed=False)
-            nodes = imported["nodes"]
-            self.write_value(len(nodes), signed=False)  # num_nodes
-            x0 = 0
-            y0 = 0
-            for node in nodes:
-                x, y = node["point"]
-                self.write_value(x - x0)
-                self.write_value(y - y0)
-                x0 = x
-                y0 = y
-                self.write_uint8(node["flags"])
+        else:
+            self.write_value(-1)
+        nodes = imported.get("nodes", [])
+        self.write_value(len(nodes), signed=False)  # num_nodes
+        x0 = 0
+        y0 = 0
+        for node in nodes:
+            x, y = node["point"]
+            self.write_value(x - x0)
+            self.write_value(y - y0)
+            x0 = x
+            y0 = y
+            self.write_uint8(node["flags"])
 
-        if instructions := imported.get("instructions"):
-            self.write_uint8(0x2B)  # TrueType instructions
+        # TrueType instructions
+
+        instructions = imported.get("instructions")
+        self.write_uint8(0x2B)
+        if instructions:
             p = Program()
             p.fromAssembly(instructions)
             bytecode = p.getBytecode()
             self.write_value(len(bytecode), signed=False)  # num_bytes
             self.write_bytes(bytecode)
+        else:
+            self.write_value(0, signed=False)
 
-        # Apparently the HDMX entry always gets written, even if empty
+        # HDMX data
+
         hdmx = imported.get("hdmx", [])
-        self.write_uint8(0x2C)  # HDMX data
+        self.write_uint8(0x2C)
         self.write_value(len(hdmx), signed=False)
         for value in hdmx:
             self.write_uint8(value)

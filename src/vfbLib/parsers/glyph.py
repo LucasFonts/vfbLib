@@ -163,7 +163,7 @@ class GlyphParser(BaseParser):
 
             elif key == 0x2A:
                 # Outlines
-                num_contours = self.read_value(signed=False)
+                num_contours = self.read_value()  # -1 for none!
                 imported["endpoints"] = [
                     self.read_value(signed=False) for _ in range(num_contours)
                 ]
@@ -290,7 +290,7 @@ class GlyphParser(BaseParser):
 
     def parse_outlines(self, target: GlyphData | MaskData) -> int:
         # Nodes
-        master_count = self.read_value()
+        master_count = self.read_value(signed=False)
         target["num_masters"] = master_count
 
         # 2 x the number of values to be read after num_nodes, the reason is unclear.
