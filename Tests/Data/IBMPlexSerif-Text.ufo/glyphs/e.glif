@@ -89,9 +89,9 @@
 </string>
 			<key>com.fontlab.v5.background</key>
 			<dict>
-				<key>data</key>
+				<key>bitmap</key>
 				<dict>
-					<key>bytes</key>
+					<key>data</key>
 					<array>
 						<integer>0</integer>
 						<integer>0</integer>
@@ -109,18 +109,13 @@
 						<integer>0</integer>
 						<integer>99</integer>
 						<integer>0</integer>
-					</array>
-					<key>extra</key>
-					<array>
 						<integer>62</integer>
 						<integer>254</integer>
 						<integer>0</integer>
 					</array>
-					<key>num_bytes</key>
+					<key>flag</key>
 					<integer>16</integer>
 				</dict>
-				<key>len</key>
-				<integer>20</integer>
 				<key>origin</key>
 				<array>
 					<integer>0</integer>
