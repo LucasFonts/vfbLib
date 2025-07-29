@@ -370,6 +370,18 @@ class VfbToUfoBuilder:
 
     def build(self) -> None:  # noqa: C901
         # Non-MM data
+        skip_keys = set(
+            (
+                F.Encoding,
+                F.EncodingDefault,
+                F.version,
+                F.xuid,
+                G.AnchorsProperties,
+                G.E2023,
+                G.HintingOptions,
+                G.Origin,
+            )
+        )
         for e in self.vfb.entries:
             key = e.id
             if e.key is None:
@@ -386,7 +398,75 @@ class VfbToUfoBuilder:
                 self.info.set_attr(attr, data)
                 continue
 
-            if key == F.pref_family_name:
+            if key in skip_keys:
+                pass
+            elif key == G.Glyph:
+                if self.current_glyph is not None:
+                    name = self.current_glyph.name
+                    if name in self.glyph_masters:
+                        for i in range(255):
+                            n = f"{name}#{i}"
+                            if n not in self.glyph_masters:
+                                self.glyph_masters[n] = self.current_glyph
+                                self.glyphOrder.append(n)
+                                logger.warning(
+                                    f"Duplicate glyph, renamed from {name} to {n}."
+                                )
+                                break
+                    else:
+                        if name is None:
+                            logger.error("Glyph without name.")
+                        else:
+                            self.glyph_masters[name] = self.current_glyph
+                            self.glyphOrder.append(name)
+                self.build_mm_glyph(data)
+            elif key == G.unicodes:
+                assert self.current_glyph is not None
+                self.current_glyph.unicodes.extend(data)
+            elif key == G.UnicodesNonBMP:
+                assert self.current_glyph is not None
+                self.current_glyph.unicodes.extend(data)
+            elif key == G.Links:
+                assert self.current_glyph is not None
+                self.current_glyph.links = data
+            elif key == G.mark:
+                assert self.current_glyph is not None
+                self.current_glyph.set_mark(data)
+            elif key == G.customdata:
+                assert self.current_glyph is not None
+                self.current_glyph.lib["com.fontlab.v5.userData"] = data
+            elif key == G.note:
+                assert self.current_glyph is not None
+                self.current_glyph.note = data
+            elif key == G.GDEFData:
+                if "anchors" in data:
+                    assert self.current_glyph is not None
+                    self.current_glyph.anchors = []
+                    for anchor in data["anchors"]:
+                        a = AnchorDict(x=anchor["x"], y=anchor["y"])
+                        if "name" in anchor:
+                            a["name"] = anchor["name"]
+                        self.current_glyph.anchors.append(a)
+            elif key == G.AnchorsMM:
+                assert self.current_glyph is not None
+                self.current_glyph.mm_anchors = data
+            elif key == G.GuideProperties:
+                assert self.current_glyph is not None
+                self.current_glyph.guide_properties = data
+            elif key == G.image:
+                self.set_glyph_background(data)
+            elif key == G.mask:
+                assert self.current_glyph is not None
+                self.current_glyph.set_mask(data)
+            elif key == G.MaskMetrics:
+                assert self.current_glyph is not None
+                w, h = data
+                self.current_glyph.mm_mask_metrics.append((w, h))
+            elif key == G.MaskMetricsMM:
+                assert self.current_glyph is not None
+                for w, h in data:
+                    self.current_glyph.mm_mask_metrics.append((w, h))
+            elif key == F.pref_family_name:
                 self.info.familyName = data
                 self.info.openTypeNamePreferredFamilyName = data
             elif key == F.is_fixed_pitch:
@@ -400,12 +480,6 @@ class VfbToUfoBuilder:
                 self.info.set_style_name(data)
             elif key == F.fontnames:
                 self.info.set_name_records(data)
-            elif key == G.unicodes:
-                assert self.current_glyph is not None
-                self.current_glyph.unicodes.extend(data)
-            elif key == G.UnicodesNonBMP:
-                assert self.current_glyph is not None
-                self.current_glyph.unicodes.extend(data)
             elif key == F.PrimaryInstances:
                 self.primary_instances = data
             elif key == T.TrueTypeZones:
@@ -491,58 +565,8 @@ class VfbToUfoBuilder:
                 self.num_stem_snap_v = data
             elif key == M.PostScriptInfo:
                 self.masters_ps_info.append(data)
-            elif key == G.Glyph:
-                if self.current_glyph is not None:
-                    name = self.current_glyph.name
-                    if name in self.glyph_masters:
-                        for i in range(255):
-                            n = f"{name}#{i}"
-                            if n not in self.glyph_masters:
-                                self.glyph_masters[n] = self.current_glyph
-                                self.glyphOrder.append(n)
-                                logger.warning(
-                                    f"Duplicate glyph, renamed from {name} to {n}."
-                                )
-                                break
-                    else:
-                        if name is None:
-                            logger.error("Glyph without name.")
-                        else:
-                            self.glyph_masters[name] = self.current_glyph
-                            self.glyphOrder.append(name)
-                self.build_mm_glyph(data)
-            elif key == G.image:
-                self.set_glyph_background(data)
-            elif key == G.Links:
-                assert self.current_glyph is not None
-                self.current_glyph.links = data
-            elif key == G.mask:
-                assert self.current_glyph is not None
-                self.current_glyph.set_mask(data)
-            elif key == G.MaskMetrics:
-                assert self.current_glyph is not None
-                w, h = data
-                self.current_glyph.mm_mask_metrics.append((w, h))
-            elif key == G.mark:
-                assert self.current_glyph is not None
-                self.current_glyph.set_mark(data)
-            elif key == G.customdata:
-                assert self.current_glyph is not None
-                self.current_glyph.lib["com.fontlab.v5.userData"] = data
             elif key == F.customdata:
                 self.lib["com.fontlab.v5.userData"] = data
-            elif key == G.note:
-                assert self.current_glyph is not None
-                self.current_glyph.note = data
-            elif key == G.GDEFData:
-                if "anchors" in data:
-                    assert self.current_glyph is not None
-                    self.current_glyph.anchors = []
-                    for anchor in data["anchors"]:
-                        a = AnchorDict(x=anchor["x"], y=anchor["y"])
-                        if "name" in anchor:
-                            a["name"] = anchor["name"]
-                        self.current_glyph.anchors.append(a)
             elif key == F.unicoderanges:
                 self.info.openTypeOS2UnicodeRanges = data
             elif key == F.MetricsClassFlags:
@@ -551,26 +575,6 @@ class VfbToUfoBuilder:
                 self.info.note = data
             elif key == F.KerningClassFlags:
                 self.kerning_class_flags = data
-            elif key == G.MaskMetricsMM:
-                assert self.current_glyph is not None
-                for w, h in data:
-                    self.current_glyph.mm_mask_metrics.append((w, h))
-            elif key == G.AnchorsMM:
-                assert self.current_glyph is not None
-                self.current_glyph.mm_anchors = data
-            elif key == G.GuideProperties:
-                assert self.current_glyph is not None
-                self.current_glyph.guide_properties = data
-            elif key in (
-                F.Encoding,
-                F.version,
-                F.xuid,
-                G.AnchorsProperties,
-                G.E2023,
-                G.HintingOptions,
-                G.Origin,
-            ):
-                pass
             else:
                 logger.info(f"Unhandled key: {key}")
 
