@@ -10,6 +10,7 @@ from vfbLib.compilers.base import (
     OpenTypeMetricsClassFlagsCompiler,
 )
 from vfbLib.compilers.binary import BinaryTableCompiler
+from vfbLib.compilers.bitmap import BackgroundBitmapCompiler, GlyphBitmapsCompiler
 from vfbLib.compilers.cmap import CustomCmapCompiler
 from vfbLib.compilers.glyph import (
     GlyphAnchorsCompiler,
@@ -79,7 +80,7 @@ from vfbLib.parsers.base import (
     OpenTypeMetricsClassFlagsParser,
 )
 from vfbLib.parsers.binary import BinaryTableParser
-from vfbLib.parsers.bitmap import BackgroundBitmapParser, GlyphBitmapParser
+from vfbLib.parsers.bitmap import BackgroundBitmapParser, GlyphBitmapsParser
 from vfbLib.parsers.cmap import CustomCmapParser
 from vfbLib.parsers.fl3 import FL3Type1410Parser
 from vfbLib.parsers.glyph import (
@@ -282,8 +283,8 @@ parser_classes = {
     2001: ("Glyph", GlyphParser, GlyphCompiler),
     # Glyph.hlinks and Glyph.vlinks:
     2008: ("Links", LinkParser, LinksCompiler),
-    2007: ("image", BackgroundBitmapParser, None),  # Background Bitmap
-    2013: ("Glyph Bitmaps", GlyphBitmapParser, None),
+    2007: ("image", BackgroundBitmapParser, BackgroundBitmapCompiler),
+    2013: ("Glyph Bitmaps", GlyphBitmapsParser, GlyphBitmapsCompiler),
     2023: ("2023", EncodedValueListParser, EncodedValueListCompiler),  # 1 encoded value per master  # noqa: E501
     2019: ("Glyph Sketch", GlyphSketchParser, None),
     2010: ("Glyph Hinting Options", PostScriptGlyphHintingOptionsParser, PostScriptGlyphHintingOptionsCompiler),  # noqa: E501
