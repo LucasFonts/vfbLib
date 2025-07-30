@@ -6,7 +6,7 @@ from pathlib import Path
 from time import time
 from typing import TYPE_CHECKING, Any
 
-from vfbLib.enum import F, G, M, T
+from vfbLib.enum import F, G
 from vfbLib.vfb.entry import VfbEntry
 from vfbLib.vfb.glyph import VfbGlyph, VfbGlyphMaster
 from vfbLib.vfb.header import VfbHeader
@@ -36,7 +36,7 @@ class Vfb:
         vfb_path: Path | None = None,
         timing=True,
         minimal=False,
-        drop_keys: set[str] | None = None,
+        drop_keys: set[int] | None = None,
         only_header=False,
         unicode_strings=False,
     ) -> None:
@@ -44,9 +44,9 @@ class Vfb:
         self.timing = timing
         self.minimal = minimal
         if drop_keys is None:
-            self.drop_keys: set[str] = set()
+            self.drop_keys: set[int] = set()
         else:
-            self.drop_keys: set[str] = set(drop_keys)
+            self.drop_keys: set[int] = set(drop_keys)
         self.only_header = only_header
         # String encoding for nametable entries
         self.encoding = "utf-8" if unicode_strings else "cp1252"
@@ -172,7 +172,7 @@ class Vfb:
         start = time()
         self.header.decompile()
         for entry in self.entries:
-            if entry.key in self.drop_keys:
+            if entry.id in self.drop_keys:
                 continue
 
             entry.decompile()
@@ -229,7 +229,7 @@ class Vfb:
                         self.ttStemsV_count = len(entry.data.get("ttStemsV", []))
                         self.ttStemsH_count = len(entry.data.get("ttStemsH", []))
 
-                if entry.key not in self.drop_keys:
+                if entry.id not in self.drop_keys:
                     self.entries.append(entry)
 
         end = time()
