@@ -6,7 +6,7 @@ from pathlib import Path
 from time import time
 from typing import TYPE_CHECKING, Any
 
-from vfbLib.enum import F, G, M, T
+from vfbLib.enum import F, G
 from vfbLib.vfb.entry import VfbEntry
 from vfbLib.vfb.glyph import VfbGlyph, VfbGlyphMaster
 from vfbLib.vfb.header import VfbHeader
