@@ -88,6 +88,22 @@ class VfbEntry(StreamReader):
         return header.getvalue()
 
     @property
+    def decompiled(self) -> EntryDecompiled | None:
+        """
+        Deprecated, use VfbEntry.data
+        """
+        import warnings
+
+        warnings.warn(
+            "VfbEntry.decompiled is deprecated, use VfbEntry.data instead",
+            DeprecationWarning,
+        )
+        if isinstance(self._data, bytes):
+            return None
+
+        return self._data
+
+    @property
     def size(self) -> int:
         """The size of the compiled data.
 
