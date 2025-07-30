@@ -21,13 +21,12 @@ vfbLib.parsers.ps.PostScriptInfoParser
       ~PostScriptInfoParser.parse_hex
       ~PostScriptInfoParser.read_double
       ~PostScriptInfoParser.read_doubles
-      ~PostScriptInfoParser.read_float
-      ~PostScriptInfoParser.read_floats
       ~PostScriptInfoParser.read_int16
       ~PostScriptInfoParser.read_int32
       ~PostScriptInfoParser.read_int8
       ~PostScriptInfoParser.read_str
       ~PostScriptInfoParser.read_str_all
+      ~PostScriptInfoParser.read_str_with_len
       ~PostScriptInfoParser.read_uint16
       ~PostScriptInfoParser.read_uint32
       ~PostScriptInfoParser.read_uint8
@@ -36,15 +35,5 @@ vfbLib.parsers.ps.PostScriptInfoParser
    
 
    
-   
-   .. rubric:: Attributes
-
-   .. autosummary::
-   
-      ~PostScriptInfoParser.encoding
-      ~PostScriptInfoParser.master_count
-      ~PostScriptInfoParser.stream
-      ~PostScriptInfoParser.ttStemsH_count
-      ~PostScriptInfoParser.ttStemsV_count
    
    

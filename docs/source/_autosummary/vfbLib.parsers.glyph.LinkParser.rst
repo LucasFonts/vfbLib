@@ -21,13 +21,12 @@ vfbLib.parsers.glyph.LinkParser
       ~LinkParser.parse_hex
       ~LinkParser.read_double
       ~LinkParser.read_doubles
-      ~LinkParser.read_float
-      ~LinkParser.read_floats
       ~LinkParser.read_int16
       ~LinkParser.read_int32
       ~LinkParser.read_int8
       ~LinkParser.read_str
       ~LinkParser.read_str_all
+      ~LinkParser.read_str_with_len
       ~LinkParser.read_uint16
       ~LinkParser.read_uint32
       ~LinkParser.read_uint8
@@ -36,15 +35,5 @@ vfbLib.parsers.glyph.LinkParser
    
 
    
-   
-   .. rubric:: Attributes
-
-   .. autosummary::
-   
-      ~LinkParser.encoding
-      ~LinkParser.master_count
-      ~LinkParser.stream
-      ~LinkParser.ttStemsH_count
-      ~LinkParser.ttStemsV_count
    
    

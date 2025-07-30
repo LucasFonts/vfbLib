@@ -19,22 +19,37 @@
       :toctree:
       :template: custom-class-template.rst
    
-      Anchor
+      AnchorDict
+      BBoxDict
+      BackgroundImageDict
+      BitmapDataDict
       Component
+      CustomCmap
+      EntryDict
+      FeatureDict
+      FeaturesDict
+      GaspRangeDict
       GdefDict
+      GlyphBitmapDict
       GlyphData
-      Guide
       GuideDict
-      GuideProperty
-      Hint
+      GuidePropertiesDict
+      GuidePropertyDict
       HintDict
       Instruction
       LinkDict
-      MMAnchor
+      MMAnchorDict
+      MMGuidesDict
       MMHintsDict
       MMNode
       MaskData
+      PSInfoDict
+      PrimaryInstanceDict
       TTCommandDict
+      TTStemDict
+      TTStemsDict
+      TTZoneDict
+      TTZonesDict
       VfbDict
    
    

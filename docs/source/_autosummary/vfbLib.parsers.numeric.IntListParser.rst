@@ -21,13 +21,12 @@ vfbLib.parsers.numeric.IntListParser
       ~IntListParser.parse_hex
       ~IntListParser.read_double
       ~IntListParser.read_doubles
-      ~IntListParser.read_float
-      ~IntListParser.read_floats
       ~IntListParser.read_int16
       ~IntListParser.read_int32
       ~IntListParser.read_int8
       ~IntListParser.read_str
       ~IntListParser.read_str_all
+      ~IntListParser.read_str_with_len
       ~IntListParser.read_uint16
       ~IntListParser.read_uint32
       ~IntListParser.read_uint8
@@ -36,15 +35,5 @@ vfbLib.parsers.numeric.IntListParser
    
 
    
-   
-   .. rubric:: Attributes
-
-   .. autosummary::
-   
-      ~IntListParser.encoding
-      ~IntListParser.master_count
-      ~IntListParser.stream
-      ~IntListParser.ttStemsH_count
-      ~IntListParser.ttStemsV_count
    
    

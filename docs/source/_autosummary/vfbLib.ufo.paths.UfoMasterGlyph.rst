@@ -19,6 +19,7 @@ vfbLib.ufo.paths.UfoMasterGlyph
       ~UfoMasterGlyph.__init__
       ~UfoMasterGlyph.build
       ~UfoMasterGlyph.drawPoints
+      ~UfoMasterGlyph.drawPointsMask
    
    
 

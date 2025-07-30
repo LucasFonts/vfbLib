@@ -21,13 +21,12 @@ vfbLib.parsers.pclt.PcltParser
       ~PcltParser.parse_hex
       ~PcltParser.read_double
       ~PcltParser.read_doubles
-      ~PcltParser.read_float
-      ~PcltParser.read_floats
       ~PcltParser.read_int16
       ~PcltParser.read_int32
       ~PcltParser.read_int8
       ~PcltParser.read_str
       ~PcltParser.read_str_all
+      ~PcltParser.read_str_with_len
       ~PcltParser.read_uint16
       ~PcltParser.read_uint32
       ~PcltParser.read_uint8
@@ -36,15 +35,5 @@ vfbLib.parsers.pclt.PcltParser
    
 
    
-   
-   .. rubric:: Attributes
-
-   .. autosummary::
-   
-      ~PcltParser.encoding
-      ~PcltParser.master_count
-      ~PcltParser.stream
-      ~PcltParser.ttStemsH_count
-      ~PcltParser.ttStemsV_count
    
    

@@ -23,11 +23,10 @@ vfbLib.compilers.text.OpenTypeStringCompiler
       ~OpenTypeStringCompiler.write_bytes
       ~OpenTypeStringCompiler.write_double
       ~OpenTypeStringCompiler.write_doubles
-      ~OpenTypeStringCompiler.write_float
-      ~OpenTypeStringCompiler.write_floats
       ~OpenTypeStringCompiler.write_int16
       ~OpenTypeStringCompiler.write_int32
       ~OpenTypeStringCompiler.write_str
+      ~OpenTypeStringCompiler.write_str_with_len
       ~OpenTypeStringCompiler.write_uint16
       ~OpenTypeStringCompiler.write_uint32
       ~OpenTypeStringCompiler.write_uint8

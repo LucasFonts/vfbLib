@@ -19,8 +19,10 @@ vfbLib.compilers.text
       :toctree:
       :template: custom-class-template.rst
    
+      NameRecordsCompiler
       OpenTypeStringCompiler
       StringCompiler
+      VendorIdCompiler
    
    
 

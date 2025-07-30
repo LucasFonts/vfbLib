@@ -23,11 +23,10 @@ vfbLib.compilers.glyph.InstructionsCompiler
       ~InstructionsCompiler.write_bytes
       ~InstructionsCompiler.write_double
       ~InstructionsCompiler.write_doubles
-      ~InstructionsCompiler.write_float
-      ~InstructionsCompiler.write_floats
       ~InstructionsCompiler.write_int16
       ~InstructionsCompiler.write_int32
       ~InstructionsCompiler.write_str
+      ~InstructionsCompiler.write_str_with_len
       ~InstructionsCompiler.write_uint16
       ~InstructionsCompiler.write_uint32
       ~InstructionsCompiler.write_uint8

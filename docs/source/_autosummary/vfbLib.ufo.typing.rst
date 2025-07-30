@@ -19,6 +19,7 @@ vfbLib.ufo.typing
       :toctree:
       :template: custom-class-template.rst
    
+      HintSet
       TUfoGaspRecDict
       TUfoRawStemDict
       TUfoRawStemsDict

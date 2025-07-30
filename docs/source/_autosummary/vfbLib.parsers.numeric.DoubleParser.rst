@@ -21,13 +21,12 @@ vfbLib.parsers.numeric.DoubleParser
       ~DoubleParser.parse_hex
       ~DoubleParser.read_double
       ~DoubleParser.read_doubles
-      ~DoubleParser.read_float
-      ~DoubleParser.read_floats
       ~DoubleParser.read_int16
       ~DoubleParser.read_int32
       ~DoubleParser.read_int8
       ~DoubleParser.read_str
       ~DoubleParser.read_str_all
+      ~DoubleParser.read_str_with_len
       ~DoubleParser.read_uint16
       ~DoubleParser.read_uint32
       ~DoubleParser.read_uint8
@@ -36,15 +35,5 @@ vfbLib.parsers.numeric.DoubleParser
    
 
    
-   
-   .. rubric:: Attributes
-
-   .. autosummary::
-   
-      ~DoubleParser.encoding
-      ~DoubleParser.master_count
-      ~DoubleParser.stream
-      ~DoubleParser.ttStemsH_count
-      ~DoubleParser.ttStemsV_count
    
    

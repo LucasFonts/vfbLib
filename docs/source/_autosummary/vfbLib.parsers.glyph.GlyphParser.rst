@@ -29,13 +29,12 @@ vfbLib.parsers.glyph.GlyphParser
       ~GlyphParser.parse_outlines
       ~GlyphParser.read_double
       ~GlyphParser.read_doubles
-      ~GlyphParser.read_float
-      ~GlyphParser.read_floats
       ~GlyphParser.read_int16
       ~GlyphParser.read_int32
       ~GlyphParser.read_int8
       ~GlyphParser.read_str
       ~GlyphParser.read_str_all
+      ~GlyphParser.read_str_with_len
       ~GlyphParser.read_uint16
       ~GlyphParser.read_uint32
       ~GlyphParser.read_uint8
@@ -44,15 +43,5 @@ vfbLib.parsers.glyph.GlyphParser
    
 
    
-   
-   .. rubric:: Attributes
-
-   .. autosummary::
-   
-      ~GlyphParser.encoding
-      ~GlyphParser.master_count
-      ~GlyphParser.stream
-      ~GlyphParser.ttStemsH_count
-      ~GlyphParser.ttStemsV_count
    
    

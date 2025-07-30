@@ -21,13 +21,12 @@ vfbLib.parsers.mm.AnisotropicInterpolationsParser
       ~AnisotropicInterpolationsParser.parse_hex
       ~AnisotropicInterpolationsParser.read_double
       ~AnisotropicInterpolationsParser.read_doubles
-      ~AnisotropicInterpolationsParser.read_float
-      ~AnisotropicInterpolationsParser.read_floats
       ~AnisotropicInterpolationsParser.read_int16
       ~AnisotropicInterpolationsParser.read_int32
       ~AnisotropicInterpolationsParser.read_int8
       ~AnisotropicInterpolationsParser.read_str
       ~AnisotropicInterpolationsParser.read_str_all
+      ~AnisotropicInterpolationsParser.read_str_with_len
       ~AnisotropicInterpolationsParser.read_uint16
       ~AnisotropicInterpolationsParser.read_uint32
       ~AnisotropicInterpolationsParser.read_uint8
@@ -36,15 +35,5 @@ vfbLib.parsers.mm.AnisotropicInterpolationsParser
    
 
    
-   
-   .. rubric:: Attributes
-
-   .. autosummary::
-   
-      ~AnisotropicInterpolationsParser.encoding
-      ~AnisotropicInterpolationsParser.master_count
-      ~AnisotropicInterpolationsParser.stream
-      ~AnisotropicInterpolationsParser.ttStemsH_count
-      ~AnisotropicInterpolationsParser.ttStemsV_count
    
    

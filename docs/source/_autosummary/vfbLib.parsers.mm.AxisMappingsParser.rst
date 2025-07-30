@@ -21,13 +21,12 @@ vfbLib.parsers.mm.AxisMappingsParser
       ~AxisMappingsParser.parse_hex
       ~AxisMappingsParser.read_double
       ~AxisMappingsParser.read_doubles
-      ~AxisMappingsParser.read_float
-      ~AxisMappingsParser.read_floats
       ~AxisMappingsParser.read_int16
       ~AxisMappingsParser.read_int32
       ~AxisMappingsParser.read_int8
       ~AxisMappingsParser.read_str
       ~AxisMappingsParser.read_str_all
+      ~AxisMappingsParser.read_str_with_len
       ~AxisMappingsParser.read_uint16
       ~AxisMappingsParser.read_uint32
       ~AxisMappingsParser.read_uint8
@@ -36,15 +35,5 @@ vfbLib.parsers.mm.AxisMappingsParser
    
 
    
-   
-   .. rubric:: Attributes
-
-   .. autosummary::
-   
-      ~AxisMappingsParser.encoding
-      ~AxisMappingsParser.master_count
-      ~AxisMappingsParser.stream
-      ~AxisMappingsParser.ttStemsH_count
-      ~AxisMappingsParser.ttStemsV_count
    
    

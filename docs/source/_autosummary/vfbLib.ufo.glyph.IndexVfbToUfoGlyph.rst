@@ -19,6 +19,7 @@ vfbLib.ufo.glyph.IndexVfbToUfoGlyph
       ~IndexVfbToUfoGlyph.__init__
       ~IndexVfbToUfoGlyph.get_point_label
       ~IndexVfbToUfoGlyph.set_mark
+      ~IndexVfbToUfoGlyph.set_mask
    
    
 

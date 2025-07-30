@@ -21,13 +21,12 @@ vfbLib.parsers.truetype.TrueTypeZonesParser
       ~TrueTypeZonesParser.parse_hex
       ~TrueTypeZonesParser.read_double
       ~TrueTypeZonesParser.read_doubles
-      ~TrueTypeZonesParser.read_float
-      ~TrueTypeZonesParser.read_floats
       ~TrueTypeZonesParser.read_int16
       ~TrueTypeZonesParser.read_int32
       ~TrueTypeZonesParser.read_int8
       ~TrueTypeZonesParser.read_str
       ~TrueTypeZonesParser.read_str_all
+      ~TrueTypeZonesParser.read_str_with_len
       ~TrueTypeZonesParser.read_uint16
       ~TrueTypeZonesParser.read_uint32
       ~TrueTypeZonesParser.read_uint8
@@ -36,15 +35,5 @@ vfbLib.parsers.truetype.TrueTypeZonesParser
    
 
    
-   
-   .. rubric:: Attributes
-
-   .. autosummary::
-   
-      ~TrueTypeZonesParser.encoding
-      ~TrueTypeZonesParser.master_count
-      ~TrueTypeZonesParser.stream
-      ~TrueTypeZonesParser.ttStemsH_count
-      ~TrueTypeZonesParser.ttStemsV_count
    
    

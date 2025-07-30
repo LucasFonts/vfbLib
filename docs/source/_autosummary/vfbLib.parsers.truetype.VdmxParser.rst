@@ -21,13 +21,12 @@ vfbLib.parsers.truetype.VdmxParser
       ~VdmxParser.parse_hex
       ~VdmxParser.read_double
       ~VdmxParser.read_doubles
-      ~VdmxParser.read_float
-      ~VdmxParser.read_floats
       ~VdmxParser.read_int16
       ~VdmxParser.read_int32
       ~VdmxParser.read_int8
       ~VdmxParser.read_str
       ~VdmxParser.read_str_all
+      ~VdmxParser.read_str_with_len
       ~VdmxParser.read_uint16
       ~VdmxParser.read_uint32
       ~VdmxParser.read_uint8
@@ -36,15 +35,5 @@ vfbLib.parsers.truetype.VdmxParser
    
 
    
-   
-   .. rubric:: Attributes
-
-   .. autosummary::
-   
-      ~VdmxParser.encoding
-      ~VdmxParser.master_count
-      ~VdmxParser.stream
-      ~VdmxParser.ttStemsH_count
-      ~VdmxParser.ttStemsV_count
    
    

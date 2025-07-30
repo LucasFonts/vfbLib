@@ -39,5 +39,6 @@ vfbLib.typing.MMHintsDict
    
       ~MMHintsDict.h
       ~MMHintsDict.v
+      ~MMHintsDict.hintmasks
    
    

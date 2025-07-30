@@ -23,11 +23,10 @@ vfbLib.compilers.base.GlyphEncodingCompiler
       ~GlyphEncodingCompiler.write_bytes
       ~GlyphEncodingCompiler.write_double
       ~GlyphEncodingCompiler.write_doubles
-      ~GlyphEncodingCompiler.write_float
-      ~GlyphEncodingCompiler.write_floats
       ~GlyphEncodingCompiler.write_int16
       ~GlyphEncodingCompiler.write_int32
       ~GlyphEncodingCompiler.write_str
+      ~GlyphEncodingCompiler.write_str_with_len
       ~GlyphEncodingCompiler.write_uint16
       ~GlyphEncodingCompiler.write_uint32
       ~GlyphEncodingCompiler.write_uint8

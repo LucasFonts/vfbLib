@@ -37,7 +37,7 @@ vfbLib.typing.GuideDict
 
    .. autosummary::
    
-      ~GuideDict.h
-      ~GuideDict.v
+      ~GuideDict.angle
+      ~GuideDict.pos
    
    

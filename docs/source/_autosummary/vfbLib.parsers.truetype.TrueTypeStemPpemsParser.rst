@@ -21,13 +21,12 @@ vfbLib.parsers.truetype.TrueTypeStemPpemsParser
       ~TrueTypeStemPpemsParser.parse_hex
       ~TrueTypeStemPpemsParser.read_double
       ~TrueTypeStemPpemsParser.read_doubles
-      ~TrueTypeStemPpemsParser.read_float
-      ~TrueTypeStemPpemsParser.read_floats
       ~TrueTypeStemPpemsParser.read_int16
       ~TrueTypeStemPpemsParser.read_int32
       ~TrueTypeStemPpemsParser.read_int8
       ~TrueTypeStemPpemsParser.read_str
       ~TrueTypeStemPpemsParser.read_str_all
+      ~TrueTypeStemPpemsParser.read_str_with_len
       ~TrueTypeStemPpemsParser.read_uint16
       ~TrueTypeStemPpemsParser.read_uint32
       ~TrueTypeStemPpemsParser.read_uint8
@@ -36,15 +35,5 @@ vfbLib.parsers.truetype.TrueTypeStemPpemsParser
    
 
    
-   
-   .. rubric:: Attributes
-
-   .. autosummary::
-   
-      ~TrueTypeStemPpemsParser.encoding
-      ~TrueTypeStemPpemsParser.master_count
-      ~TrueTypeStemPpemsParser.stream
-      ~TrueTypeStemPpemsParser.ttStemsH_count
-      ~TrueTypeStemPpemsParser.ttStemsV_count
    
    

@@ -21,13 +21,12 @@ vfbLib.parsers.glyph.GlyphUnicodeParser
       ~GlyphUnicodeParser.parse_hex
       ~GlyphUnicodeParser.read_double
       ~GlyphUnicodeParser.read_doubles
-      ~GlyphUnicodeParser.read_float
-      ~GlyphUnicodeParser.read_floats
       ~GlyphUnicodeParser.read_int16
       ~GlyphUnicodeParser.read_int32
       ~GlyphUnicodeParser.read_int8
       ~GlyphUnicodeParser.read_str
       ~GlyphUnicodeParser.read_str_all
+      ~GlyphUnicodeParser.read_str_with_len
       ~GlyphUnicodeParser.read_uint16
       ~GlyphUnicodeParser.read_uint32
       ~GlyphUnicodeParser.read_uint8
@@ -36,15 +35,5 @@ vfbLib.parsers.glyph.GlyphUnicodeParser
    
 
    
-   
-   .. rubric:: Attributes
-
-   .. autosummary::
-   
-      ~GlyphUnicodeParser.encoding
-      ~GlyphUnicodeParser.master_count
-      ~GlyphUnicodeParser.stream
-      ~GlyphUnicodeParser.ttStemsH_count
-      ~GlyphUnicodeParser.ttStemsV_count
    
    

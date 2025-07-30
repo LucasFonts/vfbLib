@@ -9,13 +9,6 @@ vfbLib.parsers.bitmap
 
    
    
-   .. rubric:: Functions
-
-   .. autosummary::
-      :toctree:
-   
-      pprint_bitmap
-   
    
 
    
@@ -28,7 +21,7 @@ vfbLib.parsers.bitmap
    
       BackgroundBitmapParser
       BaseBitmapParser
-      GlyphBitmapParser
+      GlyphBitmapsParser
    
    
 

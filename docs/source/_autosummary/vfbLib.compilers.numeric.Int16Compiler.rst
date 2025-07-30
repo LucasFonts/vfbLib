@@ -23,11 +23,10 @@ vfbLib.compilers.numeric.Int16Compiler
       ~Int16Compiler.write_bytes
       ~Int16Compiler.write_double
       ~Int16Compiler.write_doubles
-      ~Int16Compiler.write_float
-      ~Int16Compiler.write_floats
       ~Int16Compiler.write_int16
       ~Int16Compiler.write_int32
       ~Int16Compiler.write_str
+      ~Int16Compiler.write_str_with_len
       ~Int16Compiler.write_uint16
       ~Int16Compiler.write_uint32
       ~Int16Compiler.write_uint8

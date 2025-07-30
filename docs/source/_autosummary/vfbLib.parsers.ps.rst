@@ -19,6 +19,8 @@ vfbLib.parsers.ps
       :toctree:
       :template: custom-class-template.rst
    
+      PostScriptGlobalHintingOptionsParser
+      PostScriptGlyphHintingOptionsParser
       PostScriptInfoParser
    
    
