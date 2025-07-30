@@ -29,13 +29,12 @@ vfbLib.parsers.glyph.MaskParser
       ~MaskParser.parse_outlines
       ~MaskParser.read_double
       ~MaskParser.read_doubles
-      ~MaskParser.read_float
-      ~MaskParser.read_floats
       ~MaskParser.read_int16
       ~MaskParser.read_int32
       ~MaskParser.read_int8
       ~MaskParser.read_str
       ~MaskParser.read_str_all
+      ~MaskParser.read_str_with_len
       ~MaskParser.read_uint16
       ~MaskParser.read_uint32
       ~MaskParser.read_uint8
@@ -44,15 +43,5 @@ vfbLib.parsers.glyph.MaskParser
    
 
    
-   
-   .. rubric:: Attributes
-
-   .. autosummary::
-   
-      ~MaskParser.encoding
-      ~MaskParser.master_count
-      ~MaskParser.stream
-      ~MaskParser.ttStemsH_count
-      ~MaskParser.ttStemsV_count
    
    

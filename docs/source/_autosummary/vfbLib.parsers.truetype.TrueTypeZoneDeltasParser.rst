@@ -21,13 +21,12 @@ vfbLib.parsers.truetype.TrueTypeZoneDeltasParser
       ~TrueTypeZoneDeltasParser.parse_hex
       ~TrueTypeZoneDeltasParser.read_double
       ~TrueTypeZoneDeltasParser.read_doubles
-      ~TrueTypeZoneDeltasParser.read_float
-      ~TrueTypeZoneDeltasParser.read_floats
       ~TrueTypeZoneDeltasParser.read_int16
       ~TrueTypeZoneDeltasParser.read_int32
       ~TrueTypeZoneDeltasParser.read_int8
       ~TrueTypeZoneDeltasParser.read_str
       ~TrueTypeZoneDeltasParser.read_str_all
+      ~TrueTypeZoneDeltasParser.read_str_with_len
       ~TrueTypeZoneDeltasParser.read_uint16
       ~TrueTypeZoneDeltasParser.read_uint32
       ~TrueTypeZoneDeltasParser.read_uint8
@@ -36,15 +35,5 @@ vfbLib.parsers.truetype.TrueTypeZoneDeltasParser
    
 
    
-   
-   .. rubric:: Attributes
-
-   .. autosummary::
-   
-      ~TrueTypeZoneDeltasParser.encoding
-      ~TrueTypeZoneDeltasParser.master_count
-      ~TrueTypeZoneDeltasParser.stream
-      ~TrueTypeZoneDeltasParser.ttStemsH_count
-      ~TrueTypeZoneDeltasParser.ttStemsV_count
    
    

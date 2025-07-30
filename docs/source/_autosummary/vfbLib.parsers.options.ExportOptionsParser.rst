@@ -21,13 +21,12 @@ vfbLib.parsers.options.ExportOptionsParser
       ~ExportOptionsParser.parse_hex
       ~ExportOptionsParser.read_double
       ~ExportOptionsParser.read_doubles
-      ~ExportOptionsParser.read_float
-      ~ExportOptionsParser.read_floats
       ~ExportOptionsParser.read_int16
       ~ExportOptionsParser.read_int32
       ~ExportOptionsParser.read_int8
       ~ExportOptionsParser.read_str
       ~ExportOptionsParser.read_str_all
+      ~ExportOptionsParser.read_str_with_len
       ~ExportOptionsParser.read_uint16
       ~ExportOptionsParser.read_uint32
       ~ExportOptionsParser.read_uint8
@@ -36,15 +35,5 @@ vfbLib.parsers.options.ExportOptionsParser
    
 
    
-   
-   .. rubric:: Attributes
-
-   .. autosummary::
-   
-      ~ExportOptionsParser.encoding
-      ~ExportOptionsParser.master_count
-      ~ExportOptionsParser.stream
-      ~ExportOptionsParser.ttStemsH_count
-      ~ExportOptionsParser.ttStemsV_count
    
    

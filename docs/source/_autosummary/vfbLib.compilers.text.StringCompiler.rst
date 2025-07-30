@@ -23,11 +23,10 @@ vfbLib.compilers.text.StringCompiler
       ~StringCompiler.write_bytes
       ~StringCompiler.write_double
       ~StringCompiler.write_doubles
-      ~StringCompiler.write_float
-      ~StringCompiler.write_floats
       ~StringCompiler.write_int16
       ~StringCompiler.write_int32
       ~StringCompiler.write_str
+      ~StringCompiler.write_str_with_len
       ~StringCompiler.write_uint16
       ~StringCompiler.write_uint32
       ~StringCompiler.write_uint8

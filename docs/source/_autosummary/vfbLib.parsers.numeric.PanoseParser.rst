@@ -21,13 +21,12 @@ vfbLib.parsers.numeric.PanoseParser
       ~PanoseParser.parse_hex
       ~PanoseParser.read_double
       ~PanoseParser.read_doubles
-      ~PanoseParser.read_float
-      ~PanoseParser.read_floats
       ~PanoseParser.read_int16
       ~PanoseParser.read_int32
       ~PanoseParser.read_int8
       ~PanoseParser.read_str
       ~PanoseParser.read_str_all
+      ~PanoseParser.read_str_with_len
       ~PanoseParser.read_uint16
       ~PanoseParser.read_uint32
       ~PanoseParser.read_uint8
@@ -36,15 +35,5 @@ vfbLib.parsers.numeric.PanoseParser
    
 
    
-   
-   .. rubric:: Attributes
-
-   .. autosummary::
-   
-      ~PanoseParser.encoding
-      ~PanoseParser.master_count
-      ~PanoseParser.stream
-      ~PanoseParser.ttStemsH_count
-      ~PanoseParser.ttStemsV_count
    
    

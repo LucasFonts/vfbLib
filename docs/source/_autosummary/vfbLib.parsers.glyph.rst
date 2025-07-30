@@ -26,6 +26,7 @@ vfbLib.parsers.glyph
       :toctree:
       :template: custom-class-template.rst
    
+      GlobalMaskParser
       GlyphAnchorsParser
       GlyphAnchorsSuppParser
       GlyphGDEFParser
@@ -35,6 +36,8 @@ vfbLib.parsers.glyph
       GlyphUnicodeParser
       GlyphUnicodeSuppParser
       LinkParser
+      MaskMetricsMMParser
+      MaskMetricsParser
       MaskParser
       PathCommand
    

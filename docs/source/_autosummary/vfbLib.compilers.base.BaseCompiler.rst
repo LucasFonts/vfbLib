@@ -23,11 +23,10 @@ vfbLib.compilers.base.BaseCompiler
       ~BaseCompiler.write_bytes
       ~BaseCompiler.write_double
       ~BaseCompiler.write_doubles
-      ~BaseCompiler.write_float
-      ~BaseCompiler.write_floats
       ~BaseCompiler.write_int16
       ~BaseCompiler.write_int32
       ~BaseCompiler.write_str
+      ~BaseCompiler.write_str_with_len
       ~BaseCompiler.write_uint16
       ~BaseCompiler.write_uint32
       ~BaseCompiler.write_uint8

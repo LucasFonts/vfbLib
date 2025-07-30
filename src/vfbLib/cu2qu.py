@@ -55,6 +55,7 @@ def vfbcu2qu():
         print(parser.description)
         print(f"Reading file {vfb_path} ...")
         vfb = Vfb(vfb_path, drop_keys={G.Links})
+        vfb.decompile()
         kwargs = {
             "max_err_em": None,
             "max_err": None,

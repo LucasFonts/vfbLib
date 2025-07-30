@@ -21,13 +21,12 @@ vfbLib.parsers.guides.GuidePropertiesParser
       ~GuidePropertiesParser.parse_hex
       ~GuidePropertiesParser.read_double
       ~GuidePropertiesParser.read_doubles
-      ~GuidePropertiesParser.read_float
-      ~GuidePropertiesParser.read_floats
       ~GuidePropertiesParser.read_int16
       ~GuidePropertiesParser.read_int32
       ~GuidePropertiesParser.read_int8
       ~GuidePropertiesParser.read_str
       ~GuidePropertiesParser.read_str_all
+      ~GuidePropertiesParser.read_str_with_len
       ~GuidePropertiesParser.read_uint16
       ~GuidePropertiesParser.read_uint32
       ~GuidePropertiesParser.read_uint8
@@ -36,15 +35,5 @@ vfbLib.parsers.guides.GuidePropertiesParser
    
 
    
-   
-   .. rubric:: Attributes
-
-   .. autosummary::
-   
-      ~GuidePropertiesParser.encoding
-      ~GuidePropertiesParser.master_count
-      ~GuidePropertiesParser.stream
-      ~GuidePropertiesParser.ttStemsH_count
-      ~GuidePropertiesParser.ttStemsV_count
    
    

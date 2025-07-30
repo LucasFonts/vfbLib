@@ -21,11 +21,10 @@ vfbLib.compilers.header.VfbHeaderCompiler
       ~VfbHeaderCompiler.write_bytes
       ~VfbHeaderCompiler.write_double
       ~VfbHeaderCompiler.write_doubles
-      ~VfbHeaderCompiler.write_float
-      ~VfbHeaderCompiler.write_floats
       ~VfbHeaderCompiler.write_int16
       ~VfbHeaderCompiler.write_int32
       ~VfbHeaderCompiler.write_str
+      ~VfbHeaderCompiler.write_str_with_len
       ~VfbHeaderCompiler.write_uint16
       ~VfbHeaderCompiler.write_uint32
       ~VfbHeaderCompiler.write_uint8

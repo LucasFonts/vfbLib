@@ -15,6 +15,9 @@
       :toctree:
    
       binaryToIntList
+      deHexStr
+      hexStr
+      intListToBinary
    
    
 

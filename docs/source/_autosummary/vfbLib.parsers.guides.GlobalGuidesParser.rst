@@ -21,13 +21,12 @@ vfbLib.parsers.guides.GlobalGuidesParser
       ~GlobalGuidesParser.parse_hex
       ~GlobalGuidesParser.read_double
       ~GlobalGuidesParser.read_doubles
-      ~GlobalGuidesParser.read_float
-      ~GlobalGuidesParser.read_floats
       ~GlobalGuidesParser.read_int16
       ~GlobalGuidesParser.read_int32
       ~GlobalGuidesParser.read_int8
       ~GlobalGuidesParser.read_str
       ~GlobalGuidesParser.read_str_all
+      ~GlobalGuidesParser.read_str_with_len
       ~GlobalGuidesParser.read_uint16
       ~GlobalGuidesParser.read_uint32
       ~GlobalGuidesParser.read_uint8
@@ -36,15 +35,5 @@ vfbLib.parsers.guides.GlobalGuidesParser
    
 
    
-   
-   .. rubric:: Attributes
-
-   .. autosummary::
-   
-      ~GlobalGuidesParser.encoding
-      ~GlobalGuidesParser.master_count
-      ~GlobalGuidesParser.stream
-      ~GlobalGuidesParser.ttStemsH_count
-      ~GlobalGuidesParser.ttStemsV_count
    
    

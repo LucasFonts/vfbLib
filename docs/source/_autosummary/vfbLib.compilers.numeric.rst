@@ -19,7 +19,14 @@ vfbLib.compilers.numeric
       :toctree:
       :template: custom-class-template.rst
    
+      DoubleCompiler
+      DoubleListCompiler
       Int16Compiler
+      IntListCompiler
+      PanoseCompiler
+      SignedInt16Compiler
+      SignedInt32Compiler
+      UnicodeRangesCompiler
    
    
 

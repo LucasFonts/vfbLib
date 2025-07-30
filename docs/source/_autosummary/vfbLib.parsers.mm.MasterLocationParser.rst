@@ -21,13 +21,12 @@ vfbLib.parsers.mm.MasterLocationParser
       ~MasterLocationParser.parse_hex
       ~MasterLocationParser.read_double
       ~MasterLocationParser.read_doubles
-      ~MasterLocationParser.read_float
-      ~MasterLocationParser.read_floats
       ~MasterLocationParser.read_int16
       ~MasterLocationParser.read_int32
       ~MasterLocationParser.read_int8
       ~MasterLocationParser.read_str
       ~MasterLocationParser.read_str_all
+      ~MasterLocationParser.read_str_with_len
       ~MasterLocationParser.read_uint16
       ~MasterLocationParser.read_uint32
       ~MasterLocationParser.read_uint8
@@ -36,15 +35,5 @@ vfbLib.parsers.mm.MasterLocationParser
    
 
    
-   
-   .. rubric:: Attributes
-
-   .. autosummary::
-   
-      ~MasterLocationParser.encoding
-      ~MasterLocationParser.master_count
-      ~MasterLocationParser.stream
-      ~MasterLocationParser.ttStemsH_count
-      ~MasterLocationParser.ttStemsV_count
    
    

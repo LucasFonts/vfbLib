@@ -26,6 +26,7 @@ vfbLib.ufo.builder.VfbToUfoBuilder
       ~VfbToUfoBuilder.build_tt_glyph_lib
       ~VfbToUfoBuilder.build_tt_stems_lib
       ~VfbToUfoBuilder.build_tt_zones_lib
+      ~VfbToUfoBuilder.fix_masters_count
       ~VfbToUfoBuilder.get_designspace
       ~VfbToUfoBuilder.get_master_info
       ~VfbToUfoBuilder.get_master_path

@@ -21,11 +21,10 @@ vfbLib.compilers.glyph.OutlinesCompiler
       ~OutlinesCompiler.write_bytes
       ~OutlinesCompiler.write_double
       ~OutlinesCompiler.write_doubles
-      ~OutlinesCompiler.write_float
-      ~OutlinesCompiler.write_floats
       ~OutlinesCompiler.write_int16
       ~OutlinesCompiler.write_int32
       ~OutlinesCompiler.write_str
+      ~OutlinesCompiler.write_str_with_len
       ~OutlinesCompiler.write_uint16
       ~OutlinesCompiler.write_uint32
       ~OutlinesCompiler.write_uint8

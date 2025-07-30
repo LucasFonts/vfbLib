@@ -37,8 +37,7 @@ vfbLib.typing.HintDict
 
    .. autosummary::
    
-      ~HintDict.h
-      ~HintDict.v
-      ~HintDict.hintmasks
+      ~HintDict.pos
+      ~HintDict.width
    
    

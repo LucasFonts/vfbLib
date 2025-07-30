@@ -102,6 +102,14 @@ class Vfb:
         self.header = VfbHeader()
         self.entries = []
 
+    def compile(self) -> None:
+        """
+        Compile the header and all entries in the VFB.
+        """
+        self.header.compile()
+        for e in self.entries:
+            e.compile()
+
     def _decompile_glyphs(self) -> None:
         name = None
         for entry in self.entries:
@@ -162,6 +170,7 @@ class Vfb:
         """
         self.any_errors = False
         start = time()
+        self.header.decompile()
         for entry in self.entries:
             if entry.id in self.drop_keys:
                 continue
@@ -207,20 +216,18 @@ class Vfb:
             if entry is not None:
                 if entry.key == "Master Count":
                     entry.decompile()
-                    if entry.decompiled is not None:
+                    if entry.data is not None:
                         if TYPE_CHECKING:
-                            assert isinstance(entry.decompiled, int)
-                        self.num_masters = entry.decompiled
-                        entry.clean()  # Suppress warning about double decompilation
+                            assert isinstance(entry.data, int)
+                        self.num_masters = entry.data
 
                 elif entry.key == "TrueType Stems":
                     entry.decompile()
-                    if entry.decompiled is not None:
+                    if entry.data is not None:
                         if TYPE_CHECKING:
-                            assert isinstance(entry.decompiled, dict)
-                        self.ttStemsV_count = len(entry.decompiled.get("ttStemsV", []))
-                        self.ttStemsH_count = len(entry.decompiled.get("ttStemsH", []))
-                        entry.clean()  # Suppress warning about double decompilation
+                            assert isinstance(entry.data, dict)
+                        self.ttStemsV_count = len(entry.data.get("ttStemsV", []))
+                        self.ttStemsH_count = len(entry.data.get("ttStemsH", []))
 
                 if entry.id not in self.drop_keys:
                     self.entries.append(entry)
@@ -250,22 +257,17 @@ class Vfb:
         if self.header is None:
             raise ValueError
 
+        self.compile()
+
         with open(out_path, "wb") as vfb:
-            self.header.compile()
-            assert self.header.data is not None
+            assert isinstance(self.header.data, bytes)
             vfb.write(self.header.data)
 
             for entry in self.entries:
-                success = entry.compile()
-                if not success:
-                    logger.warning(
-                        f"Could not compile entry {entry.key} ({entry.id}): "
-                        f"{entry.decompiled}"
-                    )
-                    # raise NotImplementedError
                 vfb.write(entry.header)
                 if entry.data is not None:
                     # There may be entries without data
+                    assert isinstance(entry.data, bytes)
                     vfb.write(entry.data)
             # File end marker
             vfb.write(b"\05\00\00\00\02\00\00\00")

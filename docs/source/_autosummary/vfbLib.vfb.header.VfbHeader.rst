@@ -19,6 +19,7 @@ vfbLib.vfb.header.VfbHeader
       ~VfbHeader.__init__
       ~VfbHeader.as_dict
       ~VfbHeader.compile
+      ~VfbHeader.decompile
       ~VfbHeader.read
    
    

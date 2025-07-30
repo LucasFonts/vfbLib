@@ -19,7 +19,6 @@ vfbLib.vfb.vfb.VfbMaster
       ~VfbMaster.__init__
       ~VfbMaster.items
       ~VfbMaster.keys
-      ~VfbMaster.num_masters
    
    
 
@@ -29,6 +28,9 @@ vfbLib.vfb.vfb.VfbMaster
 
    .. autosummary::
    
+      ~VfbMaster.glyph_order
       ~VfbMaster.info
+      ~VfbMaster.num_masters
+      ~VfbMaster.ps_hinting_options
    
    

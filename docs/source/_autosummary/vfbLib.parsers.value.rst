@@ -14,8 +14,6 @@ vfbLib.parsers.value
    .. autosummary::
       :toctree:
    
-      read_doubles
-      read_floats
       read_value
    
    

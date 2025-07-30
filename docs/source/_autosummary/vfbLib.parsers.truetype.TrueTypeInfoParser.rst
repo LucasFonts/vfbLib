@@ -22,13 +22,12 @@ vfbLib.parsers.truetype.TrueTypeInfoParser
       ~TrueTypeInfoParser.parse_hex
       ~TrueTypeInfoParser.read_double
       ~TrueTypeInfoParser.read_doubles
-      ~TrueTypeInfoParser.read_float
-      ~TrueTypeInfoParser.read_floats
       ~TrueTypeInfoParser.read_int16
       ~TrueTypeInfoParser.read_int32
       ~TrueTypeInfoParser.read_int8
       ~TrueTypeInfoParser.read_str
       ~TrueTypeInfoParser.read_str_all
+      ~TrueTypeInfoParser.read_str_with_len
       ~TrueTypeInfoParser.read_uint16
       ~TrueTypeInfoParser.read_uint32
       ~TrueTypeInfoParser.read_uint8
@@ -37,15 +36,5 @@ vfbLib.parsers.truetype.TrueTypeInfoParser
    
 
    
-   
-   .. rubric:: Attributes
-
-   .. autosummary::
-   
-      ~TrueTypeInfoParser.encoding
-      ~TrueTypeInfoParser.master_count
-      ~TrueTypeInfoParser.stream
-      ~TrueTypeInfoParser.ttStemsH_count
-      ~TrueTypeInfoParser.ttStemsV_count
    
    

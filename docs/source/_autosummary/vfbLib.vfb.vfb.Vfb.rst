@@ -20,6 +20,7 @@ vfbLib.vfb.vfb.Vfb
       ~Vfb.add_entry
       ~Vfb.as_dict
       ~Vfb.clear
+      ~Vfb.compile
       ~Vfb.decompile
       ~Vfb.getGlyphMaster
       ~Vfb.get_masters

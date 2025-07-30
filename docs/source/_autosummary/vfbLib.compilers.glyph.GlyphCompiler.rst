@@ -19,15 +19,15 @@ vfbLib.compilers.glyph.GlyphCompiler
       ~GlyphCompiler.__init__
       ~GlyphCompiler.compile
       ~GlyphCompiler.compile_hex
+      ~GlyphCompiler.compile_outlines
       ~GlyphCompiler.merge
       ~GlyphCompiler.write_bytes
       ~GlyphCompiler.write_double
       ~GlyphCompiler.write_doubles
-      ~GlyphCompiler.write_float
-      ~GlyphCompiler.write_floats
       ~GlyphCompiler.write_int16
       ~GlyphCompiler.write_int32
       ~GlyphCompiler.write_str
+      ~GlyphCompiler.write_str_with_len
       ~GlyphCompiler.write_uint16
       ~GlyphCompiler.write_uint32
       ~GlyphCompiler.write_uint8

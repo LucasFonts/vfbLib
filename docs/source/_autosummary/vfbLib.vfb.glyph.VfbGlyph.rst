@@ -21,9 +21,13 @@ vfbLib.vfb.glyph.VfbGlyph
       ~VfbGlyph.decompile
       ~VfbGlyph.draw
       ~VfbGlyph.drawPoints
+      ~VfbGlyph.drawPointsDirect
       ~VfbGlyph.empty
       ~VfbGlyph.getPen
       ~VfbGlyph.getPointPen
+      ~VfbGlyph.resolve_hint_sets
+      ~VfbGlyph.resolve_hints
+      ~VfbGlyph.resolve_links
    
    
 

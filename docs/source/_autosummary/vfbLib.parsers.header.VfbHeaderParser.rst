@@ -20,13 +20,12 @@ vfbLib.parsers.header.VfbHeaderParser
       ~VfbHeaderParser.parse
       ~VfbHeaderParser.read_double
       ~VfbHeaderParser.read_doubles
-      ~VfbHeaderParser.read_float
-      ~VfbHeaderParser.read_floats
       ~VfbHeaderParser.read_int16
       ~VfbHeaderParser.read_int32
       ~VfbHeaderParser.read_int8
       ~VfbHeaderParser.read_str
       ~VfbHeaderParser.read_str_all
+      ~VfbHeaderParser.read_str_with_len
       ~VfbHeaderParser.read_uint16
       ~VfbHeaderParser.read_uint32
       ~VfbHeaderParser.read_uint8
@@ -35,12 +34,5 @@ vfbLib.parsers.header.VfbHeaderParser
    
 
    
-   
-   .. rubric:: Attributes
-
-   .. autosummary::
-   
-      ~VfbHeaderParser.encoding
-      ~VfbHeaderParser.stream
    
    

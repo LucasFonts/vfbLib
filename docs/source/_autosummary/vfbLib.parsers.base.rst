@@ -23,8 +23,6 @@ vfbLib.parsers.base
       EncodedKeyValuesParser
       EncodedValueListParser
       EncodedValueListWithCountParser
-      EncodedValueParser
-      GaspParser
       GlyphEncodingParser
       MappingModeParser
       OpenTypeKerningClassFlagsParser

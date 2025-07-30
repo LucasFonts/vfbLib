@@ -395,7 +395,7 @@ class VfbToUfoBuilder:
             if key in skip_keys:
                 continue
 
-            data = e.decompiled
+            data = e.data
             if data is None:
                 continue
 

@@ -20,11 +20,10 @@ vfbLib.compilers.base.StreamWriter
       ~StreamWriter.write_bytes
       ~StreamWriter.write_double
       ~StreamWriter.write_doubles
-      ~StreamWriter.write_float
-      ~StreamWriter.write_floats
       ~StreamWriter.write_int16
       ~StreamWriter.write_int32
       ~StreamWriter.write_str
+      ~StreamWriter.write_str_with_len
       ~StreamWriter.write_uint16
       ~StreamWriter.write_uint32
       ~StreamWriter.write_uint8

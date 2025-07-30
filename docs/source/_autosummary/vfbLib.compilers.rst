@@ -30,9 +30,18 @@
 
    base
    binary
+   bitmap
+   cmap
+   fl3
    glyph
+   guides
    header
+   mm
    numeric
+   options
+   pclt
+   ps
    text
+   truetype
    value
 

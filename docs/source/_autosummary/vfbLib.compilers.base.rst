@@ -20,7 +20,13 @@ vfbLib.compilers.base
       :template: custom-class-template.rst
    
       BaseCompiler
+      EncodedValueListCompiler
+      EncodedValueListWithCountCompiler
       GlyphEncodingCompiler
+      HexStringCompiler
+      MappingModeCompiler
+      OpenTypeKerningClassFlagsCompiler
+      OpenTypeMetricsClassFlagsCompiler
       StreamWriter
    
    

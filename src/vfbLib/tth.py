@@ -111,63 +111,63 @@ def extract_truetype_hinting(vfb: Vfb) -> dict[str, Any]:
         key = entry.key
         if key == "gasp":
             entry.decompile()
-            assert isinstance(entry.decompiled, list)
+            assert isinstance(entry.data, list)
             font["gasp"] = {
                 str(gasp_range["maxPpem"]): gasp_range["flags"]
-                for gasp_range in entry.decompiled
+                for gasp_range in entry.data
             }
 
         elif key == "ttinfo":
             entry.decompile()
-            assert isinstance(entry.decompiled, dict)
+            assert isinstance(entry.data, dict)
             for k in ("head_lowest_rec_ppem", "head_units_per_em"):
-                if k in entry.decompiled:
-                    font[k] = entry.decompiled[k]
+                if k in entry.data:
+                    font[k] = entry.data[k]
 
         elif key == "TrueType Stem PPEMs":
             entry.decompile()
-            assert isinstance(entry.decompiled, dict)
-            extract_tt_stem_ppems(entry.decompiled, stem_round)
+            assert isinstance(entry.data, dict)
+            extract_tt_stem_ppems(entry.data, stem_round)
 
         elif key == "TrueType Stems":
             entry.decompile()
-            assert isinstance(entry.decompiled, dict)
-            extract_tt_stems(entry.decompiled, font)
+            assert isinstance(entry.data, dict)
+            extract_tt_stems(entry.data, font)
 
         elif key == "TrueType Stem PPEMs 1":
             entry.decompile()
-            assert isinstance(entry.decompiled, dict)
-            extract_tt_stem_ppem_1(entry.decompiled, stem_round)
+            assert isinstance(entry.data, dict)
+            extract_tt_stem_ppem_1(entry.data, stem_round)
 
         elif key == "TrueType Zones":
             entry.decompile()
-            assert isinstance(entry.decompiled, dict)
-            extract_tt_zones(entry.decompiled, font, zone_names)
+            assert isinstance(entry.data, dict)
+            extract_tt_zones(entry.data, font, zone_names)
 
         elif key == "stemsnaplimit":
             entry.decompile()
-            assert isinstance(entry.decompiled, int)
-            font["stemsnaplimit"] = entry.decompiled
+            assert isinstance(entry.data, int)
+            font["stemsnaplimit"] = entry.data
 
         elif key == "zoneppm":
             entry.decompile()
-            assert isinstance(entry.decompiled, int)
-            font["zoneppm"] = entry.decompiled
+            assert isinstance(entry.data, int)
+            font["zoneppm"] = entry.data
 
         elif key == "codeppm":
             entry.decompile()
-            assert isinstance(entry.decompiled, int)
-            font["codeppm"] = entry.decompiled
+            assert isinstance(entry.data, int)
+            font["codeppm"] = entry.data
 
         elif key == "TrueType Zone Deltas":
             entry.decompile()
-            assert isinstance(entry.decompiled, dict)
-            extract_tt_zone_deltas(entry.decompiled, font)
+            assert isinstance(entry.data, dict)
+            extract_tt_zone_deltas(entry.data, font)
 
         elif key == "Glyph":
             entry.decompile()
-            assert isinstance(entry.decompiled, dict)
-            extract_glyph_hints(entry.decompiled, glyphs, font, zone_names)
+            assert isinstance(entry.data, dict)
+            extract_glyph_hints(entry.data, glyphs, font, zone_names)
 
     merge_stem_information(stem_round, font)
     merge_zone_information(font)

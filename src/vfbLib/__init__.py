@@ -81,7 +81,7 @@ ttinfo_names = {
     0x3B: "head_mac_style",
     0x3C: "head_lowest_rec_ppem",  # lowest_rec_ppem
     0x56: "head_creation",  # timestamp
-    0x57: "_unknown_0x57",  # TODO: head_modification (not in API)?
+    0x57: "head_creation2",  # head_modification? returned as second value in list
     0x3D: "head_font_direction_hint",  # font_direction_hint
     0x3E: "os2_us_weight_class",  # weight_class, duplicate
     0x3F: "os2_us_width_class",  # width_class, duplicate
