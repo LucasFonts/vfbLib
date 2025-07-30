@@ -64,6 +64,14 @@ class CustomCmap(TypedDict):
 EntryDecompiled = dict[str, Any] | int | list[Any] | str | tuple[int, str] | None
 
 
+class EntryDict(TypedDict):
+    key: str
+    size: NotRequired[int]
+    data: bytes | EntryDecompiled
+    parser: NotRequired[str]
+    compiler: NotRequired[str]
+
+
 class FeatureDict(TypedDict):
     tag: str
     code: list[str]

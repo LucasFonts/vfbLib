@@ -67,7 +67,6 @@ class VfbGlyph:
 
     def empty(self) -> None:
         self.entry.decompiled = get_empty_glyph(self._parent.num_masters)
-        self.entry.store_hash()
 
     def _copy_to_ufo_glyph(self) -> None:
         """

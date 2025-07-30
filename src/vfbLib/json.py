@@ -24,9 +24,7 @@ def save_vfb_json(
     )
     if roundtrip:
         vfb.decompile()
-        for entry in vfb.entries:
-            entry.data = None
-            entry.compile(force=True)
+        vfb.compile()
 
     if not no_decompile:
         vfb.decompile()
