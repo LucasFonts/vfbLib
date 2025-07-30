@@ -52,7 +52,7 @@ class F(IntEnum):
     version_minor = 1131
     upm = 1135
     fond_id = 1090
-    PostScript = 1093
+    PostScriptHintingOptions = 1093
     E1068 = 1068
     blue_values_num = 1530
     other_blues_num = 1531

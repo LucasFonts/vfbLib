@@ -191,7 +191,7 @@ parser_classes = {
     F.version_minor: ("version_minor", Int16Parser, Int16Compiler),
     F.upm: ("upm", Int16Parser, Int16Compiler),
     F.fond_id: ("fond_id", Int16Parser, Int16Compiler),
-    F.PostScript: ("PostScript Hinting Options", PostScriptGlobalHintingOptionsParser, PostScriptGlobalHintingOptionsCompiler),  # noqa: E501
+    F.PostScriptHintingOptions: ("PostScript Hinting Options", PostScriptGlobalHintingOptionsParser, PostScriptGlobalHintingOptionsCompiler),  # noqa: E501
     F.E1068: ("1068", EncodedValueListWithCountParser, EncodedValueListWithCountCompiler),  # noqa: E501
     F.blue_values_num: ("blue_values_num", Int16Parser, Int16Compiler),
     F.other_blues_num: ("other_blues_num", Int16Parser, Int16Compiler),
