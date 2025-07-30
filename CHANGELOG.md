@@ -1,5 +1,20 @@
 # Change Log
 
+## 0.10.2
+
+Breaking changes
+
+- Fix `num_contours` check when compiling imported binary glyph data (follows OT spec; num_contours == -1 means composite glyph)
+- Fix `GuidesCompiler` and guides parser
+- Fix name of `F.PostScriptHintingOptions` (was `F.PostScript`)
+- Change guides format
+- Use IntEnum for VFB entry keys in all places
+- Use `match...case` in some places
+- Remove caching of original data from `VfbEntry`
+- Deprecate `VfbEntry.decompiled`, use `VfbEntry.data` which now holds the binary or structured data depending on de-/compilation state
+- Rework `ttinfo.head_creation`
+
+
 ## 0.10.1
 
 UFO changes:
@@ -24,7 +39,6 @@ Parser changes:
 Breaking changes:
 
 - Change bitmap format
-
 
 
 ## 0.10.0
