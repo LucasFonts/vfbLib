@@ -310,7 +310,9 @@ parser_classes = {
     F.MappingMode: ("Mapping Mode", MappingModeParser, MappingModeCompiler),
 
     # Not seen in FontNames.vfb:
+    F.E272: ("272", BaseParser, HexStringCompiler),
     F.E1410: ("1410", FL3Type1410Parser, FL3Type1410Compiler),
+    F.E528: ("528", BaseParser, HexStringCompiler),
 
     # File end
     F.EOF: ("EOF", None, None),

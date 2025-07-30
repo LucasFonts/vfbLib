@@ -96,7 +96,9 @@ class F(IntEnum):
     OpenTypeExportOptions = 1743
     ExportOptions = 1744
     MappingMode = 1742
+    E272 = 272
     E1410 = 1410
+    E528 = 528
     EOF = 5
 
 
