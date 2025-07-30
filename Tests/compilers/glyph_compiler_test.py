@@ -453,9 +453,9 @@ class PartCompiler(GlyphCompiler):
     Compile part of the glyph data, by calling the method name passed in compile_method.
     """
 
-    def _compile(self, data, num_masters, compile_method):
+    def _compile(self, data, master_count, compile_method):
         self.stream = BytesIO()
-        self.num_masters = num_masters
+        self.master_count = master_count
         getattr(self, compile_method)(data)
         return self.stream.getvalue()
 

@@ -170,7 +170,7 @@ class GlyphCompiler(BaseCompiler):
         self.write_value(len(components))
         for component in components:
             self.write_value(component["gid"])
-            for i in range(self.num_masters):
+            for i in range(self.master_count):
                 self.write_value(component["offsetX"][i])
                 self.write_value(component["offsetY"][i])
                 self.write_double(component["scaleX"][i])
@@ -193,8 +193,8 @@ class GlyphCompiler(BaseCompiler):
         if not (guides := data.get("guides")):
             # TODO: Do we always need to write the guides data?
             # guides = MMGuidesDict(
-            #     h=[[] for _ in range(self.num_masters)],
-            #     v=[[] for _ in range(self.num_masters)],
+            #     h=[[] for _ in range(self.master_count)],
+            #     v=[[] for _ in range(self.master_count)],
             # )
             return
 
@@ -217,7 +217,7 @@ class GlyphCompiler(BaseCompiler):
             if direction_hints := hints.get(direction):
                 self.write_value(len(direction_hints))
                 for mm_hint in direction_hints:
-                    for i in range(self.num_masters):
+                    for i in range(self.master_count):
                         hint = mm_hint[i]
                         self.write_value(hint["pos"])
                         self.write_value(hint["width"])
@@ -268,7 +268,7 @@ class GlyphCompiler(BaseCompiler):
             return
 
         self.write_uint8(2)
-        for i in range(self.num_masters):
+        for i in range(self.master_count):
             x, y = metrics[i]
             self.write_value(x)
             self.write_value(y)
@@ -278,7 +278,7 @@ class GlyphCompiler(BaseCompiler):
         # A minimal outlines structure is always written:
         if write_key:
             self.write_uint8(8)
-        self.write_value(self.num_masters)  # Number of masters
+        self.write_value(self.master_count)  # Number of masters
 
         if not (nodes := data.get("nodes")):
             # 0 nodes with 0 values
@@ -286,14 +286,14 @@ class GlyphCompiler(BaseCompiler):
             self.write_value(0)
             return
 
-        outlines, num_values = OutlinesCompiler().compile(nodes, self.num_masters)
+        outlines, num_values = OutlinesCompiler().compile(nodes, self.master_count)
         self.write_value(num_values)
         self.stream.write(outlines)
 
     def _compile(self, data: Any) -> None:
         # Constants?
         self.write_bytes(pack("<4B", *GLYPH_CONSTANT))
-        self.num_masters = data["num_masters"]
+        self.master_count = data["num_masters"]
 
         self._compile_glyph_name(data)
         self.compile_outlines(data)
@@ -349,7 +349,7 @@ class InstructionsCompiler(BaseCompiler):
 
 class OutlinesCompiler(StreamWriter):
     def compile(self, data: Any, num_masters: int) -> tuple[bytes, int]:
-        self.num_masters = num_masters
+        self.master_count = num_masters
         self.stream = BytesIO()
         num_values = self._compile(data)
         return self.stream.getvalue(), num_values
@@ -357,13 +357,13 @@ class OutlinesCompiler(StreamWriter):
     def _compile(self, data: Any) -> int:
         self.write_value(len(data))  # Number of nodes, may be 0
         num_values = 0
-        ref_coords = [[0, 0] for _ in range(self.num_masters)]
+        ref_coords = [[0, 0] for _ in range(self.master_count)]
         for node in data:
             type_flags = node.get("flags", 0) * 16 + PathCommand[node["type"]].value
             self.write_uint8(type_flags)
             num_values += 1
             for j in range(len(node["points"][0])):
-                for i in range(self.num_masters):
+                for i in range(self.master_count):
                     x, y = node["points"][i][j]
                     refx, refy = ref_coords[i]
                     # Coordinates are written relatively to the previous coords
@@ -386,7 +386,7 @@ class LinksCompiler(BaseCompiler):
 
 class MaskCompiler(GlyphCompiler):
     def _compile(self, data: MaskData) -> None:
-        self.num_masters = data["num_masters"]
+        self.master_count = data["num_masters"]
         self.write_value(data["num"])
         for i in range(data["num"]):
             self.write_value(data[f"reserved{i}"])
@@ -395,7 +395,7 @@ class MaskCompiler(GlyphCompiler):
 
 class GlobalMaskCompiler(GlyphCompiler):
     def _compile(self, data: GlyphData) -> None:
-        self.num_masters = data["num_masters"]
+        self.master_count = data["num_masters"]
         self.compile_outlines(data, write_key=False)
 
 
