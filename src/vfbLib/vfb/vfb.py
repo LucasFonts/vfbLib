@@ -6,6 +6,7 @@ from pathlib import Path
 from time import time
 from typing import TYPE_CHECKING, Any
 
+from vfbLib.enum import F, G, M, T
 from vfbLib.vfb.entry import VfbEntry
 from vfbLib.vfb.glyph import VfbGlyph, VfbGlyphMaster
 from vfbLib.vfb.header import VfbHeader
@@ -104,39 +105,40 @@ class Vfb:
     def _decompile_glyphs(self) -> None:
         name = None
         for entry in self.entries:
-            if entry.key == "Glyph":
-                glyph = VfbGlyph(entry, self)
-                name = glyph.decompile()
-                i = 1
-                # Disambiguate duplicate names
-                if name in self._glyphs:
-                    logger.error(f"VFB contains duplicate glyph name: {name}")
-                    while f"{name}#{i}" in self._glyphs:
-                        i += 1
-                    name = f"{name}#{i}"
-                self._glyphs[name] = glyph
-                self.glyph_order.append(name)
-            elif entry.key == "Links":
-                # We need to store the links of the glyph for converting links to
-                # PS hints before writing charstrings
-                entry.decompile()
-                if name is None:
-                    logger.error("Links entry without preceding glyph entry")
-                else:
-                    self._glyphs[name].links_entry = entry
-            elif entry.key == "Glyph Hinting Options":
-                # We need this to decide if we should generate hstem3/vstem3 hints
-                entry.decompile()
-                if name is None:
-                    logger.error(
-                        "Glyph Hinting Options entry without preceding glyph entry"
-                    )
-                else:
-                    self._glyphs[name].ps_hinting_options = entry
-            elif entry.key == "PostScript Hinting Options":
-                # We need this to decide if we should generate flex hints
-                entry.decompile()
-                self.ps_hinting_options = entry
+            match entry.id:
+                case G.Glyph:
+                    glyph = VfbGlyph(entry, self)
+                    name = glyph.decompile()
+                    i = 1
+                    # Disambiguate duplicate names
+                    if name in self._glyphs:
+                        logger.error(f"VFB contains duplicate glyph name: {name}")
+                        while f"{name}#{i}" in self._glyphs:
+                            i += 1
+                        name = f"{name}#{i}"
+                    self._glyphs[name] = glyph
+                    self.glyph_order.append(name)
+                case G.Links:
+                    # We need to store the links of the glyph for converting links to
+                    # PS hints before writing charstrings
+                    entry.decompile()
+                    if name is None:
+                        logger.error("Links entry without preceding glyph entry")
+                    else:
+                        self._glyphs[name].links_entry = entry
+                case G.HintingOptions:
+                    # We need this to decide if we should generate hstem3/vstem3 hints
+                    entry.decompile()
+                    if name is None:
+                        logger.error(
+                            "Glyph Hinting Options entry without preceding glyph entry"
+                        )
+                    else:
+                        self._glyphs[name].ps_hinting_options = entry
+                case F.PostScriptHintingOptions:
+                    # We need this to decide if we should generate flex hints
+                    entry.decompile()
+                    self.ps_hinting_options = entry
 
     def __contains__(self, key: str) -> bool:
         if not self._glyphs:

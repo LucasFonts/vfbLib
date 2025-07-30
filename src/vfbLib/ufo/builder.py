@@ -384,12 +384,17 @@ class VfbToUfoBuilder:
                 G.Origin,
             )
         )
+        if self.vfb.minimal:
+            skip_keys.union(ignore_minimal_keys)
+
         for e in self.vfb.entries:
-            key = e.id
             if e.key is None:
                 raise TypeError
-            if self.vfb.minimal and key in ignore_minimal_keys:
+
+            key = e.id
+            if key in skip_keys:
                 continue
+
             data = e.decompiled
             if data is None:
                 continue
@@ -400,185 +405,184 @@ class VfbToUfoBuilder:
                 self.info.set_attr(attr, data)
                 continue
 
-            if key in skip_keys:
-                pass
-            elif key == G.Glyph:
-                if self.current_glyph is not None:
-                    name = self.current_glyph.name
-                    if name in self.glyph_masters:
-                        for i in range(255):
-                            n = f"{name}#{i}"
-                            if n not in self.glyph_masters:
-                                self.glyph_masters[n] = self.current_glyph
-                                self.glyphOrder.append(n)
-                                logger.warning(
-                                    f"Duplicate glyph, renamed from {name} to {n}."
-                                )
-                                break
-                    else:
-                        if name is None:
-                            logger.error("Glyph without name.")
+            match key:
+                case G.Glyph:
+                    if self.current_glyph is not None:
+                        name = self.current_glyph.name
+                        if name in self.glyph_masters:
+                            for i in range(255):
+                                n = f"{name}#{i}"
+                                if n not in self.glyph_masters:
+                                    self.glyph_masters[n] = self.current_glyph
+                                    self.glyphOrder.append(n)
+                                    logger.warning(
+                                        f"Duplicate glyph, renamed from {name} to {n}."
+                                    )
+                                    break
                         else:
-                            self.glyph_masters[name] = self.current_glyph
-                            self.glyphOrder.append(name)
-                self.build_mm_glyph(data)
-            elif key == G.unicodes:
-                assert self.current_glyph is not None
-                self.current_glyph.unicodes.extend(data)
-            elif key == G.UnicodesNonBMP:
-                assert self.current_glyph is not None
-                self.current_glyph.unicodes.extend(data)
-            elif key == G.Links:
-                assert self.current_glyph is not None
-                self.current_glyph.links = data
-            elif key == G.mark:
-                assert self.current_glyph is not None
-                self.current_glyph.set_mark(data)
-            elif key == G.customdata:
-                assert self.current_glyph is not None
-                self.current_glyph.lib["com.fontlab.v5.userData"] = data
-            elif key == G.note:
-                assert self.current_glyph is not None
-                self.current_glyph.note = data
-            elif key == G.GDEFData:
-                if "anchors" in data:
+                            if name is None:
+                                logger.error("Glyph without name.")
+                            else:
+                                self.glyph_masters[name] = self.current_glyph
+                                self.glyphOrder.append(name)
+                    self.build_mm_glyph(data)
+                case G.unicodes:
                     assert self.current_glyph is not None
-                    self.current_glyph.anchors = []
-                    for anchor in data["anchors"]:
-                        a = AnchorDict(x=anchor["x"], y=anchor["y"])
-                        if "name" in anchor:
-                            a["name"] = anchor["name"]
-                        self.current_glyph.anchors.append(a)
-            elif key == G.AnchorsMM:
-                assert self.current_glyph is not None
-                self.current_glyph.mm_anchors = data
-            elif key == G.GuideProperties:
-                assert self.current_glyph is not None
-                self.current_glyph.guide_properties = data
-            elif key == G.image:
-                self.set_glyph_background(data)
-            elif key == G.mask:
-                assert self.current_glyph is not None
-                self.current_glyph.set_mask(data)
-            elif key == G.MaskMetrics:
-                assert self.current_glyph is not None
-                w, h = data
-                self.current_glyph.mm_mask_metrics.append((w, h))
-            elif key == G.MaskMetricsMM:
-                assert self.current_glyph is not None
-                for w, h in data:
+                    self.current_glyph.unicodes.extend(data)
+                case G.UnicodesNonBMP:
+                    assert self.current_glyph is not None
+                    self.current_glyph.unicodes.extend(data)
+                case G.Links:
+                    assert self.current_glyph is not None
+                    self.current_glyph.links = data
+                case G.mark:
+                    assert self.current_glyph is not None
+                    self.current_glyph.set_mark(data)
+                case G.customdata:
+                    assert self.current_glyph is not None
+                    self.current_glyph.lib["com.fontlab.v5.userData"] = data
+                case G.note:
+                    assert self.current_glyph is not None
+                    self.current_glyph.note = data
+                case G.GDEFData:
+                    if "anchors" in data:
+                        assert self.current_glyph is not None
+                        self.current_glyph.anchors = []
+                        for anchor in data["anchors"]:
+                            a = AnchorDict(x=anchor["x"], y=anchor["y"])
+                            if "name" in anchor:
+                                a["name"] = anchor["name"]
+                            self.current_glyph.anchors.append(a)
+                case G.AnchorsMM:
+                    assert self.current_glyph is not None
+                    self.current_glyph.mm_anchors = data
+                case G.GuideProperties:
+                    assert self.current_glyph is not None
+                    self.current_glyph.guide_properties = data
+                case G.image:
+                    self.set_glyph_background(data)
+                case G.mask:
+                    assert self.current_glyph is not None
+                    self.current_glyph.set_mask(data)
+                case G.MaskMetrics:
+                    assert self.current_glyph is not None
+                    w, h = data
                     self.current_glyph.mm_mask_metrics.append((w, h))
-            elif key == F.pref_family_name:
-                self.info.familyName = data
-                self.info.openTypeNamePreferredFamilyName = data
-            elif key == F.is_fixed_pitch:
-                self.info.set_fixed_pitch(data)
-            elif key == F.weight_code:
-                self.info.set_weight_class(data)
-            elif key == F.style_name:
-                # FIXME: Does not contain Italic
-                self.info.postscriptWeightName = data
-            elif key == F.pref_style_name:
-                self.info.set_style_name(data)
-            elif key == F.fontnames:
-                self.info.set_name_records(data)
-            elif key == F.PrimaryInstances:
-                self.primary_instances = data
-            elif key == T.TrueTypeZones:
-                self.set_tt_zones(data)
-            elif key == F.ttinfo:
-                self.info.set_tt_info(data)
-            elif key == T.gasp:
-                self.info.set_tt_gasp(data)
-            elif key == F.font_style:
-                self.info.set_selection(data)
-            elif key == T.TrueTypeStemPPEMs:
-                self.set_tt_stem_ppms(data)
-            elif key == T.TrueTypeStems:
-                self.set_tt_stems(data)
-            elif key == T.stemsnaplimit:
-                self.set_tt_pixel_snap(data)
-            elif key == T.TrueTypeZoneDeltas:
-                self.set_tt_zone_deltas(data)
-            elif key == T.zoneppm:
-                self.set_tt_zone_stop(data)
-            elif key == T.codeppm:
-                self.set_tt_code_stop(data)
-            elif key == F.features:
-                self.set_feature_code(data)
-            elif key == F.GlyphClass:
-                self.add_ot_class(data)
-            elif key == F.GlobalGuides:
-                self.mm_guides = data
-            elif key == F.GlobalGuideProperties:
-                self.guide_properties = data
-            elif key == F.MasterCount:
-                self.master_count: int = data
-            elif key == M.MasterName:
-                self.masters.append(data)
-            elif key == M.MasterLocation:
-                index, locations = data
-                self.master_locations[index] = locations
-            elif key == F.AxisCount:
-                self.axis_count = data
-            elif key == F.AxisName:
-                tags = {
-                    "Weight": "wght",
-                    "Width": "wdth",
-                    "Optical Size": "opsz",
-                    "Serif": "SERF",
-                }
-                self.axes.append(
-                    AxisDescriptor(tag=tags.get(data, data.upper()[:4]), name=data)
-                )
-            elif key == F.AxisMappingsCount:
-                self.axis_mappings_count: list[int] = data
-            elif key == F.AxisMappings:
-                self.add_axis_mappings(data)
-            elif key == F.AnisotropicInterpolationMappings:
-                # TODO: Can we properly output this to designspace?
-                for axis in data:
-                    for src, tgt in axis:
-                        if src != tgt:
-                            maps = {
-                                self.axes[i].name: data[i]
-                                for i in range(self.axis_count)
-                            }
-                            logger.warning(
-                                "WARNING: Designspace output of anisotropic "
-                                "interpolation settings is not yet supported. You must "
-                                "set it up manually."
-                            )
-                            logger.warning(f"         Mappings: {maps}")
-                            break
-            elif key == T.TrueTypeStemPPEMs1:
-                self.set_tt_stem_ppms_1(data)
-            elif key == F.blue_values_num:
-                self.num_blue_values = data
-            elif key == F.other_blues_num:
-                self.num_other_blues = data
-            elif key == F.family_blues_num:
-                self.num_family_blues = data
-            elif key == F.family_other_blues_num:
-                self.num_family_other_blues = data
-            elif key == F.stem_snap_h_num:
-                self.num_stem_snap_h = data
-            elif key == F.stem_snap_v_num:
-                self.num_stem_snap_v = data
-            elif key == M.PostScriptInfo:
-                self.masters_ps_info.append(data)
-            elif key == F.customdata:
-                self.lib["com.fontlab.v5.userData"] = data
-            elif key == F.unicoderanges:
-                self.info.openTypeOS2UnicodeRanges = data
-            elif key == F.MetricsClassFlags:
-                self.lib["com.fontlab.v5.metricsClassFlags"] = data
-            elif key == F.note:
-                self.info.note = data
-            elif key == F.KerningClassFlags:
-                self.kerning_class_flags = data
-            else:
-                logger.info(f"Unhandled key: {key}")
+                case G.MaskMetricsMM:
+                    assert self.current_glyph is not None
+                    for w, h in data:
+                        self.current_glyph.mm_mask_metrics.append((w, h))
+                case F.pref_family_name:
+                    self.info.familyName = data
+                    self.info.openTypeNamePreferredFamilyName = data
+                case F.is_fixed_pitch:
+                    self.info.set_fixed_pitch(data)
+                case F.weight_code:
+                    self.info.set_weight_class(data)
+                case F.style_name:
+                    # FIXME: Does not contain Italic
+                    self.info.postscriptWeightName = data
+                case F.pref_style_name:
+                    self.info.set_style_name(data)
+                case F.fontnames:
+                    self.info.set_name_records(data)
+                case F.PrimaryInstances:
+                    self.primary_instances = data
+                case T.TrueTypeZones:
+                    self.set_tt_zones(data)
+                case F.ttinfo:
+                    self.info.set_tt_info(data)
+                case T.gasp:
+                    self.info.set_tt_gasp(data)
+                case F.font_style:
+                    self.info.set_selection(data)
+                case T.TrueTypeStemPPEMs:
+                    self.set_tt_stem_ppms(data)
+                case T.TrueTypeStems:
+                    self.set_tt_stems(data)
+                case T.stemsnaplimit:
+                    self.set_tt_pixel_snap(data)
+                case T.TrueTypeZoneDeltas:
+                    self.set_tt_zone_deltas(data)
+                case T.zoneppm:
+                    self.set_tt_zone_stop(data)
+                case T.codeppm:
+                    self.set_tt_code_stop(data)
+                case F.features:
+                    self.set_feature_code(data)
+                case F.GlyphClass:
+                    self.add_ot_class(data)
+                case F.GlobalGuides:
+                    self.mm_guides = data
+                case F.GlobalGuideProperties:
+                    self.guide_properties = data
+                case F.MasterCount:
+                    self.master_count: int = data
+                case M.MasterName:
+                    self.masters.append(data)
+                case M.MasterLocation:
+                    index, locations = data
+                    self.master_locations[index] = locations
+                case F.AxisCount:
+                    self.axis_count = data
+                case F.AxisName:
+                    tags = {
+                        "Weight": "wght",
+                        "Width": "wdth",
+                        "Optical Size": "opsz",
+                        "Serif": "SERF",
+                    }
+                    self.axes.append(
+                        AxisDescriptor(tag=tags.get(data, data.upper()[:4]), name=data)
+                    )
+                case F.AxisMappingsCount:
+                    self.axis_mappings_count: list[int] = data
+                case F.AxisMappings:
+                    self.add_axis_mappings(data)
+                case F.AnisotropicInterpolationMappings:
+                    # TODO: Can we properly output this to designspace?
+                    for axis in data:
+                        for src, tgt in axis:
+                            if src != tgt:
+                                maps = {
+                                    self.axes[i].name: data[i]
+                                    for i in range(self.axis_count)
+                                }
+                                logger.warning(
+                                    "WARNING: Designspace output of anisotropic "
+                                    "interpolation settings is not yet supported. You must "
+                                    "set it up manually."
+                                )
+                                logger.warning(f"         Mappings: {maps}")
+                                break
+                case T.TrueTypeStemPPEMs1:
+                    self.set_tt_stem_ppms_1(data)
+                case F.blue_values_num:
+                    self.num_blue_values = data
+                case F.other_blues_num:
+                    self.num_other_blues = data
+                case F.family_blues_num:
+                    self.num_family_blues = data
+                case F.family_other_blues_num:
+                    self.num_family_other_blues = data
+                case F.stem_snap_h_num:
+                    self.num_stem_snap_h = data
+                case F.stem_snap_v_num:
+                    self.num_stem_snap_v = data
+                case M.PostScriptInfo:
+                    self.masters_ps_info.append(data)
+                case F.customdata:
+                    self.lib["com.fontlab.v5.userData"] = data
+                case F.unicoderanges:
+                    self.info.openTypeOS2UnicodeRanges = data
+                case F.MetricsClassFlags:
+                    self.lib["com.fontlab.v5.metricsClassFlags"] = data
+                case F.note:
+                    self.info.note = data
+                case F.KerningClassFlags:
+                    self.kerning_class_flags: KerningClassFlagDict = data
+                case _:
+                    logger.info(f"Unhandled key: {key}")
 
         if self.current_glyph is not None:
             assert self.current_glyph.name is not None
