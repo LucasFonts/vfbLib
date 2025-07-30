@@ -204,14 +204,15 @@ def build_ps_glyph_hints(
         if ufo_hint_set["stems"]:
             # Only add if the set has stems
             if ufo_hint_set["pointTag"] in ufo_hint_sets:
-                # Warn about duplicate hint sets per point, but use the last one
-                logger.warning(
-                    f"Duplicate hint sets for point '{point_tag}' "
-                    f"in glyph '{glyph.name}':"
-                )
-                logger.warning(f"    Old: {ufo_hint_sets[point_tag]}")
-                logger.warning(f"    New: {ufo_hint_set}")
-                logger.warning("    Using the new hint set.")
+                if ufo_hint_sets[point_tag] != ufo_hint_set:
+                    # Warn about duplicate hint sets per point, but use the last one
+                    logger.warning(
+                        f"Duplicate hint sets for point '{point_tag}' "
+                        f"in glyph '{glyph.name}':"
+                    )
+                    logger.warning(f"    Old: {ufo_hint_sets[point_tag]}")
+                    logger.warning(f"    New: {ufo_hint_set}")
+                    logger.warning("    Using the new hint set.")
             ufo_hint_sets[point_tag] = ufo_hint_set
 
     if ufo_hint_sets:
