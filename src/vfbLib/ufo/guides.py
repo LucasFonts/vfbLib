@@ -18,8 +18,8 @@ def get_master_guides(mm_guides: MMGuidesDict, master_index: int) -> list[UfoGui
     # master_index
     guides = []
     for direction in DIRECTIONS:
-        direction_mm_guides = mm_guides[direction]
-        for master_guide in direction_mm_guides[master_index]:
+        for direction_mm_guide in mm_guides[direction]:
+            master_guide = direction_mm_guide[master_index]
             guide = UfoGuide(angle=0, x=0, y=0, _direction=direction)
             if direction == "h":
                 guide["y"] = master_guide["pos"]
