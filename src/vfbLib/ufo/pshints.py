@@ -35,6 +35,15 @@ def build_ps_glyph_hints(
     glyph: UfoMasterGlyph,
     master_hints: dict[str, list[HintTuple]],
 ) -> None:
+    """
+    Set the master-specific hints from data to the glyph lib
+
+    Args:
+        mmglyph (VfbToUfoGlyph): The multiple-master auxilliary glyph object
+        glyph (UfoMasterGlyph): The target glyph
+        master_hints (dict[str, list[HintTuple]]): The hints with their position and
+            width adapted to the master
+    """
     # Set the master-specific hints from data to the glyph lib
     # Use the format defined in UFO3, not what FL does.
     # https://unifiedfontobject.org/versions/ufo3/glyphs/glif/#publicpostscripthints
@@ -42,7 +51,7 @@ def build_ps_glyph_hints(
     # Quote from
     # https://github.com/adobe-type-tools/psautohint/blob/master/python/psautohint/ufoFont.py
     """
-        A <dict> element in the hintSetList array identifies a specific point by its
+    A <dict> element in the hintSetList array identifies a specific point by its
     name, and describes a new set of stem hints which should be applied before the
     specific point.
 
