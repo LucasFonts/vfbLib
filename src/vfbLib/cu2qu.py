@@ -5,6 +5,7 @@ from pathlib import Path
 
 from fontTools.cu2qu.ufo import font_to_quadratic, fonts_to_quadratic
 
+from vfbLib.enum import G
 from vfbLib.vfb.vfb import Vfb
 
 
@@ -53,7 +54,7 @@ def vfbcu2qu():
         vfb_path = Path(args.inputpath[0])
         print(parser.description)
         print(f"Reading file {vfb_path} ...")
-        vfb = Vfb(vfb_path, drop_keys={"Links"})
+        vfb = Vfb(vfb_path, drop_keys={G.Links})
         kwargs = {
             "max_err_em": None,
             "max_err": None,

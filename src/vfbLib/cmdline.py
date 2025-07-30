@@ -4,6 +4,7 @@ import logging
 from argparse import ArgumentParser
 from pathlib import Path
 
+from vfbLib.enum import F
 from vfbLib.json import save_vfb_json
 from vfbLib.ufo.builder import VfbToUfoBuilder
 from vfbLib.vfb.vfb import Vfb
@@ -211,7 +212,7 @@ def vfb2ufo():
         vfb = Vfb(
             vfb_path,
             minimal=args.minimal,
-            drop_keys={"Encoding", "Encoding Mac"},
+            drop_keys={F.Encoding, F.EncodingDefault},
             unicode_strings=args.unicode_strings,
         )
         suffix = ".ufo"
