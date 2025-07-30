@@ -48,10 +48,10 @@ class VfbGlyph:
 
     def clearContours(self):
         try:
-            del self.entry.decompiled["hints"]
+            del self.entry.data["hints"]
         except KeyError:
             pass
-        self.entry.decompiled["nodes"] = []
+        self.entry.data["nodes"] = []
 
     # Native methods
 
@@ -60,37 +60,37 @@ class VfbGlyph:
         Decompile the Glyph entry and return the glyph name.
         """
         self.entry.decompile()
-        if self.entry.decompiled is None:
+        if self.entry.data is None:
             raise ValueError
 
-        return self.entry.decompiled["name"]
+        return self.entry.data["name"]
 
     def empty(self) -> None:
-        self.entry.decompiled = get_empty_glyph(self._parent.num_masters)
+        self.entry.data = get_empty_glyph(self._parent.num_masters)
 
     def _copy_to_ufo_glyph(self) -> None:
         """
         Copy minimal data to the VfbToUfoGlyph. Only data that is necessary for the pen
         methods is copied.
         """
-        if self.entry.decompiled is None:
+        if self.entry.data is None:
             raise ValueError
 
         _mm_glyph = VfbToUfoGlyph()
-        _mm_glyph.name = self.entry.decompiled["name"]
+        _mm_glyph.name = self.entry.data["name"]
 
-        if "components" in self.entry.decompiled:
-            _mm_glyph.mm_components = self.entry.decompiled["components"]
+        if "components" in self.entry.data:
+            _mm_glyph.mm_components = self.entry.data["components"]
 
-        if "metrics" in self.entry.decompiled:
-            _mm_glyph.mm_metrics = self.entry.decompiled["metrics"]
+        if "metrics" in self.entry.data:
+            _mm_glyph.mm_metrics = self.entry.data["metrics"]
 
-        if "nodes" in self.entry.decompiled:
-            _mm_glyph.mm_nodes = self.entry.decompiled["nodes"]
+        if "nodes" in self.entry.data:
+            _mm_glyph.mm_nodes = self.entry.data["nodes"]
 
         # TODO: Support point names used by TT hinting
-        # if "tth" in self.entry.decompiled:
-        #     _mm_glyph.tth_commands = self.entry.decompiled["tth"]
+        # if "tth" in self.entry.data:
+        #     _mm_glyph.tth_commands = self.entry.data["tth"]
 
         self._glyph = UfoMasterGlyph(
             mm_glyph=_mm_glyph,
@@ -102,7 +102,7 @@ class VfbGlyph:
     def resolve_hint_sets(self) -> dict[int, list[HintTuple]]:
         hint_sets = {}
         hints = self.resolve_hints()
-        hints_entry = self.entry.decompiled.get("hints", {})
+        hints_entry = self.entry.data.get("hints", {})
         hintmasks = hints_entry.get("hintmasks", [])
         if hintmasks:
             set_index = 0
@@ -128,7 +128,7 @@ class VfbGlyph:
     def resolve_hints(self) -> dict[str, list[HintTuple]]:
         hints: dict[str, list[HintTuple]] = {"h": [], "v": []}
 
-        mm_hints = self.entry.decompiled.get("hints", {"h": [], "v": []})
+        mm_hints = self.entry.data.get("hints", {"h": [], "v": []})
 
         # Hints
         for direction in DIRECTIONS:
@@ -153,12 +153,12 @@ class VfbGlyph:
         if self.links_entry is None:
             return hints
 
-        links = self.links_entry.decompiled
+        links = self.links_entry.data
         assert isinstance(links, dict)
         if not (links["x"] or links["y"]):
             return hints
 
-        mm_nodes = self.entry.decompiled.get("nodes", [])
+        mm_nodes = self.entry.data.get("nodes", [])
 
         # Do the actual conversion
         for i, axis in enumerate("xy"):
@@ -189,10 +189,10 @@ class VfbGlyph:
         Draw the VFB glyph onto a segment pen. Uses the object's `master_index` property
         to determine which master is drawn.
         """
-        if self.entry.decompiled is None:
+        if self.entry.data is None:
             raise ValueError
 
-        glyph = self.entry.decompiled
+        glyph = self.entry.data
 
         path_is_open = False
         in_path = False
@@ -259,7 +259,7 @@ class VfbGlyph:
         """
         Draw the VFB glyph onto a point pen.
         """
-        if self.entry.decompiled is None:
+        if self.entry.data is None:
             raise ValueError
 
         if self._glyph is None:
@@ -275,10 +275,10 @@ class VfbGlyph:
         Draw the VFB glyph onto a segment pen. Uses the object's `master_index` property
         to determine which master is drawn.
         """
-        if self.entry.decompiled is None:
+        if self.entry.data is None:
             raise ValueError
 
-        glyph = self.entry.decompiled
+        glyph = self.entry.data
 
         in_path = False
         in_qcurve = False
@@ -338,7 +338,7 @@ class VfbGlyph:
         Return a point pen to draw into the VFB glyph.
         """
         # FIXME: Add test!!!
-        if self.entry.decompiled is None:
+        if self.entry.data is None:
             if self.entry.data is None:
                 # Make an empty glyph
                 self.empty()
@@ -366,24 +366,24 @@ class VfbGlyphMaster:
         Copy minimal data to the VfbToUfoGlyph. Only data that is necessary for the pen
         methods is copied.
         """
-        if self.entry.decompiled is None:
+        if self.entry.data is None:
             raise ValueError
 
         _mm_glyph = VfbToUfoGlyph()
-        _mm_glyph.name = self.entry.decompiled["name"]
+        _mm_glyph.name = self.entry.data["name"]
 
-        if "components" in self.entry.decompiled:
-            _mm_glyph.mm_components = self.entry.decompiled["components"]
+        if "components" in self.entry.data:
+            _mm_glyph.mm_components = self.entry.data["components"]
 
-        if "metrics" in self.entry.decompiled:
-            _mm_glyph.mm_metrics = self.entry.decompiled["metrics"]
+        if "metrics" in self.entry.data:
+            _mm_glyph.mm_metrics = self.entry.data["metrics"]
 
-        if "nodes" in self.entry.decompiled:
-            _mm_glyph.mm_nodes = self.entry.decompiled["nodes"]
+        if "nodes" in self.entry.data:
+            _mm_glyph.mm_nodes = self.entry.data["nodes"]
 
         # TODO: Support point names used by TT hinting
-        # if "tth" in self.entry.decompiled:
-        #     _mm_glyph.tth_commands = self.entry.decompiled["tth"]
+        # if "tth" in self.entry.data:
+        #     _mm_glyph.tth_commands = self.entry.data["tth"]
 
         self._glyph = UfoMasterGlyph(
             mm_glyph=_mm_glyph,
@@ -394,7 +394,7 @@ class VfbGlyphMaster:
 
     def clearContours(self):
         if self.master_index == 0:
-            target = self.entry.decompiled
+            target = self.entry.data
         else:
             if self.entry.temp_masters is None:
                 self.entry.temp_masters = [
@@ -411,7 +411,7 @@ class VfbGlyphMaster:
         """
         Draw the VFB glyph onto a point pen.
         """
-        if self.entry.decompiled is None:
+        if self.entry.data is None:
             raise ValueError
 
         if self._glyph is None:
@@ -434,7 +434,7 @@ class VfbGlyphMaster:
         Return a point pen to draw into the VFB glyph.
         """
         # FIXME: Add test!!!
-        if self.entry.decompiled is None:
+        if self.entry.data is None:
             if self.entry.data is None:
                 # Make an empty glyph
                 self.glyph.empty()

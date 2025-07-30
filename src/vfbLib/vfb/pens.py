@@ -26,7 +26,7 @@ class VfbGlyphPointPen(AbstractPointPen):
         self.currentPath = None
         self.in_qcurve = False
         if self.glyph.master_index == 0:
-            self.target = self.glyph.entry.decompiled
+            self.target = self.glyph.entry.data
         else:
             if self.glyph.entry.temp_masters is None:
                 self.glyph.entry.temp_masters = [[] * self.glyphSet.num_masters]

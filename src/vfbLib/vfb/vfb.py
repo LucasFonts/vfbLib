@@ -257,22 +257,17 @@ class Vfb:
         if self.header is None:
             raise ValueError
 
+        self.compile()
+
         with open(out_path, "wb") as vfb:
-            self.header.compile()
-            assert self.header.data is not None
+            assert isinstance(self.header.data, bytes)
             vfb.write(self.header.data)
 
             for entry in self.entries:
-                success = entry.compile()
-                if not success:
-                    logger.warning(
-                        f"Could not compile entry {entry.key} ({entry.id}): "
-                        f"{entry.decompiled}"
-                    )
-                    # raise NotImplementedError
                 vfb.write(entry.header)
                 if entry.data is not None:
                     # There may be entries without data
+                    assert isinstance(entry.data, bytes)
                     vfb.write(entry.data)
             # File end marker
             vfb.write(b"\05\00\00\00\02\00\00\00")

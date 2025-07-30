@@ -291,7 +291,7 @@ class VfbGlyphTest(TestCase):
     def test_drawPoints_quadratic(self):
         vfb = Vfb(empty_vfb_path)
         g = VfbGlyph(VfbEntry(vfb), vfb)
-        g.entry.decompiled = glyph_dict_q
+        g.entry.data = glyph_dict_q
         pen = RecordingPointPen()
         g.drawPoints(pen)
         assert pen.value == [
@@ -392,7 +392,7 @@ class VfbGlyphTest(TestCase):
     def test_draw_quadratic(self):
         vfb = Vfb(empty_vfb_path)
         g = VfbGlyph(VfbEntry(vfb), vfb)
-        g.entry.decompiled = glyph_dict_q
+        g.entry.data = glyph_dict_q
         pen = RecordingPen()
         g.draw(pen)
         assert pen.value == [
@@ -421,7 +421,7 @@ class VfbGlyphTest(TestCase):
     def test_drawPoints_cubic(self):
         vfb = Vfb(empty_vfb_path)
         g = VfbGlyph(VfbEntry(vfb), vfb)
-        g.entry.decompiled = glyph_dict_c
+        g.entry.data = glyph_dict_c
         pen = RecordingPointPen()
         g.drawPoints(pen)
         assert pen.value == [
@@ -475,7 +475,7 @@ class VfbGlyphTest(TestCase):
     def test_draw_cubic(self):
         vfb = Vfb(empty_vfb_path)
         g = VfbGlyph(VfbEntry(vfb), vfb)
-        g.entry.decompiled = glyph_dict_c
+        g.entry.data = glyph_dict_c
         pen = RecordingPen()
         g.draw(pen)
         assert pen.value == [
@@ -519,7 +519,7 @@ class VfbGlyphTest(TestCase):
         pen.addPoint(pt=(200, 200), segmentType="line", smooth=False)
         pen.addPoint(pt=(100, 150), segmentType="line", smooth=False)
         pen.endPath()
-        assert g.entry.decompiled["nodes"] == [
+        assert g.entry.data["nodes"] == [
             {"flags": 0, "points": [[(100, 100)]], "type": "move"},
             {"flags": 0, "points": [[(200, 100)]], "type": "line"},
             {"flags": 0, "points": [[(200, 200)]], "type": "line"},
@@ -530,8 +530,8 @@ class VfbGlyphTest(TestCase):
         # Get a point pen and draw into the vfb glyph
         vfb = Vfb(empty_vfb_path)
         g = VfbGlyph(VfbEntry(vfb, parser=GlyphParser, compiler=GlyphCompiler), vfb)
-        g.entry.decompiled["name"] = "a"
-        g.entry.decompiled["metrics"] = [(833, 0)]
+        g.entry.data["name"] = "a"
+        g.entry.data["metrics"] = [(833, 0)]
         pen = g.getPointPen()
         pen.beginPath()
         pen.addPoint(pt=(100, 100), segmentType="line", smooth=False)
@@ -549,8 +549,8 @@ class VfbGlyphTest(TestCase):
         # Get a point pen and draw into the vfb glyph
         vfb = Vfb(empty_vfb_path)
         g = VfbGlyph(VfbEntry(vfb, parser=GlyphParser, compiler=GlyphCompiler), vfb)
-        g.entry.decompiled["name"] = "a"
-        g.entry.decompiled["metrics"] = [(833, 0)]
+        g.entry.data["name"] = "a"
+        g.entry.data["metrics"] = [(833, 0)]
         pen = g.getPointPen()
         pen.beginPath()
         pen.addPoint(pt=(100, 100), segmentType="line", smooth=False)
@@ -565,8 +565,8 @@ class VfbGlyphTest(TestCase):
         expected.decompile()
         g.entry.compile()
         g.entry.decompile()
-        # print(g.entry.decompiled)
-        assert expected.decompiled == g.entry.decompiled
+        # print(g.entry.data)
+        assert expected.data == g.entry.data
 
     def test_getPointPen_quadratic_1_master(self):
         # Get a point pen and draw into the vfb glyph
@@ -617,10 +617,10 @@ class VfbGlyphTest(TestCase):
         pen.addPoint((151, 338), "line", False, None)
         pen.addPoint((151, 51), "line", False, None)
         pen.endPath()
-        assert g.entry.decompiled["nodes"] == glyph_nodes_q_1m
+        assert g.entry.data["nodes"] == glyph_nodes_q_1m
         g.entry.compile()  # XXX: Hack
         g.entry.decompile()
-        assert g.entry.decompiled["nodes"] == glyph_nodes_q_1m
+        assert g.entry.data["nodes"] == glyph_nodes_q_1m
 
     def test_getPointPenMM(self):
         # FIXME
