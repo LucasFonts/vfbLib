@@ -4,7 +4,7 @@ import logging
 from functools import cached_property
 from io import BytesIO
 from struct import pack
-from typing import TYPE_CHECKING, Any
+from typing import TYPE_CHECKING
 
 from vfbLib.compilers.base import BaseCompiler
 from vfbLib.constants import parser_classes
