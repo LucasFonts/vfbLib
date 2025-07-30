@@ -44,9 +44,9 @@ class Vfb:
         self.timing = timing
         self.minimal = minimal
         if drop_keys is None:
-            self.drop_keys = set()
+            self.drop_keys: set[str] = set()
         else:
-            self.drop_keys = set(drop_keys)
+            self.drop_keys: set[str] = set(drop_keys)
         self.only_header = only_header
         # String encoding for nametable entries
         self.encoding = "utf-8" if unicode_strings else "cp1252"
