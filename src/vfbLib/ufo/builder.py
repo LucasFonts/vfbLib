@@ -550,8 +550,8 @@ class VfbToUfoBuilder:
                                 }
                                 logger.warning(
                                     "WARNING: Designspace output of anisotropic "
-                                    "interpolation settings is not yet supported. You must "
-                                    "set it up manually."
+                                    "interpolation settings is not yet supported. You "
+                                    "must set it up manually."
                                 )
                                 logger.warning(f"         Mappings: {maps}")
                                 break
