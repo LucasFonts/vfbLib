@@ -119,7 +119,7 @@ class GlyphCompiler(BaseCompiler):
         num_contours = imported["num_contours"]  # -1 for composite, so we don't count
         self.write_value(num_contours)
         endpoints = imported.get("endpoints", [])
-        if len(endpoints) != num_contours:
+        if num_contours >= 0 and len(endpoints) != num_contours:
             logger.warning(
                 f"Imported binary glyph: Number of contours ({num_contours}) doesn't "
                 f"match length of endpoints array ({len(endpoints)})"
