@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import logging
 from io import BytesIO
-from math import radians, tan
 from struct import pack
 from typing import TYPE_CHECKING, Any
 
