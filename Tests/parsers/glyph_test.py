@@ -95,7 +95,7 @@ class GlyphParserTest(TestCase):
                     [{"pos": 440, "width": 84}],
                 ],
             },
-            "guides": {"h": [[]], "v": [[]]},
+            "guides": {"h": [], "v": []},
             "tth": [
                 {"cmd": "AlignTop", "params": {"pt": 15, "zone": 3}},
                 {"cmd": "AlignBottom", "params": {"pt": 7, "zone": 1}},
