@@ -32,6 +32,12 @@ class GaspCompiler(BaseCompiler):
 
 
 class TrueTypeInfoCompiler(BaseCompiler):
+    def _write_if_exists(self, numkey: int, data: Any, signed: bool = True) -> None:
+        strkey = ttinfo_names[numkey]
+        if strkey in data:
+            self.write_uint8(numkey)
+            self.write_value(data[strkey], signed=signed)
+
     def _compile(self, data: Any) -> None:
         for k in (0x33, 0x34, 0x35, 0x36, 0x37, 0x38):
             self.write_uint8(k)
@@ -47,12 +53,10 @@ class TrueTypeInfoCompiler(BaseCompiler):
             0x3B,
             0x3C,
         ):
-            self.write_uint8(k)
-            self.write_value(data[ttinfo_names[k]])
+            self._write_if_exists(k, data)
 
         for k in (0x56, 0x57):
-            self.write_uint8(k)
-            self.write_value(data[ttinfo_names[k]], signed=False)
+            self._write_if_exists(k, data, signed=False)
 
         for k in (
             0x3D,
@@ -71,8 +75,7 @@ class TrueTypeInfoCompiler(BaseCompiler):
             0x4A,
             0x4B,
         ):
-            self.write_uint8(k)
-            self.write_value(data[ttinfo_names[k]])
+            self._write_if_exists(k, data)
 
         # PANOSE
         values = data[ttinfo_names[0x4C]]
@@ -82,16 +85,17 @@ class TrueTypeInfoCompiler(BaseCompiler):
             self.write_uint8(value)
 
         for k in (0x4D, 0x4E, 0x4F, 0x50, 0x51, 0x52, 0x5C):
-            self.write_uint8(k)
-            self.write_value(data[ttinfo_names[k]])
+            self._write_if_exists(k, data)
 
         # HDMX 1 and 2
         for k in (0x53, 0x58):
-            values = data[ttinfo_names[k]]
-            self.write_uint8(k)
-            self.write_value(len(values))
-            for value in values:
-                self.write_uint8(value)
+            strkey = ttinfo_names[k]
+            if strkey in data:
+                values = data[strkey]
+                self.write_uint8(k)
+                self.write_value(len(values))
+                for value in values:
+                    self.write_uint8(value)
 
         # Codepages
         cp_dict = data[ttinfo_names[0x54]]
