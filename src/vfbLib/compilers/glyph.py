@@ -10,6 +10,7 @@ from fontTools.ttLib.tables.ttProgram import Program
 
 from vfbLib import DIRECTIONS, GLYPH_CONSTANT, gdef_class_names
 from vfbLib.compilers.base import BaseCompiler, StreamWriter
+from vfbLib.compilers.guides import GuidesCompiler
 from vfbLib.parsers.glyph import PathCommand
 from vfbLib.truetype import TT_COMMAND_CONSTANTS, TT_COMMANDS
 
@@ -190,7 +191,6 @@ class GlyphCompiler(BaseCompiler):
 
     def _compile_guides(self, data):
         # Guidelines
-        # TODO: Reuse for global guides
         if not (guides := data.get("guides")):
             # TODO: Do we always need to write the guides data?
             # guides = MMGuidesDict(
@@ -200,20 +200,10 @@ class GlyphCompiler(BaseCompiler):
             return
 
         self.write_uint8(4)
-        # FIXME: Code is duplicated in GuidesCompiler
-        for direction in DIRECTIONS:
-            direction_guides = guides.get(direction)
-            if direction_guides is None:
-                self.write_value(0)
-                continue
-
-            self.write_value(len(direction_guides[0]))  # first master
-            for m in range(self.num_masters):
-                for guide in direction_guides[m]:
-                    pos = guide["pos"]
-                    angle = round(tan(radians(guide["angle"])) * 10000)
-                    self.write_value(pos)
-                    self.write_value(angle)
+        gc = GuidesCompiler()
+        gc.stream = self.stream
+        gc.master_count = self.master_count
+        gc._compile(guides)
 
     def _compile_hints(self, data):
         # PostScript hints
