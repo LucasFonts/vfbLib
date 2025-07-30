@@ -50,12 +50,8 @@ class TrueTypeInfoCompiler(BaseCompiler):
             self.write_uint8(k)
             self.write_value(data[ttinfo_names[k]])
 
-        # Timestamp
-
-        self.write_uint8(0x56)
-        self.write_value(data[ttinfo_names[0x56]], signed=False)
-
         for k in (
+            0x56,
             0x57,
             0x3D,
             0x3E,
