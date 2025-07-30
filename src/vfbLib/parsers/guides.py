@@ -20,18 +20,19 @@ logger = logging.getLogger(__name__)
 
 def parse_guides(stream: BytesIO, num_masters: int, name: str) -> MMGuidesDict:
     # Common parser for glyph and global guides
-    guides: MMGuidesDict = {
-        "h": [[] for _ in range(num_masters)],
-        "v": [[] for _ in range(num_masters)],
-    }
+    guides: MMGuidesDict = {"h": [], "v": []}
     for direction in DIRECTIONS:
         num_guides = read_value(stream)
-        for _ in range(num_guides):
-            for m in range(num_masters):
+        if num_guides == 0:
+            continue
+
+        guides[direction] = [[] for _ in range(num_guides)]
+        for i in range(num_guides):
+            for _ in range(num_masters):
                 try:
                     pos = read_value(stream)
                     angle = degrees(atan2(read_value(stream), 10000))
-                    guides[direction][m].append(GuideDict(pos=pos, angle=angle))
+                    guides[direction][i].append(GuideDict(pos=pos, angle=angle))
                 except ValueError:
                     logger.error(f"Missing {direction} guideline data ({name})")
                     raise

@@ -14,17 +14,11 @@ class GuidesCompiler(BaseCompiler):
     def _compile(self, data: MMGuidesDict) -> None:
         for direction in DIRECTIONS:
             dir_guides = data[direction]
-            # if not dir_guides:
-            #     self.write_value(0)
-            #     continue
-
-            num_guides = len(dir_guides[0])
-            self.write_value(num_guides)
-            for guide_index in range(num_guides):
+            self.write_value(len(dir_guides))
+            for guide in dir_guides:
                 for master_index in range(self.master_count):
-                    guide = dir_guides[master_index][guide_index]
-                    self.write_value(guide["pos"])
-                    angle = int(tan(radians(guide["angle"])) * 10000)
+                    self.write_value(guide[master_index]["pos"])
+                    angle = int(tan(radians(guide[master_index]["angle"])) * 10000)
                     self.write_value(angle)
 
 

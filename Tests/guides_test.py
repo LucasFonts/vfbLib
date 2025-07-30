@@ -2,8 +2,9 @@ from unittest import TestCase
 
 from vfbLib.compilers.guides import GuidePropertiesCompiler, GuidesCompiler
 from vfbLib.parsers.guides import GlobalGuidesParser, GuidePropertiesParser
+from vfbLib.typing import GuidePropertiesDict, MMGuidesDict
 
-raw_full = {
+raw_full: GuidePropertiesDict = {
     "h": [
         {"index": 1, "color": "#c0c0c0", "name": "wtf"},
         {"index": 2, "color": "#80ff57", "name": "hjk"},
@@ -28,7 +29,7 @@ bin_full = (
     "8b"  # 0  # end of vertical guides
 )
 
-raw_partial = {
+raw_partial: GuidePropertiesDict = {
     "h": [
         {"index": 1, "color": "#c0c0c0", "name": "wtf"},
         {"index": 2, "color": "#80ff57", "name": "hjk"},
@@ -122,57 +123,119 @@ bin_guides = (
     "fbae8b"  # -282 0 (master 1)
 )
 
-raw_guides = {
+raw_guides: MMGuidesDict = {
     "h": [
         [
             {"pos": 980, "angle": 0.0},
-            {"pos": -320, "angle": 0.0},
-            {"pos": 298, "angle": 0.0},
-            {"pos": 822, "angle": 0.0},
-            {"pos": 821, "angle": 0.0},
-            {"pos": 675, "angle": 0.0},
-            {"pos": 683, "angle": 0.0},
-            {"pos": 550, "angle": 0.0},
-            {"pos": 352, "angle": 0.0},
-            {"pos": 344, "angle": 0.0},
-            {"pos": 190, "angle": 0.0},
-            {"pos": 185, "angle": 0.0},
-            {"pos": -83, "angle": 0.0},
-            {"pos": -143, "angle": 0.0},
-            {"pos": -150, "angle": 0.0},
-            {"pos": -160, "angle": 0.0},
-            {"pos": 307, "angle": 0.0},
-            {"pos": 800, "angle": 0.0},
-            {"pos": 792, "angle": 0.0},
+            {"pos": 980, "angle": 0.0},
         ],
         [
-            {"pos": 980, "angle": 0.0},
             {"pos": -320, "angle": 0.0},
+            {"pos": -320, "angle": 0.0},
+        ],
+        [
             {"pos": 298, "angle": 0.0},
+            {"pos": 298, "angle": 0.0},
+        ],
+        [
+            {"pos": 822, "angle": 0.0},
             {"pos": 823, "angle": 0.0},
+        ],
+        [
+            {"pos": 821, "angle": 0.0},
             {"pos": 815, "angle": 0.0},
+        ],
+        [
             {"pos": 675, "angle": 0.0},
+            {"pos": 675, "angle": 0.0},
+        ],
+        [
+            {"pos": 683, "angle": 0.0},
             {"pos": 685, "angle": 0.0},
+        ],
+        [
+            {"pos": 550, "angle": 0.0},
             {"pos": 547, "angle": 0.0},
+        ],
+        [
+            {"pos": 352, "angle": 0.0},
+            {"pos": 344, "angle": 0.0},
+        ],
+        [
             {"pos": 344, "angle": 0.0},
             {"pos": 334, "angle": 0.0},
+        ],
+        [
             {"pos": 190, "angle": 0.0},
+            {"pos": 190, "angle": 0.0},
+        ],
+        [
+            {"pos": 185, "angle": 0.0},
             {"pos": 183, "angle": 0.0},
+        ],
+        [
             {"pos": -83, "angle": 0.0},
+            {"pos": -83, "angle": 0.0},
+        ],
+        [
+            {"pos": -143, "angle": 0.0},
             {"pos": -124, "angle": 0.0},
+        ],
+        [
+            {"pos": -150, "angle": 0.0},
             {"pos": -130, "angle": 0.0},
+        ],
+        [
+            {"pos": -160, "angle": 0.0},
             {"pos": -137, "angle": 0.0},
+        ],
+        [
             {"pos": 307, "angle": 0.0},
+            {"pos": 307, "angle": 0.0},
+        ],
+        [
+            {"pos": 800, "angle": 0.0},
             {"pos": 802, "angle": 0.0},
+        ],
+        [
+            {"pos": 792, "angle": 0.0},
             {"pos": 792, "angle": 0.0},
         ],
     ],
-    "v": [[{"pos": -290, "angle": 0.0}], [{"pos": -282, "angle": 0.0}]],
+    "v": [
+        [
+            {"pos": -290, "angle": 0.0},
+            {"pos": -282, "angle": 0.0},
+        ],
+    ],
 }
 
 bin_guides_empty = "8b8b"
 
-raw_guides_empty = {"h": [[], []], "v": [[], []]}
+raw_guides_empty: MMGuidesDict = {"h": [], "v": []}
+
+bin_glyph_2m = (
+    "8d"  # 2: num_h_guides
+    "f9828b"  # guide 1 master 1
+    "f9828b"  # guide 1 master 2
+    "f95a8b"  # guide 2 master 1
+    "f95a8b"  # guide 2 master 2
+    "8d"  # 2: num_v_guides
+    "8b8b"  # guide 1 master 1
+    "8b8b"  # guide 1 master 2
+    "8b8b"  # guide 2 master 1
+    "8b8b"  # guide 2 master 2
+)
+raw_glyph_2m: MMGuidesDict = {
+    "h": [
+        [{"pos": 750, "angle": 0.0}, {"pos": 750, "angle": 0.0}],
+        [{"pos": 710, "angle": 0.0}, {"pos": 710, "angle": 0.0}],
+    ],
+    "v": [
+        [{"pos": 0, "angle": 0.0}, {"pos": 0, "angle": 0.0}],
+        [{"pos": 0, "angle": 0.0}, {"pos": 0, "angle": 0.0}],
+    ],
+}
 
 
 class GlobalGuidesParserTest(TestCase):
@@ -184,6 +247,10 @@ class GlobalGuidesParserTest(TestCase):
         result = GlobalGuidesParser().parse_hex(bin_guides_empty, master_count=2)
         assert result == raw_guides_empty
 
+    def test_glyph_2m(self):
+        result = GlobalGuidesParser().parse_hex(bin_glyph_2m, master_count=2)
+        assert result == raw_glyph_2m
+
 
 class GuidesCompilerTest(TestCase):
     def test(self):
@@ -193,3 +260,7 @@ class GuidesCompilerTest(TestCase):
     def test_empty(self):
         result = GuidesCompiler().compile_hex(raw_guides_empty, master_count=2)
         assert result == bin_guides_empty
+
+    def test_glyph_2m(self):
+        result = GuidesCompiler().compile_hex(raw_glyph_2m, master_count=2)
+        assert result == bin_glyph_2m
