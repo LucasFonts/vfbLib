@@ -7,6 +7,7 @@ from vfbLib import tt_settings, ttinfo_names
 from vfbLib.helpers import binaryToIntList
 from vfbLib.parsers.base import BaseParser
 from vfbLib.typing import (
+    FlagsOptionsDict,
     GaspList,
     TTStemDict,
     TTStemsDict,
@@ -17,12 +18,12 @@ from vfbLib.typing import (
 logger = logging.getLogger(__name__)
 
 
-def convert_int_to_flags_options(value: int) -> dict:
+def convert_int_to_flags_options(value: int) -> FlagsOptionsDict:
     flags = binaryToIntList(value & 0xFFFF)
     options = binaryToIntList(value >> 16)
     return {
         "flags": flags,
-        "options": [tt_settings.get(i, i) for i in options],
+        "options": [tt_settings.get(i, str(i)) for i in options],
     }
 
 

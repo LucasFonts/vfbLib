@@ -82,6 +82,11 @@ class FeaturesDict(TypedDict):
     features: list[FeatureDict]
 
 
+class FlagsOptionsDict(TypedDict):
+    flags: list[int]
+    options: list[str]
+
+
 class GaspRangeDict(TypedDict):
     maxPpem: int
     flags: int
