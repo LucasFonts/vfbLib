@@ -159,7 +159,7 @@ class TrueTypeStemsParser(BaseParser):
                 ppm6 = self.read_value()
 
                 direction.append(
-                    TTStemDict(value=width, name=stem_name, round={"6": ppm6})
+                    TTStemDict(value=width, name=stem_name, round={6: ppm6})
                 )
 
             result[names[i]] = direction
@@ -221,7 +221,7 @@ class TrueTypeStemPpems23Parser(BaseParser):
             for j in range(num_stems):
                 ppm2 = self.read_value()
                 ppm3 = self.read_value()
-                direction.append(TTStemDict(stem=j, round={"2": ppm2, "3": ppm3}))
+                direction.append(TTStemDict(stem=j, round={2: ppm2, 3: ppm3}))
 
             result[names[i]] = direction
 
