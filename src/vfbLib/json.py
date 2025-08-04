@@ -37,7 +37,6 @@ def save_vfb_json(
     with open(str(out_path), "wb") as f:
         f.write(
             orjson.dumps(
-                vfb.as_dict(),
-                option=orjson.OPT_INDENT_2 | orjson.OPT_NON_STR_KEYS,
+                vfb.as_dict(), option=orjson.OPT_INDENT_2 | orjson.OPT_NON_STR_KEYS
             )
         )
