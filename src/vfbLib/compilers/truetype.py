@@ -112,7 +112,7 @@ class TrueTypeStemPpems1Compiler(BaseCompiler):
         for direction in ("ttStemsV", "ttStemsH"):
             stems = data[direction]
             for stem in stems:
-                self.write_value(stem["round"]["1"])
+                self.write_value(stem["round"][1])
 
 
 class TrueTypeStemPpems23Compiler(BaseCompiler):
@@ -121,7 +121,7 @@ class TrueTypeStemPpems23Compiler(BaseCompiler):
             stems = data[direction]
             self.write_value(len(stems))
             for stem in stems:
-                for k in ("2", "3"):
+                for k in (2, 3):
                     self.write_value(stem["round"][k])
 
 
@@ -132,7 +132,7 @@ class TrueTypeStemPpemsCompiler(BaseCompiler):
             self.write_value(len(stems))
             for stem in stems:
                 for k in range(2, 6):
-                    self.write_value(stem["round"][str(k)])
+                    self.write_value(stem["round"][k])
 
 
 class TrueTypeStemsCompiler(BaseCompiler):
@@ -145,7 +145,7 @@ class TrueTypeStemsCompiler(BaseCompiler):
                 stem_name = stem["name"].encode(self.encoding)
                 self.write_uint8(len(stem_name))
                 self.write_bytes(stem_name)
-                self.write_value(stem["round"]["6"])
+                self.write_value(stem["round"][6])
 
 
 class TrueTypeZonesCompiler(BaseCompiler):
