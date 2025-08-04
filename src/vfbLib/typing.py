@@ -200,7 +200,7 @@ class TTCommandDict(TypedDict):
 
 class TTStemDict(TypedDict):
     name: NotRequired[str]
-    round: dict[str, int]
+    round: dict[int, int]
     stem: NotRequired[int]
     value: NotRequired[int]
 
@@ -244,5 +244,16 @@ class MaskData(GlyphData):
 
 
 class VfbDict(TypedDict):
-    header: dict[str, Any]
+    header: VfbHeaderDict
     entries: list[dict[str, Any]]
+
+
+class VfbHeaderDict(TypedDict):
+    header0: int
+    filetype: str
+    header1: int
+    chunk1: list[int]
+    creator: dict[int, int | list[int]]
+    end0: int
+    end1: int
+    end2: int

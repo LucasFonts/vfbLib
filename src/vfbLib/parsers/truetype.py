@@ -166,7 +166,7 @@ class TrueTypeStemsParser(BaseParser):
 
 
 class TrueTypeStemPpemsParser(BaseParser):
-    def _parse(self):
+    def _parse(self) -> TTStemsDict:
         names = ("ttStemsV", "ttStemsH")
         result = TTStemsDict(ttStemsV=[], ttStemsH=[])
         for i in range(2):
@@ -176,7 +176,7 @@ class TrueTypeStemPpemsParser(BaseParser):
             for j in range(num_stems):
                 for k in range(2, 6):
                     ppm = self.read_value()
-                    d[str(k)] = ppm
+                    d[k] = ppm
 
                 direction.append(TTStemDict(stem=j, round=d.copy()))
 
@@ -187,7 +187,7 @@ class TrueTypeStemPpemsParser(BaseParser):
 
 class TrueTypeStemPpems1Parser(BaseParser):
     # PPEM 1 for each stem is stored in a separate entry ...
-    def _parse(self):
+    def _parse(self) -> TTStemsDict:
         names = ("ttStemsV", "ttStemsH")
         result = TTStemsDict(ttStemsV=[], ttStemsH=[])
         for i in range(2):
@@ -198,7 +198,7 @@ class TrueTypeStemPpems1Parser(BaseParser):
 
             for j in range(num_stems):
                 ppm = self.read_value()
-                direction.append(TTStemDict(stem=j, round={"1": ppm}))
+                direction.append(TTStemDict(stem=j, round={1: ppm}))
 
             result[names[i]] = direction
 

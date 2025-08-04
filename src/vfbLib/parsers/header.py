@@ -2,9 +2,9 @@ from __future__ import annotations
 
 import logging
 from io import BufferedReader, BytesIO
-from typing import Any
 
 from vfbLib.parsers.base import StreamReader
+from vfbLib.typing import VfbHeaderDict
 
 logger = logging.getLogger(__name__)
 
@@ -14,8 +14,8 @@ class VfbHeaderParser(StreamReader):
         self.encoding = "cp1252"
         self.stream: BufferedReader = stream  # type: ignore
 
-    def parse(self) -> dict[str, Any]:
-        header: dict[str, Any] = {}
+    def parse(self) -> VfbHeaderDict:
+        header: VfbHeaderDict = {}
         header["header0"] = self.read_uint8()
         header["filetype"] = self.read_str(5)
         header["header1"] = self.read_uint16()
@@ -42,9 +42,9 @@ class VfbHeaderParser(StreamReader):
                     for i in (24, 16, 8, 0):
                         # Extract the bytes from the number again
                         app_version.append(value >> i & 0xFF)
-                    app_info[str(key)] = app_version
+                    app_info[key] = app_version
                 else:
-                    app_info[str(key)] = value
+                    app_info[key] = value
             header["creator"] = app_info
             # Two bytes follow that are at the end of chunk1 in the older format
             header["end0"] = self.read_uint8()  # 6

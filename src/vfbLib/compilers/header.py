@@ -2,9 +2,9 @@ from __future__ import annotations
 
 import logging
 from io import BytesIO
-from typing import Any
 
 from vfbLib.compilers.base import StreamWriter
+from vfbLib.typing import VfbHeaderDict
 
 logger = logging.getLogger(__name__)
 
@@ -12,12 +12,12 @@ logger = logging.getLogger(__name__)
 class VfbHeaderCompiler(StreamWriter):
     encoding = "cp1252"
 
-    def compile(self, data: Any) -> bytes:
+    def compile(self, data: VfbHeaderDict) -> bytes:
         self.stream = BytesIO()
         self._compile(data)
         return self.stream.getvalue()
 
-    def _compile(self, data: Any) -> None:
+    def _compile(self, data: VfbHeaderDict) -> None:
         self.write_uint8(data["header0"])
         self.write_str(data["filetype"])
         self.write_uint16(data["header1"])
@@ -36,8 +36,8 @@ class VfbHeaderCompiler(StreamWriter):
             sw = StreamWriter()
             sw.stream = BytesIO()
             for k, v in data["creator"].items():
-                sw.write_uint8(int(k))
-                if int(k) == 2:
+                sw.write_uint8(k)
+                if k == 2:
                     # app version
                     sw.write_uint8(0xFF)
                     for version in v:

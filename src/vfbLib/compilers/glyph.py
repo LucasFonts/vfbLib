@@ -258,7 +258,7 @@ class GlyphCompiler(BaseCompiler):
         self.write_uint8(6)
         self.write_value(len(kerning))
         for gid, values in kerning.items():
-            self.write_value(int(gid))
+            self.write_value(gid)
             for value in values:
                 self.write_value(value)
 
