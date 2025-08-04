@@ -195,6 +195,10 @@ class VfbEntry(StreamReader):
         Returns:
             bool: Whether compilation was successful.
         """
+        if isinstance(self.data, bytes):
+            # Is already compiled
+            return True
+
         if self.compiler is None:
             logger.error(
                 f"Compiling '{self.id}' is not supported yet in {self} "
