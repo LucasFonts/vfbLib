@@ -5,12 +5,12 @@ description = "Tools for converting FontLab Studio 5 (VFB) files."
 keywords = ["vfb", "vfbLib", "fonttools"]
 
 readme = "README.md"
+license = "GPL-3.0-or-later"
 license-files = ["LICENSE"]
 
 authors = [{ name = "Jens Kutílek", email = "webmail@kutilek.de" }]
 classifiers = [
     "Environment :: Console",
-    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
     "Operating System :: OS Independent",
     "Programming Language :: Python",
     "Programming Language :: Python :: 3 :: Only",
