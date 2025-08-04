@@ -1,5 +1,16 @@
 # Change Log
 
+## 0.10.3
+
+Breaking changes
+
+- Some internal dict keys are ints now, but they are still written as str when dumping to JSON.
+
+Compiler changes
+
+- Allow un-decompiled `VfbEntry`s to be written back to VFB. They are identified by `VfbEntry.data` being an instance of `bytes`.
+
+
 ## 0.10.2
 
 Breaking changes
