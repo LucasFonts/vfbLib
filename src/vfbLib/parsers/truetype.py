@@ -13,6 +13,7 @@ from vfbLib.typing import (
     TTStemsDict,
     TTZoneDict,
     TTZonesDict,
+    VdmxRecDict,
 )
 
 logger = logging.getLogger(__name__)
@@ -264,7 +265,7 @@ class TrueTypeZonesParser(BaseParser):
 
 
 class VdmxParser(BaseParser):
-    def _parse(self):
+    def _parse(self) -> list[VdmxRecDict]:
         result = []
         num_records = self.read_value()
         for _ in range(num_records):

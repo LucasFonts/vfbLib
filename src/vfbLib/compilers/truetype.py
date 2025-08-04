@@ -7,7 +7,7 @@ from vfbLib.compilers.base import BaseCompiler
 from vfbLib.helpers import intListToBinary
 
 if TYPE_CHECKING:
-    from vfbLib.typing import FlagsOptionsDict, TTStemsDict, TTZonesDict
+    from vfbLib.typing import FlagsOptionsDict, TTStemsDict, TTZonesDict, VdmxRecDict
 
 
 def convert_flags_options_to_int(data: dict[str, dict[str, list[int]]]) -> int:
@@ -186,7 +186,7 @@ class TrueTypeZoneDeltasCompiler(BaseCompiler):
 
 
 class VdmxCompiler(BaseCompiler):
-    def _compile(self, data: list[dict[str, int]]) -> None:
+    def _compile(self, data: list[VdmxRecDict]) -> None:
         self.write_value(len(data))
         for rec in data:
             self.write_value(rec["pelHeight"])

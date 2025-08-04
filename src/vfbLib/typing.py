@@ -248,6 +248,12 @@ class MaskData(GlyphData):
     reserved0: NotRequired[int]
 
 
+class VdmxRecDict(TypedDict):
+    pelHeight: int
+    max: int
+    min: int
+
+
 class VfbDict(TypedDict):
     header: VfbHeaderDict
     entries: list[dict[str, Any]]
