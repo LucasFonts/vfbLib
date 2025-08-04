@@ -17,7 +17,10 @@ class OpenTypeExportOptionsCompiler(BaseCompiler):
         rev = {v: k for k, v in opentype_export_options.items()}
         for opt in data:
             raw_key, v = tuple(opt.items())[0]
-            k = rev.get(raw_key, int(raw_key))
+            if raw_key in rev:
+                k = rev[raw_key]
+            else:
+                k = int(raw_key)
             self.write_uint8(k)
             self.write_value(v)
         self.write_uint8(0x64)
