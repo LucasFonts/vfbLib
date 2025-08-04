@@ -251,7 +251,7 @@ class VfbToUfoBuilder:
             direction_stems = data[d]
             for ds in direction_stems:
                 round_dict = self.stem_ppms[d][ds["stem"]]["round"]
-                ppm = "1"
+                ppm = 1
                 ppm1 = str(ds["round"][ppm])
                 if ppm1 in round_dict:
                     logger.warning(

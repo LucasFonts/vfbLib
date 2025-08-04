@@ -64,12 +64,12 @@ def tt_cmd_dict_to_xml(tt_dict: dict[str, Any]) -> str:
     return cmd
 
 
-def transform_stem_rounds(data: dict[str, int], name: str) -> dict[str, int]:
+def transform_stem_rounds(data: dict[int, int], name: str) -> dict[str, int]:
     """Transform the format of the stem rounding dict to fit the UFO output format, i.e.
     exchange key and value.
 
     Args:
-        data (dict[str, int]): The stem rounding data
+        data (dict[int, int]): The stem rounding data
         name (str): A name that will be shown if there is any error.
 
     Returns:
@@ -77,8 +77,8 @@ def transform_stem_rounds(data: dict[str, int], name: str) -> dict[str, int]:
     """
     d: dict[str, int] = {}
     for k, v in data.items():
-        key = str(v)
-        val = int(k)
+        key = v
+        val = k
         if key in d:
             if val > v:
                 logger.warning(
@@ -92,7 +92,7 @@ def transform_stem_rounds(data: dict[str, int], name: str) -> dict[str, int]:
                     f"keeping value {d[key]}px, ignoring {val}px. {data}"
                 )
         else:
-            d[key] = val
+            d[str(key)] = val
     return d
 
 
