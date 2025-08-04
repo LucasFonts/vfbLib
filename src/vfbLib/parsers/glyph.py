@@ -217,7 +217,7 @@ class GlyphParser(BaseParser):
     def parse_components(self) -> None:
         components = []
         num = self.read_value()
-        for i in range(num):
+        for _ in range(num):
             gid = self.read_value()
             c = Component(gid=gid, offsetX=[], offsetY=[], scaleX=[], scaleY=[])
             for _ in range(self.master_count):
