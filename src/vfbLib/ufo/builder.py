@@ -857,7 +857,7 @@ class VfbToUfoBuilder:
             ds.addSourceDescriptor(
                 # designLocation=,
                 familyName=self.info.ds_family_name,
-                filename=f"{self.get_master_path(out_path.with_suffix('.ufo'), i)}",
+                filename=f"{self.get_master_path(out_path, i)}",
                 location=get_ds_location(self.axes, self.master_locations[i + 1]),
                 name=self.masters[i].strip(),
                 styleName=f"Master {i}",
