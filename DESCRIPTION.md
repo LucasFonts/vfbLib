@@ -38,7 +38,7 @@ not be overwritten unless you specify the `-fo` option.
 
 ```
 vfb3ufo -h
-uusage: vfb3ufo [-h] [-p PATH] [-fo] [-g] [-k] [-ttx] [-64] [-s] [-n] [-nops] [-v] [-z] [-m] [-u] inputpath [outputpath]
+usage: vfb3ufo [-h] [-p PATH] [-fo] [-g] [-j] [-k] [-ttx] [-64] [-s] [-n] [-nops] [-v] [-z] [-m] [-u] inputpath [outputpath]
 
 vfb3ufo Converter Copyright (c) 2024 by LucasFonts
 
@@ -52,6 +52,7 @@ options:
   -fo, --force-overwrite
                         force overwrite
   -g, --keep-groups     don't move non-kerning groups from groups.plist to feature code
+  -j, --json            serialize UFO as JSON; combine with -z to write JSON without line breaks/indentation
   -k, --add-kerning-groups
                         add kerning groups to feature code
   -64, --base64         write GLIF lib 'data' section using base64

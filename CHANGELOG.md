@@ -1,5 +1,10 @@
 # Change Log
 
+## 0.10.3-dev
+
+- Add `vfb3ufo` option `--json/-j` to save UFOs as "JSON-UFO" as written by ufoLib2. `-jz` combined option writes JSON without line breaks and indentation.
+
+
 ## 0.10.3
 
 Breaking changes
