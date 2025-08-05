@@ -803,23 +803,31 @@ class VfbToUfoBuilder:
             ds = self.get_designspace(out_path)
         return ufo_masters, ds
 
-    def write(self, out_path: Path, overwrite=False, silent=False, ufoz=False) -> None:
+    def write(
+        self, out_path: Path, overwrite=False, silent=False, ufoz=False, json=False
+    ) -> None:
         """
         Write a the VFB contents to master UFOs and a designspace file. The designspace
         file is only written if the VFB contains more than one master.
         """
+        if json:
+            out_path = out_path.with_suffix(".json")
         # Build UFOs and DesignSpace
         ufos, ds = self.get_ufos_designspace(out_path, silent)
 
         # Write the master UFOs
         strct = UFOFileStructure.ZIP if ufoz else None
+        indent = None if ufoz else 2
         for index, ufo in enumerate(ufos):
             master_path = self.get_master_path(out_path, index)
-            ufo.save(master_path, structure=strct, overwrite=overwrite)
-            if self.normalize_ufos and not ufoz:
-                normalizeUFO(
-                    ufoPath=master_path, onlyModified=False, writeModTimes=False
-                )
+            if json:
+                ufo.json_dump(master_path, indent=indent, sort_keys=False)
+            else:
+                ufo.save(master_path, structure=strct, overwrite=overwrite)
+                if self.normalize_ufos and not ufoz:
+                    normalizeUFO(
+                        ufoPath=master_path, onlyModified=False, writeModTimes=False
+                    )
 
         # Write the Designspace
         if ds:

@@ -114,6 +114,16 @@ def vfb2ufo():
         help="don't move non-kerning groups from groups.plist to feature code",
     )
     parser.add_argument(
+        "-j",
+        "--json",
+        action="store_true",
+        default=False,
+        help=(
+            "serialize UFO as JSON; "
+            "combine with -z to write JSON without line breaks/indentation"
+        ),
+    )
+    parser.add_argument(
         "-k",
         "--add-kerning-groups",
         action="store_true",
@@ -216,7 +226,7 @@ def vfb2ufo():
             unicode_strings=args.unicode_strings,
         )
         suffix = ".ufo"
-        if args.zip:
+        if args.zip and not args.json:
             suffix += "z"
         if args.path:
             out_path = (Path(args.path[0]) / vfb_path.name).with_suffix(suffix)
@@ -237,6 +247,7 @@ def vfb2ufo():
             overwrite=args.force_overwrite,
             silent=args.silent,
             ufoz=args.zip,
+            json=args.json,
         )
     else:
         parser.print_help()

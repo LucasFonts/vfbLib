@@ -227,10 +227,12 @@ class VfbToUfoInfo(Info):
         self.postscriptIsFixedPitch = bool(data)
 
     def set_name_records(self, data: list[tuple[int, int, int, int, str]]) -> None:
-        self.openTypeNameRecords = []
+        # We need to set the attribute once at the end to be able to write JSON, cf.
+        # https://github.com/fonttools/ufoLib2/issues/203
+        name_records = []
         for rec in data:
             nameID, platformID, encodingID, languageID, s = rec
-            self.openTypeNameRecords.append(
+            name_records.append(
                 {
                     "nameID": nameID,
                     "platformID": platformID,
@@ -239,6 +241,7 @@ class VfbToUfoInfo(Info):
                     "string": s,
                 }
             )
+        self.openTypeNameRecords = name_records
 
     def set_selection(self, data: int) -> None:
         # Bit 0 = Italic

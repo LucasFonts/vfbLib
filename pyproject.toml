@@ -30,9 +30,10 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
+ufojson = ["ufoLib2[json]"]  # UFO JSON output from ufoLib2
 toml = ["tomli-w >= 1.0.0"]
 yaml = ["pyyaml >= 6.0.2"]
-all = ["vfbLib[toml]", "vfbLib[yaml]"]
+all = ["vfbLib[ufojson]", "vfbLib[toml]", "vfbLib[yaml]"]
 
 test = [
     "coverage",
