@@ -26,14 +26,13 @@ dependencies = [
     "orjson >= 3.11.1, < 4",
     "typing_extensions >= 4.14.1",
     "ufonormalizer >= 0.6.1",
-    "ufoLib2 >= 0.16.0",
+    "ufoLib2[json] >= 0.18.1",
 ]
 
 [project.optional-dependencies]
-ufojson = ["ufoLib2[json]"]  # UFO JSON output from ufoLib2
 toml = ["tomli-w >= 1.0.0"]
 yaml = ["pyyaml >= 6.0.2"]
-all = ["vfbLib[ufojson]", "vfbLib[toml]", "vfbLib[yaml]"]
+all = ["vfbLib[toml]", "vfbLib[yaml]"]
 
 test = [
     "coverage",
