@@ -113,6 +113,9 @@ Export the TrueType hinting from a VFB in a custom format, either as JSON (defau
 $ vfb2tth MyFile.vfb
 ```
 
+To make the TOML and YAML output options available, you must install with extras
+`vfblib[toml]` or `vfblib[yaml]`, respectively.
+
 ```
 usage: vfb2tth [-h] [-f FORMAT] [-p PATH] inputpath
 
