@@ -55,7 +55,7 @@ def vfb2json():
         "--unicode-strings",
         action="store_true",
         default=False,
-        help="interpret name table strings as Unicode instead of Windows-1252",
+        help="interpret name strings as Unicode instead of Windows-1252",
     )
     parser.add_argument(
         "inputpath",

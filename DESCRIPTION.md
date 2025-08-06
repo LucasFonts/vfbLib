@@ -51,20 +51,23 @@ options:
   -p, --path PATH       output folder
   -fo, --force-overwrite
                         force overwrite
+  -64, --base64         write GLIF lib 'data' section using base64
+  -s, --silent          no display (silent mode)
+  -v, --verbose         Print debugging output
+  -z, --zip             write UFOZ (compressed UFO)
+
+Additional options not present in vfb2ufo:
+
   -g, --keep-groups     don't move non-kerning groups from groups.plist to feature code
   -j, --json            serialize UFO as JSON; combine with -z to write JSON without line breaks/indentation
   -k, --add-kerning-groups
                         add kerning groups to feature code
-  -64, --base64         write GLIF lib 'data' section using base64
-  -s, --silent          no display (silent mode)
+  -m, --minimal         parse only minimal amount of data, drop missing glyphs from groups, etc.
   -n, --no-normalize    don't normalize the UFOs (faster)
   -nops, --no-postscript-hints
                         Don't output PostScript hinting
-  -v, --verbose         Print debugging output
-  -z, --zip             write UFOZ (compressed UFO)
-  -m, --minimal         parse only minimal amount of data, drop missing glyphs from groups, etc.
   -u, --unicode-strings
-                        interpret name table strings as Unicode instead of Windows-1252
+                        interpret strings as Unicode instead of Windows-1252
 
 Options not implemented here, but present in the original vfb2ufo:
 
