@@ -212,10 +212,9 @@ class EncodedValueListCompiler(BaseCompiler):
 
 
 class EncodedValueListWithCountCompiler(BaseCompiler):
-    def _compile(self, data: Any) -> None:
-        values = data["values"]  # TODO: We don't need the dict
-        self.write_value(len(values))
-        for value in values:
+    def _compile(self, data: list[int]) -> None:
+        self.write_value(len(data))
+        for value in data:
             self.write_value(value)
 
 
