@@ -1,6 +1,12 @@
 # Change Log
 
-## 0.10.3-dev
+## 0.10.4
+
+Breaking changes
+
+- Change `EncodedValueListWithCount` format from `{"values: []}` to `list[int]`
+
+Command line changes:
 
 - Add `vfb3ufo` option `--json/-j` to save UFOs as "JSON-UFO" as written by ufoLib2. `-jz` combined option writes JSON without line breaks and indentation.
 
