@@ -4,7 +4,7 @@
 
 Breaking changes
 
-- Change `EncodedValueListWithCount` format from `{"values: []}` to `list[int]`
+- Change `EncodedValueListWithCount` format from `{"values": []}` to `list[int]`
 
 Command line changes:
 
