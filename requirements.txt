@@ -5,7 +5,7 @@ flake8==7.3.0
 fonttools==4.59.0
 iniconfig==2.1.0
 mccabe==0.7.0
-orjson==3.11.1
+orjson==3.11.2
 packaging==25.0
 pluggy==1.6.0
 pycodestyle==2.14.0
