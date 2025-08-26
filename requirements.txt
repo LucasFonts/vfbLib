@@ -13,7 +13,7 @@ pyflakes==3.4.0
 pygments==2.19.2
 pytest==8.4.1
 ruff==0.12.8
-typing-extensions==4.14.1
+typing-extensions==4.15.0
 ufolib2==0.18.1
 ufonormalizer==0.6.2
 
