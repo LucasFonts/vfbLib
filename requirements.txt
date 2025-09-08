@@ -11,7 +11,7 @@ pluggy==1.6.0
 pycodestyle==2.14.0
 pyflakes==3.4.0
 pygments==2.19.2
-pytest==8.4.1
+pytest==8.4.2
 ruff==0.12.11
 typing-extensions==4.15.0
 ufolib2==0.18.1
