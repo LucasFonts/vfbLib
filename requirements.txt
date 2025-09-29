@@ -15,5 +15,5 @@ pytest==8.4.2
 ruff==0.13.1
 typing-extensions==4.15.0
 ufolib2==0.18.1
-ufonormalizer==0.6.2
+ufonormalizer==0.6.3
 
