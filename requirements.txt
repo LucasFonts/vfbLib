@@ -1,4 +1,4 @@
-attrs==25.3.0
+attrs==25.4.0
 cattrs==25.2.0
 coverage==7.10.7
 flake8==7.3.0
