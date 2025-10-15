@@ -1,5 +1,5 @@
 attrs==25.4.0
-cattrs==25.2.0
+cattrs==25.3.0
 coverage==7.10.7
 flake8==7.3.0
 fonttools==4.60.1
