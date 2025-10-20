@@ -3,7 +3,7 @@ cattrs==25.3.0
 coverage==7.10.7
 flake8==7.3.0
 fonttools==4.60.1
-iniconfig==2.1.0
+iniconfig==2.3.0
 mccabe==0.7.0
 orjson==3.11.3
 packaging==25.0
