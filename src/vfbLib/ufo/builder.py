@@ -385,7 +385,7 @@ class VfbToUfoBuilder:
             )
         )
         if self.vfb.minimal:
-            skip_keys.union(ignore_minimal_keys)
+            skip_keys = skip_keys.union(ignore_minimal_keys)
 
         for e in self.vfb.entries:
             if e.key is None:
