@@ -30,8 +30,8 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-toml = ["tomli-w >= 1.0.0"]
-yaml = ["pyyaml >= 6.0.2"]
+toml = ["tomli-w >= 1.2.0"]
+yaml = ["pyyaml >= 6.0.3"]
 all = ["vfbLib[toml]", "vfbLib[yaml]"]
 
 test = [
