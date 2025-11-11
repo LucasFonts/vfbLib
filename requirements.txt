@@ -1,6 +1,6 @@
 attrs==25.4.0
 cattrs==25.3.0
-coverage==7.11.0
+coverage==7.11.3
 flake8==7.3.0
 fonttools==4.60.1
 iniconfig==2.3.0
@@ -11,7 +11,7 @@ pluggy==1.6.0
 pycodestyle==2.14.0
 pyflakes==3.4.0
 pygments==2.19.2
-pytest==8.4.2
+pytest==9.0.0
 ruff==0.14.4
 typing-extensions==4.15.0
 ufolib2==0.18.1
