@@ -9,7 +9,9 @@ from vfbLib.parsers.ps import global_options, glyph_options
 class PostScriptInfoCompiler(BaseCompiler):
     def _compile(self, data: Any) -> None:
         font_matrix = data["font_matrix"]
-        assert len(font_matrix) == 6
+        assert len(font_matrix) == 6, (
+            f"'font_matrix' must have a length of 6, but has {len(font_matrix)}."
+        )
         self.write_doubles(data["font_matrix"])
         self.write_int32(data["force_bold"])
         for k, size in (
@@ -19,7 +21,9 @@ class PostScriptInfoCompiler(BaseCompiler):
             ("family_other_blues", 10),
         ):
             values = data[k]
-            assert len(values) == size
+            assert len(values) == size, (
+                f"'{k}' must have a length of {size}, but has {len(values)}: {values}"
+            )
             for value in values:
                 self.write_int32(value)
         self.write_double(data["blue_scale"])
@@ -35,7 +39,9 @@ class PostScriptInfoCompiler(BaseCompiler):
             ("stem_snap_v", 12),
         ):
             values = data[k]
-            assert len(values) == size
+            assert len(values) == size, (
+                f"'{k}' must have a length of {size}, but has {len(values)}."
+            )
             for value in values:
                 self.write_uint32(value)
         for k in ("xMin", "yMin", "xMax", "yMax"):
