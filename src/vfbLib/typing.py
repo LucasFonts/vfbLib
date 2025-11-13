@@ -177,10 +177,10 @@ class PrimaryInstanceDict(TypedDict):
 class PSInfoDict(TypedDict):
     font_matrix: tuple[float, ...]
     force_bold: int
-    blue_values: list[int]
-    other_blues: list[int]
-    family_blues: list[int]
-    family_other_blues: list[int]
+    blue_values: list[int]  # max 14
+    other_blues: list[int]  # max 10
+    family_blues: list[int]  # max 14
+    family_other_blues: list[int]  # max 10
     blue_scale: float
     blue_shift: int
     blue_fuzz: int
