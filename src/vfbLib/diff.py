@@ -46,14 +46,22 @@ def diffvfb():
     vfb2.read()
     vfb1.decompile()
     vfb2.decompile()
-    vfb1_str = orjson.dumps(
-        vfb1.as_dict(),
-        option=orjson.OPT_INDENT_2 | orjson.OPT_NON_STR_KEYS | orjson.OPT_SORT_KEYS,
-    ).splitlines()
-    vfb2_str = orjson.dumps(
-        vfb2.as_dict(),
-        option=orjson.OPT_INDENT_2 | orjson.OPT_NON_STR_KEYS | orjson.OPT_SORT_KEYS,
-    ).splitlines()
+    vfb1_str = (
+        orjson.dumps(
+            vfb1.as_dict(),
+            option=orjson.OPT_INDENT_2 | orjson.OPT_NON_STR_KEYS | orjson.OPT_SORT_KEYS,
+        )
+        .decode()
+        .splitlines()
+    )
+    vfb2_str = (
+        orjson.dumps(
+            vfb2.as_dict(),
+            option=orjson.OPT_INDENT_2 | orjson.OPT_NON_STR_KEYS | orjson.OPT_SORT_KEYS,
+        )
+        .decode()
+        .splitlines()
+    )
     if args.html:
         html_diff = HtmlDiff()
         html = html_diff.make_file(
