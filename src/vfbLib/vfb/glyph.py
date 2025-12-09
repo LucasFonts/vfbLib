@@ -39,6 +39,19 @@ class VfbGlyph:
 
     # UFO/cu2qu compatibility
 
+    def __len__(self) -> int:
+        """
+        Return the number of paths in the glyph.
+
+        Returns:
+            int: The number of paths, or contours.
+        """
+        if not self.entry.data["nodes"]:
+            return 0
+
+        node_types = [node["type"] for node in self.entry.data["nodes"]]
+        return node_types.count("move")
+
     @cached_property
     def name(self) -> str | None:
         if self._glyph is None:
@@ -353,6 +366,19 @@ class VfbGlyphMaster:
         self.entry = glyph.entry
         self.master_index = master_index
         self._glyph = None
+
+    def __len__(self) -> int:
+        """
+        Return the number of paths in the glyph.
+
+        Returns:
+            int: The number of paths, or contours.
+        """
+        if not self.entry.data["nodes"]:
+            return 0
+
+        node_types = [node["type"] for node in self.entry.data["nodes"]]
+        return node_types.count("move")
 
     @cached_property
     def name(self) -> str | None:
