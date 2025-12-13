@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.10.6
+
+-   Bugfix for `vfbcu2qu` with `fonttools` 4.61.0+
+
 ## 0.10.5
 
 -   Bugfix: Build set for ignored keys correctly
