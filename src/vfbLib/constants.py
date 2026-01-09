@@ -13,6 +13,7 @@ from vfbLib.compilers.binary import BinaryTableCompiler
 from vfbLib.compilers.bitmap import BackgroundBitmapCompiler, GlyphBitmapsCompiler
 from vfbLib.compilers.cmap import CustomCmapCompiler
 from vfbLib.compilers.fl3 import FL3Type1410Compiler
+from vfbLib.compilers.flversion import FLVersionCompiler
 from vfbLib.compilers.glyph import (
     GlobalMaskCompiler,
     GlyphAnchorsCompiler,
@@ -87,6 +88,7 @@ from vfbLib.parsers.binary import BinaryTableParser
 from vfbLib.parsers.bitmap import BackgroundBitmapParser, GlyphBitmapsParser
 from vfbLib.parsers.cmap import CustomCmapParser
 from vfbLib.parsers.fl3 import FL3Type1410Parser
+from vfbLib.parsers.flversion import FLVersionParser
 from vfbLib.parsers.glyph import (
     GlobalMaskParser,
     GlyphAnchorsParser,
@@ -143,6 +145,10 @@ from vfbLib.parsers.truetype import (
 # fmt: off
 parser_classes = {
     # Sorted by appearance in the VFB
+    F.BlockStart: ("Block Start", BaseParser, HexStringCompiler),
+    F.BlockFontStart: ("Block Font Start", BaseParser, HexStringCompiler),
+    F.FLVersion: ("FL Version", FLVersionParser, FLVersionCompiler),
+    F.BlockNamesStart: ("Block Names Start", BaseParser, HexStringCompiler),
     F.EncodingDefault: ("Encoding Default", GlyphEncodingParser, GlyphEncodingCompiler),
     F.Encoding: ("Encoding", GlyphEncodingParser, GlyphEncodingCompiler),
     F.E1502: ("1502", Int16Parser, Int16Compiler),

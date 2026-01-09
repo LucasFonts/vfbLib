@@ -4,6 +4,10 @@ from enum import IntEnum
 
 
 class F(IntEnum):
+    BlockStart = 1
+    BlockFontStart = 4
+    FLVersion = 10
+    BlockNamesStart = 262
     EncodingDefault = 1501
     Encoding = 1500
     E1502 = 1502

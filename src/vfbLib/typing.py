@@ -87,6 +87,12 @@ class FlagsOptionsDict(TypedDict):
     options: list[str]
 
 
+class FLVersionDict(TypedDict):
+    platform: str
+    version: tuple[int, ...]
+    owner: int
+
+
 class GaspRangeDict(TypedDict):
     maxPpem: int
     flags: int
