@@ -106,6 +106,8 @@ class F(IntEnum):
     MMKernPair = 1410
     BlockMMKerningEnd = BlockMMKerningStart + 256
     BlockFontEnd = 5
+    BlockFileDataEnd = 2
+
     # Place in order is unknown for those, because they didn't appear in our
     # test data:
     BlockIndex = 3

@@ -157,14 +157,6 @@ class VfbEntry(StreamReader):
         raw_id = self.read_uint16()
         self.id = raw_id & ~0x8000
 
-        if self.id == 5:
-            # File end marker?
-            self.read_uint16()
-            two = self.read_uint16()
-            if two == 2:
-                self.read_uint16()
-                raise EOFError
-
         if raw_id & 0x8000:
             # Uses uint32 for data length
             num_bytes = self.read_uint32()

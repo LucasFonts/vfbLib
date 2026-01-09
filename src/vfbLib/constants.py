@@ -322,6 +322,7 @@ parser_classes = {
 
     # File end
     F.BlockFontEnd: ("Block Font End", BaseParser, HexStringCompiler),
+    F.BlockFileDataEnd: ("Block File Data End", BaseParser, HexStringCompiler),
 }
 # fmt: on
 

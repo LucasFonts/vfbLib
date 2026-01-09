@@ -232,6 +232,9 @@ class Vfb:
                 if entry.id not in self.drop_keys:
                     self.entries.append(entry)
 
+            if entry.id == F.BlockFileDataEnd:
+                break
+
         end = time()
         if self.timing:
             print(
@@ -269,8 +272,6 @@ class Vfb:
                     # There may be entries without data
                     assert isinstance(entry.data, bytes)
                     vfb.write(entry.data)
-            # File end marker
-            vfb.write(b"\05\00\00\00\02\00\00\00")
 
 
 class VfbMaster:
