@@ -221,7 +221,7 @@ class VfbEntry(StreamReader):
         Decompile the entry. The result is stored in VfbEntry.data.
         """
         if self.parser is None:
-            raise ValueError
+            raise ValueError(f"No parser is specified for entry type {self.id}")
 
         if self.data is None:
             raise ValueError
