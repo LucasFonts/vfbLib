@@ -260,11 +260,8 @@ class VfbDict(TypedDict):
 
 
 class VfbHeaderDict(TypedDict):
-    header0: int
-    filetype: str
-    header1: int
-    chunk1: list[int]
-    creator: dict[int, int | list[int]]
-    end0: int
-    end1: int
-    end2: int
+    signature: int
+    app_version: int
+    file_version: int
+    version_major: int
+    version_minor: int
