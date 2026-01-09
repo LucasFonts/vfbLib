@@ -379,7 +379,7 @@ class VfbToUfoBuilder:
                 F.version,
                 F.xuid,
                 G.AnchorsProperties,
-                G.E2023,
+                G.VSB,
                 G.HintingOptions,
                 G.Origin,
             )
