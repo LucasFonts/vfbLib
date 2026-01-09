@@ -4,15 +4,15 @@ from enum import IntEnum
 
 
 class F(IntEnum):
-    BlockStart = 1
+    BlockFileDataStart = 1
     BlockFontStart = 4
     FLVersion = 10
     BlockNamesStart = 262
     EncodingDefault = 1501
     Encoding = 1500
-    E1502 = 1502
-    E518 = 518
-    E257 = 257
+    MMEncType = 1502
+    BlockNamesEnd = BlockNamesStart + 256
+    BlockFontInfoStart = 257
     font_name = 1026
     MasterCount = 1503
     weight_vector = 1517
@@ -47,7 +47,7 @@ class F(IntEnum):
     style_name = 1127
     pref_style_name = 1137
     mac_compatible = 1139
-    E1140 = 1140
+    SampleText = 1140
     vendor = 1121
     xuid = 1133
     xuid_num = 1134
@@ -57,7 +57,7 @@ class F(IntEnum):
     upm = 1135
     fond_id = 1090
     PostScriptHintingOptions = 1093
-    E1068 = 1068
+    Collection = 1068
     blue_values_num = 1530
     other_blues_num = 1531
     family_blues_num = 1532
@@ -76,15 +76,15 @@ class F(IntEnum):
     PCLTTable = 1136
     ExportPCLTTable = 2022
     note = 2025
-    E2030 = 2030
+    FontFlags = 2030
     customdata = 2016
     MetricsClassFlags = 2024
     KerningClassFlags = 2026
     TrueTypeTable = 2014  # Font.truetypetables
     features = 1276
     GlyphClass = 1277  # Font.classes
-    E513 = 513
-    E271 = 271
+    BlockFontInfoEnd = BlockFontInfoStart + 256
+    BlockMMFontInfoStart = 271
     AxisCount = 1513
     AxisName = 1514
     AnisotropicInterpolationMappings = 1523
@@ -92,7 +92,8 @@ class F(IntEnum):
     AxisMappings = 1516
     PrimaryInstanceLocations = 1247
     PrimaryInstances = 1254
-    E527 = 527
+    BlockMMFontInfoEnd = BlockMMFontInfoStart + 256
+    # FIXME: Block start?
     GlobalGuides = 1294
     GlobalGuideProperties = 1296
     GlobalMask = 1295
@@ -100,10 +101,11 @@ class F(IntEnum):
     OpenTypeExportOptions = 1743
     ExportOptions = 1744
     MappingMode = 1742
-    E272 = 272
-    E1410 = 1410
-    E528 = 528
-    EOF = 5
+    # FIXME: Block end?
+    BlockMMKerningStart = 272
+    MMKernPair = 1410
+    BlockMMKerningEnd = BlockMMKerningStart + 256
+    BlockFontEnd = 5
     # Place in order is unknown for those, because they didn't appear in our
     # test data:
     BlockIndex = 3
@@ -232,15 +234,15 @@ class G(IntEnum):
     Links = 2008  # Glyph.hlinks and Glyph.vlinks
     image = 2007
     Bitmaps = 2013
-    E2023 = 2023
+    VSB = 2023
     Sketch = 2019
-    HintingOptions = 2010
+    HintingOptions = 2010  # Better: Glyph Flags
     mask = 2009
     MaskMetrics = 2011  # was: mask.metrics
     MaskMetricsMM = 2028  # was: mask.metrics_mm
     Origin = 2027
     unicodes = 1250
-    E2034 = 2034
+    CustomDict = 2034
     UnicodesNonBMP = 1253
     mark = 2012
     customdata = 2015
@@ -325,6 +327,6 @@ class T(IntEnum):
     stemsnaplimit = 1272
     zoneppm = 1274
     codeppm = 1275
-    E1604 = 1604
-    E2032 = 2032
+    dropoutppm = 1604
+    MeasurementLine = 2032  # FIXME: Why in TrueType?
     TrueTypeZoneDeltas = 1273

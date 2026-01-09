@@ -145,15 +145,15 @@ from vfbLib.parsers.truetype import (
 # fmt: off
 parser_classes = {
     # Sorted by appearance in the VFB
-    F.BlockStart: ("Block Start", BaseParser, HexStringCompiler),
+    F.BlockFileDataStart: ("Block File Data Start", BaseParser, HexStringCompiler),
     F.BlockFontStart: ("Block Font Start", BaseParser, HexStringCompiler),
     F.FLVersion: ("FL Version", FLVersionParser, FLVersionCompiler),
     F.BlockNamesStart: ("Block Names Start", BaseParser, HexStringCompiler),
     F.EncodingDefault: ("Encoding Default", GlyphEncodingParser, GlyphEncodingCompiler),
     F.Encoding: ("Encoding", GlyphEncodingParser, GlyphEncodingCompiler),
-    F.E1502: ("1502", Int16Parser, Int16Compiler),
-    F.E518: ("518", StringParser, StringCompiler),
-    F.E257: ("257", StringParser, StringCompiler),
+    F.MMEncType: ("MM Encoding Type", Int16Parser, Int16Compiler),
+    F.BlockNamesEnd: ("Block Names End", StringParser, HexStringCompiler),
+    F.BlockFontInfoStart: ("Block Font Info Start", StringParser, HexStringCompiler),
     F.font_name: ("font_name", StringParser, StringCompiler),
     F.MasterCount: ("Master Count", Int16Parser, Int16Compiler),
     F.weight_vector: ("weight_vector", DoubleListParser, DoubleListCompiler),
@@ -188,7 +188,7 @@ parser_classes = {
     F.style_name: ("style_name", StringParser, StringCompiler),
     F.pref_style_name: ("pref_style_name", StringParser, StringCompiler),
     F.mac_compatible: ("mac_compatible", StringParser, StringCompiler),
-    F.E1140: ("1140", BaseParser, HexStringCompiler),
+    F.SampleText: ("Sample Text", StringParser, StringCompiler),
     F.vendor: ("vendor", StringParser, VendorIdCompiler),
     F.xuid: ("xuid", IntListParser, IntListCompiler),
     F.xuid_num: ("xuid_num", Int16Parser, Int16Compiler),
@@ -198,7 +198,7 @@ parser_classes = {
     F.upm: ("upm", Int16Parser, Int16Compiler),
     F.fond_id: ("fond_id", Int16Parser, Int16Compiler),
     F.PostScriptHintingOptions: ("PostScript Hinting Options", PostScriptGlobalHintingOptionsParser, PostScriptGlobalHintingOptionsCompiler),  # noqa: E501
-    F.E1068: ("1068", EncodedValueListWithCountParser, EncodedValueListWithCountCompiler),  # noqa: E501
+    F.Collection: ("Collection", EncodedValueListWithCountParser, EncodedValueListWithCountCompiler),  # noqa: E501
     F.blue_values_num: ("blue_values_num", Int16Parser, Int16Compiler),
     F.other_blues_num: ("other_blues_num", Int16Parser, Int16Compiler),
     F.family_blues_num: ("family_blues_num", Int16Parser, Int16Compiler),
@@ -236,8 +236,8 @@ parser_classes = {
     T.stemsnaplimit: ("stemsnaplimit", Int16Parser, Int16Compiler),  # Pixel Snap
     T.zoneppm: ("zoneppm", Int16Parser, Int16Compiler),  # Zone Stop PPEM
     T.codeppm: ("codeppm", Int16Parser, Int16Compiler),  # Code Stop PPEM
-    T.E1604: ("1604", Int16Parser, Int16Compiler),  # Binary import? e.g. 255
-    T.E2032: ("2032", Int16Parser, Int16Compiler),  # Binary import? e.g. 300
+    T.dropoutppm: ("dropoutppm", Int16Parser, Int16Compiler),  # Dropout control PPEM
+    T.MeasurementLine: ("Measurement Line", SignedInt16Parser, SignedInt16Compiler),
     T.TrueTypeZoneDeltas: ("TrueType Zone Deltas", TrueTypeZoneDeltasParser, TrueTypeZoneDeltasCompiler),  # noqa: E501
 
     # Goes to font again:
@@ -246,7 +246,7 @@ parser_classes = {
     F.PCLTTable: ("PCLT Table", PcltParser, PcltCompiler),
     F.ExportPCLTTable: ("Export PCLT Table", Int16Parser, Int16Compiler),
     F.note: ("note", StringParser, StringCompiler),
-    F.E2030: ("2030", BaseParser, HexStringCompiler),
+    F.FontFlags: ("Font Flags", BaseParser, HexStringCompiler),  # FIXME
     F.customdata: ("customdata", StringParser, StringCompiler),
     F.MetricsClassFlags: ("OpenType Metrics Class Flags", OpenTypeMetricsClassFlagsParser, OpenTypeMetricsClassFlagsCompiler),  # noqa: E501
     F.KerningClassFlags: ("OpenType Kerning Class Flags", OpenTypeKerningClassFlagsParser, OpenTypeKerningClassFlagsCompiler),  # noqa: E501
@@ -260,8 +260,8 @@ parser_classes = {
     # Repeat for each OpenType class:
     F.GlyphClass: ("OpenType Class", StringParser, StringCompiler),  # Font.classes
 
-    F.E513: ("513", BaseParser, HexStringCompiler),
-    F.E271: ("271", BaseParser, HexStringCompiler),
+    F.BlockFontInfoEnd: ("Block Font Info End", BaseParser, HexStringCompiler),
+    F.BlockMMFontInfoStart: ("Block MM Font Info Start", BaseParser, HexStringCompiler),
     F.AxisCount: ("Axis Count", Int16Parser, Int16Compiler),
     # Repeat for each axis:
     F.AxisName: ("Axis Name", StringParser, StringCompiler),
@@ -280,7 +280,7 @@ parser_classes = {
     # Repeat PostScript Info for each master:
     M.PostScriptInfo: ("PostScript Info", PostScriptInfoParser, PostScriptInfoCompiler),
 
-    F.E527: ("527", BaseParser, HexStringCompiler),
+    F.BlockMMFontInfoEnd: ("Block MM Font Info End", BaseParser, HexStringCompiler),
     F.GlobalGuides: ("Global Guides", GlobalGuidesParser, GuidesCompiler),
     F.GlobalGuideProperties: ("Global Guide Properties", GuidePropertiesParser, GuidePropertiesCompiler),  # noqa: E501
     F.GlobalMask: ("Global Mask", GlobalMaskParser, GlobalMaskCompiler),
@@ -292,7 +292,7 @@ parser_classes = {
     G.Links: ("Links", LinkParser, LinksCompiler),
     G.image: ("image", BackgroundBitmapParser, BackgroundBitmapCompiler),
     G.Bitmaps: ("Glyph Bitmaps", GlyphBitmapsParser, GlyphBitmapsCompiler),
-    G.E2023: ("2023", EncodedValueListParser, EncodedValueListCompiler),  # 1 encoded value per master  # noqa: E501
+    G.VSB: ("VSB", EncodedValueListParser, EncodedValueListCompiler),  # 1 encoded value per master  # noqa: E501
     G.Sketch: ("Glyph Sketch", GlyphSketchParser, GlyphSketchCompiler),
     G.HintingOptions: ("Glyph Hinting Options", PostScriptGlyphHintingOptionsParser, PostScriptGlyphHintingOptionsCompiler),  # noqa: E501
     G.mask: ("mask", MaskParser, MaskCompiler),
@@ -300,7 +300,7 @@ parser_classes = {
     G.MaskMetricsMM: ("mask.metrics_mm", MaskMetricsMMParser, MaskMetricsMMCompiler),  # Mask metrics master 2 to 16  # noqa: E501
     G.Origin: ("Glyph Origin", GlyphOriginParser, GlyphOriginCompiler),
     G.unicodes: ("unicodes", GlyphUnicodeParser, GlyphUnicodesCompiler),  # Glyph Unicode  # noqa: E501
-    G.E2034: ("2034", StringParser, StringCompiler),
+    G.CustomDict: ("Custom Dict", StringParser, StringCompiler),
     G.UnicodesNonBMP: ("Glyph Unicode Non-BMP", GlyphUnicodeSuppParser, GlyphUnicodesSuppCompiler),  # noqa: E501
     G.mark: ("mark", Int16Parser, Int16Compiler),  # Mark Color
     G.customdata: ("glyph.customdata", StringParser, StringCompiler),
@@ -316,12 +316,12 @@ parser_classes = {
     F.MappingMode: ("Mapping Mode", MappingModeParser, MappingModeCompiler),
 
     # Not seen in FontNames.vfb:
-    F.E272: ("272", BaseParser, HexStringCompiler),
-    F.E1410: ("1410", FL3Type1410Parser, FL3Type1410Compiler),
-    F.E528: ("528", BaseParser, HexStringCompiler),
+    F.BlockMMKerningStart: ("Block MM Kerning Start", BaseParser, HexStringCompiler),
+    F.MMKernPair: ("MMKernPair", FL3Type1410Parser, FL3Type1410Compiler),
+    F.BlockMMKerningEnd: ("Block MM Kerning End", BaseParser, HexStringCompiler),
 
     # File end
-    F.EOF: ("EOF", None, None),
+    F.BlockFontEnd: ("Block Font End", BaseParser, HexStringCompiler),
 }
 # fmt: on
 
