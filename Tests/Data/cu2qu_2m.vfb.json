@@ -1,71 +1,39 @@
 {
   "header": {
     "decompiled": {
-      "header0": 26,
-      "filetype": "WLF10",
-      "header1": 3,
-      "chunk1": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        1,
-        0,
-        0,
-        0,
-        4,
-        0,
-        0,
-        0,
-        10,
-        0
-      ],
-      "creator": {
-        "1": 1,
-        "2": [
+      "signature": 1179408154,
+      "app_version": 49,
+      "file_version": 48,
+      "version_major": 3,
+      "version_minor": 0
+    }
+  },
+  "entries": [
+    {
+      "key": "Block File Data Start",
+      "decompiled": ""
+    },
+    {
+      "key": "Block Font Start",
+      "decompiled": ""
+    },
+    {
+      "key": "FL Version",
+      "decompiled": {
+        "platform": "macos",
+        "version": [
           5,
           2,
           2,
           128
         ],
-        "3": 0
-      },
-      "end0": 6,
-      "end1": 1,
-      "end2": 0
-    }
-  },
-  "entries": [
+        "owner": 0
+      }
+    },
+    {
+      "key": "Block Names Start",
+      "decompiled": ""
+    },
     {
       "key": "Encoding Default",
       "decompiled": [
@@ -3651,15 +3619,15 @@
       ]
     },
     {
-      "key": "1502",
+      "key": "MM Encoding Type",
       "decompiled": 42694
     },
     {
-      "key": "518",
+      "key": "Block Names End",
       "decompiled": ""
     },
     {
-      "key": "257",
+      "key": "Block Font Info Start",
       "decompiled": ""
     },
     {
@@ -3813,7 +3781,7 @@
       "decompiled": "TheSans MM773"
     },
     {
-      "key": "1140",
+      "key": "Sample Text",
       "decompiled": ""
     },
     {
@@ -3876,7 +3844,7 @@
       }
     },
     {
-      "key": "1068",
+      "key": "Collection",
       "decompiled": []
     },
     {
@@ -4332,11 +4300,11 @@
       "decompiled": 0
     },
     {
-      "key": "1604",
+      "key": "dropoutppm",
       "decompiled": 255
     },
     {
-      "key": "2032",
+      "key": "Measurement Line",
       "decompiled": 211
     },
     {
@@ -4387,7 +4355,7 @@
       "decompiled": "Italic\r\n10.78065° voor glijkbreedblijvende letters\r\n11° -48 98% ?H (ExtraLight aan R abgemeten in juni 1998)\r\n11° -40 98% ?H (Stond in dit document, wellicht Black?)\r\n\r\nSyntSmallCaps\r\nSC ExtraLight\r\nBlend Light & Black 10.3077% scale x 80.12% y 77.037%, LSB RSB + 29\r\nSC Black \r\nMM Wt 1041, scale x 80.12 y 77, LSB RSB + 27\r\n\r\n\r\n722 changes: /ampersand.sc/ampersand.alt6/ampersand.alt7/three.LinTab/three.lowTab/ampersand.mix/ampersand.sc.mix/eight.LinTab/eight.oldstyle/eight.OnumTab/eight.lowTab/zero.OnumTab/one.OnumTab/one.OnumTab.alt1/two.OnumTab/three.OnumTab/four.OnumTab/five.OnumTab/six.OnumTab/seven.OnumTab/nine.OnumTab/eight.nom\r\n723 changes:\r\n/two.OnumTab/three.OnumTab/nine.OnumTab/two.oldstyle\r\n\r\n773 Changes (Jens) monospace nut fraction Zahlen, mehr Bars und Nutso Feature code"
     },
     {
-      "key": "2030",
+      "key": "Font Flags",
       "decompiled": "01000000"
     },
     {
@@ -4395,11 +4363,11 @@
       "decompiled": {}
     },
     {
-      "key": "513",
+      "key": "Block Font Info End",
       "decompiled": ""
     },
     {
-      "key": "271",
+      "key": "Block MM Font Info Start",
       "decompiled": ""
     },
     {
@@ -5004,7 +4972,7 @@
       }
     },
     {
-      "key": "527",
+      "key": "Block MM Font Info End",
       "decompiled": ""
     },
     {
@@ -5643,7 +5611,7 @@
       }
     },
     {
-      "key": "2023",
+      "key": "VSB",
       "decompiled": [
         0,
         0
@@ -6554,7 +6522,7 @@
       }
     },
     {
-      "key": "2023",
+      "key": "VSB",
       "decompiled": [
         0,
         0
@@ -7109,7 +7077,7 @@
       }
     },
     {
-      "key": "2023",
+      "key": "VSB",
       "decompiled": [
         0,
         0
@@ -7321,6 +7289,14 @@
         "3": 78,
         "mapping_id": 42694
       }
+    },
+    {
+      "key": "Block Font End",
+      "decompiled": ""
+    },
+    {
+      "key": "Block File Data End",
+      "decompiled": ""
     }
   ]
 }
