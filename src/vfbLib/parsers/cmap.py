@@ -10,7 +10,7 @@ class CustomCmapParser(BaseParser):
     """
 
     def _parse(self) -> list[CustomCmap]:
-        count = self.read_value()  # number of cmap records, not values
+        count = self.read_value()
         values = []
         for _ in range(count):
             cmap = CustomCmap(
