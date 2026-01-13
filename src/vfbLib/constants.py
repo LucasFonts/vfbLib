@@ -49,7 +49,7 @@ from vfbLib.compilers.numeric import (
 )
 from vfbLib.compilers.options import (
     ExportOptionsCompiler,
-    OpenTypeExportOptionsCompiler,
+    FontOptionsCompiler,
 )
 from vfbLib.compilers.pclt import PcltCompiler
 from vfbLib.compilers.ps import (
@@ -122,7 +122,7 @@ from vfbLib.parsers.numeric import (
     SignedInt32Parser,
     UnicodeRangesParser,
 )
-from vfbLib.parsers.options import ExportOptionsParser, OpenTypeExportOptionsParser
+from vfbLib.parsers.options import ExportOptionsParser, FontOptionsParser
 from vfbLib.parsers.pclt import PcltParser
 from vfbLib.parsers.ps import (
     PostScriptGlobalHintingOptionsParser,
@@ -311,7 +311,7 @@ parser_classes = {
     G.GuideProperties: ("Glyph Guide Properties", GuidePropertiesParser, GuidePropertiesCompiler),  # noqa: E501
     # End: Repeat for each glyph
 
-    F.OpenTypeExportOptions: ("OpenType Export Options", OpenTypeExportOptionsParser, OpenTypeExportOptionsCompiler),  # noqa: E501
+    F.FontOptions: ("Font Options", FontOptionsParser, FontOptionsCompiler),  # noqa: E501
     F.ExportOptions: ("Export Options", ExportOptionsParser, ExportOptionsCompiler),
     F.MappingMode: ("Mapping Mode", MappingModeParser, MappingModeCompiler),
 

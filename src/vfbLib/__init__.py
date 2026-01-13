@@ -36,7 +36,24 @@ mapping_modes = {
     3: "codepages",
 }
 
-opentype_export_options = {
+font_options = {
+    1: "fit_ascender",
+    2: "fit_descender",
+    3: "auto_metrics_left",
+    4: "auto_metrics_right",
+    5: "auto_metrics_close",
+    6: "auto_hinting_min_h_len",
+    7: "auto_hinting_min_v_len",
+    8: "auto_hinting_min_h_width",
+    9: "auto_hinting_min_v_width",
+    10: "auto_hinting_max_h_width",
+    11: "auto_hinting_max_v_width",
+    12: "auto_hinting_h_ratio",
+    13: "auto_hinting_v_ratio",
+    14: "duplicate_place_x",
+    15: "paste_place_x",
+    114: "duplicate_place_y",
+    115: "paste_place_y",
     16: "opentype_name_records",
     #    0 - "append_opentype_records_to_default_names"
     #    1 - "do_not_export_opentype_name_records"
@@ -51,6 +68,7 @@ opentype_export_options = {
     #    ...
     #  153 - NeXT OS NextStep Multinational
     18: "dont_ignore_unicode_indexes",
+    19: "head_bbox_savings",
     20: "autohinting_options",
     #   bit  1 - 7: "single_link_attachment_precision"
     #   bit  8 - "generate_triple_hints"
@@ -66,7 +84,28 @@ opentype_export_options = {
     28: "export_embedded_bitmaps",
     29: "copy_hdmx_data_from_base_to_composite_glyph",
     30: "dont_automatically_reorder_glyphs",
+    31: "export_ot",
+    32: "export_volt",
+    33: "write_kern_feature",
+    34: "t1_terminal",
+    35: "t1_pfm",
+    36: "t1_afm",
+    37: "t1_autohint",
+    38: "t1_unicode",
+    39: "optimize_align",
+    40: "optimize_reduce",
+    41: "t1_encoding",
+    42: "ot_write_gdef",
+    43: "t1_use_os2",
+    44: "subrize",
+    45: "t1_sort",
     46: "export_kern_table",
+    47: "t1_fs_type",
+    48: "expand_kern_flags",
+    49: "expand_kern_codepage",
+    50: "expand_kern_count",
+    51: "decompose",
+    # 100: "end",
 }
 
 ttinfo_names = {

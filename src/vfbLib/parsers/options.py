@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import logging
 
-from vfbLib import export_options, opentype_export_options
+from vfbLib import export_options, font_options
 from vfbLib.helpers import binaryToIntList
 from vfbLib.parsers.base import BaseParser, EncodedKeyValuesParser
 
@@ -21,11 +21,11 @@ class ExportOptionsParser(BaseParser):
         return options
 
 
-class OpenTypeExportOptionsParser(EncodedKeyValuesParser):
+class FontOptionsParser(EncodedKeyValuesParser):
     def _parse(self) -> list[dict[str | int, str]]:
         final = []
         for d in super()._parse():
             assert len(d) == 1
             k, v = tuple(d.items())[0]
-            final.append({opentype_export_options.get(k, k): v})
+            final.append({font_options.get(k, k): v})
         return final

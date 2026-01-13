@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from vfbLib import export_options, opentype_export_options
+from vfbLib import export_options, font_options
 from vfbLib.compilers.base import BaseCompiler
 from vfbLib.helpers import intListToBinary
 
@@ -12,9 +12,9 @@ class ExportOptionsCompiler(BaseCompiler):
         self.write_uint16(intListToBinary(options))
 
 
-class OpenTypeExportOptionsCompiler(BaseCompiler):
+class FontOptionsCompiler(BaseCompiler):
     def _compile(self, data: list[dict[str, int]]) -> None:
-        rev = {v: k for k, v in opentype_export_options.items()}
+        rev = {v: k for k, v in font_options.items()}
         for opt in data:
             raw_key, v = tuple(opt.items())[0]
             if raw_key in rev:

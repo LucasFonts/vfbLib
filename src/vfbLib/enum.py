@@ -98,7 +98,7 @@ class F(IntEnum):
     GlobalGuideProperties = 1296
     GlobalMask = 1295
     default_character = 1066
-    OpenTypeExportOptions = 1743
+    FontOptions = 1743
     ExportOptions = 1744
     MappingMode = 1742
     # FIXME: Block end?
