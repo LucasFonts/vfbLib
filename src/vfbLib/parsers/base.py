@@ -269,16 +269,14 @@ class EncodedKeyValuesParser(BaseParser):
         Returns:
             list[dict[int, int]]: The list of key-value dictionaries.
         """
-        values = []
+        values: list[dict[int, int]] = []
         while True:
             key = self.read_uint8()
             if key == self.__end__:
-                break
+                return values
 
             val = self.read_value()
             values.append({key: val})
-
-        return values
 
 
 class MappingModeParser(BaseParser):
