@@ -3431,8 +3431,9 @@
     {
       "key": "mask",
       "decompiled": {
-        "num": 1,
-        "reserved0": 100000000,
+        "weight_vector": [
+          1.0
+        ],
         "num_masters": 1,
         "nodes": []
       }
@@ -3779,8 +3780,9 @@
     {
       "key": "mask",
       "decompiled": {
-        "num": 1,
-        "reserved0": 100000000,
+        "weight_vector": [
+          1.0
+        ],
         "num_masters": 1,
         "nodes": []
       }

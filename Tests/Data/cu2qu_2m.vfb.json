@@ -5632,9 +5632,10 @@
     {
       "key": "mask",
       "decompiled": {
-        "num": 2,
-        "reserved0": 100000000,
-        "reserved1": 0,
+        "weight_vector": [
+          1.0,
+          0.0
+        ],
         "num_masters": 2,
         "nodes": [
           {
@@ -6545,9 +6546,10 @@
     {
       "key": "mask",
       "decompiled": {
-        "num": 2,
-        "reserved0": 100000000,
-        "reserved1": 0,
+        "weight_vector": [
+          1.0,
+          0.0
+        ],
         "num_masters": 2,
         "nodes": [
           {
@@ -7111,171 +7113,78 @@
       "decompiled": 130
     },
     {
-      "key": "OpenType Export Options",
-      "decompiled": [
-        {
-          "1": 1000
+      "key": "Font Options",
+      "decompiled": {
+        "fit_ascender": 1000,
+        "fit_descender": -400,
+        "auto_metrics_left": 30,
+        "auto_metrics_right": 30,
+        "auto_metrics_close": 10,
+        "auto_hinting_min_h_len": 60,
+        "auto_hinting_min_v_len": 60,
+        "auto_hinting_min_h_width": 20,
+        "auto_hinting_min_v_width": 20,
+        "auto_hinting_max_h_width": 250,
+        "auto_hinting_max_v_width": 250,
+        "auto_hinting_h_ratio": 0.0002,
+        "auto_hinting_v_ratio": 0.0002,
+        "duplicate_place_x": 100,
+        "duplicate_place_y": 100,
+        "paste_place_x": 0,
+        "paste_place_y": 0,
+        "opentype_name_records": 0,
+        "codepage_for_cmap_1_0": 0,
+        "dont_ignore_unicode_indexes": 1,
+        "head_bbox_savings": 64,
+        "autohinting_options": {
+          "single_link_attachment_precision": 7,
+          "generate_triple_hints": 0,
+          "generate_delta_instructions": 0,
+          "direct_links_to_center_of_the_glyph_where_possible": 0,
+          "interpolate_positions_of_cusp_points": 0,
+          "interpolate_positions_of_double_links": 0,
+          "add_link_to_rsb": 0
         },
-        {
-          "2": -400
+        "export_hinted_truetype_font": 1,
+        "autohint_unhinted_glyphs": 0,
+        "keep_existing_truetype_instructions": 1,
+        "export_visual_truetype_hints": 1,
+        "apply_bbox_savings": 1,
+        "auto_win_asc_desc": 0,
+        "add_characters": 0,
+        "export_embedded_bitmaps": 0,
+        "copy_hdmx_data_from_base_to_composite_glyph": 1,
+        "dont_automatically_reorder_glyphs": 0,
+        "subrize": 1,
+        "decompose": 0,
+        "export_ot": 1,
+        "export_volt": 0,
+        "write_kern_feature": 0,
+        "ot_write_gdef": 1,
+        "t1_terminal": 0,
+        "t1_pfm": 1,
+        "t1_afm": 0,
+        "t1_fs_type": 0,
+        "t1_autohint": 1,
+        "t1_unicode": 1,
+        "optimize_align": 2,
+        "optimize_reduce": 2,
+        "t1_encoding": 2,
+        "t1_use_os2": 1,
+        "t1_sort": 1,
+        "export_kern_table": 1,
+        "expand_kern_flags": {
+          "limit_action": 0,
+          "limit_codepage": 1,
+          "limit_cmap_10": 1,
+          "limit_font_window": 0,
+          "limit_count": 0,
+          "limit_keep": 0,
+          "apply_to_assistance": 0
         },
-        {
-          "3": 30
-        },
-        {
-          "4": 30
-        },
-        {
-          "5": 10
-        },
-        {
-          "6": 60
-        },
-        {
-          "7": 60
-        },
-        {
-          "8": 20
-        },
-        {
-          "9": 20
-        },
-        {
-          "10": 250
-        },
-        {
-          "11": 250
-        },
-        {
-          "12": 2
-        },
-        {
-          "13": 2
-        },
-        {
-          "14": 100
-        },
-        {
-          "114": 100
-        },
-        {
-          "15": 0
-        },
-        {
-          "115": 0
-        },
-        {
-          "opentype_name_records": 0
-        },
-        {
-          "codepage_for_cmap_1_0": 0
-        },
-        {
-          "dont_ignore_unicode_indexes": 1
-        },
-        {
-          "19": 64
-        },
-        {
-          "autohinting_options": 7
-        },
-        {
-          "export_hinted_truetype_font": 1
-        },
-        {
-          "autohint_unhinted_glyphs": 0
-        },
-        {
-          "keep_existing_truetype_instructions": 1
-        },
-        {
-          "export_visual_truetype_hints": 1
-        },
-        {
-          "25": 1
-        },
-        {
-          "26": 0
-        },
-        {
-          "27": 0
-        },
-        {
-          "export_embedded_bitmaps": 0
-        },
-        {
-          "copy_hdmx_data_from_base_to_composite_glyph": 1
-        },
-        {
-          "dont_automatically_reorder_glyphs": 0
-        },
-        {
-          "44": 1
-        },
-        {
-          "51": 0
-        },
-        {
-          "31": 1
-        },
-        {
-          "32": 0
-        },
-        {
-          "33": 0
-        },
-        {
-          "42": 1
-        },
-        {
-          "34": 0
-        },
-        {
-          "35": 1
-        },
-        {
-          "36": 0
-        },
-        {
-          "47": 0
-        },
-        {
-          "37": 1
-        },
-        {
-          "38": 1
-        },
-        {
-          "39": 2
-        },
-        {
-          "40": 2
-        },
-        {
-          "41": 2
-        },
-        {
-          "43": 1
-        },
-        {
-          "45": 1
-        },
-        {
-          "export_kern_table": 1
-        },
-        {
-          "38": 1
-        },
-        {
-          "48": 6
-        },
-        {
-          "50": 2048
-        },
-        {
-          "49": -1
-        }
-      ]
+        "expand_kern_count": 2048,
+        "expand_kern_codepage": -1
+      }
     },
     {
       "key": "Export Options",

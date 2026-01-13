@@ -4320,11 +4320,12 @@
     {
       "key": "mask",
       "decompiled": {
-        "num": 4,
-        "reserved0": 100000000,
-        "reserved1": 0,
-        "reserved2": 0,
-        "reserved3": 0,
+        "weight_vector": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
         "num_masters": 4,
         "nodes": [
           {
