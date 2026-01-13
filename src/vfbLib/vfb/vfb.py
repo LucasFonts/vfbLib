@@ -63,6 +63,7 @@ class Vfb:
         self.num_masters: int = 0
         self.ttStemsV_count: int = 0
         self.ttStemsH_count: int = 0
+        self.platform: str = "macos"
 
         self.ps_hinting_options: VfbEntry | None = None
 
@@ -214,7 +215,12 @@ class Vfb:
             # of entries right here.
 
             if entry is not None:
-                if entry.key == "Master Count":
+                if entry.key == "FL Version":
+                    entry.decompile()
+                    if entry.data is not None:
+                        self.writer_platform = entry.data["platform"]
+
+                elif entry.key == "Master Count":
                     entry.decompile()
                     if entry.data is not None:
                         if TYPE_CHECKING:
