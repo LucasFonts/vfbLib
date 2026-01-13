@@ -58,7 +58,7 @@ class CustomCmap(TypedDict):
     encoding_id: int
     format: int
     option: int
-    records: list[int]
+    page_name: str
 
 
 EntryDecompiled = dict[str, Any] | int | list[Any] | str | tuple[int, str] | None
