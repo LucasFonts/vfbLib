@@ -501,8 +501,9 @@ class MaskMetricsParser(BaseParser):
 class MaskMetricsMMParser(BaseParser):
     # advance width/height for master 1 to 15
     def _parse(self) -> list[tuple[int, int]]:
+        assert self.vfb is not None
         values = []
-        for _ in range(self.master_count - 1):
+        for _ in range(self.vfb.num_masters - 1):
             x = self.read_value()
             y = self.read_value()
             values.append((x, y))

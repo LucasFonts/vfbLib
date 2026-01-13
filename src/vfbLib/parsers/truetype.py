@@ -205,7 +205,7 @@ class TrueTypeStemPpems1Parser(BaseParser):
         result = TTStemsDict(ttStemsV=[], ttStemsH=[])
         for i in range(2):
             direction = []
-            num_stems = (self.ttStemsV_count, self.ttStemsH_count)[i]
+            num_stems = (self.vfb.ttStemsV_count, self.vfb.ttStemsH_count)[i]
             if num_stems is None:
                 raise ValueError
 

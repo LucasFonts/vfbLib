@@ -226,13 +226,7 @@ class VfbEntry(StreamReader):
         byte_data = self.data
 
         try:
-            self.data = self.parser().parse(
-                BytesIO(byte_data),
-                size=self.size,
-                master_count=self.vfb.num_masters,
-                ttStemsV_count=self.vfb.ttStemsV_count,
-                ttStemsH_count=self.vfb.ttStemsH_count,
-            )
+            self.data = self.parser().parse(BytesIO(byte_data), self.size, self.vfb)
         except:  # noqa: E722
             logger.error(f"Parse error for data: {self.key}; {hexStr(byte_data)}")
             logger.error(f"Parser class: {self.parser.__name__}")

@@ -42,8 +42,8 @@ def parse_guides(stream: BytesIO, num_masters: int, name: str) -> MMGuidesDict:
 
 class GlobalGuidesParser(BaseParser):
     def _parse(self) -> MMGuidesDict:
-        assert self.master_count is not None
-        guides = parse_guides(self.stream, self.master_count, "global")
+        assert self.vfb is not None
+        guides = parse_guides(self.stream, self.vfb.num_masters, "global")
         assert self.stream.read() == b""
         return guides
 

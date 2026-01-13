@@ -20,6 +20,7 @@ if TYPE_CHECKING:
     from io import BufferedReader
 
     from vfbLib.typing import KerningClassFlagDict, MetricsClassFlagDict
+    from vfbLib.vfb.vfb import Vfb
 
 
 logger = logging.getLogger(__name__)
@@ -181,19 +182,9 @@ class BaseParser(StreamReader):
 
     def __init__(self) -> None:
         self.encoding = "cp1252"
-        self.master_count: int = 0
         self.stream: BytesIO = BytesIO()
-        self.ttStemsV_count: int | None = None
-        self.ttStemsH_count: int | None = None
 
-    def parse(
-        self,
-        stream: BytesIO,
-        size: int,
-        master_count: int = 0,
-        ttStemsV_count: int | None = None,
-        ttStemsH_count: int | None = None,
-    ) -> Any:
+    def parse(self, stream: BytesIO, size: int, vfb: Vfb | None) -> Any:
         """
         Prepare the parsing of the stream, then call the specialized parser and return
         the decompiled VFB entry structure.
@@ -205,14 +196,7 @@ class BaseParser(StreamReader):
             stream (BytesIO): The stream to read from.
             size (int): The number of bytes that will be read from the input stream and
                 parsed.
-            master_count (int, optional): The number of masters in the font. This is
-                needed for some multiple-master-enabled VFB parsers. Defaults to 0.
-            ttStemsV_count (int | None, optional): The number of TrueType hinting stems
-                in the vertical hint direction, This is needed for some
-                TrueType-hinting-related parsers. Defaults to None.
-            ttStemsH_count (int | None, optional): The number of TrueType hinting stems
-                in the horizontal hint direction, This is needed for some
-                TrueType-hinting-related parsers. Defaults to None.
+            vfb (int, optional): The Vfb that is calling the parser.
 
         Raises:
             AssertionError: If bytes remain in the stream after the parsing finished.
@@ -222,11 +206,9 @@ class BaseParser(StreamReader):
             being parsed.
         """
         self.stream = BytesIO(stream.read(size))  # type: ignore
-        self.master_count = master_count
-        self.ttStemsV_count = ttStemsV_count
-        self.ttStemsH_count = ttStemsH_count
-
+        self.vfb = vfb
         decompiled = self._parse()
+        del self.vfb
 
         # Make sure the parser consumed all of the data
         remainder = self.stream.read()
