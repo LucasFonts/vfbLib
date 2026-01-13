@@ -12,7 +12,7 @@ from vfbLib.compilers.base import (
 from vfbLib.compilers.binary import BinaryTableCompiler
 from vfbLib.compilers.bitmap import BackgroundBitmapCompiler, GlyphBitmapsCompiler
 from vfbLib.compilers.cmap import CustomCmapCompiler
-from vfbLib.compilers.fl3 import FL3Type1410Compiler
+from vfbLib.compilers.fl3 import MMKernPairCompiler
 from vfbLib.compilers.flversion import FLVersionCompiler
 from vfbLib.compilers.glyph import (
     GlobalMaskCompiler,
@@ -87,7 +87,7 @@ from vfbLib.parsers.base import (
 from vfbLib.parsers.binary import BinaryTableParser
 from vfbLib.parsers.bitmap import BackgroundBitmapParser, GlyphBitmapsParser
 from vfbLib.parsers.cmap import CustomCmapParser
-from vfbLib.parsers.fl3 import FL3Type1410Parser
+from vfbLib.parsers.fl3 import MMKernPairParser
 from vfbLib.parsers.flversion import FLVersionParser
 from vfbLib.parsers.glyph import (
     GlobalMaskParser,
@@ -317,7 +317,7 @@ parser_classes = {
 
     # Not seen in FontNames.vfb:
     F.BlockMMKerningStart: ("Block MM Kerning Start", BaseParser, HexStringCompiler),
-    F.MMKernPair: ("MMKernPair", FL3Type1410Parser, FL3Type1410Compiler),
+    F.MMKernPair: ("MMKernPair", MMKernPairParser, MMKernPairCompiler),
     F.BlockMMKerningEnd: ("Block MM Kerning End", BaseParser, HexStringCompiler),
 
     # File end

@@ -8,7 +8,8 @@ from typing import TYPE_CHECKING
 
 from vfbLib.compilers.base import BaseCompiler
 from vfbLib.constants import parser_classes
-from vfbLib.helpers import hexStr
+from vfbLib.enum import F
+from vfbLib.helpers import hexStr, int32_size
 from vfbLib.parsers.base import BaseParser, StreamReader
 from vfbLib.typing import EntryDict
 
@@ -263,10 +264,11 @@ class VfbEntry(StreamReader):
         """
         self.stream = stream
         size = self._read_entry()
-        if self.key == "1410":
-            # FIXME: Special FL3 stuff?
-            if size != 4:
-                logger.warning(f"Entry 1410 with size {size}")
-            self.data = self.stream.read(10)
-        else:
-            self.data = self.stream.read(size)
+
+        # Special cases, probably remnants from FL3
+        if self.id == F.MMKernPair:
+            # We can't trust the size given in the "length" value of the entry.
+            # In this case it can be calculated from the number of masters:
+            size = 2 * int32_size + self.vfb.num_masters * 2
+
+        self.data = self.stream.read(size)
