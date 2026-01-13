@@ -109,6 +109,7 @@ font_options = {
 }
 
 ttinfo_names = {
+    # 0x32: "end",
     0x33: "max_zones",
     0x34: "max_twilight_points",
     0x35: "max_storage",
@@ -148,6 +149,10 @@ ttinfo_names = {
     0x58: "Hdmx PPMs 2",
     # os2_ul_code_page_range1, os2_ul_code_page_range2:
     0x54: "Codepages",
+    # Position unknown:
+    0x59: "hhea_line_gap",
+    0x5A: "hhea_ascender",
+    0x5B: "hhea_descender",
 }
 
 tt_settings = {
