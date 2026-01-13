@@ -45,6 +45,10 @@ class BaseBitmapParser(BaseParser):
                 data.extend([i] * n)
                 bytes_remaining -= 1
 
+        # For the "windows" platform, the bitmap must be inverted.
+        if self.vfb is not None and self.vfb.writer_platform == "windows":
+            data = [~b + 0x100 for b in data]
+
         bitmap["data"] = data
         if preview:
             rows = self._get_preview(data, w, h, bytes_per_row)
