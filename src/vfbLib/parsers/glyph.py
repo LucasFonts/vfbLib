@@ -462,10 +462,11 @@ class LinkParser(BaseParser):
 
 class MaskParser(GlyphParser):
     def _parse(self) -> dict[str, Any]:
-        num = self.read_value()
-        maskdata = MaskData(num=num)
-        for i in range(num):
-            maskdata[f"reserved{i}"] = self.read_value()
+        num_values = self.read_value()
+        weight_vector = []
+        for _ in range(num_values):
+            weight_vector.append(self.read_value() / 100_000_000)
+        maskdata = MaskData(weight_vector=weight_vector)
 
         # From here, the mask is equal to the outlines
         self.parse_outlines(maskdata)

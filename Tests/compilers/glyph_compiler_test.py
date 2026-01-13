@@ -590,9 +590,7 @@ class LinksCompilerTest(TestCase):
 
 
 raw_mask_mm = {
-    "num": 2,
-    "reserved0": 100000000,
-    "reserved1": 0,
+    "weight_vector": [1.0, 0.0],
     "num_masters": 2,
     "nodes": [
         {"type": "move", "flags": 0, "points": [[[419, 0]], [[459, 0]]]},
@@ -708,8 +706,7 @@ bin_mask_mm = (
 )
 
 raw_mask_1m = {
-    "num": 1,
-    "reserved0": 100000000,
+    "weight_vector": [1.0],
     "num_masters": 1,
     "nodes": [
         {"type": "move", "flags": 0, "points": [[[32, 0]]]},

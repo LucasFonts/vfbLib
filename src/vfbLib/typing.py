@@ -250,8 +250,7 @@ class GlyphData(TypedDict):
 
 
 class MaskData(GlyphData):
-    num: int
-    reserved0: NotRequired[int]
+    weight_vector: list[float]
 
 
 class VdmxRecDict(TypedDict):

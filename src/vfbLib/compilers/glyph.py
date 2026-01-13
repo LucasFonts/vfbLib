@@ -387,9 +387,12 @@ class LinksCompiler(BaseCompiler):
 class MaskCompiler(GlyphCompiler):
     def _compile(self, data: MaskData) -> None:
         self.master_count = data["num_masters"]
-        self.write_value(data["num"])
-        for i in range(data["num"]):
-            self.write_value(data[f"reserved{i}"])
+        weight_vector = data["weight_vector"]
+        assert len(weight_vector) == self.master_count
+
+        self.write_value(self.master_count)
+        for value in weight_vector:
+            self.write_value(round(value * 100_000_000))
         self.compile_outlines(data, write_key=False)
 
 
