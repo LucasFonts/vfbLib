@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from collections.abc import Sequence
+from enum import IntEnum
 from typing import Literal
 
 # Used by guides and links
@@ -48,12 +49,10 @@ font_options = {
     9: "auto_hinting_min_v_width",
     10: "auto_hinting_max_h_width",
     11: "auto_hinting_max_v_width",
-    12: "auto_hinting_h_ratio",
-    13: "auto_hinting_v_ratio",
+    12: "auto_hinting_h_ratio",  # when reading, divide by 10000
+    13: "auto_hinting_v_ratio",  # when reading, divide by 10000
     14: "duplicate_place_x",
     15: "paste_place_x",
-    114: "duplicate_place_y",
-    115: "paste_place_y",
     16: "opentype_name_records",
     #    0 - "append_opentype_records_to_default_names"
     #    1 - "do_not_export_opentype_name_records"
@@ -69,18 +68,14 @@ font_options = {
     #  153 - NeXT OS NextStep Multinational
     18: "dont_ignore_unicode_indexes",
     19: "head_bbox_savings",
-    20: "autohinting_options",
-    #   bit  1 - 7: "single_link_attachment_precision"
-    #   bit  8 - "generate_triple_hints"
-    #   bit  9 - "generate_delta_instructions"
-    #   bit 10 - "direct_links_to_center_of_the_glyph_where_possible"
-    #   bit 11 - "interpolate_positions_of_cusp_points"
-    #   bit 12 - "interpolate_positions_of_double_links"
-    #   bit 14 - "add_link_to_rsb"
+    20: "autohinting_options",  # Bit field, see below
     21: "export_hinted_truetype_font",
     22: "autohint_unhinted_glyphs",
     23: "keep_existing_truetype_instructions",
     24: "export_visual_truetype_hints",
+    25: "apply_bbox_savings",
+    26: "auto_win_asc_desc",
+    27: "add_characters",
     28: "export_embedded_bitmaps",
     29: "copy_hdmx_data_from_base_to_composite_glyph",
     30: "dont_automatically_reorder_glyphs",
@@ -101,12 +96,35 @@ font_options = {
     45: "t1_sort",
     46: "export_kern_table",
     47: "t1_fs_type",
-    48: "expand_kern_flags",
+    48: "expand_kern_flags",  # Bit field, see below
     49: "expand_kern_codepage",
     50: "expand_kern_count",
     51: "decompose",
     # 100: "end",
+    114: "duplicate_place_y",
+    115: "paste_place_y",
 }
+
+
+class TTAutoHintOptions(IntEnum):
+    single_link_attachment_precision = 0x7
+    generate_triple_hints = 0x100
+    generate_delta_instructions = 0x200
+    direct_links_to_center_of_the_glyph_where_possible = 0x400
+    interpolate_positions_of_cusp_points = 0x800
+    interpolate_positions_of_double_links = 0x1000
+    add_link_to_rsb = 0x2000
+
+
+class ExpandKernOptions(IntEnum):
+    limit_action = 0x1
+    limit_codepage = 0x2
+    limit_cmap_10 = 0x4
+    limit_font_window = 0x8
+    limit_count = 0x10
+    limit_keep = 0x20
+    apply_to_assistance = 0x1000
+
 
 ttinfo_names = {
     # 0x32: "end",

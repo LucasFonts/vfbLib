@@ -261,7 +261,7 @@ class BaseParser(StreamReader):
 class EncodedKeyValuesParser(BaseParser):
     __end__ = 0x64
 
-    def _parse(self) -> list[dict[int, int]]:
+    def _parse(self) -> Any:
         """
         Parse and return the entry as a list of key-value-dictionaries. Both keys and
         values in the dictionary are integers.
