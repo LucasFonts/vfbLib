@@ -84,7 +84,7 @@ class BackgroundBitmapParser(BaseBitmapParser):
             origin=(0, 0),
             size_units=(0, 0),
             size_pixels=(0, 0),
-            bitmap=BitmapDataDict(flag=0, data=[]),
+            bitmap=BitmapDataDict(data=[]),
         )
         bitmap["origin"] = (self.read_value(), self.read_value())
         bitmap["size_units"] = (
@@ -95,7 +95,6 @@ class BackgroundBitmapParser(BaseBitmapParser):
         h = self.read_value(signed=False)
         bitmap["size_pixels"] = (w, h)
         datalen = self.read_value(signed=False)
-        # bitmap["len"] = datalen
         bitmap["bitmap"] = self._parse_bitmap_data(w, h, datalen)
         return bitmap
 

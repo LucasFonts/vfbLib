@@ -63,7 +63,7 @@ class Vfb:
         self.num_masters: int = 0
         self.ttStemsV_count: int = 0
         self.ttStemsH_count: int = 0
-        self.platform: str = "macos"
+        self.writer_platform: str = "macos"
 
         self.ps_hinting_options: VfbEntry | None = None
 
