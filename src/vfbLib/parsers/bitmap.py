@@ -17,49 +17,65 @@ class BaseBitmapParser(BaseParser):
         origin_top: bool = False,
         preview: bool = True,
     ) -> BitmapDataDict:
-        bitmap = BitmapDataDict(flag=0, data=[])
-        pos = 0
-        end_of_data = False
-        bitmap["flag"] = self.read_uint8()
-        pos += 1
-        rows = []
+        bitmap = BitmapDataDict(data=[])
         data = []
-        values_per_row = (w + 16) // 16 * 2
-        for _ in range(h):
-            row = []
-            for _ in range(values_per_row):
-                i = self.read_uint8()
-                pos += 1
-                data.append(i)
-                row.append(i)
-                if pos >= datalen:
-                    end_of_data = True
-                    num_values = len(row)
-                    if num_values < values_per_row:
-                        # Row is too short, add zeroes
-                        row.extend([0] * (values_per_row - num_values))
+        bytes_per_row = ((w + 15) // 16) * 2
+        bytes_remaining = datalen
+        while bytes_remaining > 0:
+            bytes_remaining -= 1
+            # The next value specifies how many bytes to read and how to repeat them
+            v = self.read_int8()
+            if v >= 0:
+                # The next n bytes are actually stored in the data
+                n = v + 1
+                if n > bytes_remaining:
                     break
 
-            rows.append(
-                "".join([f"{r:08b}".replace("0", " ▕").replace("1", "█▉") for r in row])
-            )
-            if end_of_data:
-                num_rows = len(rows)
-                if num_rows < h:
-                    # Height is too short, add empty rows
-                    empty_row = " ▕" * values_per_row * 8
-                    for _ in range(h - num_rows):
-                        rows.append(empty_row)
-                break
+                for _ in range(n):
+                    i = self.read_uint8()
+                    data.append(i)
+                bytes_remaining -= n
+            else:
+                # The next n bytes are identical, read only one byte and repeat it
+                n = -v + 1
+                if bytes_remaining < 1:
+                    break
+
+                i = self.read_uint8()
+                data.extend([i] * n)
+                bytes_remaining -= 1
+
         bitmap["data"] = data
         if preview:
+            rows = self._get_preview(data, w, h, bytes_per_row)
             if origin_top:
                 bitmap["preview"] = [r for r in reversed(rows)]
             else:
                 bitmap["preview"] = rows
-            # for row in rows:
-            #     print(row)
         return bitmap
+
+    def _get_preview(self, data, w: int, h: int, bytes_per_row: int) -> list[str]:
+        # Add a block graphics bitmap preview to the decompiled data:
+        rows = []
+        pos = 0
+        size = bytes_per_row * h
+        for _ in range(h):
+            row = []
+            for _ in range(bytes_per_row):
+                if pos >= size:
+                    break
+
+                row.append(data[pos])
+                pos += 1
+
+            preview_row = "".join(
+                [f"{r:08b}".replace("0", " ▕").replace("1", "█▉") for r in row]
+            )
+            # Shorten row to the specified number of columns w
+            preview_row = preview_row[: w * 2]
+
+            rows.append(preview_row)
+        return rows
 
 
 class BackgroundBitmapParser(BaseBitmapParser):
@@ -94,7 +110,7 @@ class GlyphBitmapsParser(BaseBitmapParser):
                 origin=(0, 0),
                 adv=(0, 0),
                 size_pixels=(0, 0),
-                bitmap=BitmapDataDict(flag=0, data=[]),
+                bitmap=BitmapDataDict(data=[]),
             )
             bitmap["ppm"] = self.read_value(signed=False)
             bitmap["origin"] = (self.read_value(), self.read_value())
@@ -106,7 +122,6 @@ class GlyphBitmapsParser(BaseBitmapParser):
             h = self.read_value(signed=False)
             bitmap["size_pixels"] = (w, h)
             datalen = self.read_value()
-            # bitmap["len"] = datalen
             bitmap["bitmap"] = self._parse_bitmap_data(w, h, datalen)
             bitmaps.append(bitmap)
         return bitmaps

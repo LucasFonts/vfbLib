@@ -25,7 +25,6 @@ MetricsClassFlagDict = dict[str, tuple[int, int, int]]
 
 
 class BitmapDataDict(TypedDict):
-    flag: int
     data: list[int]
     preview: NotRequired[list[str]]
 
