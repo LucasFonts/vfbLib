@@ -149,68 +149,72 @@ class GlyphParser(BaseParser):
         while True:
             key = self.read_uint8()
 
-            if key == 0x28:
-                break
+            match key:
+                case 0x28:
+                    # End
+                    break
 
-            elif key == 0x29:
-                # Metrics
-                imported["width"] = self.read_value(signed=False)
-                imported["lsb"] = self.read_value()
-                imported["unknown1"] = self.read_value()
-                imported["unknown2"] = self.read_value()
-                imported["unknown3"] = self.read_value()
-                imported["bbox"] = [self.read_value() for _ in range(4)]
+                case 0x29:
+                    # Metrics
+                    imported["width"] = self.read_value(signed=False)
+                    imported["lsb"] = self.read_value()
+                    imported["unknown1"] = self.read_value()
+                    imported["unknown2"] = self.read_value()
+                    imported["unknown3"] = self.read_value()
+                    imported["bbox"] = [self.read_value() for _ in range(4)]
 
-            elif key == 0x2A:
-                # Outlines
-                num_contours = self.read_value()  # -1 for composite
-                imported["num_contours"] = num_contours
-                imported["endpoints"] = [
-                    self.read_value(signed=False) for _ in range(num_contours)
-                ]
-                num_nodes = self.read_value(signed=False)
-                nodes = []
-                x = 0
-                y = 0
-                for _ in range(num_nodes):
-                    x += self.read_value()
-                    y += self.read_value()
-                    flags = self.read_uint8()
-                    # flags = byte >> 4
-                    # cmd = byte & 0x0F
-                    # bin_flags = f"{flags:08b}"
-                    node = {
-                        "flags": flags,
-                        "on": int(bool(flags & 1)),
-                        # "x_short": int(bool(flags & 2)),
-                        # "y_short": int(bool(flags & 4)),
-                        # "repeat_flag": int(bool(flags & 8)),
-                        # "x_same": int(bool(flags & 16)),
-                        # "y_same": int(bool(flags & 32)),
-                        # "overlap": int(bool(flags & 64)),
-                        "point": (x, y),
-                    }
-                    nodes.append(node)
-                if nodes:
-                    imported["nodes"] = nodes
+                case 0x2A:
+                    # Outlines
+                    num_contours = self.read_value()  # -1 for composite
+                    imported["num_contours"] = num_contours
+                    imported["endpoints"] = [
+                        self.read_value(signed=False) for _ in range(num_contours)
+                    ]
+                    num_nodes = self.read_value(signed=False)
+                    nodes = []
+                    x = 0
+                    y = 0
+                    for _ in range(num_nodes):
+                        x += self.read_value()
+                        y += self.read_value()
+                        flags = self.read_uint8()
+                        # flags = byte >> 4
+                        # cmd = byte & 0x0F
+                        # bin_flags = f"{flags:08b}"
+                        node = {
+                            "flags": flags,
+                            "on": int(bool(flags & 1)),
+                            # "x_short": int(bool(flags & 2)),
+                            # "y_short": int(bool(flags & 4)),
+                            # "repeat_flag": int(bool(flags & 8)),
+                            # "x_same": int(bool(flags & 16)),
+                            # "y_same": int(bool(flags & 32)),
+                            # "overlap": int(bool(flags & 64)),
+                            "point": (x, y),
+                        }
+                        nodes.append(node)
+                    if nodes:
+                        imported["nodes"] = nodes
 
-            elif key == 0x2B:
-                # Instructions
-                num_bytes = self.read_value(signed=False)
-                instructions = self.stream.read(num_bytes)
-                p = Program()
-                p.fromBytecode(instructions)
-                imported["instructions"] = p.getAssembly()
+                case 0x2B:
+                    # Instructions
+                    num_bytes = self.read_value(signed=False)
+                    instructions = self.stream.read(num_bytes)
+                    p = Program()
+                    p.fromBytecode(instructions)
+                    imported["instructions"] = p.getAssembly()
 
-            elif key == 0x2C:
-                # Probably HDMX data
-                num = self.read_value()
-                imported["hdmx"] = [self.read_uint8() for _ in range(num)]
+                case 0x2C:
+                    # HDMX data
+                    num = self.read_value()
+                    imported["hdmx"] = [self.read_uint8() for _ in range(num)]
 
-            else:
-                logger.error(imported)
-                logger.error(f"Unknown key in imported binary glyph data: {hex(key)}")
-                raise ValueError
+                case _:
+                    logger.error(imported)
+                    logger.error(
+                        f"Unknown key in imported binary glyph data: {hex(key)}"
+                    )
+                    raise ValueError
 
         self.glyphdata["imported"] = imported
 
@@ -363,60 +367,62 @@ class GlyphParser(BaseParser):
         self.glyphdata = GlyphData()
         start = unpack("<4B", self.stream.read(4))
         if start != (1, 9, 7, 1):
-            logger.warning(
-                f"Unexpected glyph constant: {start}, please notify developer"
-            )
-        # glyphdata["constants"] = start
+            logger.warning(f"Unexpected glyph constant: {start}")
         while True:
             # Read a value to decide what kind of information follows
             v = self.read_uint8()
 
-            if v == 0x01:
-                # Glyph name
-                glyph_name = self.read_str_with_len()
-                self.glyphdata["name"] = glyph_name
-                self.name = self.glyphdata["name"]
+            match v:
+                case 0x01:
+                    # Glyph name
+                    glyph_name = self.read_str_with_len()
+                    self.glyphdata["name"] = glyph_name
+                    self.name = self.glyphdata["name"]
 
-            elif v == 0x02:
-                # Metrics
-                self.parse_metrics()
+                case 0x02:
+                    # Metrics
+                    self.parse_metrics()
 
-            elif v == 0x03:
-                # PS Hints
-                self.parse_hints()
+                case 0x03:
+                    # PS Hints
+                    self.parse_hints()
 
-            elif v == 0x04:
-                # Guides
-                self.parse_guides()
+                case 0x04:
+                    # Guides
+                    self.parse_guides()
 
-            elif v == 0x05:
-                # Components
-                self.parse_components()
+                case 0x05:
+                    # Components
+                    self.parse_components()
 
-            elif v == 0x06:
-                # Kerning
-                self.parse_kerning()
+                case 0x06:
+                    # Kerning
+                    self.parse_kerning()
 
-            elif v == 0x08:
-                # Outlines
-                self.master_count = self.parse_outlines(self.glyphdata)
+                case 0x07:
+                    # Image
+                    logger.warning("Skipping glyph data: 0x07 (image), not implemented")
 
-            elif v == 0x09:
-                # Imported binary TrueType data
-                self.parse_binary()
+                case 0x08:
+                    # Outlines
+                    self.master_count = self.parse_outlines(self.glyphdata)
 
-            elif v == 0x0A:
-                # TrueType instructions
-                self.parse_instructions()
+                case 0x09:
+                    # Imported binary TrueType data
+                    self.parse_binary()
 
-            elif v == 0x0F:
-                # logger.debug("Glyph done.")
-                break
+                case 0x0A:
+                    # TrueType instructions
+                    self.parse_instructions()
 
-            else:
-                logger.error(f"Unhandled info field: {hex(v)}")
-                logger.error(hexStr(self.stream.read()))
-                raise ValueError
+                case 0x0F:
+                    # End of glyph
+                    break
+
+                case _:
+                    logger.error(f"Unhandled info field: {hex(v)}")
+                    logger.error(hexStr(self.stream.read()))
+                    raise ValueError
 
         return dict(self.glyphdata)
 
