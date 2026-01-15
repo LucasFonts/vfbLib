@@ -141,6 +141,6 @@ class GlyphBitmapsParser(BaseBitmapParser):
             h = self.read_value(signed=False)
             bitmap["size_pixels"] = (w, h)
             datalen = self.read_value()
-            bitmap["bitmap"] = self._parse_bitmap_data(w, h, datalen)
+            bitmap["bitmap"] = self._parse_bitmap_data(w, datalen)
             bitmaps.append(bitmap)
         return bitmaps
