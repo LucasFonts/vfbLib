@@ -56,6 +56,15 @@ class StreamWriter:
         for f in values:
             self.write_double(f)
 
+    def write_int8(self, value: int) -> None:
+        """
+        Write a signed 8-bit integer to the stream.
+
+        Args:
+            value (int): The integer value to write.
+        """
+        self.stream.write(value.to_bytes(int8_size, byteorder="little", signed=True))
+
     def write_int16(self, value: int) -> None:
         """
         Write a signed 16-bit integer to the stream.
