@@ -219,7 +219,7 @@ class BaseParser(StreamReader):
 
         return decompiled
 
-    def parse_hex(self, hexstr: str, master_count: int = 0):
+    def parse_hex(self, hexstr: str, vfb: Vfb | None = None):
         """
         Parse the data given in hex string format, e.g. "8c 8d 89 8b". Used for testing.
 
@@ -227,7 +227,7 @@ class BaseParser(StreamReader):
             hexstr (str): The data
         """
         data = deHexStr(hexstr)
-        return self.parse(BytesIO(data), len(data), master_count)
+        return self.parse(BytesIO(data), len(data), vfb)
 
     def _parse(self) -> Any:
         """
