@@ -9,22 +9,16 @@ logger = logging.getLogger(__name__)
 
 
 class BaseBitmapParser(BaseParser):
-    def _parse_bitmap_data(
-        self,
-        w: int,
-        h: int,
-        datalen: int,
-        origin_top: bool = False,
-        preview: bool = True,
-    ) -> BitmapDataDict:
-        bitmap = BitmapDataDict(data=[])
-        data = []
-        bytes_per_row = ((w + 15) // 16) * 2
+    def _read_bitmap(self, datalen: int) -> list[list[int]]:
+        # Read the bitmap data from the stream.
+        # The returned value is in the run-length encoded representation.
+        chunks: list[list[int]] = []
         bytes_remaining = datalen
         while bytes_remaining > 0:
             bytes_remaining -= 1
             # The next value specifies how many bytes to read and how to repeat them
             v = self.read_int8()
+            chunk = [v]
             if v >= 0:
                 # The next n bytes are actually stored in the data
                 n = v + 1
@@ -33,7 +27,7 @@ class BaseBitmapParser(BaseParser):
 
                 for _ in range(n):
                     i = self.read_uint8()
-                    data.append(i)
+                    chunk.append(i)
                 bytes_remaining -= n
             else:
                 # The next n bytes are identical, read only one byte and repeat it
@@ -42,43 +36,65 @@ class BaseBitmapParser(BaseParser):
                     break
 
                 i = self.read_uint8()
-                data.extend([i] * n)
+                chunk.append(i)
                 bytes_remaining -= 1
+            chunks.append(chunk)
+        return chunks
+
+    def _decode_bitmap(self, chunks: list[list[int]]) -> list[int]:
+        # Decode from the run-length-encoded format
+        decoded: list[int] = []
+        for chunk in chunks:
+            bytes_spec = chunk.pop(0)
+            if bytes_spec >= 0:
+                decoded.extend(chunk)
+            else:
+                num_values = -bytes_spec + 1
+                decoded.extend(chunk * num_values)
+        return decoded
+
+    def _parse_bitmap_data(
+        self,
+        w: int,
+        datalen: int,
+        origin_top: bool = False,
+        preview: bool = True,
+    ) -> BitmapDataDict:
+        rle_data = self._read_bitmap(datalen)
+        data = self._decode_bitmap(rle_data)
 
         # For the "windows" platform, the bitmap must be inverted.
         if self.vfb is not None and self.vfb.writer_platform == "windows":
             data = [~b + 0x100 for b in data]
 
-        bitmap["data"] = data
+        # Split list into rows
+        bytes_per_row = ((w + 15) // 16) * 2
+        nice = [data[j : j + bytes_per_row] for j in range(0, len(data), bytes_per_row)]
+
+        bitmap = BitmapDataDict(data=nice)
+
+        # Generate an ASCII art preview
         if preview:
-            rows = self._get_preview(data, w, h, bytes_per_row)
+            rows = self._get_preview(bitmap["data"], w)
             if origin_top:
                 bitmap["preview"] = [r for r in reversed(rows)]
             else:
                 bitmap["preview"] = rows
+
         return bitmap
 
-    def _get_preview(self, data, w: int, h: int, bytes_per_row: int) -> list[str]:
-        # Add a block graphics bitmap preview to the decompiled data:
+    def _get_preview(self, data: list[list[int]], payload_width: int) -> list[str]:
+        # Add a block graphics bitmap preview to the decompiled data
         rows = []
-        pos = 0
-        size = bytes_per_row * h
-        for _ in range(h):
-            row = []
-            for _ in range(bytes_per_row):
-                if pos >= size:
-                    break
-
-                row.append(data[pos])
-                pos += 1
-
+        for row in data:
             preview_row = "".join(
                 [f"{r:08b}".replace("0", " ▕").replace("1", "█▉") for r in row]
             )
             # Shorten row to the specified number of columns w
-            preview_row = preview_row[: w * 2]
+            preview_row = preview_row[: payload_width * 2]
 
             rows.append(preview_row)
+
         return rows
 
 
@@ -99,7 +115,7 @@ class BackgroundBitmapParser(BaseBitmapParser):
         h = self.read_value(signed=False)
         bitmap["size_pixels"] = (w, h)
         datalen = self.read_value(signed=False)
-        bitmap["bitmap"] = self._parse_bitmap_data(w, h, datalen)
+        bitmap["bitmap"] = self._parse_bitmap_data(w, datalen)
         return bitmap
 
 
