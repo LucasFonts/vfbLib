@@ -17,7 +17,7 @@ class MMKernPairParser(BaseParser):
         assert self.vfb is not None
         index_1 = self.read_uint32()
         index_2 = self.read_uint32()
-        pair = {"l": index_1, "r": index_2}
+        pair: dict[str, int | list[int]] = {"l": index_1, "r": index_2}
         values: list[int] = []
         for _ in range(self.vfb.num_masters):
             values.append(self.read_int16())
