@@ -115,7 +115,9 @@ class BackgroundBitmapParser(BaseBitmapParser):
         h = self.read_value(signed=False)
         bitmap["size_pixels"] = (w, h)
         datalen = self.read_value(signed=False)
-        bitmap["bitmap"] = self._parse_bitmap_data(w, datalen)
+        if not hasattr(self, "preview"):
+            self.preview = True
+        bitmap["bitmap"] = self._parse_bitmap_data(w, datalen, preview=self.preview)
         return bitmap
 
 
