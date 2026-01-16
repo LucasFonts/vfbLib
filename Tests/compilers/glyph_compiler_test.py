@@ -10,6 +10,7 @@ from vfbLib.compilers.glyph import (
     MaskCompiler,
 )
 from vfbLib.parsers.glyph import GlyphParser
+from vfbLib.vfb.vfb import Vfb, get_vfb_with_masters
 
 composite_2_masters_binary = """
 01 09 07 01
@@ -453,9 +454,10 @@ class PartCompiler(GlyphCompiler):
     Compile part of the glyph data, by calling the method name passed in compile_method.
     """
 
-    def _compile(self, data, master_count, compile_method):
+    def _call(self, data, vfb: Vfb, compile_method: str):
+        self.vfb = vfb
+        self.num_masters = vfb.num_masters
         self.stream = BytesIO()
-        self.master_count = master_count
         getattr(self, compile_method)(data)
         return self.stream.getvalue()
 
@@ -463,37 +465,37 @@ class PartCompiler(GlyphCompiler):
 class GlyphCompilerTest(TestCase):
     def test_empty_2masters_roundtrip(self):
         # Decompile
-        dec = GlyphParser().parse_hex(empty_glyph_binary, 2)
+        dec = GlyphParser().parse_hex(empty_glyph_binary, get_vfb_with_masters(2))
         assert dec == empty_glyph_json
 
         # Compile
-        compiled = GlyphCompiler().compile_hex(dec, 2)
+        compiled = GlyphCompiler().compile_hex(dec, get_vfb_with_masters(2))
         # ... and parse again
-        cde = GlyphParser().parse_hex(compiled, 2)
+        cde = GlyphParser().parse_hex(compiled, get_vfb_with_masters(2))
         assert dec == cde
 
     def test_long_roundtrip(self):
         # Decompile
-        dec = GlyphParser().parse_hex(long_binary, 2)
+        dec = GlyphParser().parse_hex(long_binary, get_vfb_with_masters(2))
         # assert dec == {}
 
         # Compile
-        compiled = GlyphCompiler().compile_hex(dec, 2)
+        compiled = GlyphCompiler().compile_hex(dec, get_vfb_with_masters(2))
         # print(hexStr(compiled))
         # ... and parse again
-        cde = GlyphParser().parse_hex(compiled, 2)
+        cde = GlyphParser().parse_hex(compiled, get_vfb_with_masters(2))
         assert dec == cde
 
     def test_psglyph_1master_roundtrip(self):
         # Decompile
-        dec = GlyphParser().parse_hex(psglyph_1master, 1)
+        dec = GlyphParser().parse_hex(psglyph_1master, get_vfb_with_masters(1))
         assert dec == psglyph_1master_expected
 
         # Compile
-        compiled = GlyphCompiler().compile_hex(dec, 1)
+        compiled = GlyphCompiler().compile_hex(dec, get_vfb_with_masters(1))
         # print(hexStr(compiled))
         # ... and parse again
-        cde = GlyphParser().parse_hex(compiled, 1)
+        cde = GlyphParser().parse_hex(compiled, get_vfb_with_masters(1))
         assert dec == cde
 
     def test_truetype_2_masters_roundtrip(self):
@@ -502,71 +504,93 @@ class GlyphCompilerTest(TestCase):
         assert dec == ttglyph_2_masters_json
 
         # Compile
-        compiled = GlyphCompiler().compile_hex(dec, 2)
+        compiled = GlyphCompiler().compile_hex(dec, get_vfb_with_masters(2))
         # print(hexStr(compiled))
         # ... and parse again
-        cde = GlyphParser().parse_hex(compiled, 2)
+        cde = GlyphParser().parse_hex(compiled, get_vfb_with_masters(2))
         assert dec == cde
 
     def test_composite_2_masters_roundtrip(self):
         # Decompile
-        dec = GlyphParser().parse_hex(composite_2_masters_binary, 2)
+        dec = GlyphParser().parse_hex(
+            composite_2_masters_binary, get_vfb_with_masters(2)
+        )
         assert dec == composite_2_masters_json
 
         # Compile
-        compiled = GlyphCompiler().compile_hex(dec, 2)
+        compiled = GlyphCompiler().compile_hex(dec, get_vfb_with_masters(2))
         # ... and parse again
-        cde = GlyphParser().parse_hex(compiled, 2)
+        cde = GlyphParser().parse_hex(compiled, get_vfb_with_masters(2))
         assert dec == cde
 
     def test_components_2_masters(self):
-        data = PartCompiler()._compile(
-            components_2_masters_json, 2, "_compile_components"
+        data = PartCompiler()._call(
+            components_2_masters_json, get_vfb_with_masters(2), "_compile_components"
         )
         assert hexStr(data) == hexStr(components_2_masters_binary)
 
     def test_guides_1_master(self):
-        data = PartCompiler()._compile(glyph_guides_json, 1, "_compile_guides")
+        data = PartCompiler()._call(
+            glyph_guides_json, get_vfb_with_masters(1), "_compile_guides"
+        )
         assert hexStr(data) == hexStr(deHexStr(glyph_guides_binary))
 
     def test_guides_angled_1_master(self):
-        data = PartCompiler()._compile(angled_glyph_guides_json, 1, "_compile_guides")
+        data = PartCompiler()._call(
+            angled_glyph_guides_json, get_vfb_with_masters(1), "_compile_guides"
+        )
         assert hexStr(data) == hexStr(deHexStr(angled_glyph_guides_binary))
 
     def test_hints_1(self):
-        data = PartCompiler()._compile(psglyph_1master_expected, 1, "_compile_hints")
+        data = PartCompiler()._call(
+            psglyph_1master_expected, get_vfb_with_masters(1), "_compile_hints"
+        )
         assert hexStr(data) == hexStr(
             deHexStr("03    8F  7F C3 F818 C3 F92A 53 85 C2  8D C1 EB F802 E5  8B")
         )
 
     def test_metrics_1(self):
-        data = PartCompiler()._compile(psglyph_1master_expected, 1, "_compile_metrics")
+        data = PartCompiler()._call(
+            psglyph_1master_expected, get_vfb_with_masters(1), "_compile_metrics"
+        )
         assert hexStr(data) == "02f8b48b"
 
     def test_name_1(self):
-        data = PartCompiler()._compile({"name": "d"}, 1, "_compile_glyph_name")
+        data = PartCompiler()._call(
+            {"name": "d"}, get_vfb_with_masters(1), "_compile_glyph_name"
+        )
         assert hexStr(data) == hexStr(deHexStr("01 8C 64"))
 
     def test_name_2(self):
-        data = PartCompiler()._compile({"name": "at"}, 1, "_compile_glyph_name")
+        data = PartCompiler()._call(
+            {"name": "at"}, get_vfb_with_masters(1), "_compile_glyph_name"
+        )
         assert hexStr(data) == hexStr(deHexStr("01 8D 61 74"))
 
     def test_outlines_1_master(self):
-        data = PartCompiler()._compile(psglyph_1master_expected, 1, "compile_outlines")
+        data = PartCompiler()._call(
+            psglyph_1master_expected, get_vfb_with_masters(1), "compile_outlines"
+        )
         assert hexStr(data) == hexStr(psglyph_1master_nodes)
         assert len(data) == len(psglyph_1master_nodes)  # 285
 
     def test_instructions_2_masters(self):
-        data = PartCompiler()._compile(ttinstructions_json, 2, "_compile_instructions")
+        data = PartCompiler()._call(
+            ttinstructions_json, get_vfb_with_masters(2), "_compile_instructions"
+        )
         assert hexStr(data) == hexStr(deHexStr(ttinstructions_binary))
         # assert len(data) == len(psglyph_1master_nodes)  # 285
 
     def test_imported_binary(self):
-        data = PartCompiler()._compile(imported_glyph_raw, 1, "_compile_binary")
+        data = PartCompiler()._call(
+            imported_glyph_raw, get_vfb_with_masters(1), "_compile_binary"
+        )
         assert hexStr(data) == hexStr(deHexStr(imported_glyph_bin))
 
     def test_imported_binary_no_nodes(self):
-        result = GlyphCompiler().compile_hex(glyph_roundtripped_raw)
+        result = GlyphCompiler().compile_hex(
+            glyph_roundtripped_raw, get_vfb_with_masters(1)
+        )
         assert result == glyph_roundtripped_bin
 
 
@@ -585,7 +609,7 @@ bin_links = (
 
 class LinksCompilerTest(TestCase):
     def test(self) -> None:
-        result = LinksCompiler().compile_hex(raw_links)
+        result = LinksCompiler().compile_hex(raw_links, get_vfb_with_masters(1))
         assert result == bin_links
 
 
@@ -761,7 +785,9 @@ global_mask_bin = "8ca58e00f824d501f79cf75003fbe8f785f761317af746"
 
 class GlobalMaskCompilerTest(TestCase):
     def test_1m(self) -> None:
-        result = GlobalMaskCompiler().compile_hex(global_mask_raw)
+        result = GlobalMaskCompiler().compile_hex(
+            global_mask_raw, get_vfb_with_masters(1)
+        )
         assert result == global_mask_bin
 
 
