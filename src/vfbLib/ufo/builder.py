@@ -517,7 +517,7 @@ class VfbToUfoBuilder:
                 case F.GlobalGuideProperties:
                     self.guide_properties = data
                 case F.MasterCount:
-                    self.master_count: int = data
+                    self.num_masters: int = data
                 case M.MasterName:
                     self.masters.append(data)
                 case M.MasterLocation:
@@ -861,7 +861,7 @@ class VfbToUfoBuilder:
             )
 
         # Add sources
-        for i in range(self.master_count):
+        for i in range(self.num_masters):
             ds.addSourceDescriptor(
                 # designLocation=,
                 familyName=self.info.ds_family_name,
