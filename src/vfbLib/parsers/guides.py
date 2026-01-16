@@ -19,7 +19,22 @@ logger = logging.getLogger(__name__)
 
 
 def parse_guides(stream: BytesIO, num_masters: int, name: str) -> MMGuidesDict:
-    # Common parser for glyph and global guides
+    """
+    Common parser for global and glyph guides. Used by `GlobalGuidesParser` and
+    `GlyphParser`.
+
+    Args:
+        stream (BytesIO): The data stream.
+        num_masters (int): The number of masters contained in the data.
+        name (str): A name used in error messages to describe the current location, e.g.
+            "glyph" or "global".
+
+    Returns:
+        MMGuidesDict: Information about horizontal and vertical multiple master guides.
+
+    Raises:
+        ValueError: If the data structure is incomplete.
+    """
     guides: MMGuidesDict = {"h": [], "v": []}
     for direction in DIRECTIONS:
         num_guides = read_value(stream)
