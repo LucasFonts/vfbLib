@@ -137,9 +137,95 @@ class GlyphOriginParser(BaseParser):
 
 
 class GlyphParser(BaseParser):
+    def _parse(self) -> dict[str, Any]:
+        """
+        01090701
+        01  92[7]2e 6e 6f 74 64 65 66 # Glyph name
+        08  8c bb[48] 93[8]
+            00 ab 8b    [  32,    0] move
+            01 8b f9a0  [   0,  780] line 32,780
+            01 f7fc 8b  [ 360,    0] line 392,780
+            01 8b fda0  [   0, -780] line 392, 0
+            00 fbcc bb  [-312,   48] move  80, 48
+            01 f79c 8b  [ 264,    0] line
+            01 8b f940  [   0,  684] line
+            01 fb9c 8b  [-264,    0] line
+        02  f83c 8b  [ 424,    0]
+        03  8b 8b 8b
+        04  8b 8b
+        0a  a1[22] 8f[4] # TT hinting
+            02 8b 8b
+            04 8b 8c 89 8a
+            04 8b 8f 89 8a
+            04 8c 92 89 8a
+            8b 8b 8b
+        0f
+        """
+        self.glyphdata = GlyphData()
+        start = unpack("<4B", self.stream.read(4))
+        if start != (1, 9, 7, 1):
+            logger.warning(f"Unexpected glyph constant: {start}")
+        while True:
+            # Read a value to decide what kind of information follows
+            v = self.read_uint8()
+
+            match v:
+                case 0x01:
+                    # Glyph name
+                    glyph_name = self.read_str_with_len()
+                    self.glyphdata["name"] = glyph_name
+                    self.name = self.glyphdata["name"]
+
+                case 0x02:
+                    # Metrics
+                    self.parse_metrics()
+
+                case 0x03:
+                    # PS Hints
+                    self.parse_hints()
+
+                case 0x04:
+                    # Guides
+                    self.parse_guides()
+
+                case 0x05:
+                    # Components
+                    self.parse_components()
+
+                case 0x06:
+                    # Kerning
+                    self.parse_kerning()
+
+                case 0x07:
+                    # Image
+                    logger.warning("Skipping glyph data: 0x07 (image), not implemented")
+
+                case 0x08:
+                    # Outlines
+                    self.num_masters = self.parse_outlines(self.glyphdata)
+
+                case 0x09:
+                    # Imported binary TrueType data
+                    self.parse_binary()
+
+                case 0x0A:
+                    # TrueType instructions
+                    self.parse_instructions()
+
+                case 0x0F:
+                    # End of glyph
+                    break
+
+                case _:
+                    logger.error(f"Unhandled info field: {hex(v)}")
+                    logger.error(hexStr(self.stream.read()))
+                    raise ValueError
+
+        return dict(self.glyphdata)
+
     def parse_guides(self) -> None:
         # Guidelines
-        guides = parse_guides(self.stream, self.master_count, f"glyph '{self.name}'")
+        guides = parse_guides(self.stream, self.num_masters, f"glyph '{self.name}'")
         if guides:
             self.glyphdata["guides"] = guides
 
@@ -224,7 +310,7 @@ class GlyphParser(BaseParser):
         for _ in range(num):
             gid = self.read_value()
             c = Component(gid=gid, offsetX=[], offsetY=[], scaleX=[], scaleY=[])
-            for _ in range(self.master_count):
+            for _ in range(self.num_masters):
                 x = self.read_value()
                 y = self.read_value()
                 scaleX, scaleY = self.read_doubles(2)
@@ -241,7 +327,7 @@ class GlyphParser(BaseParser):
             num_hints = self.read_value()
             for _ in range(num_hints):
                 master_hints = []
-                for _ in range(self.master_count):
+                for _ in range(self.num_masters):
                     pos = self.read_value()
                     width = self.read_value()
                     master_hints.append(HintDict(pos=pos, width=width))
@@ -285,7 +371,7 @@ class GlyphParser(BaseParser):
 
     def parse_metrics(self) -> None:
         metrics: list[Point] = []
-        for _ in range(self.master_count):
+        for _ in range(self.num_masters):
             master_metrics = (
                 self.read_value(),
                 self.read_value(),
@@ -295,8 +381,8 @@ class GlyphParser(BaseParser):
 
     def parse_outlines(self, target: GlyphData | MaskData) -> int:
         # Nodes
-        master_count = self.read_value(signed=False)
-        target["num_masters"] = master_count
+        num_masters = self.read_value(signed=False)
+        target["num_masters"] = num_masters
 
         # 2 x the number of values to be read after num_nodes, the reason is unclear.
         _ = self.read_value()
@@ -304,8 +390,8 @@ class GlyphParser(BaseParser):
 
         num_nodes = self.read_value()
         segments: list[MMNode] = []
-        x = [0 for _ in range(master_count)]
-        y = [0 for _ in range(master_count)]
+        x = [0 for _ in range(num_masters)]
+        y = [0 for _ in range(num_masters)]
 
         for _ in range(num_nodes):
             byte = self.read_uint8()
@@ -313,19 +399,19 @@ class GlyphParser(BaseParser):
             cmd = PathCommand(byte & 0x0F).name
 
             # End point
-            points: list[list[Point]] = [[] for _ in range(master_count)]
-            read_absolute_point(points, self.stream, master_count, x, y)
+            points: list[list[Point]] = [[] for _ in range(num_masters)]
+            read_absolute_point(points, self.stream, num_masters, x, y)
 
             if cmd == "curve":
                 # First control point
-                read_absolute_point(points, self.stream, master_count, x, y)
+                read_absolute_point(points, self.stream, num_masters, x, y)
                 # Second control point
-                read_absolute_point(points, self.stream, master_count, x, y)
+                read_absolute_point(points, self.stream, num_masters, x, y)
 
             segment = MMNode(type=cmd, flags=flags, points=points)
             segments.append(segment)
         target["nodes"] = segments
-        return master_count
+        return num_masters
 
     def parse_kerning(self) -> None:
         num = self.read_value()
@@ -334,97 +420,11 @@ class GlyphParser(BaseParser):
             # Glyph index of right kerning partner
             gid = self.read_value()
             values = []
-            for _ in range(self.master_count):
+            for _ in range(self.num_masters):
                 # List of values, one value per master
                 values.append(self.read_value())
             kerning[gid] = values
         self.glyphdata["kerning"] = kerning
-
-    def _parse(self) -> dict[str, Any]:
-        """
-        01090701
-        01  92[7]2e 6e 6f 74 64 65 66 # Glyph name
-        08  8c bb[48] 93[8]
-            00 ab 8b    [  32,    0] move
-            01 8b f9a0  [   0,  780] line 32,780
-            01 f7fc 8b  [ 360,    0] line 392,780
-            01 8b fda0  [   0, -780] line 392, 0
-            00 fbcc bb  [-312,   48] move  80, 48
-            01 f79c 8b  [ 264,    0] line
-            01 8b f940  [   0,  684] line
-            01 fb9c 8b  [-264,    0] line
-        02  f83c 8b  [ 424,    0]
-        03  8b 8b 8b
-        04  8b 8b
-        0a  a1[22] 8f[4] # TT hinting
-            02 8b 8b
-            04 8b 8c 89 8a
-            04 8b 8f 89 8a
-            04 8c 92 89 8a
-            8b 8b 8b
-        0f
-        """
-        self.glyphdata = GlyphData()
-        start = unpack("<4B", self.stream.read(4))
-        if start != (1, 9, 7, 1):
-            logger.warning(f"Unexpected glyph constant: {start}")
-        while True:
-            # Read a value to decide what kind of information follows
-            v = self.read_uint8()
-
-            match v:
-                case 0x01:
-                    # Glyph name
-                    glyph_name = self.read_str_with_len()
-                    self.glyphdata["name"] = glyph_name
-                    self.name = self.glyphdata["name"]
-
-                case 0x02:
-                    # Metrics
-                    self.parse_metrics()
-
-                case 0x03:
-                    # PS Hints
-                    self.parse_hints()
-
-                case 0x04:
-                    # Guides
-                    self.parse_guides()
-
-                case 0x05:
-                    # Components
-                    self.parse_components()
-
-                case 0x06:
-                    # Kerning
-                    self.parse_kerning()
-
-                case 0x07:
-                    # Image
-                    logger.warning("Skipping glyph data: 0x07 (image), not implemented")
-
-                case 0x08:
-                    # Outlines
-                    self.master_count = self.parse_outlines(self.glyphdata)
-
-                case 0x09:
-                    # Imported binary TrueType data
-                    self.parse_binary()
-
-                case 0x0A:
-                    # TrueType instructions
-                    self.parse_instructions()
-
-                case 0x0F:
-                    # End of glyph
-                    break
-
-                case _:
-                    logger.error(f"Unhandled info field: {hex(v)}")
-                    logger.error(hexStr(self.stream.read()))
-                    raise ValueError
-
-        return dict(self.glyphdata)
 
 
 class GlyphSketchParser(BaseParser):
