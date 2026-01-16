@@ -201,9 +201,7 @@ class VfbEntry(StreamReader):
 
         self.merge_masters_data()
 
-        self.data = self.compiler().compile(
-            self.data, master_count=self.vfb.num_masters
-        )
+        self.data = self.compiler().compile(self.data, vfb=self.vfb)
 
         # TODO: Return False here if compilation has failed. How to tell?
 
