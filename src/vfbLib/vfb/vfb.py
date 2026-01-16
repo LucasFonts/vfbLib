@@ -55,6 +55,7 @@ class Vfb:
         else:
             self.drop_keys: set[int] = set(drop_keys)
         self.only_header = only_header
+        self.encoding = "utf-8"
         self.force_unicode_strings = unicode_strings
 
         # We need some minimal API to make pen access work ...
