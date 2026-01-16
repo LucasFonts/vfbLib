@@ -3,6 +3,7 @@ from unittest import TestCase
 from fontTools.misc.textTools import deHexStr, hexStr
 
 from vfbLib.compilers.bitmap import BackgroundBitmapCompiler
+from vfbLib.parsers.bitmap import BackgroundBitmapParser
 
 row_bytes = [
     [0, 0],
@@ -43,9 +44,9 @@ row_bin = "10 00 00 3E 00 63 00 63 00 7F 00 60 00 60 00 63 00 3E FE 00"
 bg_bin = "8B 49 F8 A4 F8 E6 93 95 9F" + row_bin
 
 big_raw = {
-    "origin": [22, -329],
-    "size_units": [371, 902],
-    "size_pixels": [140, 494],
+    "origin": (22, -329),
+    "size_units": (371, 902),
+    "size_pixels": (140, 494),
     "bitmap": {
         "data": [
             [252, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 15],
@@ -607,6 +608,10 @@ class BackgroundBitmapCompilerTest(TestCase):
     def test_big(self):
         b = BackgroundBitmapCompiler().compile(big_raw)
         assert hexStr(b) == hexStr(deHexStr(big_bin))
+        # Roundtrip
+        r = BackgroundBitmapParser().parse_hex(hexStr(b))
+        del r["bitmap"]["preview"]
+        assert r == big_raw
 
     def test_encode_bitmap(self):
         b = BackgroundBitmapCompiler()._encode_bitmap(row_bytes)
