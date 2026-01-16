@@ -15,6 +15,9 @@ logger = logging.getLogger(__name__)
 def flush_buffer(
     target: list[list[int]], buf: list[int], max_chunk_len: int = 128
 ) -> None:
+    # The buffer must be split into chunks of max. max_chunk_len (128) values, because
+    # its length needs to be written as a signed int8 (len(buf) - 1) which has a maximum
+    # value of 127.
     for i in range(0, len(buf), max_chunk_len):
         chunk = buf[i : i + max_chunk_len]
         target.append([len(chunk) - 1] + chunk)
@@ -43,9 +46,6 @@ class BaseBitmapCompiler(BaseCompiler):
                 # Repeated value
 
                 # Flush the buffer before handling the repetition.
-                # The buffer must be split into chunks of max. max_chunk_len (128)
-                # values, because its length needs to be written as a signed int8
-                # (len(buf) - 1) which has a maximum value of 127.
                 flush_buffer(encoded, buf, max_chunk_len)
                 buf = []
                 # Write the repeated value.
