@@ -12,6 +12,14 @@ if TYPE_CHECKING:
 logger = logging.getLogger(__name__)
 
 
+def flush_buffer(
+    target: list[list[int]], buf: list[int], max_chunk_len: int = 128
+) -> None:
+    for i in range(0, len(buf), max_chunk_len):
+        chunk = buf[i : i + max_chunk_len]
+        target.append([len(chunk) - 1] + chunk)
+
+
 class BaseBitmapCompiler(BaseCompiler):
     def _encode_bitmap(self, data: list[list[int]]) -> list[list[int]]:
         # Encode to the run-length-encoded format
@@ -26,7 +34,7 @@ class BaseBitmapCompiler(BaseCompiler):
 
         max_chunk_len = 128
 
-        encoded = []
+        encoded: list[list[int]] = []
         buf: list[int] = []
         for value, expanded in groupby(chain.from_iterable(data)):
             d = list(expanded)
@@ -38,9 +46,7 @@ class BaseBitmapCompiler(BaseCompiler):
                 # The buffer must be split into chunks of max. max_chunk_len (128)
                 # values, because its length needs to be written as a signed int8
                 # (len(buf) - 1) which has a maximum value of 127.
-                for i in range(0, len(buf), max_chunk_len):
-                    chunk = buf[i : i + max_chunk_len]
-                    encoded.append([len(chunk) - 1] + chunk)
+                flush_buffer(encoded, buf, max_chunk_len)
                 buf = []
                 # Write the repeated value.
                 # It also needs to be split into chunks.
@@ -56,6 +62,9 @@ class BaseBitmapCompiler(BaseCompiler):
                 # The buffer must be written in chunks, but we take care of that when it
                 # is flushed (see above).
                 buf.extend(d)
+
+        # Flush whatever is left in the buffer
+        flush_buffer(encoded, buf, max_chunk_len)
         return encoded
 
     def _compile_bitmap_data(self, bitmap: BitmapDataDict) -> None:
