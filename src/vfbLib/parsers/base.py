@@ -208,7 +208,6 @@ class BaseParser(StreamReader):
         self.stream = BytesIO(stream.read(size))  # type: ignore
         self.vfb = vfb
         decompiled = self._parse()
-        del self.vfb
 
         # Make sure the parser consumed all of the data
         remainder = self.stream.read()
