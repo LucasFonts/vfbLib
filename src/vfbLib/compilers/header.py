@@ -1,17 +1,12 @@
 from __future__ import annotations
 
-import logging
 from io import BytesIO
 
 from vfbLib.compilers.base import StreamWriter
 from vfbLib.typing import VfbHeaderDict
 
-logger = logging.getLogger(__name__)
-
 
 class VfbHeaderCompiler(StreamWriter):
-    encoding = "cp1252"
-
     def compile(self, data: VfbHeaderDict) -> bytes:
         self.stream = BytesIO()
         self._compile(data)
