@@ -21,6 +21,13 @@ if TYPE_CHECKING:
 logger = logging.getLogger(__name__)
 
 
+def get_vfb_with_masters(num_masters: int) -> Vfb:
+    # Minimal Vfb object used for testing
+    vfb = Vfb()
+    vfb.num_masters = num_masters
+    return vfb
+
+
 # Convenience objects for vfb access
 
 
