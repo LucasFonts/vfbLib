@@ -99,10 +99,10 @@ class GlyphGDEFParser(BaseParser):
         for _ in range(num_anchors):
             name = self.read_str_with_len()
             x = self.read_value()
-            x1 = self.read_value()
+            _pt_index_0 = self.read_value()
             y = self.read_value()
-            y1 = self.read_value()
-            anchor = AnchorDict(x=x, x1=x1, y=y, y1=y1)
+            _pt_index_1 = self.read_value()
+            anchor = AnchorDict(x=x, y=y)
             if name:
                 anchor["name"] = name
             anchors.append(anchor)
@@ -113,18 +113,14 @@ class GlyphGDEFParser(BaseParser):
         carets = []
         for _ in range(num_carets):
             pos = self.read_value()
-            xxx = self.read_value()
-            carets.append((pos, xxx))
+            idx = self.read_value()
+            carets.append((pos, idx))
         if carets:
             gdef["carets"] = carets
 
-        try:
-            num_values = self.read_value()
-            values = [self.read_value() for _ in range(num_values)]
-            if values:
-                gdef["unknown"] = values
-        except EOFError:
-            pass
+        num_ot_classes = self.read_value()
+        ot_classes = [self.read_value() for _ in range(num_ot_classes)]
+        gdef["ot_classes"] = ot_classes
 
         return gdef
 

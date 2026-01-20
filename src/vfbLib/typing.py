@@ -14,9 +14,7 @@ Point = tuple[int, int]
 class AnchorDict(TypedDict):
     name: NotRequired[str]
     x: int
-    x1: NotRequired[int]
     y: int
-    y1: NotRequired[int]
 
 
 KerningClassFlagDict = dict[str, tuple[int, int]]
@@ -160,7 +158,7 @@ class GdefDict(TypedDict):
     anchors: NotRequired[list[AnchorDict]]
     carets: NotRequired[list[tuple[int, int]]]
     glyph_class: NotRequired[str]
-    unknown: NotRequired[list[int]]
+    ot_classes: NotRequired[list[int]]
 
 
 class GlyphBitmapDict(TypedDict):
