@@ -33,7 +33,9 @@ class FLVersionParser(BaseParser):
     """
 
     def _parse(self) -> FLVersionDict:
-        fl_version_info: FLVersionDict = {}
+        fl_version_info: FLVersionDict = FLVersionDict(
+            platform="macos", version=(5, 2, 2, 128), owner=0
+        )
         while True:
             key = self.read_uint8()
             if key == END:
