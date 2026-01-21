@@ -98,6 +98,7 @@ class F(IntEnum):
     GlobalGuideProperties = 1296
     GlobalMask = 1295
     default_character = 1066
+    # Glyph comes here
     FontOptions = 1743
     ExportOptions = 1744
     MappingMode = 1742
