@@ -14,7 +14,4 @@ class CustomCmapCompiler(BaseCompiler):
         for cmap in data:
             for k in ("language_id", "platform_id", "encoding_id", "format", "option"):
                 self.write_value(cmap[k])
-            records = cmap["records"]
-            self.write_value(len(records))
-            for record in records:
-                self.write_uint8(record)
+            self.write_str_with_len(cmap["page_name"])

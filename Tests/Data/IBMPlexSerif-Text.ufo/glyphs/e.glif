@@ -110,11 +110,10 @@
 						<integer>99</integer>
 						<integer>0</integer>
 						<integer>62</integer>
-						<integer>254</integer>
+						<integer>0</integer>
+						<integer>0</integer>
 						<integer>0</integer>
 					</array>
-					<key>flag</key>
-					<integer>16</integer>
 				</dict>
 				<key>origin</key>
 				<array>

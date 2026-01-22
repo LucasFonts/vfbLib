@@ -89,7 +89,7 @@ class VfbToUfoBuilder:
         self.groups: UfoGroups = {}
         self.guide_properties = GuidePropertiesDict(h=[], v=[])
         self.info = VfbToUfoInfo()
-        self.kerning_class_flags = KerningClassFlagDict()
+        self.kerning_class_flags: KerningClassFlagDict = KerningClassFlagDict()
         self.num_blue_values = 0
         self.num_other_blues = 0
         self.num_family_blues = 0
@@ -379,7 +379,7 @@ class VfbToUfoBuilder:
                 F.version,
                 F.xuid,
                 G.AnchorsProperties,
-                G.E2023,
+                G.VSB,
                 G.HintingOptions,
                 G.Origin,
             )
@@ -517,7 +517,7 @@ class VfbToUfoBuilder:
                 case F.GlobalGuideProperties:
                     self.guide_properties = data
                 case F.MasterCount:
-                    self.master_count: int = data
+                    self.num_masters: int = data
                 case M.MasterName:
                     self.masters.append(data)
                 case M.MasterLocation:
@@ -861,7 +861,7 @@ class VfbToUfoBuilder:
             )
 
         # Add sources
-        for i in range(self.master_count):
+        for i in range(self.num_masters):
             ds.addSourceDescriptor(
                 # designLocation=,
                 familyName=self.info.ds_family_name,

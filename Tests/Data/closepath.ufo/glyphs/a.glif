@@ -42,34 +42,35 @@
 					<array>
 						<integer>0</integer>
 						<integer>0</integer>
-						<integer>255</integer>
-						<integer>254</integer>
-						<integer>0</integer>
 						<integer>0</integer>
 						<integer>255</integer>
-						<integer>254</integer>
+						<integer>0</integer>
 						<integer>0</integer>
 						<integer>0</integer>
 						<integer>255</integer>
-						<integer>254</integer>
 						<integer>0</integer>
-						<integer>0</integer>
-						<integer>255</integer>
-						<integer>254</integer>
 						<integer>0</integer>
 						<integer>0</integer>
 						<integer>255</integer>
-						<integer>254</integer>
 						<integer>0</integer>
-						<integer>0</integer>
-						<integer>255</integer>
-						<integer>254</integer>
 						<integer>0</integer>
 						<integer>0</integer>
 						<integer>255</integer>
-						<integer>254</integer>
 						<integer>0</integer>
-						<integer>44</integer>
+						<integer>0</integer>
+						<integer>0</integer>
+						<integer>255</integer>
+						<integer>0</integer>
+						<integer>0</integer>
+						<integer>0</integer>
+						<integer>255</integer>
+						<integer>0</integer>
+						<integer>0</integer>
+						<integer>0</integer>
+						<integer>255</integer>
+						<integer>0</integer>
+						<integer>0</integer>
+						<integer>0</integer>
 						<integer>255</integer>
 						<integer>0</integer>
 						<integer>252</integer>
@@ -115,29 +116,27 @@
 						<integer>243</integer>
 						<integer>0</integer>
 						<integer>255</integer>
-						<integer>254</integer>
 						<integer>0</integer>
-						<integer>0</integer>
-						<integer>255</integer>
-						<integer>254</integer>
 						<integer>0</integer>
 						<integer>0</integer>
 						<integer>255</integer>
-						<integer>254</integer>
 						<integer>0</integer>
-						<integer>0</integer>
-						<integer>255</integer>
-						<integer>254</integer>
 						<integer>0</integer>
 						<integer>0</integer>
 						<integer>255</integer>
-						<integer>254</integer>
+						<integer>0</integer>
+						<integer>0</integer>
+						<integer>0</integer>
+						<integer>255</integer>
+						<integer>0</integer>
+						<integer>0</integer>
+						<integer>0</integer>
+						<integer>255</integer>
+						<integer>0</integer>
 						<integer>0</integer>
 						<integer>0</integer>
 						<integer>255</integer>
 					</array>
-					<key>flag</key>
-					<integer>254</integer>
 				</dict>
 				<key>origin</key>
 				<array>

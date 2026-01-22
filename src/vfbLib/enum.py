@@ -4,11 +4,15 @@ from enum import IntEnum
 
 
 class F(IntEnum):
+    BlockFileDataStart = 1
+    BlockFontStart = 4
+    FLVersion = 10
+    BlockNamesStart = 262
     EncodingDefault = 1501
     Encoding = 1500
-    E1502 = 1502
-    E518 = 518
-    E257 = 257
+    MMEncType = 1502
+    BlockNamesEnd = BlockNamesStart + 256
+    BlockFontInfoStart = 257
     font_name = 1026
     MasterCount = 1503
     weight_vector = 1517
@@ -43,7 +47,7 @@ class F(IntEnum):
     style_name = 1127
     pref_style_name = 1137
     mac_compatible = 1139
-    E1140 = 1140
+    SampleText = 1140
     vendor = 1121
     xuid = 1133
     xuid_num = 1134
@@ -53,7 +57,7 @@ class F(IntEnum):
     upm = 1135
     fond_id = 1090
     PostScriptHintingOptions = 1093
-    E1068 = 1068
+    Collection = 1068
     blue_values_num = 1530
     other_blues_num = 1531
     family_blues_num = 1532
@@ -72,15 +76,15 @@ class F(IntEnum):
     PCLTTable = 1136
     ExportPCLTTable = 2022
     note = 2025
-    E2030 = 2030
+    FontFlags = 2030
     customdata = 2016
     MetricsClassFlags = 2024
     KerningClassFlags = 2026
     TrueTypeTable = 2014  # Font.truetypetables
     features = 1276
     GlyphClass = 1277  # Font.classes
-    E513 = 513
-    E271 = 271
+    BlockFontInfoEnd = BlockFontInfoStart + 256
+    BlockMMFontInfoStart = 271
     AxisCount = 1513
     AxisName = 1514
     AnisotropicInterpolationMappings = 1523
@@ -88,18 +92,144 @@ class F(IntEnum):
     AxisMappings = 1516
     PrimaryInstanceLocations = 1247
     PrimaryInstances = 1254
-    E527 = 527
+    BlockMMFontInfoEnd = BlockMMFontInfoStart + 256
+    # FIXME: Block start?
     GlobalGuides = 1294
     GlobalGuideProperties = 1296
     GlobalMask = 1295
     default_character = 1066
-    OpenTypeExportOptions = 1743
+    # Glyph comes here
+    FontOptions = 1743
     ExportOptions = 1744
     MappingMode = 1742
-    E272 = 272
-    E1410 = 1410
-    E528 = 528
-    EOF = 5
+    # FIXME: Block end?
+    BlockMMKerningStart = 272
+    MMKernPair = 1410
+    BlockMMKerningEnd = BlockMMKerningStart + 256
+    BlockFontEnd = 5
+    BlockFileDataEnd = 2
+
+    # Place in order is unknown for those, because they didn't appear in our
+    # test data:
+    BlockIndex = 3
+    BlockClipboardStart = 7
+    BlockClipboardEnd = 8
+    ClipboardFlags = 9
+    BlockBlueInfoStart = 258
+    BlockBlueInfoEnd = BlockBlueInfoStart + 256
+    BlockOutlinesStart = 259
+    BlockOutlinesEnd = BlockOutlinesStart + 256
+    BlockGlobalHRStart = 260
+    BlockGlobalHREnd = BlockGlobalHRStart + 256
+    BlockSubrsStart = 261
+    BlockSubrsEnd = BlockSubrsStart + 256
+    BlockKerningStart = 263
+    BlockKerningEnd = BlockKerningStart + 256
+    BlockTrackingStart = 264
+    BlockTrackingEnd = BlockTrackingStart + 256
+    BlockEditorOptionsStart = 265
+    BlockEditorOptionsEnd = BlockEditorOptionsStart + 256
+    BlockDefEncodingStart = 266
+    BlockDefEncodingEnd = BlockDefEncodingStart + 256
+    BlockImportStart = 267
+    BlockImportEnd = BlockImportStart + 256
+    BlockMaskNames = 268
+    BlockOptionsStart = 270
+    BlockOptionsEnd = BlockOptionsStart + 256
+    Bold = 1023
+    FontMatrix = 1032
+    FontBBox = 1033
+    PaintType = 1035
+    StrokeWidth = 1036
+    PSAscent = 1040
+    PSDescent = 1041
+    PSCapHeight = 1042
+    PSXHeight = 1043
+    VMUsage = 1045
+    XChar = 1050
+    OChar = 1051
+    SXChar = 1052
+    SOChar = 1053
+    MSFamily = 1055
+    PSLeading = 1067
+    BlueValues = 1100
+    OtherBlues = 1101
+    FamilyBlues = 1102
+    FamilyOtherBlues = 1103
+    BlueScale = 1104
+    BlueShift = 1105
+    BlueFuzz = 1106
+    StdHW = 1107
+    StdVW = 1108
+    StemSnapH = 1109
+    StemSnapV = 1110
+    ForceBold = 1111
+    LanguageGroup = 1112
+    RndStemUp = 1113
+    ExpansionFactor = 1114
+    ErodeProc = 1115
+    OtherSubrs = 1116
+    LenIV = 1117
+    IBMClass = 1119
+    IBMSubclass = 1120
+    Type1Map = 1126
+    # Global hints and guides:
+    GHRulers = 1280
+    GVRulers = 1281
+    GHHints = 1282
+    GVHints = 1283
+    HintReplace = 1290
+    Hint3 = 1291
+    ReplaceInfo = 1292
+    ReplaceSet = 1293
+    PGGuides = 1294
+    PGlobalMask = 1295
+    PGGuideNames = 1296
+    # Subroutines:
+    SubrNumber = 1300
+    SubrName = 1301
+    EX = 1302
+    EY = 1303
+    SubrBBox = 1304
+    StartSubr = 1305
+    EndSubr = 1306
+    # Kerning:
+    KernPair = 1400  # See also 1410 which we know
+    # Tracking:
+    TrackRecord = 1450
+    # Encoding
+    EncStandard = 1600
+    AutoEncoding = 1603
+    CustomDict = 2033
+    AverageWidth = 1518
+    # DefaultWidth = 1523  # Conflicts with AxisMap
+    ForceBoldThreshold = 1519
+    ReplaceTable = 1520
+    Sample = 1521
+    List = 1522
+    OptionsTable = 1710
+    OptionsMonitor = 1711
+    OptionsTools = 1712
+    OptionsLayers = 1713
+    OptionsVectors = 1714
+    OptionsList = 1715
+    OptionsZoomFactor = 1720
+    OptionsGrid = 1721
+    OptionsGuides = 1722
+    OptionsHints = 1723
+    OptionsMask = 1724
+    OptionsContour = 1725
+    OptionsGridSize = 1726
+    OptionsShowCross = 1727
+    OptionsFitAscender = 1728
+    OptionsFitDescender = 1729
+    OptionsMaskColor = 1730
+    OptionsInterfaceScale = 1731
+    OptionsImportIndex = 1732
+    OptionsExportIndex = 1733
+    OptionsAssignMaskTo = 1734
+    OptionsActiveLayer = 1740
+    OptionsVisibleLayer = 1741
 
 
 class G(IntEnum):
@@ -107,15 +237,15 @@ class G(IntEnum):
     Links = 2008  # Glyph.hlinks and Glyph.vlinks
     image = 2007
     Bitmaps = 2013
-    E2023 = 2023
+    VSB = 2023  # advance height
     Sketch = 2019
-    HintingOptions = 2010
+    HintingOptions = 2010  # Better: Glyph Flags
     mask = 2009
     MaskMetrics = 2011  # was: mask.metrics
     MaskMetricsMM = 2028  # was: mask.metrics_mm
     Origin = 2027
     unicodes = 1250
-    E2034 = 2034
+    CustomDict = 2034
     UnicodesNonBMP = 1253
     mark = 2012
     customdata = 2015
@@ -124,6 +254,56 @@ class G(IntEnum):
     AnchorsProperties = 2020
     AnchorsMM = 2029
     GuideProperties = 2031
+    # Place in order is unknown for those:
+    CharIndes = 1200
+    Contour = 1201
+    Mask = 1202
+    HRulers = 1203
+    VRulers = 1204
+    HHints = 1205
+    VHints = 1206
+    RPoints = 1207
+    HGH = 1208
+    VGH = 1209
+    Base = 1210
+    StartX = 1211
+    StartY = 1212
+    WidthX = 1213
+    WidthY = 1214
+    BBox = 1215
+    LeftM = 1216
+    RightM = 1217
+    DIB = 1220
+    DIBStartX = 1221
+    DIBStartY = 1222
+    Bmp = 1223
+    Composite = 1224
+    StartChar = 1230
+    EndChar = 1231
+    CharName = 1232
+    SmallBmp = 1233
+    StartCharSeg = 1240
+    EndCharSeg = 1241
+    # FontLab 3.0
+    PContour = 2002
+    PHints = 2003
+    PGuides = 2004
+    PMetrics = 2005
+    EmptyGlyph = 2006
+    LayersNum = 1235
+    MMStartChar = 1236
+    MMStartMaskChar = 1239
+    MMWidth = 1237
+    MMContour = 1238
+    MMHHints = 1242
+    MMVHints = 1243
+    MMHGuides = 1244
+    MMVGuides = 1245
+    MMDHints = 1246
+    MMMetrics = 1248
+    NodesNum = 1249
+    MMSeacs = 1251
+    StyleTable = 1252
 
 
 class M(IntEnum):
@@ -150,6 +330,6 @@ class T(IntEnum):
     stemsnaplimit = 1272
     zoneppm = 1274
     codeppm = 1275
-    E1604 = 1604
-    E2032 = 2032
+    dropoutppm = 1604
+    MeasurementLine = 2032  # FIXME: Why in TrueType?
     TrueTypeZoneDeltas = 1273

@@ -15,18 +15,19 @@
 					<array>
 						<integer>0</integer>
 						<integer>0</integer>
-						<integer>255</integer>
-						<integer>254</integer>
-						<integer>0</integer>
 						<integer>0</integer>
 						<integer>255</integer>
-						<integer>254</integer>
+						<integer>0</integer>
 						<integer>0</integer>
 						<integer>0</integer>
 						<integer>255</integer>
-						<integer>254</integer>
 						<integer>0</integer>
-						<integer>72</integer>
+						<integer>0</integer>
+						<integer>0</integer>
+						<integer>255</integer>
+						<integer>0</integer>
+						<integer>0</integer>
+						<integer>0</integer>
 						<integer>255</integer>
 						<integer>0</integer>
 						<integer>63</integer>
@@ -100,17 +101,15 @@
 						<integer>0</integer>
 						<integer>192</integer>
 						<integer>255</integer>
-						<integer>254</integer>
+						<integer>0</integer>
 						<integer>0</integer>
 						<integer>0</integer>
 						<integer>255</integer>
-						<integer>254</integer>
+						<integer>0</integer>
 						<integer>0</integer>
 						<integer>0</integer>
 						<integer>255</integer>
 					</array>
-					<key>flag</key>
-					<integer>254</integer>
 				</dict>
 				<key>origin</key>
 				<array>

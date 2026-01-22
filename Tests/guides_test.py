@@ -1,8 +1,10 @@
 from unittest import TestCase
+from unittest.mock import MagicMock
 
 from vfbLib.compilers.guides import GuidePropertiesCompiler, GuidesCompiler
 from vfbLib.parsers.guides import GlobalGuidesParser, GuidePropertiesParser
 from vfbLib.typing import GuidePropertiesDict, MMGuidesDict
+from vfbLib.vfb.vfb import Vfb
 
 raw_full: GuidePropertiesDict = {
     "h": [
@@ -239,28 +241,38 @@ raw_glyph_2m: MMGuidesDict = {
 
 
 class GlobalGuidesParserTest(TestCase):
+    def setUp(self) -> None:
+        self.vfb_2_masters = Vfb()
+        self.vfb_2_masters.num_masters = 2
+        return super().setUp()
+
     def test(self):
-        result = GlobalGuidesParser().parse_hex(bin_guides, master_count=2)
+        result = GlobalGuidesParser().parse_hex(bin_guides, self.vfb_2_masters)
         assert result == raw_guides
 
     def test_empty(self):
-        result = GlobalGuidesParser().parse_hex(bin_guides_empty, master_count=2)
+        result = GlobalGuidesParser().parse_hex(bin_guides_empty, self.vfb_2_masters)
         assert result == raw_guides_empty
 
     def test_glyph_2m(self):
-        result = GlobalGuidesParser().parse_hex(bin_glyph_2m, master_count=2)
+        result = GlobalGuidesParser().parse_hex(bin_glyph_2m, self.vfb_2_masters)
         assert result == raw_glyph_2m
 
 
 class GuidesCompilerTest(TestCase):
+    def setUp(self) -> None:
+        self.vfb_2_masters = Vfb()
+        self.vfb_2_masters.num_masters = 2
+        return super().setUp()
+
     def test(self):
-        result = GuidesCompiler().compile_hex(raw_guides, master_count=2)
+        result = GuidesCompiler().compile_hex(raw_guides, self.vfb_2_masters)
         assert result == bin_guides
 
     def test_empty(self):
-        result = GuidesCompiler().compile_hex(raw_guides_empty, master_count=2)
+        result = GuidesCompiler().compile_hex(raw_guides_empty, self.vfb_2_masters)
         assert result == bin_guides_empty
 
     def test_glyph_2m(self):
-        result = GuidesCompiler().compile_hex(raw_glyph_2m, master_count=2)
+        result = GuidesCompiler().compile_hex(raw_glyph_2m, self.vfb_2_masters)
         assert result == bin_glyph_2m

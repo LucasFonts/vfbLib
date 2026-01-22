@@ -1,71 +1,39 @@
 {
   "header": {
     "decompiled": {
-      "header0": 26,
-      "filetype": "WLF10",
-      "header1": 3,
-      "chunk1": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        1,
-        0,
-        0,
-        0,
-        4,
-        0,
-        0,
-        0,
-        10,
-        0
-      ],
-      "creator": {
-        "1": 1,
-        "2": [
+      "signature": 1179408154,
+      "app_version": 49,
+      "file_version": 48,
+      "version_major": 3,
+      "version_minor": 0
+    }
+  },
+  "entries": [
+    {
+      "key": "Block File Data Start",
+      "decompiled": ""
+    },
+    {
+      "key": "Block Font Start",
+      "decompiled": ""
+    },
+    {
+      "key": "FL Version",
+      "decompiled": {
+        "platform": "macos",
+        "version": [
           5,
           2,
           2,
           128
         ],
-        "3": 0
-      },
-      "end0": 6,
-      "end1": 1,
-      "end2": 0
-    }
-  },
-  "entries": [
+        "owner": 0
+      }
+    },
+    {
+      "key": "Block Names Start",
+      "decompiled": ""
+    },
     {
       "key": "Encoding",
       "decompiled": [
@@ -1859,15 +1827,15 @@
       ]
     },
     {
-      "key": "1502",
+      "key": "MM Encoding Type",
       "decompiled": 1
     },
     {
-      "key": "518",
+      "key": "Block Names End",
       "decompiled": ""
     },
     {
-      "key": "257",
+      "key": "Block Font Info Start",
       "decompiled": ""
     },
     {
@@ -2020,7 +1988,7 @@
       "decompiled": ""
     },
     {
-      "key": "1140",
+      "key": "Sample Text",
       "decompiled": ""
     },
     {
@@ -2083,7 +2051,7 @@
       }
     },
     {
-      "key": "1068",
+      "key": "Collection",
       "decompiled": []
     },
     {
@@ -2387,11 +2355,11 @@
       "decompiled": 0
     },
     {
-      "key": "1604",
+      "key": "dropoutppm",
       "decompiled": 255
     },
     {
-      "key": "2032",
+      "key": "Measurement Line",
       "decompiled": 300
     },
     {
@@ -2438,15 +2406,15 @@
       "decompiled": 0
     },
     {
-      "key": "2030",
+      "key": "Font Flags",
       "decompiled": "00000000"
     },
     {
-      "key": "513",
+      "key": "Block Font Info End",
       "decompiled": ""
     },
     {
-      "key": "271",
+      "key": "Block MM Font Info Start",
       "decompiled": ""
     },
     {
@@ -2764,7 +2732,7 @@
       }
     },
     {
-      "key": "527",
+      "key": "Block MM Font Info End",
       "decompiled": ""
     },
     {
@@ -2782,7 +2750,7 @@
       }
     },
     {
-      "key": "2023",
+      "key": "VSB",
       "decompiled": [
         0
       ]
@@ -2818,6 +2786,14 @@
         "3": 318,
         "mapping_id": 1
       }
+    },
+    {
+      "key": "Block Font End",
+      "decompiled": ""
+    },
+    {
+      "key": "Block File Data End",
+      "decompiled": ""
     }
   ]
 }

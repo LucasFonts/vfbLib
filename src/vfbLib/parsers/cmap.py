@@ -10,7 +10,7 @@ class CustomCmapParser(BaseParser):
     """
 
     def _parse(self) -> list[CustomCmap]:
-        count = self.read_value()  # number of cmap records, not values
+        count = self.read_value()
         values = []
         for _ in range(count):
             cmap = CustomCmap(
@@ -19,10 +19,7 @@ class CustomCmapParser(BaseParser):
                 encoding_id=self.read_value(),
                 format=self.read_value(),
                 option=self.read_value(),
-                records=[],
+                page_name=self.read_str_with_len(),
             )
-            num_encodings = self.read_value()
-            if num_encodings > 0:
-                cmap["records"] = [self.read_uint8() for _ in range(num_encodings)]
             values.append(cmap)
         return values
