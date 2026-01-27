@@ -6,7 +6,7 @@ fonttools==4.61.1
 iniconfig==2.3.0
 mccabe==0.7.0
 orjson==3.11.5
-packaging==25.0
+packaging==26.0
 pluggy==1.6.0
 pycodestyle==2.14.0
 pyflakes==3.4.0
