@@ -68,7 +68,12 @@ class BaseBitmapCompiler(BaseCompiler):
         return encoded
 
     def _compile_bitmap_data(self, bitmap: BitmapDataDict) -> None:
-        encoded = self._encode_bitmap(bitmap["data"])
+        # For the "windows" platform, the bitmap must be inverted.
+        data = bitmap["data"]
+        if self.vfb is not None and self.vfb.writer_platform == "windows":
+            data = [~b - 0x100 for b in row for row in data]
+
+        encoded = self._encode_bitmap(data)
         num_values = len(list(chain.from_iterable(encoded)))
         self.write_value(num_values)
         for entry in encoded:
