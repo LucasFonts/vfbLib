@@ -426,6 +426,9 @@ class VfbToUfoBuilder:
                                 self.glyph_masters[name] = self.current_glyph
                                 self.glyphOrder.append(name)
                     self.build_mm_glyph(data)
+                case G.VSB:
+                    assert self.current_glyph is not None
+                    # TODO
                 case G.unicodes:
                     assert self.current_glyph is not None
                     self.current_glyph.unicodes.extend(data)
