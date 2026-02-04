@@ -178,3 +178,11 @@ tt_settings = {
     1: "create_vdmx",
     2: "add_null_cr_space",
 }
+
+
+class TTFlags(IntEnum):
+    use_custom_tt_values = 0x00010000
+    create_vdmx = 0x00020000
+    add_null_cr_space = 0x00040000
+    create_hdmx = 0x00080000
+    create_vmtx = 0x00100000
