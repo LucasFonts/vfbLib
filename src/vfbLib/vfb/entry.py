@@ -8,7 +8,8 @@ from typing import TYPE_CHECKING
 
 from vfbLib.compilers.base import BaseCompiler
 from vfbLib.constants import parser_classes
-from vfbLib.helpers import hexStr
+from vfbLib.enum import F
+from vfbLib.helpers import hexStr, int32_size
 from vfbLib.parsers.base import BaseParser, StreamReader
 from vfbLib.typing import EntryDict
 
@@ -157,14 +158,6 @@ class VfbEntry(StreamReader):
         raw_id = self.read_uint16()
         self.id = raw_id & ~0x8000
 
-        if self.id == 5:
-            # File end marker?
-            self.read_uint16()
-            two = self.read_uint16()
-            if two == 2:
-                self.read_uint16()
-                raise EOFError
-
         if raw_id & 0x8000:
             # Uses uint32 for data length
             num_bytes = self.read_uint32()
@@ -208,9 +201,7 @@ class VfbEntry(StreamReader):
 
         self.merge_masters_data()
 
-        self.data = self.compiler().compile(
-            self.data, master_count=self.vfb.num_masters
-        )
+        self.data = self.compiler().compile(self.data, vfb=self.vfb)
 
         # TODO: Return False here if compilation has failed. How to tell?
 
@@ -221,7 +212,7 @@ class VfbEntry(StreamReader):
         Decompile the entry. The result is stored in VfbEntry.data.
         """
         if self.parser is None:
-            raise ValueError
+            raise ValueError(f"No parser is specified for entry type {self.id}")
 
         if self.data is None:
             raise ValueError
@@ -233,13 +224,7 @@ class VfbEntry(StreamReader):
         byte_data = self.data
 
         try:
-            self.data = self.parser().parse(
-                BytesIO(byte_data),
-                size=self.size,
-                master_count=self.vfb.num_masters,
-                ttStemsV_count=self.vfb.ttStemsV_count,
-                ttStemsH_count=self.vfb.ttStemsH_count,
-            )
+            self.data = self.parser().parse(BytesIO(byte_data), self.size, self.vfb)
         except:  # noqa: E722
             logger.error(f"Parse error for data: {self.key}; {hexStr(byte_data)}")
             logger.error(f"Parser class: {self.parser.__name__}")
@@ -271,10 +256,11 @@ class VfbEntry(StreamReader):
         """
         self.stream = stream
         size = self._read_entry()
-        if self.key == "1410":
-            # FIXME: Special FL3 stuff?
-            if size != 4:
-                logger.warning(f"Entry 1410 with size {size}")
-            self.data = self.stream.read(10)
-        else:
-            self.data = self.stream.read(size)
+
+        # Special cases, probably remnants from FL3
+        if self.id == F.MMKernPair:
+            # We can't trust the size given in the "length" value of the entry.
+            # In this case it can be calculated from the number of masters:
+            size = 2 * int32_size + self.vfb.num_masters * 2
+
+        self.data = self.stream.read(size)

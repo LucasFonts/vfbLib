@@ -21,6 +21,13 @@ if TYPE_CHECKING:
 logger = logging.getLogger(__name__)
 
 
+def get_vfb_with_masters(num_masters: int) -> Vfb:
+    # Minimal Vfb object used for testing
+    vfb = Vfb()
+    vfb.num_masters = num_masters
+    return vfb
+
+
 # Convenience objects for vfb access
 
 
@@ -48,8 +55,8 @@ class Vfb:
         else:
             self.drop_keys: set[int] = set(drop_keys)
         self.only_header = only_header
-        # String encoding for nametable entries
-        self.encoding = "utf-8" if unicode_strings else "cp1252"
+        self.encoding = "utf-8"
+        self.force_unicode_strings = unicode_strings
 
         # We need some minimal API to make pen access work ...
         self._glyphs: dict[str, VfbGlyph] = {}
@@ -63,6 +70,7 @@ class Vfb:
         self.num_masters: int = 0
         self.ttStemsV_count: int = 0
         self.ttStemsH_count: int = 0
+        self.writer_platform: str = "macos"
 
         self.ps_hinting_options: VfbEntry | None = None
 
@@ -214,7 +222,19 @@ class Vfb:
             # of entries right here.
 
             if entry is not None:
-                if entry.key == "Master Count":
+                if entry.key == "FL Version":
+                    entry.decompile()
+                    if entry.data is not None:
+                        self.writer_platform = entry.data["platform"]
+                        if (
+                            self.force_unicode_strings
+                            or self.writer_platform == "macos"
+                        ):
+                            self.encoding = "utf-8"
+                        else:
+                            self.encoding = "cp1252"
+
+                elif entry.key == "Master Count":
                     entry.decompile()
                     if entry.data is not None:
                         if TYPE_CHECKING:
@@ -231,6 +251,9 @@ class Vfb:
 
                 if entry.id not in self.drop_keys:
                     self.entries.append(entry)
+
+            if entry.id == F.BlockFileDataEnd:
+                break
 
         end = time()
         if self.timing:
@@ -269,8 +292,6 @@ class Vfb:
                     # There may be entries without data
                     assert isinstance(entry.data, bytes)
                     vfb.write(entry.data)
-            # File end marker
-            vfb.write(b"\05\00\00\00\02\00\00\00")
 
 
 class VfbMaster:

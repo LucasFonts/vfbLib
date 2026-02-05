@@ -1,71 +1,39 @@
 {
   "header": {
     "decompiled": {
-      "header0": 26,
-      "filetype": "WLF10",
-      "header1": 3,
-      "chunk1": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        1,
-        0,
-        0,
-        0,
-        4,
-        0,
-        0,
-        0,
-        10,
-        0
-      ],
-      "creator": {
-        "1": 1,
-        "2": [
+      "signature": 1179408154,
+      "app_version": 49,
+      "file_version": 48,
+      "version_major": 3,
+      "version_minor": 0
+    }
+  },
+  "entries": [
+    {
+      "key": "Block File Data Start",
+      "decompiled": ""
+    },
+    {
+      "key": "Block Font Start",
+      "decompiled": ""
+    },
+    {
+      "key": "FL Version",
+      "decompiled": {
+        "platform": "macos",
+        "version": [
           5,
           2,
           2,
           128
         ],
-        "3": 0
-      },
-      "end0": 6,
-      "end1": 1,
-      "end2": 0
-    }
-  },
-  "entries": [
+        "owner": 0
+      }
+    },
+    {
+      "key": "Block Names Start",
+      "decompiled": ""
+    },
     {
       "key": "Encoding",
       "decompiled": [
@@ -1859,15 +1827,15 @@
       ]
     },
     {
-      "key": "1502",
+      "key": "MM Encoding Type",
       "decompiled": 1
     },
     {
-      "key": "518",
+      "key": "Block Names End",
       "decompiled": ""
     },
     {
-      "key": "257",
+      "key": "Block Font Info Start",
       "decompiled": ""
     },
     {
@@ -2020,7 +1988,7 @@
       "decompiled": ""
     },
     {
-      "key": "1140",
+      "key": "Sample Text",
       "decompiled": ""
     },
     {
@@ -2083,7 +2051,7 @@
       }
     },
     {
-      "key": "1068",
+      "key": "Collection",
       "decompiled": []
     },
     {
@@ -2308,11 +2276,11 @@
       "decompiled": 0
     },
     {
-      "key": "1604",
+      "key": "dropoutppm",
       "decompiled": 255
     },
     {
-      "key": "2032",
+      "key": "Measurement Line",
       "decompiled": 300
     },
     {
@@ -2359,15 +2327,15 @@
       "decompiled": 0
     },
     {
-      "key": "2030",
+      "key": "Font Flags",
       "decompiled": "00000000"
     },
     {
-      "key": "513",
+      "key": "Block Font Info End",
       "decompiled": ""
     },
     {
-      "key": "271",
+      "key": "Block MM Font Info Start",
       "decompiled": ""
     },
     {
@@ -2685,7 +2653,7 @@
       }
     },
     {
-      "key": "527",
+      "key": "Block MM Font Info End",
       "decompiled": ""
     },
     {
@@ -2724,7 +2692,7 @@
       }
     },
     {
-      "key": "2023",
+      "key": "VSB",
       "decompiled": [
         0
       ]
@@ -3138,7 +3106,7 @@
       }
     },
     {
-      "key": "2023",
+      "key": "VSB",
       "decompiled": [
         0
       ]
@@ -3298,171 +3266,78 @@
       }
     },
     {
-      "key": "OpenType Export Options",
-      "decompiled": [
-        {
-          "1": 1000
+      "key": "Font Options",
+      "decompiled": {
+        "fit_ascender": 1000,
+        "fit_descender": -400,
+        "auto_metrics_left": 30,
+        "auto_metrics_right": 30,
+        "auto_metrics_close": 10,
+        "auto_hinting_min_h_len": 60,
+        "auto_hinting_min_v_len": 60,
+        "auto_hinting_min_h_width": 20,
+        "auto_hinting_min_v_width": 20,
+        "auto_hinting_max_h_width": 250,
+        "auto_hinting_max_v_width": 250,
+        "auto_hinting_h_ratio": 2.0,
+        "auto_hinting_v_ratio": 2.0,
+        "duplicate_place_x": 100,
+        "duplicate_place_y": 100,
+        "paste_place_x": 0,
+        "paste_place_y": 0,
+        "opentype_name_records": 0,
+        "codepage_for_cmap_1_0": 0,
+        "dont_ignore_unicode_indexes": 1,
+        "head_bbox_savings": 64,
+        "autohinting_options": {
+          "single_link_attachment_precision": 7,
+          "generate_triple_hints": 1,
+          "generate_delta_instructions": 0,
+          "direct_links_to_center_of_the_glyph_where_possible": 0,
+          "interpolate_positions_of_cusp_points": 0,
+          "interpolate_positions_of_double_links": 1,
+          "add_link_to_rsb": 0
         },
-        {
-          "2": -400
+        "export_hinted_truetype_font": 1,
+        "autohint_unhinted_glyphs": 0,
+        "keep_existing_truetype_instructions": 0,
+        "export_visual_truetype_hints": 1,
+        "apply_bbox_savings": 1,
+        "auto_win_asc_desc": 0,
+        "add_characters": 0,
+        "export_embedded_bitmaps": 0,
+        "copy_hdmx_data_from_base_to_composite_glyph": 1,
+        "dont_automatically_reorder_glyphs": 1,
+        "subrize": 1,
+        "decompose": 1,
+        "export_ot": 1,
+        "export_volt": 0,
+        "write_kern_feature": 0,
+        "ot_write_gdef": 0,
+        "t1_terminal": 0,
+        "t1_pfm": 1,
+        "t1_afm": 1,
+        "t1_fs_type": 0,
+        "t1_autohint": 0,
+        "t1_unicode": 1,
+        "optimize_align": 2,
+        "optimize_reduce": 2,
+        "t1_encoding": 2,
+        "t1_use_os2": 1,
+        "t1_sort": 0,
+        "export_kern_table": 0,
+        "expand_kern_flags": {
+          "limit_action": 0,
+          "limit_codepage": 0,
+          "limit_cmap_10": 1,
+          "limit_font_window": 0,
+          "limit_count": 0,
+          "limit_keep": 0,
+          "apply_to_assistance": 0
         },
-        {
-          "3": 30
-        },
-        {
-          "4": 30
-        },
-        {
-          "5": 10
-        },
-        {
-          "6": 60
-        },
-        {
-          "7": 60
-        },
-        {
-          "8": 20
-        },
-        {
-          "9": 20
-        },
-        {
-          "10": 250
-        },
-        {
-          "11": 250
-        },
-        {
-          "12": 20000
-        },
-        {
-          "13": 20000
-        },
-        {
-          "14": 100
-        },
-        {
-          "114": 100
-        },
-        {
-          "15": 0
-        },
-        {
-          "115": 0
-        },
-        {
-          "opentype_name_records": 0
-        },
-        {
-          "codepage_for_cmap_1_0": 0
-        },
-        {
-          "dont_ignore_unicode_indexes": 1
-        },
-        {
-          "19": 64
-        },
-        {
-          "autohinting_options": 4359
-        },
-        {
-          "export_hinted_truetype_font": 1
-        },
-        {
-          "autohint_unhinted_glyphs": 0
-        },
-        {
-          "keep_existing_truetype_instructions": 0
-        },
-        {
-          "export_visual_truetype_hints": 1
-        },
-        {
-          "25": 1
-        },
-        {
-          "26": 0
-        },
-        {
-          "27": 0
-        },
-        {
-          "export_embedded_bitmaps": 0
-        },
-        {
-          "copy_hdmx_data_from_base_to_composite_glyph": 1
-        },
-        {
-          "dont_automatically_reorder_glyphs": 1
-        },
-        {
-          "44": 1
-        },
-        {
-          "51": 1
-        },
-        {
-          "31": 1
-        },
-        {
-          "32": 0
-        },
-        {
-          "33": 0
-        },
-        {
-          "42": 0
-        },
-        {
-          "34": 0
-        },
-        {
-          "35": 1
-        },
-        {
-          "36": 1
-        },
-        {
-          "47": 0
-        },
-        {
-          "37": 0
-        },
-        {
-          "38": 1
-        },
-        {
-          "39": 2
-        },
-        {
-          "40": 2
-        },
-        {
-          "41": 2
-        },
-        {
-          "43": 1
-        },
-        {
-          "45": 0
-        },
-        {
-          "export_kern_table": 0
-        },
-        {
-          "38": 1
-        },
-        {
-          "48": 4
-        },
-        {
-          "50": 10920
-        },
-        {
-          "49": -1
-        }
-      ]
+        "expand_kern_count": 10920,
+        "expand_kern_codepage": -1
+      }
     },
     {
       "key": "Export Options",
@@ -3478,6 +3353,14 @@
         "3": 320,
         "mapping_id": 1
       }
+    },
+    {
+      "key": "Block Font End",
+      "decompiled": ""
+    },
+    {
+      "key": "Block File Data End",
+      "decompiled": ""
     }
   ]
 }

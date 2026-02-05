@@ -14,9 +14,7 @@ Point = tuple[int, int]
 class AnchorDict(TypedDict):
     name: NotRequired[str]
     x: int
-    x1: NotRequired[int]
     y: int
-    y1: NotRequired[int]
 
 
 KerningClassFlagDict = dict[str, tuple[int, int]]
@@ -25,8 +23,7 @@ MetricsClassFlagDict = dict[str, tuple[int, int, int]]
 
 
 class BitmapDataDict(TypedDict):
-    flag: int
-    data: list[int]
+    data: list[list[int]]
     preview: NotRequired[list[str]]
 
 
@@ -58,7 +55,7 @@ class CustomCmap(TypedDict):
     encoding_id: int
     format: int
     option: int
-    records: list[int]
+    page_name: str
 
 
 EntryDecompiled = dict[str, Any] | int | list[Any] | str | tuple[int, str] | None
@@ -87,6 +84,68 @@ class FlagsOptionsDict(TypedDict):
     options: list[str]
 
 
+class FLVersionDict(TypedDict):
+    platform: str
+    version: tuple[int, ...]
+    owner: int
+
+
+class FontOptionsDict(TypedDict):
+    fit_ascender: NotRequired[int]
+    fit_descender: NotRequired[int]
+    auto_metrics_left: NotRequired[int]
+    auto_metrics_right: NotRequired[int]
+    auto_metrics_close: NotRequired[int]
+    auto_hinting_min_h_len: NotRequired[int]
+    auto_hinting_min_v_len: NotRequired[int]
+    auto_hinting_min_h_width: NotRequired[int]
+    auto_hinting_min_v_width: NotRequired[int]
+    auto_hinting_max_h_width: NotRequired[int]
+    auto_hinting_max_v_width: NotRequired[int]
+    auto_hinting_h_ratio: NotRequired[float]
+    auto_hinting_v_ratio: NotRequired[float]
+    duplicate_place_x: NotRequired[int]
+    paste_place_x: NotRequired[int]
+    duplicate_place_y: NotRequired[int]
+    paste_place_y: NotRequired[int]
+    opentype_name_records: NotRequired[int]
+    codepage_for_cmap_1_0: NotRequired[int]
+    dont_ignore_unicode_indexes: NotRequired[int]
+    head_bbox_savings: NotRequired[int]
+    autohinting_options: NotRequired[dict[str, int]]
+    export_hinted_truetype_font: NotRequired[int]
+    autohint_unhinted_glyphs: NotRequired[int]
+    keep_existing_truetype_instructions: NotRequired[int]
+    export_visual_truetype_hints: NotRequired[int]
+    apply_bbox_savings: NotRequired[int]
+    auto_win_asc_desc: NotRequired[int]
+    add_characters: NotRequired[int]
+    export_embedded_bitmaps: NotRequired[int]
+    copy_hdmx_data_from_base_to_composite_glyph: NotRequired[int]
+    dont_automatically_reorder_glyphs: NotRequired[int]
+    export_ot: NotRequired[int]
+    export_volt: NotRequired[int]
+    write_kern_feature: NotRequired[int]
+    t1_terminal: NotRequired[int]
+    t1_pfm: NotRequired[int]
+    t1_afm: NotRequired[int]
+    t1_autohint: NotRequired[int]
+    t1_unicode: NotRequired[int]
+    optimize_align: NotRequired[int]
+    optimize_reduce: NotRequired[int]
+    t1_encoding: NotRequired[int]
+    ot_write_gdef: NotRequired[int]
+    t1_use_os2: NotRequired[int]
+    subrize: NotRequired[int]
+    t1_sort: NotRequired[int]
+    export_kern_table: NotRequired[int]
+    t1_fs_type: NotRequired[int]
+    expand_kern_flags: NotRequired[int]
+    expand_kern_codepage: NotRequired[int]
+    expand_kern_count: NotRequired[int]
+    decompose: NotRequired[int]
+
+
 class GaspRangeDict(TypedDict):
     maxPpem: int
     flags: int
@@ -99,7 +158,7 @@ class GdefDict(TypedDict):
     anchors: NotRequired[list[AnchorDict]]
     carets: NotRequired[list[tuple[int, int]]]
     glyph_class: NotRequired[str]
-    unknown: NotRequired[list[int]]
+    ot_classes: NotRequired[list[int]]
 
 
 class GlyphBitmapDict(TypedDict):
@@ -244,8 +303,7 @@ class GlyphData(TypedDict):
 
 
 class MaskData(GlyphData):
-    num: int
-    reserved0: NotRequired[int]
+    weight_vector: list[float]
 
 
 class VdmxRecDict(TypedDict):
@@ -260,11 +318,8 @@ class VfbDict(TypedDict):
 
 
 class VfbHeaderDict(TypedDict):
-    header0: int
-    filetype: str
-    header1: int
-    chunk1: list[int]
-    creator: dict[int, int | list[int]]
-    end0: int
-    end1: int
-    end2: int
+    signature: int
+    app_version: int
+    file_version: int
+    version_major: int
+    version_minor: int

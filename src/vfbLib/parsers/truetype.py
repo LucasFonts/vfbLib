@@ -67,82 +67,93 @@ class TrueTypeInfoParser(BaseParser):
             dk = ttinfo_names.get(k, str(k))  # dict key, human-readable
             hk = ttinfo_names.get(k, hex(k))  # dict key, hex
 
-            if k == 0x32:
-                return info
+            match k:
+                case 0x32:
+                    # End
+                    return info
 
-            elif k in (0x33, 0x34, 0x35, 0x36, 0x37, 0x38):
-                self.assert_unique(info, dk)
-                info[dk] = self.read_value()
+                case 0x33 | 0x34 | 0x35 | 0x36 | 0x37 | 0x38:
+                    self.assert_unique(info, dk)
+                    info[dk] = self.read_value()
 
-            elif k == 0x39:
-                # Options and head flags
-                self.assert_unique(info, dk)
-                info[dk] = convert_int_to_flags_options(self.read_value())
+                case 0x39:
+                    # Options and head flags
+                    self.assert_unique(info, dk)
+                    info[dk] = convert_int_to_flags_options(self.read_value())
 
-            elif k in (0x3A, 0x3B, 0x3C, 0x3D, 0x3E, 0x3F):
-                self.assert_unique(info, bk)
-                info[bk] = self.read_value()
+                case 0x3A | 0x3B | 0x3C | 0x3D | 0x3E | 0x3F:
+                    # head: upm, mac_style, lowest_rec_ppm, font_direction_hint
+                    # OS/2: weight_class, width_class
+                    self.assert_unique(info, bk)
+                    info[bk] = self.read_value()
 
-            elif k in (
-                0x40,
-                0x41,
-                0x42,
-                0x43,
-                0x44,
-                0x45,
-                0x46,
-                0x47,
-                0x48,
-                0x49,
-                0x4A,
-                0x4B,
-            ):
-                self.assert_unique(info, dk)
-                info[dk] = self.read_value()
+                case (
+                    0x40
+                    | 0x41
+                    | 0x42
+                    | 0x43
+                    | 0x44
+                    | 0x45
+                    | 0x46
+                    | 0x47
+                    | 0x48
+                    | 0x49
+                    | 0x4A
+                    | 0x4B
+                ):
+                    # OS/2: fs_type, sub/superscripts, strikeout, family_class
+                    self.assert_unique(info, dk)
+                    info[dk] = self.read_value()
 
-            elif k == 0x4C:  # PANOSE?
-                self.assert_unique(info, dk)
-                info[dk] = [self.read_uint8() for _ in range(10)]
+                case 0x4C:
+                    # PANOSE
+                    self.assert_unique(info, dk)
+                    info[dk] = [self.read_uint8() for _ in range(10)]
 
-            elif k in (0x4D, 0x4E, 0x4F, 0x50, 0x51, 0x52):
-                self.assert_unique(info, dk)
-                info[dk] = self.read_value()
+                case 0x4D | 0x4E | 0x4F | 0x50 | 0x51 | 0x52:
+                    # OS/2: typo_ascender, typo_descender, typo_line_gap, fs_selection,
+                    # win_ascent, win_descent
+                    self.assert_unique(info, dk)
+                    info[dk] = self.read_value()
 
-            elif k == 0x53:
-                self.assert_unique(info, dk)
-                num_values = self.read_value()
-                info[dk] = [self.read_uint8() for _ in range(num_values)]
+                case 0x53:
+                    # HDMX ppms 1
+                    self.assert_unique(info, dk)
+                    num_values = self.read_value()
+                    info[dk] = [self.read_uint8() for _ in range(num_values)]
 
-            elif k == 0x54:
-                # Codepages
-                self.assert_unique(info, dk)
-                range1 = self.read_value(signed=False)
-                range2 = self.read_value(signed=False)
-                info[dk] = {
-                    "os2_ul_code_page_range1": range1,
-                    "os2_ul_code_page_range2": range2,
-                }
+                case 0x54:
+                    # Codepages
+                    self.assert_unique(info, dk)
+                    range1 = self.read_value(signed=False)
+                    range2 = self.read_value(signed=False)
+                    info[dk] = {
+                        "os2_ul_code_page_range1": range1,
+                        "os2_ul_code_page_range2": range2,
+                    }
 
-            elif k in (0x56, 0x57):
-                # 0x56: head_creation
-                # 0x57: value 2 of the list that FL5 returns for ttinfo.head_creation
-                # The timestamps are returned by the FL5 API as signed, so for current
-                # dates they have wrapped to a negative number.
-                self.assert_unique(info, dk)
-                # We read the number as unsigned anyway
-                info[dk] = self.read_value(signed=False)
+                case 0x56 | 0x57:
+                    # 0x56: head_creation
+                    # 0x57: value 2 of the list that FL5 returns for ttinfo.head_creation
+                    # The timestamps are returned by the FL5 API as signed, so for current
+                    # dates they have wrapped to a negative number.
+                    self.assert_unique(info, dk)
+                    # We read the number as unsigned anyway
+                    info[dk] = self.read_value(signed=False)
 
-            elif k == 0x5C:
-                self.assert_unique(info, dk)
-                info[dk] = self.read_value()
+                case 0x5C:
+                    # Average width
+                    self.assert_unique(info, dk)
+                    info[dk] = self.read_value()
 
-            elif k == 0x58:
-                self.assert_unique(info, hk)
-                num_values = self.read_value()
-                info[hk] = [self.read_uint8() for _ in range(num_values)]
+                case 0x58:
+                    # HDMX ppms 2
+                    self.assert_unique(info, hk)
+                    num_values = self.read_value()
+                    info[hk] = [self.read_uint8() for _ in range(num_values)]
 
-            else:
-                logger.warning(f"Unknown key in TrueType info: {hex(k)}")
+                case _:
+                    logger.warning(f"Unknown key in TrueType info: {hex(k)}")
 
 
 class TrueTypeStemsParser(BaseParser):
@@ -194,7 +205,7 @@ class TrueTypeStemPpems1Parser(BaseParser):
         result = TTStemsDict(ttStemsV=[], ttStemsH=[])
         for i in range(2):
             direction = []
-            num_stems = (self.ttStemsV_count, self.ttStemsH_count)[i]
+            num_stems = (self.vfb.ttStemsV_count, self.vfb.ttStemsH_count)[i]
             if num_stems is None:
                 raise ValueError
 
