@@ -44,7 +44,6 @@ class VfbEntry(StreamReader):
         self.compiler = None
         # The numeric and human-readable key of the entry, also sets parser & compiler
         self.id = eid
-        self.key = None
         # The parser which can convert data to decompiled.
         # Use the arg to override the parser looked up in the id setter only
         if parser is not None:
