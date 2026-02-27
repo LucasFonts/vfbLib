@@ -50,7 +50,7 @@ class FontOptionsParser(EncodedKeyValuesParser):
                 "direct_links_to_center_of_the_glyph_where_possible": int(
                     bool(
                         val
-                        & TTAutoHintOptions.direct_links_to_center_of_the_glyph_where_possible
+                        & TTAutoHintOptions.direct_links_to_center_of_the_glyph_where_possible  # noqa: E501
                     )
                 ),
                 "interpolate_positions_of_cusp_points": int(

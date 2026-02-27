@@ -19,7 +19,7 @@ def flush_buffer(
     # its length needs to be written as a signed int8 (len(buf) - 1) which has a maximum
     # value of 127.
     for i in range(0, len(buf), max_chunk_len):
-        chunk = buf[i : i + max_chunk_len]
+        chunk = buf[i : i + max_chunk_len]  # noqa: E203
         target.append([len(chunk) - 1] + chunk)
 
 

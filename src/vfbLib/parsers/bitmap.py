@@ -69,7 +69,12 @@ class BaseBitmapParser(BaseParser):
 
         # Split list into rows
         bytes_per_row = ((w + 15) // 16) * 2
-        nice = [data[j : j + bytes_per_row] for j in range(0, len(data), bytes_per_row)]
+        # fmt:off
+        nice = [
+            data[j : j + bytes_per_row]  # noqa: E203
+            for j in range(0, len(data), bytes_per_row)
+        ]
+        # fmt:on
 
         bitmap = BitmapDataDict(data=nice)
 
