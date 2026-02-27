@@ -237,7 +237,7 @@ class G(IntEnum):
     Links = 2008  # Glyph.hlinks and Glyph.vlinks
     image = 2007
     Bitmaps = 2013
-    VSB = 2023  # advance height
+    VSB = 2023
     Sketch = 2019
     HintingOptions = 2010  # Better: Glyph Flags
     mask = 2009
