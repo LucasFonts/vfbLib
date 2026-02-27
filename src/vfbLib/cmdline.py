@@ -14,7 +14,7 @@ logger = logging.getLogger(__name__)
 
 def vfb2json():
     parser = ArgumentParser(
-        description="vfb2json Converter\nCopyright (c) 2024 by LucasFonts"
+        description="vfb2json Converter\nCopyright (c) 2026 by LucasFonts"
     )
     parser.add_argument(
         "-d",
@@ -55,7 +55,7 @@ def vfb2json():
         "--unicode-strings",
         action="store_true",
         default=False,
-        help="interpret name strings as Unicode instead of Windows-1252",
+        help="force strings to be interpreted as Unicode instead of Windows-1252",
     )
     parser.add_argument(
         "inputpath",
@@ -90,7 +90,7 @@ def vfb2json():
 
 def vfb2ufo():
     parser = ArgumentParser(
-        description="vfb3ufo Converter\nCopyright (c) 2024 by LucasFonts"
+        description="vfb3ufo Converter\nCopyright (c) 2026 by LucasFonts"
     )
     parser.add_argument(
         "-p",
@@ -203,7 +203,7 @@ def vfb2ufo():
         "--unicode-strings",
         action="store_true",
         default=False,
-        help="interpret name table strings as Unicode instead of Windows-1252",
+        help="force strings to be interpreted as Unicode instead of Windows-1252",
     )
     args = parser.parse_args()
     if args:
