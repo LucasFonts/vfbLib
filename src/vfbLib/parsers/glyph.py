@@ -99,9 +99,9 @@ class GlyphGDEFParser(BaseParser):
         for _ in range(num_anchors):
             name = self.read_str_with_len()
             x = self.read_value()
-            _pt_index_0 = self.read_value()
+            _ = self.read_value()
             y = self.read_value()
-            _pt_index_1 = self.read_value()
+            _ = self.read_value()
             anchor = AnchorDict(x=x, y=y)
             if name:
                 anchor["name"] = name
