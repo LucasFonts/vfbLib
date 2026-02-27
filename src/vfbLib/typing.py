@@ -169,6 +169,13 @@ class GlyphBitmapDict(TypedDict):
     bitmap: BitmapDataDict
 
 
+class GlyphHintingOptionsDict(TypedDict):
+    hint_replacement: NotRequired[int]
+    horizontal_3_stem: NotRequired[int]
+    vertical_3_stem: NotRequired[int]
+    other: NotRequired[list[int]]
+
+
 class GuideDict(TypedDict):
     angle: float | int
     pos: int
