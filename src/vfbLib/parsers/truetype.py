@@ -134,9 +134,10 @@ class TrueTypeInfoParser(BaseParser):
 
                 case 0x56 | 0x57:
                     # 0x56: head_creation
-                    # 0x57: value 2 of the list that FL5 returns for ttinfo.head_creation
-                    # The timestamps are returned by the FL5 API as signed, so for current
-                    # dates they have wrapped to a negative number.
+                    # 0x57: value 2 of the list that FL5 returns for
+                    #           ttinfo.head_creation
+                    # The timestamps are returned by the FL5 API as signed, so for
+                    # current dates they have wrapped to a negative number.
                     self.assert_unique(info, dk)
                     # We read the number as unsigned anyway
                     info[dk] = self.read_value(signed=False)
