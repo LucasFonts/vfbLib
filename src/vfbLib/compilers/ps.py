@@ -4,6 +4,7 @@ from typing import Any
 
 from vfbLib.compilers.base import BaseCompiler
 from vfbLib.parsers.ps import global_options, glyph_options
+from vfbLib.typing import GlyphHintingOptionsDict
 
 
 class PostScriptInfoCompiler(BaseCompiler):
@@ -70,7 +71,7 @@ class PostScriptGlobalHintingOptionsCompiler(BaseCompiler):
 
 
 class PostScriptGlyphHintingOptionsCompiler(BaseCompiler):
-    def _compile(self, data: Any) -> None:
+    def _compile(self, data: GlyphHintingOptionsDict) -> None:
         value = 0
         for k, bit in glyph_options:
             if data.get(k, 0):

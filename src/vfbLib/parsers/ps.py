@@ -4,7 +4,7 @@ import logging
 
 from vfbLib.helpers import binaryToIntList
 from vfbLib.parsers.base import BaseParser
-from vfbLib.typing import BBoxDict, PSInfoDict
+from vfbLib.typing import BBoxDict, GlyphHintingOptionsDict, PSInfoDict
 
 logger = logging.getLogger(__name__)
 
@@ -78,9 +78,9 @@ class PostScriptGlyphHintingOptionsParser(BaseParser):
     options.
     """
 
-    def _parse(self):
+    def _parse(self) -> GlyphHintingOptionsDict:
         bits = set(binaryToIntList(self.read_uint32()))
-        d = {}
+        d: GlyphHintingOptionsDict = {}
         for k, bit in glyph_options:
             if bit in bits:
                 bits.discard(bit)

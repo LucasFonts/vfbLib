@@ -16,7 +16,7 @@ class GuidesCompiler(BaseCompiler):
             dir_guides = data[direction]
             self.write_value(len(dir_guides))
             for guide in dir_guides:
-                for master_index in range(self.master_count):
+                for master_index in range(self.vfb.num_masters):
                     self.write_value(guide[master_index]["pos"])
                     angle = int(tan(radians(guide[master_index]["angle"])) * 10000)
                     self.write_value(angle)

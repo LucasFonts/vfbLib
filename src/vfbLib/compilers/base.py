@@ -12,6 +12,7 @@ if TYPE_CHECKING:
     from typing import Any, Iterable
 
     from vfbLib.typing import KerningClassFlagDict, MetricsClassFlagDict
+    from vfbLib.vfb.vfb import Vfb
 
 
 # Compilers for VFB entries
@@ -55,6 +56,15 @@ class StreamWriter:
         """
         for f in values:
             self.write_double(f)
+
+    def write_int8(self, value: int) -> None:
+        """
+        Write a signed 8-bit integer to the stream.
+
+        Args:
+            value (int): The integer value to write.
+        """
+        self.stream.write(value.to_bytes(int8_size, byteorder="little", signed=True))
 
     def write_int16(self, value: int) -> None:
         """
@@ -153,7 +163,7 @@ class BaseCompiler(StreamWriter):
     Base class to compile vfb data.
     """
 
-    def compile(self, data: Any, master_count: int = 0) -> bytes:
+    def compile(self, data: Any, vfb: Vfb | None = None) -> bytes:
         """
         Compile the JSON-like main data structure and return the compiled binary data.
 
@@ -162,29 +172,29 @@ class BaseCompiler(StreamWriter):
 
         Args:
             data (Any): The main data structure.
-            master_count (int, optional): The number of masters. Defaults to 0.
+            vfb (int, optional): The Vfb that is calling the compiler.
 
         Returns:
             bytes: The compiled binary data.
         """
-        self.master_count = master_count
+        self.vfb = vfb
         self.stream = BytesIO()
         self._compile(data)
         return self.stream.getvalue()
 
-    def compile_hex(self, data: Any, master_count: int = 0) -> str:
+    def compile_hex(self, data: Any, vfb: Vfb | None = None) -> str:
         """
         Compile the data given into a hex string format, e.g. "8c 8d 89 8b". Used for
         testing.
 
         Args:
             data (Any): The input data
-            master_count (int, optional): Number of masters. Defaults to 0.
+            vfb (int, optional): The Vfb that is calling the compiler.
 
         Returns:
             str: The hex string
         """
-        b = self.compile(data, master_count)
+        b = self.compile(data, vfb)
         return hexStr(b)
 
     def _compile(self, data: Any) -> None:

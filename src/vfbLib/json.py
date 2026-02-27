@@ -34,6 +34,10 @@ def save_vfb_json(
         out_path = (Path(out_path) / vfb_path.name).with_suffix(suffix)
     else:
         out_path = vfb_path.with_suffix(suffix)
+    write_vfb_json(vfb, out_path)
+
+
+def write_vfb_json(vfb: Vfb, out_path: Path) -> None:
     with open(str(out_path), "wb") as f:
         f.write(
             orjson.dumps(
