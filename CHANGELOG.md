@@ -1,5 +1,15 @@
 # Change Log
 
+## 0.11.0
+
+Major rewrite for more accuracy based on information generously provided by Yuri Yarmola of FontLab. Check thoroughly after updating.
+
+- The header is much shorter than I thought
+- Bitmap backgrounds and glyph bitmaps are now supported
+- All entry IDs are now known
+- Support vertical sidebearing in UFO conversion
+- Derive string encoding from platform stored in VFB
+
 ## 0.10.6
 
 - Bugfix for `vfbcu2qu` with `fonttools` 4.61.0+
