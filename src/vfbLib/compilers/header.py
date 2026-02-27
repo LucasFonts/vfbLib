@@ -21,6 +21,6 @@ class VfbHeaderCompiler(StreamWriter):
         # TODO: How is the padding length determined?
         data_offset = 44
         self.write_uint32(data_offset)
-        bytes_written = 10
+        bytes_written = 12
         for _ in range(data_offset - bytes_written):
             self.write_uint8(0)
