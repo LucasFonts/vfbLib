@@ -9,7 +9,6 @@ subject to Apple’s mercy (no native support for Apple Silicon).
 That’s why a single determined programmer with a hex editor set out to rectify
 this situation.
 
-
 ## Improvements Over vfb2ufo
 
 - Outputs normalized UFO v3
@@ -20,7 +19,6 @@ this situation.
 - PostScript hinting is written correctly, but to the Adobe lib key
 - TrueType hinting is supported in composite glyphs
 - Supports more UFO font info attributes
-
 
 ## Command Line Script Usage
 
@@ -40,7 +38,7 @@ not be overwritten unless you specify the `-fo` option.
 vfb3ufo -h
 usage: vfb3ufo [-h] [-p PATH] [-fo] [-g] [-j] [-k] [-ttx] [-64] [-s] [-n] [-nops] [-v] [-z] [-m] [-u] inputpath [outputpath]
 
-vfb3ufo Converter Copyright (c) 2024 by LucasFonts
+vfb3ufo Converter Copyright (c) 2026 by LucasFonts
 
 positional arguments:
   inputpath             input file path (.vfb)
@@ -67,13 +65,12 @@ Additional options not present in vfb2ufo:
   -nops, --no-postscript-hints
                         Don't output PostScript hinting
   -u, --unicode-strings
-                        interpret strings as Unicode instead of Windows-1252
+                        force strings to be interpreted as Unicode instead of Windows-1252
 
 Options not implemented here, but present in the original vfb2ufo:
 
   -ttx, --ttx           convert binary OpenType Layout data using TTX-like format
 ```
-
 
 ### vfb2json
 
@@ -91,7 +88,7 @@ We expect this to be mostly used for debugging purposes.
 vfb2json -h
 usage: vfb2json [-h] [-d] [--header] [-m] [-p PATH] [-r] [-u] inputpath
 
-vfb2json Converter Copyright (c) 2024 by LucasFonts
+vfb2json Converter Copyright (c) 2026 by LucasFonts
 
 positional arguments:
   inputpath             input file path (.vfb)
@@ -104,9 +101,8 @@ options:
   -p, --path PATH       output folder
   -r, --roundtrip       roundtrip data by decompiling and compiling again before saving
   -u, --unicode-strings
-                        interpret name table strings as Unicode instead of Windows-1252
+                        force strings to be interpreted as Unicode instead of Windows-1252
 ```
-
 
 ### vfb2tth
 
@@ -132,7 +128,6 @@ options:
   -f, --format FORMAT  The output format: json (default), toml, or yaml
   -p, --path PATH      output folder
 ```
-
 
 ### vfbcu2qu
 
@@ -163,10 +158,9 @@ options:
                         Maximum allowed error, relative to the font's units per em. Default is 0.001.
 ```
 
-
 ### vfbdiff
 
-Generate a diff of two VFB files, either in unified diff or HTML format.
+Generate a diff of two VFB files, either in unified diff or HTML format (extremely slow!).
 
 ```
 vfbdiff -h
@@ -185,4 +179,4 @@ options:
 
 ## Copyright
 
-© 2022–2025 by [LucasFonts GmbH](https://www.lucasfonts.com/), Berlin
+© 2022–2026 by [LucasFonts GmbH](https://www.lucasfonts.com/), Berlin
