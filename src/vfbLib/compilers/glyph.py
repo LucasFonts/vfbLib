@@ -53,9 +53,9 @@ class GlyphGDEFCompiler(BaseCompiler):
         for anchor in anchors:
             self.write_str_with_len(anchor.get("name", ""))
             self.write_value(anchor["x"])
-            self.write_value(anchor.get("x1", -1))
+            self.write_value(-1)
             self.write_value(anchor["y"])
-            self.write_value(anchor.get("y1", -1))
+            self.write_value(-1)
 
         carets = data.get("carets", [])
         self.write_value(len(carets), signed=False)
@@ -63,9 +63,9 @@ class GlyphGDEFCompiler(BaseCompiler):
             self.write_value(pos)
             self.write_value(xxx)
 
-        unknown = data.get("unknown", [])
-        self.write_value(len(unknown), signed=False)
-        for value in unknown:
+        ot_classes = data.get("ot_classes", [])
+        self.write_value(len(ot_classes), signed=False)
+        for value in ot_classes:
             self.write_value(value)
 
 
