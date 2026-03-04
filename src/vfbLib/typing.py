@@ -286,9 +286,53 @@ class PSInfoDict(TypedDict):
     cap_height: int
 
 
-TrueTypeInfoDict = dict[
-    str, int | list[int] | list[str] | FlagsOptionsDict | dict[str, int]
-]
+class CodepagesDict(TypedDict):
+    os2_ul_code_page_range1: int
+    os2_ul_code_page_range2: int
+
+
+class TrueTypeInfoDict(TypedDict):
+    max_zones: int
+    max_twilight_points: int
+    max_storage: int
+    max_function_defs: int
+    max_instruction_defs: int
+    max_stack_elements: int
+    head_flags: int | FlagsOptionsDict
+    head_units_per_em: int
+    head_mac_style: int
+    head_lowest_rec_ppem: int
+    head_creation: int
+    head_creation2: int
+    head_font_direction_hint: int
+    os2_us_weight_class: int
+    os2_us_width_class: int
+    os2_fs_type: int
+    os2_y_subscript_x_size: int
+    os2_y_subscript_y_size: int
+    os2_y_subscript_x_offset: int
+    os2_y_subscript_y_offset: int
+    os2_y_superscript_x_size: int
+    os2_y_superscript_y_size: int
+    os2_y_superscript_x_offset: int
+    os2_y_superscript_y_offset: int
+    os2_y_strikeout_size: int
+    os2_y_strikeout_position: int
+    os2_s_family_class: int
+    OpenTypeOS2Panose: list[int]
+    os2_s_typo_ascender: int
+    os2_s_typo_descender: int
+    os2_s_typo_line_gap: int
+    os2_fs_selection: int
+    os2_us_win_ascent: int
+    os2_us_win_descent: int
+    AverageWidth: int
+    HdmxPPMs1: list[int]
+    HdmxPPMs2: list[int]
+    Codepages: CodepagesDict
+    hhea_line_gap: NotRequired[int]
+    hhea_ascender: NotRequired[int]
+    hhea_descender: NotRequired[int]
 
 
 class TTCommandDict(TypedDict):

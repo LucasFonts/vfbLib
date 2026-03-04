@@ -7,10 +7,16 @@ from vfbLib.compilers.base import BaseCompiler
 from vfbLib.helpers import intListToBinary
 
 if TYPE_CHECKING:
-    from vfbLib.typing import FlagsOptionsDict, TTStemsDict, TTZonesDict, VdmxRecDict
+    from vfbLib.typing import (
+        FlagsOptionsDict,
+        TrueTypeInfoDict,
+        TTStemsDict,
+        TTZonesDict,
+        VdmxRecDict,
+    )
 
 
-def convert_flags_options_to_int(data: dict[str, dict[str, list[int]]]) -> int:
+def convert_flags_options_to_int(data: TrueTypeInfoDict) -> int:
     value = 0
     head_flags_options: FlagsOptionsDict = data["head_flags"]
     assert isinstance(head_flags_options, dict)
@@ -35,13 +41,15 @@ class GaspCompiler(BaseCompiler):
 
 
 class TrueTypeInfoCompiler(BaseCompiler):
-    def _write_if_exists(self, numkey: int, data: Any, signed: bool = True) -> None:
+    def _write_if_exists(
+        self, numkey: int, data: TrueTypeInfoDict, signed: bool = True
+    ) -> None:
         strkey = ttinfo_names[numkey]
         if strkey in data:
             self.write_uint8(numkey)
             self.write_value(data[strkey], signed=signed)
 
-    def _compile(self, data: dict[str, int | list[int]]) -> None:
+    def _compile(self, data: TrueTypeInfoDict) -> None:
         for k in (0x33, 0x34, 0x35, 0x36, 0x37, 0x38):
             self.write_uint8(k)
             self.write_value(data[ttinfo_names[k]])

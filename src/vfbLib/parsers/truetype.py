@@ -58,7 +58,7 @@ class TrueTypeInfoParser(BaseParser):
             raise KeyError
 
     def _parse(self) -> TrueTypeInfoDict:
-        info: TrueTypeInfoDict = {}
+        info: TrueTypeInfoDict = TrueTypeInfoDict()
 
         while True:
             k = self.read_uint8()
