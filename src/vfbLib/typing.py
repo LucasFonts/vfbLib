@@ -233,6 +233,13 @@ class LinkDict(TypedDict):
     y: list[tuple[int, int]]
 
 
+class MappingModeDict(TypedDict):
+    mapping_mode: str
+    m2: int
+    m3: int
+    mapping_id: int
+
+
 class MMAnchorDict(TypedDict):
     x: list[int]
     y: list[int]

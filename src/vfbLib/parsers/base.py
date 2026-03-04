@@ -15,6 +15,7 @@ from vfbLib.helpers import (
     int32_size,
 )
 from vfbLib.parsers.value import read_value
+from vfbLib.typing import MappingModeDict
 
 if TYPE_CHECKING:
     from io import BufferedReader
@@ -263,8 +264,7 @@ class EncodedKeyValuesParser(BaseParser):
 class MappingModeParser(BaseParser):
     __end__ = 0x00
 
-    def _parse(self) -> dict[str, str | int]:
-        value: dict[str, str | int] = {}
+    def _parse(self) -> MappingModeDict:
         while True:
             key = self.read_uint8()
             if key == self.__end__:
@@ -273,11 +273,11 @@ class MappingModeParser(BaseParser):
             v = self.read_value()
 
             if key == 1:
-                value["mapping_mode"] = mapping_modes.get(v, str(v))
+                mapping_mode = mapping_modes.get(v, str(v))
             elif key == 2:
-                value["2"] = v
+                m2 = v
             elif key == 3:
-                value["3"] = v
+                m3 = v
             elif key == 4:
                 # encoding id:
                 #   in mapping_mode 0:
@@ -288,11 +288,13 @@ class MappingModeParser(BaseParser):
                 #      index into unicode_ranges from uranges.dat
                 #   in mapping mode 3:
                 #      index into codepages sorted by group, then name (?)
-                value["mapping_id"] = v
+                mapping_id = v
             else:
                 raise KeyError
 
-        return value
+        return MappingModeDict(
+            mapping_mode=mapping_mode, m2=m2, m3=m3, mapping_id=mapping_id
+        )
 
 
 class EncodedValueListParser(BaseParser):

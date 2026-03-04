@@ -11,7 +11,11 @@ if TYPE_CHECKING:
     from io import BufferedWriter
     from typing import Any, Iterable
 
-    from vfbLib.typing import KerningClassFlagDict, MetricsClassFlagDict
+    from vfbLib.typing import (
+        KerningClassFlagDict,
+        MappingModeDict,
+        MetricsClassFlagDict,
+    )
     from vfbLib.vfb.vfb import Vfb
 
 
@@ -266,14 +270,14 @@ mapping_modes = {
 
 
 class MappingModeCompiler(BaseCompiler):
-    def _compile(self, data: dict[str, str | int]) -> None:
+    def _compile(self, data: MappingModeDict) -> None:
         rev_map = {v: k for k, v in mapping_modes.items()}
         self.write_uint8(1)
         self.write_value(rev_map[data["mapping_mode"]])
         self.write_uint8(2)
-        self.write_value(data["2"])
+        self.write_value(data["m2"])
         self.write_uint8(3)
-        self.write_value(data["3"])
+        self.write_value(data["m3"])
         self.write_uint8(4)
         self.write_value(data["mapping_id"])
         self.write_uint8(0)
