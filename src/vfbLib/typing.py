@@ -264,6 +264,11 @@ class PSInfoDict(TypedDict):
     cap_height: int
 
 
+TrueTypeInfoDict = dict[
+    str, int | list[int] | list[str] | FlagsOptionsDict | dict[str, int]
+]
+
+
 class TTCommandDict(TypedDict):
     name: str
     params: list[str]

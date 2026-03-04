@@ -9,6 +9,7 @@ from vfbLib.parsers.base import BaseParser
 from vfbLib.typing import (
     FlagsOptionsDict,
     GaspList,
+    TrueTypeInfoDict,
     TTStemDict,
     TTStemsDict,
     TTZoneDict,
@@ -51,15 +52,13 @@ class TrueTypeInfoParser(BaseParser):
     A parser that reads data as "TrueType Info" values.
     """
 
-    def assert_unique(
-        self, d: dict[str, int | list[int] | list[str]], key: str
-    ) -> None:
+    def assert_unique(self, d: TrueTypeInfoDict, key: str) -> None:
         if key in d:
             logger.error(f"Duplicate key in TrueType Info: {key} in {d}")
             raise KeyError
 
-    def _parse(self):
-        info = {}
+    def _parse(self) -> TrueTypeInfoDict:
+        info: TrueTypeInfoDict = {}
 
         while True:
             k = self.read_uint8()
