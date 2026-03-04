@@ -105,7 +105,7 @@ class GlyphCompiler(BaseCompiler):
                     tgt["scaleX"][m] = src["scaleX"][m]
                     tgt["scaleY"][m] = src["scaleY"][m]
 
-    def _compile(self, data: Any) -> None:
+    def _compile(self, data: dict[str, Any]) -> None:
         # Constants
         self.write_bytes(pack("<4B", *GLYPH_CONSTANT))
         self.num_masters = data["num_masters"]
