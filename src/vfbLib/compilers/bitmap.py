@@ -119,5 +119,4 @@ class GlyphBitmapsCompiler(BaseBitmapCompiler):
             self.write_value(h, signed=False)
 
             bitmap = d["bitmap"]
-            self.write_value(1 + len(bitmap["data"]), signed=False)
             self._compile_bitmap_data(bitmap)
