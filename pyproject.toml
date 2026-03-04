@@ -14,13 +14,13 @@ classifiers = [
     "Operating System :: OS Independent",
     "Programming Language :: Python",
     "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
 ]
 
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 dependencies = [
     "fonttools[ufo] >= 4.61.0",
     "orjson >= 3.11.4, < 4",
@@ -84,7 +84,7 @@ version_scheme = "no-guess-dev"
 write_to = "src/vfbLib/_version.py"
 
 [tool.pylint.main]
-py-version = "3.10"
+py-version = "3.11"
 ignore-paths = ["src/vfbLib/_version.py"]
 # extension-pkg-allow-list = ["pycurl"]
 
@@ -95,7 +95,7 @@ max-line-length = 88
 [tool.black]
 exclude = '[\\/]_version\.py$'
 line-length = 88
-target-version = ["py310"]
+target-version = ["py311"]
 
 [tool.ruff.lint.isort]
 known-first-party = ["vfbLib"]

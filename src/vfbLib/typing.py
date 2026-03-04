@@ -1,12 +1,6 @@
 from __future__ import annotations
 
-# try:
-#     # NotRequired is only available in Python 3.11+
-#     from typing import NotRequired, TypedDict
-# except ImportError:
-from typing import Any, Literal
-
-from typing_extensions import NotRequired, TypedDict
+from typing import Any, Literal, NotRequired, TypedDict
 
 Point = tuple[int, int]
 
