@@ -14,6 +14,7 @@ from vfbLib.parsers.guides import parse_guides
 from vfbLib.truetype import TT_COMMANDS
 from vfbLib.typing import (
     AnchorDict,
+    AnchorPropertiesDict,
     Component,
     GdefDict,
     GlyphData,
@@ -76,13 +77,13 @@ class GlyphAnchorsParser(BaseParser):
 
 
 class GlyphAnchorsSuppParser(BaseParser):
-    def _parse(self) -> list:
+    def _parse(self) -> list[AnchorPropertiesDict]:
         anchors = []
         num_anchors = self.read_value()
         for _ in range(num_anchors):
             hue = self.read_value()
-            rv1 = self.read_value()
-            anchors.append({"hue": hue, "reserved": rv1})
+            data = self.read_value()
+            anchors.append(AnchorPropertiesDict(hue=hue, data=data))
         return anchors
 
 

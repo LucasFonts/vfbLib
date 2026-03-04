@@ -17,6 +17,11 @@ class AnchorDict(TypedDict):
     y: int
 
 
+class AnchorPropertiesDict(TypedDict):
+    hue: NotRequired[int]
+    data: NotRequired[int]
+
+
 KerningClassFlagDict = dict[str, tuple[int, int]]
 
 MetricsClassFlagDict = dict[str, tuple[int, int, int]]
