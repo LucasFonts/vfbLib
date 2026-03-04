@@ -23,7 +23,7 @@ classifiers = [
 requires-python = ">=3.11"
 dependencies = [
     "fonttools[ufo] >= 4.61.0",
-    "orjson >= 3.11.4, < 4",
+    "orjson >= 3.11.7, < 4",
     "typing_extensions >= 4.15.0",
     "ufonormalizer >= 0.6.3",
     "ufoLib2[json] >= 0.18.1",
