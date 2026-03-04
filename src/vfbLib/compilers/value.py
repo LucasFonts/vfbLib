@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from struct import pack
 from typing import TYPE_CHECKING
 
@@ -7,7 +5,7 @@ if TYPE_CHECKING:
     from io import BufferedWriter, BytesIO
 
 
-def write_value(value: int, stream: BufferedWriter | BytesIO, signed=True) -> None:
+def write_value(value: int, stream: "BufferedWriter | BytesIO", signed=True) -> None:
     """
     Encode and write an int value to the stream in the shortest possible representation.
 
@@ -33,7 +31,9 @@ def write_value(value: int, stream: BufferedWriter | BytesIO, signed=True) -> No
     stream.write(encoded)
 
 
-def write_value_long(value: int, stream: BufferedWriter | BytesIO, signed=True) -> None:
+def write_value_long(
+    value: int, stream: "BufferedWriter | BytesIO", signed=True
+) -> None:
     """
     Write an integer value to the stream using the longest encoding (4 bytes plus
     marker byte).

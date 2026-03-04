@@ -1,12 +1,11 @@
-from __future__ import annotations
-
-import logging
-from io import BufferedReader, BytesIO
+from typing import TYPE_CHECKING
 
 from vfbLib.parsers.base import StreamReader
-from vfbLib.typing import VfbHeaderDict
 
-logger = logging.getLogger(__name__)
+if TYPE_CHECKING:
+    from io import BufferedReader, BytesIO
+
+    from vfbLib.typing import VfbHeaderDict
 
 # FontLab 3.0 and newer
 FL30_SIGNATURE = 0x464C571A  # _WLF
@@ -21,10 +20,10 @@ FL25_FILE = 13
 
 
 class VfbHeaderParser(StreamReader):
-    def __init__(self, stream: BufferedReader | BytesIO) -> None:
+    def __init__(self, stream: "BufferedReader | BytesIO") -> None:
         self.stream = stream
 
-    def parse(self) -> VfbHeaderDict:
+    def parse(self) -> "VfbHeaderDict":
         signature = self.read_uint32()
         assert signature == FL30_SIGNATURE, f"File signature not supported: {signature}"
         app_version = self.read_uint8()
@@ -35,7 +34,7 @@ class VfbHeaderParser(StreamReader):
         assert version_major == 3, f"Unsupported app version (major): {version_major}"
         version_minor = self.read_uint8()
 
-        header: VfbHeaderDict = {
+        header: "VfbHeaderDict" = {
             "signature": signature,
             "app_version": app_version,
             "file_version": file_version,

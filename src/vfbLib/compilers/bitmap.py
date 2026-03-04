@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 import logging
 from itertools import chain, groupby
 from typing import TYPE_CHECKING
@@ -67,7 +65,7 @@ class BaseBitmapCompiler(BaseCompiler):
         flush_buffer(encoded, buf, max_chunk_len)
         return encoded
 
-    def _compile_bitmap_data(self, bitmap: BitmapDataDict) -> None:
+    def _compile_bitmap_data(self, bitmap: "BitmapDataDict") -> None:
         # For the "windows" platform, the bitmap must be inverted.
         data = bitmap["data"]
         if self.vfb is not None and self.vfb.writer_platform == "windows":
@@ -84,7 +82,7 @@ class BaseBitmapCompiler(BaseCompiler):
 
 
 class BackgroundBitmapCompiler(BaseBitmapCompiler):
-    def _compile(self, data: BackgroundImageDict) -> None:
+    def _compile(self, data: "BackgroundImageDict") -> None:
         x, y = data["origin"]
         self.write_value(x)
         self.write_value(y)
@@ -102,7 +100,7 @@ class BackgroundBitmapCompiler(BaseBitmapCompiler):
 
 
 class GlyphBitmapsCompiler(BaseBitmapCompiler):
-    def _compile(self, data: list[GlyphBitmapDict]) -> None:
+    def _compile(self, data: "list[GlyphBitmapDict]") -> None:
         self.write_value(len(data), signed=False)
         for d in data:
             self.write_value(d["ppm"], signed=False)

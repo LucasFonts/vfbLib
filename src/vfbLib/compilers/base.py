@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from io import BytesIO
 from struct import pack
 from typing import TYPE_CHECKING
@@ -31,7 +29,7 @@ class StreamWriter:
 
     def __init__(self) -> None:
         self.encoding = "cp1252"
-        self.stream: BufferedWriter | BytesIO = BytesIO()
+        self.stream: "BufferedWriter | BytesIO" = BytesIO()
 
     def write_bytes(self, value: bytes) -> None:
         """
@@ -51,7 +49,7 @@ class StreamWriter:
         """
         self.stream.write(pack("d", value))
 
-    def write_doubles(self, values: Iterable[float]) -> None:
+    def write_doubles(self, values: "Iterable[float]") -> None:
         """
         Write several double-precision floats to the stream.
 
@@ -167,7 +165,7 @@ class BaseCompiler(StreamWriter):
     Base class to compile vfb data.
     """
 
-    def compile(self, data: Any, vfb: Vfb | None = None) -> bytes:
+    def compile(self, data: "Any", vfb: "Vfb | None" = None) -> bytes:
         """
         Compile the JSON-like main data structure and return the compiled binary data.
 
@@ -186,7 +184,7 @@ class BaseCompiler(StreamWriter):
         self._compile(data)
         return self.stream.getvalue()
 
-    def compile_hex(self, data: Any, vfb: Vfb | None = None) -> str:
+    def compile_hex(self, data: "Any", vfb: "Vfb | None" = None) -> str:
         """
         Compile the data given into a hex string format, e.g. "8c 8d 89 8b". Used for
         testing.
@@ -201,11 +199,11 @@ class BaseCompiler(StreamWriter):
         b = self.compile(data, vfb)
         return hexStr(b)
 
-    def _compile(self, data: Any) -> None:
+    def _compile(self, data: "Any") -> None:
         raise NotImplementedError
 
     @classmethod
-    def merge(cls, masters_data: list[Any], data: Any) -> None:
+    def merge(cls, masters_data: "list[Any]", data: "Any") -> None:
         """
         Merge the data of additional masters into the main data structure. This operates
         on the uncompiled JSON-like data structure.
@@ -220,7 +218,7 @@ class BaseCompiler(StreamWriter):
 
 
 class EncodedValueListCompiler(BaseCompiler):
-    def _compile(self, data: Any) -> None:
+    def _compile(self, data: "Any") -> None:
         for value in data:
             self.write_value(value)
 
@@ -233,7 +231,7 @@ class EncodedValueListWithCountCompiler(BaseCompiler):
 
 
 class GlyphEncodingCompiler(BaseCompiler):
-    def _compile(self, data: Any) -> None:
+    def _compile(self, data: "Any") -> None:
         """
         Compile the data into the format used by a glyph encoding entry.
 
@@ -270,7 +268,7 @@ mapping_modes = {
 
 
 class MappingModeCompiler(BaseCompiler):
-    def _compile(self, data: MappingModeDict) -> None:
+    def _compile(self, data: "MappingModeDict") -> None:
         rev_map = {v: k for k, v in mapping_modes.items()}
         self.write_uint8(1)
         self.write_value(rev_map[data["mapping_mode"]])
@@ -284,7 +282,7 @@ class MappingModeCompiler(BaseCompiler):
 
 
 class OpenTypeKerningClassFlagsCompiler(BaseCompiler):
-    def _compile(self, data: KerningClassFlagDict) -> None:
+    def _compile(self, data: "KerningClassFlagDict") -> None:
         self.write_value(len(data), signed=False)
         for name, flags in data.items():
             self.write_str_with_len(name)
@@ -294,7 +292,7 @@ class OpenTypeKerningClassFlagsCompiler(BaseCompiler):
 
 
 class OpenTypeMetricsClassFlagsCompiler(BaseCompiler):
-    def _compile(self, data: MetricsClassFlagDict) -> None:
+    def _compile(self, data: "MetricsClassFlagDict") -> None:
         self.write_value(len(data), signed=False)
         for name, flags in data.items():
             self.write_str_with_len(name)

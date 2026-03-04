@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from struct import pack
 from typing import Any
 

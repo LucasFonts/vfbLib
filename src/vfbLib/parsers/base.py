@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 import logging
 from io import BytesIO
 from struct import unpack
@@ -37,7 +35,7 @@ class StreamReader:
 
     def __init__(self) -> None:
         self.encoding = "cp1252"
-        self.stream: BufferedReader | BytesIO = BytesIO()
+        self.stream: "BufferedReader | BytesIO" = BytesIO()
 
     def read_double(self) -> float:
         """
@@ -185,7 +183,7 @@ class BaseParser(StreamReader):
         self.encoding = "cp1252"
         self.stream: BytesIO = BytesIO()
 
-    def parse(self, stream: BytesIO, size: int, vfb: Vfb | None) -> Any:
+    def parse(self, stream: BytesIO, size: int, vfb: "Vfb | None") -> Any:
         """
         Prepare the parsing of the stream, then call the specialized parser and return
         the decompiled VFB entry structure.
@@ -219,7 +217,7 @@ class BaseParser(StreamReader):
 
         return decompiled
 
-    def parse_hex(self, hexstr: str, vfb: Vfb | None = None):
+    def parse_hex(self, hexstr: str, vfb: "Vfb | None" = None):
         """
         Parse the data given in hex string format, e.g. "8c 8d 89 8b". Used for testing.
 
@@ -336,8 +334,8 @@ class GlyphEncodingParser(BaseParser):
 
 
 class OpenTypeKerningClassFlagsParser(BaseParser):
-    def _parse(self) -> KerningClassFlagDict:
-        class_flags: KerningClassFlagDict = {}
+    def _parse(self) -> "KerningClassFlagDict":
+        class_flags: "KerningClassFlagDict" = {}
         num_classes = self.read_value()
         for _ in range(num_classes):
             name = self.read_str_with_len()
@@ -348,8 +346,8 @@ class OpenTypeKerningClassFlagsParser(BaseParser):
 
 
 class OpenTypeMetricsClassFlagsParser(BaseParser):
-    def _parse(self) -> MetricsClassFlagDict:
-        class_flags: MetricsClassFlagDict = {}
+    def _parse(self) -> "MetricsClassFlagDict":
+        class_flags: "MetricsClassFlagDict" = {}
         num_classes = self.read_value()
         for _ in range(num_classes):
             name = self.read_str_with_len()

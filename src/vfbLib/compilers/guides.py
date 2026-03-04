@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from math import radians, tan
 from typing import TYPE_CHECKING
 
@@ -11,7 +9,7 @@ if TYPE_CHECKING:
 
 
 class GuidesCompiler(BaseCompiler):
-    def _compile(self, data: MMGuidesDict) -> None:
+    def _compile(self, data: "MMGuidesDict") -> None:
         assert self.vfb is not None
         for direction in DIRECTIONS:
             dir_guides = data[direction]
@@ -24,7 +22,7 @@ class GuidesCompiler(BaseCompiler):
 
 
 class GuidePropertiesCompiler(BaseCompiler):
-    def _compile(self, data: GuidePropertiesDict) -> None:
+    def _compile(self, data: "GuidePropertiesDict") -> None:
         for direction in DIRECTIONS:
             dir_guides = data[direction]
             for gpd in dir_guides:

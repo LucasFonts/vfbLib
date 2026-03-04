@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 import logging
 from argparse import ArgumentParser
 from pathlib import Path
@@ -8,8 +6,6 @@ from vfbLib.enum import F
 from vfbLib.json import save_vfb_json
 from vfbLib.ufo.builder import VfbToUfoBuilder
 from vfbLib.vfb.vfb import Vfb
-
-logger = logging.getLogger(__name__)
 
 
 def vfb2json():

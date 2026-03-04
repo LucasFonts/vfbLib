@@ -18,7 +18,7 @@ if TYPE_CHECKING:
 logger = logging.getLogger(__name__)
 
 
-def parse_guides(stream: BytesIO, num_masters: int, name: str) -> MMGuidesDict:
+def parse_guides(stream: "BytesIO", num_masters: int, name: str) -> "MMGuidesDict":
     """
     Common parser for global and glyph guides. Used by `GlobalGuidesParser` and
     `GlyphParser`.
@@ -35,7 +35,7 @@ def parse_guides(stream: BytesIO, num_masters: int, name: str) -> MMGuidesDict:
     Raises:
         ValueError: If the data structure is incomplete.
     """
-    guides: MMGuidesDict = {"h": [], "v": []}
+    guides: "MMGuidesDict" = {"h": [], "v": []}
     for direction in DIRECTIONS:
         num_guides = read_value(stream)
         if num_guides == 0:
@@ -56,7 +56,7 @@ def parse_guides(stream: BytesIO, num_masters: int, name: str) -> MMGuidesDict:
 
 
 class GlobalGuidesParser(BaseParser):
-    def _parse(self) -> MMGuidesDict:
+    def _parse(self) -> "MMGuidesDict":
         assert self.vfb is not None
         guides = parse_guides(self.stream, self.vfb.num_masters, "global")
         assert self.stream.read() == b""

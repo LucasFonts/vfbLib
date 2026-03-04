@@ -21,7 +21,7 @@ if TYPE_CHECKING:
 logger = logging.getLogger(__name__)
 
 
-def _drawPoints(pen: AbstractPointPen, contours, components) -> None:
+def _drawPoints(pen: "AbstractPointPen", contours, components) -> None:
     if contours is None:
         contours = []
     if components is None:
@@ -39,7 +39,7 @@ def _drawPoints(pen: AbstractPointPen, contours, components) -> None:
 class UfoMasterGlyph:
     def __init__(
         self,
-        mm_glyph: VfbToUfoGlyph,
+        mm_glyph: "VfbToUfoGlyph",
         glyph_order: list[str],
         master_index: int,
     ) -> None:
@@ -48,18 +48,18 @@ class UfoMasterGlyph:
         self.master_index = master_index
 
         self.lib: dict[str, Any] = {}
-        self.anchors: list[AnchorDict] = []
+        self.anchors: "list[AnchorDict]" = []
         self.guidelines: list = []
         self.unicodes: list[int] = []
         self.width: int = 0
         self.height: int = 0
 
-        self.components: list[UfoComponent] = []
-        self.contours: list[UfoContour] = []
+        self.components: "list[UfoComponent]" = []
+        self.contours: "list[UfoContour]" = []
         self.rename_points: dict[str, str] = {}
         self.tth_commands: list[dict[str, str | bool]] = []
 
-        self.mask_contours: list[UfoContour] = []
+        self.mask_contours: "list[UfoContour]" = []
         self.mask_metrics: tuple[int, int] = (0, 0)
 
     @property
@@ -91,13 +91,13 @@ class UfoMasterGlyph:
         self.unicodes = self.mm_glyph.unicodes.copy()
         self.width, self.height = self.mm_glyph.mm_metrics[self.master_index]
 
-    def drawPoints(self, pen: AbstractPointPen) -> None:
+    def drawPoints(self, pen: "AbstractPointPen") -> None:
         """
         Draw the glyph onto the supplied point pen.
         """
         _drawPoints(pen, self.contours, self.components)
 
-    def drawPointsMask(self, pen: AbstractPointPen) -> None:
+    def drawPointsMask(self, pen: "AbstractPointPen") -> None:
         """
         Draw the glyph mask onto the supplied point pen.
         """
@@ -139,7 +139,7 @@ class UfoMasterGlyph:
         path_is_open = False
         in_qcurve = False
         if True:
-            contour: UfoContour = []
+            contour: "UfoContour" = []
             for i, n in enumerate(mm_nodes):
                 if to_mask:
                     name: str | None = None
@@ -314,7 +314,7 @@ class UfoMasterGlyph:
             cmd[key] = self.rename_points[pt_name]
 
     def _append_contour(
-        self, contour: UfoContour, path_is_open: bool, to_mask: bool = False
+        self, contour: "UfoContour", path_is_open: bool, to_mask: bool = False
     ) -> None:
         """
         Append the contour to the glyph's contours, applying closepath optimizations.
@@ -326,7 +326,7 @@ class UfoMasterGlyph:
             else:
                 self.contours.append(ct)
 
-    def _apply_closepath(self, contour: UfoContour, to_mask: bool = False) -> None:
+    def _apply_closepath(self, contour: "UfoContour", to_mask: bool = False) -> None:
         """
         Apply closepath optimizations to the contour.
         """
@@ -356,8 +356,8 @@ class UfoMasterGlyph:
             contour[0] = ("line", smooth, name, pt)
 
     def _flush_contour(
-        self, contour: UfoContour, path_is_open: bool, to_mask: bool = False
-    ) -> UfoContour:
+        self, contour: "UfoContour", path_is_open: bool, to_mask: bool = False
+    ) -> "UfoContour":
         """
         Post-process a contour before it is appended to the glyph's contours.
         """

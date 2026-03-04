@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
@@ -7,7 +5,7 @@ if TYPE_CHECKING:
 
 
 def get_ds_location(
-    axes: list[AxisDescriptor | DiscreteAxisDescriptor],
+    axes: "list[AxisDescriptor | DiscreteAxisDescriptor]",
     vfb_location: list[float],
     factor=1000,
 ) -> dict[str, float]:
@@ -26,7 +24,7 @@ def get_ds_location(
 
 
 def get_ds_design_location(
-    axes: list[AxisDescriptor | DiscreteAxisDescriptor], vfb_location: list[float]
+    axes: "list[AxisDescriptor | DiscreteAxisDescriptor]", vfb_location: list[float]
 ) -> dict[str, float]:
     # Transform an instance user location to a design location.
     # Instances are given in the VFB as user coords, but as design coords in the DS.

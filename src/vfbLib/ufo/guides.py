@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 import logging
 from typing import TYPE_CHECKING
 
@@ -13,7 +11,7 @@ if TYPE_CHECKING:
 logger = logging.getLogger(__name__)
 
 
-def get_master_guides(mm_guides: MMGuidesDict, master_index: int) -> list[UfoGuide]:
+def get_master_guides(mm_guides: "MMGuidesDict", master_index: int) -> list[UfoGuide]:
     # Concatenate guidlines for both directions and extract coords for
     # master_index
     guides = []
@@ -38,7 +36,7 @@ def get_master_guides(mm_guides: MMGuidesDict, master_index: int) -> list[UfoGui
 
 
 def apply_guide_properties(
-    guides: list[UfoGuide], properties: GuidePropertiesDict
+    guides: list[UfoGuide], properties: "GuidePropertiesDict"
 ) -> None:
     # Update the guides with names and colors from properties
 

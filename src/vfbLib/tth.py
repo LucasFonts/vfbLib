@@ -1,7 +1,4 @@
-from __future__ import annotations
-
 import codecs
-import logging
 from argparse import ArgumentParser
 from copy import deepcopy
 from pathlib import Path
@@ -13,8 +10,6 @@ import orjson
 from vfbLib.ufo.glyph import IndexVfbToUfoGlyph
 from vfbLib.ufo.tth import TTGlyphHints, transform_stem_rounds
 from vfbLib.vfb.vfb import Vfb
-
-logger = logging.getLogger(__name__)
 
 
 def vfb2tth():

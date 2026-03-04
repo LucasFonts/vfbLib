@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 import logging
 from typing import TYPE_CHECKING
 
@@ -16,8 +14,8 @@ class UfoKerning:
     def __init__(
         self,
         glyph_order: list[str],
-        groups: UfoGroups,
-        mm_kerning: UfoMMKerning,
+        groups: "UfoGroups",
+        mm_kerning: "UfoMMKerning",
         key_glyphs: dict[str, str],
     ):
         self.glyph_order = glyph_order
@@ -86,12 +84,12 @@ class UfoKerning:
             rev[key] = name
         return rev
 
-    def get_master_kerning(self, master_index: int) -> UfoMasterKerning:
+    def get_master_kerning(self, master_index: int) -> "UfoMasterKerning":
         """
         Extract the kerning values for master_index and return the kerning as
         Dict[Tuple[str, str], int].
         """
-        master_kerning: UfoMasterKerning = {}
+        master_kerning: "UfoMasterKerning" = {}
         for pair, values in self.mm_kerning_names.items():
             value = values[master_index]
             if value != 0 or self._is_exception(*pair):

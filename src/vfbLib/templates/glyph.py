@@ -1,7 +1,7 @@
-from __future__ import annotations
+from typing import Any
 
 
-def get_empty_glyph(num_masters: int):
+def get_empty_glyph(num_masters: int) -> dict[str, Any]:
     return {
         "metrics": [(0, 0) for _ in range(num_masters)],
         "name": "",

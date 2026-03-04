@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
@@ -23,7 +21,7 @@ def binaryToIntList(value: int, start: int = 0) -> list[int]:
     return intList
 
 
-def intListToBinary(bits: Iterable[int]) -> int:
+def intListToBinary(bits: "Iterable[int]") -> int:
     value = 0
     for bit in bits:
         value += 2**bit

@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 import logging
 from typing import TYPE_CHECKING
 
@@ -13,7 +11,7 @@ logger = logging.getLogger(__name__)
 
 
 class FLVersionCompiler(BaseCompiler):
-    def _compile(self, data: FLVersionDict) -> None:
+    def _compile(self, data: "FLVersionDict") -> None:
         self.write_uint8(PLATFORM)
         self.write_value(platform_ids[data["platform"]])
 

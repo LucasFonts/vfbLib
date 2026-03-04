@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 import logging
 from html import escape as html_escape
 from typing import TYPE_CHECKING, Any
@@ -102,7 +100,7 @@ class TTGlyphHints:
         mm_glyph: VfbToUfoGlyph,
         data: list[dict[str, Any]],
         zone_names: dict[str, list[str]],
-        stems: TUfoStemsDict,
+        stems: "TUfoStemsDict",
     ) -> None:
         self.glyph: VfbToUfoGlyph = mm_glyph
         self.data = data

@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 import logging
 from typing import TYPE_CHECKING
 
@@ -12,16 +10,16 @@ logger = logging.getLogger(__name__)
 
 
 def transform_groups(
-    orig_groups: UfoGroups,
-    kerning_class_flags: KerningClassFlagDict,
+    orig_groups: "UfoGroups",
+    kerning_class_flags: "KerningClassFlagDict",
     glyphOrder: list[str],
     skip_missing_group_glyphs: bool = False,
-) -> tuple[UfoGroups, list[str], dict[str, str]]:
+) -> "tuple[UfoGroups, list[str], dict[str, str]]":
     # Rename kerning groups by applying the side flags and using the public.kern prefix.
     # Remove missing glyphs from groups if requested.
     FIRST = 2**10
     SECOND = 2**11
-    groups: UfoGroups = {}
+    groups: "UfoGroups" = {}
     group_order = []
     key_glyphs: dict[str, str] = {}
     for name, glyphs in orig_groups.items():
@@ -92,8 +90,8 @@ def transform_groups(
 
 
 def build_glyph_to_group_maps(
-    groups: UfoGroups,
-) -> tuple[UfoGroups, dict[str, str], dict[str, str]]:
+    groups: "UfoGroups",
+) -> "tuple[UfoGroups, dict[str, str], dict[str, str]]":
     glyph_group_1: dict[str, str] = {}
     glyph_group_2: dict[str, str] = {}
     for group in groups.items():
@@ -121,8 +119,8 @@ def build_glyph_to_group_maps(
     return groups, glyph_group_1, glyph_group_2
 
 
-def _build_groups(glyph_to_group_mapping: dict[str, str]) -> UfoGroups:
-    groups: UfoGroups = {}
+def _build_groups(glyph_to_group_mapping: dict[str, str]) -> "UfoGroups":
+    groups: "UfoGroups" = {}
     for name, group in glyph_to_group_mapping.items():
         if group in groups:
             groups[group].append(name)
@@ -132,14 +130,14 @@ def _build_groups(glyph_to_group_mapping: dict[str, str]) -> UfoGroups:
 
 
 def rebuild_kerning_groups(
-    groups: UfoGroups, glyph_group_1: dict[str, str], glyph_group_2: dict[str, str]
-) -> UfoGroups:
+    groups: "UfoGroups", glyph_group_1: dict[str, str], glyph_group_2: dict[str, str]
+) -> "UfoGroups":
     """
     Rebuild the kerning groups from the left and right side glyph to group mappings.
     This should get rid of any duplicate groups per glyph.
     """
     # Filter groups so only non-kerning groups are kept
-    new_groups: UfoGroups = {
+    new_groups: "UfoGroups" = {
         n: g for n, g in groups.items() if not n.startswith("public.kern")
     }
     new_groups.update(_build_groups(glyph_group_1))

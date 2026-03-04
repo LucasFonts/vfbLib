@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from typing import TYPE_CHECKING, Any
 
 from vfbLib import tt_settings, ttinfo_names
@@ -16,7 +14,7 @@ if TYPE_CHECKING:
     )
 
 
-def convert_flags_options_to_int(data: TrueTypeInfoDict) -> int:
+def convert_flags_options_to_int(data: "TrueTypeInfoDict") -> int:
     value = 0
     head_flags_options = data["head_flags"]
     assert isinstance(head_flags_options, dict)
@@ -42,14 +40,14 @@ class GaspCompiler(BaseCompiler):
 
 class TrueTypeInfoCompiler(BaseCompiler):
     def _write_if_exists(
-        self, numkey: int, data: TrueTypeInfoDict, signed: bool = True
+        self, numkey: int, data: "TrueTypeInfoDict", signed: bool = True
     ) -> None:
         strkey = ttinfo_names[numkey]
         if strkey in data:
             self.write_uint8(numkey)
             self.write_value(data[strkey], signed=signed)
 
-    def _compile(self, data: TrueTypeInfoDict) -> None:
+    def _compile(self, data: "TrueTypeInfoDict") -> None:
         for k in (0x33, 0x34, 0x35, 0x36, 0x37, 0x38):
             self.write_uint8(k)
             self.write_value(data[ttinfo_names[k]])
@@ -119,7 +117,7 @@ class TrueTypeInfoCompiler(BaseCompiler):
 
 
 class TrueTypeStemPpems1Compiler(BaseCompiler):
-    def _compile(self, data: TTStemsDict) -> None:
+    def _compile(self, data: "TTStemsDict") -> None:
         for direction in ("ttStemsV", "ttStemsH"):
             stems = data[direction]
             for stem in stems:
@@ -127,7 +125,7 @@ class TrueTypeStemPpems1Compiler(BaseCompiler):
 
 
 class TrueTypeStemPpems23Compiler(BaseCompiler):
-    def _compile(self, data: TTStemsDict) -> None:
+    def _compile(self, data: "TTStemsDict") -> None:
         for direction in ("ttStemsV", "ttStemsH"):
             stems = data[direction]
             self.write_value(len(stems))
@@ -137,7 +135,7 @@ class TrueTypeStemPpems23Compiler(BaseCompiler):
 
 
 class TrueTypeStemPpemsCompiler(BaseCompiler):
-    def _compile(self, data: TTStemsDict) -> None:
+    def _compile(self, data: "TTStemsDict") -> None:
         for direction in ("ttStemsV", "ttStemsH"):
             stems = data[direction]
             self.write_value(len(stems))
@@ -147,7 +145,7 @@ class TrueTypeStemPpemsCompiler(BaseCompiler):
 
 
 class TrueTypeStemsCompiler(BaseCompiler):
-    def _compile(self, data: TTStemsDict) -> None:
+    def _compile(self, data: "TTStemsDict") -> None:
         for direction in ("ttStemsV", "ttStemsH"):
             stems = data[direction]
             self.write_value(len(stems))
@@ -164,13 +162,13 @@ class TrueTypeZonesCompiler(BaseCompiler):
     A compiler that compiles TrueType hinting "alignment zones" data
     """
 
-    def _compile(self, data: TTZonesDict) -> None:
+    def _compile(self, data: "TTZonesDict") -> None:
         for side in ("ttZonesT", "ttZonesB"):
             if side not in data:
                 self.write_value(0)
                 continue
 
-            side_zones: list[TTZoneDict] = data[side]
+            side_zones: "list[TTZoneDict]" = data[side]
             self.write_value(len(side_zones))
             for zone in side_zones:
                 self.write_value(zone["position"])
@@ -198,7 +196,7 @@ class TrueTypeZoneDeltasCompiler(BaseCompiler):
 
 
 class VdmxCompiler(BaseCompiler):
-    def _compile(self, data: list[VdmxRecDict]) -> None:
+    def _compile(self, data: "list[VdmxRecDict]") -> None:
         self.write_value(len(data))
         for rec in data:
             self.write_value(rec["pelHeight"])

@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from typing import Any, Literal, NotRequired, TypedDict
 
 Point = tuple[int, int]
@@ -411,7 +409,7 @@ class VdmxRecDict(TypedDict):
 
 
 class VfbDict(TypedDict):
-    header: VfbHeaderDict
+    header: "VfbHeaderDict"
     entries: list[dict[str, Any]]
 
 

@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 import logging
 from io import BytesIO
 from struct import pack
@@ -28,7 +26,7 @@ logger = logging.getLogger(__name__)
 
 
 class GlyphAnchorsCompiler(BaseCompiler):
-    def _compile(self, data: list[MMAnchorDict]) -> None:
+    def _compile(self, data: "list[MMAnchorDict]") -> None:
         assert self.vfb is not None
         self.write_value(len(data), signed=False)
         self.write_value(self.vfb.num_masters, signed=False)
@@ -39,7 +37,7 @@ class GlyphAnchorsCompiler(BaseCompiler):
 
 
 class GlyphAnchorsSuppCompiler(BaseCompiler):
-    def _compile(self, data: list[AnchorPropertiesDict]) -> None:
+    def _compile(self, data: "list[AnchorPropertiesDict]") -> None:
         self.write_value(len(data), signed=False)
         for anchor in data:
             self.write_value(anchor.get("hue", 0), signed=False)
@@ -47,7 +45,7 @@ class GlyphAnchorsSuppCompiler(BaseCompiler):
 
 
 class GlyphGDEFCompiler(BaseCompiler):
-    def _compile(self, data: GdefDict) -> None:
+    def _compile(self, data: "GdefDict") -> None:
         c = data.get("glyph_class", "unassigned")
         if c is None:
             gdef_class = 0
@@ -383,7 +381,7 @@ class OutlinesCompiler(StreamWriter):
 
 
 class LinksCompiler(BaseCompiler):
-    def _compile(self, data: LinkDict) -> None:
+    def _compile(self, data: "LinkDict") -> None:
         for direction in ("y", "x"):
             dir_links = data[direction]
             self.write_value(len(dir_links))
@@ -393,7 +391,7 @@ class LinksCompiler(BaseCompiler):
 
 
 class MaskCompiler(GlyphCompiler):
-    def _compile(self, data: MaskData) -> None:
+    def _compile(self, data: "MaskData") -> None:
         weight_vector = data["weight_vector"]
         self.write_value(len(weight_vector))
         for value in weight_vector:
@@ -404,7 +402,7 @@ class MaskCompiler(GlyphCompiler):
 
 
 class GlobalMaskCompiler(GlyphCompiler):
-    def _compile(self, data: GlyphData) -> None:
+    def _compile(self, data: "GlyphData") -> None:
         self.num_masters = data["num_masters"]
         self.compile_outlines(data, write_key=False)
 

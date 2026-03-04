@@ -1,13 +1,6 @@
-from __future__ import annotations
-
-import logging
-
 from vfbLib.helpers import binaryToIntList
 from vfbLib.parsers.base import BaseParser
 from vfbLib.typing import BBoxDict, GlyphHintingOptionsDict, PSInfoDict
-
-logger = logging.getLogger(__name__)
-
 
 global_options = (
     ("generate_flex", 0),  # Automatically generate Flex hints in T1 and OT

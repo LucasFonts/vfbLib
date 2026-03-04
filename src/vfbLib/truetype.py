@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from vfbLib.typing import TTCommandDict
 
 TT_COMMANDS: dict[int, TTCommandDict] = {

@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from typing import TYPE_CHECKING
 
 from vfbLib.helpers import int8_size, int32_size
@@ -8,7 +6,7 @@ if TYPE_CHECKING:
     from io import BufferedReader, BytesIO
 
 
-def read_value(stream: BufferedReader | BytesIO, signed=True) -> int:
+def read_value(stream: "BufferedReader | BytesIO", signed=True) -> int:
     """
     Read an encoded value from the stream, decode it to integer and return it.
 

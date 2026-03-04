@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from functools import cached_property
 from typing import TYPE_CHECKING
 
@@ -8,7 +6,7 @@ if TYPE_CHECKING:
 
 
 class VfbInfo:
-    def __init__(self, vfb: Vfb) -> None:
+    def __init__(self, vfb: "Vfb") -> None:
         self.parent = vfb
 
     @cached_property

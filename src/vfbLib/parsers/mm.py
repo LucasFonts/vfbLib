@@ -1,11 +1,5 @@
-from __future__ import annotations
-
-import logging
-
 from vfbLib.parsers.base import BaseParser
 from vfbLib.typing import PrimaryInstanceDict
-
-logger = logging.getLogger(__name__)
 
 
 class AnisotropicInterpolationsParser(BaseParser):

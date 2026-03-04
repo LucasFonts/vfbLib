@@ -1,7 +1,4 @@
-from __future__ import annotations
-
 import codecs
-import logging
 from argparse import ArgumentParser
 from difflib import HtmlDiff, unified_diff
 from pathlib import Path
@@ -9,8 +6,6 @@ from pathlib import Path
 import orjson
 
 from vfbLib.vfb.vfb import Vfb
-
-logger = logging.getLogger(__name__)
 
 
 def diffvfb():

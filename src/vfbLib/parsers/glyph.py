@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 import logging
 from enum import Enum
 from struct import unpack
@@ -45,7 +43,7 @@ class PathCommand(Enum):
 
 def read_absolute_point(
     points: list[list[Any]],
-    stream: BytesIO,
+    stream: "BytesIO",
     num_masters: int,
     x_masters: list[int],
     y_masters: list[int],

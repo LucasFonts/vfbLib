@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from vfbLib.parsers.base import BaseParser
 from vfbLib.typing import CustomCmap
 

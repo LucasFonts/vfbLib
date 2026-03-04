@@ -1,13 +1,7 @@
-from __future__ import annotations
-
-import logging
-
 from vfbLib import ExpandKernOptions, TTAutoHintOptions, export_options, font_options
 from vfbLib.helpers import binaryToIntList
 from vfbLib.parsers.base import BaseParser, EncodedKeyValuesParser
 from vfbLib.typing import ExpandKernFlagsDict, FontOptionsDict, TTAutoHintOptionsDict
-
-logger = logging.getLogger(__name__)
 
 
 class ExportOptionsParser(BaseParser):

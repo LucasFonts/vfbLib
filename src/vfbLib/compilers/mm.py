@@ -38,7 +38,7 @@ class MasterLocationCompiler(BaseCompiler):
 
 
 class PrimaryInstancesCompiler(BaseCompiler):
-    def _compile(self, data: list[PrimaryInstanceDict]) -> None:
+    def _compile(self, data: "list[PrimaryInstanceDict]") -> None:
         self.write_value(len(data))
         for instance in data:
             name = instance["name"]

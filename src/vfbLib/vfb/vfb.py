@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 import logging
 from collections.abc import Iterable
 from pathlib import Path
@@ -21,14 +19,45 @@ if TYPE_CHECKING:
 logger = logging.getLogger(__name__)
 
 
-def get_vfb_with_masters(num_masters: int) -> Vfb:
-    # Minimal Vfb object used for testing
-    vfb = Vfb()
-    vfb.num_masters = num_masters
-    return vfb
-
-
 # Convenience objects for vfb access
+
+
+class VfbMaster:
+    """
+    Minimal UFO interface for a single master of a multiple master VFB.
+    """
+
+    def __init__(self, vfb: "Vfb", master_index: int = 0):
+        self.vfb = vfb
+        self.master_index = master_index
+
+    def __contains__(self, key: str) -> bool:
+        return key in self.vfb
+
+    def __getitem__(self, key: str) -> VfbGlyphMaster:
+        return self.vfb.getGlyphMaster(key, self.master_index)
+
+    @property
+    def glyph_order(self) -> list[str]:
+        return self.vfb.glyph_order
+
+    @property
+    def info(self) -> VfbInfo:
+        return self.vfb.info
+
+    def items(self) -> Iterable[tuple[str, VfbGlyph]]:
+        return self.vfb.items()
+
+    def keys(self) -> Iterable[str]:
+        return self.vfb.keys()
+
+    @property
+    def num_masters(self) -> int:
+        return self.vfb.num_masters
+
+    @property
+    def ps_hinting_options(self) -> VfbEntry | None:
+        return self.vfb.ps_hinting_options
 
 
 class Vfb:
@@ -91,12 +120,12 @@ class Vfb:
         entry.vfb = self
         self.entries.append(entry)
 
-    def as_dict(self) -> VfbDict:
+    def as_dict(self) -> "VfbDict":
         """
         Return the Vfb structure as Dict, e.g. for saving as JSON. The dict has the keys
         "header" and "entries".
         """
-        d: VfbDict = {"header": {}, "entries": []}
+        d: "VfbDict" = {"header": {}, "entries": []}
         if self.header is not None:
             d["header"] = self.header.as_dict()
         if self.entries:
@@ -199,7 +228,7 @@ class Vfb:
             self._decompile_glyphs()
         return self._glyphs.keys()
 
-    def read_stream(self, stream: BufferedReader) -> None:
+    def read_stream(self, stream: "BufferedReader") -> None:
         """
         Lazily read and parse the vfb stream, i.e. parse the header, but only read the
         binary data of other entries.
@@ -294,39 +323,8 @@ class Vfb:
                     vfb.write(entry.data)
 
 
-class VfbMaster:
-    """
-    Minimal UFO interface for a single master of a multiple master VFB.
-    """
-
-    def __init__(self, vfb: Vfb, master_index: int = 0):
-        self.vfb = vfb
-        self.master_index = master_index
-
-    def __contains__(self, key: str) -> bool:
-        return key in self.vfb
-
-    def __getitem__(self, key: str) -> VfbGlyphMaster:
-        return self.vfb.getGlyphMaster(key, self.master_index)
-
-    @property
-    def glyph_order(self) -> list[str]:
-        return self.vfb.glyph_order
-
-    @property
-    def info(self) -> VfbInfo:
-        return self.vfb.info
-
-    def items(self) -> Iterable[tuple[str, VfbGlyph]]:
-        return self.vfb.items()
-
-    def keys(self) -> Iterable[str]:
-        return self.vfb.keys()
-
-    @property
-    def num_masters(self) -> int:
-        return self.vfb.num_masters
-
-    @property
-    def ps_hinting_options(self) -> VfbEntry | None:
-        return self.vfb.ps_hinting_options
+def get_vfb_with_masters(num_masters: int) -> Vfb:
+    # Minimal Vfb object used for testing
+    vfb = Vfb()
+    vfb.num_masters = num_masters
+    return vfb

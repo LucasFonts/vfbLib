@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 import logging
 from functools import cached_property
 from io import BytesIO
@@ -29,7 +27,7 @@ FALLBACK_PARSER = BaseParser
 class VfbEntry(StreamReader):
     def __init__(
         self,
-        parent: Vfb,
+        parent: "Vfb",
         parser: type[BaseParser] | None = None,
         compiler: type[BaseCompiler] | None = None,
         eid: int | None = None,
@@ -37,7 +35,7 @@ class VfbEntry(StreamReader):
         # The parent object, Vfb
         self.vfb = parent
         # The original or decompiled data
-        self._data: bytes | EntryDecompiled | None = None
+        self._data: "bytes | EntryDecompiled | None" = None
         # Temporary data for additional master, must be merged when compiling
         self.temp_masters: list[list] | None = None
         self.parser = None
@@ -88,7 +86,7 @@ class VfbEntry(StreamReader):
         return header.getvalue()
 
     @property
-    def decompiled(self) -> EntryDecompiled | None:
+    def decompiled(self) -> "EntryDecompiled | None":
         """
         Deprecated, use VfbEntry.data
         """
@@ -119,11 +117,11 @@ class VfbEntry(StreamReader):
         raise RuntimeError
 
     @property
-    def data(self) -> bytes | EntryDecompiled | None:
+    def data(self) -> "bytes | EntryDecompiled | None":
         return self._data
 
     @data.setter
-    def data(self, value: bytes | EntryDecompiled | None) -> None:
+    def data(self, value: "bytes | EntryDecompiled | None") -> None:
         self._data = value
 
     @property
@@ -249,7 +247,7 @@ class VfbEntry(StreamReader):
 
         self.compiler.merge(self.temp_masters, self.data)
 
-    def read(self, stream: BufferedReader) -> None:
+    def read(self, stream: "BufferedReader") -> None:
         """
         Read the entry from the stream without decompiling the data.
         """

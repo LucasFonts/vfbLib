@@ -1,9 +1,11 @@
-from __future__ import annotations
+from typing import TYPE_CHECKING
 
 from vfbLib import ExpandKernOptions, TTAutoHintOptions, export_options, font_options
 from vfbLib.compilers.base import BaseCompiler
 from vfbLib.helpers import intListToBinary
-from vfbLib.typing import FontOptionsDict
+
+if TYPE_CHECKING:
+    from vfbLib.typing import FontOptionsDict
 
 
 class ExportOptionsCompiler(BaseCompiler):
@@ -14,7 +16,7 @@ class ExportOptionsCompiler(BaseCompiler):
 
 
 class FontOptionsCompiler(BaseCompiler):
-    def _compile(self, data: FontOptionsDict) -> None:
+    def _compile(self, data: "FontOptionsDict") -> None:
         rev = {v: k for k, v in font_options.items()}
         for k, v in data.items():
             raw_key = rev.get(k)

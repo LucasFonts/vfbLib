@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 import logging
 from io import BytesIO
 from typing import TYPE_CHECKING, Any
@@ -20,7 +18,7 @@ logger = logging.getLogger(__name__)
 class VfbHeader:
     def __init__(self) -> None:
         # The original or decompiled data
-        self._data: bytes | VfbHeaderDict | None = None
+        self._data: "bytes | VfbHeaderDict | None" = None
         # The parser which can convert data to decompiled
         self.parser = VfbHeaderParser
         # The compiler which can convert the decompiled representation to bytes
@@ -32,11 +30,11 @@ class VfbHeader:
         return {"decompiled": self.data}
 
     @property
-    def data(self) -> bytes | VfbHeaderDict | None:
+    def data(self) -> "bytes | VfbHeaderDict | None":
         return self._data
 
     @data.setter
-    def data(self, value: bytes | VfbHeaderDict | None) -> None:
+    def data(self, value: "bytes | VfbHeaderDict | None") -> None:
         self._data = value
 
     def compile(self) -> None:
@@ -59,6 +57,6 @@ class VfbHeader:
         byte_data = self.data
         self.data = self.parser(BytesIO(byte_data)).parse()
 
-    def read(self, stream: BufferedReader) -> None:
+    def read(self, stream: "BufferedReader") -> None:
         # Read and decompile
         self.data = self.parser(stream).parse()

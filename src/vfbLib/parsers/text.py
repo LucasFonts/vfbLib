@@ -1,12 +1,7 @@
-from __future__ import annotations
-
-import logging
 from re import search
 
 from vfbLib.parsers.base import BaseParser
 from vfbLib.typing import FeaturesDict
-
-logger = logging.getLogger(__name__)
 
 
 class NameRecordsParser(BaseParser):

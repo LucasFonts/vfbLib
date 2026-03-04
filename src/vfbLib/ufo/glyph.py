@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 import logging
 from colorsys import hls_to_rgb
 from typing import TYPE_CHECKING, Any
@@ -22,9 +20,9 @@ logger = logging.getLogger(__name__)
 
 
 class VfbToUfoGlyph:
-    def __init__(self, builder: VfbToUfoBuilder | None = None) -> None:
+    def __init__(self, builder: "VfbToUfoBuilder | None" = None) -> None:
         self.builder = builder
-        self.anchors: list[AnchorDict] = []
+        self.anchors: "list[AnchorDict]" = []
         self.guide_properties = GuidePropertiesDict(h=[], v=[])
         self.hintmasks: list[tuple[str, int]] = []
         self.labels: dict[str, int] = {}
@@ -32,18 +30,18 @@ class VfbToUfoGlyph:
         self.links: LinkDict = LinkDict(x=[], y=[])
         self.mm_anchors: list[Any] | None = None
         self.mm_components: list[Any] = []
-        self.mm_guides: MMGuidesDict | None = None
-        self.mm_hints: MMHintsDict = {"h": [], "v": []}
+        self.mm_guides: "MMGuidesDict | None" = None
+        self.mm_hints: "MMHintsDict" = {"h": [], "v": []}
         self.mm_metrics: list[tuple[int, int]] = []
-        self.mm_nodes: list[MMNode] = []
-        self.mm_mask_nodes: list[MMNode] = []
+        self.mm_nodes: "list[MMNode]" = []
+        self.mm_mask_nodes: "list[MMNode]" = []
         self.mm_mask_metrics: list[tuple[int, int]] = []
         self.name: str | None = None
         self.note: str | None = None
         self.point_labels: dict[int, str] = {}
         self.ps_hinting_options = dict[str, int | list[int]]
         self.rename_points: dict[str, str]
-        self.tt_glyph_hints: TTGlyphHints | None = None
+        self.tt_glyph_hints: "TTGlyphHints | None" = None
         self.tth_commands: list[dict[str, str | bool]] = []
         self.unicodes: list[int] = []
 

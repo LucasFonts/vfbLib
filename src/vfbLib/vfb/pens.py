@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 import logging
 from typing import TYPE_CHECKING, Any
 
@@ -15,7 +13,7 @@ logger = logging.getLogger(__name__)
 
 class VfbGlyphPointPen(AbstractPointPen):
     # FIXME: Only supports TrueType curves
-    def __init__(self, glyph: VfbGlyph | VfbGlyphMaster, glyphSet: Vfb) -> None:
+    def __init__(self, glyph: "VfbGlyph | VfbGlyphMaster", glyphSet: "Vfb") -> None:
         """A PointPen to draw into the VFB glyph.
 
         Args:

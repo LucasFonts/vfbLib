@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 import logging
 from functools import cached_property
 from typing import TYPE_CHECKING
@@ -25,12 +23,12 @@ logger = logging.getLogger(__name__)
 
 
 class VfbGlyph:
-    def __init__(self, entry: VfbEntry, parent: Vfb | VfbMaster) -> None:
+    def __init__(self, entry: "VfbEntry", parent: "Vfb | VfbMaster") -> None:
         self.entry = entry
 
         # Related entries that we need when generating fonts
-        self.links_entry: VfbEntry | None = None
-        self.ps_hinting_options: VfbEntry | None = None
+        self.links_entry: "VfbEntry | None" = None
+        self.ps_hinting_options: "VfbEntry | None" = None
 
         self._parent = parent
         self._glyph: UfoMasterGlyph | None = None
@@ -112,7 +110,7 @@ class VfbGlyph:
         )
         self._glyph.build()
 
-    def resolve_hint_sets(self) -> dict[int, list[HintTuple]]:
+    def resolve_hint_sets(self) -> "dict[int, list[HintTuple]]":
         hint_sets = {}
         hints = self.resolve_hints()
         hints_entry = self.entry.data.get("hints", {})
@@ -138,8 +136,8 @@ class VfbGlyph:
             hint_sets[0] = hints["h"] + hints["v"]
         return hint_sets
 
-    def resolve_hints(self) -> dict[str, list[HintTuple]]:
-        hints: dict[str, list[HintTuple]] = {"h": [], "v": []}
+    def resolve_hints(self) -> "dict[str, list[HintTuple]]":
+        hints: "dict[str, list[HintTuple]]" = {"h": [], "v": []}
 
         mm_hints = self.entry.data.get("hints", {"h": [], "v": []})
 
@@ -158,7 +156,7 @@ class VfbGlyph:
 
         return hints
 
-    def resolve_links(self) -> dict[str, list[HintTuple]]:
+    def resolve_links(self) -> "dict[str, list[HintTuple]]":
         # Convert the links to hints
 
         hints = {"h": [], "v": []}
@@ -197,7 +195,7 @@ class VfbGlyph:
                 hints[d].append(hint)
         return hints
 
-    def draw(self, pen: AbstractPen) -> None:
+    def draw(self, pen: "AbstractPen") -> None:
         """
         Draw the VFB glyph onto a segment pen. Uses the object's `master_index` property
         to determine which master is drawn.
@@ -339,7 +337,7 @@ class VfbGlyph:
             )
             pen.addComponent(baseGlyphName, transformation)
 
-    def getPen(self) -> AbstractPen:
+    def getPen(self) -> "AbstractPen":
         """
         Return a segment pen to draw into the VFB glyph.
         """
@@ -448,7 +446,7 @@ class VfbGlyphMaster:
 
         return self._glyph.drawPoints(pen)
 
-    def getPen(self) -> AbstractPen:
+    def getPen(self) -> "AbstractPen":
         """
         Return a segment pen to draw into the VFB glyph.
         """

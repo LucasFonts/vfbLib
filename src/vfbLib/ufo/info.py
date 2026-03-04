@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 import logging
 from functools import cached_property
 from typing import TYPE_CHECKING
@@ -34,7 +32,7 @@ class VfbToUfoInfo(Info):
         super().__init__()
         # Chance to set some defaults that should always be written
         self.familyName = "Untitled"
-        self.guidelines: list[UfoGuide] = []
+        self.guidelines: "list[UfoGuide]" = []
         self.italicAngle: float | int = 0
         self.openTypeGaspRangeRecords: list[TUfoGaspRecDict] = []
         self.openTypeHeadCreated: str | None = None
@@ -269,7 +267,7 @@ class VfbToUfoInfo(Info):
         self.styleName = data
         self.openTypeNamePreferredSubfamilyName = data
 
-    def set_tt_gasp(self, data: GaspList) -> None:
+    def set_tt_gasp(self, data: "GaspList") -> None:
         # FIXME: Different results when hinting is compiled with flufocompile
         gasp: list[TUfoGaspRecDict] = []
         for rec in data:

@@ -1,14 +1,11 @@
-from __future__ import annotations
-
 import logging
 from struct import unpack
+from typing import TYPE_CHECKING
 
 from vfbLib import tt_settings, ttinfo_names
 from vfbLib.helpers import binaryToIntList
 from vfbLib.parsers.base import BaseParser
 from vfbLib.typing import (
-    FlagsOptionsDict,
-    GaspList,
     TrueTypeInfoDict,
     TTStemDict,
     TTStemsDict,
@@ -17,10 +14,13 @@ from vfbLib.typing import (
     VdmxRecDict,
 )
 
+if TYPE_CHECKING:
+    from vfbLib.typing import FlagsOptionsDict, GaspList
+
 logger = logging.getLogger(__name__)
 
 
-def convert_int_to_flags_options(value: int) -> FlagsOptionsDict:
+def convert_int_to_flags_options(value: int) -> "FlagsOptionsDict":
     flags = binaryToIntList(value & 0xFFFF)
     options = binaryToIntList(value >> 16)
     return {
@@ -34,7 +34,7 @@ class GaspParser(BaseParser):
     A parser that reads data as an array representing Gasp table values.
     """
 
-    def _parse(self) -> GaspList:
+    def _parse(self) -> "GaspList":
         data = self.stream.read()
         gasp = unpack(f"<{len(data) // 2}H", data)
         it = iter(gasp)
