@@ -201,6 +201,7 @@ class TrueTypeStemPpemsParser(BaseParser):
 class TrueTypeStemPpems1Parser(BaseParser):
     # PPEM 1 for each stem is stored in a separate entry ...
     def _parse(self) -> TTStemsDict:
+        assert self.vfb is not None
         names = ("ttStemsV", "ttStemsH")
         result = TTStemsDict(ttStemsV=[], ttStemsH=[])
         for i in range(2):
@@ -220,7 +221,7 @@ class TrueTypeStemPpems1Parser(BaseParser):
 
 class TrueTypeStemPpems23Parser(BaseParser):
     # PPEM 2 and 3 for each stem are stored in a separate entry ... sometimes!?
-    def _parse(self):
+    def _parse(self) -> TTStemsDict:
         names = ("ttStemsV", "ttStemsH")
         result = TTStemsDict(ttStemsV=[], ttStemsH=[])
         for i in range(2):
@@ -240,9 +241,9 @@ class TrueTypeStemPpems23Parser(BaseParser):
 
 
 class TrueTypeZoneDeltasParser(BaseParser):
-    def _parse(self):
+    def _parse(self) -> dict[int, dict[int, int]]:
         num_deltas = self.read_value()
-        result = {}
+        result: dict[int, dict[int, int]] = {}
         for _ in range(num_deltas):
             # Index into Bottom + Top Zones
             index = self.read_value()
@@ -257,7 +258,7 @@ class TrueTypeZoneDeltasParser(BaseParser):
 
 
 class TrueTypeZonesParser(BaseParser):
-    def _parse(self):
+    def _parse(self) -> TTZonesDict:
         names = ("ttZonesT", "ttZonesB")
         result = TTZonesDict(ttZonesT=[], ttZonesB=[])
         for i in range(2):
@@ -280,10 +281,11 @@ class VdmxParser(BaseParser):
         result = []
         num_records = self.read_value()
         for _ in range(num_records):
-            rec = {}
-            rec["pelHeight"] = self.read_value()
-            rec["max"] = self.read_value()
-            rec["min"] = self.read_value()
+            rec = VdmxRecDict(
+                pelHeight=self.read_value(),
+                max=self.read_value(),
+                min=self.read_value(),
+            )
             result.append(rec)
 
         return result

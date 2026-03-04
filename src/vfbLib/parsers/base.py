@@ -327,7 +327,7 @@ class EncodedValueListWithCountParser(BaseParser):
 
 
 class GlyphEncodingParser(BaseParser):
-    def _parse(self):
+    def _parse(self) -> tuple[int, str]:
         gid = self.read_uint16()
         nam = self.stream.read().decode("cp1252")
         return gid, nam

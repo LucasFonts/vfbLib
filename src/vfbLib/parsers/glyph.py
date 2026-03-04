@@ -49,7 +49,7 @@ def read_absolute_point(
     num_masters: int,
     x_masters: list[int],
     y_masters: list[int],
-):
+) -> None:
     # Read coordinates for all masters from stream, add the points to a list
     # of points per master. Keep track of the relative coordinates reference
     # value in x_masters and y_masters.
@@ -434,7 +434,7 @@ class GlyphSketchParser(BaseParser):
 
 
 class GlyphUnicodeParser(BaseParser):
-    def _parse(self) -> list:
+    def _parse(self) -> list[int]:
         unicodes = []
         for _ in range(self.stream.getbuffer().nbytes // 2):
             u = self.read_uint16()
@@ -443,7 +443,7 @@ class GlyphUnicodeParser(BaseParser):
 
 
 class GlyphUnicodeSuppParser(BaseParser):
-    def _parse(self) -> list:
+    def _parse(self) -> list[int]:
         unicodes = []
         for _ in range(self.stream.getbuffer().nbytes // 4):
             u = self.read_uint32()
