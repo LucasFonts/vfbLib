@@ -22,6 +22,7 @@ logger = logging.getLogger(__name__)
 
 class GlyphAnchorsCompiler(BaseCompiler):
     def _compile(self, data: list[MMAnchorDict]) -> None:
+        assert self.vfb is not None
         self.write_value(len(data), signed=False)
         self.write_value(self.vfb.num_masters, signed=False)
         for anchor in data:

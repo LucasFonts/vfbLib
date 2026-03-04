@@ -12,6 +12,7 @@ if TYPE_CHECKING:
 
 class GuidesCompiler(BaseCompiler):
     def _compile(self, data: MMGuidesDict) -> None:
+        assert self.vfb is not None
         for direction in DIRECTIONS:
             dir_guides = data[direction]
             self.write_value(len(dir_guides))
