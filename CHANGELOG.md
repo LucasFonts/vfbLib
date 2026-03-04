@@ -1,5 +1,17 @@
 # Change Log
 
+## 0.11.1
+
+I decided to add some more incompatible changes after 0.11.0, and one bugfix.
+
+- Drop Python 3.10 support
+- Add `py.typed` marker
+- Don't output meaningless value for anchors (-1, -1)
+- Rename `unknown` entry in GDEF to `ot_classes`
+- Rename `reserved` entry in anchor properties to `data`
+- Fix glyph bitmaps compiler error
+- Remove future imports
+
 ## 0.11.0
 
 Major rewrite for more accuracy based on information generously provided by Yuri Yarmola of FontLab. Check thoroughly after updating.
