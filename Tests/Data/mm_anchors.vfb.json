@@ -3035,9 +3035,7 @@
         "anchors": [
           {
             "x": 267,
-            "x1": -1,
             "y": 518,
-            "y1": -1,
             "name": "top"
           }
         ]
@@ -3048,7 +3046,7 @@
       "decompiled": [
         {
           "hue": 1,
-          "reserved": 0
+          "data": 0
         }
       ]
     },
@@ -3122,9 +3120,7 @@
         "anchors": [
           {
             "x": 149,
-            "x1": -1,
             "y": 499,
-            "y1": -1,
             "name": "_top"
           }
         ]
@@ -3135,7 +3131,7 @@
       "decompiled": [
         {
           "hue": 80,
-          "reserved": 0
+          "data": 0
         }
       ]
     },
@@ -3158,8 +3154,8 @@
       "key": "Mapping Mode",
       "decompiled": {
         "mapping_mode": "names_or_index",
-        "2": 152,
-        "3": 318,
+        "m2": 152,
+        "m3": 318,
         "mapping_id": -1
       }
     },

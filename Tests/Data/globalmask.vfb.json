@@ -2697,8 +2697,8 @@
       "key": "Mapping Mode",
       "decompiled": {
         "mapping_mode": "names_or_index",
-        "2": 152,
-        "3": 53,
+        "m2": 152,
+        "m3": 53,
         "mapping_id": 1
       }
     },

@@ -5455,9 +5455,7 @@
         "anchors": [
           {
             "x": 180,
-            "x1": -1,
             "y": 725,
-            "y1": -1,
             "name": "mark0"
           }
         ]
@@ -5468,7 +5466,7 @@
       "decompiled": [
         {
           "hue": 1,
-          "reserved": 0
+          "data": 0
         }
       ]
     },
@@ -5569,9 +5567,7 @@
         "anchors": [
           {
             "x": 180,
-            "x1": -1,
             "y": 725,
-            "y1": -1,
             "name": "mark0"
           }
         ]
@@ -5582,7 +5578,7 @@
       "decompiled": [
         {
           "hue": 1,
-          "reserved": 0
+          "data": 0
         }
       ]
     },
@@ -5919,9 +5915,7 @@
         "anchors": [
           {
             "x": 396,
-            "x1": -1,
             "y": 520,
-            "y1": -1,
             "name": "_mark0"
           }
         ]
@@ -5932,7 +5926,7 @@
       "decompiled": [
         {
           "hue": 1,
-          "reserved": 0
+          "data": 0
         }
       ]
     },
@@ -5940,8 +5934,8 @@
       "key": "Mapping Mode",
       "decompiled": {
         "mapping_mode": "names_or_index",
-        "2": 152,
-        "3": 328,
+        "m2": 152,
+        "m3": 328,
         "mapping_id": -1
       }
     },

@@ -5912,8 +5912,8 @@
       "key": "Mapping Mode",
       "decompiled": {
         "mapping_mode": "names_or_index",
-        "2": 152,
-        "3": 97,
+        "m2": 152,
+        "m3": 97,
         "mapping_id": -1
       }
     },

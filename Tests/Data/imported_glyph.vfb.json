@@ -13857,23 +13857,17 @@
         "anchors": [
           {
             "x": 330,
-            "x1": -1,
             "y": 500,
-            "y1": -1,
             "name": "mark0"
           },
           {
             "x": 214,
-            "x1": -1,
             "y": 0,
-            "y1": -1,
             "name": "mark1"
           },
           {
             "x": 547,
-            "x1": -1,
             "y": 30,
-            "y1": -1,
             "name": "mark2"
           }
         ]
@@ -13884,15 +13878,15 @@
       "decompiled": [
         {
           "hue": 1,
-          "reserved": 0
+          "data": 0
         },
         {
           "hue": 1,
-          "reserved": 0
+          "data": 0
         },
         {
           "hue": 1,
-          "reserved": 0
+          "data": 0
         }
       ]
     },
@@ -13900,8 +13894,8 @@
       "key": "Mapping Mode",
       "decompiled": {
         "mapping_mode": "codepages",
-        "2": 152,
-        "3": 53,
+        "m2": 152,
+        "m3": 53,
         "mapping_id": 0
       }
     },

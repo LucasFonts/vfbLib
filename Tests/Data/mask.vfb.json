@@ -4928,8 +4928,8 @@
       "key": "Mapping Mode",
       "decompiled": {
         "mapping_mode": "names_or_index",
-        "2": 152,
-        "3": 277,
+        "m2": 152,
+        "m3": 277,
         "mapping_id": 1
       }
     },
