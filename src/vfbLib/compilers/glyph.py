@@ -14,7 +14,14 @@ from vfbLib.parsers.glyph import PathCommand
 from vfbLib.truetype import TT_COMMAND_CONSTANTS, TT_COMMANDS
 
 if TYPE_CHECKING:
-    from vfbLib.typing import GdefDict, GlyphData, LinkDict, MaskData, MMAnchorDict
+    from vfbLib.typing import (
+        AnchorPropertiesDict,
+        GdefDict,
+        GlyphData,
+        LinkDict,
+        MaskData,
+        MMAnchorDict,
+    )
 
 
 logger = logging.getLogger(__name__)
@@ -32,11 +39,11 @@ class GlyphAnchorsCompiler(BaseCompiler):
 
 
 class GlyphAnchorsSuppCompiler(BaseCompiler):
-    def _compile(self, data: list[dict[str, int]]) -> None:
+    def _compile(self, data: list[AnchorPropertiesDict]) -> None:
         self.write_value(len(data), signed=False)
         for anchor in data:
-            self.write_value(anchor["hue"], signed=False)
-            self.write_value(anchor["reserved"], signed=False)
+            self.write_value(anchor.get("hue", 0), signed=False)
+            self.write_value(anchor.get("data", 0), signed=False)
 
 
 class GlyphGDEFCompiler(BaseCompiler):
