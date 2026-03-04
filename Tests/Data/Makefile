@@ -16,3 +16,8 @@ ufo: ComicJensPro-Regular.ufo IBMPlexSans-Medium.ufo IBMPlexSerif-TextItalic.ufo
 
 %.ufo: %.vfb
 	vfb3ufo -fo $<
+
+
+.PHONY: clean
+clean:
+	rm *.bak
