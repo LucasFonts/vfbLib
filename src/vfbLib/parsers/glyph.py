@@ -120,8 +120,9 @@ class GlyphGDEFParser(BaseParser):
             gdef["carets"] = carets
 
         num_ot_classes = self.read_value()
-        ot_classes = [self.read_value() for _ in range(num_ot_classes)]
-        gdef["ot_classes"] = ot_classes
+        if num_ot_classes > 0:
+            ot_classes = [self.read_value() for _ in range(num_ot_classes)]
+            gdef["ot_classes"] = ot_classes
 
         return gdef
 
