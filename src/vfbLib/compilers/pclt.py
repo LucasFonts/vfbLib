@@ -1,10 +1,15 @@
 from __future__ import annotations
 
+from typing import TYPE_CHECKING
+
 from vfbLib.compilers.base import BaseCompiler
+
+if TYPE_CHECKING:
+    from vfbLib.typing import PCLTDict
 
 
 class PcltCompiler(BaseCompiler):
-    def _compile(self, data: dict[str, list[int] | int | str]) -> None:
+    def _compile(self, data: PCLTDict) -> None:
         self.write_value(data["font_number"], signed=False)
         for k in (
             "pitch",

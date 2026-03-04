@@ -267,6 +267,22 @@ class MMNode(TypedDict):
     type: Literal["move", "line", "curve", "qcurve"]
 
 
+class PCLTDict(TypedDict):
+    font_number: int
+    pitch: int
+    x_height: int
+    style: int
+    type_family: int
+    cap_height: int
+    symbol_set: int
+    typeface: str
+    character_complement: list[int]
+    file_name: str
+    stroke_weight: int
+    width_type: int
+    serif_style: int
+
+
 class PrimaryInstanceDict(TypedDict):
     name: str
     values: tuple[float, ...]

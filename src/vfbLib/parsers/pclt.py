@@ -3,6 +3,7 @@ from __future__ import annotations
 import logging
 
 from vfbLib.parsers.base import BaseParser
+from vfbLib.typing import PCLTDict
 
 logger = logging.getLogger(__name__)
 
@@ -12,8 +13,8 @@ class PcltParser(BaseParser):
     A parser that reads the PCLT table data
     """
 
-    def _parse(self) -> dict[str, list[int] | int | str]:
-        values: dict[str, list[int] | int | str] = {}
+    def _parse(self) -> PCLTDict:
+        values: PCLTDict = PCLTDict()
 
         # https://learn.microsoft.com/de-de/typography/opentype/spec/pclt#fontnumber
         values["font_number"] = self.read_value(signed=False)
