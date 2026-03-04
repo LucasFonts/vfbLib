@@ -95,6 +95,16 @@ class FLVersionDict(TypedDict):
     owner: int
 
 
+class TTAutoHintOptionsDict(TypedDict):
+    single_link_attachment_precision: int
+    generate_triple_hints: int
+    generate_delta_instructions: int
+    direct_links_to_center_of_the_glyph_where_possible: int
+    interpolate_positions_of_cusp_points: int
+    interpolate_positions_of_double_links: int
+    add_link_to_rsb: int
+
+
 class FontOptionsDict(TypedDict):
     fit_ascender: NotRequired[int]
     fit_descender: NotRequired[int]
@@ -117,7 +127,7 @@ class FontOptionsDict(TypedDict):
     codepage_for_cmap_1_0: NotRequired[int]
     dont_ignore_unicode_indexes: NotRequired[int]
     head_bbox_savings: NotRequired[int]
-    autohinting_options: NotRequired[dict[str, int]]
+    autohinting_options: NotRequired[int | TTAutoHintOptionsDict]
     export_hinted_truetype_font: NotRequired[int]
     autohint_unhinted_glyphs: NotRequired[int]
     keep_existing_truetype_instructions: NotRequired[int]

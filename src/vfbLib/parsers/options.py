@@ -5,7 +5,7 @@ import logging
 from vfbLib import ExpandKernOptions, TTAutoHintOptions, export_options, font_options
 from vfbLib.helpers import binaryToIntList
 from vfbLib.parsers.base import BaseParser, EncodedKeyValuesParser
-from vfbLib.typing import FontOptionsDict
+from vfbLib.typing import FontOptionsDict, TTAutoHintOptionsDict
 
 logger = logging.getLogger(__name__)
 
@@ -38,29 +38,36 @@ class FontOptionsParser(EncodedKeyValuesParser):
 
         if "autohinting_options" in options:
             val = options["autohinting_options"]
-            options["autohinting_options"] = {
-                "single_link_attachment_precision": val
-                & TTAutoHintOptions.single_link_attachment_precision,
-                "generate_triple_hints": int(
-                    bool(val & TTAutoHintOptions.generate_triple_hints)
-                ),
-                "generate_delta_instructions": int(
-                    bool(val & TTAutoHintOptions.generate_delta_instructions)
-                ),
-                "direct_links_to_center_of_the_glyph_where_possible": int(
-                    bool(
-                        val
-                        & TTAutoHintOptions.direct_links_to_center_of_the_glyph_where_possible  # noqa: E501
-                    )
-                ),
-                "interpolate_positions_of_cusp_points": int(
-                    bool(val & TTAutoHintOptions.interpolate_positions_of_cusp_points)
-                ),
-                "interpolate_positions_of_double_links": int(
-                    bool(val & TTAutoHintOptions.interpolate_positions_of_double_links)
-                ),
-                "add_link_to_rsb": int(bool(val & TTAutoHintOptions.add_link_to_rsb)),
-            }
+            if isinstance(val, int):
+                # Convert the options dict
+                options["autohinting_options"] = TTAutoHintOptionsDict(
+                    single_link_attachment_precision=val
+                    & int(TTAutoHintOptions.single_link_attachment_precision),
+                    generate_triple_hints=int(
+                        bool(val & TTAutoHintOptions.generate_triple_hints)
+                    ),
+                    generate_delta_instructions=int(
+                        bool(val & TTAutoHintOptions.generate_delta_instructions)
+                    ),
+                    direct_links_to_center_of_the_glyph_where_possible=int(
+                        bool(
+                            val
+                            & TTAutoHintOptions.direct_links_to_center_of_the_glyph_where_possible  # noqa: E501
+                        )
+                    ),
+                    interpolate_positions_of_cusp_points=int(
+                        bool(
+                            val & TTAutoHintOptions.interpolate_positions_of_cusp_points
+                        )
+                    ),
+                    interpolate_positions_of_double_links=int(
+                        bool(
+                            val
+                            & TTAutoHintOptions.interpolate_positions_of_double_links
+                        )
+                    ),
+                    add_link_to_rsb=int(bool(val & TTAutoHintOptions.add_link_to_rsb)),
+                )
 
         if "expand_kern_flags" in options:
             val = options["expand_kern_flags"]
