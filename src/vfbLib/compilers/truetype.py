@@ -8,9 +8,9 @@ from vfbLib.helpers import intListToBinary
 
 if TYPE_CHECKING:
     from vfbLib.typing import (
-        FlagsOptionsDict,
         TrueTypeInfoDict,
         TTStemsDict,
+        TTZoneDict,
         TTZonesDict,
         VdmxRecDict,
     )
@@ -18,7 +18,7 @@ if TYPE_CHECKING:
 
 def convert_flags_options_to_int(data: TrueTypeInfoDict) -> int:
     value = 0
-    head_flags_options: FlagsOptionsDict = data["head_flags"]
+    head_flags_options = data["head_flags"]
     assert isinstance(head_flags_options, dict)
     flags_list: list[int] = head_flags_options.get("flags", [])
     value = intListToBinary(flags_list)
@@ -166,7 +166,7 @@ class TrueTypeZonesCompiler(BaseCompiler):
 
     def _compile(self, data: TTZonesDict) -> None:
         for side in ("ttZonesT", "ttZonesB"):
-            side_zones = data.get(side, [])
+            side_zones: list[TTZoneDict] = data[side]
             self.write_value(len(side_zones))
             for zone in side_zones:
                 self.write_value(zone["position"])

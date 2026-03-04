@@ -74,6 +74,16 @@ class EntryDict(TypedDict):
     compiler: NotRequired[str]
 
 
+class ExpandKernFlagsDict(TypedDict):
+    limit_action: int
+    limit_codepage: int
+    limit_cmap_10: int
+    limit_font_window: int
+    limit_count: int
+    limit_keep: int
+    apply_to_assistance: int
+
+
 class FeatureDict(TypedDict):
     tag: str
     code: list[str]
@@ -155,7 +165,7 @@ class FontOptionsDict(TypedDict):
     t1_sort: NotRequired[int]
     export_kern_table: NotRequired[int]
     t1_fs_type: NotRequired[int]
-    expand_kern_flags: NotRequired[int]
+    expand_kern_flags: NotRequired[int | ExpandKernFlagsDict]
     expand_kern_codepage: NotRequired[int]
     expand_kern_count: NotRequired[int]
     decompose: NotRequired[int]

@@ -5,7 +5,7 @@ import logging
 from vfbLib import ExpandKernOptions, TTAutoHintOptions, export_options, font_options
 from vfbLib.helpers import binaryToIntList
 from vfbLib.parsers.base import BaseParser, EncodedKeyValuesParser
-from vfbLib.typing import FontOptionsDict, TTAutoHintOptionsDict
+from vfbLib.typing import ExpandKernFlagsDict, FontOptionsDict, TTAutoHintOptionsDict
 
 logger = logging.getLogger(__name__)
 
@@ -39,7 +39,7 @@ class FontOptionsParser(EncodedKeyValuesParser):
         if "autohinting_options" in options:
             val = options["autohinting_options"]
             if isinstance(val, int):
-                # Convert the options dict
+                # Convert to dict
                 options["autohinting_options"] = TTAutoHintOptionsDict(
                     single_link_attachment_precision=val
                     & int(TTAutoHintOptions.single_link_attachment_precision),
@@ -70,19 +70,20 @@ class FontOptionsParser(EncodedKeyValuesParser):
                 )
 
         if "expand_kern_flags" in options:
-            val = options["expand_kern_flags"]
-            options["expand_kern_flags"] = {
-                "limit_action": int(bool(val & ExpandKernOptions.limit_action)),
-                "limit_codepage": int(bool(val & ExpandKernOptions.limit_codepage)),
-                "limit_cmap_10": int(bool(val & ExpandKernOptions.limit_cmap_10)),
-                "limit_font_window": int(
-                    bool(val & ExpandKernOptions.limit_font_window)
-                ),
-                "limit_count": int(bool(val & ExpandKernOptions.limit_count)),
-                "limit_keep": int(bool(val & ExpandKernOptions.limit_keep)),
-                "apply_to_assistance": int(
-                    bool(val & ExpandKernOptions.apply_to_assistance)
-                ),
-            }
+            val2 = options["expand_kern_flags"]
+            if isinstance(val2, int):
+                options["expand_kern_flags"] = ExpandKernFlagsDict(
+                    limit_action=int(bool(val2 & ExpandKernOptions.limit_action)),
+                    limit_codepage=int(bool(val2 & ExpandKernOptions.limit_codepage)),
+                    limit_cmap_10=int(bool(val2 & ExpandKernOptions.limit_cmap_10)),
+                    limit_font_window=int(
+                        bool(val2 & ExpandKernOptions.limit_font_window)
+                    ),
+                    limit_count=int(bool(val2 & ExpandKernOptions.limit_count)),
+                    limit_keep=int(bool(val2 & ExpandKernOptions.limit_keep)),
+                    apply_to_assistance=int(
+                        bool(val2 & ExpandKernOptions.apply_to_assistance)
+                    ),
+                )
 
         return options
