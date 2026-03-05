@@ -4,7 +4,7 @@ from pathlib import Path
 from time import time
 from typing import TYPE_CHECKING, Any
 
-from vfbLib.enum import F, G
+from vfbLib.enum import F, G, T
 from vfbLib.vfb.entry import VfbEntry
 from vfbLib.vfb.glyph import VfbGlyph, VfbGlyphMaster
 from vfbLib.vfb.header import VfbHeader
@@ -251,7 +251,7 @@ class Vfb:
             # of entries right here.
 
             if entry is not None:
-                if entry.key == "FL Version":
+                if entry.id == F.FLVersion:
                     entry.decompile()
                     if entry.data is not None:
                         self.writer_platform = entry.data["platform"]
@@ -263,14 +263,15 @@ class Vfb:
                         else:
                             self.encoding = "cp1252"
 
-                elif entry.key == "Master Count":
+                elif entry.id == F.MasterCount:
                     entry.decompile()
                     if entry.data is not None:
                         if TYPE_CHECKING:
                             assert isinstance(entry.data, int)
                         self.num_masters = entry.data
+                        print(f"read_stream: MasterCount = {self.num_masters}")
 
-                elif entry.key == "TrueType Stems":
+                elif entry.id == T.TrueTypeStems:
                     entry.decompile()
                     if entry.data is not None:
                         if TYPE_CHECKING:
