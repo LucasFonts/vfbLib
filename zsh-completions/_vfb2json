@@ -1,0 +1,11 @@
+#compdef vfb2json
+
+_arguments -C \
+  '(-h --help)'{-h,--help}'[Show help message and exit]' \
+  '(-d --no-decompile)'{-d,--no-decompile}'[Don’t decompile data, output binary in JSON]' \
+  '--header'{--header}'[Only read the VFB header, not the actual data]' \
+  '(-m --minimal)'{-m,--minimal}'[Parse only minimal amount of data]' \
+  '(-p --path)'{-p,--path}'[Output JSON to this folder]' \
+  '(-r --roundtrip)'{-r,--roundtrip}'[Roundtrip data by decompiling and compiling again before saving]' \
+  '(-u --unicode-strings)'{-u,--unicode-strings}'[Force strings to be interpreted as Unicode instead of Windows-1252]' \
+  '*:: :_files -g "*.vfb"'

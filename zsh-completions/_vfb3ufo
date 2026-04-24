@@ -1,0 +1,19 @@
+#compdef vfb3ufo
+
+_arguments -C \
+  '(-h --help)'{-h,--help}'[Show help message and exit]' \
+  '(-p --path)'{-p,--path}'[Output folder]' \
+  '(-fo --force-overwrite)'{-fo,--force-overwrite}'[force overwrite]' \
+  '(-g --keep-groups)'{-g,--keep-groups}'[Don’t move non-kerning groups from groups.plist to feature code]' \
+  '(-j --json)'{-j,--json}'[serialize UFO as JSON; combine with -z to write JSON without line breaks/indentation]' \
+  '(-k --add-kerning-groups)'{-k,--add-kerning-groups}'[Add kerning groups to feature code]' \
+  '(-ttx --ttx)'{-ttx,--ttx}'[Convert binary OpenType Layout data using TTX-like format]' \
+  '(-64 --base64)'{-64,--base64}'[Write GLIF lib ‘data’ section using base64]' \
+  '(-s --silent)'{-s,--silent}'[No display (silent mode)]' \
+  '(-n --no-normalize)'{-n,--no-normalize}'[Don’t normalize the UFOs (faster)]' \
+  '(-nops --no-postscript-hints)'{-nops,--no-postscript-hints}'[Don’t output PostScript hinting]' \
+  '(-v --verbose)'{-v,--verbose}'[Print debugging output]' \
+  '(-z --zip)'{-z,--zip}'[Write UFOZ (compressed UFO)]' \
+  '(-m --minimal)'{-m,--minimal}'[Parse only minimal amount of data, drop missing glyphs from groups, etc.]' \
+  '(-u --unicode-strings)'{-u,--unicode-strings}'[Force strings to be interpreted as Unicode instead of Windows-1252]' \
+  '*:: :_files -g "*.vfb"'
