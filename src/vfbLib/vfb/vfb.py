@@ -82,7 +82,7 @@ class Vfb:
         if drop_keys is None:
             self.drop_keys: set[int] = set()
         else:
-            self.drop_keys: set[int] = set(drop_keys)
+            self.drop_keys = set(drop_keys)
         self.only_header = only_header
         self.encoding = "utf-8"
         self.force_unicode_strings = unicode_strings
