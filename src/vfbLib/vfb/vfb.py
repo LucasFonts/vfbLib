@@ -269,7 +269,6 @@ class Vfb:
                         if TYPE_CHECKING:
                             assert isinstance(entry.data, int)
                         self.num_masters = entry.data
-                        print(f"read_stream: MasterCount = {self.num_masters}")
 
                 elif entry.id == T.TrueTypeStems:
                     entry.decompile()
