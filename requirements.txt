@@ -6,13 +6,13 @@ fonttools==4.62.1
 iniconfig==2.3.0
 mccabe==0.7.0
 orjson==3.11.8
-packaging==26.1
+packaging==26.2
 pluggy==1.6.0
 pycodestyle==2.14.0
 pyflakes==3.4.0
 pygments==2.20.0
 pytest==9.0.3
-ruff==0.15.10
+ruff==0.15.12
 typing-extensions==4.15.0
 ufolib2==0.18.1
 ufonormalizer==0.6.3
