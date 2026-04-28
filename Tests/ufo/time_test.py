@@ -19,15 +19,25 @@ class TestConvertTimestamp(TestCase):
         d = convert_timestamp(ts)
         assert fmt(d) == "1970/01/01 00:00:00"
 
-    def test_summertime(self):
-        ts = 3303309600
+    def test_flip_0(self):
+        ts = 2147483647
         d = convert_timestamp(ts)
-        assert fmt(d) == "2008/09/03 19:00:00"
+        assert fmt(d) == "1972/01/19 04:14:07"
 
-    def test_now(self):
-        ts = 3754301757  # now
+    def test_flip_1(self):
+        ts = -2147483648
         d = convert_timestamp(ts)
-        assert fmt(d) == "2022/12/19 14:35:57"
+        assert fmt(d) == "1972/01/19 04:14:08"
+
+    def test_dst(self):
+        ts = -991664896
+        d = convert_timestamp(ts)
+        assert fmt(d) == "2008/09/03 17:00:00"
+
+    def test_now_dst(self):
+        ts = -434743306  # now
+        d = convert_timestamp(ts)
+        assert fmt(d) == "2026/04/28 13:26:30"
 
     def test_datetime_to_fl_negative(self):
         d = datetime(1969, 1, 1, 0, 0, 0, tzinfo=UTC)
@@ -39,12 +49,22 @@ class TestConvertTimestamp(TestCase):
         ts = datetime_to_fl(d)
         assert ts == 2082841200
 
-    def test_datetime_to_fl_summertime(self):
-        d = datetime(2008, 9, 3, 19, 0, 0, tzinfo=UTC)
+    def test_datetime_to_fl_flip_0(self):
+        d = datetime(1972, 1, 19, 4, 14, 7, tzinfo=UTC)
         ts = datetime_to_fl(d)
-        assert ts == 3303309600
+        assert ts == 2147483647  # max i32
 
-    def test_datetime_to_fl_now(self):
-        d = datetime(2022, 12, 19, 14, 35, 57, tzinfo=UTC)
+    def test_datetime_to_fl_flip_1(self):
+        d = datetime(1972, 1, 19, 4, 14, 8, tzinfo=UTC)
         ts = datetime_to_fl(d)
-        assert ts == 3754301757
+        assert ts == -2147483648  # min i32
+
+    def test_datetime_to_fl_dst(self):
+        d = datetime(2008, 9, 3, 17, 0, 0, tzinfo=UTC)
+        ts = datetime_to_fl(d)
+        assert ts == -991664896
+
+    def test_datetime_to_fl_now_dst(self):
+        d = datetime(2026, 4, 28, 13, 26, 30, tzinfo=UTC)
+        ts = datetime_to_fl(d)
+        assert ts == -434743306
