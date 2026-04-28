@@ -1,13 +1,4 @@
-from datetime import datetime
-from sys import version_info
-
-if version_info[0] == 3 and version_info[1] > 10:
-    from datetime import UTC
-else:
-    from datetime import timezone
-
-    UTC = timezone.utc
-
+from datetime import UTC, datetime
 
 TIME_ZERO = 2082841200
 
@@ -20,6 +11,11 @@ def convert_timestamp(t: int) -> datetime:
     if t < TIME_ZERO:
         t = TIME_ZERO
 
-    if version_info[0] == 3 and version_info[1] > 10:
-        return datetime.fromtimestamp(t - TIME_ZERO, UTC)
-    return datetime.utcfromtimestamp(t - TIME_ZERO)
+    return datetime.fromtimestamp(t - TIME_ZERO, UTC)
+
+
+def datetime_to_fl(d: datetime) -> int:
+    ts = int(datetime.timestamp(d)) + TIME_ZERO
+    if ts < TIME_ZERO:
+        ts = TIME_ZERO
+    return ts
