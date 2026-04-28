@@ -138,8 +138,7 @@ class TrueTypeInfoParser(BaseParser):
                     # The timestamps are returned by the FL5 API as signed, so for
                     # current dates they have wrapped to a negative number.
                     self.assert_unique(info, dk)
-                    # We read the number as unsigned anyway
-                    info[dk] = self.read_value(signed=False)
+                    info[dk] = self.read_value(signed=True)
 
                 case 0x5C:
                     # Average width

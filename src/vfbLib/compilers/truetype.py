@@ -65,7 +65,7 @@ class TrueTypeInfoCompiler(BaseCompiler):
             self._write_if_exists(k, data)
 
         for k in (0x56, 0x57):
-            self._write_if_exists(k, data, signed=False)
+            self._write_if_exists(k, data, signed=True)
 
         for k in (
             0x3D,
