@@ -1,6 +1,6 @@
 attrs==26.1.0
 cattrs==26.1.0
-coverage==7.13.5
+coverage==7.14.0
 flake8==7.3.0
 fonttools==4.62.1
 iniconfig==2.3.0
