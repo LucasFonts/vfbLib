@@ -312,7 +312,7 @@ class VfbToUfoInfo(Info):
                     if v != 0:
                         self.postscriptNominalWidthX = abs(v)
                 else:
-                    logger.info(f"Unhandled integer value in UFO info: {k, v}")
+                    logger.info(f"Unhandled int value in UFO info: {k, v}")
             elif isinstance(v, list):
                 if k == "OpenTypeOS2Panose":
                     # Duplicate?
