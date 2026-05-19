@@ -2,7 +2,7 @@ attrs==26.1.0
 cattrs==26.1.0
 coverage==7.14.0
 flake8==7.3.0
-fonttools==4.62.1
+fonttools==4.63.0
 iniconfig==2.3.0
 mccabe==0.7.0
 orjson==3.11.9
