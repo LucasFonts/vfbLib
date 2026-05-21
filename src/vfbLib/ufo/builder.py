@@ -580,9 +580,29 @@ class VfbToUfoBuilder:
                 case F.note:
                     self.info.note = data
                 case F.KerningClassFlags:
-                    self.kerning_class_flags: KerningClassFlagDict = data
+                    self.kerning_class_flags = data
+                case (
+                    F.BlockFileDataStart
+                    | F.BlockFontStart
+                    | F.BlockNamesStart
+                    | F.BlockNamesEnd
+                    | F.BlockFontInfoStart
+                    | F.BlockFontInfoEnd
+                    | F.BlockMMFontInfoStart
+                    | F.BlockMMFontInfoEnd
+                    | F.BlockFontEnd
+                    | F.BlockFileDataEnd
+                ):
+                    pass
                 case _:
-                    logger.info(f"Unhandled key: {key}")
+                    k = key
+                    for enum in (F, G, M, T):
+                        try:
+                            k = enum(key).name
+                            break
+                        except ValueError:
+                            pass
+                    logger.info(f"Unhandled entry: {k}")
 
         if self.current_glyph is not None:
             assert self.current_glyph.name is not None
