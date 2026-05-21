@@ -31,9 +31,17 @@ class VfbGlyphTest(TestCase):
         vfb.read_bytes(buf)
         assert isinstance(vfb, Vfb)
 
-        with NamedTemporaryFile(delete_on_close=True) as f:
-            path = Path(f.name)
-            vfb.write(path)
+        try:
+            # Python 3.12+
+            with NamedTemporaryFile(delete_on_close=True) as f:
+                path = Path(f.name)
+                vfb.write(path)
+        except TypeError:
+            # Python 3.11
+            with NamedTemporaryFile(delete=False) as f:
+                path = Path(f.name)
+                vfb.write(path)
+            path.unlink(missing_ok=True)
 
     def test_write_to_io(self) -> None:
         buf = BytesIO()
