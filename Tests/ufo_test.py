@@ -144,3 +144,19 @@ class GlyphCompilerTest(TestCase):
         assert "com.lucasfonts.vfblib" in ufo1.lib["com.fontlab.v5.userData"]
         ufo0.lib["foo"] = "bar"
         assert "foo" not in ufo1.lib
+
+    def test_vfb_to_ufo(self) -> None:
+        for num_ufos, vfb_name in [
+            (1, "ComicJensPro-Regular3.000.vfb"),
+            (1, "ComicJensPro-Regular3.000.ttf.vfb"),
+            (1, "IBMPlexSans-Medium.vfb"),
+            (1, "IBMPlexSerif-Text.vfb"),
+            (1, "IBMPlexSerif-TextItalic.vfb"),
+        ]:
+            with self.subTest(num_ufos=num_ufos, vfb_name=vfb_name):
+                vfb = Vfb(vfb_path(vfb_name))
+                vfb.decompile()
+                builder = VfbToUfoBuilder(vfb, move_groups=False)
+                ufos, designspace = builder.get_ufos_designspace(data_path())
+                assert len(ufos) == num_ufos
+                # assert not designspace
