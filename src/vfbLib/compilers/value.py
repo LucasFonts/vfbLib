@@ -2,16 +2,16 @@ from struct import pack
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from io import BufferedWriter, BytesIO
+    from io import BufferedIOBase
 
 
-def write_value(value: int, stream: "BufferedWriter | BytesIO", signed=True) -> None:
+def write_value(value: int, stream: "BufferedIOBase", signed=True) -> None:
     """
     Encode and write an int value to the stream in the shortest possible representation.
 
     Args:
         value (int): The value to write to the stream.
-        stream (BufferedWriter | BytesIO): The output stream.
+        stream (BufferedIOBase): The output stream.
         signed (bool, optional): Whether the value is signed. Defaults to True.
     """
     if -107 <= value <= 107:
@@ -31,16 +31,14 @@ def write_value(value: int, stream: "BufferedWriter | BytesIO", signed=True) -> 
     stream.write(encoded)
 
 
-def write_value_long(
-    value: int, stream: "BufferedWriter | BytesIO", signed=True
-) -> None:
+def write_value_long(value: int, stream: "BufferedIOBase", signed=True) -> None:
     """
     Write an integer value to the stream using the longest encoding (4 bytes plus
     marker byte).
 
     Args:
         value (int): The value to write to the stream.
-        stream (BufferedWriter | BytesIO): The output stream.
+        stream (BufferedIOBase): The output stream.
         signed (bool, optional): Whether the value is signed. Defaults to True.
     """
     fmt = "i" if signed else "I"

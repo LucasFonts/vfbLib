@@ -11,7 +11,7 @@ from vfbLib.vfb.header import VfbHeader
 from vfbLib.vfb.info import VfbInfo
 
 if TYPE_CHECKING:
-    from io import BufferedReader
+    from io import BufferedIOBase
 
     from vfbLib.typing import VfbDict
 
@@ -228,7 +228,7 @@ class Vfb:
             self._decompile_glyphs()
         return self._glyphs.keys()
 
-    def read_stream(self, stream: "BufferedReader") -> None:
+    def read_stream(self, stream: "BufferedIOBase") -> None:
         """
         Lazily read and parse the vfb stream, i.e. parse the header, but only read the
         binary data of other entries.
@@ -293,7 +293,7 @@ class Vfb:
 
     def read(self) -> None:
         """
-        Read data from the file at vfb_path, without decompiling
+        Read data from the file at vfb_path, without decompiling.
         """
         self.clear()
         if self.vfb_path is None:
@@ -302,25 +302,44 @@ class Vfb:
         with open(self.vfb_path, "rb") as vfb:
             self.read_stream(vfb)
 
+    def read_bytes(self, buffer: "BufferedIOBase") -> None:
+        """
+        Read data from a buffer, without decompiling.
+
+        Args:
+            buffer (BufferedIOBase): The buffered reader.
+        """
+        self.clear()
+        self.read_stream(buffer)
+
     def write(self, out_path: Path) -> None:
         """
         Compile any entries with changes, and write the VFB to out_path.
+        """
+        with open(out_path, "wb") as vfb:
+            self.write_bytes(vfb)
+
+    def write_bytes(self, buffer: "BufferedIOBase") -> None:
+        """
+        Compile any entries with changes, and write the VFB data to a buffer.
+
+        Args:
+            buffer (BufferedIOBase): The buffer.
         """
         if self.header is None:
             raise ValueError
 
         self.compile()
 
-        with open(out_path, "wb") as vfb:
-            assert isinstance(self.header.data, bytes)
-            vfb.write(self.header.data)
+        assert isinstance(self.header.data, bytes)
+        buffer.write(self.header.data)
 
-            for entry in self.entries:
-                vfb.write(entry.header)
-                if entry.data is not None:
-                    # There may be entries without data
-                    assert isinstance(entry.data, bytes)
-                    vfb.write(entry.data)
+        for entry in self.entries:
+            buffer.write(entry.header)
+            if entry.data is not None:
+                # There may be entries without data
+                assert isinstance(entry.data, bytes)
+                buffer.write(entry.data)
 
 
 def get_vfb_with_masters(num_masters: int) -> Vfb:

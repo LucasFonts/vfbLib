@@ -7,7 +7,7 @@ from vfbLib.helpers import hexStr
 from vfbLib.parsers.header import VfbHeaderParser
 
 if TYPE_CHECKING:
-    from io import BufferedReader
+    from io import BufferedIOBase
 
     from vfbLib.typing import VfbHeaderDict
 
@@ -57,6 +57,6 @@ class VfbHeader:
         byte_data = self.data
         self.data = self.parser(BytesIO(byte_data)).parse()
 
-    def read(self, stream: "BufferedReader") -> None:
+    def read(self, stream: "BufferedIOBase") -> None:
         # Read and decompile
         self.data = self.parser(stream).parse()

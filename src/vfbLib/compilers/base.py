@@ -6,7 +6,7 @@ from vfbLib.compilers.value import write_value, write_value_long
 from vfbLib.helpers import deHexStr, hexStr, int8_size, int16_size, int32_size
 
 if TYPE_CHECKING:
-    from io import BufferedWriter
+    from io import BufferedIOBase
     from typing import Any, Iterable
 
     from vfbLib.typing import (
@@ -29,7 +29,7 @@ class StreamWriter:
 
     def __init__(self) -> None:
         self.encoding = "cp1252"
-        self.stream: "BufferedWriter | BytesIO" = BytesIO()
+        self.stream: "BufferedIOBase" = BytesIO()
 
     def write_bytes(self, value: bytes) -> None:
         """

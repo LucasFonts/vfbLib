@@ -16,7 +16,7 @@ from vfbLib.parsers.value import read_value
 from vfbLib.typing import MappingModeDict
 
 if TYPE_CHECKING:
-    from io import BufferedReader
+    from io import BufferedIOBase
 
     from vfbLib.typing import KerningClassFlagDict, MetricsClassFlagDict
     from vfbLib.vfb.vfb import Vfb
@@ -35,7 +35,7 @@ class StreamReader:
 
     def __init__(self) -> None:
         self.encoding = "cp1252"
-        self.stream: "BufferedReader | BytesIO" = BytesIO()
+        self.stream: "BufferedIOBase" = BytesIO()
 
     def read_double(self) -> float:
         """

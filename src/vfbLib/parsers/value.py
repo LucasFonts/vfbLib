@@ -3,10 +3,10 @@ from typing import TYPE_CHECKING
 from vfbLib.helpers import int8_size, int32_size
 
 if TYPE_CHECKING:
-    from io import BufferedReader, BytesIO
+    from io import BufferedIOBase
 
 
-def read_value(stream: "BufferedReader | BytesIO", signed=True) -> int:
+def read_value(stream: "BufferedIOBase", signed=True) -> int:
     """
     Read an encoded value from the stream, decode it to integer and return it.
 
@@ -15,7 +15,7 @@ def read_value(stream: "BufferedReader | BytesIO", signed=True) -> int:
     <https://adobe-type-tools.github.io/font-tech-notes/pdfs/T1_SPEC.pdf>.
 
     Args:
-        stream (BufferedReader | BytesIO): The input stream.
+        stream (BufferedIOBase): The input stream.
         signed (bool, optional): Whether to interpret the value as a signed integer.
             Defaults to True.
 

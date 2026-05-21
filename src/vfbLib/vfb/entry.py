@@ -12,7 +12,7 @@ from vfbLib.parsers.base import BaseParser, StreamReader
 from vfbLib.typing import EntryDict
 
 if TYPE_CHECKING:
-    from io import BufferedReader
+    from io import BufferedIOBase
 
     from vfbLib.typing import EntryDecompiled
     from vfbLib.vfb.vfb import Vfb
@@ -247,7 +247,7 @@ class VfbEntry(StreamReader):
 
         self.compiler.merge(self.temp_masters, self.data)
 
-    def read(self, stream: "BufferedReader") -> None:
+    def read(self, stream: "BufferedIOBase") -> None:
         """
         Read the entry from the stream without decompiling the data.
         """

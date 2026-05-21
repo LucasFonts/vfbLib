@@ -3,7 +3,7 @@ from typing import TYPE_CHECKING
 from vfbLib.parsers.base import StreamReader
 
 if TYPE_CHECKING:
-    from io import BufferedReader, BytesIO
+    from io import BufferedIOBase
 
     from vfbLib.typing import VfbHeaderDict
 
@@ -20,7 +20,7 @@ FL25_FILE = 13
 
 
 class VfbHeaderParser(StreamReader):
-    def __init__(self, stream: "BufferedReader | BytesIO") -> None:
+    def __init__(self, stream: "BufferedIOBase") -> None:
         self.stream = stream
 
     def parse(self) -> "VfbHeaderDict":
