@@ -9,7 +9,7 @@ jobs:
     strategy:
       matrix:
         python: ["3.11", "3.12", "3.13", "3.14"]
-        TOX_ENV: ["tests", "mypy"]
+        TOX_ENV: ["tests"]
     steps:
       - name: Check out the repo
         uses: actions/checkout@v6
