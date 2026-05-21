@@ -1,5 +1,21 @@
 # Change Log
 
+## 0.11.4
+
+- Use uv for building, testing, and publishing
+- Add `Vfb.read_bytes` and `Vfb.write_bytes` so we can load from/save to an in-memory buffer
+
+## 0.11.3
+
+- Remove erroneous print
+
+## 0.11.2
+
+- Add zsh completion files to repo
+- Remove Python < 3.10 workaround
+- Treat `head_creation` as signed
+- Do timestamp conversion like FL
+
 ## 0.11.1
 
 I decided to add some more incompatible changes after 0.11.0, and one bugfix.
