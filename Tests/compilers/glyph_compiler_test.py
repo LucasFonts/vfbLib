@@ -448,6 +448,61 @@ ttinstructions_json = {
     ],
 }
 
+subset_error_binary = """
+01 09 07 01
+01 8c 48 
+08 8c f77a 9c 
+   10 f846 f947 
+   03 84 fb9b 92 f742 87 36
+   03 fb93 29 f73c 93 37 85
+   13 3b f793 89 fb3f 8d e0
+   33 59 f71e bd 75 75 a1
+   13 3d 57 a1 bf 75 75
+   13 7f fd3b 97 f843 7f fb69
+   33 bd fba2 59 a1 a1 75
+   13 d9 bf 75 57 a1 a1
+   03 90 f7d6 86 fb56 8d eb
+   03 f791 f6fb 3b 83 df 92
+   33 d5 fbc4 90 f75f 86 25
+   33 bc fb33 5a 9e a1 78
+   13 d9 bf 74 57 a2 9d
+   13 a0 f954 76 fc5a a0 f77a
+   33 5a f7a6 bc 79 73 9d
+   13 3f 5d a5 b9 71 79
+02 f8f0 8b
+04 8c f93a 8b 8c f715 8b
+0f
+"""
+
+subset_error_json = {
+    "name": "H",
+    "num_masters": 1,
+    "nodes": [
+        {"type": "move", "flags": 1, "points": [[(434, 691)]]},
+        {"type": "curve", "flags": 0, "points": [[(427, 428), (434, 602), (430, 517)]]},
+        {"type": "curve", "flags": 0, "points": [[(175, 419), (343, 427), (259, 421)]]},
+        {"type": "curve", "flags": 1, "points": [[(179, 676), (177, 505), (179, 590)]]},
+        {"type": "curve", "flags": 3, "points": [[(129, 728), (179, 706), (157, 728)]]},
+        {"type": "curve", "flags": 1, "points": [[(79, 676), (101, 728), (79, 706)]]},
+        {"type": "curve", "flags": 1, "points": [[(67, 27), (79, 458), (67, 245)]]},
+        {"type": "curve", "flags": 3, "points": [[(117, -25), (67, -3), (89, -25)]]},
+        {"type": "curve", "flags": 1, "points": [[(167, 27), (145, -25), (167, -3)]]},
+        {"type": "curve", "flags": 0, "points": [[(172, 319), (167, 125), (169, 221)]]},
+        {"type": "curve", "flags": 0, "points": [[(422, 328), (255, 320), (339, 327)]]},
+        {"type": "curve", "flags": 3, "points": [[(413, 23), (418, 226), (413, 124)]]},
+        {"type": "curve", "flags": 3, "points": [[(462, -35), (413, -16), (435, -35)]]},
+        {"type": "curve", "flags": 1, "points": [[(513, 17), (490, -35), (513, -17)]]},
+        {"type": "curve", "flags": 1, "points": [[(534, 687), (513, 233), (534, 463)]]},
+        {"type": "curve", "flags": 3, "points": [[(485, 737), (534, 719), (510, 737)]]},
+        {"type": "curve", "flags": 1, "points": [[(434, 691), (460, 737), (434, 719)]]},
+    ],
+    "metrics": [(604, 0)],
+    "guides": {
+        "h": [[{"pos": 678, "angle": 0.0}]],
+        "v": [[{"pos": 129, "angle": 0.0}]],
+    },
+}
+
 
 class PartCompiler(GlyphCompiler):
     """
@@ -592,6 +647,17 @@ class GlyphCompilerTest(TestCase):
             glyph_roundtripped_raw, get_vfb_with_masters(1)
         )
         assert result == glyph_roundtripped_bin
+
+    def test_subset_error_roundtrip(self):
+        # Decompile
+        dec = GlyphParser().parse_hex(subset_error_binary, get_vfb_with_masters(1))
+        assert dec == subset_error_json
+
+        # Compile
+        compiled = GlyphCompiler().compile_hex(dec, get_vfb_with_masters(1))
+        # ... and parse again
+        cde = GlyphParser().parse_hex(compiled, get_vfb_with_masters(1))
+        assert dec == cde
 
 
 raw_links = {"x": [[7, 2], [9, 16]], "y": [[6, 3], [10, 15], [0, -1], [17, 8]]}
