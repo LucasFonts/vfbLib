@@ -138,39 +138,29 @@ class VfbToUfoBuilder:
             data = data[10:]
 
     def add_ot_class(self, data: str) -> None:
+        """
+        Add an OpenType class/group to the builder. VFB stores groups as strings, so
+        minimal processing is done to extract the group name and the member glyph names.
+
+        Args:
+            data (str): The OpenType class from the VFB.
+        """
         if ":" not in data:
             logger.warning(f"Malformed OT class definition, skipping: {data}")
             return
 
         name, contents = data.split(":")
 
-        glyphs = []
+        glyphs: list[str] = []
         for glyph in contents.split(" "):
             glyph = glyph.strip()
             if glyph:
                 glyphs.append(glyph)
 
-        is_kerning = name.startswith("_")
-
         if name in self.groups:
             logger.warning(f"Duplicate OT class name, skipping: {name}")
             return
 
-        glyphs_list = glyphs
-        if is_kerning:
-            # Reorganize glyphs so that the "keyglyph" is first
-            glyphs: list[str] = [g.strip() for g in glyphs_list if not g.endswith("'")]
-            keyglyphs = [g.strip() for g in glyphs_list if g.endswith("'")]
-            keyglyphs = [k.strip("'") for k in keyglyphs]
-            if len(keyglyphs) != 1:
-                logger.warning(
-                    f"Unexpected number of key glyphs in group {name}: {keyglyphs}"
-                )
-            else:
-                glyphs.insert(0, *keyglyphs)
-
-        else:
-            glyphs = [g.strip() for g in glyphs_list]
         self.groups[name] = glyphs
 
     def assure_tt_lib(self) -> None:
