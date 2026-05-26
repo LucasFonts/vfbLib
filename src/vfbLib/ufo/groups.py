@@ -9,6 +9,35 @@ if TYPE_CHECKING:
 logger = logging.getLogger(__name__)
 
 
+def check_for_missing_glyphs(
+    group_name: str,
+    glyphs: list[str],
+    glyphOrder: list[str],
+    skip_missing_group_glyphs: bool = False,
+) -> tuple[list[str], list[str]]:
+    missing = [n for n in glyphs if n not in glyphOrder]
+    num_missing = len(missing)
+    num_glyphs = len(glyphs)
+    if missing:
+        if num_missing == num_glyphs:
+            logger.warning(
+                f"All glyphs in group '{group_name}' are missing from "
+                f"the font: {', '.join(missing)}"
+            )
+        else:
+            logger.warning(
+                f"{num_missing} of {num_glyphs} glyphs in group "
+                f"'{group_name}' are missing from the font: {', '.join(missing)}"
+            )
+        if skip_missing_group_glyphs:
+            remaining_glyphs = list(set(glyphs) - set(missing))
+            if not remaining_glyphs:
+                logger.warning(f"Not adding empty group '{group_name}' to the UFO.")
+                return glyphs, missing
+            glyphs = [g for g in glyphs if g not in missing]
+    return glyphs, missing
+
+
 def transform_groups(
     orig_groups: "UfoGroups",
     kerning_class_flags: "KerningClassFlagDict",
@@ -64,47 +93,23 @@ def transform_groups(
                 f"Unexpected number of key glyphs in group {name}: {group_key_glyphs}"
             )
         glyphs = group_key_glyphs + other_group_glyphs
+        num_glyphs = len(glyphs)
 
         # Check for missing glyphs
-        missing = [n for n in glyphs if n not in glyphOrder]
+        glyphs, missing = check_for_missing_glyphs(
+            name, glyphs, glyphOrder, skip_missing_group_glyphs
+        )
         num_missing = len(missing)
-        num_glyphs = len(glyphs)
-        if missing:
-            if num_missing == num_glyphs:
-                logger.warning(
-                    f"All glyphs in group '{name}' are missing from "
-                    f"the font: {', '.join(missing)}"
-                )
-            else:
-                logger.warning(
-                    f"{num_missing} of {num_glyphs} glyphs in group "
-                    f"'{name}' are missing from the font: {', '.join(missing)}"
-                )
-            if skip_missing_group_glyphs:
-                remaining_glyphs = list(set(glyphs) - set(missing))
-                if not remaining_glyphs:
-                    logger.warning(f"Not adding empty group '{name}' to the UFO.")
-                    continue
-                glyphs = [g for g in glyphs if g not in missing]
 
         key_glyph = None
-        if group_key_glyphs:
-            logger.info(
-                f"Looking for key glyph in {group_key_glyphs} for group {name} "
-                f"({glyphs})"
-            )
         for key_glyph_candidate in group_key_glyphs:
             if key_glyph_candidate in missing and num_missing != num_glyphs:
                 # Only warn if not all group glyphs are missing from the font
                 logger.warning(
-                    f"Key glyph '{key_glyph}' for group '{name}' is missing "
-                    "from the font."
+                    f"Key glyph '{key_glyph}' for group '{name}' is missing from font."
                 )
             else:
                 key_glyph = key_glyph_candidate
-                logger.info(
-                    f"Selected key glyph {key_glyph} for group {name} ({glyphs})"
-                )
                 break
 
         # The final name in the UFO is different for kerning groups, which also must be
