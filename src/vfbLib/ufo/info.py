@@ -18,14 +18,14 @@ if TYPE_CHECKING:
 logger = logging.getLogger(__name__)
 
 
-# maxp_keys = {
-#     "max_zones": "maxZones",
-#     "max_twilight_points": "maxTwilightPoints",
-#     "max_storage": "maxStorage",
-#     "max_function_defs": "maxFunctionDefs",
-#     "max_instruction_defs": "maxInstructionDefs",
-#     "max_stack_elements": "maxStackElements",
-# }
+maxp_keys = {
+    "max_zones": "maxZones",
+    "max_twilight_points": "maxTwilightPoints",
+    "max_storage": "maxStorage",
+    "max_function_defs": "maxFunctionDefs",
+    "max_instruction_defs": "maxInstructionDefs",
+    "max_stack_elements": "maxStackElements",
+}
 
 
 class VfbToUfoInfo(Info):
@@ -281,7 +281,6 @@ class VfbToUfoInfo(Info):
         self.openTypeGaspRangeRecords = gasp
 
     def set_tt_info(self, data: dict[str, int | list[int] | list[str]]) -> None:  # noqa: C901, E501
-        instructions = {}
         for k, v in data.items():
             if isinstance(v, int):
                 if k in self.mapping_int:
@@ -305,10 +304,9 @@ class VfbToUfoInfo(Info):
                     # Duplicate, set from a separate entry (font_style)
                     # self.openTypeOS2Selection = binaryToIntList(v)
                     pass
-                    # We could also set maxp here, but the values are useless on their
-                    # own:
-                    # elif k in maxp_keys:
-                    # instructions[maxp_keys[k]] = v
+                elif k in maxp_keys:
+                    # Contains useful values in imported binary fonts
+                    self.set_tt_instructions(maxp_keys[k], v)
                 elif k == "Average Width":
                     if v != 0:
                         self.postscriptNominalWidthX = abs(v)
@@ -336,9 +334,6 @@ class VfbToUfoInfo(Info):
                     logger.info(f"Unhandled dict value in UFO info: {k, v}")
             else:
                 raise TypeError
-        if instructions:
-            for k, v in instructions:
-                self.set_tt_instructions(k, v)
 
     def set_weight_class(self, data: int) -> None:
         self.openTypeOS2WeightClass = min(max(1, data), 1000)
