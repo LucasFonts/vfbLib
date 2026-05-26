@@ -165,6 +165,7 @@ class VfbToUfoInfo(Info):
             F.fond_id: "macintoshFONDFamilyID",
             F.apple_name: "macintoshFONDName",
             F.panose: "openTypeOS2Panose",
+            F.SampleText: "openTypeNameSampleText",
             F.vendor: "openTypeOS2VendorID",
             F.tt_u_id: "openTypeNameUniqueID",
             F.tt_version: "openTypeNameVersion",
