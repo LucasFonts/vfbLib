@@ -37,8 +37,7 @@ class UfoKerning:
 
     def _make_name_based_kerning(self) -> None:
         """
-        Convert the glyph indices to glyph names. Also solves group kerning
-        references.
+        Convert the glyph indices to glyph names. Also solves group kerning references.
         """
         self.mm_kerning_names: dict[tuple[str, str], list[int]] = {}
         for pair, values in self.mm_kerning.items():
@@ -87,7 +86,7 @@ class UfoKerning:
     def get_master_kerning(self, master_index: int) -> "UfoMasterKerning":
         """
         Extract the kerning values for master_index and return the kerning as
-        Dict[Tuple[str, str], int].
+        dict[tuple[str, str], int].
         """
         master_kerning: "UfoMasterKerning" = {}
         for pair, values in self.mm_kerning_names.items():
