@@ -1,7 +1,6 @@
 import logging
 from copy import deepcopy
 from pathlib import Path
-from re import match
 from typing import TYPE_CHECKING, Any
 
 from fontTools.designspaceLib import (
@@ -25,7 +24,7 @@ from vfbLib.ufo.features import rename_kern_classes_in_feature_code
 from vfbLib.ufo.glyph import VfbToUfoGlyph
 from vfbLib.ufo.groups import transform_groups
 from vfbLib.ufo.guides import apply_guide_properties, get_master_guides
-from vfbLib.ufo.info import VfbToUfoInfo
+from vfbLib.ufo.info import VfbToUfoInfo, default_tt_lib
 from vfbLib.ufo.kerning import UfoKerning
 from vfbLib.ufo.paths import UfoMasterGlyph
 from vfbLib.ufo.tth import TTGlyphHints, transform_stem_rounds
@@ -38,7 +37,7 @@ from vfbLib.ufo.typing import (
     TUfoTTZoneDict,
     TUfoTTZonesDict,
 )
-from vfbLib.ufo.vfb2ufo import TT_GLYPH_LIB_KEY, TT_LIB_KEY
+from vfbLib.ufo.vfb2ufo import TT_GLYPH_LIB_KEY, TT_LIB_KEY, TT_UFO_LIB_KEY
 
 if TYPE_CHECKING:
     from fontTools.designspaceLib import DiscreteAxisDescriptor
@@ -638,6 +637,11 @@ class VfbToUfoBuilder:
         self.build_tt_zones_lib()
         if not self.lib[TT_LIB_KEY]:
             del self.lib[TT_LIB_KEY]
+        if (
+            TT_UFO_LIB_KEY in self.info.lib
+            and self.info.lib[TT_UFO_LIB_KEY] == default_tt_lib
+        ):
+            del self.info.lib[TT_UFO_LIB_KEY]
         self.fix_masters_count()
         self.info.fix_underline_position()
 

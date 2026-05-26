@@ -27,6 +27,16 @@ maxp_keys = {
     "max_stack_elements": "maxStackElements",
 }
 
+default_tt_lib = {
+    "formatVersion": "1",
+    "maxZones": 0,
+    "maxTwilightPoints": 0,
+    "maxStorage": 0,
+    "maxFunctionDefs": 0,
+    "maxInstructionDefs": 0,
+    "maxStackElements": 0,
+}
+
 
 class VfbToUfoInfo(Info):
     def __init__(self) -> None:
