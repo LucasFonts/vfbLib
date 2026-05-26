@@ -1,6 +1,7 @@
 import logging
 from copy import deepcopy
 from pathlib import Path
+from re import match
 from typing import TYPE_CHECKING, Any
 
 from fontTools.designspaceLib import (
@@ -8,6 +9,8 @@ from fontTools.designspaceLib import (
     AxisLabelDescriptor,
     DesignSpaceDocument,
 )
+from fontTools.misc.textTools import deHexStr
+from fontTools.ttLib.tables.ttProgram import Program, _indentRE, _unindentRE
 from fontTools.ufoLib import UFOFileStructure
 from ufoLib2.objects.features import Features
 from ufoLib2.objects.font import Font
@@ -212,6 +215,30 @@ class VfbToUfoBuilder:
         if "preview" in data["bitmap"]:
             del data["bitmap"]["preview"]
         self.current_glyph.lib["com.fontlab.v5.background"] = data
+
+    def set_tt_cvt(self, data: str) -> None:
+        from struct import iter_unpack
+
+        values = [v[0] for v in iter_unpack("<h", deHexStr(data))]
+        self.info.set_tt_instructions(
+            "controlValue", {str(i): v for i, v in enumerate(values)}
+        )
+
+    def set_tt_program(self, key: str, data: bytes) -> None:
+        p = Program()
+        p.fromBytecode(deHexStr(data))
+        # Apply indentation to imported binary program. Who said OCD?
+        asm = "\n"
+        white = "  "  # indent with two spaces
+        indent = 0
+        for line in p.getAssembly():
+            if _unindentRE.match(line):
+                indent -= 1
+            asm += f"{white * indent}{line}\n"
+            if _indentRE.match(line):
+                indent += 1
+
+        self.info.set_tt_instructions(key, asm)
 
     def set_tt_stem_ppms(self, data: TUfoStemPPMsDict) -> None:
         """Set the TT stem PPMs for stem widths of 2 to 5 pixels.
@@ -584,6 +611,12 @@ class VfbToUfoBuilder:
                     | F.BlockFileDataEnd
                 ):
                     pass
+                case T.cvt:
+                    self.set_tt_cvt(data)
+                case T.prep:
+                    self.set_tt_program("controlValueProgram", data)
+                case T.fpgm:
+                    self.set_tt_program("fontProgram", data)
                 case _:
                     k = key
                     for enum in (F, G, M, T):

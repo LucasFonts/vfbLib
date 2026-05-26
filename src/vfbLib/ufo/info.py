@@ -1,6 +1,6 @@
 import logging
 from functools import cached_property
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Any
 
 from ufoLib2.objects.info import Info, WidthClass
 
@@ -8,6 +8,7 @@ from vfbLib.enum import F, T
 from vfbLib.helpers import binaryToIntList
 from vfbLib.ufo.time import convert_timestamp
 from vfbLib.ufo.typing import TUfoGaspRecDict
+from vfbLib.ufo.vfb2ufo import TT_UFO_LIB_KEY
 
 if TYPE_CHECKING:
     from vfbLib.typing import GaspList
@@ -336,10 +337,14 @@ class VfbToUfoInfo(Info):
             else:
                 raise TypeError
         if instructions:
-            if any(instructions.values()):
-                # Prepare UFO-level lib entry for TrueType values
-                instructions["formatVersion"] = "1"
-                self.lib = {"public.truetype.instructions": instructions}
+            for k, v in instructions:
+                self.set_tt_instructions(k, v)
 
     def set_weight_class(self, data: int) -> None:
         self.openTypeOS2WeightClass = min(max(1, data), 1000)
+
+    def set_tt_instructions(self, key: str, value: Any) -> None:
+        if TT_UFO_LIB_KEY not in self.lib:
+            # Prepare UFO-level lib entry for TrueType values
+            self.lib[TT_UFO_LIB_KEY] = {"formatVersion": "1"}
+        self.lib[TT_UFO_LIB_KEY][key] = value
