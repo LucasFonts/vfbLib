@@ -90,7 +90,8 @@ def transform_groups(
         key_glyph = None
         if group_key_glyphs:
             logger.info(
-                f"Looking for key glyph in {group_key_glyphs} for group {name} ({glyphs})"
+                f"Looking for key glyph in {group_key_glyphs} for group {name} "
+                f"({glyphs})"
             )
         for key_glyph_candidate in group_key_glyphs:
             if key_glyph_candidate in missing and num_missing != num_glyphs:
@@ -132,8 +133,9 @@ def transform_groups(
                     if final_name in key_glyphs:
                         if key_glyphs[final_name] != key_glyph:
                             logger.warning(
-                                f"Ignoring duplicate group '{final_name}' with different "
-                                f"key glyphs: {key_glyphs[final_name]} vs. {key_glyph}."
+                                f"Ignoring duplicate group '{final_name}' with "
+                                f"different key glyphs: {key_glyphs[final_name]} vs. "
+                                f"{key_glyph}."
                             )
                     elif key_glyph is not None:
                         key_glyphs[final_name] = key_glyph
