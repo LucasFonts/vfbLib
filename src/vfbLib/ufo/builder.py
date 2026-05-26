@@ -344,6 +344,12 @@ class VfbToUfoBuilder:
         self.assure_tt_lib()
         self.lib[TT_LIB_KEY]["codeppm"] = data
 
+    def set_tt_dropout_stop(self, data) -> None:
+        self.assure_tt_lib()
+        if data != 255:
+            # Omit default value
+            self.lib[TT_LIB_KEY]["dropoutppm"] = data
+
     def set_tt_zone_deltas(self, data) -> None:
         for zone_index, deltas in data.items():
             zone_name = self.tt_zone_names[int(zone_index)]
@@ -524,6 +530,8 @@ class VfbToUfoBuilder:
                     self.set_tt_zone_stop(data)
                 case T.codeppm:
                     self.set_tt_code_stop(data)
+                case T.dropoutppm:
+                    self.set_tt_dropout_stop(data)
                 case F.features:
                     self.set_feature_code(data)
                 case F.GlyphClass:
