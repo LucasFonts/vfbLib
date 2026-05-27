@@ -23,30 +23,30 @@
 			<key>public.truetype.instructions</key>
 			<dict>
 				<key>assembly</key>
-				<array>
-					<string>SVTCA[0]	/* SetFPVectorToAxis */</string>
-					<string>PUSHB[ ]	/* 4 values pushed */</string>
-					<string>1</string>
-					<string>4</string>
-					<string>6</string>
-					<string>2</string>
-					<string>PUSHB[ ]	/* 1 value pushed */</string>
-					<string>114</string>
-					<string>PUSHB[ ]	/* 2 values pushed */</string>
-					<string>3</string>
-					<string>11</string>
-					<string>WS[ ]	/* WriteStore */</string>
-					<string>WS[ ]	/* WriteStore */</string>
-					<string>WS[ ]	/* WriteStore */</string>
-					<string>CALL[ ]	/* CallFunction */</string>
-					<string>PUSHB[ ]	/* 1 value pushed */</string>
-					<string>11</string>
-					<string>MDAP[1]	/* MoveDirectAbsPt */</string>
-					<string>PUSHB[ ]	/* 1 value pushed */</string>
-					<string>5</string>
-					<string>MDRP[01101]	/* MoveDirectRelPt */</string>
-					<string>IUP[0]	/* InterpolateUntPts */</string>
-				</array>
+				<string>
+SVTCA[0]	/* SetFPVectorToAxis */
+PUSHB[ ]	/* 4 values pushed */
+1
+4
+6
+2
+PUSHB[ ]	/* 1 value pushed */
+114
+PUSHB[ ]	/* 2 values pushed */
+3
+11
+WS[ ]	/* WriteStore */
+WS[ ]	/* WriteStore */
+WS[ ]	/* WriteStore */
+CALL[ ]	/* CallFunction */
+PUSHB[ ]	/* 1 value pushed */
+11
+MDAP[1]	/* MoveDirectAbsPt */
+PUSHB[ ]	/* 1 value pushed */
+5
+MDRP[01101]	/* MoveDirectRelPt */
+IUP[0]	/* InterpolateUntPts */
+</string>
 				<key>formatVersion</key>
 				<string>1</string>
 				<key>id</key>
