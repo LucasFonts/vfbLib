@@ -53,4 +53,42 @@
 		</contour>
 	</outline>
 	<anchor name="mark0" x="180" y="725"/>
+	<lib>
+		<dict>
+			<key>public.truetype.instructions</key>
+			<dict>
+				<key>assembly</key>
+				<array>
+					<string>SVTCA[0]	/* SetFPVectorToAxis */</string>
+					<string>PUSHB[ ]	/* 2 values pushed */</string>
+					<string>17</string>
+					<string>9</string>
+					<string>MIAP[1]	/* MoveIndirectAbsPt */</string>
+					<string>ROFF[ ]	/* RoundOff */</string>
+					<string>PUSHB[ ]	/* 2 values pushed */</string>
+					<string>32</string>
+					<string>20</string>
+					<string>MIRP[01101]	/* MoveIndirectRelPt */</string>
+					<string>RTG[ ]	/* RoundToGrid */</string>
+					<string>PUSHB[ ]	/* 2 values pushed */</string>
+					<string>2</string>
+					<string>2</string>
+					<string>MIAP[1]	/* MoveIndirectAbsPt */</string>
+					<string>ROFF[ ]	/* RoundOff */</string>
+					<string>PUSHB[ ]	/* 4 values pushed */</string>
+					<string>38</string>
+					<string>20</string>
+					<string>10</string>
+					<string>6</string>
+					<string>MIAP[1]	/* MoveIndirectAbsPt */</string>
+					<string>MIRP[01101]	/* MoveIndirectRelPt */</string>
+					<string>IUP[0]	/* InterpolateUntPts */</string>
+				</array>
+				<key>formatVersion</key>
+				<string>1</string>
+				<key>id</key>
+				<string>e88b619a68997a1aea94e536cff19f6d238bbf1c739fe79d550bae8893e46b47df0a9c7e3f163b919c23689a9f551f85f06e70280acc38195bfbedac32a11663</string>
+			</dict>
+		</dict>
+	</lib>
 </glyph>
