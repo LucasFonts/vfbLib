@@ -3,6 +3,7 @@ from colorsys import hls_to_rgb
 from typing import TYPE_CHECKING, Any
 
 from vfbLib.typing import GuidePropertiesDict, LinkDict
+from vfbLib.ufo.instructions import format_assembly
 from vfbLib.ufo.vfb2ufo import TT_UFO_LIB_KEY, vfb2ufo_label_codes
 
 if TYPE_CHECKING:
@@ -105,7 +106,10 @@ class VfbToUfoGlyph:
     def set_instructions(self, instructions: list[str]) -> None:
         if not instructions:
             return
-        self.lib[TT_UFO_LIB_KEY] = {"formatVersion": "1", "assembly": instructions}
+        self.lib[TT_UFO_LIB_KEY] = {
+            "formatVersion": "1",
+            "assembly": format_assembly(instructions),
+        }
 
     def set_mark(self, hue) -> None:
         self.lib["public.markColor"] = "%0.4f,%0.4f,%0.4f,1" % hls_to_rgb(

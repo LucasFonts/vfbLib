@@ -58,32 +58,32 @@
 			<key>public.truetype.instructions</key>
 			<dict>
 				<key>assembly</key>
-				<array>
-					<string>SVTCA[0]	/* SetFPVectorToAxis */</string>
-					<string>PUSHB[ ]	/* 2 values pushed */</string>
-					<string>17</string>
-					<string>9</string>
-					<string>MIAP[1]	/* MoveIndirectAbsPt */</string>
-					<string>ROFF[ ]	/* RoundOff */</string>
-					<string>PUSHB[ ]	/* 2 values pushed */</string>
-					<string>32</string>
-					<string>20</string>
-					<string>MIRP[01101]	/* MoveIndirectRelPt */</string>
-					<string>RTG[ ]	/* RoundToGrid */</string>
-					<string>PUSHB[ ]	/* 2 values pushed */</string>
-					<string>2</string>
-					<string>2</string>
-					<string>MIAP[1]	/* MoveIndirectAbsPt */</string>
-					<string>ROFF[ ]	/* RoundOff */</string>
-					<string>PUSHB[ ]	/* 4 values pushed */</string>
-					<string>38</string>
-					<string>20</string>
-					<string>10</string>
-					<string>6</string>
-					<string>MIAP[1]	/* MoveIndirectAbsPt */</string>
-					<string>MIRP[01101]	/* MoveIndirectRelPt */</string>
-					<string>IUP[0]	/* InterpolateUntPts */</string>
-				</array>
+				<string>
+SVTCA[0]	/* SetFPVectorToAxis */
+PUSHB[ ]	/* 2 values pushed */
+17
+9
+MIAP[1]	/* MoveIndirectAbsPt */
+ROFF[ ]	/* RoundOff */
+PUSHB[ ]	/* 2 values pushed */
+32
+20
+MIRP[01101]	/* MoveIndirectRelPt */
+RTG[ ]	/* RoundToGrid */
+PUSHB[ ]	/* 2 values pushed */
+2
+2
+MIAP[1]	/* MoveIndirectAbsPt */
+ROFF[ ]	/* RoundOff */
+PUSHB[ ]	/* 4 values pushed */
+38
+20
+10
+6
+MIAP[1]	/* MoveIndirectAbsPt */
+MIRP[01101]	/* MoveIndirectRelPt */
+IUP[0]	/* InterpolateUntPts */
+</string>
 				<key>formatVersion</key>
 				<string>1</string>
 				<key>id</key>

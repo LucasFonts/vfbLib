@@ -9,7 +9,6 @@ from fontTools.designspaceLib import (
     DesignSpaceDocument,
 )
 from fontTools.misc.textTools import deHexStr
-from fontTools.ttLib.tables.ttProgram import Program, _indentRE, _unindentRE
 from fontTools.ufoLib import UFOFileStructure
 from ufoLib2.objects.features import Features
 from ufoLib2.objects.font import Font
@@ -25,6 +24,7 @@ from vfbLib.ufo.glyph import VfbToUfoGlyph
 from vfbLib.ufo.groups import transform_groups
 from vfbLib.ufo.guides import apply_guide_properties, get_master_guides
 from vfbLib.ufo.info import VfbToUfoInfo, default_tt_lib
+from vfbLib.ufo.instructions import format_assembly
 from vfbLib.ufo.kerning import UfoKerning
 from vfbLib.ufo.paths import UfoMasterGlyph
 from vfbLib.ufo.tth import TTGlyphHints, transform_stem_rounds
@@ -228,19 +228,8 @@ class VfbToUfoBuilder:
         )
 
     def set_tt_program(self, key: str, data: bytes) -> None:
-        p = Program()
-        p.fromBytecode(deHexStr(data))
-        # Apply indentation to imported binary program. Who said OCD?
-        asm = "\n"
-        white = "  "  # indent with two spaces
-        indent = 0
-        for line in p.getAssembly():
-            if _unindentRE.match(line):
-                indent -= 1
-            asm += f"{white * indent}{line}\n"
-            if _indentRE.match(line):
-                indent += 1
-
+        # data comes in as a hex string from the VFB
+        asm = format_assembly(deHexStr(data))
         self.info.set_tt_instructions(key, asm)
 
     def set_tt_stem_ppms(self, data: TUfoStemPPMsDict) -> None:

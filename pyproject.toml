@@ -2,7 +2,7 @@
 name = "vfbLib"
 description = "Tools for converting FontLab Studio 5 (VFB) files."
 keywords = ["vfb", "vfbLib", "fonttools"]
-version = "0.11.5"
+version = "0.11.6"
 
 readme = "README.md"
 license = "GPL-3.0-or-later"
