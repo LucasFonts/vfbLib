@@ -205,6 +205,10 @@ class VfbToUfoBuilder:
         if "tth" in data:
             g.tt_glyph_hints = TTGlyphHints(g, data["tth"], self.zone_names, self.stems)
 
+        if imported := data.get("imported"):
+            if "instructions" in imported:
+                g.set_instructions(imported["instructions"])
+
     def set_feature_code(self, data: list[str]) -> None:
         # Make the kern feature compilable
         self.features_code = "\n".join(rename_kern_classes_in_feature_code(data))

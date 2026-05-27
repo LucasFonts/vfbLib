@@ -18,4 +18,40 @@
 		</contour>
 	</outline>
 	<anchor name="_mark0" x="396" y="520"/>
+	<lib>
+		<dict>
+			<key>public.truetype.instructions</key>
+			<dict>
+				<key>assembly</key>
+				<array>
+					<string>SVTCA[0]	/* SetFPVectorToAxis */</string>
+					<string>PUSHB[ ]	/* 4 values pushed */</string>
+					<string>1</string>
+					<string>4</string>
+					<string>6</string>
+					<string>2</string>
+					<string>PUSHB[ ]	/* 1 value pushed */</string>
+					<string>114</string>
+					<string>PUSHB[ ]	/* 2 values pushed */</string>
+					<string>3</string>
+					<string>11</string>
+					<string>WS[ ]	/* WriteStore */</string>
+					<string>WS[ ]	/* WriteStore */</string>
+					<string>WS[ ]	/* WriteStore */</string>
+					<string>CALL[ ]	/* CallFunction */</string>
+					<string>PUSHB[ ]	/* 1 value pushed */</string>
+					<string>11</string>
+					<string>MDAP[1]	/* MoveDirectAbsPt */</string>
+					<string>PUSHB[ ]	/* 1 value pushed */</string>
+					<string>5</string>
+					<string>MDRP[01101]	/* MoveDirectRelPt */</string>
+					<string>IUP[0]	/* InterpolateUntPts */</string>
+				</array>
+				<key>formatVersion</key>
+				<string>1</string>
+				<key>id</key>
+				<string>w0q325+672o325+701o369+748q402+748o430+748o467+709q467+678o467+649o430+607q400+607o364+607o325+648|</string>
+			</dict>
+		</dict>
+	</lib>
 </glyph>

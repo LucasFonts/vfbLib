@@ -5,10 +5,12 @@ from base64 import b64encode
 from copy import deepcopy
 from typing import TYPE_CHECKING, Any
 
+from fontTools.pens.hashPointPen import HashPointPen
+
 from vfbLib.ufo.guides import apply_guide_properties, get_master_guides
 from vfbLib.ufo.pshints import build_ps_glyph_hints, get_master_hints
 from vfbLib.ufo.tth import set_tth_lib
-from vfbLib.ufo.vfb2ufo import TT_GLYPH_LIB_KEY
+from vfbLib.ufo.vfb2ufo import TT_GLYPH_LIB_KEY, TT_UFO_LIB_KEY
 
 if TYPE_CHECKING:
     from fontTools.pens.pointPen import AbstractPointPen
@@ -259,6 +261,14 @@ class UfoMasterGlyph:
             data = self.lib[TT_GLYPH_LIB_KEY]
             if not isinstance(data, bytes):
                 self.lib[TT_GLYPH_LIB_KEY] = b64encode(data.encode("ascii"))
+        if TT_UFO_LIB_KEY in self.lib:
+            # Copy the dict and calculate the glyph hash
+            instructions = deepcopy(self.lib[TT_UFO_LIB_KEY])
+            # FIXME: To support composites, add glyphSet (self.parent)
+            hp = HashPointPen(self.width, glyphSet=None)
+            self.drawPoints(hp)
+            instructions["id"] = hp.hash
+            self.lib[TT_UFO_LIB_KEY] = instructions
 
     def _finalize_point_labels(self, include_ps_hints: bool = True) -> None:
         self._finalize_tt_point_labels()
