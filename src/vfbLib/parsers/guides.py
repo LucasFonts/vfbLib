@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 import logging
 from math import atan2, degrees
 from typing import TYPE_CHECKING
