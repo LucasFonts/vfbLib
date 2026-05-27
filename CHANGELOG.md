@@ -1,5 +1,15 @@
 # Change Log
 
+## 0.11.5
+
+UFO
+
+- Handle non-kerning groups with key glyphs (#258). Remove key glyph markers from UFO groups and store the key glyphs in the font lib.
+- Write `F.SampleText` field to font info
+- Write `T.dropoutppm` field to font lib (default value 255 is omitted and there is no way to set it in a VFB, but still...)
+- Write `maxp` values from `f.ttinfo` to font lib, if not at default values. Those only contain useful values in VFBs that were imported from a TTF.
+- Write values from binary `cvt`, `fpgm`, `prep` tables to font lib. Those only extist in VFBs that were imported from a TTF.
+
 ## 0.11.4
 
 - Use uv for building, testing, and publishing
