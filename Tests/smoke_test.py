@@ -4,5 +4,6 @@ from vfbLib.vfb.vfb import Vfb
 
 
 class SmokeTest(TestCase):
-    vfb = Vfb()
-    assert isinstance(vfb, Vfb)
+    def test_init(self) -> None:
+        vfb = Vfb()
+        assert isinstance(vfb, Vfb)
