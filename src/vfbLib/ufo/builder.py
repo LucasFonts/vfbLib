@@ -242,7 +242,7 @@ class VfbToUfoBuilder:
             # ntype/spec/eblc#table-structure
             # We don't set those values because I don't know what's correct.
             # br["vertBearingX"] = 0  # origin_x?
-            br["vertBearingY"] = 0  # origin_y?
+            # br["vertBearingY"] = 0  # origin_y?
             ppm = d["ppm"]
             br["ppemX"] = ppm
             br["ppemY"] = ppm
