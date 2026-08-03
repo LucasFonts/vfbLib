@@ -238,10 +238,11 @@ class VfbToUfoBuilder:
             origin_x, origin_y = d["origin"]
             br["horiBearingX"] = origin_x
             br["horiBearingY"] = h + origin_y
-            # I'm confused. See https://learn.microsoft.com/en-us/typography/opentype/spec/eblc#table-structure
+            # I'm confused. See https://learn.microsoft.com/en-us/typography/ope
+            # ntype/spec/eblc#table-structure
             # We don't set those values because I don't know what's correct.
             # br["vertBearingX"] = 0  # origin_x?
-            # br["vertBearingY"] = 0  # origin_y?
+            br["vertBearingY"] = 0  # origin_y?
             ppm = d["ppm"]
             br["ppemX"] = ppm
             br["ppemY"] = ppm
