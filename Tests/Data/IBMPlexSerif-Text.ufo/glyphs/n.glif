@@ -94,6 +94,74 @@
     &lt;ttc code="singlev" point1="sv01" point2="sv07"/&gt;
   &lt;/ttProgram&gt;
 </string>
+			<key>com.fontlab.v5.bitmaps</key>
+			<array>
+				<dict>
+					<key>advance</key>
+					<array>
+						<integer>10</integer>
+						<integer>0</integer>
+					</array>
+					<key>bitmap</key>
+					<dict>
+						<key>data</key>
+						<array>
+							<array>
+								<integer>0</integer>
+								<integer>0</integer>
+							</array>
+							<array>
+								<integer>123</integer>
+								<integer>192</integer>
+							</array>
+							<array>
+								<integer>49</integer>
+								<integer>128</integer>
+							</array>
+							<array>
+								<integer>49</integer>
+								<integer>128</integer>
+							</array>
+							<array>
+								<integer>49</integer>
+								<integer>128</integer>
+							</array>
+							<array>
+								<integer>49</integer>
+								<integer>128</integer>
+							</array>
+							<array>
+								<integer>49</integer>
+								<integer>128</integer>
+							</array>
+							<array>
+								<integer>57</integer>
+								<integer>128</integer>
+							</array>
+							<array>
+								<integer>119</integer>
+								<integer>0</integer>
+							</array>
+							<array>
+								<integer>0</integer>
+								<integer>0</integer>
+							</array>
+						</array>
+					</dict>
+					<key>origin</key>
+					<array>
+						<integer>0</integer>
+						<integer>-1</integer>
+					</array>
+					<key>ppm</key>
+					<integer>15</integer>
+					<key>size</key>
+					<array>
+						<integer>10</integer>
+						<integer>10</integer>
+					</array>
+				</dict>
+			</array>
 		</dict>
 	</lib>
 </glyph>

@@ -220,6 +220,20 @@ class VfbToUfoBuilder:
             del data["bitmap"]["preview"]
         self.current_glyph.lib["com.fontlab.v5.background"] = data
 
+    def set_glyph_bitmaps(self, data: list[dict[str, Any]]) -> None:
+        assert self.current_glyph is not None
+        bitmaps = []
+        for d in data:
+            if "preview" in d["bitmap"]:
+                del d["bitmap"]["preview"]
+            # Rename some keys to nicer names
+            for old, new in (("adv", "advance"), ("size_pixels", "size")):
+                if old in d:
+                    d[new] = d[old]
+                    del d[old]
+            bitmaps.append(d)
+        self.current_glyph.lib["com.fontlab.v5.bitmaps"] = bitmaps
+
     def set_tt_cvt(self, data: str) -> None:
         from struct import iter_unpack
 
@@ -477,6 +491,8 @@ class VfbToUfoBuilder:
                     self.current_glyph.guide_properties = data
                 case G.image:
                     self.set_glyph_background(data)
+                case G.Bitmaps:
+                    self.set_glyph_bitmaps(data)
                 case G.mask:
                     assert self.current_glyph is not None
                     self.current_glyph.set_mask(data)
