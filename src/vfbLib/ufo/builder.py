@@ -9,6 +9,7 @@ from fontTools.designspaceLib import (
     DesignSpaceDocument,
 )
 from fontTools.misc.textTools import deHexStr
+from fontTools.pens.hashPointPen import HashPointPen
 from fontTools.ufoLib import UFOFileStructure
 from ufoLib2.objects.features import Features
 from ufoLib2.objects.font import Font
@@ -775,6 +776,18 @@ class VfbToUfoBuilder:
             # Add the non-empty mask glyphs
             for mask_glyph in mask_glyphs:
                 mask.addGlyph(mask_glyph)
+
+        # If a glyph lib contains TrueType instructions, we need to calculate the glyph
+        # hash. Because this requires resolving component references, we need to do it
+        # here, after the full glyph set is avaliable.
+        for glyph in ufo:
+            if TT_UFO_LIB_KEY not in glyph.lib:
+                continue
+
+            # Calculate the glyph hash
+            hp = HashPointPen(glyph.width, glyphSet=ufo)
+            glyph.drawPoints(hp)
+            glyph.lib[TT_UFO_LIB_KEY]["id"] = hp.hash
 
         return ufo
 
