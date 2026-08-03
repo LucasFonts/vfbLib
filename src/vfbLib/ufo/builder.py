@@ -43,6 +43,7 @@ from vfbLib.ufo.vfb2ufo import TT_GLYPH_LIB_KEY, TT_LIB_KEY, TT_UFO_LIB_KEY
 if TYPE_CHECKING:
     from fontTools.designspaceLib import DiscreteAxisDescriptor
 
+    from vfbLib.typing import GlyphBitmapDict
     from vfbLib.ufo.typing import UfoGroups, UfoMMKerning
     from vfbLib.vfb.vfb import Vfb
 
@@ -219,6 +220,31 @@ class VfbToUfoBuilder:
         if "preview" in data["bitmap"]:
             del data["bitmap"]["preview"]
         self.current_glyph.lib["com.fontlab.v5.background"] = data
+
+    def set_glyph_bitmaps(self, data: "list[GlyphBitmapDict]") -> None:
+        assert self.current_glyph is not None
+        bitmaps = []
+        for d in data:
+            br: dict[str, Any] = {}
+            br["imageData"] = list(reversed(d["bitmap"]["data"]))
+            # Modify format to match the CBDT/EBDT tables better
+            br["bitDepth"] = 1  # FontLab only supports b/w bitmaps
+            adv_x, adv_y = d["adv"]
+            br["horiAdvance"] = adv_x
+            br["vertAdvance"] = adv_y
+            w, h = d["size_pixels"]
+            br["width"] = w
+            br["height"] = h
+            origin_x, origin_y = d["origin"]
+            br["horiBearingX"] = origin_x
+            br["horiBearingY"] = h + origin_y
+            br["vertBearingX"] = origin_x
+            br["vertBearingY"] = origin_y
+            ppm = d["ppm"]
+            br["ppemX"] = ppm
+            br["ppemY"] = ppm
+            bitmaps.append(br)
+        self.current_glyph.lib["com.fontlab.v5.bitmaps"] = bitmaps
 
     def set_tt_cvt(self, data: str) -> None:
         from struct import iter_unpack
@@ -477,6 +503,8 @@ class VfbToUfoBuilder:
                     self.current_glyph.guide_properties = data
                 case G.image:
                     self.set_glyph_background(data)
+                case G.Bitmaps:
+                    self.set_glyph_bitmaps(data)
                 case G.mask:
                     assert self.current_glyph is not None
                     self.current_glyph.set_mask(data)

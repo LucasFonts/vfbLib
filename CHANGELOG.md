@@ -4,6 +4,7 @@
 
 UFO
 
+- Store TrueType bitmaps in the glyph lib. Note that TrueType bitmaps are mirrored vertically compared to background image bitmaps. See glyph `a` from IBM Serif Text for an example.
 - Write values from binary glyph TrueType instructions to the glyph lib. Those only exist in VFBs that were imported from a TTF.
 
 ## 0.11.5
