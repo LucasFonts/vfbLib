@@ -4,7 +4,7 @@
 
 UFO
 
-- Store TrueType bitmaps in the glyph lib. Note that TrueType bitmaps are mirrored vertically compared to background image bitmaps. See glyph `a` from IBM Serif Text for an example.
+- Store TrueType bitmaps in the glyph lib. See glyph `a` from the IBM Serif Text UFO in the Tests/Data directory for an example. The bitmap format resembles the EBDT/EBLC formats from the OpenType spec. FL5 only supports bitmaps with 1 bit per pixel.
 - Write values from binary glyph TrueType instructions to the glyph lib. Those only exist in VFBs that were imported from a TTF.
 
 ## 0.11.5
