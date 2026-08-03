@@ -213,10 +213,6 @@
 					<integer>16</integer>
 					<key>vertAdvance</key>
 					<integer>0</integer>
-					<key>vertBearingX</key>
-					<integer>0</integer>
-					<key>vertBearingY</key>
-					<integer>-1</integer>
 					<key>width</key>
 					<integer>9</integer>
 				</dict>
@@ -280,10 +276,6 @@
 					<integer>15</integer>
 					<key>vertAdvance</key>
 					<integer>0</integer>
-					<key>vertBearingX</key>
-					<integer>0</integer>
-					<key>vertBearingY</key>
-					<integer>-1</integer>
 					<key>width</key>
 					<integer>8</integer>
 				</dict>

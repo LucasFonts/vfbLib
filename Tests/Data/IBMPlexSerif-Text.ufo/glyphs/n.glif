@@ -156,10 +156,6 @@
 					<integer>15</integer>
 					<key>vertAdvance</key>
 					<integer>0</integer>
-					<key>vertBearingX</key>
-					<integer>0</integer>
-					<key>vertBearingY</key>
-					<integer>-1</integer>
 					<key>width</key>
 					<integer>10</integer>
 				</dict>

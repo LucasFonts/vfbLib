@@ -197,10 +197,6 @@
 					<integer>15</integer>
 					<key>vertAdvance</key>
 					<integer>0</integer>
-					<key>vertBearingX</key>
-					<integer>0</integer>
-					<key>vertBearingY</key>
-					<integer>-1</integer>
 					<key>width</key>
 					<integer>9</integer>
 				</dict>
@@ -260,10 +256,6 @@
 					<integer>14</integer>
 					<key>vertAdvance</key>
 					<integer>0</integer>
-					<key>vertBearingX</key>
-					<integer>0</integer>
-					<key>vertBearingY</key>
-					<integer>-1</integer>
 					<key>width</key>
 					<integer>8</integer>
 				</dict>
@@ -323,10 +315,6 @@
 					<integer>13</integer>
 					<key>vertAdvance</key>
 					<integer>0</integer>
-					<key>vertBearingX</key>
-					<integer>0</integer>
-					<key>vertBearingY</key>
-					<integer>-1</integer>
 					<key>width</key>
 					<integer>8</integer>
 				</dict>
@@ -390,10 +378,6 @@
 					<integer>16</integer>
 					<key>vertAdvance</key>
 					<integer>0</integer>
-					<key>vertBearingX</key>
-					<integer>0</integer>
-					<key>vertBearingY</key>
-					<integer>-1</integer>
 					<key>width</key>
 					<integer>9</integer>
 				</dict>
@@ -445,10 +429,6 @@
 					<integer>10</integer>
 					<key>vertAdvance</key>
 					<integer>0</integer>
-					<key>vertBearingX</key>
-					<integer>-1</integer>
-					<key>vertBearingY</key>
-					<integer>-1</integer>
 					<key>width</key>
 					<integer>7</integer>
 				</dict>
@@ -504,10 +484,6 @@
 					<integer>11</integer>
 					<key>vertAdvance</key>
 					<integer>0</integer>
-					<key>vertBearingX</key>
-					<integer>-1</integer>
-					<key>vertBearingY</key>
-					<integer>-1</integer>
 					<key>width</key>
 					<integer>8</integer>
 				</dict>
@@ -555,10 +531,6 @@
 					<integer>8</integer>
 					<key>vertAdvance</key>
 					<integer>0</integer>
-					<key>vertBearingX</key>
-					<integer>-1</integer>
-					<key>vertBearingY</key>
-					<integer>-1</integer>
 					<key>width</key>
 					<integer>6</integer>
 				</dict>
@@ -610,10 +582,6 @@
 					<integer>9</integer>
 					<key>vertAdvance</key>
 					<integer>0</integer>
-					<key>vertBearingX</key>
-					<integer>-1</integer>
-					<key>vertBearingY</key>
-					<integer>-1</integer>
 					<key>width</key>
 					<integer>7</integer>
 				</dict>
