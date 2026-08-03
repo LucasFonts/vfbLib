@@ -210,4 +210,79 @@
 			<point x="734" y="423"/>
 		</contour>
 	</outline>
+	<lib>
+		<dict>
+			<key>public.truetype.instructions</key>
+			<dict>
+				<key>assembly</key>
+				<string>
+SVTCA[0]	/* SetFPVectorToAxis */
+PUSHW[ ]	/* 1 value pushed */
+124
+MDAP[1]	/* MoveDirectAbsPt */
+PUSHW[ ]	/* 4 values pushed */
+19
+1
+185
+4
+CALL[ ]	/* CallFunction */
+PUSHW[ ]	/* 4 values pushed */
+160
+1
+148
+4
+CALL[ ]	/* CallFunction */
+PUSHW[ ]	/* 4 values pushed */
+69
+1
+82
+4
+CALL[ ]	/* CallFunction */
+PUSHW[ ]	/* 1 value pushed */
+19
+SRP0[ ]	/* SetRefPoint0 */
+PUSHW[ ]	/* 1 value pushed */
+3
+MDRP[10000]	/* MoveDirectRelPt */
+PUSHW[ ]	/* 1 value pushed */
+19
+SRP0[ ]	/* SetRefPoint0 */
+PUSHW[ ]	/* 1 value pushed */
+31
+MDRP[10000]	/* MoveDirectRelPt */
+PUSHW[ ]	/* 1 value pushed */
+66
+MDRP[10000]	/* MoveDirectRelPt */
+PUSHW[ ]	/* 1 value pushed */
+124
+SRP0[ ]	/* SetRefPoint0 */
+PUSHW[ ]	/* 1 value pushed */
+106
+MDRP[10000]	/* MoveDirectRelPt */
+PUSHW[ ]	/* 1 value pushed */
+85
+MDRP[10000]	/* MoveDirectRelPt */
+PUSHW[ ]	/* 1 value pushed */
+124
+SRP0[ ]	/* SetRefPoint0 */
+PUSHW[ ]	/* 1 value pushed */
+142
+MDRP[10000]	/* MoveDirectRelPt */
+PUSHW[ ]	/* 1 value pushed */
+124
+SRP0[ ]	/* SetRefPoint0 */
+PUSHW[ ]	/* 2 values pushed */
+195
+1
+MIRP[10100]	/* MoveIndirectRelPt */
+IUP[0]	/* InterpolateUntPts */
+IUP[1]	/* InterpolateUntPts */
+</string>
+				<key>formatVersion</key>
+				<string>1</string>
+				<key>id</key>
+				<string>cb74a4b297aac5833db9974a799c2c5590dc9f05c5c3eff686cf10c4ed4cb842e6c5f2841ade2928ad2b975694b625b55b956573f27ec36974ee802984cdb653</string>
+			</dict>
+		</dict>
+	</lib>
 </glyph>

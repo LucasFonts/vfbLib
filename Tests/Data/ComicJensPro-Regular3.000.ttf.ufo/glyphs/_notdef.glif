@@ -132,4 +132,37 @@
 			<point x="408" y="310"/>
 		</contour>
 	</outline>
+	<lib>
+		<dict>
+			<key>public.truetype.instructions</key>
+			<dict>
+				<key>assembly</key>
+				<string>
+SVTCA[0]	/* SetFPVectorToAxis */
+PUSHW[ ]	/* 1 value pushed */
+46
+MDAP[1]	/* MoveDirectAbsPt */
+PUSHW[ ]	/* 1 value pushed */
+0
+RCVT[ ]	/* ReadCVT */
+IF[ ]	/* If */
+  PUSHW[ ]	/* 1 value pushed */
+  109
+  MDAP[1]	/* MoveDirectAbsPt */
+ELSE[ ]	/* Else */
+  PUSHW[ ]	/* 2 values pushed */
+  109
+  5
+  MIAP[0]	/* MoveIndirectAbsPt */
+EIF[ ]	/* EndIf */
+IUP[0]	/* InterpolateUntPts */
+IUP[1]	/* InterpolateUntPts */
+</string>
+				<key>formatVersion</key>
+				<string>1</string>
+				<key>id</key>
+				<string>323aae09ada631dfde5fe8e513bcb467cac8c332077d60762171ce7bd5388682ce859535a6e36f7cdf699d58c20e2616bc18b5c2d5654ae76873d0fc355d7b73</string>
+			</dict>
+		</dict>
+	</lib>
 </glyph>

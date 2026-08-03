@@ -46,4 +46,30 @@
 			<point x="51" y="463"/>
 		</contour>
 	</outline>
+	<lib>
+		<dict>
+			<key>public.truetype.instructions</key>
+			<dict>
+				<key>assembly</key>
+				<string>
+SVTCA[0]	/* SetFPVectorToAxis */
+PUSHW[ ]	/* 1 value pushed */
+3
+MDAP[1]	/* MoveDirectAbsPt */
+PUSHW[ ]	/* 4 values pushed */
+14
+1
+29
+4
+CALL[ ]	/* CallFunction */
+IUP[0]	/* InterpolateUntPts */
+IUP[1]	/* InterpolateUntPts */
+</string>
+				<key>formatVersion</key>
+				<string>1</string>
+				<key>id</key>
+				<string>bdbc4b7d64cbe31ab5e57e28ea6923af0715ac2ccaa6e4a8ea75017dfc5073584e3ff67ec509024d4d243e2143a64bcd9ff8c3725ae56dcbce3d09cb7e4489f9</string>
+			</dict>
+		</dict>
+	</lib>
 </glyph>

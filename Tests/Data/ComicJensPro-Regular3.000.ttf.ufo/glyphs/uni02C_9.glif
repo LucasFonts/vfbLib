@@ -32,4 +32,43 @@
 			<point x="140" y="632"/>
 		</contour>
 	</outline>
+	<lib>
+		<dict>
+			<key>public.truetype.instructions</key>
+			<dict>
+				<key>assembly</key>
+				<string>
+SVTCA[0]	/* SetFPVectorToAxis */
+PUSHW[ ]	/* 1 value pushed */
+23
+MDAP[1]	/* MoveDirectAbsPt */
+PUSHW[ ]	/* 1 value pushed */
+2
+MDRP[10000]	/* MoveDirectRelPt */
+RUTG[ ]	/* RoundUpToGrid */
+PUSHW[ ]	/* 1 value pushed */
+2
+MDAP[1]	/* MoveDirectAbsPt */
+RTG[ ]	/* RoundToGrid */
+PUSHW[ ]	/* 2 values pushed */
+8
+1
+MIRP[10100]	/* MoveIndirectRelPt */
+PUSHW[ ]	/* 1 value pushed */
+23
+SRP0[ ]	/* SetRefPoint0 */
+PUSHW[ ]	/* 2 values pushed */
+11
+1
+MIRP[10100]	/* MoveIndirectRelPt */
+IUP[0]	/* InterpolateUntPts */
+IUP[1]	/* InterpolateUntPts */
+</string>
+				<key>formatVersion</key>
+				<string>1</string>
+				<key>id</key>
+				<string>38275aba80dc366b26019ca9f6cf00677bf9081d5acf35204a1815f610c29a9d4af72d9be7735784c7e5f3e673d514ca605fd374baf26312f39c7ae88fa08960</string>
+			</dict>
+		</dict>
+	</lib>
 </glyph>

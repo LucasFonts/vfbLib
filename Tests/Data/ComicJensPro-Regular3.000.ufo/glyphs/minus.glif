@@ -30,4 +30,28 @@
 			<point x="127" y="268"/>
 		</contour>
 	</outline>
+	<lib>
+		<dict>
+			<key>public.truetype.instructions</key>
+			<dict>
+				<key>assembly</key>
+				<string>
+SVTCA[0]	/* SetFPVectorToAxis */
+PUSHW[ ]	/* 1 value pushed */
+21
+MDAP[1]	/* MoveDirectAbsPt */
+PUSHW[ ]	/* 2 values pushed */
+12
+1
+MIRP[10100]	/* MoveIndirectRelPt */
+IUP[0]	/* InterpolateUntPts */
+IUP[1]	/* InterpolateUntPts */
+</string>
+				<key>formatVersion</key>
+				<string>1</string>
+				<key>id</key>
+				<string>ee546b617acbc941104a33718315b1bebcd284250c0d698f8d6d52780d641688ff77d0c208b478f28fbdaa31cbc504140c48c60ee1eb6b7703b72240e0b5aa58</string>
+			</dict>
+		</dict>
+	</lib>
 </glyph>

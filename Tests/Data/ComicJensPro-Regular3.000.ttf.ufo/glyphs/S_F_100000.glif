@@ -20,4 +20,27 @@
 			<point x="768" y="188" type="qcurve"/>
 		</contour>
 	</outline>
+	<lib>
+		<dict>
+			<key>public.truetype.instructions</key>
+			<dict>
+				<key>assembly</key>
+				<string>
+SVTCA[0]	/* SetFPVectorToAxis */
+PUSHW[ ]	/* 4 values pushed */
+13
+1
+7
+4
+CALL[ ]	/* CallFunction */
+IUP[0]	/* InterpolateUntPts */
+IUP[1]	/* InterpolateUntPts */
+</string>
+				<key>formatVersion</key>
+				<string>1</string>
+				<key>id</key>
+				<string>w768l0+188o-23+188o-50+218q-50+238o-50+259o-22+288q0+288l768+288o791+288o818+259q818+238o818+216o790+188q768+188|</string>
+			</dict>
+		</dict>
+	</lib>
 </glyph>

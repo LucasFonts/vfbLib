@@ -31,4 +31,26 @@
 			<point x="175" y="17"/>
 		</contour>
 	</outline>
+	<lib>
+		<dict>
+			<key>public.truetype.instructions</key>
+			<dict>
+				<key>assembly</key>
+				<string>
+SVTCA[0]	/* SetFPVectorToAxis */
+PUSHW[ ]	/* 3 values pushed */
+3
+14
+3
+CALL[ ]	/* CallFunction */
+IUP[0]	/* InterpolateUntPts */
+IUP[1]	/* InterpolateUntPts */
+</string>
+				<key>formatVersion</key>
+				<string>1</string>
+				<key>id</key>
+				<string>179e5c5c819f63f6bdcf0cdd4a2a71fb1813b240f66b4d06a37066d6694d1bef1c6fcf8f7381f643328e40c92511452730c9e8f03abe3ffb6852ca08bd13a1a5</string>
+			</dict>
+		</dict>
+	</lib>
 </glyph>

@@ -21,4 +21,27 @@
 		</contour>
 	</outline>
 	<anchor name="_mark0" x="-104" y="520"/>
+	<lib>
+		<dict>
+			<key>public.truetype.instructions</key>
+			<dict>
+				<key>assembly</key>
+				<string>
+SVTCA[0]	/* SetFPVectorToAxis */
+PUSHW[ ]	/* 1 value pushed */
+0
+MDAP[1]	/* MoveDirectAbsPt */
+PUSHW[ ]	/* 1 value pushed */
+8
+MDRP[11100]	/* MoveDirectRelPt */
+IUP[0]	/* InterpolateUntPts */
+IUP[1]	/* InterpolateUntPts */
+</string>
+				<key>formatVersion</key>
+				<string>1</string>
+				<key>id</key>
+				<string>w1q-100+607o-119+607o-147+619o-166+639o-175+662q-175+672o-175+702o-130+748q-98+748o-69+748o-33+709q-33+678o-33+650o-69+607|</string>
+			</dict>
+		</dict>
+	</lib>
 </glyph>

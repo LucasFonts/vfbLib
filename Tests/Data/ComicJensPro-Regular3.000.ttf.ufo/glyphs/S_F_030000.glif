@@ -24,4 +24,30 @@
 			<point x="434" y="238" type="qcurve"/>
 		</contour>
 	</outline>
+	<lib>
+		<dict>
+			<key>public.truetype.instructions</key>
+			<dict>
+				<key>assembly</key>
+				<string>
+SVTCA[0]	/* SetFPVectorToAxis */
+PUSHW[ ]	/* 1 value pushed */
+3
+MDAP[1]	/* MoveDirectAbsPt */
+PUSHW[ ]	/* 4 values pushed */
+15
+1
+7
+4
+CALL[ ]	/* CallFunction */
+IUP[0]	/* InterpolateUntPts */
+IUP[1]	/* InterpolateUntPts */
+</string>
+				<key>formatVersion</key>
+				<string>1</string>
+				<key>id</key>
+				<string>5e8389133b52f44eedf0f229f2ac06e2138967674ce182d7c12e022b86db2575c67931cc99af33c79093d3d5bf0de07b4a1d5552203147d260a149029b632116</string>
+			</dict>
+		</dict>
+	</lib>
 </glyph>

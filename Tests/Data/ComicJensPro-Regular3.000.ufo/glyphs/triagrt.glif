@@ -58,4 +58,27 @@
 			<point x="142" y="561" type="qcurve"/>
 		</contour>
 	</outline>
+	<lib>
+		<dict>
+			<key>public.truetype.instructions</key>
+			<dict>
+				<key>assembly</key>
+				<string>
+SVTCA[0]	/* SetFPVectorToAxis */
+PUSHW[ ]	/* 1 value pushed */
+6
+MDAP[1]	/* MoveDirectAbsPt */
+PUSHW[ ]	/* 1 value pushed */
+36
+MDAP[1]	/* MoveDirectAbsPt */
+IUP[0]	/* InterpolateUntPts */
+IUP[1]	/* InterpolateUntPts */
+</string>
+				<key>formatVersion</key>
+				<string>1</string>
+				<key>id</key>
+				<string>65c982d7accd339913b15f309fae72ef5d4ba0b9ee66669ec2f6618fbe02415b258aac38745e0a725bc1783341ba45ac3e3558003b37a4487fe88ef731b2c270</string>
+			</dict>
+		</dict>
+	</lib>
 </glyph>
