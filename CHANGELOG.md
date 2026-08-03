@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.11.6
+
+UFO
+
+- Write values from binary glyph TrueType instructions to the glyph lib. Those only exist in VFBs that were imported from a TTF.
+
 ## 0.11.5
 
 UFO
@@ -8,7 +14,7 @@ UFO
 - Write `F.SampleText` field to font info
 - Write `T.dropoutppm` field to font lib (default value 255 is omitted and there is no way to set it in a VFB, but still...)
 - Write `maxp` values from `f.ttinfo` to font lib, if not at default values. Those only contain useful values in VFBs that were imported from a TTF.
-- Write values from binary `cvt`, `fpgm`, `prep` tables to font lib. Those only extist in VFBs that were imported from a TTF.
+- Write values from binary `cvt`, `fpgm`, `prep` tables to font lib. Those only exist in VFBs that were imported from a TTF.
 
 ## 0.11.4
 
