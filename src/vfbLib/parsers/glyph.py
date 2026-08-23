@@ -332,11 +332,23 @@ class GlyphParser(BaseParser):
         num_hintmasks = self.read_value()
         if num_hintmasks > 0:
             hintmasks: list[tuple[str, int]] = []
-            for _ in range(num_hintmasks):
-                k = self.read_uint8()
-                val = self.read_value()
-                key = replace_types[k]
-                hintmasks.append((key, val))
+            try:
+                for _ in range(num_hintmasks):
+                    k = self.read_uint8()
+                    val = self.read_value()
+                    key = replace_types[k]
+                    hintmasks.append((key, val))
+            except KeyError:
+                # The data at this position does not match the expected hintmask
+                # format, so we can't know where the hint data ends. Skip the
+                # hints of the current glyph and resume parsing at the glyph end
+                # marker to keep the rest of the file in sync.
+                logger.warning(
+                    f"Glyph '{self.name}': could not parse hint masks "
+                    f"(unknown key {k:#04x}), skipping PostScript hints"
+                )
+                self.stream.seek(self.stream.getbuffer().nbytes - 1)
+                return
             if hintmasks:
                 hints["hintmasks"] = hintmasks
 
