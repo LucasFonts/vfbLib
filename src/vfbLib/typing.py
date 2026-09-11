@@ -531,7 +531,7 @@ class VfbEntryDict(TypedDict):
     customdata: NotRequired[str | bytes]
     MetricsClassFlags: NotRequired[MetricsClassFlagDict | bytes]
     KerningClassFlags: NotRequired[KerningClassFlagDict | bytes]
-    TrueTypeTable: NotRequired[dict[str, str] | bytes]
+    TrueTypeTable: NotRequired[dict[str, bytes] | bytes]
     features: NotRequired[list[str] | bytes]
     GlyphClass: NotRequired[str | bytes]
     BlockFontInfoEnd: NotRequired[str | bytes]
