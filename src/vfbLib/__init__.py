@@ -21,12 +21,14 @@ gdef_class_names = (
     "component",  # 4
 )
 
+TYPE_HORIZONTAL_HINT = 1
+TYPE_VERTICAL_HINT = 2
+TYPE_NODE = 255
+
 replace_types = {
-    0x01: "h",  # hintmask for hstem
-    0x02: "v",  # hintmask for vstem
-    0xFF: "r",  # Replacement point
-    # FIXME: This seems to be the node index of the replacement
-    # point. But sometimes it is negative, why?
+    TYPE_HORIZONTAL_HINT: "h",  # hintmask for hstem
+    TYPE_VERTICAL_HINT: "v",  # hintmask for vstem
+    TYPE_NODE: "r",  # Replacement point
 }
 
 mapping_modes = {
