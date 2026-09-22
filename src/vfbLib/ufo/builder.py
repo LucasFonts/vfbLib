@@ -696,12 +696,11 @@ class VfbToUfoBuilder:
     def fix_masters_count(self) -> None:
         # Sometimes no master name seems to be stored in the VFB. We need to add
         # synthetic names in this case.
-        if self.axis_count == 0:
-            masters_count = 1
-        else:
-            masters_count = self.axis_count**2
-        if len(self.masters) < masters_count:
-            additional = [f"m{n}" for n in range(len(self.masters), masters_count)]
+        expected_masters_count = 2**self.axis_count
+        if len(self.masters) < expected_masters_count:
+            additional = [
+                f"m{n}" for n in range(len(self.masters), expected_masters_count)
+            ]
             self.masters.extend(additional)
 
     def get_master_info(self, master_index: int = 0) -> VfbToUfoInfo:
