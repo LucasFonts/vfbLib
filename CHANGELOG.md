@@ -1,5 +1,11 @@
 # Change Log
 
+## v0.12.1
+
+UFO
+
+- Fix calculation of expected number of masters
+
 ## 0.12.0
 
 This release contains incompatible changes. Please check thoroughly before updating and
