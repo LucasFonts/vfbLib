@@ -888,8 +888,8 @@ class VfbToUfoBuilder:
             self.ufo_features.text += f"\n\n{self.features_code}"
 
         ufo_masters = []
-        logger.info(f"Extracting {len(self.masters)} master UFOs...")
-        for i in range(len(self.masters)):
+        logger.info(f"Extracting {self.num_masters} master UFOs...")
+        for i in range(self.num_masters):
             ufo_masters.append(self.get_ufo_master(i, silent))
         return ufo_masters
 
