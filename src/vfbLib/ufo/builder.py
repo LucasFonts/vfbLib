@@ -8,7 +8,6 @@ from fontTools.designspaceLib import (
     AxisLabelDescriptor,
     DesignSpaceDocument,
 )
-from fontTools.misc.textTools import deHexStr
 from fontTools.pens.hashPointPen import HashPointPen
 from fontTools.ufoLib import UFOFileStructure
 from ufoLib2.objects.features import Features
