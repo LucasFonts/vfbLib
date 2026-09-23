@@ -1,4 +1,3 @@
-import codecs
 from argparse import ArgumentParser
 from copy import deepcopy
 from pathlib import Path
@@ -65,7 +64,7 @@ def vfb2tth():
         elif args.format == "yaml":
             import yaml
 
-            with codecs.open(str(out_path), "wb", "utf-8") as f:
+            with open(out_path, "w", encoding="utf-8") as f:
                 yaml.dump(data, f, sort_keys=True, indent=2)
         else:
             with open(str(out_path), "wb") as f:

@@ -1,4 +1,3 @@
-import codecs
 from argparse import ArgumentParser
 from difflib import HtmlDiff, unified_diff
 from pathlib import Path
@@ -67,7 +66,7 @@ def diffvfb():
             context=True,
             numlines=5,
         )
-        with codecs.open(args.html, "wb", "utf-8") as f:
+        with open(args.html, "w", encoding="utf-8") as f:
             f.write(html)
     else:
         d = unified_diff(vfb1_str, vfb2_str, str(vfb1_path), str(vfb2_path))
