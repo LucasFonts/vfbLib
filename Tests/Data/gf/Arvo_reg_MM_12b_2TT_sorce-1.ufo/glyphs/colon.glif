@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="colon" format="2">
+	<unicode hex="003A"/>
+	<advance width="524"/>
+	<outline>
+		<component base="dotaccent" xOffset="-78" yOffset="-496"/>
+		<component base="dotaccent" xOffset="-78" yOffset="-1282"/>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.fontlab.v5.background</key>
+			<dict>
+				<key>bitmap</key>
+				<dict>
+					<key>data</key>
+					<array>
+						<array>
+							<integer>128</integer>
+							<integer>0</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+						</array>
+						<array>
+							<integer>128</integer>
+							<integer>0</integer>
+						</array>
+					</array>
+				</dict>
+				<key>origin</key>
+				<array>
+					<integer>100</integer>
+					<integer>0</integer>
+				</array>
+				<key>size_pixels</key>
+				<array>
+					<integer>1</integer>
+					<integer>6</integer>
+				</array>
+				<key>size_units</key>
+				<array>
+					<integer>200</integer>
+					<integer>600</integer>
+				</array>
+			</dict>
+		</dict>
+	</lib>
+</glyph>

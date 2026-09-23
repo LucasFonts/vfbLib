@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="Icircumflex" format="2">
+	<unicode hex="00CE"/>
+	<advance width="874"/>
+	<outline>
+		<contour>
+			<point x="112" y="1241" type="line"/>
+			<point x="271" y="1241" type="line"/>
+			<point x="271" y="274" type="line"/>
+			<point x="112" y="274" type="line"/>
+			<point x="112" y="0" type="line"/>
+			<point x="761" y="0" type="line"/>
+			<point x="761" y="274" type="line"/>
+			<point x="603" y="274" type="line"/>
+			<point x="603" y="1241" type="line"/>
+			<point x="761" y="1241" type="line"/>
+			<point x="761" y="1516" type="line"/>
+			<point x="112" y="1516" type="line"/>
+		</contour>
+		<component base="circumflex" xOffset="-12" yOffset="479"/>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.fontlab.v5.background</key>
+			<dict>
+				<key>bitmap</key>
+				<dict>
+					<key>data</key>
+					<array>
+						<array>
+							<integer>64</integer>
+							<integer>0</integer>
+						</array>
+						<array>
+							<integer>160</integer>
+							<integer>0</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+						</array>
+						<array>
+							<integer>64</integer>
+							<integer>0</integer>
+						</array>
+						<array>
+							<integer>64</integer>
+							<integer>0</integer>
+						</array>
+						<array>
+							<integer>64</integer>
+							<integer>0</integer>
+						</array>
+						<array>
+							<integer>64</integer>
+							<integer>0</integer>
+						</array>
+						<array>
+							<integer>64</integer>
+							<integer>0</integer>
+						</array>
+						<array>
+							<integer>64</integer>
+							<integer>0</integer>
+						</array>
+						<array>
+							<integer>64</integer>
+							<integer>0</integer>
+						</array>
+						<array>
+							<integer>64</integer>
+							<integer>0</integer>
+						</array>
+					</array>
+				</dict>
+				<key>origin</key>
+				<array>
+					<integer>0</integer>
+					<integer>0</integer>
+				</array>
+				<key>size_pixels</key>
+				<array>
+					<integer>3</integer>
+					<integer>11</integer>
+				</array>
+				<key>size_units</key>
+				<array>
+					<integer>300</integer>
+					<integer>1100</integer>
+				</array>
+			</dict>
+		</dict>
+	</lib>
+</glyph>

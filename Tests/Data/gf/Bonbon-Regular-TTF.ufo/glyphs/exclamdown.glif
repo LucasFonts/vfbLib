@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="exclamdown" format="2">
+	<unicode hex="00A1"/>
+	<advance width="265"/>
+	<outline>
+		<contour>
+			<point x="71" y="-313" type="qcurve"/>
+			<point x="68" y="-324"/>
+			<point name="av02" x="52" y="-324" type="qcurve"/>
+			<point x="25" y="-324"/>
+			<point x="25" y="-307" type="qcurve"/>
+			<point x="99" y="-57"/>
+			<point x="144" y="183" type="qcurve"/>
+			<point x="145" y="191"/>
+			<point name="sv02" x="156" y="191" type="qcurve"/>
+			<point x="169" y="191"/>
+			<point x="187" y="178"/>
+			<point x="187" y="167" type="qcurve"/>
+			<point x="151" y="-40"/>
+		</contour>
+		<contour>
+			<point x="175" y="281" type="qcurve"/>
+			<point x="161" y="267"/>
+			<point name="sv01" x="141" y="267" type="qcurve"/>
+			<point x="124" y="267"/>
+			<point x="100" y="288"/>
+			<point x="100" y="306" type="qcurve"/>
+			<point x="100" y="336"/>
+			<point x="154" y="383"/>
+			<point name="av01" x="177" y="383" type="qcurve"/>
+			<point x="195" y="383"/>
+			<point x="240" y="332"/>
+			<point x="240" y="301" type="qcurve"/>
+			<point x="240" y="285"/>
+			<point x="222" y="264"/>
+			<point x="209" y="264" type="qcurve"/>
+			<point x="191" y="264"/>
+		</contour>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.fontlab.ttprogram</key>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="alignv" point="av01" align="round"/&gt;
+    &lt;ttc code="alignv" point="av02" align="round"/&gt;
+    &lt;ttc code="singlev" point1="av01" point2="sv01" round="true"/&gt;
+    &lt;ttc code="singlev" point1="sv01" point2="sv02" round="true"/&gt;
+  &lt;/ttProgram&gt;
+</string>
+		</dict>
+	</lib>
+</glyph>

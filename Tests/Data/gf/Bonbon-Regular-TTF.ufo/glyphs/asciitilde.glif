@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="asciitilde" format="2">
+	<unicode hex="007E"/>
+	<advance width="599"/>
+	<outline>
+		<contour>
+			<point name="av01" x="455" y="414" type="qcurve"/>
+			<point x="398" y="414"/>
+			<point x="181" y="522"/>
+			<point name="sv02" x="138" y="523" type="qcurve"/>
+			<point x="122" y="523"/>
+			<point x="105" y="512" type="qcurve"/>
+			<point x="112" y="496"/>
+			<point x="112" y="479" type="qcurve"/>
+			<point x="112" y="442"/>
+			<point name="sv03" x="80" y="442" type="qcurve"/>
+			<point x="65" y="442"/>
+			<point x="45" y="465"/>
+			<point x="45" y="483" type="qcurve"/>
+			<point x="45" y="562"/>
+			<point name="sv01" x="144" y="562" type="qcurve"/>
+			<point x="201" y="562"/>
+			<point x="418" y="454"/>
+			<point name="sv04" x="461" y="453" type="qcurve"/>
+			<point x="478" y="453"/>
+			<point x="494" y="464" type="qcurve"/>
+			<point x="487" y="480"/>
+			<point x="487" y="497" type="qcurve"/>
+			<point x="487" y="534"/>
+			<point name="sv05" x="519" y="534" type="qcurve"/>
+			<point x="534" y="534"/>
+			<point x="554" y="511"/>
+			<point x="554" y="493" type="qcurve"/>
+			<point x="554" y="414"/>
+		</contour>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.fontlab.ttprogram</key>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="alignv" point="av01" align="round"/&gt;
+    &lt;ttc code="singlev" point1="av01" point2="sv01" round="true"/&gt;
+    &lt;ttc code="singlev" point1="sv01" point2="sv02" stem="Y: 36"/&gt;
+    &lt;ttc code="singlev" point1="sv01" point2="sv03" round="true"/&gt;
+    &lt;ttc code="singlev" point1="av01" point2="sv04" stem="Y: 36"/&gt;
+    &lt;ttc code="singlev" point1="av01" point2="sv05" round="true"/&gt;
+  &lt;/ttProgram&gt;
+</string>
+		</dict>
+	</lib>
+</glyph>

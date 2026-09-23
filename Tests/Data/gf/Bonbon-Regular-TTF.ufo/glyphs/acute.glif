@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="acute" format="2">
+	<unicode hex="00B4"/>
+	<advance width="151"/>
+	<outline>
+		<contour>
+			<point name="sv01" x="96" y="679" type="qcurve"/>
+			<point x="128" y="679"/>
+			<point x="128" y="650" type="qcurve"/>
+			<point x="122" y="620"/>
+			<point x="56" y="529"/>
+			<point name="av01" x="45" y="529" type="qcurve"/>
+			<point x="39" y="529"/>
+			<point x="27" y="537"/>
+			<point x="27" y="544" type="qcurve"/>
+			<point x="27" y="572"/>
+			<point x="77" y="679"/>
+		</contour>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.fontlab.ttprogram</key>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="alignv" point="av01" align="round"/&gt;
+    &lt;ttc code="mdeltav" point="av01" delta="8" ppm1="16" ppm2="16"/&gt;
+    &lt;ttc code="mdeltav" point="av01" delta="-8" ppm1="35" ppm2="35"/&gt;
+    &lt;ttc code="mdeltav" point="av01" delta="-8" ppm1="37" ppm2="37"/&gt;
+    &lt;ttc code="singlev" point1="av01" point2="sv01" round="true"/&gt;
+  &lt;/ttProgram&gt;
+</string>
+		</dict>
+	</lib>
+</glyph>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="Atilde" format="2">
+	<unicode hex="00C3"/>
+	<advance width="1491"/>
+	<outline>
+		<contour>
+			<point x="894" y="0" type="line"/>
+			<point x="1468" y="0" type="line"/>
+			<point x="1468" y="274" type="line"/>
+			<point x="1358" y="274" type="line"/>
+			<point x="954" y="1516" type="line"/>
+			<point x="553" y="1516" type="line"/>
+			<point x="140" y="274" type="line"/>
+			<point x="28" y="274" type="line"/>
+			<point x="28" y="0" type="line"/>
+			<point x="602" y="0" type="line"/>
+			<point x="602" y="274" type="line"/>
+			<point x="442" y="274" type="line"/>
+			<point x="510" y="492" type="line"/>
+			<point x="976" y="492" type="line"/>
+			<point x="1044" y="274" type="line"/>
+			<point x="894" y="274" type="line"/>
+		</contour>
+		<contour>
+			<point x="741" y="1241" type="line"/>
+			<point x="895" y="748" type="line"/>
+			<point x="589" y="748" type="line"/>
+		</contour>
+		<component base="tilde" xOffset="276" yOffset="479"/>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.fontlab.v5.background</key>
+			<dict>
+				<key>bitmap</key>
+				<dict>
+					<key>data</key>
+					<array>
+						<array>
+							<integer>52</integer>
+							<integer>0</integer>
+						</array>
+						<array>
+							<integer>44</integer>
+							<integer>0</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+						</array>
+						<array>
+							<integer>16</integer>
+							<integer>0</integer>
+						</array>
+						<array>
+							<integer>40</integer>
+							<integer>0</integer>
+						</array>
+						<array>
+							<integer>40</integer>
+							<integer>0</integer>
+						</array>
+						<array>
+							<integer>40</integer>
+							<integer>0</integer>
+						</array>
+						<array>
+							<integer>68</integer>
+							<integer>0</integer>
+						</array>
+						<array>
+							<integer>124</integer>
+							<integer>0</integer>
+						</array>
+						<array>
+							<integer>68</integer>
+							<integer>0</integer>
+						</array>
+						<array>
+							<integer>130</integer>
+							<integer>0</integer>
+						</array>
+					</array>
+				</dict>
+				<key>origin</key>
+				<array>
+					<integer>8</integer>
+					<integer>0</integer>
+				</array>
+				<key>size_pixels</key>
+				<array>
+					<integer>7</integer>
+					<integer>11</integer>
+				</array>
+				<key>size_units</key>
+				<array>
+					<integer>708</integer>
+					<integer>1100</integer>
+				</array>
+			</dict>
+		</dict>
+	</lib>
+</glyph>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="adieresis" format="2">
+	<unicode hex="00E4"/>
+	<advance width="1042"/>
+	<outline>
+		<contour>
+			<point x="690" y="0" type="line"/>
+			<point x="991" y="0" type="line"/>
+			<point x="991" y="172" type="line"/>
+			<point x="874" y="172" type="line"/>
+			<point x="875" y="344"/>
+			<point x="877" y="518"/>
+			<point x="877" y="690" type="curve" smooth="yes"/>
+			<point x="877" y="948"/>
+			<point x="729" y="1059"/>
+			<point x="489" y="1059" type="curve" smooth="yes"/>
+			<point x="358" y="1059"/>
+			<point x="215" y="1012"/>
+			<point x="117" y="948" type="curve"/>
+			<point x="178" y="819" type="line"/>
+			<point x="238" y="858"/>
+			<point x="346" y="895"/>
+			<point x="471" y="895" type="curve" smooth="yes"/>
+			<point x="604" y="895"/>
+			<point x="692" y="827"/>
+			<point x="692" y="680" type="curve" smooth="yes"/>
+			<point x="691" y="586" type="line"/>
+			<point x="639" y="599"/>
+			<point x="569" y="606"/>
+			<point x="481" y="606" type="curve" smooth="yes"/>
+			<point x="301" y="606"/>
+			<point x="51" y="535"/>
+			<point x="51" y="274" type="curve" smooth="yes"/>
+			<point x="51" y="109"/>
+			<point x="195" y="-29"/>
+			<point x="397" y="-29" type="curve" smooth="yes"/>
+			<point x="517" y="-29"/>
+			<point x="612" y="23"/>
+			<point x="690" y="96" type="curve"/>
+		</contour>
+		<contour>
+			<point x="438" y="127" type="curve" smooth="yes"/>
+			<point x="315" y="127"/>
+			<point x="231" y="184"/>
+			<point x="231" y="295" type="curve" smooth="yes"/>
+			<point x="231" y="412"/>
+			<point x="332" y="477"/>
+			<point x="475" y="477" type="curve" smooth="yes"/>
+			<point x="691" y="477" type="line"/>
+			<point x="690" y="239" type="line"/>
+			<point x="639" y="180"/>
+			<point x="538" y="127"/>
+		</contour>
+		<component base="dotaccent" xOffset="-20" yOffset="-43"/>
+		<component base="dotaccent" xOffset="438" yOffset="-43"/>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.fontlab.v5.background</key>
+			<dict>
+				<key>bitmap</key>
+				<dict>
+					<key>data</key>
+					<array>
+						<array>
+							<integer>80</integer>
+							<integer>0</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+						</array>
+						<array>
+							<integer>224</integer>
+							<integer>0</integer>
+						</array>
+						<array>
+							<integer>16</integer>
+							<integer>0</integer>
+						</array>
+						<array>
+							<integer>112</integer>
+							<integer>0</integer>
+						</array>
+						<array>
+							<integer>144</integer>
+							<integer>0</integer>
+						</array>
+						<array>
+							<integer>144</integer>
+							<integer>0</integer>
+						</array>
+						<array>
+							<integer>120</integer>
+							<integer>0</integer>
+						</array>
+					</array>
+				</dict>
+				<key>origin</key>
+				<array>
+					<integer>100</integer>
+					<integer>0</integer>
+				</array>
+				<key>size_pixels</key>
+				<array>
+					<integer>5</integer>
+					<integer>8</integer>
+				</array>
+				<key>size_units</key>
+				<array>
+					<integer>600</integer>
+					<integer>800</integer>
+				</array>
+			</dict>
+			<key>public.markColor</key>
+			<string>0.6838,0.952,0.648,1</string>
+		</dict>
+	</lib>
+</glyph>

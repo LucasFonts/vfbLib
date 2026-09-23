@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="circumflex.case" format="2">
+	<advance width="306"/>
+	<outline>
+		<contour>
+			<point x="130" y="791" type="line"/>
+			<point x="143" y="804"/>
+			<point name="sv01" x="154" y="804" type="qcurve"/>
+			<point x="164" y="804"/>
+			<point x="178" y="791" type="qcurve"/>
+			<point x="273" y="704" type="line"/>
+			<point x="274" y="703"/>
+			<point x="274" y="701" type="qcurve"/>
+			<point x="274" y="697"/>
+			<point x="266" y="686"/>
+			<point x="254" y="675"/>
+			<point name="sv02" x="241" y="667"/>
+			<point x="237" y="667" type="qcurve"/>
+			<point x="233" y="667"/>
+			<point x="232" y="669" type="qcurve"/>
+			<point name="sv03" x="155" y="744" type="line"/>
+			<point x="74" y="670" type="line"/>
+			<point name="av01" x="71" y="667"/>
+			<point x="66" y="667" type="qcurve"/>
+			<point x="61" y="667"/>
+			<point x="49" y="674"/>
+			<point x="39" y="684"/>
+			<point x="33" y="695"/>
+			<point x="33" y="699" type="qcurve"/>
+			<point x="33" y="702"/>
+			<point x="35" y="704" type="qcurve"/>
+		</contour>
+	</outline>
+	<anchor name="_top" x="155" y="668"/>
+	<guideline x="155" y="0" angle="90"/>
+	<lib>
+		<dict>
+			<key>com.fontlab.ttprogram</key>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="alignv" point="av01" align="round"/&gt;
+    &lt;ttc code="mdeltav" point="av01" delta="8" ppm1="23" ppm2="24"/&gt;
+    &lt;ttc code="mdeltav" point="av01" delta="8" ppm1="29" ppm2="29"/&gt;
+    &lt;ttc code="mdeltav" point="av01" delta="8" ppm1="35" ppm2="35"/&gt;
+    &lt;ttc code="mdeltav" point="av01" delta="8" ppm1="32" ppm2="33"/&gt;
+    &lt;ttc code="mdeltav" point="av01" delta="8" ppm1="26" ppm2="26"/&gt;
+    &lt;ttc code="mdeltav" point="av01" delta="8" ppm1="20" ppm2="21"/&gt;
+    &lt;ttc code="mdeltav" point="av01" delta="8" ppm1="17" ppm2="18"/&gt;
+    &lt;ttc code="singlev" point1="av01" point2="sv01" round="true"/&gt;
+    &lt;ttc code="singlev" point1="av01" point2="sv02"/&gt;
+    &lt;ttc code="singlev" point1="sv01" point2="sv03"/&gt;
+  &lt;/ttProgram&gt;
+</string>
+			<key>com.fontlab.v5.background</key>
+			<dict>
+				<key>bitmap</key>
+				<dict>
+					<key>data</key>
+					<array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>56</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>108</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>198</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+					</array>
+				</dict>
+				<key>origin</key>
+				<array>
+					<integer>-359</integer>
+					<integer>-192</integer>
+				</array>
+				<key>size_pixels</key>
+				<array>
+					<integer>24</integer>
+					<integer>24</integer>
+				</array>
+				<key>size_units</key>
+				<array>
+					<integer>640</integer>
+					<integer>807</integer>
+				</array>
+			</dict>
+		</dict>
+	</lib>
+</glyph>

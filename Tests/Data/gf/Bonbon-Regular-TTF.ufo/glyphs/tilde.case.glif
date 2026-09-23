@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="tilde.case" format="2">
+	<advance width="322"/>
+	<outline>
+		<contour>
+			<point name="av01" x="233" y="666" type="qcurve"/>
+			<point x="217" y="666"/>
+			<point x="180" y="676"/>
+			<point x="143" y="689"/>
+			<point x="108" y="702"/>
+			<point name="sv02" x="93" y="706" type="qcurve"/>
+			<point x="93" y="695"/>
+			<point x="81" y="676"/>
+			<point name="sv03" x="64" y="676" type="qcurve"/>
+			<point x="53" y="676"/>
+			<point x="35" y="694"/>
+			<point x="35" y="708" type="qcurve"/>
+			<point x="35" y="734"/>
+			<point x="66" y="755"/>
+			<point name="sv01" x="88" y="755" type="qcurve"/>
+			<point x="104" y="755"/>
+			<point x="140" y="745"/>
+			<point x="177" y="731"/>
+			<point x="213" y="717"/>
+			<point name="sv04" x="229" y="713" type="qcurve"/>
+			<point x="229" y="724"/>
+			<point x="239" y="745"/>
+			<point name="sv05" x="256" y="745" type="qcurve"/>
+			<point x="270" y="745"/>
+			<point x="286" y="726"/>
+			<point x="286" y="712" type="qcurve"/>
+			<point x="286" y="686"/>
+			<point x="254" y="666"/>
+		</contour>
+	</outline>
+	<anchor name="_top" x="161" y="668"/>
+	<lib>
+		<dict>
+			<key>com.fontlab.ttprogram</key>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="alignv" point="av01" align="round"/&gt;
+    &lt;ttc code="mdeltav" point="av01" delta="8" ppm1="23" ppm2="24"/&gt;
+    &lt;ttc code="mdeltav" point="av01" delta="8" ppm1="29" ppm2="29"/&gt;
+    &lt;ttc code="mdeltav" point="av01" delta="8" ppm1="35" ppm2="35"/&gt;
+    &lt;ttc code="mdeltav" point="av01" delta="8" ppm1="32" ppm2="33"/&gt;
+    &lt;ttc code="mdeltav" point="av01" delta="8" ppm1="26" ppm2="26"/&gt;
+    &lt;ttc code="mdeltav" point="av01" delta="8" ppm1="20" ppm2="21"/&gt;
+    &lt;ttc code="mdeltav" point="av01" delta="8" ppm1="17" ppm2="18"/&gt;
+    &lt;ttc code="singlev" point1="av01" point2="sv01" round="true"/&gt;
+    &lt;ttc code="mdeltav" point="sv01" delta="8" ppm1="16" ppm2="16"/&gt;
+    &lt;ttc code="singlev" point1="sv01" point2="sv02" stem="Y: 48"/&gt;
+    &lt;ttc code="singlev" point1="sv01" point2="sv03" round="true"/&gt;
+    &lt;ttc code="mdeltav" point="sv03" delta="-8" ppm1="16" ppm2="18"/&gt;
+    &lt;ttc code="singlev" point1="av01" point2="sv04" stem="Y: 48"/&gt;
+    &lt;ttc code="singlev" point1="av01" point2="sv05" round="true"/&gt;
+    &lt;ttc code="mdeltav" point="sv05" delta="8" ppm1="16" ppm2="18"/&gt;
+  &lt;/ttProgram&gt;
+</string>
+			<key>com.fontlab.v5.background</key>
+			<dict>
+				<key>bitmap</key>
+				<dict>
+					<key>data</key>
+					<array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>98</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>156</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+					</array>
+				</dict>
+				<key>origin</key>
+				<array>
+					<integer>-363</integer>
+					<integer>-193</integer>
+				</array>
+				<key>size_pixels</key>
+				<array>
+					<integer>24</integer>
+					<integer>24</integer>
+				</array>
+				<key>size_units</key>
+				<array>
+					<integer>636</integer>
+					<integer>806</integer>
+				</array>
+			</dict>
+		</dict>
+	</lib>
+</glyph>

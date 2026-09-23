@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="macron" format="2">
+	<unicode hex="00AF"/>
+	<advance width="408"/>
+	<outline>
+		<contour>
+			<point x="392" y="582" type="qcurve"/>
+			<point name="av01" x="15" y="582" type="line"/>
+			<point x="0" y="582"/>
+			<point x="0" y="605" type="qcurve"/>
+			<point x="0" y="621"/>
+			<point x="3" y="630"/>
+			<point name="sv01" x="11" y="630" type="qcurve"/>
+			<point x="397" y="630" type="line"/>
+			<point x="405" y="630"/>
+			<point x="408" y="621"/>
+			<point x="408" y="605" type="qcurve"/>
+			<point x="408" y="582"/>
+		</contour>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.fontlab.ttprogram</key>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="alignv" point="av01" align="round"/&gt;
+    &lt;ttc code="singlev" point1="av01" point2="sv01" stem="Y: 48"/&gt;
+  &lt;/ttProgram&gt;
+</string>
+		</dict>
+	</lib>
+</glyph>

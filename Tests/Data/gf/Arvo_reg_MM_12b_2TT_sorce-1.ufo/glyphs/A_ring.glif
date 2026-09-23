@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="Aring" format="2">
+	<unicode hex="00C5"/>
+	<advance width="1542"/>
+	<outline>
+		<contour>
+			<point x="1040" y="0" type="line"/>
+			<point x="1532" y="0" type="line"/>
+			<point x="1532" y="172" type="line"/>
+			<point x="1380" y="172" type="line"/>
+			<point x="909" y="1516" type="line"/>
+			<point x="614" y="1516" type="line"/>
+			<point x="141" y="172" type="line"/>
+			<point x="10" y="172" type="line"/>
+			<point x="10" y="0" type="line"/>
+			<point x="502" y="0" type="line"/>
+			<point x="502" y="172" type="line"/>
+			<point x="345" y="172" type="line"/>
+			<point x="463" y="516" type="line"/>
+			<point x="1046" y="516" type="line"/>
+			<point x="1166" y="172" type="line"/>
+			<point x="1040" y="172" type="line"/>
+		</contour>
+		<contour>
+			<point x="751" y="1360" type="line"/>
+			<point x="988" y="682" type="line"/>
+			<point x="519" y="682" type="line"/>
+		</contour>
+		<component base="ring" xOffset="150" yOffset="479"/>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.fontlab.v5.background</key>
+			<dict>
+				<key>bitmap</key>
+				<dict>
+					<key>data</key>
+					<array>
+						<array>
+							<integer>24</integer>
+							<integer>0</integer>
+						</array>
+						<array>
+							<integer>24</integer>
+							<integer>0</integer>
+						</array>
+						<array>
+							<integer>16</integer>
+							<integer>0</integer>
+						</array>
+						<array>
+							<integer>40</integer>
+							<integer>0</integer>
+						</array>
+						<array>
+							<integer>40</integer>
+							<integer>0</integer>
+						</array>
+						<array>
+							<integer>40</integer>
+							<integer>0</integer>
+						</array>
+						<array>
+							<integer>68</integer>
+							<integer>0</integer>
+						</array>
+						<array>
+							<integer>124</integer>
+							<integer>0</integer>
+						</array>
+						<array>
+							<integer>68</integer>
+							<integer>0</integer>
+						</array>
+						<array>
+							<integer>130</integer>
+							<integer>0</integer>
+						</array>
+					</array>
+				</dict>
+				<key>origin</key>
+				<array>
+					<integer>8</integer>
+					<integer>0</integer>
+				</array>
+				<key>size_pixels</key>
+				<array>
+					<integer>7</integer>
+					<integer>10</integer>
+				</array>
+				<key>size_units</key>
+				<array>
+					<integer>708</integer>
+					<integer>1000</integer>
+				</array>
+			</dict>
+		</dict>
+	</lib>
+</glyph>

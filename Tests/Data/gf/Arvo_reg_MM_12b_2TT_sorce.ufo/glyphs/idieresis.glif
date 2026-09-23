@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="idieresis" format="2">
+	<unicode hex="00EF"/>
+	<advance width="721"/>
+	<outline>
+		<contour>
+			<point x="60" y="762" type="line"/>
+			<point x="217" y="762" type="line"/>
+			<point x="217" y="274" type="line"/>
+			<point x="61" y="274" type="line"/>
+			<point x="61" y="0" type="line"/>
+			<point x="669" y="0" type="line"/>
+			<point x="669" y="274" type="line"/>
+			<point x="527" y="274" type="line"/>
+			<point x="527" y="1036" type="line"/>
+			<point x="520" y="1036" type="line"/>
+			<point x="520" y="1037" type="line"/>
+			<point x="60" y="1037" type="line"/>
+		</contour>
+		<component base="dotaccent" xOffset="-92" yOffset="-29"/>
+		<component base="dotaccent" xOffset="387" yOffset="-29"/>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.fontlab.v5.background</key>
+			<dict>
+				<key>bitmap</key>
+				<dict>
+					<key>data</key>
+					<array>
+						<array>
+							<integer>160</integer>
+							<integer>0</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+						</array>
+						<array>
+							<integer>64</integer>
+							<integer>0</integer>
+						</array>
+						<array>
+							<integer>64</integer>
+							<integer>0</integer>
+						</array>
+						<array>
+							<integer>64</integer>
+							<integer>0</integer>
+						</array>
+						<array>
+							<integer>64</integer>
+							<integer>0</integer>
+						</array>
+						<array>
+							<integer>64</integer>
+							<integer>0</integer>
+						</array>
+						<array>
+							<integer>64</integer>
+							<integer>0</integer>
+						</array>
+					</array>
+				</dict>
+				<key>origin</key>
+				<array>
+					<integer>0</integer>
+					<integer>0</integer>
+				</array>
+				<key>size_pixels</key>
+				<array>
+					<integer>3</integer>
+					<integer>8</integer>
+				</array>
+				<key>size_units</key>
+				<array>
+					<integer>300</integer>
+					<integer>800</integer>
+				</array>
+			</dict>
+		</dict>
+	</lib>
+</glyph>

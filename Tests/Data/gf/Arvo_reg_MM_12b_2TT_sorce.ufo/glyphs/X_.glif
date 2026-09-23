@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="X" format="2">
+	<unicode hex="0058"/>
+	<advance width="1577"/>
+	<outline>
+		<contour>
+			<point x="859" y="1241" type="line"/>
+			<point x="1013" y="1241" type="line"/>
+			<point x="932" y="1155"/>
+			<point x="852" y="1070"/>
+			<point x="771" y="984" type="curve"/>
+			<point x="690" y="1070"/>
+			<point x="608" y="1155"/>
+			<point x="527" y="1241" type="curve"/>
+			<point x="680" y="1241" type="line"/>
+			<point x="680" y="1516" type="line"/>
+			<point x="38" y="1516" type="line"/>
+			<point x="38" y="1241" type="line"/>
+			<point x="182" y="1241" type="line"/>
+			<point x="160" y="1233"/>
+			<point x="139" y="1225"/>
+			<point x="117" y="1217" type="curve"/>
+			<point x="263" y="1063"/>
+			<point x="408" y="908"/>
+			<point x="554" y="754" type="curve"/>
+			<point x="403" y="594"/>
+			<point x="253" y="434"/>
+			<point x="102" y="274" type="curve"/>
+			<point x="34" y="274" type="line"/>
+			<point x="34" y="0" type="line"/>
+			<point x="676" y="0" type="line"/>
+			<point x="676" y="274" type="line"/>
+			<point x="540" y="274" type="line"/>
+			<point x="618" y="357"/>
+			<point x="695" y="439"/>
+			<point x="773" y="522" type="curve"/>
+			<point x="851" y="439"/>
+			<point x="929" y="357"/>
+			<point x="1007" y="274" type="curve"/>
+			<point x="855" y="274" type="line"/>
+			<point x="855" y="0" type="line"/>
+			<point x="1497" y="0" type="line"/>
+			<point x="1497" y="274" type="line"/>
+			<point x="1347" y="274" type="line"/>
+			<point x="1378" y="276"/>
+			<point x="1409" y="279"/>
+			<point x="1440" y="281" type="curve"/>
+			<point x="1290" y="439"/>
+			<point x="1140" y="596"/>
+			<point x="990" y="754" type="curve"/>
+			<point x="1135" y="908"/>
+			<point x="1280" y="1063"/>
+			<point x="1425" y="1217" type="curve"/>
+			<point x="1403" y="1225"/>
+			<point x="1381" y="1233"/>
+			<point x="1359" y="1241" type="curve"/>
+			<point x="1501" y="1241" type="line"/>
+			<point x="1501" y="1516" type="line"/>
+			<point x="859" y="1516" type="line"/>
+		</contour>
+	</outline>
+	<anchor name="top" x="778" y="1434"/>
+	<guideline x="0" y="723" angle="0"/>
+	<guideline x="778" y="0" angle="90"/>
+	<guideline x="1462" y="0" angle="90"/>
+	<guideline x="150" y="0" angle="90"/>
+	<lib>
+		<dict>
+			<key>com.fontlab.v5.background</key>
+			<dict>
+				<key>bitmap</key>
+				<dict>
+					<key>data</key>
+					<array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>3</integer>
+							<integer>1</integer>
+							<integer>128</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>1</integer>
+							<integer>131</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>1</integer>
+							<integer>199</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>198</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>108</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>108</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>56</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>56</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>56</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>108</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>108</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>198</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>1</integer>
+							<integer>199</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>1</integer>
+							<integer>131</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>3</integer>
+							<integer>1</integer>
+							<integer>128</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+					</array>
+				</dict>
+				<key>origin</key>
+				<array>
+					<integer>-203</integer>
+					<integer>-208</integer>
+				</array>
+				<key>size_pixels</key>
+				<array>
+					<integer>24</integer>
+					<integer>24</integer>
+				</array>
+				<key>size_units</key>
+				<array>
+					<integer>796</integer>
+					<integer>791</integer>
+				</array>
+			</dict>
+		</dict>
+	</lib>
+</glyph>

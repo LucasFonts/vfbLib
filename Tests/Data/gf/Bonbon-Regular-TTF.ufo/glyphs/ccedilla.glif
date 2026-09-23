@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="ccedilla" format="2">
+	<unicode hex="00E7"/>
+	<advance width="451"/>
+	<outline>
+		<contour>
+			<point name="sv01" x="191" y="-8" type="line"/>
+			<point x="152" y="-2"/>
+			<point x="92" y="33"/>
+			<point x="53" y="86"/>
+			<point x="33" y="155"/>
+			<point x="33" y="194" type="qcurve"/>
+			<point x="33" y="249"/>
+			<point x="62" y="357"/>
+			<point x="122" y="442"/>
+			<point x="214" y="494"/>
+			<point name="at01" x="277" y="494" type="qcurve"/>
+			<point x="311" y="494"/>
+			<point x="364" y="474"/>
+			<point x="398" y="442"/>
+			<point x="416" y="401"/>
+			<point x="416" y="380" type="qcurve"/>
+			<point x="416" y="358"/>
+			<point x="401" y="326"/>
+			<point x="376" y="304"/>
+			<point x="345" y="293"/>
+			<point name="sv02" x="329" y="293" type="qcurve"/>
+			<point x="306" y="293"/>
+			<point x="272" y="315"/>
+			<point x="272" y="337" type="qcurve"/>
+			<point x="272" y="348"/>
+			<point x="294" y="370"/>
+			<point name="sv03" x="314" y="370" type="qcurve"/>
+			<point x="330" y="370"/>
+			<point x="353" y="351"/>
+			<point name="sv04" x="358" y="339" type="qcurve"/>
+			<point x="366" y="348"/>
+			<point x="374" y="369"/>
+			<point x="374" y="380" type="qcurve"/>
+			<point x="374" y="406"/>
+			<point x="324" y="450"/>
+			<point name="sv05" x="283" y="450" type="qcurve"/>
+			<point x="238" y="450"/>
+			<point x="166" y="405"/>
+			<point x="115" y="333"/>
+			<point x="88" y="245"/>
+			<point x="88" y="202" type="qcurve"/>
+			<point x="88" y="171"/>
+			<point x="106" y="110"/>
+			<point x="143" y="61"/>
+			<point x="199" y="31"/>
+			<point name="sv06" x="237" y="31" type="qcurve"/>
+			<point x="260" y="31"/>
+			<point x="307" y="43"/>
+			<point x="346" y="68"/>
+			<point x="371" y="107"/>
+			<point x="371" y="134" type="qcurve"/>
+			<point x="371" y="147"/>
+			<point x="367" y="160" type="qcurve"/>
+			<point x="362" y="142"/>
+			<point x="338" y="126"/>
+			<point name="sv08" x="324" y="126" type="qcurve"/>
+			<point x="307" y="126"/>
+			<point x="277" y="149"/>
+			<point x="277" y="167" type="qcurve"/>
+			<point x="277" y="187"/>
+			<point x="309" y="217"/>
+			<point name="sv07" x="336" y="217" type="qcurve"/>
+			<point x="357" y="217"/>
+			<point x="386" y="202"/>
+			<point x="402" y="176"/>
+			<point x="409" y="144"/>
+			<point x="409" y="126" type="qcurve"/>
+			<point x="409" y="69"/>
+			<point x="324" y="-9"/>
+			<point name="ab01" x="235" y="-11" type="qcurve"/>
+			<point x="235" y="-35" type="line"/>
+			<point x="266" y="-40"/>
+			<point x="311" y="-65"/>
+			<point x="311" y="-97" type="qcurve"/>
+			<point x="311" y="-145"/>
+			<point x="230" y="-184"/>
+			<point name="av01" x="157" y="-184" type="qcurve"/>
+			<point x="148" y="-184"/>
+			<point x="139" y="-170"/>
+			<point x="139" y="-162" type="qcurve"/>
+			<point x="139" y="-150"/>
+			<point x="149" y="-144"/>
+			<point name="sv09" x="157" y="-144" type="qcurve"/>
+			<point x="175" y="-144"/>
+			<point x="211" y="-143"/>
+			<point x="239" y="-137"/>
+			<point x="256" y="-123"/>
+			<point x="256" y="-111" type="qcurve"/>
+			<point x="256" y="-97"/>
+			<point x="228" y="-86"/>
+			<point x="205" y="-85" type="qcurve"/>
+			<point x="200" y="-84"/>
+			<point x="191" y="-78"/>
+			<point x="191" y="-64" type="qcurve"/>
+		</contour>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.fontlab.ttprogram</key>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="alignv" point="av01" align="round"/&gt;
+    &lt;ttc code="alignt" point="at01" zone="t: 0"/&gt;
+    &lt;ttc code="alignb" point="ab01" zone="b: 0"/&gt;
+    &lt;ttc code="singlev" point1="ab01" point2="sv01"/&gt;
+    &lt;ttc code="singlev" point1="at01" point2="sv02" round="true"/&gt;
+    &lt;ttc code="singlev" point1="sv02" point2="sv03" round="true"/&gt;
+    &lt;ttc code="singlev" point1="sv02" point2="sv04" stem="Y: 48"/&gt;
+    &lt;ttc code="singlev" point1="at01" point2="sv05" stem="Y: 48"/&gt;
+    &lt;ttc code="singlev" point1="ab01" point2="sv06" stem="Y: 48"/&gt;
+    &lt;ttc code="singlev" point1="ab01" point2="sv07" round="true"/&gt;
+    &lt;ttc code="mdeltav" point="sv07" delta="-8" ppm1="29" ppm2="29"/&gt;
+    &lt;ttc code="mdeltav" point="sv07" delta="-8" ppm1="33" ppm2="34"/&gt;
+    &lt;ttc code="singlev" point1="sv07" point2="sv08" round="true"/&gt;
+    &lt;ttc code="singlev" point1="av01" point2="sv09" stem="Y: 36"/&gt;
+  &lt;/ttProgram&gt;
+</string>
+			<key>com.fontlab.v5.background</key>
+			<dict>
+				<key>bitmap</key>
+				<dict>
+					<key>data</key>
+					<array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>62</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>127</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>225</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>1</integer>
+							<integer>192</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>1</integer>
+							<integer>128</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>1</integer>
+							<integer>128</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>1</integer>
+							<integer>128</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>1</integer>
+							<integer>192</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>225</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>255</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>62</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>16</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>28</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>4</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>56</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+					</array>
+				</dict>
+				<key>origin</key>
+				<array>
+					<integer>-150</integer>
+					<integer>-208</integer>
+				</array>
+				<key>size_pixels</key>
+				<array>
+					<integer>24</integer>
+					<integer>24</integer>
+				</array>
+				<key>size_units</key>
+				<array>
+					<integer>849</integer>
+					<integer>791</integer>
+				</array>
+			</dict>
+		</dict>
+	</lib>
+</glyph>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="dieresis.case" format="2">
+	<advance width="31"/>
+	<outline>
+		<contour>
+			<point x="87" y="737" type="curve"/>
+			<point x="80" y="746"/>
+			<point x="68" y="755"/>
+			<point x="59" y="755" type="curve" smooth="yes"/>
+			<point x="47" y="755"/>
+			<point x="38" y="747"/>
+			<point x="38" y="728" type="curve" smooth="yes"/>
+			<point x="38" y="695"/>
+			<point x="71" y="667"/>
+			<point x="87" y="667" type="curve" smooth="yes"/>
+			<point x="107" y="667"/>
+			<point x="145" y="693"/>
+			<point x="145" y="726" type="curve" smooth="yes"/>
+			<point x="145" y="745"/>
+			<point x="133" y="753"/>
+			<point x="117" y="753" type="curve" smooth="yes"/>
+			<point x="107" y="753"/>
+			<point x="96" y="745"/>
+		</contour>
+		<contour>
+			<point x="224" y="737" type="curve"/>
+			<point x="217" y="746"/>
+			<point x="206" y="755"/>
+			<point x="197" y="755" type="curve" smooth="yes"/>
+			<point x="184" y="755"/>
+			<point x="175" y="747"/>
+			<point x="175" y="728" type="curve" smooth="yes"/>
+			<point x="175" y="695"/>
+			<point x="208" y="667"/>
+			<point x="224" y="667" type="curve" smooth="yes"/>
+			<point x="244" y="667"/>
+			<point x="282" y="693"/>
+			<point x="282" y="726" type="curve" smooth="yes"/>
+			<point x="282" y="745"/>
+			<point x="269" y="753"/>
+			<point x="254" y="753" type="curve" smooth="yes"/>
+			<point x="244" y="753"/>
+			<point x="233" y="745"/>
+		</contour>
+	</outline>
+</glyph>

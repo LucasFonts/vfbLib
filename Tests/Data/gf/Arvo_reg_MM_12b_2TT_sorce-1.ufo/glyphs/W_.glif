@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="W" format="2">
+	<unicode hex="0057"/>
+	<advance width="2294"/>
+	<outline>
+		<contour>
+			<point x="1767" y="1344" type="line"/>
+			<point x="1944" y="1344" type="line"/>
+			<point x="1604" y="178" type="line"/>
+			<point x="1247" y="1516" type="line"/>
+			<point x="1042" y="1516" type="line"/>
+			<point x="678" y="178" type="line"/>
+			<point x="343" y="1344" type="line"/>
+			<point x="498" y="1344" type="line"/>
+			<point x="498" y="1516" type="line"/>
+			<point x="6" y="1516" type="line"/>
+			<point x="6" y="1344" type="line"/>
+			<point x="137" y="1344" type="line"/>
+			<point x="537" y="0" type="line"/>
+			<point x="815" y="0" type="line"/>
+			<point x="1137" y="1171" type="line"/>
+			<point x="1460" y="0" type="line"/>
+			<point x="1739" y="0" type="line"/>
+			<point x="2134" y="1344" type="line"/>
+			<point x="2259" y="1344" type="line"/>
+			<point x="2259" y="1516" type="line"/>
+			<point x="1767" y="1516" type="line"/>
+		</contour>
+	</outline>
+	<anchor name="top" x="1184" y="1434"/>
+	<lib>
+		<dict>
+			<key>com.fontlab.v5.background</key>
+			<dict>
+				<key>bitmap</key>
+				<dict>
+					<key>data</key>
+					<array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>6</integer>
+							<integer>0</integer>
+							<integer>192</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>6</integer>
+							<integer>0</integer>
+							<integer>192</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>6</integer>
+							<integer>0</integer>
+							<integer>192</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>6</integer>
+							<integer>0</integer>
+							<integer>192</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>3</integer>
+							<integer>1</integer>
+							<integer>128</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>3</integer>
+							<integer>57</integer>
+							<integer>128</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>3</integer>
+							<integer>57</integer>
+							<integer>128</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>3</integer>
+							<integer>45</integer>
+							<integer>128</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>3</integer>
+							<integer>109</integer>
+							<integer>128</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>3</integer>
+							<integer>109</integer>
+							<integer>128</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>1</integer>
+							<integer>69</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>1</integer>
+							<integer>199</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>1</integer>
+							<integer>199</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>1</integer>
+							<integer>131</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>1</integer>
+							<integer>131</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>255</integer>
+						</array>
+					</array>
+				</dict>
+				<key>origin</key>
+				<array>
+					<integer>-176</integer>
+					<integer>-208</integer>
+				</array>
+				<key>size_pixels</key>
+				<array>
+					<integer>24</integer>
+					<integer>24</integer>
+				</array>
+				<key>size_units</key>
+				<array>
+					<integer>823</integer>
+					<integer>791</integer>
+				</array>
+			</dict>
+		</dict>
+	</lib>
+</glyph>

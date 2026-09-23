@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="exclam" format="2">
+	<unicode hex="0021"/>
+	<advance width="682"/>
+	<outline>
+		<contour>
+			<point x="252" y="410" type="line"/>
+			<point x="430" y="410" type="line"/>
+			<point x="471" y="1577" type="line"/>
+			<point x="211" y="1577" type="line"/>
+		</contour>
+		<component base="dotaccent" xOffset="37" yOffset="-1282"/>
+	</outline>
+	<guideline x="174" y="0" angle="90"/>
+	<guideline x="459" y="0" angle="90"/>
+</glyph>

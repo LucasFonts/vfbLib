@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="ring" format="2">
+	<unicode hex="02DA"/>
+	<advance width="228"/>
+	<outline>
+		<contour>
+			<point name="sv01" x="111" y="698" type="qcurve"/>
+			<point x="149" y="698"/>
+			<point x="193" y="645"/>
+			<point x="193" y="611" type="qcurve"/>
+			<point x="193" y="577"/>
+			<point x="153" y="531"/>
+			<point name="av01" x="116" y="531" type="qcurve"/>
+			<point x="85" y="531"/>
+			<point x="32" y="575"/>
+			<point x="32" y="609" type="qcurve"/>
+			<point x="32" y="646"/>
+			<point x="81" y="698"/>
+		</contour>
+		<contour>
+			<point x="80" y="617" type="qcurve"/>
+			<point x="80" y="597"/>
+			<point x="100" y="580"/>
+			<point name="sv02" x="113" y="580" type="qcurve"/>
+			<point x="127" y="580"/>
+			<point x="147" y="599"/>
+			<point x="147" y="613" type="qcurve"/>
+			<point x="147" y="626"/>
+			<point x="131" y="649"/>
+			<point name="sv03" x="113" y="649" type="qcurve"/>
+			<point x="97" y="649"/>
+			<point x="80" y="629"/>
+		</contour>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.fontlab.ttprogram</key>
+			<string>  &lt;ttProgram&gt;
+    &lt;ttc code="alignv" point="av01" align="round"/&gt;
+    &lt;ttc code="mdeltav" point="av01" delta="-8" ppm1="33" ppm2="33"/&gt;
+    &lt;ttc code="mdeltav" point="av01" delta="-8" ppm1="37" ppm2="37"/&gt;
+    &lt;ttc code="mdeltav" point="av01" delta="-8" ppm1="35" ppm2="35"/&gt;
+    &lt;ttc code="singlev" point1="av01" point2="sv01" round="true"/&gt;
+    &lt;ttc code="singlev" point1="av01" point2="sv02" stem="Y: 48"/&gt;
+    &lt;ttc code="singlev" point1="sv01" point2="sv03" stem="Y: 48"/&gt;
+  &lt;/ttProgram&gt;
+</string>
+		</dict>
+	</lib>
+</glyph>

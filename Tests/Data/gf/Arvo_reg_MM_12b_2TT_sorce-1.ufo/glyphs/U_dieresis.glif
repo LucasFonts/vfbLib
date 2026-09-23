@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="Udieresis" format="2">
+	<unicode hex="00DC"/>
+	<advance width="1559"/>
+	<outline>
+		<contour>
+			<point x="113" y="1344" type="line"/>
+			<point x="252" y="1344" type="line"/>
+			<point x="252" y="641" type="line" smooth="yes"/>
+			<point x="252" y="227"/>
+			<point x="506" y="-20"/>
+			<point x="825" y="-20" type="curve" smooth="yes"/>
+			<point x="1153" y="-20"/>
+			<point x="1411" y="227"/>
+			<point x="1411" y="659" type="curve" smooth="yes"/>
+			<point x="1411" y="1344" type="line"/>
+			<point x="1547" y="1344" type="line"/>
+			<point x="1547" y="1516" type="line"/>
+			<point x="1055" y="1516" type="line"/>
+			<point x="1055" y="1344" type="line"/>
+			<point x="1196" y="1344" type="line"/>
+			<point x="1196" y="641" type="line" smooth="yes"/>
+			<point x="1196" y="297"/>
+			<point x="1051" y="197"/>
+			<point x="834" y="197" type="curve" smooth="yes"/>
+			<point x="625" y="197"/>
+			<point x="471" y="319"/>
+			<point x="471" y="641" type="curve" smooth="yes"/>
+			<point x="471" y="1344" type="line"/>
+			<point x="605" y="1344" type="line"/>
+			<point x="605" y="1516" type="line"/>
+			<point x="113" y="1516" type="line"/>
+		</contour>
+		<component base="dotaccent" xOffset="287" yOffset="436"/>
+		<component base="dotaccent" xOffset="745" yOffset="436"/>
+	</outline>
+	<lib>
+		<dict>
+			<key>com.fontlab.v5.background</key>
+			<dict>
+				<key>bitmap</key>
+				<dict>
+					<key>data</key>
+					<array>
+						<array>
+							<integer>80</integer>
+							<integer>0</integer>
+						</array>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+						</array>
+						<array>
+							<integer>136</integer>
+							<integer>0</integer>
+						</array>
+						<array>
+							<integer>136</integer>
+							<integer>0</integer>
+						</array>
+						<array>
+							<integer>136</integer>
+							<integer>0</integer>
+						</array>
+						<array>
+							<integer>136</integer>
+							<integer>0</integer>
+						</array>
+						<array>
+							<integer>136</integer>
+							<integer>0</integer>
+						</array>
+						<array>
+							<integer>136</integer>
+							<integer>0</integer>
+						</array>
+						<array>
+							<integer>136</integer>
+							<integer>0</integer>
+						</array>
+						<array>
+							<integer>112</integer>
+							<integer>0</integer>
+						</array>
+					</array>
+				</dict>
+				<key>origin</key>
+				<array>
+					<integer>100</integer>
+					<integer>0</integer>
+				</array>
+				<key>size_pixels</key>
+				<array>
+					<integer>5</integer>
+					<integer>10</integer>
+				</array>
+				<key>size_units</key>
+				<array>
+					<integer>600</integer>
+					<integer>1000</integer>
+				</array>
+			</dict>
+		</dict>
+	</lib>
+</glyph>
