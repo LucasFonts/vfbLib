@@ -406,10 +406,10 @@ class VfbToUfoBuilder:
                 if name in lib:
                     oldname = name
                     j = 0
-                    name = f"{oldname}#{i:02}"
+                    name = f"{oldname}#{j:02}"
                     while name in lib:
                         j += 1
-                        name = f"{oldname}#{i:02}"
+                        name = f"{oldname}#{j:02}"
                     logger.warning(
                         f"Duplicate TrueType stem name '{oldname}', renamed to '{name}'"
                         ". Preferably make stem names unique in VFB."
