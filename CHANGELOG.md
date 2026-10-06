@@ -1,5 +1,11 @@
 # Change Log
 
+## v0.12.2
+
+UFO
+
+- Fix endless loop while trying to disambiguate identical TrueType stem names
+
 ## v0.12.1
 
 UFO
