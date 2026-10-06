@@ -1,6 +1,6 @@
 [project]
 name = "vfbLib"
-version = "0.12.1"
+version = "0.12.2"
 description = "Tools for converting FontLab Studio 5 (VFB) files."
 keywords = ["fonttools", "vfb", "vfbLib"]
 
@@ -22,7 +22,7 @@ classifiers = [
 
 requires-python = ">=3.11"
 dependencies = [
-  "fonttools[ufo] >= 4.65.0",
+  "fonttools[ufo] >= 4.66.1",
   "orjson >= 3.12.0, < 4",
   "typing_extensions >= 4.16.0",
   "ufoLib2[json] >= 0.18.1",
@@ -57,21 +57,21 @@ yaml = ["pyyaml >= 6.0.3"]
 
 [dependency-groups]
 dev = [
-  "mypy >= 2.3.1",
-  "ruff >= 0.16.8",
+  "mypy >= 2.4.0",
+  "ruff >= 0.16.10",
   "types-pyyaml >= 6.0.12.20260906",
 ]
 test = [
   "pytest-cov >= 7.1.0",
   "pytest >= 9.1.1",
   "tox-gh >= 1.8.0",
-  "tox-uv >= 1.36.0",
-  "tox >= 4.63.0",
+  "tox-uv >= 1.36.1",
+  "tox >= 4.64.9",
   { include-group = "dev" },
 ]
 
 [build-system]
-requires = ["uv_build>=0.12.17,<0.13"]
+requires = ["uv_build>=0.12.23,<0.13"]
 build-backend = "uv_build"
 
 [tool.coverage.paths]
