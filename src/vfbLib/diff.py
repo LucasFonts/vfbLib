@@ -4,6 +4,7 @@ from pathlib import Path
 
 import orjson
 
+from vfbLib.json import custom_serialize
 from vfbLib.vfb.vfb import Vfb
 
 
@@ -44,6 +45,7 @@ def diffvfb():
         orjson.dumps(
             vfb1.as_dict(),
             option=orjson.OPT_INDENT_2 | orjson.OPT_NON_STR_KEYS | orjson.OPT_SORT_KEYS,
+            default=custom_serialize,
         )
         .decode()
         .splitlines()
@@ -52,6 +54,7 @@ def diffvfb():
         orjson.dumps(
             vfb2.as_dict(),
             option=orjson.OPT_INDENT_2 | orjson.OPT_NON_STR_KEYS | orjson.OPT_SORT_KEYS,
+            default=custom_serialize,
         )
         .decode()
         .splitlines()

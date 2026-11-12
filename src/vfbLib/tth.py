@@ -7,6 +7,7 @@ from typing import Any
 import orjson
 
 from vfbLib.helpers import stripControlChars
+from vfbLib.json import custom_serialize
 from vfbLib.ufo.glyph import IndexVfbToUfoGlyph
 from vfbLib.ufo.tth import TTGlyphHints, transform_stem_rounds
 from vfbLib.vfb.vfb import Vfb
@@ -74,6 +75,7 @@ def vfb2tth():
                         option=orjson.OPT_INDENT_2
                         | orjson.OPT_NON_STR_KEYS
                         | orjson.OPT_SORT_KEYS,
+                        default=custom_serialize,
                     )
                 )
 
