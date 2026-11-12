@@ -1,5 +1,9 @@
 # Change Log
 
+## v0.12.3
+
+- Fix TypeError in `vfbdiff` and `vfb2tth` for VFB entries of type byte
+
 ## v0.12.2
 
 UFO
